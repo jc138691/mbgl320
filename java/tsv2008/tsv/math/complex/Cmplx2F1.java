@@ -65,11 +65,30 @@ public class Cmplx2F1 extends FlowTest {
   //  subroutine CmplxF1 (a, b, c, z, res, eps)
   // z.abs <= 1
   private static Cmplx calcSeries(Cmplx a, Cmplx b, Cmplx c, Cmplx z, double eps) {  log.dbg("a=", a); log.dbg("b=", b); log.dbg("c=", c); log.dbg("z=", z);
-    if (z.abs2() > 1) {
-      throw new IllegalArgumentException(log.error("calcSmallZ was called with z.abs2() > 1"));
-    }
     Cmplx one = Cmplx.ONE;           //  one = dcmplx(1d0, 0d0)
     Cmplx res = new Cmplx(one);            //  res = one
+    if (a.equals(Cmplx.ZERO)  ||  b.equals(Cmplx.ZERO) || z.equals(Cmplx.ZERO)) {
+      return res;
+    }
+
+    boolean aNegZ = a.isNegOrZeroInt();
+    boolean bNegZ = b.isNegOrZeroInt();
+    boolean cNegZ = c.isNegOrZeroInt();
+    if ((!aNegZ && !bNegZ) && z.abs2() > 1) {
+      throw new IllegalArgumentException(log.error("calcSeries was called with ((!aNegZ && !bNegZ) && z.abs2() > 1)"));
+    }
+    if ((!aNegZ && !bNegZ) && cNegZ) {
+      throw new IllegalArgumentException(log.error("calcSeries was called with ((!aNegZ && !bNegZ) && cNegZ)"));
+    }
+    if ((aNegZ || bNegZ) && cNegZ) {
+      int ai = (int)a.getRe();
+      int bi = (int)b.getRe();
+      int ci = (int)c.getRe();
+      if (ai <= ci  &&  bi <= ci) {
+        throw new IllegalArgumentException(log.error("calcSeries was called with (ai <= ci  &&  bi <= ci)"));
+      }
+    }
+
     Cmplx f = new Cmplx(one);              //  f = one
     Cmplx t1 = a.times(b).times(z).div(c);   //  t1 = a * b * z / c
     Cmplx a1 = new Cmplx(a);               //  a1 = a
