@@ -1,0 +1,11 @@
+<project name="clmbNt" default="clmbNt" basedir="."  >
+
+    <target name="clmbNt">
+        <exec executable="cmd">
+            <arg value="/c"/>
+            <arg value="clmbNt.bat"/>
+            <arg value="-p"/>
+        </exec>
+    </target>
+
+</project>

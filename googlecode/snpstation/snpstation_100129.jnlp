@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JNLP File for the SnpStation program -->
+<jnlp 
+  spec="1.0+"
+  codebase="http://snpstation.googlecode.com/files"
+  href="snpstation_100129.jnlp"  >             <!-- ***VERSION HERE*** -->
+  <information>
+    <title>SnpStation</title>
+    <vendor>Dr. Dmitry Konovalov</vendor>
+    <homepage href="http://snpstation.googlecode.com/" />
+    <description>The SnpStation program</description>
+    <description kind="short">an open-source genome sequence assembly viewer and high-value SNP-identification tool.</description>
+    <icon href="snpstation_logo_30.gif"/>
+    <offline-allowed/>
+    <shortcut>
+        <desktop/>
+        <menu submenu="SnpStation"/>
+    </shortcut>
+  </information>
+  <security>
+    <!--<j2ee-application-client-permissions/>-->
+    <all-permissions/>
+  </security>
+  <resources>
+    <j2se version="1.5+" initial-heap-size="64m" max-heap-size="900m" />
+    <!--<j2se version="1.5+" />-->
+    <jar href="snpstation_100129.jar" />      <!-- ***VERSION HERE*** -->
+  </resources>
+  <application-desc main-class="snpstation.RunSnpStation" />
+</jnlp>

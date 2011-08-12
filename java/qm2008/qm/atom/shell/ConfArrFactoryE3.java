@@ -1,0 +1,313 @@
+package atom.shell;
+
+import atom.angular.Spin;
+import atom.e_3.AtomShModelE3;
+import atom.fano.Atom2011;
+import atom.shell.deepcopy.ShId;
+import atom.shell.deepcopy.ShWf;
+import atom.wf.log_cr.LcrFactory;
+import atom.wf.log_cr.WFQuadrLcr;
+import math.func.arr.FuncArr;
+import math.vec.grid.StepGrid;
+import math.vec.grid.StepGridModel;
+import project.workflow.task.test.FlowTest;
+import scatt.jm_2008.jm.laguerre.JmLgrrModel;
+import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
+
+import javax.triplet.Int3;
+import javax.utilx.intx.ArrInt4;
+import javax.utilx.log.Log;
+import java.util.TreeMap;
+
+/**
+ * Created by Dmitry.A.Konovalov@gmail.com, 03/06/2010, 10:48:51 AM
+ */
+public class ConfArrFactoryE3 extends FlowTest {
+  public static Log log = Log.getLog(ConfArrFactoryE3.class);
+  protected static int R_FIRST = 0;
+  protected static int R_LAST = 100;
+  protected static int R_N = 101;
+  protected static int LCR_N = 101;
+  protected static int LCR_FIRST = -4;
+  protected static int L = 0;
+  protected static int MAX_N = 10;
+  protected static double LAMBDA = 1.;
+
+  public ConfArrFactoryE3() {
+    super(ConfArrFactoryE3.class);
+  }
+
+  public void testMakePoet() throws Exception {
+    ConfArrFactoryE3.log.setDbg();
+    StepGridModel modelR = new StepGridModel(R_FIRST, R_LAST, R_N); // R_N not used!!!
+    StepGridModel sg = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, modelR);
+    log.dbg("x step grid model =", sg);
+    StepGrid x = new StepGrid(sg);
+    log.dbg("x grid =", x);
+    WFQuadrLcr quadrLcr = new WFQuadrLcr(x);
+    log.dbg("x weights =", quadrLcr);
+    JmLgrrModel basisOptN = new JmLgrrModel(L, MAX_N, LAMBDA);
+    JmLgrrOrthLcr orthonN = new JmLgrrOrthLcr(quadrLcr, basisOptN);
+    log.dbg("JmLgrrOrthLcr = ", orthonN);
+    ShWf.convertToShWf(orthonN, L);
+
+    int N = 1;
+    int N2 = 2;
+    int N3 = 3;
+    Ls LS = new Ls(0, Spin.ELECTRON);
+    AtomShModelE3 modelE3 = new AtomShModelE3(N, N2, N3, LS);
+    TreeMap<ShId, Int3> idMap;
+    ArrInt4 validArr;
+    Int3 count;
+    ShId id0 = new ShId(0, 0);
+    ShId id1 = new ShId(1, 0);
+    ShId id2 = new ShId(2, 0);
+
+    ConfArr arrD = ConfArrFactoryE3.makePoetDiffShells(modelE3, orthonN);
+    log.dbg("arrD=", arrD);
+    assertEquals(2, arrD.size());
+
+    idMap = Atom2011.loadIdMap(arrD.get(0), arrD.get(0));
+    log.dbg("idMap=", idMap);
+    count = idMap.get(id0);
+    assertEquals(1, count.a);
+    assertEquals(1, count.b);
+    assertEquals(1, count.c);
+    count = idMap.get(id1);
+    assertEquals(1, count.a);
+    assertEquals(1, count.b);
+    assertEquals(1, count.c);
+    count = idMap.get(id2);
+    assertEquals(1, count.a);
+    assertEquals(1, count.b);
+    assertEquals(1, count.c);
+    validArr = Atom2011.loadOneSpecShell(arrD.get(0), arrD.get(0));
+    log.dbg("validArr=", validArr);
+    assertEquals(3, validArr.size());
+
+    idMap = Atom2011.loadIdMap(arrD.get(0), arrD.get(1));
+    count = idMap.get(id0);
+    assertEquals(1, count.a);
+    assertEquals(1, count.b);
+    count = idMap.get(id1);
+    assertEquals(1, count.a);
+    assertEquals(1, count.b);
+    count = idMap.get(id2);
+    assertEquals(1, count.a);
+    assertEquals(1, count.b);
+    validArr = Atom2011.loadOneSpecShell(arrD.get(0), arrD.get(1));
+    log.dbg("validArr=", validArr);
+    assertEquals(3, validArr.size());
+
+    ConfArr arrC = ConfArrFactoryE3.makePoetClosedShell(modelE3, orthonN);
+    log.dbg("arrC=", arrC);
+    assertEquals(3, arrC.size());
+
+    idMap = Atom2011.loadIdMap(arrC.get(0), arrD.get(0));
+    count = idMap.get(id0);
+    assertEquals(2, count.a);
+    assertEquals(1, count.b);
+    count = idMap.get(id1);
+    assertEquals(1, count.a);
+    assertEquals(1, count.b);
+    count = idMap.get(id2);
+    assertEquals(0, count.a);
+    assertEquals(1, count.b);
+
+    idMap = Atom2011.loadIdMap(arrD.get(0), arrC.get(0));
+    count = idMap.get(id0);
+    assertEquals(1, count.a);
+    assertEquals(2, count.b);
+    assertEquals(1, count.c);
+    count = idMap.get(id1);
+    assertEquals(1, count.a);
+    assertEquals(1, count.b);
+    count = idMap.get(id2);
+    assertEquals(1, count.a);
+    assertEquals(0, count.b);
+    assertEquals(0, count.c);
+
+    idMap = Atom2011.loadIdMap(arrC.get(0), arrC.get(0));
+    count = idMap.get(id0);
+    assertEquals(2, count.a);
+    assertEquals(2, count.b);
+    count = idMap.get(id1);
+    assertEquals(1, count.a);
+    assertEquals(1, count.b);
+
+    idMap = Atom2011.loadIdMap(arrC.get(0), arrC.get(1));
+    count = idMap.get(id0);
+    assertEquals(2, count.a);
+    assertEquals(2, count.b);
+    count = idMap.get(id1);
+    assertEquals(1, count.a);
+    assertEquals(0, count.b);
+    count = idMap.get(id2);
+    assertEquals(0, count.a);
+    assertEquals(1, count.b);
+
+    ConfArr arr = ConfArrFactoryE3.makeSModel(modelE3, orthonN);
+    log.dbg("arr=", arr);
+    assertEquals(5, arr.size());
+
+    modelE3.setSize(N2);
+    arr = ConfArrFactoryE3.makePoetDiffShells(modelE3, orthonN);
+    log.dbg("arr=", arr);
+    assertEquals(2, arr.size());
+    arr = ConfArrFactoryE3.makePoetClosedShell(modelE3, orthonN);
+    log.dbg("arr=", arr);
+    assertEquals(4, arr.size());
+
+    idMap = Atom2011.loadIdMap(arr.get(0), arr.get(0));
+    count = idMap.get(id0);
+    assertEquals(2, count.a);
+    assertEquals(2, count.b);
+    count = idMap.get(id1);
+    assertEquals(1, count.a);
+    assertEquals(1, count.b);
+
+    idMap = Atom2011.loadIdMap(arr.get(1), arr.get(0));
+    count = idMap.get(id0);
+    assertEquals(2, count.a);
+    assertEquals(2, count.b);
+    count = idMap.get(id1);
+    assertEquals(0, count.a);
+    assertEquals(1, count.b);
+    count = idMap.get(id2);
+    assertEquals(1, count.a);
+    assertEquals(0, count.b);
+
+    idMap = Atom2011.loadIdMap(arr.get(2), arr.get(0));
+    count = idMap.get(id0);
+    assertEquals(1, count.a);
+    assertEquals(2, count.b);
+    count = idMap.get(id1);
+    assertEquals(2, count.a);
+    assertEquals(1, count.b);
+
+    idMap = Atom2011.loadIdMap(arr.get(0), arr.get(3));
+    count = idMap.get(id0);
+    assertEquals(2, count.a);
+    assertEquals(0, count.b);
+    count = idMap.get(id1);
+    assertEquals(1, count.a);
+    assertEquals(2, count.b);
+    count = idMap.get(id2);
+    assertEquals(0, count.a);
+    assertEquals(1, count.b);
+
+    arr = ConfArrFactoryE3.makeSModel(modelE3, orthonN);
+    log.dbg("arr=", arr);
+    assertEquals(6, arr.size());
+  }
+
+  // All electrons are in DIFFERENT shells!!!!
+
+  public static ConfArr makePoetDiffShells(AtomShModelE3 model, FuncArr arr) {
+    int L = 0;
+    ConfArr res = new ConfArr();
+    Ls[] arrLS = {new Ls(L, Spin.SINGLET), new Ls(L, Spin.TRIPLET)};
+    for (int n = 0; n < model.getSize(); n++) {
+      Shell sh = new Shell(n, arr.get(n), L);      log.dbg("sh=", sh);
+      if (!sh.isValid()) {
+        log.dbg("NOT VALID");
+        continue;
+      }
+      for (int n2 = n + 1; n2 < model.getSize2(); n2++) {
+        Shell sh2 = new Shell(n2, arr.get(n2), L);        log.dbg("sh2=", sh2);
+        for (int idxLS = 0; idxLS < arrLS.length; idxLS++) {
+          Ls tmpLS = arrLS[idxLS];
+          for (int n3 = n2 + 1; n3 < model.getSize3(); n3++) {
+            Conf fc = new ShPair(sh, sh2, tmpLS);          log.dbg("fc=", fc);
+            if (!fc.isValid()) {
+              log.dbg("NOT VALID");
+              continue;
+            }
+            Shell sh3 = new Shell(n3, arr.get(n3), L);                 log.dbg("sh3=", sh3);
+            fc.add(sh3, model.getLs());            log.dbg("fc=", fc);
+            if (!fc.isValid()) {
+              log.dbg("NOT VALID");
+              continue;
+            }
+            res.add(fc);
+          }
+        }
+      }
+    }
+    log.dbg("from arr=\n", arr);
+    log.dbg("res=\n", res);
+    return res;
+  }
+
+  // One electron above/below a closed shell
+
+  public static ConfArr makePoetClosedShell(AtomShModelE3 model, FuncArr arr) {
+    ConfArr res = new ConfArr();
+    int size = model.getSize();
+    int size2 = model.getSize2();
+    int size3 = model.getSize3();
+    if (size > size2) {
+      throw new IllegalArgumentException(log.error("size > size2"));
+    }
+    if (size2 > size3) {
+      throw new IllegalArgumentException(log.error("size2 > size3"));
+    }
+    int L = 0;
+    Ls[] arrLS = {new Ls(L, Spin.SINGLET), new Ls(L, Spin.TRIPLET)};
+    for (int idxLS = 0; idxLS < arrLS.length; idxLS++) {
+      Ls tmpLS = arrLS[idxLS];
+      for (int n = 0; n < size; n++) {
+        Shell sh12 = new ShellQ2(n, arr.get(n), L, tmpLS);        log.dbg("q=2 at sh12=", sh12);
+        if (!sh12.isValid()) {                                    log.dbg("NOT VALID");
+          continue;
+        }
+        for (int n3 = 0; n3 < size3; n3++) {
+          if (n == n3)
+            continue;
+          Shell sh3 = new Shell(n3, arr.get(n3), L);             log.dbg("sh3=", sh3);
+          Conf fc;
+          if (n < n3) {
+            fc = new ShPair(sh12, sh3, model.getLs());
+          }
+          else {
+            fc = new ShPair(sh3, sh12, model.getLs());
+          }
+          log.dbg("fc=", fc);
+          if (!fc.isValid()) {
+            log.dbg("NOT VALID");
+            continue;
+          }
+          res.add(fc);
+        }
+      }
+
+      for (int n2 = size; n2 < size2; n2++) { // NOTE! Starting from size
+        Shell sh23 = new ShellQ2(n2, arr.get(n2), L, tmpLS);        log.dbg("q=2 at sh23=", sh23);
+        if (!sh23.isValid()) {
+          log.dbg("NOT VALID");
+          continue;
+        }
+        for (int n = 0; n < size; n++) {
+          Shell sh = new Shell(n, arr.get(n), L);             log.dbg("sh=", sh);
+          Conf fc = new ShPair(sh, sh23, model.getLs());
+          log.dbg("fc=", fc);
+          if (!fc.isValid()) {
+            log.dbg("NOT VALID");
+            continue;
+          }
+          res.add(fc);
+        }
+      }
+    }
+    log.dbg("from arr=\n", arr);
+    log.dbg("res=\n", res);
+    return res;
+  }
+
+  public static ConfArr makeSModel(AtomShModelE3 model, FuncArr arr) {
+    ConfArr res = makePoetDiffShells(model, arr);
+    ConfArr closed = makePoetClosedShell(model, arr);
+    res.addAll(closed);
+    return res;
+  }
+}

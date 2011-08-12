@@ -1,0 +1,29 @@
+<project name="olgahelp" default="build_jar" basedir="."  >
+
+  <!--NOTE:
+   1. del all files in /classes
+   2. Compile "RunOlgaHelp.java" in IntelliJ
+   3.
+  -->
+  <target name="build_jar" description="build a jar file" >
+    <jar destfile="olgahelp_091022.jar" manifest="olgahelp_jar.mf" >        <!-- ***VERSION HERE*** -->
+      <fileset dir="..\..\..\..\..\classes" casesensitive="yes" >
+        <filename name="**/*.class" />
+      </fileset>
+        <fileset dir="..\..\..\tsv2008\tsv" casesensitive="yes" >
+          <filename name="**/*.gif"/>
+        </fileset>
+        <fileset dir="..\..\..\tsv2008\tsv" casesensitive="yes" >
+          <filename name="**/*.png"/>
+        </fileset>
+    </jar>
+    <signjar keystore="webstart/olgahelp_keys"
+             alias="olgahelp"
+             storepass="olgahelp"
+             jar="olgahelp_091022.jar"/>                                             <!-- ***VERSION HERE*** -->
+    <move file="olgahelp_091022.jar" todir="..\..\googlecode" overwrite="true" />     <!-- ***VERSION HERE*** -->
+  </target>
+
+
+</project>
+
