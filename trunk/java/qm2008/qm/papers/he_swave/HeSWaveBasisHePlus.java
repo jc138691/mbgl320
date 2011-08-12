@@ -1,0 +1,158 @@
+package papers.he_swave;
+import atom.AtomUtil;
+import atom.angular.Spin;
+import atom.data.AtomHe;
+import atom.data.AtomHy;
+import atom.energy.ConfHMtrx;
+import atom.energy.part_wave.PartHMtrxLcr;
+import atom.energy.slater.SlaterLcr;
+import atom.wf.log_cr.LcrFactory;
+import math.func.arr.FuncArr;
+import math.func.arr.FuncArrDbgView;
+import math.mtrx.Mtrx;
+import math.mtrx.MtrxDbgView;
+import math.vec.Vec;
+import math.vec.VecDbgView;
+import qm_station.QMSProject;
+import scatt.jm_2008.e3.JmMethodAnyBasisE3;
+import scatt.jm_2008.jm.JmRes;
+import scatt.jm_2008.jm.target.JmTrgtE3;
+import scatt.jm_2008.jm.theory.JmD;
+
+import javax.iox.FileX;
+import javax.utilx.log.Log;
+/**
+ * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,12/05/11,2:35 PM
+ */
+public class HeSWaveBasisHePlus extends HeSWaveScatt {
+  public static Log log = Log.getLog(HeSWaveBasisHePlus.class);
+  public static void main(String[] args) {
+    // NOTE!!! for Nt>20 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
+    HeSWaveBasisHePlus runMe = new HeSWaveBasisHePlus();
+    runMe.setUp();
+    runMe.testRun();
+  }
+  public void setUp() {
+    super.setUp();
+    log.info("log.info(HeSWaveBasisHePlus)");
+    HeSWaveBasisHePlus.log.setDbg();
+    log.setDbg();
+  }
+  public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
+    project = QMSProject.makeInstance("HeSWaveBasisHePlus", "110606");
+    TARGET_Z = AtomHe.Z;
+    HOME_DIR = "C:\\dev\\physics\\papers\\output";
+    MODEL_NAME = "HeSModelBasisHeIon";
+    MODEL_DIR = "HeSModelBasisHeIon";
+    LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+
+    // Note: run one at a time as only one set of result files is produced
+    setupEng01_1000eV_SLOW();
+//    setupEng01_1000eV_FAST();
+//    setupEng10_30eV();
+    setupEngResonance_2S();
+//    setupEngTICS();
+//    setupEngSDCS();
+    runJob();
+  }
+
+  public void runJob() {
+//    // Nt= 80
+//    int currN = 81;
+//    LCR_FIRST = -7;
+//    LCR_N = 1601;
+//    R_LAST = 450;
+
+//    // Nt= 70
+//    int currN = 71;
+//    LCR_FIRST = -5;
+//    LCR_N = 1201;
+//    R_LAST = 330;
+
+    // upto N=50
+//    LCR_FIRST = -5;  //-5
+//    LCR_N = 1001;  //901
+//    R_LAST = 250;
+
+    // upto N=40
+    LCR_FIRST = -5;
+    LCR_N = 701;
+    R_LAST = 200;
+
+    Nc = 2;
+    int currNt = 20;
+    int currN = 21;
+//    int currN = currNt + 1;
+    IGNORE_BUG_PoetHeAtom = true;
+
+    SPIN = Spin.ELECTRON;
+    calcJm(currN, currNt);
+//    calcJm(12, 11);
+//    calcJm(13, 12);
+//    calcJm(14, 13);
+  }
+
+  public void calcJm(int newN, int newNt) {
+    N = newN;
+    Nt = newNt;
+    initProject();
+    initPotJm();     // out: jmBasisN, orthonN, biorthN
+    initHyJm(AtomHy.Z);      // out: pot (for Hy), orthonNt
+    initHyJm(AtomHe.Z);      // out: pot (for Hy), orthonNt
+    initHeJm();      // out: re-loading pot (for He)
+    initLiJm();
+    SlaterLcr slater = new SlaterLcr(quadrLcr);
+    calcHe(slater);    //verified: SysHe_OLD and SysHe yield exactly the same results.
+    calcLi(slater);
+
+    // Making He+ eigen-states
+    trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPartH=", trgtPartH);
+    Vec basisEngs = trgtPartH.getEigVal();            log.dbg("eigVal=", new VecDbgView(basisEngs));
+    Mtrx basisVecs = trgtPartH.getEigVec();            log.dbg("eigVec=", new MtrxDbgView(basisVecs));
+    FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_basisEngs_" + makeLabelNc());
+    trgtBasisNt = trgtPartH.getEigFuncArr();      log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
+
+    FuncArr basisR = LcrFactory.wfLcrToR(trgtBasisNt, quadrLcr);
+    AtomUtil.trimTailSLOW(basisR);
+    FileX.writeToFile(basisR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtR_" + makeLabelNc());
+
+// TODO: check how Vec.size() is used
+//    AtomUtil.trimTailSLOW(trgtBasisNt);
+
+    trgtBasisN = orthonN;    // only the last wfs were used from  orthonN, so now we can reuse it
+    orthonN = null; // making sure nobody uses old ref
+    trgtBasisN.copyFrom(trgtBasisNt, 0, trgtBasisNt.size());
+
+    JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
+    jmTrgt.setInitTrgtIdx(FROM_CH);
+    jmTrgt.setIonGrndEng(basisEngs.getFirst());
+    jmTrgt.removeClosed(jmOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
+    jmTrgt.setNt(trgtBasisNt.size());
+    jmTrgt.loadSdcsW();
+    saveTrgtInfo(jmTrgt);
+
+    ConfHMtrx sysH = makeSysBasisN(slater);
+
+    JmMethodAnyBasisE3 method = new JmMethodAnyBasisE3(jmOpt);
+    method.setTrgtE3(jmTrgt);
+    method.setSysH(sysH);
+    Vec D = new JmD(biorthN, trgtBasisN);             log.dbg("D_{n,N-1}=", D);
+    method.setOverD(D);
+
+    JmRes res;
+    if (scttEngs != null) {
+      res = method.calc(scttEngs);                  log.dbg("res=", res);
+    }
+    else {
+      res = method.calcEngGrid();                  log.dbg("res=", res);
+    }
+
+//    JmRes res = method.calcWithMidSysEngs();                  log.dbg("res=", res);
+//    JmRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
+    setupJmRes(res, method);
+
+//    JmResonancesE2.saveResRadDist(RES_MAX_LEVEL, res, sysH);
+    res.writeToFiles();
+  }
+
+}

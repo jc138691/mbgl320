@@ -1,0 +1,29 @@
+<project name="snpstation" default="build_jar" basedir="."  >
+
+  <!--NOTE:
+   1. del all files in /classes
+   2. Compile "RunSnpStation.java" in IntelliJ
+   3.
+  -->
+  <target name="build_jar" description="build a jar file" >
+    <jar destfile="snpstation_100129.jar" manifest="snpstation_jar.mf" >        <!-- ***VERSION HERE*** -->
+      <fileset dir="..\..\..\..\..\classes" casesensitive="yes" >
+        <filename name="**/*.class" />
+      </fileset>
+        <fileset dir="..\..\..\tsv2008\tsv" casesensitive="yes" >
+          <filename name="**/*.gif"/>
+        </fileset>
+        <fileset dir="..\..\..\tsv2008\tsv" casesensitive="yes" >
+          <filename name="**/*.png"/>
+        </fileset>
+    </jar>
+    <signjar keystore="webstart/snpstation_keys"
+             alias="snpstation"
+             storepass="snpstation"
+             jar="snpstation_100129.jar"/>                                             <!-- ***VERSION HERE*** -->
+    <move file="snpstation_100129.jar" todir="..\..\googlecode" overwrite="true" />     <!-- ***VERSION HERE*** -->
+  </target>
+
+
+</project>
+

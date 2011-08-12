@@ -1,0 +1,11 @@
+<project name="CoulombNmrvLcr" default="CoulombNmrvLcr" basedir="."  >
+
+    <target name="CoulombNmrvLcr">
+        <exec executable="cmd">
+            <arg value="/c"/>
+            <arg value="CoulombNmrvLcr.bat"/>
+            <arg value="-p"/>
+        </exec>
+    </target>
+
+</project>
