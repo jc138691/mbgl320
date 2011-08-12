@@ -22,7 +22,7 @@ public class Cmplx2F1 extends FlowTest {
   }
   public static Cmplx calc2(Cmplx a, Cmplx b, Cmplx c, Cmplx z, double eps) {  log.dbg("a=", a); log.dbg("b=", b); log.dbg("c=", c); log.dbg("z=", z);
     double abs2 = z.abs2();  log.dbg("z.abs2()=", abs2);
-    if (z.equals(Cmplx.ONE)) {
+    if (z.equals(Cmplx.ONE)) {      //test
       return calcOneZ(a, b, c, eps);       //z==1
     }
 
