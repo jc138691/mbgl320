@@ -175,6 +175,22 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
   }
 
 
+  public void setupEngAu_2() {
+    ENG_FIRST = 0.01f;
+    ENG_LAST = 1.00f;
+    ENG_N = 100;
+  }
+  public void setupEngAu_3() {
+    ENG_FIRST = 0.001f;
+    ENG_LAST = 1.00f;
+    ENG_N = 1000;
+  }
+  public void setupEngAu_4() {
+    ENG_FIRST = 0.0001f;
+    ENG_LAST = 1.00f;
+    ENG_N = 10000;
+  }
+
   public void setupEng01_1000eV_SLOW() {
     EngModelArr arr = new EngModelArr();
 
@@ -203,6 +219,59 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     ENG_N = n + n2 + n3 + n4;
     ENG_FIRST = first;
     ENG_LAST = last4;
+  }
+  public void setupEng1_100eV_SLOW() {
+    EngModelArr arr = new EngModelArr();
+
+    int n = 190;
+    float first = (float)AtomUnits.fromEV(1);
+    float last = (float)AtomUnits.fromEV(18.9);
+    arr.add(new EngModel(first, last, n));
+
+    int n2 = 1000;
+    float first2 = (float)AtomUnits.fromEV(18.991);
+    float last2 = (float)AtomUnits.fromEV(19.29);
+    arr.add(new EngModel(first2, last2, n2));
+
+    int n3 = 1001;
+    float first3 = (float)AtomUnits.fromEV(19.30);
+    float last3 = (float)AtomUnits.fromEV(29.3);
+    arr.add(new EngModel(first3, last3, n3));
+
+    int n4 = 71;
+    float first4 = (float)AtomUnits.fromEV(30.0);
+    float last4 = (float)AtomUnits.fromEV(100.0);
+    arr.add(new EngModel(first4, last4, n4));
+
+    scttEngs = EngGridFactory.makeEngs(arr);
+
+    ENG_N = n + n2 + n3 + n4;
+    ENG_FIRST = first;
+    ENG_LAST = last4;
+  }
+  public void setupEng01_1au_SLOW() {
+    EngModelArr arr = new EngModelArr();
+
+    int n = 69;
+    float first = 0.01f;
+    float last = 0.69f;
+    arr.add(new EngModel(first, last, n));
+
+    int n2 = 1000;
+    float first2 = 0.69002f;
+    float last2 =  0.71f;
+    arr.add(new EngModel(first2, last2, n2));
+
+    int n3 = 1500;
+    float first3 = 0.7102f;
+    float last3 = 1.0100f;
+    arr.add(new EngModel(first3, last3, n3));
+
+    scttEngs = EngGridFactory.makeEngs(arr);
+
+    ENG_N = n + n2 + n3;
+    ENG_FIRST = first;
+    ENG_LAST = last3;
   }
   public void setupEng01_1000eV_FAST() {
     EngModelArr arr = new EngModelArr();

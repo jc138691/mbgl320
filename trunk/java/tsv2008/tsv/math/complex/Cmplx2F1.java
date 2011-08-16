@@ -14,10 +14,15 @@ public class Cmplx2F1 extends FlowTest {
     super(Cmplx2F1.class);
   }
   public static Cmplx calc(Cmplx a, Cmplx b, Cmplx c, Cmplx z, double eps) {  log.dbg("a=", a); log.dbg("b=", b); log.dbg("c=", c); log.dbg("z=", z);
-    double abs2 = z.abs2();  log.dbg("z.abs2()=", abs2);
     if (z.equals(Cmplx.ONE)) {
       return calcOneZ(a, b, c, eps);       //z==1
     }
+
+//    double abs2 = z.abs2();  log.dbg("z.abs2()=", abs2);
+//    boolean aNegZ = a.isNegOrZeroInt();
+//    boolean bNegZ = b.isNegOrZeroInt();
+//    boolean cNegZ = c.isNegOrZeroInt();
+
     return calcSeries(a, b, c, z, eps);
   }
   public static Cmplx calc2(Cmplx a, Cmplx b, Cmplx c, Cmplx z, double eps) {  log.dbg("a=", a); log.dbg("b=", b); log.dbg("c=", c); log.dbg("z=", z);
