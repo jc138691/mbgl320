@@ -47,7 +47,11 @@ public class HeSWaveBasisHePlus extends HeSWaveScatt {
     LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 
     // Note: run one at a time as only one set of result files is produced
-    setupEng01_1000eV_SLOW();
+    setupEng01_1au_SLOW();
+//    setupEngAu_3();
+//    setupEngAu_4();
+//    setupEng01_1000eV_SLOW();
+//    setupEng1_100eV_SLOW();
 //    setupEng01_1000eV_FAST();
 //    setupEng10_30eV();
     setupEngResonance_2S();
@@ -80,8 +84,8 @@ public class HeSWaveBasisHePlus extends HeSWaveScatt {
     R_LAST = 200;
 
     Nc = 2;
-    int currNt = 20;
-    int currN = 21;
+    int currNt = 10;
+    int currN = 11;
 //    int currN = currNt + 1;
     IGNORE_BUG_PoetHeAtom = true;
 
@@ -106,11 +110,11 @@ public class HeSWaveBasisHePlus extends HeSWaveScatt {
     calcLi(slater);
 
     // Making He+ eigen-states
-    trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPartH=", trgtPartH);
-    Vec basisEngs = trgtPartH.getEigVal();            log.dbg("eigVal=", new VecDbgView(basisEngs));
-    Mtrx basisVecs = trgtPartH.getEigVec();            log.dbg("eigVec=", new MtrxDbgView(basisVecs));
+    trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);       log.dbg("trgtPartH=", trgtPartH);
+    Vec basisEngs = trgtPartH.getEigVal();                log.dbg("eigVal=", new VecDbgView(basisEngs));
+    Mtrx basisVecs = trgtPartH.getEigVec();               log.dbg("eigVec=", new MtrxDbgView(basisVecs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_basisEngs_" + makeLabelNc());
-    trgtBasisNt = trgtPartH.getEigFuncArr();      log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
+    trgtBasisNt = trgtPartH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
 
     FuncArr basisR = LcrFactory.wfLcrToR(trgtBasisNt, quadrLcr);
     AtomUtil.trimTailSLOW(basisR);
@@ -146,9 +150,6 @@ public class HeSWaveBasisHePlus extends HeSWaveScatt {
     else {
       res = method.calcEngGrid();                  log.dbg("res=", res);
     }
-
-//    JmRes res = method.calcWithMidSysEngs();                  log.dbg("res=", res);
-//    JmRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
     setupJmRes(res, method);
 
 //    JmResonancesE2.saveResRadDist(RES_MAX_LEVEL, res, sysH);

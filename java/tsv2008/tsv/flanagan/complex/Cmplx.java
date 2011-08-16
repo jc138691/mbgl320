@@ -58,6 +58,11 @@ public class Cmplx {
   //      standard arithmetic performed
 
 
+  public boolean isNegOrZeroInt() {
+    return (imag == 0  &&  -Math.abs(real) == ((int)real)); //      IF(GIMAG(U) .EQ. 0 .AND. -ABS(X) .EQ. INT(X)) THEN
+  }
+
+
   public static void setToStringFloat(boolean b) {
     toStringFloat = b;
   }

@@ -41,7 +41,11 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 
     // Note: run one at a time as only one set of result files is produced
-    setupEng01_1000eV_SLOW();
+    setupEng01_1au_SLOW();
+//    setupEngAu_3();
+//    setupEngAu_4();
+//    setupEng01_1000eV_SLOW();
+//    setupEng1_100eV_SLOW();
 //    setupEng01_1000eV_FAST();
 //    setupEng10_30eV();
 //    setupEngResonance_2S();
@@ -110,10 +114,10 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
 
     // Making He+ eigen-states from Nc (core N).   his is only to calc ionization threshold
     JmLgrrModel lgrrOptNc = new JmLgrrModel(basisOptN); // for the target N, i.e. N_t
-    lgrrOptNc.setN(Nc);                             log.dbg("Laguerr model (N_c)=", lgrrOptNc);
-    orthonNc = new JmLgrrOrthLcr(quadrLcr, lgrrOptNc); log.dbg("JmLgrrOrthLcr(N_c) = ", orthonNc);
-    trgtPartH = new PartHMtrxLcr(L, orthonNc, pot);    log.dbg("trgtPartH=", trgtPartH);
-    Vec basisEngs = trgtPartH.getEigVal();            log.dbg("eigVal=", new VecDbgView(basisEngs));
+    lgrrOptNc.setN(Nc);                                    log.dbg("Laguerr model (N_c)=", lgrrOptNc);
+    orthonNc = new JmLgrrOrthLcr(quadrLcr, lgrrOptNc);     log.dbg("JmLgrrOrthLcr(N_c) = ", orthonNc);
+    trgtPartH = new PartHMtrxLcr(L, orthonNc, pot);        log.dbg("trgtPartH=", trgtPartH);
+    Vec basisEngs = trgtPartH.getEigVal();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_NcEngs_" + makeLabelNc());
 
     trgtBasisNt = orthonNt;
@@ -121,7 +125,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
-//    jmTrgt.removeClosed(jmOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
+    jmTrgt.removeClosed(jmOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
     jmTrgt.setNt(trgtBasisNt.size());
     jmTrgt.loadSdcsW();
     saveTrgtInfo(jmTrgt);
