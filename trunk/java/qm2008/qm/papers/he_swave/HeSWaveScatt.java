@@ -249,30 +249,6 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     ENG_FIRST = first;
     ENG_LAST = last4;
   }
-  public void setupEng01_1au_SLOW() {
-    EngModelArr arr = new EngModelArr();
-
-    int n = 69;
-    float first = 0.01f;
-    float last = 0.69f;
-    arr.add(new EngModel(first, last, n));
-
-    int n2 = 1000;
-    float first2 = 0.69002f;
-    float last2 =  0.71f;
-    arr.add(new EngModel(first2, last2, n2));
-
-    int n3 = 1500;
-    float first3 = 0.7102f;
-    float last3 = 1.0100f;
-    arr.add(new EngModel(first3, last3, n3));
-
-    scttEngs = EngGridFactory.makeEngs(arr);
-
-    ENG_N = n + n2 + n3;
-    ENG_FIRST = first;
-    ENG_LAST = last3;
-  }
   public void setupEng01_1000eV_FAST() {
     EngModelArr arr = new EngModelArr();
 

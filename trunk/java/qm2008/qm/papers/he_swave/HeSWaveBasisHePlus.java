@@ -47,7 +47,6 @@ public class HeSWaveBasisHePlus extends HeSWaveScatt {
     LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 
     // Note: run one at a time as only one set of result files is produced
-    setupEng01_1au_SLOW();
 //    setupEngAu_3();
 //    setupEngAu_4();
 //    setupEng01_1000eV_SLOW();
@@ -84,8 +83,8 @@ public class HeSWaveBasisHePlus extends HeSWaveScatt {
     R_LAST = 200;
 
     Nc = 2;
-    int currNt = 10;
-    int currN = 11;
+    int currNt = 20;
+    int currN = 21;
 //    int currN = currNt + 1;
     IGNORE_BUG_PoetHeAtom = true;
 
