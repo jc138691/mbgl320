@@ -39,18 +39,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     MODEL_NAME = "HeSModelBasisJm";
     MODEL_DIR = MODEL_NAME;
     LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
-
     // Note: run one at a time as only one set of result files is produced
-    setupEng01_1au_SLOW();
-//    setupEngAu_3();
-//    setupEngAu_4();
-//    setupEng01_1000eV_SLOW();
-//    setupEng1_100eV_SLOW();
-//    setupEng01_1000eV_FAST();
-//    setupEng10_30eV();
-//    setupEngResonance_2S();
-//    setupEngTICS();
-//    setupEngSDCS();
     runJob();
   }
 

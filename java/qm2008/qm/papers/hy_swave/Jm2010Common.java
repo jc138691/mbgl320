@@ -44,8 +44,8 @@ public abstract class Jm2010Common extends FlowTest {
   protected final static int L = 0;
   protected static int TARGET_Z = 1; // 1 for e-Hy
 
-  protected static float ENG_FIRST = 0.01f;
-  protected static float ENG_LAST = 10f;
+  protected static double ENG_FIRST = 0.01;
+  protected static double ENG_LAST = 10;
   protected static int ENG_N = 1000;
 
   public void setUp() {
