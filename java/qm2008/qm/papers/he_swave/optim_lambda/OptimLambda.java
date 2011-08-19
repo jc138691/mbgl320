@@ -34,6 +34,7 @@ import sun.security.krb5.internal.TGSRep;
 
 import javax.iox.FileX;
 import javax.utilx.log.Log;
+import javax.xml.transform.ErrorListener;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,19/08/11,8:45 AM
  */
@@ -48,8 +49,8 @@ public class OptimLambda extends HeSWaveScatt {
   public void setUp() {
     super.setUp();
     log.info("log.info(HeSModelOptimLamdba)");
-    OptimLambda.log.setDbg();
-    log.setDbg();
+//    OptimLambda.log.setDbg();
+//    log.setDbg();
   }
   @Override
   public void calcJm(int newN, int newNt) {
@@ -86,76 +87,102 @@ public class OptimLambda extends HeSWaveScatt {
     LCR_N = 701;
     R_LAST = 200;
 
-    int currNt = 20;
-    int currN = 21;
-//    int currN = currNt + 1;
     IGNORE_BUG_PoetHeAtom = true;
-
     SPIN = Spin.ELECTRON;
-    calcJm(currN, currNt);
 
-
-    int minNt = 15;
-    int maxNt = 20;
-    int stepNt = 5;
-    double minLam = 1.3;
-    double maxLam = 1.8;
-    int numLam = 51;
-    StepGrid lamArr  = new StepGrid(minLam, maxLam, numLam);
-    Vec errArr = new Vec(numLam);
-
-    int NUM_LEVELS = 7; //
-    LAMBDA = minLam;
-
+    double lamLL = 1;
+    double lamRR = 4;
+    int numLam = 5;
     FlowTest.setLog(log);
-    for (int newNt = minNt; newNt <= maxNt; newNt += stepNt) {
-      Nt = newNt;
-      Nc = Nt;
 
-      for (int i = 0; i < lamArr.size(); i++) {
-        LAMBDA = lamArr.get(i);
+    Nt = 20;
+    Nc = Nt;
+    LAMBDA = lamLL;
+    double eLL = calcErr();        log.info("eLL=", eLL);
+    LAMBDA = lamRR;
+    double eRR = calcErr();        log.info("eRR=", eRR);
+    double lamL = 0;
+    double lamC = 0;
+    double lamR = 0;
+    double eL = 0;
+    double eC = 0;
+    double eR = 0;
 
-        initProject();
+    // three point search
+    for (int i = 0; i < numLam; i++) {
+      double step = (lamRR - lamLL )/4.;
+      lamL = lamLL + step;
+      LAMBDA = lamL;
+      eL = calcErr();  log.info("eL=", eL);
 
-        // from jmPotTestOk
-        StepGridModel sg = jmOpt.getGrid();           log.dbg("x step grid model =", sg);
-        StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
-        quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);
-        rVec = quadrLcr.getR();                        log.dbg("r grid =", rVec);
-        basisOptN = jmOpt.getJmModel();                 log.dbg("Laguerr model =", basisOptN);
+      lamC = lamLL + 2 * step;
+      LAMBDA = lamC;
+      eC = calcErr();  log.info("eC=", eC);
 
-        // from jmHyTestOk
-        basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
-        JmLgrrModel lgrrOptNt = new JmLgrrModel(basisOptN); // for the target N, i.e. N_t
-        lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
-        orthonNt = new JmLgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("JmLgrrOrthLcr(N_t) = ", orthonNt);
-        potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-1./r
-        pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
+      lamR = lamLL + 3 * step;
+      LAMBDA = lamR;
+      eR = calcErr();  log.info("eR=", eR);
 
-        // Making He+ eigen-states
-        trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);       //log.dbg("trgtPartH=", trgtPartH);
-        Vec basisEngs = trgtPartH.getEigVal();                log.dbg("basisEngs=", new VecDbgView(basisEngs));
-        trgtBasisNt = trgtPartH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
-        SlaterLcr slater = new SlaterLcr(quadrLcr);
-        JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
-
-        Vec trgtEngs = jmTrgt.getEngs();                        log.dbg("trgtEngs=", new VecDbgView(trgtEngs));
-        double err = VecStats.rmse(HeSWaveAtom.E_SORTED, trgtEngs.getArr(), NUM_LEVELS);   log.info("err=", err);
-        errArr.set(i, err);
-        int dbg = 1;
+      if (eR < eRR  &&  eC < eR) {
+        lamRR = lamR;
+        eRR = eR;        log.info("new eRR=", eRR);
       }
-      log.info("trgtEngs=", new VecDbgView(errArr));
-      int idx = errArr.minIdx();
-      log.info("min err=", errArr.get(idx));
-      log.info("best LAMBDA=", lamArr.get(idx));
-      log.info("idx=", idx);
-      log.info("Nt=", Nt);
-      int dbg2 = 1;
+      if (eLL > eL  &&  eL > eC) {
+        lamLL = lamL;
+        eLL = eL;        log.info("new eLL=", eLL);
+      }
+      if (eL > eC  &&  eC > eR) {
+        lamLL = lamC;
+        eLL = eC;        log.info("new eLL=", eLL);
+      }
+      if (eC < eR  &&  eL < eC) {
+        lamRR = lamC;
+        eRR = eC;        log.info("new eRR=", eRR);
+      }
     }
+    log.info("eLL=", eLL);
+    log.info("eL=", eL);
+    log.info("eR=", eR);
+    log.info("eRR=", eRR);
+    log.info("lamLL=", lamLL);
+    log.info("lamL=", lamL);
+    log.info("lamR=", lamR);
+    log.info("lamRR=", lamRR);
+    log.info("Nt=", Nt);
+    int dbg2 = 1;
 
   }
 
+  public double calcErr() {
+    initProject();
+    // from jmPotTestOk
+    StepGridModel sg = jmOpt.getGrid();           log.dbg("x step grid model =", sg);
+    StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
+    quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);
+    rVec = quadrLcr.getR();                        log.dbg("r grid =", rVec);
+    basisOptN = jmOpt.getJmModel();                 log.dbg("Laguerr model =", basisOptN);
 
+    // from jmHyTestOk
+    basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
+    JmLgrrModel lgrrOptNt = new JmLgrrModel(basisOptN); // for the target N, i.e. N_t
+    lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
+    orthonNt = new JmLgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("JmLgrrOrthLcr(N_t) = ", orthonNt);
+    potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-1./r
+    pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
+
+    // Making He+ eigen-states
+    trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);       //log.dbg("trgtPartH=", trgtPartH);
+    Vec basisEngs = trgtPartH.getEigVal();                log.dbg("basisEngs=", new VecDbgView(basisEngs));
+    trgtBasisNt = trgtPartH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
+    SlaterLcr slater = new SlaterLcr(quadrLcr);
+    JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
+
+    Vec trgtEngs = jmTrgt.getEngs();                        log.dbg("trgtEngs=", new VecDbgView(trgtEngs));
+    int NUM_LEVELS = 5; //
+//    double err = VecStats.rmse(HeSWaveAtom.E_SORTED, trgtEngs.getArr(), NUM_LEVELS);   log.info("err=", err);
+    double err = VecStats.maxAbsErr(HeSWaveAtom.E_SORTED, trgtEngs.getArr(), NUM_LEVELS);   log.info("err=", err);
+    return err;
+  }
 
 
 }
