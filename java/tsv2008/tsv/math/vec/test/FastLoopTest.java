@@ -1,9 +1,9 @@
 package math.vec.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 10/07/2008, Time: 09:24:12 */
-import junit.framework.*;
 import math.func.Func;
 import math.vec.FastLoop;
 import math.Calc;
+import math.vec.VecFactory;
 import project.workflow.task.test.FlowTest;
 
 import javax.utilx.log.Log;
@@ -14,12 +14,36 @@ public class FastLoopTest extends FlowTest  {
   public FastLoopTest() {
     super(FastLoopTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
   }
-
-  public void testMult() throws Exception {
-//    fail("Test is not implemented");
+  public void testMinMax() throws Exception {
+    for (int size = 1; size < 100; size++) {
+      double[] arr = VecFactory.makeRand(size);
+      assertEquals(FastLoop.min(arr), FastLoop.minTest(arr), Calc.EPS_32);
+      assertEquals(FastLoop.max(arr), FastLoop.maxTest(arr), Calc.EPS_32);
+      assertEquals(FastLoop.minIdx(arr), FastLoop.minIdxTest(arr));
+      assertEquals(FastLoop.maxIdx(arr), FastLoop.maxIdxTest(arr));
+    }
+  }
+  public void testMultSelf() throws Exception {
+//    fail("Test not implemented yet");
   }
   public void testDot() throws Exception {
-//    fail("Test not implemented yet");
+    for (int size = 1; size < 100; size++) {
+      double[] arr = VecFactory.makeRand(size);
+      double[] v = VecFactory.makeRand(size);
+      assertEquals(FastLoop.dot(arr, v), FastLoop.dotTest(arr, v), Calc.EPS_32);
+    }
+    for (int size = 2; size < 100; size++) {
+      double[] arr = VecFactory.makeRand(size);
+      double[] v = VecFactory.makeRand(size);
+      assertEquals(FastLoop.dot(0, size-1, arr, v), FastLoop.dotTest(0, size-1, arr, v), Calc.EPS_32);
+      assertEquals(FastLoop.dot(1, size, arr, v), FastLoop.dotTest(1, size, arr, v), Calc.EPS_32);
+    }
+    for (int size = 3; size < 100; size++) {
+      double[] arr = VecFactory.makeRand(size);
+      double[] v = VecFactory.makeRand(size);
+      assertEquals(FastLoop.dot(1, size-1, arr, v), FastLoop.dotTest(1, size-1, arr, v), Calc.EPS_32);
+      assertEquals(FastLoop.dot(2, size, arr, v), FastLoop.dotTest(2, size, arr, v), Calc.EPS_32);
+    }
   }
   public void testPolynom() throws Exception {
 //    fail("Test not implemented yet");

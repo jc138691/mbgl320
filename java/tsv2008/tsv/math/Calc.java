@@ -17,6 +17,8 @@ public class Calc {
   public static final double EPS_16 = 1e-16;
   public static final double EPS_17 = 1e-17;
   public static final double EPS_18 = 1e-18;
+  public static final double EPS_32 = 1e-32;
+  public static final double EPS_100 = 1e-100;
 
   private static final double IGNORE = 1e-32;
   public static boolean isZero(double v) {

@@ -1,6 +1,5 @@
 package papers.hy_swave.v3_bi;
 
-import atom.data.AtomHe;
 import atom.data.AtomHy;
 import atom.e_2.SysE2_OLD;
 import atom.energy.ConfHMtrx;
@@ -38,8 +37,8 @@ public class HySWaveViaOverlap_OLD extends HySWaveBasisHy {
     N = newN;
     Nt = newNt;
     initProject();
-    initPotJm();
-    initHyJm(AtomHy.Z);
+    jmPotTestOk();
+    jmHyTestOk(AtomHy.Z);
 
     trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);   log.dbg("trgtPartH=", trgtPartH);
     Vec trgtEngs = trgtPartH.getEigVal();                     log.dbg("eigVal=", new VecDbgView(trgtEngs));

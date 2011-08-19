@@ -13,12 +13,12 @@ public class JmLagrrBiR extends JmLgrrR {
     + "see JmLgrrR.HELP for R";
   public JmLagrrBiR(WFQuadrR w, JmLgrrModel model) {
     super(w, model);
-//    mult(new ThisNormFunc()); // THIS IS called in super
+//    multSelf(new ThisNormFunc()); // THIS IS called in super
     calcBioNorm();
   }
   public JmLagrrBiR(Vec r, JmLgrrModel model) {
     super(r, model);
-//    mult(new ThisNormFunc()); // THIS IS called in super
+//    multSelf(new ThisNormFunc()); // THIS IS called in super
     calcBioNorm();
   }
 

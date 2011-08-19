@@ -82,7 +82,7 @@ public final void scale(double s)
     FastLoop.mult(arr, s);
   }
   public final void mult(Vec s) {
-    FastLoop.mult(arr, s.arr);
+    FastLoop.multSelf(arr, s.arr);
   }
   public final void addMultSafe(double c, Vec from) {  // [22Jun2011]  made addMult into  addMultSafe [as per addSafe]
 //    FastLoop.addMult(arr, c, from.arr);            // OLD
@@ -99,6 +99,12 @@ public final void scale(double s)
   }
   public double max() {
     return FastLoop.max(arr);
+  }
+  public int minIdx() {
+    return FastLoop.minIdx(arr);
+  }
+  public int maxIdx() {
+    return FastLoop.maxIdx(arr);
   }
 
   public static String toString(double[] a, int size) {

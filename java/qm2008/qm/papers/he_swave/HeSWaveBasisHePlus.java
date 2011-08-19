@@ -99,10 +99,10 @@ public class HeSWaveBasisHePlus extends HeSWaveScatt {
     N = newN;
     Nt = newNt;
     initProject();
-    initPotJm();     // out: jmBasisN, orthonN, biorthN
-    initHyJm(AtomHy.Z);      // out: pot (for Hy), orthonNt
-    initHyJm(AtomHe.Z);      // out: pot (for Hy), orthonNt
-    initHeJm();      // out: re-loading pot (for He)
+    jmPotTestOk();     // out: jmBasisN, orthonN, biorthN
+    jmHyTestOk(AtomHy.Z);      // out: pot (for Hy), orthonNt
+    jmHyTestOk(AtomHe.Z);      // out: pot (for Hy), orthonNt
+    jmHeTestOk();      // out: re-loading pot (for He)
     initLiJm();
     SlaterLcr slater = new SlaterLcr(quadrLcr);
     calcHe(slater);    //verified: SysHe_OLD and SysHe yield exactly the same results.

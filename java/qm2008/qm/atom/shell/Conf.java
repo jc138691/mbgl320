@@ -143,7 +143,7 @@ public class Conf {  // this class is good for building a config
 //      Shell sh = getSh(i);
 //      FuncVec f = sh.getWf();
 //      FuncVec WF2 = f.copyY();
-//      WF2.mult(f);
+//      WF2.multSelf(f);
 //      res.addMultSafe(sh.getQ(), WF2);
 //    }
 //    return res;

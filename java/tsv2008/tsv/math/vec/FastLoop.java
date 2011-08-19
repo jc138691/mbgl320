@@ -1,6 +1,7 @@
 package math.vec;
 import math.func.Func;
 
+import javax.utilx.IdxAbsComparator;
 import javax.utilx.log.Log;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 9/07/2008, Time: 16:00:05
@@ -152,6 +153,32 @@ public class FastLoop {
       to[i] = a[i];      i++;
     }
   }
+  public static double minTest(double[] a) {
+    if (a == null  ||  a.length == 0) {
+      throw new IllegalArgumentException(log.error("arr==null or arr.length==0"));
+    }
+    double res = a[0];
+    int size = a.length;
+    for (int i = 1; i < size; i++) {  // note from ONE
+      if (res > a[i]) {
+        res = a[i];
+      }
+    }
+    return res;
+  }
+  public static double maxTest(double[] a) {
+    if (a == null  ||  a.length == 0) {
+      throw new IllegalArgumentException(log.error("arr==null or arr.length==0"));
+    }
+    double res = a[0];
+    int size = a.length;
+    for (int i = 1; i < size; i++) {  // note from ONE
+      if (res < a[i]) {
+        res = a[i];
+      }
+    }
+    return res;
+  }
   public static double min(double[] a) {
     if (a == null  ||  a.length == 0) {
       throw new IllegalArgumentException(log.error("arr==null or arr.length==0"));
@@ -165,26 +192,126 @@ public class FastLoop {
     int i = 0;
     double res = a[0];
     switch (count % DUFF_SIZE) {
-      case 0:        if (res > a[i]) res = a[i];        i++;
-      case 7:        if (res > a[i]) res = a[i];        i++;
-      case 6:        if (res > a[i]) res = a[i];        i++;
-      case 5:        if (res > a[i]) res = a[i];        i++;
-      case 4:        if (res > a[i]) res = a[i];        i++;
-      case 3:        if (res > a[i]) res = a[i];        i++;
-      case 2:        if (res > a[i]) res = a[i];        i++;
-      case 1:        if (res > a[i]) res = a[i];        i++;
+      case 0:        if (res > a[i]) {res = a[i];}        i++;
+      case 7:        if (res > a[i]) {res = a[i];}        i++;
+      case 6:        if (res > a[i]) {res = a[i];}        i++;
+      case 5:        if (res > a[i]) {res = a[i];}        i++;
+      case 4:        if (res > a[i]) {res = a[i];}        i++;
+      case 3:        if (res > a[i]) {res = a[i];}        i++;
+      case 2:        if (res > a[i]) {res = a[i];}        i++;
+      case 1:        if (res > a[i]) {res = a[i];}        i++;
     }
     for (; n > 0; n--) {
-      if (res > a[i]) res = a[i];      i++;
-      if (res > a[i]) res = a[i];      i++;
-      if (res > a[i]) res = a[i];      i++;
-      if (res > a[i]) res = a[i];      i++;
-      if (res > a[i]) res = a[i];      i++;
-      if (res > a[i]) res = a[i];      i++;
-      if (res > a[i]) res = a[i];      i++;
-      if (res > a[i]) res = a[i];      i++;
+      if (res > a[i]) {res = a[i];}      i++;
+      if (res > a[i]) {res = a[i];}      i++;
+      if (res > a[i]) {res = a[i];}      i++;
+      if (res > a[i]) {res = a[i];}      i++;
+      if (res > a[i]) {res = a[i];}      i++;
+      if (res > a[i]) {res = a[i];}      i++;
+      if (res > a[i]) {res = a[i];}      i++;
+      if (res > a[i]) {res = a[i];}      i++;
     }
     return res;
+  }
+  public static int minIdxTest(double[] a) {
+    if (a == null  ||  a.length == 0) {
+      throw new IllegalArgumentException(log.error("arr==null or arr.length==0"));
+    }
+    double res = a[0];
+    int idx = 0;
+    int size = a.length;
+    for (int i = 1; i < size; i++) {  // note from ONE
+      if (res > a[i]) {
+        res = a[i];
+        idx = i;
+      }
+    }
+    return idx;
+  }
+  public static int maxIdxTest(double[] a) {
+    if (a == null  ||  a.length == 0) {
+      throw new IllegalArgumentException(log.error("arr==null or arr.length==0"));
+    }
+    double res = a[0];
+    int idx = 0;
+    int size = a.length;
+    for (int i = 1; i < size; i++) {  // note from ONE
+      if (res < a[i]) {
+        res = a[i];
+        idx = i;
+      }
+    }
+    return idx;
+  }
+  public static int minIdx(double[] a) {
+    if (a == null  ||  a.length == 0) {
+      throw new IllegalArgumentException(log.error("arr==null or arr.length==0"));
+    }
+    int count = a.length;
+    assert(count > 0);
+    if (ASSERT_COUNT && !(count > 0)) {
+      throw new IllegalArgumentException(log.error("!(count > 0)"));
+    }
+    int n = (count + DUFF_SIZE - 1) / DUFF_SIZE - 1;
+    int i = 0;
+    int idx = 0;
+    double res = a[0];
+    switch (count % DUFF_SIZE) {
+      case 0:        if (res > a[i]) {res = a[i];  idx = i;}        i++;
+      case 7:        if (res > a[i]) {res = a[i];  idx = i;}        i++;
+      case 6:        if (res > a[i]) {res = a[i];  idx = i;}        i++;
+      case 5:        if (res > a[i]) {res = a[i];  idx = i;}        i++;
+      case 4:        if (res > a[i]) {res = a[i];  idx = i;}        i++;
+      case 3:        if (res > a[i]) {res = a[i];  idx = i;}        i++;
+      case 2:        if (res > a[i]) {res = a[i];  idx = i;}        i++;
+      case 1:        if (res > a[i]) {res = a[i];  idx = i;}        i++;
+    }
+    for (; n > 0; n--) {
+      if (res > a[i]) {res = a[i];  idx = i;}      i++;
+      if (res > a[i]) {res = a[i];  idx = i;}      i++;
+      if (res > a[i]) {res = a[i];  idx = i;}      i++;
+      if (res > a[i]) {res = a[i];  idx = i;}      i++;
+      if (res > a[i]) {res = a[i];  idx = i;}      i++;
+      if (res > a[i]) {res = a[i];  idx = i;}      i++;
+      if (res > a[i]) {res = a[i];  idx = i;}      i++;
+      if (res > a[i]) {res = a[i];  idx = i;}      i++;
+    }
+    return idx;
+  }
+  public static int maxIdx(double[] a) {
+    if (a == null  ||  a.length == 0) {
+      throw new IllegalArgumentException(log.error("arr==null or arr.length==0"));
+    }
+    int count = a.length;
+    assert(count > 0);
+    if (ASSERT_COUNT && !(count > 0)) {
+      throw new IllegalArgumentException(log.error("!(count > 0)"));
+    }
+    int n = (count + DUFF_SIZE - 1) / DUFF_SIZE - 1;
+    int i = 0;
+    int idx = 0;
+    double res = a[0];
+    switch (count % DUFF_SIZE) {
+      case 0:        if (res < a[i]) {res = a[i];  idx = i;}        i++;
+      case 7:        if (res < a[i]) {res = a[i];  idx = i;}        i++;
+      case 6:        if (res < a[i]) {res = a[i];  idx = i;}        i++;
+      case 5:        if (res < a[i]) {res = a[i];  idx = i;}        i++;
+      case 4:        if (res < a[i]) {res = a[i];  idx = i;}        i++;
+      case 3:        if (res < a[i]) {res = a[i];  idx = i;}        i++;
+      case 2:        if (res < a[i]) {res = a[i];  idx = i;}        i++;
+      case 1:        if (res < a[i]) {res = a[i];  idx = i;}        i++;
+    }
+    for (; n > 0; n--) {
+      if (res < a[i]) {res = a[i];  idx = i;}      i++;
+      if (res < a[i]) {res = a[i];  idx = i;}      i++;
+      if (res < a[i]) {res = a[i];  idx = i;}      i++;
+      if (res < a[i]) {res = a[i];  idx = i;}      i++;
+      if (res < a[i]) {res = a[i];  idx = i;}      i++;
+      if (res < a[i]) {res = a[i];  idx = i;}      i++;
+      if (res < a[i]) {res = a[i];  idx = i;}      i++;
+      if (res < a[i]) {res = a[i];  idx = i;}      i++;
+    }
+    return idx;
   }
   public static double max(double[] a) {
     if (a == null  ||  a.length == 0) {
@@ -221,12 +348,12 @@ public class FastLoop {
     return res;
   }
 
-  public static void multTest(double[] v, double[] s) {
+  public static void multSelfTest(double[] v, double[] s) {
     for (int i = 0; i < v.length; i++) {
       v[i] *= s[i];
     }
   }
-  public static void mult(double[] v, double[] s) {
+  public static void multSelf(double[] v, double[] s) {
     assert(v.length == s.length);
     if (ASSERT_LENGTH  &&  !(v.length == s.length)) {
       throw new IllegalArgumentException(log.error("!(v.length == s.length)"));
@@ -375,6 +502,10 @@ public class FastLoop {
 
   public static double dot(double[] v, double[]  v2) {
     return dot(0, v.length, v, v2);
+  }
+
+  public static double dotTest(double[] v, double[]  v2) {
+    return dotTest(0, v.length, v, v2);
   }
 
   public static double dotTest(int startIdx, int exclEnd, double[] v, double[] v2) {

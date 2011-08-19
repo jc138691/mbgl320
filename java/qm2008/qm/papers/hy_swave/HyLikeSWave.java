@@ -72,7 +72,7 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
 
   abstract public void calcJm(int newN, int newNt);
 
-  protected void initHyJm(int trgtZ) {
+  protected void jmHyTestOk(int trgtZ) {
     FlowTest.setLog(log);
 
     jmOpt.setUseClosed(USE_CLOSED_CHANNELS);

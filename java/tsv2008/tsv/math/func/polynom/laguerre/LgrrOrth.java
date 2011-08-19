@@ -51,7 +51,7 @@ public class LgrrOrth extends LgrrArr {
 //    FuncGamma G = new FuncGamma();
 //    for (int n = 0; n < size(); n++) {
 //      double normN = 1.0 / Math.sqrt(G.calc(alpha + n + 1) / G.calc(n + 1) / lambda);
-//      get(n).mult(normN);
+//      get(n).multSelf(normN);
 //    }
 
     //new 29Apr2011

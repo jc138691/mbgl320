@@ -67,7 +67,7 @@ public class ConfHMtrx extends HMtrx {
 //        FuncVec conf = atom.calcConfigDensity(jmBasisN.get(r), jmBasisN.get(r2));
 //        if (conf == null)
 //          continue;
-//        conf.mult(val * val2);
+//        conf.multSelf(val * val2);
 //        if (res == null) {
 //          res = new FuncVec(conf);
 //        } else
@@ -140,7 +140,7 @@ public class ConfHMtrx extends HMtrx {
 ////        double cij = C[i][j];  // [j][i] is correct, see  PartHMtrx
 //        f_i.addMultSafe(cij * cij, basis.get(j).getDensity());
 //      }
-//      f_i.mult(norm);
+//      f_i.multSelf(norm);
 //      res.set(i, f_i);
 //    }
 //    return res;
