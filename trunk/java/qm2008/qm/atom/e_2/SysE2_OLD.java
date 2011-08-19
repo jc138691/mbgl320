@@ -95,11 +95,11 @@ public class SysE2_OLD extends AtomE2 {
 //    double excMult = Mathx.pow(-1, (fc.getTotLS().S.getInt() + a2.id.L + b2.id.L + 1) - fc.getTotLS().L);
 //    DiEx norm = normQ(a, b, a2, b2, prty);
 //    if (dir != null) {
-//      dir.mult(norm.di);
+//      dir.multSelf(norm.di);
 //    }
 //    if (exc != null) {
-//      exc.mult(excMult);
-//      exc.mult(norm.ex);
+//      exc.multSelf(excMult);
+//      exc.multSelf(norm.ex);
 //    }
 //    if (dir != null && exc != null) {
 //      dir.addSafe(exc);

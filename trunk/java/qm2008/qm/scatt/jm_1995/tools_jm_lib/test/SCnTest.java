@@ -33,7 +33,7 @@ public class SCnTest extends TestCase {
 
 //    z = new Cmplx(0.5, 0.5);
 //    z2 = new Cmplx(z).add(1);
-//    g = CmplxGamma.calc(z).mult(z);
+//    g = CmplxGamma.calc(z).multSelf(z);
 //    g2 = CmplxGamma.calc(z2).minus(g);
 //    log.assertZero("Gamma(z+1) - z*Gamma(z)=Re=", g2.getRe(), 4e-17);
 //    log.assertZero("Gamma(z+1) - z*Gamma(z)=Im=", g2.getIm(), 2e-16);
@@ -41,7 +41,7 @@ public class SCnTest extends TestCase {
 //    // check Gamma(z+1)=z*Gamma(z)
 //    z = new Cmplx(1.5, 0.5);
 //    z2 = new Cmplx(z).add(1);
-//    g = CmplxGamma.calc(z).mult(z);
+//    g = CmplxGamma.calc(z).multSelf(z);
 //    g2 = CmplxGamma.calc(z2).minus(g);
 //    log.assertZero("Gamma(z+1) - z*Gamma(z)=Re=", g2.getRe(), 2e-15);
 //    log.assertZero("Gamma(z+1) - z*Gamma(z)=Im=", g2.getIm(), 2e-15);

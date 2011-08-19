@@ -63,7 +63,7 @@ public class HMtrxLTest extends TestCase {
 //    FuncVec f = CoulombWFFactory.makeRawP1s(r, Z_EFF);   log.debug("P_1s(r)=", f);
 //    log.info("P_1s[0]=", f.getFirst());       log.info("P_1s.last=", f.getLast());
 //    f.setX(logCR); log.debug("P_1s(x)=", f); // MUST change grid for derivatives
-//    f.mult(logCRToR.getDivSqrtCR());  log.debug("F_1s=", f);// convert to F(x)=P(r)/sqrt(c+r)
+//    f.multSelf(logCRToR.getDivSqrtCR());  log.debug("F_1s=", f);// convert to F(x)=P(r)/sqrt(c+r)
 //    log.info("P_1s[0]/sqrt(c+r)=F_1s=", f.getFirst());      log.info("P_1s.last/sqrt(c+r)=", f.getLast());
 //    double res = wCR2.calc(f, f);
 //    log.assertZero("Hy norm(LogCR)=", res - 1, 2e-11);    // FIRST=-2, LAST=10

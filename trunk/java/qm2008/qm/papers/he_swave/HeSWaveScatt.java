@@ -15,7 +15,7 @@ import atom.e_3.SysLi;
 import atom.e_3.test.LiSlaterTest;
 import atom.energy.ConfHMtrx;
 import atom.energy.slater.SlaterLcr;
-import atom.poet.PoetHeAtom;
+import atom.poet.HeSWaveAtom;
 import atom.shell.ConfArr;
 import atom.shell.ConfArrFactoryE2;
 import atom.shell.ConfArrFactoryE3;
@@ -108,9 +108,11 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR
       , MODEL_NAME+"_trgEngs_S1_" + makeLabelNc());
 
-    FuncArr sysDens = tH.getDensity();
-    FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
-    FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtDensityR_S1_" + makeLabelNc());
+    if (CALC_DENSITY) {
+      FuncArr sysDens = tH.getDensity();
+      FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
+      FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtDensityR_S1_" + makeLabelNc());
+    }
 
     tLs = new Ls(0, Spin.TRIPLET);  // t - for target
     tConfArr = ConfArrFactoryE2.makePoetConfE2(tLs, basisNt, Nc);               log.dbg("tConfArr=", tConfArr);
@@ -118,9 +120,11 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     FileX.writeToFile(tH2.getEigVal().toCSV(), HOME_DIR, MODEL_DIR
           , MODEL_NAME+"_trgEngs_S3_" + makeLabelNc());
 
-    sysDens = tH2.getDensity();
-    sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
-    FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtDensityR_S3_" + makeLabelNc());
+    if (CALC_DENSITY) {
+      FuncArr sysDens = tH2.getDensity();
+      FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
+      FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtDensityR_S3_" + makeLabelNc());
+    }
 
     JmTrgtE3 res = new JmTrgtE3();
     res.add(tH);
@@ -282,7 +286,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     ENG_FIRST = first;
     ENG_LAST = last;
   }
-  protected void initHeJm() {
+  protected void jmHeTestOk() {
     FlowTest.setLog(log);
     FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
     {
@@ -401,15 +405,15 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
 
     Vec etFS1 = htFS1.getEigVal();
     log.dbg("etFS1=", new VecDbgView(etFS1));
-//    assertFloorRel("E_1s1s_1S", PoetHeAtom.E_1s1s_1S, etFS1.get(0), 2e-4);
-//    assertFloorRel("E_1s2s_1S", PoetHeAtom.E_1s2s_1S, etFS1.get(1), 3e-5);
-//    assertFloorRel("E_1s3s_1S", PoetHeAtom.E_1s3s_1S, etFS1.get(2), 4e-4);
+//    assertFloorRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, etFS1.get(0), 2e-4);
+//    assertFloorRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, etFS1.get(1), 3e-5);
+//    assertFloorRel("E_1s3s_1S", HeSWaveAtom.E_1s3s_1S, etFS1.get(2), 4e-4);
 
     Vec etS1 = htS1.getEigVal();
     log.dbg("etS1=", new VecDbgView(etS1));
-//    assertFloorRel("E_1s1s_1S", PoetHeAtom.E_1s1s_1S, etS1.get(0), 2e-4);
-//    assertFloorRel("E_1s2s_1S", PoetHeAtom.E_1s2s_1S, etS1.get(1), 3e-5);
-//    assertFloorRel("E_1s3s_1S", PoetHeAtom.E_1s3s_1S, etS1.get(2), 4e-4);
+//    assertFloorRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, etS1.get(0), 2e-4);
+//    assertFloorRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, etS1.get(1), 3e-5);
+//    assertFloorRel("E_1s3s_1S", HeSWaveAtom.E_1s3s_1S, etS1.get(2), 4e-4);
 
     Ls S3 = new Ls(0, Spin.TRIPLET);
     ConfArr arrS3 = ConfArrFactoryE2.makeSModelE2(S3, orthonNt, orthonNt);
@@ -419,8 +423,8 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     Vec etS3 = htS3.getEigVal();
     log.dbg("eigVal=", new VecDbgView(etS3));
     if (!IGNORE_BUG_PoetHeAtom) {
-      assertFloorRel("E_1s1s_3S", PoetHeAtom.E_1s2s_3S, etS3.get(0), 7e-6);
-      assertFloorRel("E_1s2s_3S", PoetHeAtom.E_1s3s_3S, etS3.get(1), 2e-4);
+      assertFloorRel("E_1s1s_3S", HeSWaveAtom.E_1s2s_3S, etS3.get(0), 7e-6);
+      assertFloorRel("E_1s2s_3S", HeSWaveAtom.E_1s3s_3S, etS3.get(1), 2e-4);
     }
   }
 }

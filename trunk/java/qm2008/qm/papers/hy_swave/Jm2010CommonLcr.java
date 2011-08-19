@@ -62,7 +62,7 @@ public class Jm2010CommonLcr extends Jm2010Common {
     testOpt = jmOpt.getJmTest();
   }
 
-  protected void initPotJm() {
+  protected void jmPotTestOk() {
     FlowTest.setLog(log);
     FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
     {

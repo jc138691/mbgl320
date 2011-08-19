@@ -53,7 +53,7 @@ public class Jm2010PotScattLcr extends Jm2010CommonLcr {
   public void calcPotLcr(int newN) {
     N = newN;
     initProject();
-    initPotJm();
+    jmPotTestOk();
 
     pot = CoulombWFFactory.makePotHy_1s_e(rVec);  log.dbg("V_1s(r)=", new VecDbgView(pot));
 

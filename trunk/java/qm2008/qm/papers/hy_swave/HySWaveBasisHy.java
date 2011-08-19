@@ -72,8 +72,8 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
     N = newN;
     Nt = newNt;
     initProject();
-    initPotJm();  // jmBasisN, biorthN, orthonN, quadrLcr
-    initHyJm(TARGET_Z);  // pot, orthonNt
+    jmPotTestOk();  // jmBasisN, biorthN, orthonN, quadrLcr
+    jmHyTestOk(TARGET_Z);  // pot, orthonNt
 
     trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPartH=", trgtPartH);
     Vec targetEngs = trgtPartH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));

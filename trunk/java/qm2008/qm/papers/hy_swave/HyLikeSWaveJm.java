@@ -30,8 +30,8 @@ public abstract class HyLikeSWaveJm extends HyLikeSWave {
     N = newN;
     Nt = newNt;
     initProject();
-    initPotJm();     // out: jmBasisN, orthonN, biorthN
-    initHyJm(TARGET_Z);      // out: pot (for TARGET_Z), orthonNt
+    jmPotTestOk();     // out: jmBasisN, orthonN, biorthN
+    jmHyTestOk(TARGET_Z);      // out: pot (for TARGET_Z), orthonNt
     SlaterLcr slater = new SlaterLcr(quadrLcr);
 
     trgtBasisNt = orthonNt;

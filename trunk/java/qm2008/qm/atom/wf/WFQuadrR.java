@@ -48,7 +48,7 @@ public class WFQuadrR extends WFQuadr {
 //  private Vec getDivR() {
 //    if (wDivR == null) {
 //      wDivR = new WFQuadrR(getStepGrid());
-//      wDivR.mult(new FuncVec(getX(), new FuncPowInt(1., -1)));
+//      wDivR.multSelf(new FuncVec(getX(), new FuncPowInt(1., -1)));
 //    }
 //    return wDivR;
 //  }

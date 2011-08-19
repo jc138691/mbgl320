@@ -16,12 +16,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="2806653a-487d-4eaa-b546-24883f956ee4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveResonances2011.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/optim_lambda" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/optim_lambda/OptimLambda.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/VecFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../tsv2008/tsv/stats/VecStats.java" />
+      <change type="MOVED" beforePath="C:\dev\physics\dev_svn_110812\java\qm2008\qm\atom\poet\PoetHeAtom.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/poet/HeSWaveAtom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/e_2/SysE2_OLD.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/e_2/SysE2_OLD.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/energy/ConfHMtrx.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/energy/ConfHMtrx.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/energy/slater/SlaterLcr.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/energy/slater/SlaterLcr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/energy/test/HMtrxLTest.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/energy/test/HMtrxLTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/shell/Conf.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/shell/Conf.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/wf/WFQuadrR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/wf/WFQuadrR.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHePlus.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHePlus.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010Common.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010Common.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveBasisHy.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveBasisHy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010CommonLcr.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010CommonLcr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScattLcr.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScattLcr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/v3_bi/HySWaveViaOverlap_OLD.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/v3_bi/HySWaveViaOverlap_OLD.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_1995/tools_hm.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_1995/tools_hm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_1995/tools_jm_lib/test/SCnTest.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_1995/tools_jm_lib/test/SCnTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/laguerre/JmLagrrBiR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/laguerre/JmLagrrBiR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/theory/JmTools.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/theory/JmTools.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qm2008_intellij.iws" afterPath="$PROJECT_DIR$/qm2008_intellij.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tsv2008/tsv/math/Calc.java" afterPath="$PROJECT_DIR$/../tsv2008/tsv/math/Calc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tsv2008/tsv/math/func/polynom/laguerre/LgrrOrth.java" afterPath="$PROJECT_DIR$/../tsv2008/tsv/math/func/polynom/laguerre/LgrrOrth.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/FastLoop.java" afterPath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/FastLoop.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java" afterPath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/test/FastLoopTest.java" afterPath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/test/FastLoopTest.java" />
     </list>
     <list id="3208e6f2-510e-4ba1-b5d7-a4bbdcaef33b" name="Failed commit: Failed commit: Default (2)" comment="Failed commit: Default (2)" />
     <list id="a0ae5b75-b946-4c59-8218-d93de0a4d5ec" name="Failed commit: Default" comment="" />
@@ -301,7 +325,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java" line="41" class="papers.hy_swave.HyLikeSWaveJm" package="papers.hy_swave">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java" line="40" class="papers.hy_swave.HyLikeSWaveJm" package="papers.hy_swave">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -353,7 +377,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" line="226" class="papers.he_swave.HeSWaveScatt" package="papers.he_swave">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" line="230" class="papers.he_swave.HeSWaveScatt" package="papers.he_swave">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -367,6 +391,19 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" line="93" class="papers.he_swave.HeSWaveBasisJm" package="papers.he_swave">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/optim_lambda/OptimLambda.java" line="152" class="papers.he_swave.optim_lambda.OptimLambda" package="papers.he_swave.optim_lambda">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -437,19 +474,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HeSWaveBasisJm.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java">
+      <file leaf-file-name="VecFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/VecFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="0" selection-start="2496" selection-end="2496" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HeSWaveResonances2011.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveResonances2011.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="30" selection-start="1721" selection-end="1721" vertical-scroll-proportion="0.0">
+            <state line="7" column="33" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -457,19 +485,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeSWaveBasisHePlus.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHePlus.java">
+      <file leaf-file-name="OptimLambda.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/optim_lambda/OptimLambda.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="13" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.30846775">
+            <state line="148" column="44" selection-start="5181" selection-end="5181" vertical-scroll-proportion="1.9080745">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeSWaveScatt.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java">
+      <file leaf-file-name="Vec.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="14" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.0">
+            <state line="106" column="27" selection-start="2608" selection-end="2608" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RandomSeed.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/javax/utilx/RandomSeed.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="10" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -494,22 +531,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/v3_bi/HySWaveViaOverlap_OLD.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/JmCh.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010CommonLcr.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_plus_swave/HePlusSWaveJm.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/complex/CmplxGamma.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/theory/JmTools.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/JmTrgtE2.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMethodBaseE2.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/flanagan/complex/Cmplx.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/complex/Cmplx2F1.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010Common.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveResonances2011.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHePlus.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/atom/poet/HeSWave.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010CommonLcr.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/atom/poet/HeSWaveAtom.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/stats/VecStats.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/VecFactory.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/Calc.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/FastLoop.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/test/FastLoopTest.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/optim_lambda/OptimLambda.java" />
       </list>
     </option>
   </component>
@@ -630,18 +667,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -658,6 +683,30 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="qm2008_intellij" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -724,8 +773,70 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="papers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="he_swave" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="optim_lambda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -759,73 +870,7 @@
       <recent name="scatt.jm_2008.e2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HeSWaveBasisHePlus">
-    <configuration default="false" name="HeSWaveBasisHePlus" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="papers.he_swave.HeSWaveBasisHePlus" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="qm2008" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="HeSWaveResonances2011" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="papers.he_swave.HeSWaveResonances2011" />
-      <option name="VM_PARAMETERS" value="-Xmx900M " />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="qm2008" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="2249" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="HySWaveBasisHy.testRun" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="qm2008" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="papers.hy_swave" />
-      <option name="MAIN_CLASS_NAME" value="papers.hy_swave.HySWaveBasisHy" />
-      <option name="METHOD_NAME" value="testRun" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="1926" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.OptimLambda">
     <configuration default="false" name="Cmplx2F1.testCalc" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="tsv2008" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -868,6 +913,78 @@
       <patterns />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="1327" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="OptimLambda" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="papers.he_swave.optim_lambda.OptimLambda" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="qm2008" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="3766" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="FastLoopTest.testMinMax" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="tsv2008" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="math.vec.test" />
+      <option name="MAIN_CLASS_NAME" value="math.vec.test.FastLoopTest" />
+      <option name="METHOD_NAME" value="testMinMax" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="FastLoopTest.testDot" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="tsv2008" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="math.vec.test" />
+      <option name="MAIN_CLASS_NAME" value="math.vec.test.FastLoopTest" />
+      <option name="METHOD_NAME" value="testDot" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="3846" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
@@ -1002,12 +1119,12 @@
     </configuration>
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.RunOlgaHelp" />
-      <item index="1" class="java.lang.String" itemvalue="Application.HeSWaveBasisHePlus" />
-      <item index="2" class="java.lang.String" itemvalue="Application.HeSWaveResonances2011" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.HySWaveBasisHy.testRun" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.HySWaveBasisHy" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.Cmplx2F1.testCalc" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.HeSWaveBasisJm.testRun" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.HySWaveBasisHy" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.Cmplx2F1.testCalc" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.HeSWaveBasisJm.testRun" />
+      <item index="4" class="java.lang.String" itemvalue="Application.OptimLambda" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.FastLoopTest.testMinMax" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.FastLoopTest.testDot" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -1115,6 +1232,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41500765" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2469537" sideWeight="0.6340378" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5810651" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5147929" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29704142" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -1138,7 +1256,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289941" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5810651" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1268,96 +1385,116 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/complex/CmplxGamma.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/stats/FisherPValue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="21" selection-start="1663" selection-end="1663" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/flanagan/complex/Cmplx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="31" selection-start="2536" selection-end="2550" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/complex/Cmplx2F1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="45" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/JmRes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="30" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/JmTrgtE2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="14" selection-start="1551" selection-end="1551" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="27" selection-start="1834" selection-end="1834" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveBasisJm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="188" column="0" selection-start="4362" selection-end="4459" vertical-scroll-proportion="0.6315789" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="27" selection-start="2442" selection-end="2442" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmMethodBaseE1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMethodBaseE2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="316" column="17" selection-start="12032" selection-end="12032" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/eng/EngGridFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="20" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0">
+        <state line="0" column="10" selection-start="10" selection-end="10" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010Common.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/stats/VecStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="25" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.0">
+        <state line="21" column="20" selection-start="740" selection-end="740" vertical-scroll-proportion="0.66101694">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java">
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/shell/ConfArrFactoryE2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="0" selection-start="2496" selection-end="2496" vertical-scroll-proportion="0.0">
+        <state line="64" column="0" selection-start="1907" selection-end="1907" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveResonances2011.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="30" selection-start="1721" selection-end="1721" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="14" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.0">
+        <state line="104" column="0" selection-start="3413" selection-end="3413" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHePlus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="13" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.30846775">
+        <state line="119" column="30" selection-start="3817" selection-end="3817" vertical-scroll-proportion="3.9464285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/IntVec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="0" selection-start="3205" selection-end="3552" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/grid/StepGrid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="9" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/grid/StepGridModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/test/VecTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="18" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/FastLoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="517" column="23" selection-start="18159" selection-end="18159" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/test/FastLoopTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="31" selection-start="1735" selection-end="1735" vertical-scroll-proportion="0.6737044">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/Calc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="45" selection-start="826" selection-end="826" vertical-scroll-proportion="0.4452975">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/javax/utilx/RandomSeed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="10" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/VecFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="33" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="27" selection-start="2608" selection-end="2608" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/optim_lambda/OptimLambda.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="44" selection-start="5181" selection-end="5181" vertical-scroll-proportion="1.9080745">
           <folding />
         </state>
       </provider>
