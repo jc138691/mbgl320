@@ -51,23 +51,23 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
     super.setUp();
     log.info("log.info(HyLikeSWave)");
 
-    JmMethodFanoE2.log.setDbg();
-    JmMethodJmBasisE3.log.setDbg();
+//    JmMethodFanoE2.log.setDbg();
+//    JmMethodJmBasisE3.log.setDbg();
 //    JmMethodE1.log.setDbg();
-    Jm2010CommonLcr.log.setDbg();
+//    Jm2010CommonLcr.log.setDbg();
 //    JmCh.log.setDbg();
-    ConfArrFactoryE2.log.setDbg();
+//    ConfArrFactoryE2.log.setDbg();
 //    SysE2_OLD.log.setDbg();
 //    StepGrid.log.setDbg();
 //    CoulombNmrvLcr.log.setDbg();
 
 //    JmMethodJmBasisE3.log.setDbg();
-    ConfHMtrx.log.setDbg();
+//    ConfHMtrx.log.setDbg();
 
     DbgView.setMinVal(VEC_DBG_MIN_VAL);
     DbgView.setNumShow(VEC_DBG_NUM_SHOW);
 
-    log.setDbg();
+//    log.setDbg();
   }
 
   abstract public void calcJm(int newN, int newNt);

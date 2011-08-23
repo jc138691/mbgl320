@@ -24,22 +24,22 @@ import javax.utilx.log.Log;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,12/05/11,2:35 PM
  */
-public class HeSWaveBasisHePlus extends HeSWaveScatt {
-  public static Log log = Log.getLog(HeSWaveBasisHePlus.class);
+public class HeSWaveBasisHeIon extends HeSWaveScatt {
+  public static Log log = Log.getLog(HeSWaveBasisHeIon.class);
   public static void main(String[] args) {
     // NOTE!!! for Nt>20 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
-    HeSWaveBasisHePlus runMe = new HeSWaveBasisHePlus();
+    HeSWaveBasisHeIon runMe = new HeSWaveBasisHeIon();
     runMe.setUp();
     runMe.testRun();
   }
   public void setUp() {
     super.setUp();
-    log.info("log.info(HeSWaveBasisHePlus)");
-    HeSWaveBasisHePlus.log.setDbg();
+    log.info("log.info(HeSWaveBasisHeIon)");
+    HeSWaveBasisHeIon.log.setDbg();
     log.setDbg();
   }
   public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-    project = QMSProject.makeInstance("HeSWaveBasisHePlus", "110606");
+    project = QMSProject.makeInstance("HeSWaveBasisHeIon", "110606");
     TARGET_Z = AtomHe.Z;
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
     MODEL_NAME = "HeSModelBasisHeIon";
