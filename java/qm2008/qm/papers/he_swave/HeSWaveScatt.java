@@ -66,8 +66,8 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
   public void setUp() {
     super.setUp();
     log.info("log.info(HeSWaveScatt)");
-    JmResonancesE2.log.setDbg();
-    log.setDbg();
+//    JmResonancesE2.log.setDbg();
+//    log.setDbg();
   }
 
   protected void saveTrgtInfo(JmTrgtE3 jmTrgt) {
@@ -102,9 +102,9 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     SysAtomE2 tgrtE2 = new SysHe(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
 
     Ls tLs = new Ls(0, Spin.SINGLET);  // t - for target
-    ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE2(tLs, basisNt, Nc);     log.dbg("tConfArr=", tConfArr);
-    ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                           log.dbg("tH=\n", new MtrxDbgView(tH));
-    Mtrx tVecs = tH.getEigVec();                                              log.dbg("tH.getEigVec=", new MtrxDbgView(tVecs));
+    ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE2(tLs, basisNt, Nc);    log.dbg("tConfArr=", tConfArr);
+    ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                          log.dbg("tH=\n", new MtrxDbgView(tH));
+    Mtrx tVecs = tH.getEigVec();                                             log.dbg("tH.getEigVec=", new MtrxDbgView(tVecs));
     FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR
       , MODEL_NAME+"_trgEngs_S1_" + makeLabelNc());
 
@@ -115,8 +115,8 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     }
 
     tLs = new Ls(0, Spin.TRIPLET);  // t - for target
-    tConfArr = ConfArrFactoryE2.makePoetConfE2(tLs, basisNt, Nc);               log.dbg("tConfArr=", tConfArr);
-    ConfHMtrx tH2 = new ConfHMtrx(tConfArr, tgrtE2);                                   log.dbg("tH=\n", new MtrxDbgView(tH));
+    tConfArr = ConfArrFactoryE2.makePoetConfE2(tLs, basisNt, Nc);            log.dbg("tConfArr=", tConfArr);
+    ConfHMtrx tH2 = new ConfHMtrx(tConfArr, tgrtE2);                         log.dbg("tH=\n", new MtrxDbgView(tH2));
     FileX.writeToFile(tH2.getEigVal().toCSV(), HOME_DIR, MODEL_DIR
           , MODEL_NAME+"_trgEngs_S3_" + makeLabelNc());
 
