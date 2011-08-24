@@ -30,7 +30,7 @@ public class OptimLambda extends HeSWaveScatt {
   public static Log log = Log.getLog(OptimLambda.class);
   public static final int NUM_HE_LEVELS = 7; //
   public static final double MIN_ERR = 1.e-8; //
-  public static final double MIN_LAMBDA_ERR = 1.e-6; //
+  public static final double MIN_LAMBDA_ERR = 0.5e-6; //
 
   public static void main(String[] args) {
     // NOTE!!! for Nt>20 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
@@ -70,14 +70,14 @@ public class OptimLambda extends HeSWaveScatt {
 //    R_LAST = 330;
 
     // upto N=50
-//    LCR_FIRST = -5;  //-5
-//    LCR_N = 1001;  //901
-//    R_LAST = 250;
+    LCR_FIRST = -6;  //-5
+    LCR_N = 1001;  //901
+    R_LAST = 250;
 
-    // upto N=40
-    LCR_FIRST = -5;
-    LCR_N = 701;
-    R_LAST = 200;
+//    // upto N=25
+//    LCR_FIRST = -5;
+//    LCR_N = 701;
+//    R_LAST = 200;
 
     IGNORE_BUG_PoetHeAtom = true;
     SPIN = Spin.ELECTRON;
@@ -147,15 +147,18 @@ public class OptimLambda extends HeSWaveScatt {
           eRR = eC;        log.info("new eRR=", eRR);
         }
       }
-      log.info("lamLL=", lamLL);
+      log.info("LL=", eLL);
+      log.info("eL=", eL);
+      log.info("eC=", eC);
+      log.info("eR=", eR);
+      log.info("RR=", eRR);
+      log.info("laLL=", lamLL);
       log.info("lamL=", lamL);
+      log.info("lamC=", lamC);
       log.info("lamR=", lamR);
-      log.info("lamRR=", lamRR);
+      log.info("laRR=", lamRR);
     }
-    log.info("eLL=", eLL);
-    log.info("eL=", eL);
-    log.info("eR=", eR);
-    log.info("eRR=", eRR);
+    log.info("Nc=", Nc);
     log.info("Nt=", Nt);
     int dbg2 = 1;
 
@@ -189,9 +192,11 @@ public class OptimLambda extends HeSWaveScatt {
     SlaterLcr slater = new SlaterLcr(quadrLcr);
     JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
 
-    Vec trgtEngs = jmTrgt.getEngs();                        log.dbg("trgtEngs=", new VecDbgView(trgtEngs));
+    Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", new VecDbgView(trgtEngs));
+    log.info("E_SORTED=", new VecDbgView(new Vec(HeSWaveAtom.E_SORTED)));
 //    double err = VecStats.rmse(HeSWaveAtom.E_SORTED, trgtEngs.getArr(), NUM_HE_LEVELS);   log.info("err=", err);
-    double err = VecStats.maxAbsErr(HeSWaveAtom.E_SORTED, trgtEngs.getArr(), NUM_HE_LEVELS);   log.info("err=", err);
+//    double err = VecStats.maxAbsErr(HeSWaveAtom.E_SORTED, trgtEngs.getArr(), NUM_HE_LEVELS);   log.info("err=", err);
+    double err = VecStats.maxPosErr(trgtEngs.getArr(), HeSWaveAtom.E_SORTED, NUM_HE_LEVELS);   log.info("err=", err);
     return err;
   }
   public double calcErrJm() {
@@ -221,9 +226,11 @@ public class OptimLambda extends HeSWaveScatt {
     SlaterLcr slater = new SlaterLcr(quadrLcr);
     JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
 
-    Vec trgtEngs = jmTrgt.getEngs();                        log.dbg("trgtEngs=", new VecDbgView(trgtEngs));
+    Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", new VecDbgView(trgtEngs));
+    log.info("E_SORTED=", new VecDbgView(new Vec(HeSWaveAtom.E_SORTED)));
 //    double err = VecStats.rmse(HeSWaveAtom.E_SORTED, trgtEngs.getArr(), NUM_HE_LEVELS);   log.info("err=", err);
-    double err = VecStats.maxAbsErr(HeSWaveAtom.E_SORTED, trgtEngs.getArr(), NUM_HE_LEVELS);   log.info("err=", err);
+//    double err = VecStats.maxAbsErr(trgtEngs.getArr(), HeSWaveAtom.E_SORTED, NUM_HE_LEVELS);   log.info("err=", err);
+    double err = VecStats.maxPosErr(trgtEngs.getArr(), HeSWaveAtom.E_SORTED, NUM_HE_LEVELS);   log.info("err=", err);
     return err;
   }
 

@@ -42,4 +42,21 @@ public class VecStats {
     }
     return new Vec(arr).max();
   }
+  public static double maxPosErr(double[] x, double[] y, int len)
+  {
+    if (x == null  ||  y == null) {
+      throw new IllegalArgumentException(log.error("(x == null  ||  y == null)"));
+    }
+    if (x.length < len  ||  y.length < len) {
+      throw new IllegalArgumentException(log.error("x.length < len  ||  y.length < len"));
+    }
+    if (len <= 0) {
+      throw new IllegalArgumentException(log.error("(len <= 0)"));
+    }
+    double[] arr = new double[len];
+    for (int i = 0; i < len; i++) {
+      arr[i] = x[i] - y[i];
+    }
+    return new Vec(arr).max();
+  }
 }
