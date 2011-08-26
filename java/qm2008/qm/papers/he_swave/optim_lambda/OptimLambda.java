@@ -28,7 +28,7 @@ import javax.utilx.log.Log;
  */
 public class OptimLambda extends HeSWaveScatt {
   public static Log log = Log.getLog(OptimLambda.class);
-  public static final int NUM_HE_LEVELS = 7; //
+  public static final int NUM_HE_LEVELS = 5; //
   public static final double MIN_ERR = 1.e-8; //
   public static final double MIN_LAMBDA_ERR = 0.5e-6; //
 
@@ -83,12 +83,12 @@ public class OptimLambda extends HeSWaveScatt {
     SPIN = Spin.ELECTRON;
 
     double lamLL = 1;
-    double lamRR = 4;
+    double lamRR = 10;
     int numLam = 100;
     FlowTest.setLog(log);
 
-    Nc = 30;
-    Nt = 30;
+    Nc = 10;
+    Nt = 20;
     LAMBDA = lamLL;
     double eLL = calcErr();        log.info("eLL=", eLL);
     LAMBDA = lamRR;
@@ -226,8 +226,8 @@ public class OptimLambda extends HeSWaveScatt {
     SlaterLcr slater = new SlaterLcr(quadrLcr);
     JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
 
-    Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", new VecDbgView(trgtEngs));
-    log.info("E_SORTED=", new VecDbgView(new Vec(HeSWaveAtom.E_SORTED)));
+    Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);
+    log.info("E_SORTED=", new Vec(HeSWaveAtom.E_SORTED));
 //    double err = VecStats.rmse(HeSWaveAtom.E_SORTED, trgtEngs.getArr(), NUM_HE_LEVELS);   log.info("err=", err);
 //    double err = VecStats.maxAbsErr(trgtEngs.getArr(), HeSWaveAtom.E_SORTED, NUM_HE_LEVELS);   log.info("err=", err);
     double err = VecStats.maxPosErr(trgtEngs.getArr(), HeSWaveAtom.E_SORTED, NUM_HE_LEVELS);   log.info("err=", err);

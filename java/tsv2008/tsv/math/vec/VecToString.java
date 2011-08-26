@@ -33,7 +33,8 @@ public class VecToString {
     StringBuffer buff = new StringBuffer();
     for (int i = 0; i < L; i++) {
       double v = a[i];
-      buff.append(Float.toString((float) v));
+//      buff.append(Float.toString((float) v));
+      buff.append(Double.toString(v));
       if (i != L - 1)
         buff.append(delim);
     }
