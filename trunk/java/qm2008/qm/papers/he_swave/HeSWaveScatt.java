@@ -105,8 +105,10 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE2(tLs, basisNt, Nc);    log.dbg("tConfArr=", tConfArr);
     ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                          log.dbg("tH=\n", new MtrxDbgView(tH));
     Mtrx tVecs = tH.getEigVec();                                             log.dbg("tH.getEigVec=", new MtrxDbgView(tVecs));
-    FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR
+    if (SAVE_TRGT_ENGS)  {
+      FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR
       , MODEL_NAME+"_trgEngs_S1_" + makeLabelNc());
+    }
 
     if (CALC_DENSITY) {
       FuncArr sysDens = tH.getDensity();
@@ -117,8 +119,10 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     tLs = new Ls(0, Spin.TRIPLET);  // t - for target
     tConfArr = ConfArrFactoryE2.makePoetConfE2(tLs, basisNt, Nc);            log.dbg("tConfArr=", tConfArr);
     ConfHMtrx tH2 = new ConfHMtrx(tConfArr, tgrtE2);                         log.dbg("tH=\n", new MtrxDbgView(tH2));
-    FileX.writeToFile(tH2.getEigVal().toCSV(), HOME_DIR, MODEL_DIR
-          , MODEL_NAME+"_trgEngs_S3_" + makeLabelNc());
+    if (SAVE_TRGT_ENGS)  {
+      FileX.writeToFile(tH2.getEigVal().toCSV(), HOME_DIR, MODEL_DIR
+      , MODEL_NAME+"_trgEngs_S3_" + makeLabelNc());
+    }
 
     if (CALC_DENSITY) {
       FuncArr sysDens = tH2.getDensity();

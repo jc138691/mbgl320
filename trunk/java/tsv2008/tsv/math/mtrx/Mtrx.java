@@ -42,6 +42,9 @@ public class Mtrx extends Matrix {
   public String toTab() {
     return MtrxToString.toTab(getArray());
   }
+  public String toGnuplot() {
+    return MtrxToString.toTab(getArray());
+  }
 
   public Mtrx inverse() {
     Matrix res = super.inverse();
