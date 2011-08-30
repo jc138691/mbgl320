@@ -63,7 +63,7 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
 //    CoulombNmrvLcr.log.setDbg();
 
 //    JmMethodJmBasisE3.log.setDbg();
-//    ConfHMtrx.log.setDbg();
+    ConfHMtrx.log.setDbg();
 
     DbgView.setMinVal(VEC_DBG_MIN_VAL);
     DbgView.setNumShow(VEC_DBG_NUM_SHOW);

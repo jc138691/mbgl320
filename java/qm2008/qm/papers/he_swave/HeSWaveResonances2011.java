@@ -27,9 +27,12 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
     MODEL_NAME = "HeSWaveResonances2011";
     MODEL_DIR = MODEL_NAME;
-    LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
-//    LAMBDA = 2; // best single zet
-    LAMBDA = 2 * 1.68750; // best single zeta
+    IGNORE_BUG_PoetHeAtom = true;
+    CALC_DENSITY = false;
+    SAVE_TRGT_ENGS = true;
+//    LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+//    LAMBDA = 2 * 1.68750; // best single zeta
+    LAMBDA = 3.787828; // best for Nc=10, Nt=30
     // Note: run one at a time as only one set of result files is produced
     setupEng01_1au_SLOW();
     runJob();
@@ -59,10 +62,8 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     R_LAST = 200;
 
     Nc = 10;
-    int currNt = 20;
-    int currN = 21;
-    IGNORE_BUG_PoetHeAtom = true;
-    CALC_DENSITY = false;
+    int currNt = 30;
+    int currN = 31;
 
     SPIN = Spin.ELECTRON;
     calcJm(currN, currNt);
