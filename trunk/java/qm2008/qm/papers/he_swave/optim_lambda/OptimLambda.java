@@ -36,6 +36,15 @@ public class OptimLambda extends HeSWaveScatt {
   public static final double MIN_ERR = 1.e-8; //
   public static final double MIN_LAMBDA_ERR = 0.5e-6; //
   private static String TAG = "";
+  private static int count = 0;
+  private static final int IDX_NT = count++;
+  private static final int IDX_ERR_1 = count++;
+  private static final int IDX_ERR_2 = count++;
+  private static final int IDX_ERR_3 = count++;
+  private static final int IDX_ERR_BEST = count++;
+  private static final int IDX_LAMBDA_BEST = count++;
+  private static final int IDX_COUNT = count++;
+
 
   public static void main(String[] args) {
     // NOTE!!! for Nt>20 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
@@ -92,24 +101,25 @@ public class OptimLambda extends HeSWaveScatt {
     LCR_N = 701;
     R_LAST = 200;
 
-//    Nc = 5;
+    Nc = 5;
 //    int[] arrNt = {5, 6, 7, 8, 9 };
 //    int[] arrNt = {5, 6, 7, 8, 9, 10, 15, 20, 25};
 //    int[] arrNt = {5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35};
-    Nc = 10;
-    int[] arrNt = {10, 15, 20, 25, 30};
+    int[] arrNt = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+
+//    Nc = 7;
+//    int[] arrNt = {7, 10, 15, 20, 25, 30};
+
+//    Nc = 10;
+//    int[] arrNt = {10, 15, 20, 25, 30};
 
     double LAMBDA_1 = 2;
-    double LAMBDA_2 = 4;
-    int IDX_NT = 0;
-    int IDX_ERR_1 = 1;
-    int IDX_ERR_2 = 2;
-    int IDX_ERR_BEST = 3;
-    int IDX_LAMBDA_BEST = 4;
-    int IDX_COUNT = 5;
+    double LAMBDA_2 = 3;
+    double LAMBDA_3 = 4;
     Mtrx mRes = new Mtrx(arrNt.length, IDX_COUNT);
     for (int i = 0; i < arrNt.length; i++) {
       Nt = arrNt[i];             log.info("Nt=", Nt);
+      Nc = Nt;
       mRes.set(i, IDX_NT, Nt);
 
       LAMBDA = LAMBDA_1;
@@ -120,6 +130,10 @@ public class OptimLambda extends HeSWaveScatt {
       err = calcErr();        log.info("err_2=", err);
       mRes.set(i, IDX_ERR_2, err);
 
+      LAMBDA = LAMBDA_3;
+      err = calcErr();        log.info("err_3=", err);
+      mRes.set(i, IDX_ERR_3, err);
+
       double lamLL = 1;
       double lamRR = 10;
       int numLam = 100;
@@ -128,8 +142,12 @@ public class OptimLambda extends HeSWaveScatt {
       mRes.set(i, IDX_LAMBDA_BEST, bestRes.b);
     }
     FileX.writeToFile(mRes.toGnuplot(), HOME_DIR, MODEL_DIR
-      , MODEL_NAME + "_Nc" + Nc + "_maxNt" + arrNt[arrNt.length-1] + TAG + ".txt");
-    FileX.writeToFile(mRes.toGnuplot(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_Nc" + Nc + TAG + ".txt");
+      , MODEL_NAME + "_Nc" + Nc + "_maxNt" + arrNt[arrNt.length-1]
+      + "_nLev" +  NUM_HE_LEVELS
+      + TAG + ".txt");
+    FileX.writeToFile(mRes.toGnuplot(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_Nc" + Nc
+      + "_nLev" +  NUM_HE_LEVELS
+      + TAG + ".txt");
   }
 
   public void runJob() {
@@ -146,14 +164,14 @@ public class OptimLambda extends HeSWaveScatt {
 //    R_LAST = 330;
 
     // upto N=50
-    LCR_FIRST = -6;  //-5
-    LCR_N = 1001;  //901
-    R_LAST = 250;
+//    LCR_FIRST = -6;  //-5
+//    LCR_N = 1001;  //901
+//    R_LAST = 250;
 
-//    // upto N=25
-//    LCR_FIRST = -5;
-//    LCR_N = 701;
-//    R_LAST = 200;
+    // upto N=25
+    LCR_FIRST = -5;
+    LCR_N = 701;
+    R_LAST = 200;
 
     IGNORE_BUG_PoetHeAtom = true;
     SPIN = Spin.ELECTRON;

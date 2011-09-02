@@ -32,7 +32,9 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     SAVE_TRGT_ENGS = true;
 //    LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 //    LAMBDA = 2 * 1.68750; // best single zeta
-    LAMBDA = 3.787828; // best for Nc=10, Nt=30
+//    LAMBDA = 3.787828; // best for Nc=10, Nt=30  , n_gamma=5
+//    LAMBDA = 2.526; // best for Nc=10, Nt=30  , n_gamma=7
+    LAMBDA = 2.05; // best for Nc=14, Nt=14  , n_gamma=5
     // Note: run one at a time as only one set of result files is produced
     setupEng01_1au_SLOW();
     runJob();
@@ -61,8 +63,8 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     LCR_N = 701;
     R_LAST = 200;
 
-    Nc = 10;
-    int currNt = 30;
+    Nc = 14;
+    int currNt = 14;
     int currN = 31;
 
     SPIN = Spin.ELECTRON;
