@@ -204,6 +204,7 @@ public class ConfArrFactoryE3 extends FlowTest {
   // All electrons are in DIFFERENT shells!!!!
 
   public static ConfArr makePoetDiffShells(AtomShModelE3 model, FuncArr arr) {
+    log.info("--->makePoetDiffShells(AtomShModelE3 model=", model);
     int L = 0;
     ConfArr res = new ConfArr();
     Ls[] arrLS = {new Ls(L, Spin.SINGLET), new Ls(L, Spin.TRIPLET)};
@@ -236,12 +237,14 @@ public class ConfArrFactoryE3 extends FlowTest {
     }
     log.dbg("from arr=\n", arr);
     log.dbg("res=\n", res);
+    log.info("<--makePoetDiffShells");
     return res;
   }
 
   // One electron above/below a closed shell
 
   public static ConfArr makePoetClosedShell(AtomShModelE3 model, FuncArr arr) {
+    log.info("--->makePoetClosedShell(AtomShModelE3 model=", model);
     ConfArr res = new ConfArr();
     int size = model.getSize();
     int size2 = model.getSize2();
@@ -301,13 +304,17 @@ public class ConfArrFactoryE3 extends FlowTest {
     }
     log.dbg("from arr=\n", arr);
     log.dbg("res=\n", res);
+    log.info("<--makePoetClosedShell");
     return res;
   }
 
   public static ConfArr makeSModel(AtomShModelE3 model, FuncArr arr) {
+    log.info("-->makeSModel(AtomShModelE3 model=", model);
     ConfArr res = makePoetDiffShells(model, arr);
     ConfArr closed = makePoetClosedShell(model, arr);
     res.addAll(closed);
+    log.info("res.size()=" + res.size());
+    log.info("<--makeSModel(AtomShModelE3 model=", model);
     return res;
   }
 }

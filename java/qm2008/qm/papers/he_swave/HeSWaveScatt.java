@@ -99,6 +99,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
   }
 
   protected JmTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
+    log.info("-->makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt)");
     SysAtomE2 tgrtE2 = new SysHe(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
 
     Ls tLs = new Ls(0, Spin.SINGLET);  // t - for target
@@ -134,6 +135,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     res.add(tH);
     res.add(tH2);
     res.makeReady();
+    log.info("<--makeTrgtBasisNt");
     return res;
   }
   private JmTrgtE3 makeTrgtE3_OLD(SlaterLcr slater) {
@@ -165,11 +167,13 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
 
 
   protected ConfHMtrx makeSysBasisN(SlaterLcr slater) {
+    log.info("-->makeSysBasisN(SlaterLcr slater)");
     SYS_LS = new Ls(0, Spin.ELECTRON);     // s - for system
     SysAtomE3 sysE3 = new SysAtomE3(-AtomHe.Z, slater);    // NOTE!!! Helium (AtomHe.Z), not Li (AtomLi.Z)
     AtomShModelE3 modelE3 = new AtomShModelE3(Nc, Nt, N, SYS_LS);
     ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, trgtBasisN);    log.dbg("sConfArr=", sConfArr);
     ConfHMtrx res = new ConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
+    log.info("<--makeSysBasisN");
     return res;
   }
   private ConfHMtrx makeSysH_OLD(SlaterLcr slater) {
@@ -324,6 +328,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
   }
 
   protected void calcLi(SlaterLcr slater) { // NOTE!!! Local set up just to test three-electron equations
+    log.info("-->calcLi(SlaterLcr slater)");
     float ABS_LI_ENG_ERR = 0.001f;
     float REL_LI_ENG_ERR = 0.001f;
     double lambdaLi = 2.3;      //
@@ -393,6 +398,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     assertCeilRel("Nt=", -7.446433, sysE.get(0), 0.005);     // this is for  // 15Dec2010; E(Nt=9,lambda=2.3) = -7.4464335
     assertCeilRel("Nt=", -7.320755, sysE.get(1), 0.005);     // this is for  // 15Dec2010; E(Nt=9,lambda=2.3)_1s^2,3s = -7.320755
 //    assertFloorRel("E_1s2_2s_2S_CI", AtomLi.E_1s2_2s_2S_CI, sysE.get(0), 0.001);
+    log.info("<--calcLi");
   }
 
   protected void calcHe(SlaterLcr slater) {    // HELIUM TEST

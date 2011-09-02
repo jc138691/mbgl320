@@ -55,14 +55,17 @@ public class Jm2010CommonLcr extends Jm2010Common {
   }
 
   protected void initProject() {
+    log.info("-->initProject()");
     project.setJmPotOptLcr(makeJmPotOptLcr());
     project.setJmPotOptR(makeJmPotOptR());
 
     jmOpt = project.getJmPotOptLcr();
     testOpt = jmOpt.getJmTest();
+    log.info("<--initProject()");
   }
 
   protected void jmPotTestOk() {
+    log.info("-->jmPotTestOk()");
     FlowTest.setLog(log);
     FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
     {
@@ -102,5 +105,6 @@ public class Jm2010CommonLcr extends Jm2010Common {
       if (!new JmPotEigVecLcrTest(AtomHy.Z, orthonN).ok()) return;
     }
     FlowTest.unlockMaxErr();         // FREE MAX ERR
+    log.info("<--jmPotTestOk()");
   }
 }

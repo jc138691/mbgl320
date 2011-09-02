@@ -2,6 +2,7 @@ package atom.e_3;
 
 import atom.shell.Ls;
 
+import javax.langx.SysProp;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 03/06/2010, 11:51:13 AM
  */
@@ -17,6 +18,10 @@ public class AtomShModelE3 {
     size3 = n3;
     this.ls = ls;
   }
+  public String toString() {
+    return "(size1,2,3)=(" + size +", "+size2 +", "+size3 +"); LS="+ls;
+  }
+
 
   public int getSize3() {
     return size3;

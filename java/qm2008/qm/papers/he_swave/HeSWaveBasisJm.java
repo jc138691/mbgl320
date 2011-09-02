@@ -89,6 +89,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
 
 
   public void calcJm(int newN, int newNt) {
+    log.info("-->calcJm(newN"+newN+", newNt="+newNt);
     N = newN;
     Nt = newNt;
     initProject();
@@ -127,7 +128,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     Vec D = new JmDe3(biorthN, orthonN, method.getJmOpt().getJmTest());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
     method.setOverD(D);
 
-    if (CALC_DENSITY) {
+    if (CALC_DENSITY) {          log.info("if (CALC_DENSITY) {");
       FuncArr sysDens = sysH.getDensity();
       FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelNc(method));
