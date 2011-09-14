@@ -27,6 +27,14 @@ public class JmTrgtE2 {   // target properties
   public void setEngs(Vec targetEngs) {
     this.engs = targetEngs;
   }
+  public void replaceTrgtEngs(double[] from) {
+    log.info("OLD   target engs=", engs);
+    log.info("REPLACE with engs=", new Vec(from));
+    for (int i = 0; i < from.length; i++) {
+      engs.set(i, from[i]);
+    }
+    log.info("NEW   target engs=", engs);
+  }
 
   public Vec getEngs() {
     return engs;

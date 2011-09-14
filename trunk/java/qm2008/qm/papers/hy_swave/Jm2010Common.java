@@ -40,7 +40,7 @@ public abstract class Jm2010Common extends FlowTest {
 
   public static double VEC_DBG_MIN_VAL = 1e-10;
   public static int VEC_DBG_NUM_SHOW = 40;
-  protected static float MAX_INTGRL_ERR = 0.00001f;
+  protected static float MAX_INTGRL_ERR = 0.000001f;  // [7Sep2011]changed from 1e-5 to 1e-6
   protected final static int L = 0;
   protected static int TARGET_Z = 1; // 1 for e-Hy
 

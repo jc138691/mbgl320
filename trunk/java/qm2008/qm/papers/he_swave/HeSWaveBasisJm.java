@@ -5,6 +5,7 @@ import atom.data.AtomHy;
 import atom.energy.ConfHMtrx;
 import atom.energy.part_wave.PartHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
+import atom.smodel.HeSWaveAtomNt50_LMBD4p0;
 import atom.wf.log_cr.LcrFactory;
 import math.func.arr.FuncArr;
 import math.vec.Vec;
@@ -102,7 +103,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     calcHe(slater);    //verified: SysHe_OLD and SysHe yield exactly the same results.
     calcLi(slater);
 
-    // Making He+ eigen-states from Nc (core N).   his is only to calc ionization threshold
+    // Making He+ eigen-states from Nc (core N).   this is only to calc ionization threshold
     JmLgrrModel lgrrOptNc = new JmLgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNc.setN(Nc);                                    log.dbg("Laguerr model (N_c)=", lgrrOptNc);
     orthonNc = new JmLgrrOrthLcr(quadrLcr, lgrrOptNc);     log.dbg("JmLgrrOrthLcr(N_c) = ", orthonNc);
@@ -117,6 +118,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(jmOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
     jmTrgt.setNt(trgtBasisNt.size());
+    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
     jmTrgt.loadSdcsW();
     saveTrgtInfo(jmTrgt);
 

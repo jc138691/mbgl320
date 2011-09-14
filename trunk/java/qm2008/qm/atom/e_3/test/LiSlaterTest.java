@@ -52,12 +52,12 @@ public class LiSlaterTest extends FlowTest {
     f.mult(quadr.getDivSqrtCR());
     f.setX(quadr.getX()); // MUST change grid for derivatives
     double res = quadr.calcOverlap(f, f);
-    assertEqualsRel("norm=<1s|1s>=", 1, res, true);
+    assertEqualsRel("norm=<1s|1s>=", 1.0000076, res, true);    //1.0000076 error is in the original expression
     FuncVec f2 = atomLi.makeRawP2s(r);
     f2.mult(quadr.getDivSqrtCR());
     f2.setX(quadr.getX()); // MUST change grid for derivatives
     res = quadr.calcOverlap(f2, f2);
-    assertEqualsRel("norm=<2s|2s>=", 1, res, true);
+    assertEqualsRel("norm=<2s|2s>=", 1.0000079, res, true); //1.0000079 error is in the original expression
     Conf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);

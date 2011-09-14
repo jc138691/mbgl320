@@ -3,9 +3,8 @@ import atom.angular.Spin;
 import atom.data.AtomHe;
 import atom.energy.part_wave.PartHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
-import atom.poet.HeSWaveAtom;
+import atom.smodel.HeSWaveAtom;
 import atom.wf.log_cr.WFQuadrLcr;
-import math.Calc;
 import math.func.FuncVec;
 import math.func.arr.FuncArrDbgView;
 import math.func.simple.FuncPowInt;
@@ -26,7 +25,6 @@ import stats.VecStats;
 import javax.iox.FileX;
 import javax.utilx.log.Log;
 import javax.utilx.pair.Dble2;
-import javax.utilx.pair.Int2;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,19/08/11,8:45 AM
  */
@@ -105,7 +103,9 @@ public class OptimLambda extends HeSWaveScatt {
 //    int[] arrNt = {5, 6, 7, 8, 9 };
 //    int[] arrNt = {5, 6, 7, 8, 9, 10, 15, 20, 25};
 //    int[] arrNt = {5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35};
-    int[] arrNt = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+//    int[] arrNt = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+//    int[] arrNt = {15, 16, 17, 18, 19, 20};
+    int[] arrNt = {21, 22};
 
 //    Nc = 7;
 //    int[] arrNt = {7, 10, 15, 20, 25, 30};
@@ -119,7 +119,7 @@ public class OptimLambda extends HeSWaveScatt {
     Mtrx mRes = new Mtrx(arrNt.length, IDX_COUNT);
     for (int i = 0; i < arrNt.length; i++) {
       Nt = arrNt[i];             log.info("Nt=", Nt);
-      Nc = Nt;
+      Nc = Nt;                   log.info("Nc=", Nc);
       mRes.set(i, IDX_NT, Nt);
 
       LAMBDA = LAMBDA_1;
