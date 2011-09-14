@@ -15,7 +15,7 @@ import atom.e_3.SysLi;
 import atom.e_3.test.LiSlaterTest;
 import atom.energy.ConfHMtrx;
 import atom.energy.slater.SlaterLcr;
-import atom.poet.HeSWaveAtom;
+import atom.smodel.HeSWaveAtom;
 import atom.shell.ConfArr;
 import atom.shell.ConfArrFactoryE2;
 import atom.shell.ConfArrFactoryE3;
@@ -38,7 +38,6 @@ import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
 import scatt.eng.EngModelArr;
 import scatt.jm_2008.e2.JmMethodBaseE2;
-import scatt.jm_2008.e2.JmResonancesE2;
 import scatt.jm_2008.jm.JmRes;
 import scatt.jm_2008.jm.laguerre.JmLgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
@@ -77,14 +76,14 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     ionEngs.add(-ionGrnd);
     ionEngs.calc(AtomUnits.funcToEV);
     FileX.writeToFile(ionEngs.toCSV(), HOME_DIR, MODEL_DIR
-      , MODEL_NAME+"_trgEngs_S1_ion_eV_" + makeLabelNc());
+      , MODEL_NAME+"_thisTrgEngs_S1_ion_eV_" + makeLabelNc());  // THIS target energies, not the true S-wave energies
 
     int S3 = 1;
     ionEngs = jmTrgt.getArrH().get(S3).getEigVal().copy();
     ionEngs.add(-ionGrnd);
     ionEngs.calc(AtomUnits.funcToEV);
     FileX.writeToFile(ionEngs.toCSV(), HOME_DIR, MODEL_DIR
-      , MODEL_NAME+"_trgEngs_S3_ion_eV_" + makeLabelNc());
+      , MODEL_NAME+"_thisTrgEngs_S3_ion_eV_" + makeLabelNc());  // THIS target energies, not the true S-wave energies
   }
   public void setupJmRes(JmRes res, JmMethodBaseE2 method) {
     super.setupJmRes(res, method);

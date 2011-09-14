@@ -34,7 +34,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 //    LAMBDA = 2 * 1.68750; // best single zeta
 //    LAMBDA = 3.787828; // best for Nc=10, Nt=30  , n_gamma=5
 //    LAMBDA = 2.526; // best for Nc=10, Nt=30  , n_gamma=7
-    LAMBDA = 2.05; // best for Nc=14, Nt=14  , n_gamma=5
+//    LAMBDA = 2.05; // best for Nc=14, Nt=14  , n_gamma=5
     // Note: run one at a time as only one set of result files is produced
     setupEng01_1au_SLOW();
     runJob();
@@ -63,78 +63,109 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     LCR_N = 701;
     R_LAST = 200;
 
-    Nc = 14;
-    int currNt = 14;
+//    LAMBDA = 4.0; // best for Nc=30, Nt=30  , n_gamma=5
+//    Nc = 50;
+//    int currNt = 50;
+//    int currN = 51;
+
+//    LAMBDA = 4.0; // best for Nc=30, Nt=30  , n_gamma=5
+//    Nc = 45;
+//    int currNt = 45;
+//    int currN = 46;
+
+//    LAMBDA = 4.0; // best for Nc=30, Nt=30  , n_gamma=5
+//    Nc = 40;
+//    int currNt = 40;
+//    int currN = 41;
+
+//    LAMBDA = 4.0; // best for Nc=30, Nt=30  , n_gamma=5
+//    Nc = 35;
+//    int currNt = 35;
+//    int currN = 36;
+
+//    LAMBDA = 4.0; // best for Nc=30, Nt=30  , n_gamma=5
+//    Nc = 30;
+//    int currNt = 30;
+//    int currN = 31;
+
+//    LAMBDA = 3; // best for Nc=25, Nt=25  , n_gamma=5
+//    Nc = 25;
+//    int currNt = 25;
+//    int currN = 31;
+
+//    LAMBDA = 2.773; // best for Nc=22, Nt=22  , n_gamma=5
+//    Nc = 22;
+//    int currNt = 22;
+//    int currN = 31;
+
+//    LAMBDA = 2.582; // best for Nc=20, Nt=20  , n_gamma=5
+//    Nc = 20;
+//    int currNt = 20;
+//    int currN = 31;
+
+    LAMBDA = 2.397; // best for Nc=18, Nt=18  , n_gamma=5
+    Nc = 18;
+    int currNt = 18;
     int currN = 31;
+
+//    LAMBDA = 2.306; // best for Nc=17, Nt=17  , n_gamma=5
+//    Nc = 17;
+//    int currNt = 17;
+//    int currN = 31;
+
+//    LAMBDA = 2.22; // best for Nc=16, Nt=16  , n_gamma=5
+//    Nc = 16;
+//    int currNt = 16;
+//    int currN = 31;
+
+//    LAMBDA = 2.132; // best for Nc=15, Nt=15  , n_gamma=5
+//    Nc = 15;
+//    int currNt = 15;
+//    int currN = 31;
+
+//    LAMBDA = 2.048; // best for Nc=14, Nt=14  , n_gamma=5
+//    Nc = 14;
+//    int currNt = 14;
+//    int currN = 31;
+
+//    LAMBDA = 1.964; // best for Nc=13, Nt=13  , n_gamma=5
+//    Nc = 13;
+//    int currNt = 13;
+//    int currN = 31;
+
+//    LAMBDA = 1.881; // best for Nc=12, Nt=12  , n_gamma=5
+//    Nc = 12;
+//    int currNt = 12;
+//    int currN = 31;
+
+//    LAMBDA = 1.807; // best for Nc=11, Nt=11  , n_gamma=5
+//    Nc = 11;
+//    int currNt = 11;
+//    int currN = 31;
+
+//    LAMBDA = 1.728; // best for Nc=10, Nt=10  , n_gamma=5
+//    Nc = 10;
+//    int currNt = 10;
+//    int currN = 31;
 
     SPIN = Spin.ELECTRON;
     calcJm(currN, currNt);
   }
-  public static void setupScttEngTable() {
-    scttEngs = new Vec(new double[] {
-      0.1,
-      0.2,
-      0.3,
-      0.4,
-      0.5,
-      0.6,
-      0.65,
-      0.66,
-      0.67,
-      0.68,
-      0.69,
-      0.695,
-      0.696,
-      0.697,
-      0.698,
-      0.699,
-      0.700,
-      0.701,
-      0.702,
-      0.703,
-      0.704,
-      0.705,
-      0.71,
-      0.72,
-      0.73,
-      0.74,
-      0.75,
-      0.76,
-      0.77,
-      0.78,
-      0.79,
-      0.8,
-      0.9,
-      1,
-    });
-
-    ENG_N = scttEngs.size();
-    ENG_FIRST = scttEngs.getFirst();
-    ENG_LAST = scttEngs.getLast();
-  }
   public static void setupEng01_1au_SLOW() {
     EngModelArr arr = new EngModelArr();
-
-    int n = 69;
-    float first = 0.01f;
-    float last = 0.69f;
-    arr.add(new EngModel(first, last, n));
-
-    int n2 = 1000;
-    float first2 = 0.69002f;
-    float last2 =  0.71f;
-    arr.add(new EngModel(first2, last2, n2));
-
-    int n3 = 1500;
-    float first3 = 0.7102f;
-    float last3 = 1.0100f;
-    arr.add(new EngModel(first3, last3, n3));
-
+    arr.add(new EngModel(0.204,  0.704,  501));
+    arr.add(new EngModel(0.704,  0.705,  1001));
+    arr.add(new EngModel(0.705,  0.730,  501));
+    arr.add(new EngModel(0.730,  0.740,  1001));
+    arr.add(new EngModel(0.740,  0.810,  501));
+    arr.add(new EngModel(0.810,  0.811,  1001));
+    arr.add(new EngModel(0.811,  0.818,  501));
+    arr.add(new EngModel(0.818,  0.819,  1001));
+    arr.add(new EngModel(0.819,  0.842,  501));
     scttEngs = EngGridFactory.makeEngs(arr);
-
-    ENG_N = n + n2 + n3;
-    ENG_FIRST = first;
-    ENG_LAST = last3;
+    ENG_FIRST = scttEngs.getFirst();
+    ENG_LAST = scttEngs.getLast();
+    ENG_N = scttEngs.size();
   }
 
 }

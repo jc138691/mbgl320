@@ -1,16 +1,8 @@
-package atom.poet;
-
+package atom.smodel;
 /**
- * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,12/10/2010,10:17:17 AM
+ * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,7/09/11,11:53 AM
  */
-public class HeSWaveAtom {
-  // from Bartlett & Stelbovics 2010 PhysRev A81, 022715
-  public static final double E_1s1s_1S = -2.87895;
-  public static final double E_1s2s_3S = -2.17426;
-  public static final double E_1s2s_1S = -2.14419;
-  public static final double E_1s3s_3S = -2.06848;
-  public static final double E_1s3s_1S = -2.06079;
-
+public class HeSWaveAtomDHIF94 {
   // http://pra.aps.org/abstract/PRA/v50/i5/p3793_1
   //Phys. Rev. A 50, 3793–3808 (1994)
   //One- and two-electron excitations of helium in the s-wave model
