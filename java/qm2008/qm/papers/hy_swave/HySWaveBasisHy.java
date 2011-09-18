@@ -57,7 +57,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
 //    setupEngTICS();
 //    setupEngSDCS();
     USE_CLOSED_CHANNELS = true;
-    CALC_DENSITY = true;
+    CALC_DENSITY = false;
     runJob();
   }
 
@@ -130,19 +130,19 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
     method.setSysEngs(sysEngs);
 
     if (CALC_DENSITY) {
-      FuncArr sysDens = sysH.getDensity();
+      FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);
       FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelTrgtS2(method));
     }
 
     JmRes res;
+    res = method.calcMidSysEngs();                  log.dbg("res=", res);
     if (scttEngs != null) {
       res = method.calc(scttEngs);                  log.dbg("res=", res);
     }
     else {
       res = method.calcEngGrid();                  log.dbg("res=", res);
     }
-//    JmRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
 //    JmRes res = method.calcSysEngs();                  log.dbg("res=", res);
     setupJmRes(res, method);                        log.dbg("res=", res);
     res.writeToFiles();

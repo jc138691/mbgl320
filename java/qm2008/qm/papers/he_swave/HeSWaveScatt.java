@@ -111,7 +111,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     }
 
     if (CALC_DENSITY) {
-      FuncArr sysDens = tH.getDensity();
+      FuncArr sysDens = tH.getDensity(CALC_DENSITY_MAX_NUM);
       FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtDensityR_S1_" + makeLabelNc());
     }
@@ -125,7 +125,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     }
 
     if (CALC_DENSITY) {
-      FuncArr sysDens = tH2.getDensity();
+      FuncArr sysDens = tH2.getDensity(CALC_DENSITY_MAX_NUM);
       FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtDensityR_S3_" + makeLabelNc());
     }

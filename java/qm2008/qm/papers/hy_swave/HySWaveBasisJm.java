@@ -50,7 +50,7 @@ public class HySWaveBasisJm extends HyLikeSWaveJm {
   }
   public void runJob() {
       // upto N=40
-    int currNt = 20;
+    int currNt = 40;
     int currN = 41;
     LCR_FIRST = -5;
     LCR_N = 701;

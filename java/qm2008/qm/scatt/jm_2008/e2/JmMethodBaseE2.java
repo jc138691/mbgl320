@@ -558,10 +558,11 @@ public abstract class JmMethodBaseE2 extends JmMethodBaseE1 {
     this.exclSysIdx = exclSysIdx;
   }
   public JmRes calcMidSysEngs() {
-    Vec scttEngs = EngGridFactory.makeMidPoints(sysEngs);
-    double initTrgtE = trgtE2.getInitTrgtEng();
-    scttEngs.add(-initTrgtE);
-    return calc(scttEngs);
+    throw new IllegalArgumentException(log.error("[19Sep2011] This idea does not work. The convergence is slow in Nt, not in N!!!"));
+//    Vec scttEngs = EngGridFactory.makeMidPoints(sysEngs);
+//    double initTrgtE = trgtE2.getInitTrgtEng();
+//    scttEngs.add(-initTrgtE);
+//    return calc(scttEngs);
   }
   public JmRes calcWithMidSysEngs() {
     Vec scttEngs = EngGridFactory.makeWithMidPoints(sysEngs);

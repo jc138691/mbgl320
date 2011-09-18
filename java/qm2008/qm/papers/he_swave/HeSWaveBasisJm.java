@@ -5,7 +5,6 @@ import atom.data.AtomHy;
 import atom.energy.ConfHMtrx;
 import atom.energy.part_wave.PartHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
-import atom.smodel.HeSWaveAtomNt50_LMBD4p0;
 import atom.wf.log_cr.LcrFactory;
 import math.func.arr.FuncArr;
 import math.vec.Vec;
@@ -79,7 +78,8 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     int currN = 21;
 //    int currN = currNt + 1;
     IGNORE_BUG_PoetHeAtom = true;
-    CALC_DENSITY = false;
+    CALC_DENSITY = true;
+    SAVE_TRGT_ENGS = true;
 
     SPIN = Spin.ELECTRON;
     calcJm(currN, currNt);
@@ -118,7 +118,8 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(jmOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
     jmTrgt.setNt(trgtBasisNt.size());
-    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
+//    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED, );   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
+//    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
     jmTrgt.loadSdcsW();
     saveTrgtInfo(jmTrgt);
 
@@ -131,7 +132,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     method.setOverD(D);
 
     if (CALC_DENSITY) {          log.info("if (CALC_DENSITY) {");
-      FuncArr sysDens = sysH.getDensity();
+      FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);
       FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelNc(method));
     }
