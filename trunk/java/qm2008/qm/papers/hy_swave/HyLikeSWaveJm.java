@@ -56,7 +56,7 @@ public abstract class HyLikeSWaveJm extends HyLikeSWave {
     method.setOverD(D);
 
     if (CALC_DENSITY) {
-      FuncArr sysDens = sysH.getDensity();
+      FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);
       FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);     // NOTE!! convering density to R (not wf)
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelTrgtS2(method));
     }

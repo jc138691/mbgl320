@@ -77,31 +77,35 @@ public class ConfHMtrx extends HMtrx {
 //    return res;
 //  }
 
-  public FuncArr getDensity() {
+  public FuncArr getDensity(int maxNum) {
     if (density == null) {
-      density = calcDensity();
+      density = calcDensity(maxNum);
     }
     return density;
   }
-  private FuncArr calcDensity() {
-    if (basis == null  ||  basis.size() == 0) {
+  private FuncArr calcDensity(int maxNum) {
+    if (basis == null  ||  basis.size() == 0  ||  maxNum == 0) {
       return null;
     }
+    int size = basis.size();
+    if (maxNum > 0) {
+      size = Math.min(maxNum, basis.size());
+    }
     Vec x = basis.getX();
-    FuncArr res = new FuncArr(x, basis.size());
+    FuncArr res = new FuncArr(x, size);
     FuncVec[][] confArr = new FuncVec[basis.size()][basis.size()];
     boolean[][] doneArr = new boolean[basis.size()][basis.size()];
 
     Mtrx v = eig().getV();
     double[][] C = v.getArray();
     double norm = 1. / atom.getNumElec();
-    for (int i = 0; i < basis.size(); i++) {
-      if ((10*basis.size())%(i+1) == 0) {
-        log.dbg("calcDensity row=", i); log.dbg("rows%=", 100.* i / basis.size());
+    for (int r = 0; r < size; r++) {
+      if ((10*basis.size())%(r+1) == 0) {
+        log.dbg("calcDensity row=", r); log.dbg("rows%=", 100.* r / basis.size());
       }
       FuncVec f_i = new FuncVec(x);
       for (int j = 0; j < basis.size(); j++) {
-        double cij = C[j][i];  // [j][i] is correct, see  PartHMtrx;  // BY ROW is correct!   see HydrogenJUnit.test_2s
+        double cij = C[j][r];  // [j][i] is correct, see  PartHMtrx;  // BY ROW is correct!   see HydrogenJUnit.test_2s
         for (int j2 = 0; j2 < basis.size(); j2++) {
           FuncVec conf = confArr[j][j2];
           if (conf == null  &&  !doneArr[j][j2]) {
@@ -113,12 +117,12 @@ public class ConfHMtrx extends HMtrx {
           }
           if (conf == null)
             continue;
-          double c2 = C[j2][i];  // [j][i] is correct, see  PartHMtrx
+          double c2 = C[j2][r];  // [j][i] is correct, see  PartHMtrx
           f_i.addMultSafe(cij * c2, conf);
         }
       }
       f_i.mult(norm);
-      res.set(i, f_i);
+      res.set(r, f_i);
     }
     return res;
   }

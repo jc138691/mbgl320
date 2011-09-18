@@ -46,6 +46,7 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
   protected static boolean USE_CLOSED_CHANNELS = true;
   protected static int EXCL_SYS_RESON_IDX = -1;
   protected static boolean CALC_DENSITY = false;
+  protected static int CALC_DENSITY_MAX_NUM = 1;
   protected static boolean SAVE_TRGT_ENGS = false;
 
   public void setUp() {

@@ -4,6 +4,7 @@ import atom.data.AtomHe;
 import atom.energy.part_wave.PartHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.smodel.HeSWaveAtom;
+import atom.smodel.HeSWaveAtomNt50_LMBD4p0;
 import atom.wf.log_cr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArrDbgView;
@@ -30,6 +31,7 @@ import javax.utilx.pair.Dble2;
  */
 public class OptimLambda extends HeSWaveScatt {
   public static Log log = Log.getLog(OptimLambda.class);
+  public static final int FROM_IDX = 1; //
   public static final int NUM_HE_LEVELS = 5; //
   public static final double MIN_ERR = 1.e-8; //
   public static final double MIN_LAMBDA_ERR = 0.5e-6; //
@@ -100,12 +102,12 @@ public class OptimLambda extends HeSWaveScatt {
     R_LAST = 200;
 
     Nc = 5;
-//    int[] arrNt = {5, 6, 7, 8, 9 };
+    int[] arrNt = {5, 6, 7, 8, 9, 10 };
 //    int[] arrNt = {5, 6, 7, 8, 9, 10, 15, 20, 25};
 //    int[] arrNt = {5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35};
 //    int[] arrNt = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 //    int[] arrNt = {15, 16, 17, 18, 19, 20};
-    int[] arrNt = {21, 22};
+//    int[] arrNt = {21, 22};
 
 //    Nc = 7;
 //    int[] arrNt = {7, 10, 15, 20, 25, 30};
@@ -302,7 +304,7 @@ public class OptimLambda extends HeSWaveScatt {
 
     Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);
     log.info("E_SORTED=", new Vec(HeSWaveAtom.E_SORTED));
-    double err = VecStats.maxPosErr(trgtEngs.getArr(), HeSWaveAtom.E_SORTED, NUM_HE_LEVELS);   log.info("err=", err);
+    double err = VecStats.maxPosErr(trgtEngs.getArr(), HeSWaveAtom.E_SORTED, FROM_IDX, NUM_HE_LEVELS);   log.info("err=", err);
     return err;
   }
   public double calcErrJm() {
@@ -330,7 +332,8 @@ public class OptimLambda extends HeSWaveScatt {
 
     Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);
     log.info("E_SORTED=", new Vec(HeSWaveAtom.E_SORTED));
-    double err = VecStats.maxPosErr(trgtEngs.getArr(), HeSWaveAtom.E_SORTED, NUM_HE_LEVELS);   log.info("err=", err);
+    double err = VecStats.maxPosErr(trgtEngs.getArr(), HeSWaveAtomNt50_LMBD4p0.E_SORTED, FROM_IDX, NUM_HE_LEVELS);   log.info("err=", err);
+//    double err = VecStats.maxPosErr(trgtEngs.getArr(), HeSWaveAtom.E_SORTED, NUM_HE_LEVELS);   log.info("err=", err);
     return err;
   }
 

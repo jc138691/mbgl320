@@ -1,12 +1,10 @@
 package papers.he_swave;
 import atom.angular.Spin;
 import atom.data.AtomHe;
-import math.vec.Vec;
 import qm_station.QMSProject;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
 import scatt.eng.EngModelArr;
-import scatt.jm_2008.e2.JmResonancesE2;
 
 import javax.utilx.log.Log;
 /**
@@ -29,6 +27,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     MODEL_DIR = MODEL_NAME;
     IGNORE_BUG_PoetHeAtom = true;
     CALC_DENSITY = false;
+    CALC_DENSITY_MAX_NUM = 30;
     SAVE_TRGT_ENGS = true;
 //    LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 //    LAMBDA = 2 * 1.68750; // best single zeta
@@ -36,7 +35,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 //    LAMBDA = 2.526; // best for Nc=10, Nt=30  , n_gamma=7
 //    LAMBDA = 2.05; // best for Nc=14, Nt=14  , n_gamma=5
     // Note: run one at a time as only one set of result files is produced
-    setupEng01_1au_SLOW();
+    setupEng01_3au_SLOW();
     runJob();
   }
 
@@ -103,10 +102,11 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 //    int currNt = 20;
 //    int currN = 31;
 
-    LAMBDA = 2.397; // best for Nc=18, Nt=18  , n_gamma=5
-    Nc = 18;
-    int currNt = 18;
-    int currN = 31;
+//    LAMBDA = 2.397; // best for Nc=18, Nt=18  , n_gamma=5
+//    LAMBDA = 2; // best for Nc=18, Nt=18  , n_gamma=5
+//    Nc = 18;
+//    int currNt = 18;
+//    int currN = 31;
 
 //    LAMBDA = 2.306; // best for Nc=17, Nt=17  , n_gamma=5
 //    Nc = 17;
@@ -134,24 +134,26 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 //    int currN = 31;
 
 //    LAMBDA = 1.881; // best for Nc=12, Nt=12  , n_gamma=5
-//    Nc = 12;
-//    int currNt = 12;
-//    int currN = 31;
+    LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
+    Nc = 15;
+    int currNt = 15;
+    int currN = 41;
 
 //    LAMBDA = 1.807; // best for Nc=11, Nt=11  , n_gamma=5
 //    Nc = 11;
 //    int currNt = 11;
-//    int currN = 31;
+//    int currN = 40;
 
 //    LAMBDA = 1.728; // best for Nc=10, Nt=10  , n_gamma=5
+//    LAMBDA = 1.5;
 //    Nc = 10;
 //    int currNt = 10;
-//    int currN = 31;
+//    int currN = 40;
 
     SPIN = Spin.ELECTRON;
     calcJm(currN, currNt);
   }
-  public static void setupEng01_1au_SLOW() {
+  public static void setupEng01_3au_SLOW() {
     EngModelArr arr = new EngModelArr();
     arr.add(new EngModel(0.204,  0.704,  501));
     arr.add(new EngModel(0.704,  0.705,  1001));
@@ -162,6 +164,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     arr.add(new EngModel(0.811,  0.818,  501));
     arr.add(new EngModel(0.818,  0.819,  1001));
     arr.add(new EngModel(0.819,  0.842,  501));
+    arr.add(new EngModel(0.845,  3.845,  3001));
     scttEngs = EngGridFactory.makeEngs(arr);
     ENG_FIRST = scttEngs.getFirst();
     ENG_LAST = scttEngs.getLast();
