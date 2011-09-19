@@ -17,6 +17,8 @@ public class Energy {
   }
 
   public void add(Energy e) {
+    if (e == null)
+      return;
     kin += e.kin;
     pot += e.pot;
   }

@@ -1,15 +1,16 @@
 package atom;
 import atom.energy.Energy;
 import atom.energy.slater.Slater;
-import atom.shell.Conf;
-import atom.shell.DiEx;
+import atom.fano.FanoTermE2;
+import atom.shell.*;
 import atom.angular.Wign6j;
 import atom.angular.Reduced3j;
-import atom.shell.Shell;
 import math.func.FuncVec;
 import math.Mathx;
 
 import javax.utilx.log.Log;
+
+import static math.Mathx.dlt;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 11:51:44
  */
@@ -262,4 +263,78 @@ abstract public class AtomFano1965 {
   public double calcOneKin(Shell sh, Shell sh2) {
     return si.calcOneKin(sh, sh2);
   }
+  protected Energy calcFanoE2(DiEx spinTerm, Ls ls, FanoTermE2 t, FanoTermE2 t2) {
+    if (spinTerm.isZero())  {
+      return null;
+    }
+    ShInfo r = t.r;
+    ShInfo s = t.s;
+    ShInfo r2 = t2.r;
+    ShInfo s2 = t2.s;          log.dbg("t=", t);        log.dbg("t2=", t2);
+    Energy dir = calcShPairEng(ls.getL(), r.sh, s.sh, r2.sh, s2.sh);         log.dbg("dir=", dir);
+    dir.times(spinTerm.di);
+
+    Energy exc = null;
+    if (t.hasExc(t2)) {
+      exc = calcShPairEng(ls.getL(), r.sh, s.sh, s2.sh, r2.sh);                     log.dbg("exc=", exc);
+      exc.times(spinTerm.ex);
+      exc.times(-1); // since it is (dir - exc)
+    }
+
+    double norm2 = 1. + dlt(r.idx, s.idx) * dlt(r2.idx, s2.idx);               log.dbg("norm2=", norm2);
+    double norm = t.norm * t2.norm;                                            log.dbg("norm=", norm);
+    int sign = t.sign * t2.sign;                                               log.dbg("sign=", sign);
+
+    int fano = t.signFano * t2.signFano;        log.dbg("fano=", fano);
+    if (sign != fano) {
+//      FanoTermE3 tmp = new FanoTermE3(b, r, s, conf);
+//      FanoTermE3 tmp2 = new FanoTermE3(b2, r2, s2, conf2);
+      log.info("t=", t);             log.info("t2=", t2);
+      log.info("sign=", sign);       log.info("fano=", fano);
+      throw new IllegalArgumentException(log.error("Fano's sign is different"));
+    }
+    sign = fano;
+
+    double normTot = norm * sign / norm2;                                      log.dbg("normTot=", normTot);
+    dir.add(exc);
+    dir.times(normTot);                                                         log.dbg("res=", dir);
+    return dir;
+  }
+
+  protected FuncVec calcDensity(DiEx spinTerm, Ls ls, FanoTermE2 t, FanoTermE2 t2) {
+    ShInfo r = t.r;
+    ShInfo s = t.s;
+    ShInfo r2 = t2.r;
+    ShInfo s2 = t2.s;                          log.dbg("t=", t);    log.dbg("t2=", t2);
+    FuncVec dir = calcOneDensity(r.sh, s.sh, r2.sh, s2.sh);         log.dbg("dir=", dir);
+    if (dir != null) {
+      dir.mult(spinTerm.di);
+    }
+
+    FuncVec exc = null;
+    if (t.hasExc(t2)) {
+      exc = calcOneDensity(r.sh, s.sh, s2.sh, r2.sh);            log.dbg("exc=", exc);
+      if (exc != null) {
+        exc.mult(spinTerm.ex);
+        exc.mult(-1); // since it is (dir - exc)
+      }
+    }
+    if (exc == null && dir == null) {
+      return null;
+    }
+
+    double norm2 = 1. + dlt(r.idx, s.idx) * dlt(r2.idx, s2.idx);     log.dbg("norm2=", norm2);
+    double norm = t.norm * t2.norm;                                  log.dbg("norm=", norm);
+    int sign = t.sign * t2.sign;             log.dbg("sign=", sign);
+    double normTot = norm * sign / norm2;    log.dbg("normTot=", normTot);
+
+    if (dir != null && exc != null)  {
+      dir.addSafe(exc);
+    } else  if (dir == null) {
+      dir = exc;
+    }
+    dir.mult(normTot);      log.dbg("res=", dir);
+    return dir;
+  }
+
 }
