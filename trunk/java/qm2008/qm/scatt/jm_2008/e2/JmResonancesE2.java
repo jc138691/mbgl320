@@ -10,6 +10,7 @@ import math.complex.CmplxVec;
 import math.complex.CmplxVecDbgView;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
+import math.mtrx.MtrxInfo;
 import math.vec.IntVec;
 import scatt.jm_2008.jm.JmRes;
 import scatt.jm_2008.jm.target.JmCh;
@@ -17,6 +18,7 @@ import scatt.jm_2008.jm.target.JmCh;
 import static java.lang.Math.abs;
 import static java.lang.Math.min;
 
+import javax.utilx.arraysx.StrVec;
 import javax.utilx.log.Log;
 import java.util.ArrayList;
 /**
@@ -27,6 +29,7 @@ public class JmResonancesE2 {
   private static int count = 0;
   public static final int RES_INFO_ID = count++;
   public static final int RES_INFO_ENG = count++;
+  public static final int RES_INFO_ENG_FROM_INIT = count++;
   public static final int RES_INFO_ENG_FROM_INIT_EV = count++;
   public static final int RES_INFO_DELTA_EV = count++;
   public static final int RES_INFO_POS_EV = count++;  // position = E_i - initTrgtEng + Re[Delta_i]
@@ -45,20 +48,28 @@ public class JmResonancesE2 {
     res.setResDlts(resDlts);
     res.setResInfo(loadResInfo(resDlts));
   }
-  private Mtrx loadResInfo(CmplxVec resDlts) {
+  private MtrxInfo loadResInfo(CmplxVec resDlts) {
     int sN = jmm.getSysBasisSize();
     double[][] info = new double[sN][RES_INFO_SIZE];
+    String[] hrds = new String[RES_INFO_SIZE];
     double[] sysE = jmm.getSysEngs().getArr();
     double initTrgtEng = jmm.getTrgtE2().getInitTrgtEng();
+    hrds[RES_INFO_ID] = "ID=i+1";
+    hrds[RES_INFO_ENG] = "ENG=sysE[i]";
+    hrds[RES_INFO_ENG_FROM_INIT] = "ENG_FROM_INIT=sysE[i]-initTrgtEng(" + initTrgtEng +")";
+    hrds[RES_INFO_ENG_FROM_INIT_EV] = "ENG_FROM_INIT_EV=AtomUnits.toEV(sysE[i]-initTrgtEng)";
+    hrds[RES_INFO_DELTA_EV] = "DELTA_EV=AtomUnits.toEV(delta.getRe())";
+    hrds[RES_INFO_POS_EV] = "POS_EV=AtomUnits.toEV(sysE[i]-initTrgtEng+delta.getRe())";
+    hrds[RES_INFO_GAMMA_EV] = "GAMMA_EV=AtomUnits.toEV(-2.*delta.getIm())";
     for (int i = 0; i < sN; i++) {  // iIdx, system state
       Cmplx delta = resDlts.get(i);
       info[i][RES_INFO_ID] = i+1;
       info[i][RES_INFO_ENG] = sysE[i];
+      info[i][RES_INFO_ENG_FROM_INIT] = sysE[i] - initTrgtEng;
       info[i][RES_INFO_ENG_FROM_INIT_EV] = AtomUnits.toEV(sysE[i] - initTrgtEng);
       info[i][RES_INFO_DELTA_EV] = AtomUnits.toEV(delta.getRe());
       info[i][RES_INFO_POS_EV] = AtomUnits.toEV(sysE[i] - initTrgtEng + delta.getRe());
       info[i][RES_INFO_GAMMA_EV] = AtomUnits.toEV(-2. * delta.getIm());
-//      info[i][RES_INFO_ENG_IMPACT] = sysE[i] - initTrgtEng;
 
       // load ratio of abs(Delta) / min(E_{i-1} - E_i, E_{i+1} - E_i)
 //      double minDistE = 0;
@@ -75,7 +86,8 @@ public class JmResonancesE2 {
 //        info[i][RES_INFO_ABS_RATIO] = delta.abs() / minDistE;
 //      }
     }
-    Mtrx res = new Mtrx(info);      log.dbg("res=", new MtrxDbgView(res)); // RESONANCE info-matrix
+    MtrxInfo res = new MtrxInfo(new Mtrx(info));      log.dbg("res=", new MtrxDbgView(res)); // RESONANCE info-matrix
+    res.setColHrds(new StrVec(hrds));
     return res;
   }
   protected CmplxMtrx calcResA() {

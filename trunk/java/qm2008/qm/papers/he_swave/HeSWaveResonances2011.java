@@ -26,7 +26,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     MODEL_NAME = "HeSWaveResonances2011";
     MODEL_DIR = MODEL_NAME;
     IGNORE_BUG_PoetHeAtom = true;
-    CALC_DENSITY = false;
+    CALC_DENSITY = true;
     CALC_DENSITY_MAX_NUM = 30;
     SAVE_TRGT_ENGS = true;
 //    LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
@@ -35,7 +35,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 //    LAMBDA = 2.526; // best for Nc=10, Nt=30  , n_gamma=7
 //    LAMBDA = 2.05; // best for Nc=14, Nt=14  , n_gamma=5
     // Note: run one at a time as only one set of result files is produced
-    setupEng01_3au_SLOW();
+    setupResEngs_SLOW();
     runJob();
   }
 
@@ -137,7 +137,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
     Nc = 15;
     int currNt = 15;
-    int currN = 41;
+    int currN = 16;
 
 //    LAMBDA = 1.807; // best for Nc=11, Nt=11  , n_gamma=5
 //    Nc = 11;
@@ -153,7 +153,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     SPIN = Spin.ELECTRON;
     calcJm(currN, currNt);
   }
-  public static void setupEng01_3au_SLOW() {
+  public static void setupResEngs_SLOW() {
     EngModelArr arr = new EngModelArr();
     arr.add(new EngModel(0.204,  0.704,  501));
     arr.add(new EngModel(0.704,  0.705,  1001));
@@ -164,7 +164,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     arr.add(new EngModel(0.811,  0.818,  501));
     arr.add(new EngModel(0.818,  0.819,  1001));
     arr.add(new EngModel(0.819,  0.842,  501));
-    arr.add(new EngModel(0.845,  3.845,  3001));
+//    arr.add(new EngModel(0.845,  3.845,  3001));
     scttEngs = EngGridFactory.makeEngs(arr);
     ENG_FIRST = scttEngs.getFirst();
     ENG_LAST = scttEngs.getLast();

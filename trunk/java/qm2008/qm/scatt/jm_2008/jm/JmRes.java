@@ -88,7 +88,7 @@ public class JmRes {
     this.calcLabel = calcLabel;
   }
   public void writeToFiles() {
-    FileX.writeToFile(getResInfo().toTab(), homeDir, modelDir, modelName + "_resInfo_" + calcLabel);  // resonances
+    FileX.writeToFile(getResInfo().toGnuplot(), homeDir, modelDir, modelName + "_resInfo_" + calcLabel);  // resonances
     FileX.writeToFile(getCrossSecs().toTab(), homeDir, modelDir, modelName+"_TCS_" + calcLabel);  // total cross sections
     FileX.writeToFile(getTics().toTab(), homeDir, modelDir, modelName+"_TICS_" + calcLabel);
     FileX.writeToFile(methodE2.getSysEngs().toCSV(), homeDir, modelDir, modelName+"_sysEngs_" + calcLabel);
