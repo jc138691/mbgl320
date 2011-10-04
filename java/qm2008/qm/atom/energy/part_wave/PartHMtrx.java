@@ -1,7 +1,7 @@
 package atom.energy.part_wave;
 import atom.energy.HMtrx;
 import math.mtrx.Mtrx;
-import math.mtrx.jamax.Eigen;
+import math.mtrx.jamax.EigenSymm;
 import math.vec.Vec;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
@@ -55,7 +55,7 @@ public abstract class PartHMtrx extends HMtrx {
     eigVec = new FuncArr(x, basis.size());
 
     // f_i = SUM_j C_ij * jmBasisN(j)
-    Eigen thisEig = eig();
+    EigenSymm thisEig = eig();
     Mtrx v = thisEig.getV();
     double[][] C = v.getArray();
     for (int i = 0; i < basis.size(); i++) {

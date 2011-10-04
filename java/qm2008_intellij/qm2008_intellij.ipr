@@ -714,6 +714,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Jama-1.0.2/Jama-1.0.2.iml" filepath="$PROJECT_DIR$/../Jama-1.0.2/Jama-1.0.2.iml" />
       <module fileurl="file://$PROJECT_DIR$/../junit-4.0-src/junit4.0.iml" filepath="$PROJECT_DIR$/../junit-4.0-src/junit4.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../lapack4j/lapack4j.iml" filepath="$PROJECT_DIR$/../lapack4j/lapack4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/../olgahelp/olgahelp.iml" filepath="$PROJECT_DIR$/../olgahelp/olgahelp.iml" />
       <module fileurl="file://$PROJECT_DIR$/../qm2008/qm2008.iml" filepath="$PROJECT_DIR$/../qm2008/qm2008.iml" />
       <module fileurl="file://$PROJECT_DIR$/../tsv2008/tsv2008.iml" filepath="$PROJECT_DIR$/../tsv2008/tsv2008.iml" />

@@ -11,7 +11,7 @@ import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import math.func.arr.FuncArr;
 import math.integral.OrthonFactory;
-import math.mtrx.jamax.Eigen;
+import math.mtrx.jamax.EigenSymm;
 import atom.angular.Spin;
 import atom.shell.ConfArrFactoryE2;
 import func.bspline.BSplBasisFactory;
@@ -56,7 +56,7 @@ public class ScattHyTest extends BSplLogCRBasisTest {
     int L = 0;
     ConfArr basis = ConfArrFactoryE2.makeTwoElec(S1, N, L, arr);
     ConfHMtrx H = new ConfHMtrx(basis, sys);
-    Eigen eig = H.eig();
+    EigenSymm eig = H.eig();
 //    LOG.report(this, "H=" + Vec.toCsv(eig.getRealEigenvalues()));
     log.dbg("H=", new Vec(eig.getRealEVals()));
     double e0 = eig.getRealEVals()[0];

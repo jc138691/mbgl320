@@ -138,6 +138,8 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
 
     JmMethodAnyBasisE3 method = new JmMethodAnyBasisE3(jmOpt);
     method.setTrgtE3(jmTrgt);
+    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysH=", sEngs);
+    method.setSysEngs(sEngs);
     method.setSysH(sysH);
     Vec D = new JmD(biorthN, trgtBasisN);             log.dbg("D_{n,N-1}=", D);
     method.setOverD(D);

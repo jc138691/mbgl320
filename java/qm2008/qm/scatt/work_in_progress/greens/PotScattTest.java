@@ -13,11 +13,11 @@ import javax.utilx.log.Log;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.framework.TestCase;
+import math.mtrx.jamax.EigenSymm;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
 import math.integral.OrthonFactory;
 import math.integral.Quadr;
-import math.mtrx.jamax.Eigen;
 import math.mtrx.test.MtrxTest;
 import math.func.FuncVec;
 import func.bspline.BSplOrthonBasis;
@@ -125,7 +125,7 @@ public class PotScattTest extends TestCase {
 
     Log.getLog(HMtrxL.class).setDbg();
     HMtrxL H = new HMtrxL(wfBasis, slater, zPot);
-    Eigen eig = H.eig();      log.dbg("H=", new Vec(eig.getRealEVals()));
+    EigenSymm eig = H.eig();      log.dbg("H=", new Vec(eig.getRealEVals()));
     WFArrL eigVec = H.getEigVec();
     FuncVec grWF = eigVec.get(0);   // ground wf
     double kin = slater.calcKin(L, grWF, grWF);      log.info("kin=", kin);

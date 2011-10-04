@@ -1,6 +1,6 @@
 package atom.energy;
 import math.mtrx.Mtrx;
-import math.mtrx.jamax.Eigen;
+import math.mtrx.jamax.EigenSymm;
 import math.vec.Vec;
 import math.integral.Quadr;
 import math.func.FuncVec;
@@ -16,7 +16,7 @@ public class HMtrxL extends Mtrx {
   private final Slater slater;
   private final WFArrL basis;
   private WFArrL eigVec;
-  private Eigen eig;
+  private EigenSymm eig;
   private Vec potFunc;
   public HMtrxL(WFArrL basis, final Slater slater, Vec potFunc) {
     super(basis.size(), basis.size());
@@ -37,9 +37,9 @@ public class HMtrxL extends Mtrx {
   public int getL() {
     return basis.getL();
   }
-  public Eigen eig () {
+  public EigenSymm eig() {
     if (eig == null) {
-      eig = new Eigen(this, true); // NOTE true for isSymm
+      eig = new EigenSymm(this); // NOTE true for isSymm
     }
     return eig;
   }
@@ -58,7 +58,7 @@ public class HMtrxL extends Mtrx {
     return basis.getX();
   }
   public Vec getEigVal() {
-    Eigen thisEig = eig();
+    EigenSymm thisEig = eig();
     double[] res = thisEig.getRealEVals();
     return new Vec(res);
   }
@@ -73,7 +73,7 @@ public class HMtrxL extends Mtrx {
     Vec x = getX();
 
     // f_i = SUM_j C_ij * jmBasisN(j)
-    Eigen thisEig = eig();
+    EigenSymm thisEig = eig();
     Mtrx v = thisEig.getV();
     double[][] C = v.getArray();
     for (int i = 0; i < basis.size(); i++) {

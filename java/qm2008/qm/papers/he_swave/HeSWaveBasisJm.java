@@ -127,6 +127,8 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
 
     JmMethodJmBasisE3 method = new JmMethodJmBasisE3(jmOpt);
     method.setTrgtE3(jmTrgt);
+    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysH=", sEngs);
+    method.setSysEngs(sEngs);
     method.setSysH(sysH);
     Vec D = new JmDe3(biorthN, orthonN, method.getJmOpt().getJmTest());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
     method.setOverD(D);
