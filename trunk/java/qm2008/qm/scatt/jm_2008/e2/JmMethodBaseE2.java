@@ -79,12 +79,12 @@ public abstract class JmMethodBaseE2 extends JmMethodBaseE1 {
     }
     super.setOverD(overD);
   }
-  public ConfHMtrx getSysH() {
-    return sysH;
-  }
+//  public ConfHMtrx getSysH() {
+//    return sysH;
+//  }
   public void setSysH(ConfHMtrx sysH) {
     this.sysH = sysH;
-    setSysEngs(sysH.getEigVal());
+//    setSysEngs(sysH.getEigVal(H_OVERWRITE));
   }
   public int getChNum() { // number of target channels
     return trgtE2.getEngs().size();

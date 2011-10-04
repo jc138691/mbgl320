@@ -26,9 +26,10 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     MODEL_NAME = "HeSWaveResonances2011";
     MODEL_DIR = MODEL_NAME;
     IGNORE_BUG_PoetHeAtom = true;
-    CALC_DENSITY = true;
+    CALC_DENSITY = false;
     CALC_DENSITY_MAX_NUM = 30;
     SAVE_TRGT_ENGS = true;
+    H_OVERWRITE = true;
 //    LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 //    LAMBDA = 2 * 1.68750; // best single zeta
 //    LAMBDA = 3.787828; // best for Nc=10, Nt=30  , n_gamma=5
@@ -135,9 +136,10 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 
 //    LAMBDA = 1.881; // best for Nc=12, Nt=12  , n_gamma=5
     LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
-    Nc = 15;
-    int currNt = 15;
-    int currN = 16;
+    Nc = 10;
+    int currNt = 20;
+    int currN = 35;
+
 
 //    LAMBDA = 1.807; // best for Nc=11, Nt=11  , n_gamma=5
 //    Nc = 11;

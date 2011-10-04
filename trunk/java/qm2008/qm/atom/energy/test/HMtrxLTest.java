@@ -51,7 +51,7 @@ public class HMtrxLTest extends TestCase {
 //    SlaterR slater = new SlaterR(w);
 //    WFArrL wfBasis = new WFArrL(L, slater, jmBasisN);
 //    HMtrxL H = new HMtrxL(wfBasis, slater, zPot);
-//    Eigen eig = H.eig();      log.debug("H=", new Vec(eig.getRealEVals()));
+//    EigenSymm eig = H.eig();      log.debug("H=", new Vec(eig.getRealEVals()));
 
 //    double Z_EFF = 1.;
 //

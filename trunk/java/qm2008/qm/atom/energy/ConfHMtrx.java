@@ -4,7 +4,7 @@ import atom.shell.ConfArr;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;
-import math.mtrx.jamax.Eigen;
+import math.mtrx.jamax.EigenSymm;
 import math.vec.Vec;
 import math.vec.VecSort;
 
@@ -43,7 +43,7 @@ public class ConfHMtrx extends HMtrx {
       }
     }
   }
-//  public Energy calcH(Eigen eig, int col) {
+//  public Energy calcH(EigenSymm eig, int col) {
 //    Mtrx m = eig.getV();
 //    Energy res = new Energy();
 //    for (int r = 0; r < m.getNumRows(); r++) {
@@ -57,7 +57,7 @@ public class ConfHMtrx extends HMtrx {
 //    }
 //    return res;
 //  }
-//  public FuncVec calcDensity(Eigen eig, int col) {
+//  public FuncVec calcDensity(EigenSymm eig, int col) {
 //    Mtrx m = eig.getV();
 //    FuncVec res = null;
 //    for (int r = 0; r < m.getNumRows(); r++) {
@@ -91,6 +91,14 @@ public class ConfHMtrx extends HMtrx {
     if (maxNum > 0) {
       size = Math.min(maxNum, basis.size());
     }
+//    int size;
+//    if (maxNum > 0) {
+//      size = Math.min(maxNum, basis.size());
+//    }
+//    else {
+//      size = basis.size();
+//    }
+
     Vec x = basis.getX();
     FuncArr res = new FuncArr(x, size);
     FuncVec[][] confArr = new FuncVec[basis.size()][basis.size()];
@@ -126,30 +134,7 @@ public class ConfHMtrx extends HMtrx {
     }
     return res;
   }
-//  private FuncArr calcDensity() { // THIS IS WRONG!!!!!!!!!
-//    if (basis == null  ||  basis.size() == 0) {
-//      return null;
-//    }
-//    Vec x = basis.getX();
-//    FuncArr res = new FuncArr(x, basis.size());
-//
-//    Mtrx v = eig().getV();
-//    double[][] C = v.getArray();
-//
-//    double norm = 1. / atom.getNumElec();
-//    for (int i = 0; i < basis.size(); i++) {
-//      FuncVec f_i = new FuncVec(x);
-//      for (int j = 0; j < basis.size(); j++) {
-//        double cij = C[j][i];  // [j][i] is correct, see  PartHMtrx
-////        double cij = C[i][j];  // [j][i] is correct, see  PartHMtrx
-//        f_i.addMultSafe(cij * cij, basis.get(j).getDensity());
-//      }
-//      f_i.multSelf(norm);
-//      res.set(i, f_i);
-//    }
-//    return res;
-//  }
-  public String toStringSorted(Eigen eig, int col) {
+  public String toStringSorted(EigenSymm eig, int col) {
     StringBuffer buff = new StringBuffer();
     buff.append("e[" + col + "]=" + (float) (eig.getRealEVals()[col]));
     Mtrx m = eig.getV();
@@ -163,7 +148,7 @@ public class ConfHMtrx extends HMtrx {
     }
     return buff.toString();
   }
-  public String toString(Eigen eig, int col) {
+  public String toString(EigenSymm eig, int col) {
     StringBuffer buff = new StringBuffer();
     buff.append("e[" + col + "]=" + (float) (eig.getRealEVals()[col]));
     Mtrx m = eig.getV();

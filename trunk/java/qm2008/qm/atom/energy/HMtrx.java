@@ -2,26 +2,30 @@ package atom.energy;
 
 import atom.data.AtomUnits;
 import math.mtrx.Mtrx;
-import math.mtrx.jamax.Eigen;
+import math.mtrx.jamax.EigenSymm;
 import math.vec.Vec;
-
-import java.lang.reflect.InvocationTargetException;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 16/02/2010, 2:16:07 PM
  */
 public class HMtrx extends Mtrx {
-  private Eigen eig;
+  private EigenSymm eig;
   public HMtrx(int m, int n) {
     super(m, n);
   }
-  public Eigen eig () {
+  public EigenSymm eig() {
+    return eig(false);
+  }
+  public EigenSymm eig(boolean overwrite) {
     if (eig == null) {
-      eig = new Eigen(this, true); // NOTE true for isSymm
+      eig = new EigenSymm(this, overwrite); // NOTE true for isSymm
     }
     return eig;
   }
   public Vec getEigVal() {
-    Eigen thisEig = eig();
+    return getEigVal(false);
+  }
+  public Vec getEigVal(boolean overwrite) {
+    EigenSymm thisEig = eig(overwrite);
     double[] res = thisEig.getRealEVals();
     return new Vec(res);
   }
@@ -35,7 +39,10 @@ public class HMtrx extends Mtrx {
     return res;
   }
   public Mtrx getEigVec() {
-    Eigen thisEig = eig();
+    return getEigVec(false);
+  }
+  public Mtrx getEigVec(boolean overwrite) {
+    EigenSymm thisEig = eig(overwrite);
     return thisEig.getV();
   }
   public double[][] getEigArr() {

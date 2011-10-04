@@ -16,9 +16,9 @@ import atom.energy.slater.SlaterR;
 import atom.energy.ConfHMtrx;
 import atom.energy.HMtrxFactory;
 import math.func.FuncVec;
+import math.mtrx.jamax.EigenSymm;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
-import math.mtrx.jamax.Eigen;
 
 import javax.utilx.log.Log;
 
@@ -89,7 +89,7 @@ public class ZetaHyLCR extends LCRTestCase {
     // 18Jul08:  check B-Splines
     int N_BASIS = 20;
     ConfHMtrx H = HMtrxFactory.makeFromBsplLogCR(FIRST, LAST, GRID_SIZE, N_BASIS, 0);
-    Eigen eig = H.eig();
+    EigenSymm eig = H.eig();
     log.dbg("H.eig()=", new Vec(eig.getRealEVals()));
 
   }

@@ -126,6 +126,8 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
     JmMethodE2 method = new JmMethodE2(jmOpt);
     method.setTrgtE2(jmTrgt);
     method.setOverD(D);
+    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysH=", sEngs);
+    method.setSysEngs(sEngs);
     method.setSysH(sysH);
     method.setSysEngs(sysEngs);
 
