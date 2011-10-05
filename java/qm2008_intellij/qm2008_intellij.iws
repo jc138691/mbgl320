@@ -16,29 +16,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="2806653a-487d-4eaa-b546-24883f956ee4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/rs6000.java" />
-      <change type="MOVED" beforePath="C:\dev\physics\dev_svn_110812\java\tsv2008\tsv\math\mtrx\jamax\Eigen.java" afterPath="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/jamax/EigenSymm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Jama-1.0.2/Jama/EigenvalueDecomposition.java" afterPath="$PROJECT_DIR$/../Jama-1.0.2/Jama/EigenvalueDecomposition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/energy/ConfHMtrx.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/energy/ConfHMtrx.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrxL.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrxL.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/energy/part_wave/PartHMtrx.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/energy/part_wave/PartHMtrx.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/energy/test/HMtrxLTest.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/energy/test/HMtrxLTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/test/ScattHyTest.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/test/ScattHyTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/test/ZetaHyLCR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/test/ZetaHyLCR.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveResonances2011.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveResonances2011.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveBasisHy.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveBasisHy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/v3_bi/HySWaveViaOverlap_OLD.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/v3_bi/HySWaveViaOverlap_OLD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMethodBaseE2.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMethodBaseE2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/work_in_progress/greens/PotScattTest.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/work_in_progress/greens/PotScattTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qm2008_intellij.ipr" afterPath="$PROJECT_DIR$/qm2008_intellij.ipr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/AllLapack4JTests.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/BaseTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/Fast2D.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/Fast2DTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/PythagTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/ReadMe.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/Tred2Test.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/pythag.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/rs.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/tred2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j.iml" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/rs6000.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/rs6000.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qm2008_intellij.iws" afterPath="$PROJECT_DIR$/qm2008_intellij.iws" />
     </list>
     <list id="3208e6f2-510e-4ba1-b5d7-a4bbdcaef33b" name="Failed commit: Failed commit: Default (2)" comment="Failed commit: Default (2)" />
@@ -319,6 +308,19 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/../lapack4j/lapack4j/pythag.java" line="15" class="PythagClass" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
@@ -367,8 +369,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -376,17 +378,133 @@
     <favorites_list name="qm2008_intellij" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="HeSWaveResonances2011.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveResonances2011.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="26" selection-start="3871" selection-end="3871" vertical-scroll-proportion="0.9216028">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.49763033">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="pythag.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/pythag.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="4" column="22" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PythagTest.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/PythagTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="4" column="36" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Fast2DTest.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/Fast2DTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="4" column="13" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Tred2Test.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/Tred2Test.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="11" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="rs6000.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/rs6000.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="tred2.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/tred2.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="176" column="0" selection-start="5536" selection-end="5536" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Fast2D.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/Fast2D.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="35" column="0" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="rs.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/rs.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BaseTest.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/BaseTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="4" column="16" selection-start="119" selection-end="119" vertical-scroll-proportion="0.14763232">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AllLapack4JTests.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/AllLapack4JTests.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="13" column="8" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="Fast2D.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/Fast2D.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="33" column="3" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FastLoop.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/FastLoop.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="724" column="23" selection-start="26126" selection-end="26126" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FastLoopTest.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/test/FastLoopTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="28" column="27" selection-start="1070" selection-end="1070" vertical-scroll-proportion="0.17258883">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -405,22 +523,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_3/SysAtomE3.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_2/SysAtomE2.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/energy/ConfHMtrx.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/FastLoop.java" />
-        <option value="$PROJECT_DIR$/../Jama-1.0.2/Jama/EigenvalueDecomposition.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/jamax/EigenSymm.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrxL.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/v3_bi/HySWaveViaOverlap_OLD.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveBasisHy.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMethodBaseE2.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveResonances2011.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/CPythag.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/ReadMe.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/rs.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/rs6000.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/Arr2D.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/PythagTest.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/pythag.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/Fast2D.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/Fast2DTest.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/tred2.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/Tred2Test.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/AllTests.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/AllLapack4JTests.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/Lapack4JTest.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/ExtendMeTest.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/BaseTest.java" />
       </list>
     </option>
   </component>
@@ -541,8 +659,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -559,6 +675,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="qm2008_intellij" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -587,6 +713,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -624,9 +752,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -640,29 +768,7 @@
       <recent name="scatt.jm_2008.e2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HeSWaveResonances2011">
-    <configuration default="false" name="HySWaveBasisHy" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="papers.hy_swave.HySWaveBasisHy" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="qm2008" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="1204" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.PythagClass">
     <configuration default="false" name="HeSWaveResonances2011" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="papers.he_swave.HeSWaveResonances2011" />
       <option name="VM_PARAMETERS" value="-Xmx999M " />
@@ -749,6 +855,28 @@
       <patterns />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="3846" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="pythag" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="pythag" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="lapack4j" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="4513" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
@@ -883,12 +1011,12 @@
     </configuration>
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.RunOlgaHelp" />
-      <item index="1" class="java.lang.String" itemvalue="Application.HySWaveBasisHy" />
-      <item index="2" class="java.lang.String" itemvalue="Application.HeSWaveResonances2011" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.HeSWaveBasisJm.testRun" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.FastLoopTest.testMinMax" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.FastLoopTest.testDot" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.HySWaveBasisHy" />
+      <item index="1" class="java.lang.String" itemvalue="Application.HeSWaveResonances2011" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.HeSWaveBasisJm.testRun" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.FastLoopTest.testMinMax" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.FastLoopTest.testDot" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.HySWaveBasisHy" />
+      <item index="6" class="java.lang.String" itemvalue="Application.PythagClass" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -999,14 +1127,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2469537" sideWeight="0.6340378" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5147929" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41301775" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24757281" sideWeight="0.5926748" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.65072304" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39946738" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32927817" sideWeight="0.7112426" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2814274" sideWeight="0.6295858" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28875738" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38224852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
@@ -1020,6 +1148,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289941" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41301775" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1149,114 +1278,110 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/part_wave/PartHMtrx.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/complex/Cmplx2F1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="27" selection-start="1618" selection-end="1618" vertical-scroll-proportion="0.39731053">
-          <folding />
-        </state>
+        <state line="12" column="9" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/test/ZetaHyLCR.java">
+    <entry file="file://$PROJECT_DIR$/../junit-4.0-src/junit/framework/Assert.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="24" selection-start="3172" selection-end="3172" vertical-scroll-proportion="0.1875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/Matrix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="804" column="0" selection-start="20632" selection-end="20632" vertical-scroll-proportion="0.18337408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrxL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="19" selection-start="965" selection-end="965" vertical-scroll-proportion="0.18136646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/test/ScattHyTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="10" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.56356966">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/ConfHMtrx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="33" selection-start="377" selection-end="377" vertical-scroll-proportion="0.10559006">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="22" selection-start="363" selection-end="363" vertical-scroll-proportion="0.24938875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="0" selection-start="4586" selection-end="4586" vertical-scroll-proportion="0.24472573">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1790" selection-end="1790" vertical-scroll-proportion="0.17299578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/v3_bi/HySWaveViaOverlap_OLD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="16" selection-start="2600" selection-end="2600" vertical-scroll-proportion="0.8227848">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveBasisHy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="0" selection-start="5218" selection-end="5218" vertical-scroll-proportion="0.23577236">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="44" selection-start="801" selection-end="801" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="22" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="50" selection-start="1618" selection-end="1618" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMethodBaseE2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="14" selection-start="3022" selection-end="3022" vertical-scroll-proportion="0.8943089">
-          <folding />
-        </state>
+        <state line="103" column="21" selection-start="3005" selection-end="3005" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveResonances2011.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="26" selection-start="3871" selection-end="3871" vertical-scroll-proportion="0.9216028">
+        <state line="155" column="8" selection-start="4170" selection-end="4170" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/ReadMe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/rs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/rs6000.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/FastLoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="724" column="23" selection-start="26126" selection-end="26126" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/pythag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="22" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/Fast2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="0" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/tred2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="176" column="0" selection-start="5536" selection-end="5536" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/Tred2Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/test/FastLoopTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="27" selection-start="1070" selection-end="1070" vertical-scroll-proportion="0.17258883">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/AllLapack4JTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="8" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/Fast2DTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/PythagTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="36" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/BaseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="16" selection-start="119" selection-end="119" vertical-scroll-proportion="0.14763232">
           <folding />
         </state>
       </provider>
