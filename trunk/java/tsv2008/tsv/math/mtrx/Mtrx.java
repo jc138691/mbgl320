@@ -1,8 +1,6 @@
 package math.mtrx;
 
 import Jama.Matrix;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.IntArrayData;
-import math.vec.IntVec;
 import math.vec.Vec;
 
 /**
@@ -32,18 +30,18 @@ public class Mtrx extends Matrix {
   }
 
   public String toString() {
-    return MtrxToString.toCsv(getArray());
+    return MtrxToStr.toCsv(getArray());
   }
 
   public String toTab(int digs) {
-    return MtrxToString.toTab(getArray(), digs);
+    return MtrxToStr.toTab(getArray(), digs);
   }
 
   public String toTab() {
-    return MtrxToString.toTab(getArray());
+    return MtrxToStr.toTab(getArray());
   }
   public String toGnuplot() {
-    return MtrxToString.toTab(getArray());
+    return MtrxToStr.toTab(getArray());
   }
 
   public Mtrx inverse() {

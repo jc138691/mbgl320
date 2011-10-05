@@ -4,7 +4,7 @@ import math.vec.VecToString;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 9/07/2008, Time: 16:34:51
  */
-public class MtrxToString {
+public class MtrxToStr {
   public static String toCsv(double[][] a) {
     return toString(a, ", ");
   }

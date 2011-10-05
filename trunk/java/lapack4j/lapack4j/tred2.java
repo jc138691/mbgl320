@@ -58,10 +58,10 @@ public class tred2 {
     //c
     //         d(i) = a(n,i)
     //  100 continue
-    Fast2D.copy(a, z, n);
-    Fast2D.copy(a, z, n);
+    Dbl2D.copyFast(a, z, n, n);
     //c
     //      if (n .eq. 1) go to 510
+    if (n == 1) {break L_510;}
     //c     .......... for i=n step -1 until 2 do -- ..........
     //      do 300 ii = 2, n
     //         i = n + 2 - ii
@@ -164,6 +164,8 @@ public class tred2 {
     //c
     //  500 continue
     //c
+    L_510:
+    {int ff = 1;}
     //  510 do 520 i = 1, n
     //         d(i) = z(n,i)
     //         z(n,i) = 0.0d0

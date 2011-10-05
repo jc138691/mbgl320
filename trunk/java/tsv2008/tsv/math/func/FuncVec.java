@@ -1,8 +1,6 @@
 package math.func;
-import math.mtrx.MtrxToString;
 import math.vec.Vec;
 import math.vec.FastLoop;
-import math.func.Func;
 import math.func.deriv.DerivFactory;
 
 /**
