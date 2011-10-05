@@ -11,7 +11,7 @@ public class AllLapack4JTests {
   This will test everything
    */
   public void testMe() {
-    Fast2DTest.main(null);
+    Dbl2DTest.main(null);
     PythagTest.main(null);
     Tred2Test.main(null);
   }
