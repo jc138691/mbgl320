@@ -138,7 +138,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
     LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
     Nc = 10;
     int currNt = 20;
-    int currN = 35;
+    int currN = 40;
 
 
 //    LAMBDA = 1.807; // best for Nc=11, Nt=11  , n_gamma=5
