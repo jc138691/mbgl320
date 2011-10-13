@@ -1,4 +1,4 @@
-package lapack4j;
+package lapack4j.rs;
 //      subroutine rs(nm,n,a,w,matz,z,fv1,fv2,ierr)
 //c
 //      integer n,nm,ierr,matz

@@ -1,4 +1,5 @@
 package lapack4j;
+import lapack4j.utils.tests.TestUtils;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,5/10/11,3:21 PM
  */
