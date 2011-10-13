@@ -54,14 +54,14 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 //    R_LAST = 330;
 
     // upto N=50
-//    LCR_FIRST = -5;  //-5
-//    LCR_N = 1001;  //901
-//    R_LAST = 250;
+    LCR_FIRST = -5;  //-5
+    LCR_N = 1001;  //901
+    R_LAST = 250;
 
     // upto N=40
-    LCR_FIRST = -5;
-    LCR_N = 701;
-    R_LAST = 200;
+//    LCR_FIRST = -5;
+//    LCR_N = 701;
+//    R_LAST = 200;
 
 //    LAMBDA = 4.0; // best for Nc=30, Nt=30  , n_gamma=5
 //    Nc = 50;
@@ -136,9 +136,9 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 
 //    LAMBDA = 1.881; // best for Nc=12, Nt=12  , n_gamma=5
     LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
-    Nc = 10;
-    int currNt = 20;
-    int currN = 40;
+    Nc = 14;
+    int currNt = 14;
+    int currN = 50;
 
 
 //    LAMBDA = 1.807; // best for Nc=11, Nt=11  , n_gamma=5

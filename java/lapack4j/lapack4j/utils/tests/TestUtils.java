@@ -1,4 +1,4 @@
-package lapack4j;
+package lapack4j.utils.tests;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,4/10/11,2:21 PM
  */
