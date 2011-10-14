@@ -4,6 +4,7 @@ package lapack4j.utils.tests;
  */
 public class TestUtils {
   public static final String EOL = System.getProperty("line.separator");
+  public static boolean DEBUG = true;
   public static double ABS_MAX_ERROR = Math.pow(0.5, Double.SIZE / 1.5);   //1.4323643994144677E-13
 //  public static double ABS_MAX_ERROR = 1E-12;
 //  public static double ABS_MAX_ERROR = Math.pow(0.5, Double.SIZE / 2);   //2.3283064365386963E-10
@@ -17,7 +18,10 @@ public class TestUtils {
     if (expected != result)
       throw new AssertionError("expected="+expected+" != result="+result);
   }
-
+  public static void debug(String line) {
+    if (DEBUG)
+      print(line);
+  }
   public static void print(String str) {
     System.out.println(str);
   }
