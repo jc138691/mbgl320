@@ -22,6 +22,11 @@ public class Lapack2J {
     if (outFile == null  || !outFile.canWrite()) {
       System.out.println("if (outFile == null  || !outFile.canWrite()) { outFile = new File(" + outName);
     }
-    ArrayList<String> src = FileUtils.readAll(srcFile);
+    ArrayList<String> src = FileUtils.read(srcFile);
+    ArrayList<String> res = convert2J(src);
+    FileUtils.write(res, outFile);
+  }
+  private static ArrayList<String> convert2J(ArrayList<String> src) {
+    return null;
   }
 }
