@@ -15,6 +15,7 @@ public class DblArr extends Lapack4J {
     }
     return buff.toString();
   }
+
   public static void copy(double[] src, double[] dest, int len) {
     if (src == dest) {
       return;

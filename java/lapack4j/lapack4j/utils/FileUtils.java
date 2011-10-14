@@ -13,8 +13,9 @@ public class FileUtils extends TestUtils {
   }
   public static ArrayList<String> read(File srcFile) {
     ArrayList<String> res = new ArrayList<String>();
+    BufferedReader from = null;
     try {
-      BufferedReader from = new BufferedReader(new InputStreamReader(new FileInputStream(srcFile)));
+      from = new BufferedReader(new InputStreamReader(new FileInputStream(srcFile)));
       for ( ; ; ) {
         String line = from.readLine();
         if (line == null)
@@ -27,8 +28,28 @@ public class FileUtils extends TestUtils {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    from = null; System.gc();
     return res;
   }
-  public static void write(ArrayList<String> arr, File outFile) {
+  public static void write(ArrayList<String> src, File outFile) {
+    BufferedWriter dest = null;
+    try {
+      dest = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile)));
+      for (int i = 0; i < src.size(); i++) {
+        String line = src.get(i);
+        if (line == null)
+          break;
+        debug(line);
+        dest.write(line);
+        if (i != (src.size() - 1))
+          dest.newLine();
+      }
+      dest.flush();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    dest = null; System.gc();
   }
 }
