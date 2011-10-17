@@ -1,11 +1,11 @@
 package lapack4j.rs;
-//      subroutine rs(nm,n,a,w,matz,z,fv1,fv2,ierr)
+//      subr rs(nm,n,a,w,matz,z,fv1,fv2,ierr)
 //c
 //      integer n,nm,ierr,matz
 //      double precision a(nm,n),w(n),z(nm,n),fv1(n),fv2(n)
 //c
-//c     this subroutine calls the recommended sequence of
-//c     subroutines from the eigensystem subroutine package (eispack)
+//c     this subr calls the recommended sequence of
+//c     subroutines from the eigensystem subr package (eispack)
 //c     to find the eigenvalues and eigenvectors (if desired)
 //c     of a real symmetric matrix.
 //c
@@ -58,18 +58,18 @@ package lapack4j.rs;
 //      call  tql2(nm,n,w,fv1,z,ierr)
 //   50 return
 //      end
-//      subroutine tql1(n,d,e,ierr)
+//      subr tql1(n,d,e,ierr)
 //c
 //      integer i,j,l,m,n,ii,l1,l2,mml,ierr
 //      double precision d(n),e(n)
 //      double precision c,c2,c3,dl1,el1,f,g,h,p,r,s,s2,tst1,tst2,pythag
 //c
-//c     this subroutine is a translation of the algol procedure tql1,
+//c     this subr is a translation of the algol procedure tql1,
 //c     num. math. 11, 293-306(1968) by bowdler, martin, reinsch, and
 //c     wilkinson.
 //c     handbook for auto. comp., vol.ii-linear algebra, 227-240(1971).
 //c
-//c     this subroutine finds the eigenvalues of a symmetric
+//c     this subr finds the eigenvalues of a symmetric
 //c     tridiagonal matrix by the ql method.
 //c
 //c     on input
@@ -193,18 +193,18 @@ package lapack4j.rs;
 // 1000 ierr = l
 // 1001 return
 //      end
-//      subroutine tql2(nm,n,d,e,z,ierr)
+//      subr tql2(nm,n,d,e,z,ierr)
 //c
 //      integer i,j,k,l,m,n,ii,l1,l2,nm,mml,ierr
 //      double precision d(n),e(n),z(nm,n)
 //      double precision c,c2,c3,dl1,el1,f,g,h,p,r,s,s2,tst1,tst2,pythag
 //c
-//c     this subroutine is a translation of the algol procedure tql2,
+//c     this subr is a translation of the algol procedure tql2,
 //c     num. math. 11, 293-306(1968) by bowdler, martin, reinsch, and
 //c     wilkinson.
 //c     handbook for auto. comp., vol.ii-linear algebra, 227-240(1971).
 //c
-//c     this subroutine finds the eigenvalues and eigenvectors
+//c     this subr finds the eigenvalues and eigenvectors
 //c     of a symmetric tridiagonal matrix by the ql method.
 //c     the eigenvectors of a full symmetric matrix can also
 //c     be found if  tred2  has been used to reduce this
@@ -363,17 +363,17 @@ package lapack4j.rs;
 // 1000 ierr = l
 // 1001 return
 //      end
-//      subroutine tred1(nm,n,a,d,e,e2)
+//      subr tred1(nm,n,a,d,e,e2)
 //c
 //      integer i,j,k,l,n,ii,nm,jp1
 //      double precision a(nm,n),d(n),e(n),e2(n)
 //      double precision f,g,h,scale
 //c
-//c     this subroutine is a translation of the algol procedure tred1,
+//c     this subr is a translation of the algol procedure tred1,
 //c     num. math. 11, 181-195(1968) by martin, reinsch, and wilkinson.
 //c     handbook for auto. comp., vol.ii-linear algebra, 212-226(1971).
 //c
-//c     this subroutine reduces a real symmetric matrix
+//c     this subr reduces a real symmetric matrix
 //c     to a symmetric tridiagonal matrix using
 //c     orthogonal similarity transformations.
 //c
@@ -498,17 +498,17 @@ package lapack4j.rs;
 //c
 //      return
 //      end
-//      subroutine tred2(nm,n,a,d,e,z)
+//      subr tred2(nm,n,a,d,e,z)
 //c
 //      integer i,j,k,l,n,ii,nm,jp1
 //      double precision a(nm,n),d(n),e(n),z(nm,n)
 //      double precision f,g,h,hh,scale
 //c
-//c     this subroutine is a translation of the algol procedure tred2,
+//c     this subr is a translation of the algol procedure tred2,
 //c     num. math. 11, 181-195(1968) by martin, reinsch, and wilkinson.
 //c     handbook for auto. comp., vol.ii-linear algebra, 212-226(1971).
 //c
-//c     this subroutine reduces a real symmetric matrix to a
+//c     this subr reduces a real symmetric matrix to a
 //c     symmetric tridiagonal matrix using and accumulating
 //c     orthogonal similarity transformations.
 //c
