@@ -16,19 +16,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="2806653a-487d-4eaa-b546-24883f956ee4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCGetSrc.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/DSTEMR.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/LSAME.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/c/dstemr.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/lsame.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/blas" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran_src" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/install" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DCOPY.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAE2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAEV2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAMCH.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLANST.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASSQ.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/LSAME.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dcopy.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlae2.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlaev2.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlamch.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlanst.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlarrc.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlarre.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlarrj.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlarrr.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlarrv.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlasrt.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dscal.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dswap.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/xerbla.f" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntrFuncs.java" />
+      <change type="DELETED" beforePath="C:\dev\physics\dev_svn_110812\java\lapack4j\lapack4j\src\c\dstemr.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/c" afterPath="" />
+      <change type="MOVED" beforePath="C:\dev\physics\dev_svn_110812\java\lapack4j\lapack4j\src\fortran\lsame.f" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/lsame.f" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCGetSrc.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCGetSrc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/LSAME.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/LSAME.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/rs/rs6000.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/rs/rs6000.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/tred2.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/tred2.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/Fortran77.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/Fortran77.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qm2008_intellij.iws" afterPath="$PROJECT_DIR$/qm2008_intellij.iws" />
+      <change type="MOVED" beforePath="C:\dev\physics\dev_svn_110812\java\lapack4j\lapack4j\src\fortran" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack" />
     </list>
     <list id="3208e6f2-510e-4ba1-b5d7-a4bbdcaef33b" name="Failed commit: Failed commit: Default (2)" comment="Failed commit: Default (2)" />
     <list id="a0ae5b75-b946-4c59-8218-d93de0a4d5ec" name="Failed commit: Default" comment="" />
@@ -369,8 +393,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -378,60 +402,33 @@
     <favorites_list name="qm2008_intellij" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.59123224">
+    <splitter split-orientation="vertical" split-proportion="0.4514218">
       <split-first>
         <leaf>
-          <file leaf-file-name="Lapack2J.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java">
+          <file leaf-file-name="DLAMCH.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAMCH.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="51" column="14" selection-start="2173" selection-end="2173" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="lsame_src_java.f" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/lsame_src_java.f">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="1" column="9" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0389016">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LSAME.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/LSAME.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="4" column="18" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="dstemr_src_java.f" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/dstemr_src_java.f">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="11" column="45" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DSTEMR.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/DSTEMR.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="299" column="0" selection-start="270" selection-end="15207" vertical-scroll-proportion="0.0">
+                <state line="12" column="13" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
                   <folding>
-                    <marker date="1318822437641" expanded="true" signature="272:15203" placeholder="..." />
+                    <element signature="imports" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FileUtils.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/FileUtils.java">
+          <file leaf-file-name="dlanst_java.f" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlanst_java.f">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="17" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
+                <state line="16" column="38" selection-start="0" selection-end="4515" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DLANST.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLANST.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="7" column="22" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -440,36 +437,25 @@
           <file leaf-file-name="UCGetSrc.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCGetSrc.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="25" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0">
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="lsame_src.f" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/lsame_src.f">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                <state line="11" column="15" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="dstemr_src.f" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/dstemr_src.f">
+          <file leaf-file-name="DLASSQ.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASSQ.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                <state line="94" column="26" selection-start="3802" selection-end="3802" vertical-scroll-proportion="4.727811">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Fortran77.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/Fortran77.java">
+          <file leaf-file-name="IntrFuncs.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntrFuncs.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="91" column="44" selection-start="3002" selection-end="3002" vertical-scroll-proportion="0.0">
+                <state line="73" column="27" selection-start="2247" selection-end="2247" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -480,18 +466,54 @@
       <split-second>
         <leaf>
           <file leaf-file-name="dstemr.f" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/dstemr.f">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dstemr.f">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="237" column="30" selection-start="11272" selection-end="11277" vertical-scroll-proportion="0.0">
+                <state line="245" column="29" selection-start="11558" selection-end="11558" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="lsame.f" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/lsame.f">
+          <file leaf-file-name="lsame.f" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran_src/lsame.f">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Lapack2J.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="24" column="19" selection-start="962" selection-end="962" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="dlassq_java.f" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlassq_java.f">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="18" selection-start="0" selection-end="3138" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="dlamch_java.f" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlamch_java.f">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="39" column="25" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="dlamch.f" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran_src/dlamch.f">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="58" column="28" selection-start="2087" selection-end="2087" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -518,22 +540,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/tred2.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveResonances2011.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/FileUitls.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/tests/TestUtils.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/DblArr.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/Lapack2J.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/FileUtils.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/dstemr_java.f" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCRemoveSplits.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCRemoveComments.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/fortran/src/dstemr_src_java.f" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/DSTEMR.java" />
         <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/dstemr_src_java.f" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCGetSrc.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/LSAME.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/blas/dcopy_src.f" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran_src/dcopy.f" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DCOPY.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAE2.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAEV2.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlamch_java.f" />
         <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/Fortran77.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/LSAME.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAMCH.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntrFuncs.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCGetSrc.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLANST.java" />
         <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASSQ.java" />
       </list>
     </option>
   </component>
@@ -654,6 +676,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -738,104 +761,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fortran" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack2j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack2j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="output" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -856,6 +783,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -873,9 +801,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -883,6 +811,8 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\physics\dev_svn_110812\java\lapack4j\lapack4j\src\fortran" />
+      <recent name="C:\dev\physics\dev_svn_110812\java\lapack4j\lapack4j\src\blas" />
+      <recent name="C:\dev\physics\dev_svn_110812\java\lapack4j\lapack4j\src\lapack" />
       <recent name="C:\dev\physics\dev_svn_110812\java\lapack4j\lapack4j\src\c" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -894,8 +824,8 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Lapack2J">
-    <configuration default="false" name="Dbl2DTest" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="lapack4j.Dbl2DTest" />
+    <configuration default="false" name="UCGetSrc" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="lapack4j.lapack2j.UCGetSrc" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -975,8 +905,8 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="UCGetSrc" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="lapack4j.lapack2j.UCGetSrc" />
+    <configuration default="false" name="IntrFuncs" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="lapack4j.utils.IntrFuncs" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -1116,13 +1046,13 @@
       <method />
     </configuration>
     <list size="7">
-      <item index="0" class="java.lang.String" itemvalue="Application.Dbl2DTest" />
+      <item index="0" class="java.lang.String" itemvalue="Application.UCGetSrc" />
       <item index="1" class="java.lang.String" itemvalue="Application.HeSWaveResonances2011" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.FastLoopTest.testDot" />
       <item index="3" class="java.lang.String" itemvalue="Application.Lapack2J" />
       <item index="4" class="java.lang.String" itemvalue="Application.RunOlgaHelp" />
       <item index="5" class="java.lang.String" itemvalue="JUnit.HySWaveBasisHy" />
-      <item index="6" class="java.lang.String" itemvalue="Application.UCRemoveComments" />
+      <item index="6" class="java.lang.String" itemvalue="Application.IntrFuncs" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -1239,7 +1169,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.65072304" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39946738" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20356853" sideWeight="0.6177515" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25223035" sideWeight="0.6177515" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38224852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1384,116 +1314,116 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../olgahelp/olga_help/io/fasta/FastaReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="20" selection-start="5650" selection-end="5650" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/dstemr_java.f">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="39" selection-start="10239" selection-end="10239" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/dstemr_src.f">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="12" selection-start="1160" selection-end="1160" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/dstemr_src.f">
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran_src/lsame.f">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/c/dstemr.c">
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DCOPY.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="43" selection-start="636" selection-end="636" vertical-scroll-proportion="0.48195878">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/DSTEMR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="299" column="0" selection-start="270" selection-end="15207" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1318822437641" expanded="true" signature="272:15203" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/FileUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/dstemr.f">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="30" selection-start="11272" selection-end="11277" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/lsame.f">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCGetSrc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/output/LSAME.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="18" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/lsame_src.f">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/dstemr_src_java.f">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="45" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0">
+        <state line="4" column="13" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/Fortran77.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="44" selection-start="3002" selection-end="3002" vertical-scroll-proportion="0.0">
+        <state line="132" column="33" selection-start="4444" selection-end="4444" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/lsame_java.f">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="24" selection-start="3089" selection-end="3089" vertical-scroll-proportion="0.6851852">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/LSAME.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="22" selection-start="2162" selection-end="2162" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlamch_java.f">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="25" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAMCH.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlanst_java.f">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="38" selection-start="0" selection-end="4515" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntrFuncs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="27" selection-start="2247" selection-end="2247" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlassq.f">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLANST.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="22" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran_src/dlamch.f">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="28" selection-start="2087" selection-end="2087" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="14" selection-start="2173" selection-end="2173" vertical-scroll-proportion="0.0">
+        <state line="24" column="19" selection-start="962" selection-end="962" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/fortran/lsame_src_java.f">
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlassq_java.f">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="9" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0389016">
+        <state line="0" column="18" selection-start="0" selection-end="3138" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCGetSrc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="15" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASSQ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="26" selection-start="3802" selection-end="3802" vertical-scroll-proportion="4.727811">
           <folding />
         </state>
       </provider>

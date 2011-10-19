@@ -8,10 +8,13 @@ import java.util.ArrayList;
 public class UCGetSrc extends Lapack2J {
   public static void main(String[] args) {
     UCGetSrc runMe = new UCGetSrc();
-    JOB_TAG = "_src.f";
-    DEST_DIR = SRC_DIR;
-    runMe.convert(SRC_DIR, "lsame.f", DEST_DIR);
-    runMe.convert(SRC_DIR, "dstemr.f", DEST_DIR);
+    runMe.JOB_TAG = ".f";
+    runMe.SRC_DIR = "C:\\dev\\physics\\dev_svn_110812\\java\\lapack4j\\lapack4j\\src\\lapack";
+    runMe.DEST_DIR = "C:\\dev\\physics\\dev_svn_110812\\java\\lapack4j\\lapack4j\\src\\fortran_src";
+    for (int i = 0; i < FILE_NAMES.length; i++) {
+      String fileName = FILE_NAMES[i];
+      runMe.convert(fileName);
+    }
     System.exit(0);
   }
   public ArrayList<String> convert2J(ArrayList<String> src) {
@@ -34,7 +37,12 @@ public class UCGetSrc extends Lapack2J {
     return srcLine.isEmpty();
   }
   public boolean comment(String srcLine, ArrayList<String> dest) {
-    return Fortran77.comment(srcLine);
+    if (Fortran77.comment(srcLine)) {
+      dest.add(srcLine);
+      return true;
+    }
+    return false;
+//    return Fortran77.comment(srcLine);
   }
   public boolean splitLine(String srcLine, ArrayList<String> dest) {
     if (!Fortran77.splitLine(srcLine))
