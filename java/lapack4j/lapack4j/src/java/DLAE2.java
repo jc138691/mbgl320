@@ -1,11 +1,13 @@
 package lapack4j.src.java;
+import lapack4j.utils.DblRef;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,18/10/11,1:44 PM
  */
 public class DLAE2 { //SUBROUTINE DLAE2( A, B, C, RT1, RT2 )
-  public static void DLAE2(double A, double B, double C, double RT1, double RT2 ) { //SUBROUTINE DLAE2( A, B, C, RT1, RT2 )
+  public static void DLAE2(double A, double B, double C, DblRef pRT1, DblRef pRT2 ) { //SUBROUTINE DLAE2( A, B, C, RT1, RT2 )
     //public class DLAE2 { //SUBROUTINE DLAE2( A, B, C, RT1, RT2 )
     //public static void DLAE2( A, B, C, RT1, RT2 ) { //SUBROUTINE DLAE2( A, B, C, RT1, RT2 )
     //*
@@ -15,7 +17,7 @@ public class DLAE2 { //SUBROUTINE DLAE2( A, B, C, RT1, RT2 )
     //*     November 2006
     //*
     //*     .. Scalar Arguments ..
-    //double A, B, C, RT1, RT2; //DOUBLE PRECISION   A, B, C, RT1, RT2
+    double RT1, RT2; //DOUBLE PRECISION   A, B, C, RT1, RT2
     //*     ..
     //*
     //*  Purpose
@@ -128,6 +130,8 @@ public class DLAE2 { //SUBROUTINE DLAE2( A, B, C, RT1, RT2 )
       RT1 = HALF*RT; //RT1 = HALF*RT
       RT2 = -HALF*RT; //RT2 = -HALF*RT
     } // END IF
+    pRT1.setVal(RT1);
+    pRT2.setVal(RT2);
   } // RETURN
   //*
   //*     End of DLAE2

@@ -1,11 +1,13 @@
 package lapack4j.src.java;
+import lapack4j.utils.DblRef;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,18/10/11,2:08 PM
  */
 public class DLAEV2 { //SUBROUTINE DLAEV2( A, B, C, RT1, RT2, CS1, SN1 )
-  public static void DLAEV2(double  A, double B, double C, double RT1, double RT2, double CS1, double SN1 ) { //SUBROUTINE DLAEV2( A, B, C, RT1, RT2, CS1, SN1 )
+  public static void DLAEV2(double  A, double B, double C, DblRef pRT1, DblRef pRT2, DblRef pCS1, DblRef pSN1 ) { //SUBROUTINE DLAEV2( A, B, C, RT1, RT2, CS1, SN1 )
     //*
     //*  -- LAPACK auxiliary routine (version 3.2) --
     //*  -- LAPACK is a software package provided by Univ. of Tennessee,    --
@@ -13,7 +15,7 @@ public class DLAEV2 { //SUBROUTINE DLAEV2( A, B, C, RT1, RT2, CS1, SN1 )
     //*     November 2006
     //*
     //*     .. Scalar Arguments ..
-    //double A, B, C, CS1, RT1, RT2, SN1; //DOUBLE PRECISION   A, B, C, CS1, RT1, RT2, SN1
+    double CS1, RT1, RT2, SN1; //DOUBLE PRECISION   A, B, C, CS1, RT1, RT2, SN1
     //*     ..
     //*
     //*  Purpose
@@ -171,6 +173,10 @@ public class DLAEV2 { //SUBROUTINE DLAEV2( A, B, C, RT1, RT2, CS1, SN1 )
       CS1 = -SN1; //CS1 = -SN1
       SN1 = TN; //SN1 = TN
     } // END IF
+    pRT1.setVal(RT1);
+    pRT2.setVal(RT2);
+    pCS1.setVal(CS1);
+    pSN1.setVal(SN1);
   } // RETURN
   //*
   //*     End of DLAEV2

@@ -74,6 +74,9 @@ public class IntrFuncs {
   public static double ABS(double x) {
     return Math.abs(x);
   }
+  public static double SQRT(double x) {
+    return Math.sqrt(x);
+  }
   public static double MIN(double a, double b) {
     return Math.min(a, b);
   }
