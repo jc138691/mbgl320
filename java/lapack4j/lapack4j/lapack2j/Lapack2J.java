@@ -9,22 +9,34 @@ import java.util.ArrayList;
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,13/10/11,11:55 AM
  */
 public class Lapack2J extends TestUtils {
-  public static String SRC_DIR = "C:\\dev\\physics\\dev_svn_110812\\java\\lapack4j\\lapack4j\\src\\fortran";
-  public static String DEST_DIR = "C:\\dev\\physics\\dev_svn_110812\\java\\lapack4j\\lapack4j\\lapack2j\\output";
-  public static String JOB_TAG = "_java.f";
+  public  String SRC_DIR = "C:\\dev\\physics\\dev_svn_110812\\java\\lapack4j\\lapack4j\\src\\lapack";
+  public  String DEST_DIR = "C:\\dev\\physics\\dev_svn_110812\\java\\lapack4j\\lapack4j\\lapack2j\\output";
+  public  String JOB_TAG = "_java.f";
+  public static final String[] FILE_NAMES = {
+    "dcopy.f", "dscal.f", "dswap.f", "lsame.f", "xerbla.f"
+    , "dlamch.f", "dlassq.f"
+    , "dlae2.f", "dlaev2.f", "dlarrc.f", "dlarre.f"
+    , "dlarrj.f", "dlarrr.f", "dlarrv.f", "dlasrt.f"
+    , "dlanst.f", "dstemr.f"
+  };
   public static void main(String[] args) {
-    DEST_DIR = SRC_DIR;
-    new Lapack2J().convert(SRC_DIR, "lsame_src.f", DEST_DIR);
-    new Lapack2J().convert(SRC_DIR, "dstemr_src.f", DEST_DIR);
+    Lapack2J runMe = new Lapack2J();
+    runMe.JOB_TAG = "_java.f";
+    runMe.SRC_DIR = "C:\\dev\\physics\\dev_svn_110812\\java\\lapack4j\\lapack4j\\src\\fortran_src";
+    runMe.DEST_DIR = "C:\\dev\\physics\\dev_svn_110812\\java\\lapack4j\\lapack4j\\src\\java";
+    for (int i = 0; i < FILE_NAMES.length; i++) {
+      String fileName = FILE_NAMES[i];
+      runMe.convert(fileName);
+    }
     System.exit(0);
   }
-  public  void convert(String srcDir, String fileName, String destDir) {
-    String srcName = srcDir + File.separatorChar + fileName;
+  public  void convert(String fileName) {
+    String srcName = SRC_DIR + File.separatorChar + fileName;
     File srcFile = new File(srcName);
     if (srcFile == null  || !srcFile.canRead()) {
       System.out.println("if (srcFile == null  || !srcFile.canRead()) { srcFile = new File(" + srcName);
     }
-    String destName = destDir + File.separatorChar + fileName;
+    String destName = DEST_DIR + File.separatorChar + fileName;
     destName = FileUtils.replaceDotExtension(destName, JOB_TAG);
     File destFile = new File(destName);
     if (destFile == null  || !destFile.canWrite()) {
@@ -48,12 +60,18 @@ public class Lapack2J extends TestUtils {
       String srcTrim = srcLine.trim();
       if (ignore(srcTrim, res))  continue;
 //      if (splitLine(line, res))  continue;
-      if (subroutine(srcTrim, res))  continue;
-      if (func(srcTrim, res))  continue;
-      if (type(srcTrim, res))  continue;
-      if (endif(srcTrim, res))  continue;
+      if (startsSubr(srcTrim, res))  continue;
+      if (startsParam(srcTrim, res))  continue;
+      if (startsFunc(srcTrim, res))  continue;
+      if (startsType(srcTrim, res))  continue;
+      if (startsIf(srcTrim, res))  continue;
+      if (startsElseIf(srcTrim, res))  continue;
+      if (isElse(srcTrim, res))  continue;
+      if (isEndIf(srcTrim, res))  continue;
+      if (startsDo(srcTrim, res))  continue;
+      if (isEndDo(srcTrim, res))  continue;
       if (isReturn(srcTrim, res))  continue;
-      if (end(srcTrim, res))  continue;
+      if (isEnd(srcTrim, res))  continue;
 
       String line = convertLine(srcLine);
       res.add(line.trim() + "; //" + srcTrim);
@@ -63,7 +81,7 @@ public class Lapack2J extends TestUtils {
   }
   public String convertType(String typeName) {
      if (!Fortran77.type(typeName))
-       return "ERROR: !type(typeName)";
+       return "ERROR: !startsType(typeName)";
 
     if (typeName.equals("CHARACTER"))
       return "char";
@@ -82,12 +100,18 @@ public class Lapack2J extends TestUtils {
     res = res.replace("( *)", "[]");
     res = res.replace("(* )", "[]");
     res = res.replace(".EQ.", " == ");
+    res = res.replace(".NE.", " != ");
     res = res.replace(".GE.", " >= ");
     res = res.replace(".GT.", " > ");
     res = res.replace(".LE.", " <= ");
     res = res.replace(".LT.", " < ");
     res = res.replace(".AND.", " && ");
     res = res.replace(".OR.", " || ");
+//    res = res.replace(" THEN ", " { ");
+    return res;
+  }
+  public String convertDoBoby(String src) {
+    String res = src.replace(",", ";");
     return res;
   }
 
@@ -121,16 +145,28 @@ public class Lapack2J extends TestUtils {
     return false;
   }
 
-  public boolean endif(String lineTrim, ArrayList<String> dest) {
-    if (!Fortran77.endif(lineTrim))
+  public boolean isEndIf(String lineTrim, ArrayList<String> dest) {
+    if (!Fortran77.isEndif(lineTrim))
       return false;
     dest.add("} // " + lineTrim);
     return true;
   }
-  public boolean end(String lineTrim, ArrayList<String> dest) {
-    if (!Fortran77.end(lineTrim))
+  public boolean isEnd(String lineTrim, ArrayList<String> dest) {
+    if (!Fortran77.isEnd(lineTrim))
       return false;
     dest.add("} // " + lineTrim);
+    return true;
+  }
+  public boolean isEndDo(String lineTrim, ArrayList<String> dest) {
+    if (!Fortran77.isEndDo(lineTrim))
+      return false;
+    dest.add("} // " + lineTrim);
+    return true;
+  }
+  public boolean isElse(String lineTrim, ArrayList<String> dest) {
+    if (!Fortran77.isElse(lineTrim))
+      return false;
+    dest.add("} else { // " + lineTrim);
     return true;
   }
   public boolean isReturn(String lineTrim, ArrayList<String> dest) {
@@ -139,19 +175,19 @@ public class Lapack2J extends TestUtils {
     dest.add("} // " + lineTrim);
     return true;
   }
-  public boolean type(String lineTrim, ArrayList<String> dest) {
+  public boolean startsType(String lineTrim, ArrayList<String> dest) {
     if (!Fortran77.type(lineTrim))
       return false;
     String typeName = Fortran77.getTypeName(lineTrim);
     String name = convertType(typeName);
     String vars = Fortran77.getTypeVars(lineTrim);
     vars = convertLine(vars);
-    dest.add(name + " " + vars + ";");
-//    dest.add(name + " " + vars + "; //" + lineTrim);
+//    dest.add(name + " " + vars + ";");
+    dest.add(name + " " + vars + "; //" + lineTrim);
     return true;
   }
-  public boolean subroutine(String lineTrim, ArrayList<String> dest) {
-    if (!Fortran77.subr(lineTrim))
+  public boolean startsSubr(String lineTrim, ArrayList<String> dest) {
+    if (!Fortran77.startsSubr(lineTrim))
       return false;
     String name = Fortran77.getSubrName(lineTrim);
     String params = Fortran77.getSubrWithParms(lineTrim);
@@ -161,7 +197,54 @@ public class Lapack2J extends TestUtils {
     dest.add("public static void " + params + " { //" + lineTrim);
     return true;
   }
-  public boolean func(String lineTrim, ArrayList<String> dest) {
+  public boolean startsParam(String lineTrim, ArrayList<String> dest) {
+    if (!Fortran77.startsParam(lineTrim))
+      return false;
+    String body = Fortran77.getParamBody(lineTrim);
+    dest.add("{ " + body + "; } //" + lineTrim);
+    return true;
+  }
+  public boolean startsIf(String lineTrim, ArrayList<String> dest) {
+    if (!Fortran77.startsIf(lineTrim))
+      return false;
+    String check = Fortran77.getIfCheck(lineTrim);
+    check = convertLine(check);
+    if (Fortran77.endsThen(lineTrim)) {
+      dest.add("if " + check + " { //" + lineTrim);
+    }
+    else if (Fortran77.endsReturn(lineTrim)) {
+      dest.add("if " + check + " return; //" + lineTrim);
+    }
+    else {
+      String body = Fortran77.getIfBody(lineTrim);
+      body = convertLine(body);
+      dest.add("if " + body + "; //" + lineTrim);
+    }
+    return true;
+  }
+  public boolean startsElseIf(String lineTrim, ArrayList<String> dest) {
+    if (!Fortran77.startsElseIf(lineTrim))
+      return false;
+    String body = Fortran77.getElseIfBody(lineTrim);
+    body = convertLine(body);
+    if (Fortran77.endsThen(lineTrim)) {
+      dest.add("} else if " + body + " { //" + lineTrim);
+    }
+    if (Fortran77.endsReturn(lineTrim)) {
+      dest.add("} else if " + body + " return; //" + lineTrim);
+    }
+    return true;
+  }
+  public boolean startsDo(String lineTrim, ArrayList<String> dest) {
+    if (!Fortran77.startsDo(lineTrim))
+      return false;
+    String body = Fortran77.getDoBody(lineTrim);
+    body = convertLine(body);
+    body = convertDoBoby(body);
+    dest.add("for (" + body + ") { //" + lineTrim);
+    return true;
+  }
+  public boolean startsFunc(String lineTrim, ArrayList<String> dest) {
     if (!Fortran77.func(lineTrim))
       return false;
     String typeName = Fortran77.getTypeName(lineTrim);
@@ -171,11 +254,11 @@ public class Lapack2J extends TestUtils {
 //    dest.add("public static void " + params + " { ");
     dest.add("public class " + name + " { //" + lineTrim);
     String javaType = convertType(typeName);
-    dest.add("public static " + javaType + params + " { //" + lineTrim);
+    dest.add("public static " + javaType + " " + params + " { //" + lineTrim);
     return true;
   }
-//  public boolean subr(String lineTrim, int i, ArrayList<String> src, ArrayList<String> dest) {
-//    if (!Fortran77.subr(lineTrim))
+//  public boolean startsSubr(String lineTrim, int i, ArrayList<String> src, ArrayList<String> dest) {
+//    if (!Fortran77.startsSubr(lineTrim))
 //      return false;
 //    String name = Fortran77.getSubrName(lineTrim);
 //    String params = Fortran77.getSubrWithParms(lineTrim);

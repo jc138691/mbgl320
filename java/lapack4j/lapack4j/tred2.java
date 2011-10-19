@@ -4,7 +4,7 @@ import lapack4j.utils.Fortran77;
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,4/10/11,2:40 PM
  */
 public class tred2 {
-  //      subr tred2(nm,n,a,d,e,z)
+  //      startsSubr tred2(nm,n,a,d,e,z)
   public static void tred2(int nm, int n, double[][] a, double[] d, double[] e, double[][] z) {
     int i, j, k, L, ii, jp1;//      integer i,j,k,l,n,ii,nm,jp1
     int ixI, ixJ, ixK, ixL;//NEW
@@ -13,11 +13,11 @@ public class tred2 {
     double scaleRev = 0, hRev = 0;
     //2011-Oct: Converted to java by dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com
     //c
-    //c     this subr is a translation of the algol procedure tred2,
+    //c     this startsSubr is a translation of the algol procedure tred2,
     //c     num. math. 11, 181-195(1968) by martin, reinsch, and wilkinson.
     //c     handbook for auto. comp., vol.ii-linear algebra, 212-226(1971).
     //c
-    //c     this subr reduces a real symmetric matrix to a
+    //c     this startsSubr reduces a real symmetric matrix to a
     //c     symmetric tridiagonal matrix using and accumulating
     //c     orthogonal similarity transformations.
     //c

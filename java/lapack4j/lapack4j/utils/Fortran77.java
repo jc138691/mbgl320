@@ -1,5 +1,4 @@
 package lapack4j.utils;
-import sun.org.mozilla.javascript.internal.Function;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,7/10/11,12:16 PM
  */
@@ -7,6 +6,10 @@ public class Fortran77 {
   private static final int SPLIT_LINE_IDX = 5;
   private static final int SUBROUTINE_LEN = 11;
   private static final int FUNCTION_LEN = 8;
+  private static final int PARAMETER_LEN = 9;
+  private static final int IF_LEN = 2;
+  private static final int ELSE_IF_LEN = 7;
+  private static final int DO_LEN = 2;
   private static String[] TYPES = {"CHARACTER", "LOGICAL", "INTEGER", "DOUBLE PRECISION"};
   public static double sign(double a, double b) {
 //http://gcc.gnu.org/onlinedocs/gcc-3.3.6/g77/Sign-Intrinsic.html#Sign-Intrinsic
@@ -30,25 +33,65 @@ public class Fortran77 {
     String res = line.substring(SPLIT_LINE_IDX + 1);
     return res.trim();
   }
-  public static boolean endif(String lineTrim) {
+  public static boolean isEndif(String lineTrim) {
     if (lineTrim.isEmpty())
       return false;
-    return (lineTrim.startsWith("ENDIF") || lineTrim.startsWith("END IF"));
+    return (lineTrim.equals("ENDIF") || lineTrim.equals("END IF"));
   }
-  public static boolean end(String lineTrim) {
+  public static boolean isEnd(String lineTrim) {
     if (lineTrim.isEmpty())
       return false;
-    return lineTrim.startsWith("END");
+    return lineTrim.equals("END");
+  }
+  public static boolean isEndDo(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return false;
+    return lineTrim.equals("END DO");
+  }
+  public static boolean isElse(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return false;
+    return lineTrim.equals("ELSE");
   }
   public static boolean isReturn(String lineTrim) {
     if (lineTrim.isEmpty())
       return false;
-    return lineTrim.startsWith("RETURN");
+    return lineTrim.equals("RETURN");
   }
-  public static boolean subr(String lineTrim) {
+  public static boolean startsSubr(String lineTrim) {
     if (lineTrim.isEmpty())
       return false;
-    return (lineTrim.startsWith("SUBROUTINE") || lineTrim.startsWith("subroutine"));
+    return (lineTrim.startsWith("SUBROUTINE ") || lineTrim.startsWith("subroutine "));
+  }
+  public static boolean startsParam(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return false;
+    return (lineTrim.startsWith("PARAMETER ") || lineTrim.startsWith("parameter "));
+  }
+  public static boolean startsIf(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return false;
+    return (lineTrim.startsWith("IF(") || lineTrim.startsWith("IF ("));
+  }
+  public static boolean startsElseIf(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return false;
+    return (lineTrim.startsWith("ELSE IF(") || lineTrim.startsWith("ELSE IF ("));
+  }
+  public static boolean startsDo(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return false;
+    return (lineTrim.startsWith("DO ") || lineTrim.startsWith("do "));
+  }
+  public static boolean endsThen(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return false;
+    return (lineTrim.endsWith(" THEN") || lineTrim.endsWith(" then"));
+  }
+  public static boolean endsReturn(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return false;
+    return (lineTrim.endsWith(" RETURN") || lineTrim.endsWith(" return"));
   }
   public static boolean func(String lineTrim) {
     if (lineTrim.isEmpty())
@@ -79,15 +122,63 @@ public class Fortran77 {
   public static String getSubrWithParms(String lineTrim) {
     if (lineTrim.isEmpty())
       return "";
-    if (!subr(lineTrim))
-      return "ERROR: !subr(lineTrim)";
+    if (!startsSubr(lineTrim))
+      return "ERROR: !startsSubr(lineTrim)";
     return lineTrim.substring(SUBROUTINE_LEN);
+  }
+  public static String getIfCheck(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return "";
+    if (!startsIf(lineTrim))
+      return "ERROR: getIfCheck: !startsIf(lineTrim)";
+    int endIdx = lineTrim.lastIndexOf(")");
+    if (endIdx == -1)
+      return "ERROR: getIfCheck: endIdx == -1";
+    return lineTrim.substring(IF_LEN, endIdx + 1);
+  }
+  public static String getIfBody(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return "";
+    if (!startsIf(lineTrim))
+      return "ERROR: getIfBody: !startsIf(lineTrim)";
+    return lineTrim.substring(IF_LEN);
+  }
+  public static String getElseIfBody(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return "";
+    if (!startsElseIf(lineTrim))
+      return "ERROR: !getElseIfBody(lineTrim)";
+    int endIdx = lineTrim.lastIndexOf(")");
+    if (endIdx == -1)
+      return "ERROR: getIfCheck: endIdx == -1";
+    return lineTrim.substring(ELSE_IF_LEN, endIdx + 1);
+  }
+  public static String getParamBody(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return "";
+    if (!startsParam(lineTrim))
+      return "ERROR: !startsParam(lineTrim)";
+    String body = lineTrim.substring(PARAMETER_LEN);
+    int startIdx = body.indexOf("(");
+    if (startIdx == -1)
+      return "ERROR: getParamBody: startIdx == -1";
+    int endIdx = body.lastIndexOf(")");
+    if (endIdx == -1)
+      return "ERROR: getParamBody: endIdx == -1";
+    return body.substring(startIdx + 1, endIdx);
+  }
+  public static String getDoBody(String lineTrim) {
+    if (lineTrim.isEmpty())
+      return "";
+    if (!startsDo(lineTrim))
+      return "ERROR: !startsDo(lineTrim)";
+    return lineTrim.substring(DO_LEN);
   }
   public static String getFuncWithParms(String lineTrim) {
     if (lineTrim.isEmpty())
       return "";
     if (!func(lineTrim))
-      return "ERROR: !func(lineTrim)";
+      return "ERROR: !startsFunc(lineTrim)";
 
     String func = getTypeVars(lineTrim);
     return func.substring(FUNCTION_LEN).trim();
@@ -95,8 +186,8 @@ public class Fortran77 {
   public static String getSubrName(String lineTrim) {
     if (lineTrim.isEmpty())
       return "";
-    if (!subr(lineTrim))
-      return "ERROR: !subr(lineTrim)";
+    if (!startsSubr(lineTrim))
+      return "ERROR: !startsSubr(lineTrim)";
     String name = lineTrim.substring(SUBROUTINE_LEN).trim();
     int parIdx =  name.indexOf("(");
     if (parIdx == -1)  {
@@ -108,13 +199,13 @@ public class Fortran77 {
     if (lineTrim.isEmpty())
       return "";
     if (!func(lineTrim))
-      return "ERROR: !func(lineTrim)";
+      return "ERROR: !startsFunc(lineTrim)";
 
     String func = getTypeVars(lineTrim);
     String name = func.substring(FUNCTION_LEN).trim();
     int parIdx =  name.indexOf("(");
     if (parIdx == -1)  {
-      return "ERROR: !func(lineTrim)";
+      return "ERROR: !startsFunc(lineTrim)";
     }
     return name.substring(0, parIdx).trim();
   }
@@ -122,7 +213,7 @@ public class Fortran77 {
     if (lineTrim.isEmpty())
       return "";
     if (!type(lineTrim))
-      return "ERROR: !type(lineTrim)";
+      return "ERROR: !startsType(lineTrim)";
 
     for (int i = 0; i < TYPES.length; i++) {
       if (lineTrim.startsWith(TYPES[i])) {
@@ -135,7 +226,7 @@ public class Fortran77 {
     if (lineTrim.isEmpty())
       return "";
     if (!type(lineTrim))
-      return "ERROR: !type(lineTrim)";
+      return "ERROR: !startsType(lineTrim)";
 
     for (int i = 0; i < TYPES.length; i++) {
       if (lineTrim.startsWith(TYPES[i])) {
