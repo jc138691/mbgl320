@@ -1,10 +1,12 @@
 package lapack4j.src.java;
+import lapack4j.utils.DblRef;
+
 import static lapack4j.utils.IntrFuncs.ABS;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,19/10/11,4:33 PM
  */
 public class DLASSQ { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
-  public static void DLASSQ(int N, double[] X, int INCX, double SCALE, double SUMSQ ) { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
+  public static void DLASSQ(int N, double[] X, int INCX, DblRef pSCALE, DblRef pSUMSQ ) { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
     //*
     //*  -- LAPACK auxiliary routine (version 3.2) --
     //*  -- LAPACK is a software package provided by Univ. of Tennessee,    --
@@ -13,7 +15,8 @@ public class DLASSQ { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
     //*
     //*     .. Scalar Arguments ..
     //    int INCX, N; //INTEGER            INCX, N
-    //    double SCALE, SUMSQ; //DOUBLE PRECISION   SCALE, SUMSQ
+    double SCALE = pSCALE.getVal(); //DOUBLE PRECISION   SCALE, SUMSQ
+    double SUMSQ = pSUMSQ.getVal(); //DOUBLE PRECISION   SCALE, SUMSQ
     //*     ..
     //*     .. Array Arguments ..
     //    double X[]; //DOUBLE PRECISION   X( * )
@@ -90,6 +93,8 @@ public class DLASSQ { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
         } // END IF
       }//10    CONTINUE; //10    CONTINUE
     } // END IF
+    pSCALE.setVal(SCALE);
+    pSUMSQ.setVal(SUMSQ);
   } // RETURN
   //*
   //*     End of DLASSQ
