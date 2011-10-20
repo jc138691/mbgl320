@@ -13,11 +13,17 @@ public class Lapack2J extends TestUtils {
   public  String DEST_DIR = "C:\\dev\\physics\\dev_svn_110812\\java\\lapack4j\\lapack4j\\lapack2j\\output";
   public  String JOB_TAG = "_java.f";
   public static final String[] FILE_NAMES = {
-    "dcopy.f", "dscal.f", "dswap.f", "lsame.f", "xerbla.f"
-    , "dlamch.f", "dlassq.f"
-    , "dlae2.f", "dlaev2.f", "dlarrc.f", "dlarre.f"
-    , "dlarrj.f", "dlarrr.f", "dlarrv.f", "dlasrt.f"
-    , "dlanst.f", "dstemr.f"
+    "dcopy.f"
+    , "dlae2.f", "dlaev2.f"
+    , "dlamch.f"
+    , "dlanst.f"
+    , "dlarra.f", "dlarrb.f", "dlarrc.f", "dlarrd.f", "dlarre.f", "dlarrj.f", "dlarrr.f", "dlarrv.f"
+    , "dlasq2.f", "dlasq3.f", "dlasq4.f", "dlasq5.f", "dlasq6.f"
+    , "dscal.f"
+    , "dswap.f", "lsame.f", "xerbla.f"
+    , "dlassq.f"
+    , "dlasrt.f"
+    , "dstemr.f"
   };
   public static void main(String[] args) {
     Lapack2J runMe = new Lapack2J();
@@ -43,7 +49,7 @@ public class Lapack2J extends TestUtils {
       System.out.println("if (destFile == null  || !destFile.canWrite()) { destFile = new File(" + destName);
     }
     ArrayList<String> src = FileUtils.read(srcFile);
-//    FileUtils.write(src, destFile);
+    //    FileUtils.write(src, destFile);
     ArrayList<String> res = convert2J(src);
     FileUtils.write(res, destFile);
   }
@@ -59,7 +65,7 @@ public class Lapack2J extends TestUtils {
 
       String srcTrim = srcLine.trim();
       if (ignore(srcTrim, res))  continue;
-//      if (splitLine(line, res))  continue;
+      //      if (splitLine(line, res))  continue;
       if (startsSubr(srcTrim, res))  continue;
       if (startsParam(srcTrim, res))  continue;
       if (startsFunc(srcTrim, res))  continue;
@@ -75,13 +81,13 @@ public class Lapack2J extends TestUtils {
 
       String line = convertLine(srcLine);
       res.add(line.trim() + "; //" + srcTrim);
-//      res.add("ERROR: TODO //" + srcTrim);
+      //      res.add("ERROR: TODO //" + srcTrim);
     }
     return res;
   }
   public String convertType(String typeName) {
-     if (!Fortran77.type(typeName))
-       return "ERROR: !startsType(typeName)";
+    if (!Fortran77.type(typeName))
+      return "ERROR: !startsType(typeName)";
 
     if (typeName.equals("CHARACTER"))
       return "char";
@@ -107,7 +113,7 @@ public class Lapack2J extends TestUtils {
     res = res.replace(".LT.", " < ");
     res = res.replace(".AND.", " && ");
     res = res.replace(".OR.", " || ");
-//    res = res.replace(" THEN ", " { ");
+    //    res = res.replace(" THEN ", " { ");
     return res;
   }
   public String convertDoBoby(String src) {
@@ -182,7 +188,7 @@ public class Lapack2J extends TestUtils {
     String name = convertType(typeName);
     String vars = Fortran77.getTypeVars(lineTrim);
     vars = convertLine(vars);
-//    dest.add(name + " " + vars + ";");
+    //    dest.add(name + " " + vars + ";");
     dest.add(name + " " + vars + "; //" + lineTrim);
     return true;
   }
@@ -191,8 +197,8 @@ public class Lapack2J extends TestUtils {
       return false;
     String name = Fortran77.getSubrName(lineTrim);
     String params = Fortran77.getSubrWithParms(lineTrim);
-//    dest.add("public class " + name + " { ");
-//    dest.add("public static void " + params + " { ");
+    //    dest.add("public class " + name + " { ");
+    //    dest.add("public static void " + params + " { ");
     dest.add("public class " + name + " { //" + lineTrim);
     dest.add("public static void " + params + " { //" + lineTrim);
     return true;
@@ -250,30 +256,30 @@ public class Lapack2J extends TestUtils {
     String typeName = Fortran77.getTypeName(lineTrim);
     String name = Fortran77.getFuncName(lineTrim);
     String params = Fortran77.getFuncWithParms(lineTrim);
-//    dest.add("public class " + name + " { ");
-//    dest.add("public static void " + params + " { ");
+    //    dest.add("public class " + name + " { ");
+    //    dest.add("public static void " + params + " { ");
     dest.add("public class " + name + " { //" + lineTrim);
     String javaType = convertType(typeName);
     dest.add("public static " + javaType + " " + params + " { //" + lineTrim);
     return true;
   }
-//  public boolean startsSubr(String lineTrim, int i, ArrayList<String> src, ArrayList<String> dest) {
-//    if (!Fortran77.startsSubr(lineTrim))
-//      return false;
-//    String name = Fortran77.getSubrName(lineTrim);
-//    String params = Fortran77.getSubrWithParms(lineTrim);
-//    dest.add("public class " + name + " { //" + lineTrim);
-//    dest.add("public static void " + params + "//" + lineTrim);
-//    for (int nextIdx = i+1; nextIdx < src.size(); nextIdx++) {
-//      String nextLine = src.get(nextIdx);
-//      if (nextLine == null)
-//        break;
-//      debug(nextLine);
-//      if (!splitLine(nextLine, dest))
-//        break;
-//    }
-//    dest.add("{");
-//    return true;
-//  }
+  //  public boolean startsSubr(String lineTrim, int i, ArrayList<String> src, ArrayList<String> dest) {
+  //    if (!Fortran77.startsSubr(lineTrim))
+  //      return false;
+  //    String name = Fortran77.getSubrName(lineTrim);
+  //    String params = Fortran77.getSubrWithParms(lineTrim);
+  //    dest.add("public class " + name + " { //" + lineTrim);
+  //    dest.add("public static void " + params + "//" + lineTrim);
+  //    for (int nextIdx = i+1; nextIdx < src.size(); nextIdx++) {
+  //      String nextLine = src.get(nextIdx);
+  //      if (nextLine == null)
+  //        break;
+  //      debug(nextLine);
+  //      if (!splitLine(nextLine, dest))
+  //        break;
+  //    }
+  //    dest.add("{");
+  //    return true;
+  //  }
 
 }
