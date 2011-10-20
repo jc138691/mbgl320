@@ -13,8 +13,8 @@ public class Lapack2J extends TestUtils {
   public  String DEST_DIR = "C:\\dev\\physics\\dev_svn_110812\\java\\lapack4j\\lapack4j\\lapack2j\\output";
   public  String JOB_TAG = "_java.f";
   public static final String[] FILE_NAMES = {
-    "dcopy.f"
-    , "dlae2.f", "dlaev2.f"
+    "dcopy.f", "disnan.f"
+    , "dlae2.f", "dlaev2.f", "dlaisnan.f"
     , "dlamch.f"
     , "dlanst.f"
     , "dlarra.f", "dlarrb.f", "dlarrc.f", "dlarrd.f", "dlarre.f", "dlarrj.f", "dlarrr.f", "dlarrv.f"

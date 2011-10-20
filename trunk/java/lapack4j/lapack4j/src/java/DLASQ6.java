@@ -95,90 +95,92 @@ public class DLASQ6 { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN
     DMIN = D; //DMIN = D
     //*
     if ( PP == 0 ) { //IF( PP.EQ.0 ) THEN
-      for ( 10 J4 = 4*I0; 4*( N0-3 ); 4) { //DO 10 J4 = 4*I0, 4*( N0-3 ), 4
-        Z( J4-2 ) = D + Z( J4-1 ); //Z( J4-2 ) = D + Z( J4-1 )
-        if ( Z( J4-2 ) == ZERO ) { //IF( Z( J4-2 ).EQ.ZERO ) THEN
-          Z( J4 ) = ZERO; //Z( J4 ) = ZERO
-          D = Z( J4+1 ); //D = Z( J4+1 )
+      for (J4 = 4*I0 - 1; J4 < 4*( N0-3 ); J4 += 4) { //DO 10 J4 = 4*I0, 4*( N0-3 ), 4
+        Z[ J4-2 ] = D + Z[ J4-1 ]; //Z( J4-2 ) = D + Z( J4-1 )
+        if ( Z[ J4-2 ] == ZERO ) { //IF( Z( J4-2 ).EQ.ZERO ) THEN
+          Z[ J4 ] = ZERO; //Z( J4 ) = ZERO
+          D = Z[ J4+1 ]; //D = Z( J4+1 )
           DMIN = D; //DMIN = D
           EMIN = ZERO; //EMIN = ZERO
-        } else if ( SAFMIN*Z( J4+1 ) < Z( J4-2 )  && SAFMIN*Z( J4-2 ) < Z( J4+1 ) ) { //ELSE IF( SAFMIN*Z( J4+1 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4+1 ) ) THEN
-          TEMP = Z( J4+1 ) / Z( J4-2 ); //TEMP = Z( J4+1 ) / Z( J4-2 )
-          Z( J4 ) = Z( J4-1 )*TEMP; //Z( J4 ) = Z( J4-1 )*TEMP
+        } else if ( SAFMIN*Z[ J4+1 ] < Z[ J4-2 ]  && SAFMIN*Z[ J4-2 ] < Z[ J4+1 ] ) { //ELSE IF( SAFMIN*Z( J4+1 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4+1 ) ) THEN
+          TEMP = Z[ J4+1 ] / Z[ J4-2 ]; //TEMP = Z( J4+1 ) / Z( J4-2 )
+          Z[ J4 ] = Z[ J4-1 ]*TEMP; //Z( J4 ) = Z( J4-1 )*TEMP
           D = D*TEMP; //D = D*TEMP
         } else { // ELSE
-          Z( J4 ) = Z( J4+1 )*( Z( J4-1 ) / Z( J4-2 ) ); //Z( J4 ) = Z( J4+1 )*( Z( J4-1 ) / Z( J4-2 ) )
-          D = Z( J4+1 )*( D / Z( J4-2 ) ); //D = Z( J4+1 )*( D / Z( J4-2 ) )
+          Z[ J4 ] = Z[ J4+1 ]*( Z[ J4-1 ] / Z[ J4-2 ] ); //Z( J4 ) = Z( J4+1 )*( Z( J4-1 ) / Z( J4-2 ) )
+          D = Z[ J4+1 ]*( D / Z[ J4-2 ] ); //D = Z( J4+1 )*( D / Z( J4-2 ) )
         } // END IF
         DMIN = MIN( DMIN, D ); //DMIN = MIN( DMIN, D )
-        EMIN = MIN( EMIN, Z( J4 ) ); //EMIN = MIN( EMIN, Z( J4 ) )
-        10    CONTINUE; //10    CONTINUE
-      } else { // ELSE
-        for ( 20 J4 = 4*I0; 4*( N0-3 ); 4) { //DO 20 J4 = 4*I0, 4*( N0-3 ), 4
-          Z( J4-3 ) = D + Z( J4 ); //Z( J4-3 ) = D + Z( J4 )
-          if ( Z( J4-3 ) == ZERO ) { //IF( Z( J4-3 ).EQ.ZERO ) THEN
-            Z( J4-1 ) = ZERO; //Z( J4-1 ) = ZERO
-            D = Z( J4+2 ); //D = Z( J4+2 )
-            DMIN = D; //DMIN = D
-            EMIN = ZERO; //EMIN = ZERO
-          } else if ( SAFMIN*Z( J4+2 ) < Z( J4-3 )  && SAFMIN*Z( J4-3 ) < Z( J4+2 ) ) { //ELSE IF( SAFMIN*Z( J4+2 ).LT.Z( J4-3 ) .AND.SAFMIN*Z( J4-3 ).LT.Z( J4+2 ) ) THEN
-            TEMP = Z( J4+2 ) / Z( J4-3 ); //TEMP = Z( J4+2 ) / Z( J4-3 )
-            Z( J4-1 ) = Z( J4 )*TEMP; //Z( J4-1 ) = Z( J4 )*TEMP
-            D = D*TEMP; //D = D*TEMP
-          } else { // ELSE
-            Z( J4-1 ) = Z( J4+2 )*( Z( J4 ) / Z( J4-3 ) ); //Z( J4-1 ) = Z( J4+2 )*( Z( J4 ) / Z( J4-3 ) )
-            D = Z( J4+2 )*( D / Z( J4-3 ) ); //D = Z( J4+2 )*( D / Z( J4-3 ) )
-          } // END IF
-          DMIN = MIN( DMIN, D ); //DMIN = MIN( DMIN, D )
-          EMIN = MIN( EMIN, Z( J4-1 ) ); //EMIN = MIN( EMIN, Z( J4-1 ) )
-          20    CONTINUE; //20    CONTINUE
-        } // END IF
-        //*
-        //*     Unroll last two steps.
-        //*
-        DNM2 = D; //DNM2 = D
-        DMIN2 = DMIN; //DMIN2 = DMIN
-        J4 = 4*( N0-2 ) - PP; //J4 = 4*( N0-2 ) - PP
-        J4P2 = J4 + 2*PP - 1; //J4P2 = J4 + 2*PP - 1
-        Z( J4-2 ) = DNM2 + Z( J4P2 ); //Z( J4-2 ) = DNM2 + Z( J4P2 )
-        if ( Z( J4-2 ) == ZERO ) { //IF( Z( J4-2 ).EQ.ZERO ) THEN
-          Z( J4 ) = ZERO; //Z( J4 ) = ZERO
-          DNM1 = Z( J4P2+2 ); //DNM1 = Z( J4P2+2 )
-          DMIN = DNM1; //DMIN = DNM1
+        EMIN = MIN( EMIN, Z[ J4 ] ); //EMIN = MIN( EMIN, Z( J4 ) )
+      } //10    CONTINUE
+    } else { // ELSE
+      for (J4 = 4*I0 - 1; J4 < 4*( N0-3 ); J4+=4) { //DO 20 J4 = 4*I0, 4*( N0-3 ), 4
+        Z[ J4-3 ] = D + Z[ J4 ]; //Z( J4-3 ) = D + Z( J4 )
+        if ( Z[ J4-3 ] == ZERO ) { //IF( Z( J4-3 ).EQ.ZERO ) THEN
+          Z[ J4-1 ] = ZERO; //Z( J4-1 ) = ZERO
+          D = Z[ J4+2 ]; //D = Z( J4+2 )
+          DMIN = D; //DMIN = D
           EMIN = ZERO; //EMIN = ZERO
-        } else if ( SAFMIN*Z( J4P2+2 ) < Z( J4-2 )  && SAFMIN*Z( J4-2 ) < Z( J4P2+2 ) ) { //ELSE IF( SAFMIN*Z( J4P2+2 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4P2+2 ) ) THEN
-          TEMP = Z( J4P2+2 ) / Z( J4-2 ); //TEMP = Z( J4P2+2 ) / Z( J4-2 )
-          Z( J4 ) = Z( J4P2 )*TEMP; //Z( J4 ) = Z( J4P2 )*TEMP
-          DNM1 = DNM2*TEMP; //DNM1 = DNM2*TEMP
+        } else if ( SAFMIN*Z[ J4+2 ] < Z[ J4-3 ]  && SAFMIN*Z[ J4-3 ] < Z[ J4+2 ] ) { //ELSE IF( SAFMIN*Z( J4+2 ).LT.Z( J4-3 ) .AND.SAFMIN*Z( J4-3 ).LT.Z( J4+2 ) ) THEN
+          TEMP = Z[ J4+2 ] / Z[ J4-3 ]; //TEMP = Z( J4+2 ) / Z( J4-3 )
+          Z[ J4-1 ] = Z[ J4 ]*TEMP; //Z( J4-1 ) = Z( J4 )*TEMP
+          D = D*TEMP; //D = D*TEMP
         } else { // ELSE
-          Z( J4 ) = Z( J4P2+2 )*( Z( J4P2 ) / Z( J4-2 ) ); //Z( J4 ) = Z( J4P2+2 )*( Z( J4P2 ) / Z( J4-2 ) )
-          DNM1 = Z( J4P2+2 )*( DNM2 / Z( J4-2 ) ); //DNM1 = Z( J4P2+2 )*( DNM2 / Z( J4-2 ) )
+          Z[ J4-1 ] = Z[ J4+2 ]*( Z[ J4 ] / Z[ J4-3 ] ); //Z( J4-1 ) = Z( J4+2 )*( Z( J4 ) / Z( J4-3 ) )
+          D = Z[ J4+2 ]*( D / Z[ J4-3 ] ); //D = Z( J4+2 )*( D / Z( J4-3 ) )
         } // END IF
-        DMIN = MIN( DMIN, DNM1 ); //DMIN = MIN( DMIN, DNM1 )
-        //*
-        DMIN1 = DMIN; //DMIN1 = DMIN
-        J4 = J4 + 4; //J4 = J4 + 4
-        J4P2 = J4 + 2*PP - 1; //J4P2 = J4 + 2*PP - 1
-        Z( J4-2 ) = DNM1 + Z( J4P2 ); //Z( J4-2 ) = DNM1 + Z( J4P2 )
-        if ( Z( J4-2 ) == ZERO ) { //IF( Z( J4-2 ).EQ.ZERO ) THEN
-          Z( J4 ) = ZERO; //Z( J4 ) = ZERO
-          DN = Z( J4P2+2 ); //DN = Z( J4P2+2 )
-          DMIN = DN; //DMIN = DN
-          EMIN = ZERO; //EMIN = ZERO
-        } else if ( SAFMIN*Z( J4P2+2 ) < Z( J4-2 )  && SAFMIN*Z( J4-2 ) < Z( J4P2+2 ) ) { //ELSE IF( SAFMIN*Z( J4P2+2 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4P2+2 ) ) THEN
-          TEMP = Z( J4P2+2 ) / Z( J4-2 ); //TEMP = Z( J4P2+2 ) / Z( J4-2 )
-          Z( J4 ) = Z( J4P2 )*TEMP; //Z( J4 ) = Z( J4P2 )*TEMP
-          DN = DNM1*TEMP; //DN = DNM1*TEMP
-        } else { // ELSE
-          Z( J4 ) = Z( J4P2+2 )*( Z( J4P2 ) / Z( J4-2 ) ); //Z( J4 ) = Z( J4P2+2 )*( Z( J4P2 ) / Z( J4-2 ) )
-          DN = Z( J4P2+2 )*( DNM1 / Z( J4-2 ) ); //DN = Z( J4P2+2 )*( DNM1 / Z( J4-2 ) )
-        } // END IF
-        DMIN = MIN( DMIN, DN ); //DMIN = MIN( DMIN, DN )
-        //*
-        Z( J4+2 ) = DN; //Z( J4+2 ) = DN
-        Z( 4*N0-PP ) = EMIN; //Z( 4*N0-PP ) = EMIN
-      } // RETURN
-      //*
-      //*     End of DLASQ6
-      //*
-    } // END
+        DMIN = MIN( DMIN, D ); //DMIN = MIN( DMIN, D )
+        EMIN = MIN( EMIN, Z[ J4-1 ] ); //EMIN = MIN( EMIN, Z( J4-1 ) )
+      } //20    CONTINUE
+    } // END IF
+    //*
+    //*     Unroll last two steps.
+    //*
+    DNM2 = D; //DNM2 = D
+    DMIN2 = DMIN; //DMIN2 = DMIN
+    J4 = 4*( N0-2 ) - PP - 1; //J4 = 4*( N0-2 ) - PP
+    J4P2 = J4 + 2*PP - 1; //J4P2 = J4 + 2*PP - 1
+    Z[ J4-2 ] = DNM2 + Z[ J4P2 ]; //Z( J4-2 ) = DNM2 + Z( J4P2 )
+    if ( Z[ J4-2 ] == ZERO ) { //IF( Z( J4-2 ).EQ.ZERO ) THEN
+      Z[ J4 ] = ZERO; //Z( J4 ) = ZERO
+      DNM1 = Z[ J4P2+2 ]; //DNM1 = Z( J4P2+2 )
+      DMIN = DNM1; //DMIN = DNM1
+      EMIN = ZERO; //EMIN = ZERO
+    } else if ( SAFMIN*Z[ J4P2+2 ] < Z[ J4-2 ]  && SAFMIN*Z[ J4-2 ] < Z[ J4P2+2 ] ) { //ELSE IF( SAFMIN*Z( J4P2+2 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4P2+2 ) ) THEN
+      TEMP = Z[ J4P2+2 ] / Z[ J4-2 ]; //TEMP = Z( J4P2+2 ) / Z( J4-2 )
+      Z[ J4 ] = Z[ J4P2 ]*TEMP; //Z( J4 ) = Z( J4P2 )*TEMP
+      DNM1 = DNM2*TEMP; //DNM1 = DNM2*TEMP
+    } else { // ELSE
+      Z[ J4 ] = Z[ J4P2+2 ]*( Z[ J4P2 ] / Z[ J4-2 ] ); //Z( J4 ) = Z( J4P2+2 )*( Z( J4P2 ) / Z( J4-2 ) )
+      DNM1 = Z[ J4P2+2 ]*( DNM2 / Z[ J4-2 ] ); //DNM1 = Z( J4P2+2 )*( DNM2 / Z( J4-2 ) )
+    } // END IF
+    DMIN = MIN( DMIN, DNM1 ); //DMIN = MIN( DMIN, DNM1 )
+    //*
+    DMIN1 = DMIN; //DMIN1 = DMIN
+    J4 = J4 + 4 - 1; //J4 = J4 + 4
+    J4P2 = J4 + 2*PP - 1; //J4P2 = J4 + 2*PP - 1
+    Z[ J4-2 ] = DNM1 + Z[ J4P2 ]; //Z( J4-2 ) = DNM1 + Z( J4P2 )
+    if ( Z[ J4-2 ] == ZERO ) { //IF( Z( J4-2 ).EQ.ZERO ) THEN
+      Z[ J4 ] = ZERO; //Z( J4 ) = ZERO
+      DN = Z[ J4P2+2 ]; //DN = Z( J4P2+2 )
+      DMIN = DN; //DMIN = DN
+      EMIN = ZERO; //EMIN = ZERO
+    } else if ( SAFMIN*Z[ J4P2+2 ] < Z[ J4-2 ]  && SAFMIN*Z[ J4-2 ] < Z[ J4P2+2 ] ) { //ELSE IF( SAFMIN*Z( J4P2+2 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4P2+2 ) ) THEN
+      TEMP = Z[ J4P2+2 ] / Z[ J4-2 ]; //TEMP = Z( J4P2+2 ) / Z( J4-2 )
+      Z[ J4 ] = Z[ J4P2 ]*TEMP; //Z( J4 ) = Z( J4P2 )*TEMP
+      DN = DNM1*TEMP; //DN = DNM1*TEMP
+    } else { // ELSE
+      Z[ J4 ] = Z[ J4P2+2 ]*( Z[ J4P2 ] / Z[ J4-2 ] ); //Z( J4 ) = Z( J4P2+2 )*( Z( J4P2 ) / Z( J4-2 ) )
+      DN = Z[ J4P2+2 ]*( DNM1 / Z[ J4-2 ] ); //DN = Z( J4P2+2 )*( DNM1 / Z( J4-2 ) )
+    } // END IF
+    DMIN = MIN( DMIN, DN ); //DMIN = MIN( DMIN, DN )
+    //*
+    Z[ J4+2 -1 ] = DN; //Z( J4+2 ) = DN
+    Z[ 4*N0-PP -1 ] = EMIN; //Z( 4*N0-PP ) = EMIN
+    DblRef.setVal(pDMIN, DMIN, pDMIN1, DMIN1, pDMIN2, DMIN2);
+    DblRef.setVal(pDN, DN, pDNM1, DNM1, pDNM2, DNM2);
+  } // RETURN
+  //*
+  //*     End of DLASQ6
+  //*
+} // END
