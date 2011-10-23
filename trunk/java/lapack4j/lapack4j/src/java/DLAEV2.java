@@ -173,10 +173,10 @@ public class DLAEV2 { //SUBROUTINE DLAEV2( A, B, C, RT1, RT2, CS1, SN1 )
       CS1 = -SN1; //CS1 = -SN1
       SN1 = TN; //SN1 = TN
     } // END IF
-    pRT1.setVal(RT1);
-    pRT2.setVal(RT2);
-    pCS1.setVal(CS1);
-    pSN1.setVal(SN1);
+    pRT1.set(RT1);
+    pRT2.set(RT2);
+    pCS1.set(CS1);
+    pSN1.set(SN1);
   } // RETURN
   //*
   //*     End of DLAEV2

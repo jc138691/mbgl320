@@ -4,10 +4,10 @@ package lapack4j.utils;
  */
 public class IntRef {
   private int val;
-  public int getVal() {
+  public int get() {
     return val;
   }
-  public void setVal(int val) {
+  public void set(int val) {
     this.val = val;
   }
 }

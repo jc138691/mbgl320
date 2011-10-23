@@ -130,8 +130,8 @@ public class DLAE2 { //SUBROUTINE DLAE2( A, B, C, RT1, RT2 )
       RT1 = HALF*RT; //RT1 = HALF*RT
       RT2 = -HALF*RT; //RT2 = -HALF*RT
     } // END IF
-    pRT1.setVal(RT1);
-    pRT2.setVal(RT2);
+    pRT1.set(RT1);
+    pRT2.set(RT2);
   } // RETURN
   //*
   //*     End of DLAE2

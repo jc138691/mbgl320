@@ -9,8 +9,10 @@ import static lapack4j.utils.IntrFuncs.SQRT;
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,20/10/11,3:19 PM
  */
 public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMIN2, DN,DN1, DN2, TAU, TTYPE, G )
-  public static void DLASQ4(int  I0, int N0, double[] Z, int PP, int N0IN
-    , double DMIN, double DMIN1, double DMIN2, double DN, double DN1, double DN2
+  public static void DLASQ4(final int  I0, final int N0, final double[] Z
+    , final int PP, final int N0IN
+    , final double DMIN, final double DMIN1, final double DMIN2
+    , final double DN, final double DN1, final double DN2
     , DblRef pTAU, IntRef pTTYPE, DblRef pG ) { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMIN2, DN,DN1, DN2, TAU, TTYPE, G )
     //*
     //*  -- LAPACK routine (version 3.3.1)                                    --
@@ -24,9 +26,8 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
     //*  -- Univ. of California Berkeley, Univ. of Colorado Denver and NAG Ltd..--
     //*
     //*     .. Scalar Arguments ..
-//    int TTYPE; //INTEGER            I0, N0, N0IN, PP, TTYPE
-    int TTYPE = pTTYPE.getVal(); //BUG? //INTEGER            I0, N0, N0IN, PP, TTYPE
-    double G = pG.getVal(), TAU; //DOUBLE PRECISION   DMIN, DMIN1, DMIN2, DN, DN1, DN2, G, TAU
+    int TTYPE = pTTYPE.get(); //todo: BUG? //INTEGER            I0, N0, N0IN, PP, TTYPE
+    double G = pG.get(), TAU = 0; //DOUBLE PRECISION   DMIN, DMIN1, DMIN2, DN, DN1, DN2, G, TAU
     //*     ..
     //*     .. Array Arguments ..
     //    double Z[]; //DOUBLE PRECISION   Z( * )
@@ -78,7 +79,6 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
     //*        This is the shift.
     //*
     //*  TTYPE (output) INTEGER
-    //BUG? TTYPE (input/output) INTEGER
     //*        Shift type.
     //*
     //*  G     (input/output) REAL
@@ -112,12 +112,12 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
     if ( DMIN <= ZERO ) { //IF( DMIN.LE.ZERO ) THEN
       TAU = -DMIN; //TAU = -DMIN
       TTYPE = -1; //TTYPE = -1
-      pTAU.setVal(TAU);
-      pTTYPE.setVal(TTYPE);
+      pTAU.set(TAU);
+      pTTYPE.set(TTYPE);
       return; // RETURN
     } // END IF
     //*
-    NN = 4*N0 + PP - 1; //NN = 4*N0 + PP
+    NN = 4*N0 + PP - 1; //todo: note -1; //NN = 4*N0 + PP
     if ( N0IN == N0 ) { //IF( N0IN.EQ.N0 ) THEN
       //*
       //*        No eigenvalues deflated.
@@ -157,7 +157,8 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
             GAM = DN; //GAM = DN
             A2 = ZERO; //A2 = ZERO
             if ( Z[ NN-5 ]  >  Z[ NN-7 ] ) {
-              pTTYPE.setVal(TTYPE);
+              pTAU.set(TAU);
+              pTTYPE.set(TTYPE);
               return;
             } //IF( Z( NN-5 ) .GT. Z( NN-7 ) )RETURN
             B2 = Z[ NN-5 ] / Z[ NN-7 ]; //B2 = Z( NN-5 ) / Z( NN-7 )
@@ -167,12 +168,14 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
             B2 = Z[ NP-2 ]; //B2 = Z( NP-2 )
             GAM = DN1; //GAM = DN1
             if ( Z[ NP-4 ]  >  Z[ NP-2 ] ) {
-              pTTYPE.setVal(TTYPE);
+              pTAU.set(TAU);
+              pTTYPE.set(TTYPE);
               return;
             } //IF( Z( NP-4 ) .GT. Z( NP-2 ) )RETURN
             A2 = Z[ NP-4 ] / Z[ NP-2 ]; //A2 = Z( NP-4 ) / Z( NP-2 )
             if ( Z[ NN-9 ]  >  Z[ NN-11 ] ) {
-              pTTYPE.setVal(TTYPE);
+              pTAU.set(TAU);
+              pTTYPE.set(TTYPE);
               return;
             }//IF( Z( NN-9 ) .GT. Z( NN-11 ) )RETURN
             B2 = Z[ NN-9 ] / Z[ NN-11 ]; //B2 = Z( NN-9 ) / Z( NN-11 )
@@ -187,7 +190,8 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
               break; //IF( B2.EQ.ZERO )GO TO 20
             B1 = B2; //B1 = B2
             if ( Z[ I4 ]  >  Z[ I4-2 ] ) {
-              pTTYPE.setVal(TTYPE);
+              pTAU.set(TAU);
+              pTTYPE.set(TTYPE);
               return;
             } //IF( Z( I4 ) .GT. Z( I4-2 ) )RETURN
             B2 = B2*( Z[ I4 ] / Z[ I4-2 ] ); //B2 = B2*( Z( I4 ) / Z( I4-2 ) )
@@ -216,7 +220,8 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
         B2 = Z[ NP-6 ]; //B2 = Z( NP-6 )
         GAM = DN2; //GAM = DN2
         if ( Z[ NP-8 ] > B2  ||  Z[ NP-4 ] > B1 ) {
-          pTTYPE.setVal(TTYPE);
+          pTAU.set(TAU);
+          pTTYPE.set(TTYPE);
           return; //IF( Z( NP-8 ).GT.B2 .OR. Z( NP-4 ).GT.B1 )RETURN
         }
         A2 = ( Z[ NP-8 ] / B2 )*( ONE+Z[ NP-4 ] / B1 ); //A2 = ( Z( NP-8 ) / B2 )*( ONE+Z( NP-4 ) / B1 )
@@ -231,7 +236,8 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
               break; //IF( B2.EQ.ZERO )GO TO 40
             B1 = B2; //B1 = B2
             if ( Z[ I4 ]  >  Z[ I4-2 ] ) {
-              pTTYPE.setVal(TTYPE);
+              pTAU.set(TAU);
+              pTTYPE.set(TTYPE);
               return; //IF( Z( I4 ) .GT. Z( I4-2 ) )RETURN
             }
             B2 = B2*( Z[ I4 ] / Z[ I4-2 ] ); //B2 = B2*( Z( I4 ) / Z( I4-2 ) )
@@ -248,7 +254,7 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
         //*
         //*           Case 6, no information to guide us.
         //*
-        // BUG? TTYPE is never set in the original code
+        // todo: BUG? TTYPE may not be set in the original code
         if ( TTYPE == -6 ) { //IF( TTYPE.EQ.-6 ) THEN
           G = G + THIRD*( ONE-G ); //G = G + THIRD*( ONE-G )
         } else if ( TTYPE == -18 ) { //ELSE IF( TTYPE.EQ.-18 ) THEN
@@ -271,18 +277,18 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
         TTYPE = -7; //TTYPE = -7
         S = THIRD*DMIN1; //S = THIRD*DMIN1
         if ( Z[ NN-5 ] > Z[ NN-7 ] ) {
-          pG.setVal(G);
-          pTTYPE.setVal(TTYPE);
+          DblRef.set(pTAU, TAU, pG, G);
+          pTTYPE.set(TTYPE);
           return; //IF( Z( NN-5 ).GT.Z( NN-7 ) )RETURN
         }
         B1 = Z[ NN-5 ] / Z[ NN-7 ]; //B1 = Z( NN-5 ) / Z( NN-7 )
         B2 = B1; //B2 = B1
         if ( B2 != ZERO ) { //IF( B2.EQ.ZERO )GO TO 60
-          for (I4 = 4*N0 - 9 + PP - 1; I4 < 4*I0 - 1 + PP; I4 -= 4) { //DO 50 I4 = 4*N0 - 9 + PP, 4*I0 - 1 + PP, -4
+          for (I4 = 4*N0 - 9 + PP - 1; I4 < 4*I0 - 1 + PP; I4 -= 4) { //todo: note -1; //DO 50 I4 = 4*N0 - 9 + PP, 4*I0 - 1 + PP, -4
             A2 = B1; //A2 = B1
             if ( Z[ I4 ] > Z[ I4-2 ] ) {
-              pG.setVal(G);
-              pTTYPE.setVal(TTYPE);
+              DblRef.set(pTAU, TAU, pG, G);
+              pTTYPE.set(TTYPE);
               return; //IF( Z( I4 ).GT.Z( I4-2 ) )RETURN
             }
             B1 = B1*( Z[ I4 ] / Z[ I4-2 ] ); //B1 = B1*( Z( I4 ) / Z( I4-2 ) )
@@ -305,7 +311,8 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
         //*           Case 9.
         //*
         S = QURTR*DMIN1; //S = QURTR*DMIN1
-        if ( DMIN1 == DN1 )S = HALF*DMIN1; //IF( DMIN1.EQ.DN1 )S = HALF*DMIN1
+        if ( DMIN1 == DN1 )
+          S = HALF*DMIN1; //IF( DMIN1.EQ.DN1 )S = HALF*DMIN1
         TTYPE = -9; //TTYPE = -9
       } // END IF
       //*
@@ -319,17 +326,17 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
         TTYPE = -10; //TTYPE = -10
         S = THIRD*DMIN2; //S = THIRD*DMIN2
         if ( Z[ NN-5 ] > Z[ NN-7 ] ) {
-          pG.setVal(G);
-          pTTYPE.setVal(TTYPE);
+          DblRef.set(pTAU, TAU, pG, G);
+          pTTYPE.set(TTYPE);
           return; //IF( Z( NN-5 ).GT.Z( NN-7 ) )RETURN
         }
         B1 = Z[ NN-5 ] / Z[ NN-7 ]; //B1 = Z( NN-5 ) / Z( NN-7 )
         B2 = B1; //B2 = B1
         if ( B2 != ZERO ) { //IF( B2.EQ.ZERO )GO TO 80
-          for (I4 = 4*N0 - 9 + PP - 1; I4 < 4*I0 - 1 + PP; I4 -= 4) { //DO 70 I4 = 4*N0 - 9 + PP, 4*I0 - 1 + PP, -4
+          for (I4 = 4*N0 - 9 + PP - 1; I4 < 4*I0 - 1 + PP; I4 -= 4) { //todo: note -1; //DO 70 I4 = 4*N0 - 9 + PP, 4*I0 - 1 + PP, -4
             if ( Z[ I4 ] > Z[ I4-2 ] ) {
-              pG.setVal(G);
-              pTTYPE.setVal(TTYPE);
+              DblRef.set(pTAU, TAU, pG, G);
+              pTTYPE.set(TTYPE);
               return; //IF( Z( I4 ).GT.Z( I4-2 ) )RETURN
             }
             B1 = B1*( Z[ I4 ] / Z[ I4-2 ] ); //B1 = B1*( Z( I4 ) / Z( I4-2 ) )
@@ -359,8 +366,8 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
     } // END IF
     //*
     TAU = S; //TAU = S
-    DblRef.setVal(pTAU, TAU, pG, G);
-    pTTYPE.setVal(TTYPE);
+    DblRef.set(pTAU, TAU, pG, G);
+    pTTYPE.set(TTYPE);
   } // RETURN
   //*
   //*     End of DLASQ4

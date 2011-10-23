@@ -128,20 +128,20 @@ public class DLANST { //DOUBLE PRECISION FUNCTION DLANST( NORM, N, D, E )
       SUM = ONE; //SUM = ONE
       if (N > 1) { //IF( N.GT.1 ) THEN
         //CALL DLASSQ( N-1, E, 1, SCALE, SUM )
-        pSCALE.setVal(SCALE);
-        pSUM.setVal(SUM);
+        pSCALE.set(SCALE);
+        pSUM.set(SUM);
         DLASSQ(N - 1, E, 1, pSCALE, pSUM);
-        SCALE = pSCALE.getVal();
-        SUM = pSUM.getVal();
+        SCALE = pSCALE.get();
+        SUM = pSUM.get();
         // end of //CALL DLASSQ( N-1, E, 1, SCALE, SUM )
         SUM = 2 * SUM; //SUM = 2*SUM
       } // END IF
       //CALL DLASSQ( N, D, 1, SCALE, SUM )
-      pSCALE.setVal(SCALE);
-      pSUM.setVal(SUM);
+      pSCALE.set(SCALE);
+      pSUM.set(SUM);
       DLASSQ(N, D, 1, pSCALE, pSUM);
-      SCALE = pSCALE.getVal();
-      SUM = pSUM.getVal();
+      SCALE = pSCALE.get();
+      SUM = pSUM.get();
       // end of //CALL DLASSQ( N-1, E, 1, SCALE, SUM )
       ANORM = SCALE * SQRT(SUM); //ANORM = SCALE*SQRT( SUM )
     } // END IF
