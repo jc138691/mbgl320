@@ -6,7 +6,8 @@ import static lapack4j.utils.IntrFuncs.ABS;
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,19/10/11,4:33 PM
  */
 public class DLASSQ { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
-  public static void DLASSQ(int N, double[] X, int INCX, DblRef pSCALE, DblRef pSUMSQ ) { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
+  public static void DLASSQ(final int N, final double[] X, final int INCX
+    , DblRef pSCALE, DblRef pSUMSQ ) { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
     //*
     //*  -- LAPACK auxiliary routine (version 3.2) --
     //*  -- LAPACK is a software package provided by Univ. of Tennessee,    --
@@ -15,8 +16,8 @@ public class DLASSQ { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
     //*
     //*     .. Scalar Arguments ..
     //    int INCX, N; //INTEGER            INCX, N
-    double SCALE = pSCALE.getVal(); //DOUBLE PRECISION   SCALE, SUMSQ
-    double SUMSQ = pSUMSQ.getVal(); //DOUBLE PRECISION   SCALE, SUMSQ
+    double SCALE = pSCALE.get(); //DOUBLE PRECISION   SCALE, SUMSQ
+    double SUMSQ = pSUMSQ.get(); //DOUBLE PRECISION   SCALE, SUMSQ
     //*     ..
     //*     .. Array Arguments ..
     //    double X[]; //DOUBLE PRECISION   X( * )
@@ -79,7 +80,7 @@ public class DLASSQ { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
     //*     .. Executable Statements ..
     //*
     if ( N > 0 ) { //IF( N.GT.0 ) THEN
-      for (IX = 0; IX < 1 + ( N-1 )*INCX; IX += INCX) { //DO 10 IX = 1, 1 + ( N-1 )*INCX, INCX
+      for (IX = 0; IX < 1 + ( N-1 )*INCX; IX += INCX) { //todo: Note IX = 0; //DO 10 IX = 1, 1 + ( N-1 )*INCX, INCX
         if ( X[ IX ] != ZERO ) { //IF( X( IX ).NE.ZERO ) THEN
           ABSXI = ABS( X[ IX ] ); //ABSXI = ABS( X( IX ) )
           if ( SCALE < ABSXI ) { //IF( SCALE.LT.ABSXI ) THEN
@@ -93,8 +94,8 @@ public class DLASSQ { //SUBROUTINE DLASSQ( N, X, INCX, SCALE, SUMSQ )
         } // END IF
       }//10    CONTINUE; //10    CONTINUE
     } // END IF
-    pSCALE.setVal(SCALE);
-    pSUMSQ.setVal(SUMSQ);
+    pSCALE.set(SCALE);
+    pSUMSQ.set(SUMSQ);
   } // RETURN
   //*
   //*     End of DLASSQ

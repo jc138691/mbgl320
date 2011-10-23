@@ -159,10 +159,10 @@ public class DLARRC { //SUBROUTINE DLARRC( JOBT, N, VL, VU, D, E, PIVMIN,EIGCNT,
     } // ENDIF
     EIGCNT = RCNT - LCNT; //EIGCNT = RCNT - LCNT
 
-    pEIGCNT.setVal(EIGCNT);
-    pINFO.setVal(INFO);
-    pLCNT.setVal(LCNT);
-    pRCNT.setVal(RCNT);
+    pEIGCNT.set(EIGCNT);
+    pINFO.set(INFO);
+    pLCNT.set(LCNT);
+    pRCNT.set(RCNT);
   } // RETURN
   //*
   //*     end of DLARRC

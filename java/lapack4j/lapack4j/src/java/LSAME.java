@@ -4,7 +4,7 @@ import static lapack4j.utils.IntrFuncs.ICHAR;
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,18/10/11,2:35 PM
  */
 public class LSAME { //LOGICAL FUNCTION LSAME(CA,CB)
-  public static boolean LSAME(char CA, char CB) { //LOGICAL FUNCTION LSAME(CA,CB)
+  public static boolean LSAME(final char CA, final char CB) { //LOGICAL FUNCTION LSAME(CA,CB)
     //public class LSAME { //LOGICAL FUNCTION LSAME(CA,CB)
     //public static boolean LSAME(CA,CB) { //LOGICAL FUNCTION LSAME(CA,CB)
     //*

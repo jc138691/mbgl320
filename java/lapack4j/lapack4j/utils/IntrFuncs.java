@@ -71,6 +71,9 @@ public class IntrFuncs {
   public static double MAX(double a, double b) {
     return Math.max(a, b);
   }
+  public static double MAX(double a, double b, double c) {
+    return Math.max(a, Math.max(b, c));
+  }
   public static double ABS(double x) {
     return Math.abs(x);
   }
@@ -79,6 +82,9 @@ public class IntrFuncs {
   }
   public static double MIN(double a, double b) {
     return Math.min(a, b);
+  }
+  public static double MIN(double a, double b, double c) {
+    return Math.min(a, Math.min(b, c));
   }
   public static double TINY(double x) {
     return Double.MIN_VALUE;

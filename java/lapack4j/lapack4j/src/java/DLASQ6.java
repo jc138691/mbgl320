@@ -6,8 +6,9 @@ import static lapack4j.utils.IntrFuncs.MIN;
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,20/10/11,11:55 AM
  */
 public class DLASQ6 { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN,DNM1, DNM2 )
-  public static void DLASQ6(int I0, int N0, double[] Z, int PP
-    , DblRef pDMIN, DblRef pDMIN1, DblRef pDMIN2, DblRef pDN, DblRef pDNM1, DblRef pDNM2 ) { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN,DNM1, DNM2 )
+  public static void DLASQ6(final int I0, final int N0, final double[] Z, final int PP
+    , DblRef pDMIN, DblRef pDMIN1, DblRef pDMIN2
+    , DblRef pDN, DblRef pDNM1, DblRef pDNM2 ) { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN,DNM1, DNM2 )
     //*
     //*  -- LAPACK routine (version 3.2)                                    --
     //*
@@ -21,7 +22,8 @@ public class DLASQ6 { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN
     //*
     //*     .. Scalar Arguments ..
     //int I0, N0, PP; //INTEGER            I0, N0, PP
-    double DMIN, DMIN1, DMIN2, DN, DNM1, DNM2; //DOUBLE PRECISION   DMIN, DMIN1, DMIN2, DN, DNM1, DNM2
+    double DMIN = 0, DMIN1 = 0, DMIN2 = 0
+      , DN = 0, DNM1 = 0, DNM2 = 0; //DOUBLE PRECISION   DMIN, DMIN1, DMIN2, DN, DNM1, DNM2
     //*     ..
     //*     .. Array Arguments ..
     //double Z[]; //DOUBLE PRECISION   Z( * )
@@ -86,23 +88,28 @@ public class DLASQ6 { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN
     //*     ..
     //*     .. Executable Statements ..
     //*
-    if ( ( N0-I0-1 ) <= 0 ) return; //IF( ( N0-I0-1 ).LE.0 )RETURN
+    if ( ( N0-I0-1 ) <= 0 )  {
+      DblRef.set(pDMIN, DMIN, pDMIN1, DMIN1, pDMIN2, DMIN2);
+      DblRef.set(pDN, DN, pDNM1, DNM1, pDNM2, DNM2);
+      return; //IF( ( N0-I0-1 ).LE.0 )RETURN
+    }
     //*
     SAFMIN = DLAMCH('S'); //SAFMIN = DLAMCH( 'Safe minimum' )
-    J4 = 4*I0 + PP - 3; //J4 = 4*I0 + PP - 3
-    EMIN = Z[ J4+4 -1 ]; //EMIN = Z( J4+4 )
-    D = Z[ J4 - 1 ]; //D = Z( J4 )
+    J4 = 4*I0 + PP - 4; //todo: Note -4; //J4 = 4*I0 + PP - 3
+    EMIN = Z[ J4+4 ]; //EMIN = Z( J4+4 )
+    D = Z[ J4 ]; //D = Z( J4 )
     DMIN = D; //DMIN = D
     //*
     if ( PP == 0 ) { //IF( PP.EQ.0 ) THEN
-      for (J4 = 4*I0 - 1; J4 < 4*( N0-3 ); J4 += 4) { //DO 10 J4 = 4*I0, 4*( N0-3 ), 4
+      for (J4 = 4*I0 - 1; J4 < 4*( N0-3 ); J4 += 4) { //todo: note -1; //DO 10 J4 = 4*I0, 4*( N0-3 ), 4
         Z[ J4-2 ] = D + Z[ J4-1 ]; //Z( J4-2 ) = D + Z( J4-1 )
         if ( Z[ J4-2 ] == ZERO ) { //IF( Z( J4-2 ).EQ.ZERO ) THEN
           Z[ J4 ] = ZERO; //Z( J4 ) = ZERO
           D = Z[ J4+1 ]; //D = Z( J4+1 )
           DMIN = D; //DMIN = D
           EMIN = ZERO; //EMIN = ZERO
-        } else if ( SAFMIN*Z[ J4+1 ] < Z[ J4-2 ]  && SAFMIN*Z[ J4-2 ] < Z[ J4+1 ] ) { //ELSE IF( SAFMIN*Z( J4+1 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4+1 ) ) THEN
+        } else if ( SAFMIN*Z[ J4+1 ] < Z[ J4-2 ]
+          && SAFMIN*Z[ J4-2 ] < Z[ J4+1 ] ) { //ELSE IF( SAFMIN*Z( J4+1 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4+1 ) ) THEN
           TEMP = Z[ J4+1 ] / Z[ J4-2 ]; //TEMP = Z( J4+1 ) / Z( J4-2 )
           Z[ J4 ] = Z[ J4-1 ]*TEMP; //Z( J4 ) = Z( J4-1 )*TEMP
           D = D*TEMP; //D = D*TEMP
@@ -114,14 +121,15 @@ public class DLASQ6 { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN
         EMIN = MIN( EMIN, Z[ J4 ] ); //EMIN = MIN( EMIN, Z( J4 ) )
       } //10    CONTINUE
     } else { // ELSE
-      for (J4 = 4*I0 - 1; J4 < 4*( N0-3 ); J4+=4) { //DO 20 J4 = 4*I0, 4*( N0-3 ), 4
+      for (J4 = 4*I0 - 1; J4 < 4*( N0-3 ); J4 += 4) { //todo: note -1; //DO 20 J4 = 4*I0, 4*( N0-3 ), 4
         Z[ J4-3 ] = D + Z[ J4 ]; //Z( J4-3 ) = D + Z( J4 )
         if ( Z[ J4-3 ] == ZERO ) { //IF( Z( J4-3 ).EQ.ZERO ) THEN
           Z[ J4-1 ] = ZERO; //Z( J4-1 ) = ZERO
           D = Z[ J4+2 ]; //D = Z( J4+2 )
           DMIN = D; //DMIN = D
           EMIN = ZERO; //EMIN = ZERO
-        } else if ( SAFMIN*Z[ J4+2 ] < Z[ J4-3 ]  && SAFMIN*Z[ J4-3 ] < Z[ J4+2 ] ) { //ELSE IF( SAFMIN*Z( J4+2 ).LT.Z( J4-3 ) .AND.SAFMIN*Z( J4-3 ).LT.Z( J4+2 ) ) THEN
+        } else if ( SAFMIN*Z[ J4+2 ] < Z[ J4-3 ]
+          && SAFMIN*Z[ J4-3 ] < Z[ J4+2 ] ) { //ELSE IF( SAFMIN*Z( J4+2 ).LT.Z( J4-3 ) .AND.SAFMIN*Z( J4-3 ).LT.Z( J4+2 ) ) THEN
           TEMP = Z[ J4+2 ] / Z[ J4-3 ]; //TEMP = Z( J4+2 ) / Z( J4-3 )
           Z[ J4-1 ] = Z[ J4 ]*TEMP; //Z( J4-1 ) = Z( J4 )*TEMP
           D = D*TEMP; //D = D*TEMP
@@ -138,7 +146,7 @@ public class DLASQ6 { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN
     //*
     DNM2 = D; //DNM2 = D
     DMIN2 = DMIN; //DMIN2 = DMIN
-    J4 = 4*( N0-2 ) - PP - 1; //J4 = 4*( N0-2 ) - PP
+    J4 = 4*( N0-2 ) - PP - 1; //todo: note -1; //J4 = 4*( N0-2 ) - PP
     J4P2 = J4 + 2*PP - 1; //J4P2 = J4 + 2*PP - 1
     Z[ J4-2 ] = DNM2 + Z[ J4P2 ]; //Z( J4-2 ) = DNM2 + Z( J4P2 )
     if ( Z[ J4-2 ] == ZERO ) { //IF( Z( J4-2 ).EQ.ZERO ) THEN
@@ -146,7 +154,8 @@ public class DLASQ6 { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN
       DNM1 = Z[ J4P2+2 ]; //DNM1 = Z( J4P2+2 )
       DMIN = DNM1; //DMIN = DNM1
       EMIN = ZERO; //EMIN = ZERO
-    } else if ( SAFMIN*Z[ J4P2+2 ] < Z[ J4-2 ]  && SAFMIN*Z[ J4-2 ] < Z[ J4P2+2 ] ) { //ELSE IF( SAFMIN*Z( J4P2+2 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4P2+2 ) ) THEN
+    } else if ( SAFMIN*Z[ J4P2+2 ] < Z[ J4-2 ]
+      && SAFMIN*Z[ J4-2 ] < Z[ J4P2+2 ] ) { //ELSE IF( SAFMIN*Z( J4P2+2 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4P2+2 ) ) THEN
       TEMP = Z[ J4P2+2 ] / Z[ J4-2 ]; //TEMP = Z( J4P2+2 ) / Z( J4-2 )
       Z[ J4 ] = Z[ J4P2 ]*TEMP; //Z( J4 ) = Z( J4P2 )*TEMP
       DNM1 = DNM2*TEMP; //DNM1 = DNM2*TEMP
@@ -157,7 +166,7 @@ public class DLASQ6 { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN
     DMIN = MIN( DMIN, DNM1 ); //DMIN = MIN( DMIN, DNM1 )
     //*
     DMIN1 = DMIN; //DMIN1 = DMIN
-    J4 = J4 + 4 - 1; //J4 = J4 + 4
+    J4 = J4 + 4 - 1; //todo: note -1; //J4 = J4 + 4
     J4P2 = J4 + 2*PP - 1; //J4P2 = J4 + 2*PP - 1
     Z[ J4-2 ] = DNM1 + Z[ J4P2 ]; //Z( J4-2 ) = DNM1 + Z( J4P2 )
     if ( Z[ J4-2 ] == ZERO ) { //IF( Z( J4-2 ).EQ.ZERO ) THEN
@@ -165,7 +174,8 @@ public class DLASQ6 { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN
       DN = Z[ J4P2+2 ]; //DN = Z( J4P2+2 )
       DMIN = DN; //DMIN = DN
       EMIN = ZERO; //EMIN = ZERO
-    } else if ( SAFMIN*Z[ J4P2+2 ] < Z[ J4-2 ]  && SAFMIN*Z[ J4-2 ] < Z[ J4P2+2 ] ) { //ELSE IF( SAFMIN*Z( J4P2+2 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4P2+2 ) ) THEN
+    } else if ( SAFMIN*Z[ J4P2+2 ] < Z[ J4-2 ]
+      && SAFMIN*Z[ J4-2 ] < Z[ J4P2+2 ] ) { //ELSE IF( SAFMIN*Z( J4P2+2 ).LT.Z( J4-2 ) .AND.SAFMIN*Z( J4-2 ).LT.Z( J4P2+2 ) ) THEN
       TEMP = Z[ J4P2+2 ] / Z[ J4-2 ]; //TEMP = Z( J4P2+2 ) / Z( J4-2 )
       Z[ J4 ] = Z[ J4P2 ]*TEMP; //Z( J4 ) = Z( J4P2 )*TEMP
       DN = DNM1*TEMP; //DN = DNM1*TEMP
@@ -177,8 +187,8 @@ public class DLASQ6 { //SUBROUTINE DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN
     //*
     Z[ J4+2 -1 ] = DN; //Z( J4+2 ) = DN
     Z[ 4*N0-PP -1 ] = EMIN; //Z( 4*N0-PP ) = EMIN
-    DblRef.setVal(pDMIN, DMIN, pDMIN1, DMIN1, pDMIN2, DMIN2);
-    DblRef.setVal(pDN, DN, pDNM1, DNM1, pDNM2, DNM2);
+    DblRef.set(pDMIN, DMIN, pDMIN1, DMIN1, pDMIN2, DMIN2);
+    DblRef.set(pDN, DN, pDNM1, DNM1, pDNM2, DNM2);
   } // RETURN
   //*
   //*     End of DLASQ6
