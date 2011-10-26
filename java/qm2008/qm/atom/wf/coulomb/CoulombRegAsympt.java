@@ -77,7 +77,7 @@ public class CoulombRegAsympt extends FlowTest {
     double r = 50;
     double Z = -9;
     double res = CoulombRegAsympt.calc(L, Z, k, r);
-    // Rev. Mod. Phys. 27, 399–411 (1955)
+    // Rev. Mod. Phys. 27, 399-411 (1955)
     // Numerical Treatment of Coulomb Wave Functions
     assertEquals(0, Math.abs(res - 0.935709), eps); //rho=50, eta=9
 

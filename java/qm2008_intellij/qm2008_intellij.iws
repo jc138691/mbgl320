@@ -16,27 +16,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="2806653a-487d-4eaa-b546-24883f956ee4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dstegr.f" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_10.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_20.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_30.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_40.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_50.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_80.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAE2.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAE2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAEV2.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAEV2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLANST.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLANST.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRC.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRC.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLANEG.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRA.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRB.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRJ.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRR.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlaneg.f" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ3.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ3.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ4.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ5.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ5.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ6.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ6.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASSQ.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASSQ.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/LSAME.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/LSAME.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/DblRef.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/DblRef.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlarrd_java.f" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlarrd_java.f" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlarre_java.f" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlarre_java.f" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlarrr_java.f" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlarrr_java.f" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlarrv_java.f" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlarrv_java.f" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dstemr_java.f" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dstemr_java.f" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntRef.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntRef.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntrFuncs.java" afterPath="$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntrFuncs.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/smodel/HeSWaveAtom.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/smodel/HeSWaveAtom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/smodel/HeSWaveAtomDHIF94.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/smodel/HeSWaveAtomDHIF94.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/atom/wf/coulomb/CoulombRegAsympt.java" afterPath="$PROJECT_DIR$/../qm2008/qm/atom/wf/coulomb/CoulombRegAsympt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qm2008_intellij.ipr" afterPath="$PROJECT_DIR$/qm2008_intellij.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qm2008_intellij.iws" afterPath="$PROJECT_DIR$/qm2008_intellij.iws" />
     </list>
     <list id="3208e6f2-510e-4ba1-b5d7-a4bbdcaef33b" name="Failed commit: Failed commit: Default (2)" comment="Failed commit: Default (2)" />
@@ -378,8 +377,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="field_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -387,26 +386,34 @@
     <favorites_list name="qm2008_intellij" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="DLASQ4.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ4.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="286" column="87" selection-start="11966" selection-end="11966" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DLASQ3.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ3.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="245" column="8" selection-start="10572" selection-end="10572" vertical-scroll-proportion="0.3378882">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.43053645">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="DLARRB.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRB.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="119" column="17" selection-start="5660" selection-end="5660" vertical-scroll-proportion="0.05279503">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="DLARRB.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRB.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="10" column="40" selection-start="537" selection-end="537" vertical-scroll-proportion="-3.214123">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -425,22 +432,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRC.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRE.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAISNAN.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DISNAN.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntrFuncs.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_10.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/DblRef.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntRef.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_80.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/LSAME.java" />
-        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ3.java" />
         <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASSQ.java" />
         <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ5.java" />
         <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ6.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntRef.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ3.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntrFuncs.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRJ.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRR.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/atom/smodel/HeSWaveAtomDHIF94.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/atom/smodel/HeSWaveAtom.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/coulomb/CoulombRegAsympt.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRA.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLANEG.java" />
         <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ4.java" />
+        <option value="$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRB.java" />
       </list>
     </option>
   </component>
@@ -561,8 +568,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -590,101 +595,11 @@
               <option name="myItemId" value="qm2008_intellij" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lapack2j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -695,16 +610,16 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.lastSelected" value="fileTemplates" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -951,9 +866,9 @@
       <item index="1" class="java.lang.String" itemvalue="Application.HeSWaveResonances2011" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.FastLoopTest.testDot" />
       <item index="3" class="java.lang.String" itemvalue="Application.Lapack2J" />
-      <item index="4" class="java.lang.String" itemvalue="Application.RunOlgaHelp" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.HySWaveBasisHy" />
-      <item index="6" class="java.lang.String" itemvalue="Application.IntrFuncs" />
+      <item index="4" class="java.lang.String" itemvalue="Application.IntrFuncs" />
+      <item index="5" class="java.lang.String" itemvalue="Application.RunOlgaHelp" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.HySWaveBasisHy" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -988,7 +903,7 @@
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
-    <configuration useDefault="true">C:\Documents and Settings\jc138691\Application Data\Subversion</configuration>
+    <configuration useDefault="true">C:\Users\jc138691\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
   </component>
@@ -1055,22 +970,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1288" height="968" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41500765" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2469537" sideWeight="0.6340378" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5147929" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2469537" sideWeight="0.6340378" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24757281" sideWeight="0.5926748" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.65072304" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39946738" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2652068" sideWeight="0.6177515" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.65072304" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38224852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15609756" sideWeight="0.5151099" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5147929" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38186812" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
@@ -1084,10 +998,11 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289941" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40946746" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41301775" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4848901" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.58928573" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1215,84 +1130,84 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_30.java">
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRJ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.083129585" />
+        <state line="17" column="28" selection-start="842" selection-end="842" vertical-scroll-proportion="-4.620053" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_10.java">
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlarrb_java.f">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="44" selection-start="166" selection-end="166" vertical-scroll-proportion="0.083129585" />
+        <state line="15" column="28" selection-start="0" selection-end="12363" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_80.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="174" selection-end="174" vertical-scroll-proportion="0.1275" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntrFuncs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="37" selection-start="2635" selection-end="2635" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/goto_labels/GO_TO_20.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="22" selection-start="144" selection-end="173" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/IntRef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="14" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/utils/DblRef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="14" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dstegr.f">
+    <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/Matrix.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dstemr.f">
+    <entry file="file://$PROJECT_DIR$/../junit-4.0-src/org/junit/internal/requests/ClassRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/coulomb/CoulombRegAsympt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="31" selection-start="2400" selection-end="2400" vertical-scroll-proportion="0.11746988" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/smodel/HeSWaveAtom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="26" selection-start="532" selection-end="532" vertical-scroll-proportion="0.11746988" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/smodel/HeSWaveAtomDHIF94.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="26" selection-start="218" selection-end="218" vertical-scroll-proportion="0.11746988" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/lapack/dlaneg.f">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/UCGetSrc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="14" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/lapack2j/Lapack2J.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="15" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0" />
+        <state line="7" column="3" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/LSAME.java">
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/dlaneg_java.f">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="51" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0" />
+        <state line="6" column="50" selection-start="0" selection-end="6669" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASSQ.java">
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="41" selection-start="3143" selection-end="3143" vertical-scroll-proportion="0.0" />
+        <state line="6" column="14" selection-start="208" selection-end="208" vertical-scroll-proportion="0.3411371" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ6.java">
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLAISNAN.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="34" selection-start="1340" selection-end="1340" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="187" column="49" selection-start="8031" selection-end="8031" vertical-scroll-proportion="0.0" />
+        <state line="4" column="0" selection-start="27" selection-end="113" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ4.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="286" column="87" selection-start="11966" selection-end="11966" vertical-scroll-proportion="0.0" />
+        <state line="187" column="47" selection-start="7741" selection-end="7741" vertical-scroll-proportion="0.15674603" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLASQ3.java">
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLANEG.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="245" column="8" selection-start="10572" selection-end="10572" vertical-scroll-proportion="0.3378882">
+        <state line="2" column="43" selection-start="117" selection-end="117" vertical-scroll-proportion="0.24657534" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lapack4j/lapack4j/src/java/DLARRB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="40" selection-start="537" selection-end="537" vertical-scroll-proportion="-3.214123">
           <folding />
         </state>
       </provider>
@@ -1314,7 +1229,13 @@
       </state>
       <state key="Copyright.UI">
         <settings>
-          <splitter-proportions />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
         </settings>
       </state>
       <state key="FacetStructureConfigurable.UI">
@@ -1343,7 +1264,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.5</last-edited>
+          <last-edited>1.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1355,12 +1276,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>lapack4j</last-edited>
+          <last-edited>junit4.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

@@ -185,7 +185,7 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
           //*              Approximate contribution to norm squared from I < NN-1.
           //*
           A2 = A2 + B2; //A2 = A2 + B2
-          for (I4 = NP; I4 < 4*I0 - 1 + PP; I4 -= 4) { //DO 10 I4 = NP, 4*I0 - 1 + PP, -4
+          for (I4 = NP; I4 > 4*I0 - 1 + PP; I4 -= 4) { //DO 10 I4 = NP, 4*I0 - 1 + PP, -4
             if ( B2 == ZERO )
               break; //IF( B2.EQ.ZERO )GO TO 20
             B1 = B2; //B1 = B2
@@ -231,7 +231,7 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
         if ( N0-I0 > 2 ) { //IF( N0-I0.GT.2 ) THEN
           B2 = Z[ NN-13 ] / Z[ NN-15 ]; //B2 = Z( NN-13 ) / Z( NN-15 )
           A2 = A2 + B2; //A2 = A2 + B2
-          for (I4 = NN - 17; I4 < 4*I0 - 1 + PP; I4 -= 4) { //DO 30 I4 = NN - 17, 4*I0 - 1 + PP, -4
+          for (I4 = NN - 17; I4 > 4*I0 - 1 + PP; I4 -= 4) { //DO 30 I4 = NN - 17, 4*I0 - 1 + PP, -4
             if ( B2 == ZERO )
               break; //IF( B2.EQ.ZERO )GO TO 40
             B1 = B2; //B1 = B2
@@ -284,7 +284,7 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
         B1 = Z[ NN-5 ] / Z[ NN-7 ]; //B1 = Z( NN-5 ) / Z( NN-7 )
         B2 = B1; //B2 = B1
         if ( B2 != ZERO ) { //IF( B2.EQ.ZERO )GO TO 60
-          for (I4 = 4*N0 - 9 + PP - 1; I4 < 4*I0 - 1 + PP; I4 -= 4) { //todo: note -1; //DO 50 I4 = 4*N0 - 9 + PP, 4*I0 - 1 + PP, -4
+          for (I4 = 4*N0 - 9 + PP - 1; I4 > 4*I0 - 1 + PP; I4 -= 4) { //todo: note -1; //DO 50 I4 = 4*N0 - 9 + PP, 4*I0 - 1 + PP, -4
             A2 = B1; //A2 = B1
             if ( Z[ I4 ] > Z[ I4-2 ] ) {
               DblRef.set(pTAU, TAU, pG, G);
@@ -333,7 +333,7 @@ public class DLASQ4 { //SUBROUTINE DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMI
         B1 = Z[ NN-5 ] / Z[ NN-7 ]; //B1 = Z( NN-5 ) / Z( NN-7 )
         B2 = B1; //B2 = B1
         if ( B2 != ZERO ) { //IF( B2.EQ.ZERO )GO TO 80
-          for (I4 = 4*N0 - 9 + PP - 1; I4 < 4*I0 - 1 + PP; I4 -= 4) { //todo: note -1; //DO 70 I4 = 4*N0 - 9 + PP, 4*I0 - 1 + PP, -4
+          for (I4 = 4*N0 - 9 + PP - 1; I4 > 4*I0 - 1 + PP; I4 -= 4) { //todo: note -1; //DO 70 I4 = 4*N0 - 9 + PP, 4*I0 - 1 + PP, -4
             if ( Z[ I4 ] > Z[ I4-2 ] ) {
               DblRef.set(pTAU, TAU, pG, G);
               pTTYPE.set(TTYPE);
