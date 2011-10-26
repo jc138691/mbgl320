@@ -10,4 +10,12 @@ public class IntRef {
   public void set(int val) {
     this.val = val;
   }
+  public static void set(IntRef pV, int v, IntRef pV2, int v2) {
+    pV.set(v);
+    pV2.set(v2);
+  }
+  public static void set(IntRef pV, int v, IntRef pV2, int v2, IntRef pV3, int v3) {
+    set(pV, v, pV2, v2);
+    pV3.set(v3);
+  }
 }

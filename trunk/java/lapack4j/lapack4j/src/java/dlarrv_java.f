@@ -225,7 +225,7 @@ EPS = DLAMCH( 'Precision' ); //EPS = DLAMCH( 'Precision' )
 RQTOL = TWO * EPS; //RQTOL = TWO * EPS
 //*
 //*     Set expert flags for standard code.
-TRYRQC = .TRUE.; //TRYRQC = .TRUE.
+TRYRQC =  true; //TRYRQC = .TRUE.
 if ((DOL == 1) && (DOU == M)) { //IF((DOL.EQ.1).AND.(DOU.EQ.M)) THEN
 } else { // ELSE
 //*        Only selected eigenpairs are computed. Since the other evalues
@@ -547,10 +547,10 @@ LAMBDA = WORK( WINDEX ); //LAMBDA = WORK( WINDEX )
 DONE = DONE + 1; //DONE = DONE + 1
 //*                    Check if eigenvector computation is to be skipped
 if ((WINDEX < DOL) || (WINDEX > DOU)) { //IF((WINDEX.LT.DOL).OR.(WINDEX.GT.DOU)) THEN
-ESKIP = .TRUE.; //ESKIP = .TRUE.
+ESKIP =  true; //ESKIP = .TRUE.
 GOTO 125; //GOTO 125
 } else { // ELSE
-ESKIP = .FALSE.; //ESKIP = .FALSE.
+ESKIP =  false; //ESKIP = .FALSE.
 } // ENDIF
 LEFT = WORK( WINDEX ) - WERR( WINDEX ); //LEFT = WORK( WINDEX ) - WERR( WINDEX )
 RIGHT = WORK( WINDEX ) + WERR( WINDEX ); //RIGHT = WORK( WINDEX ) + WERR( WINDEX )
@@ -606,15 +606,15 @@ WGAP(WINDEX) = GAP; //WGAP(WINDEX) = GAP
 //*                    However, the Rayleigh Quotient can have the wrong sign
 //*                    and lead us away from the desired eigenvalue. In this
 //*                    case, the best we can do is to use bisection.
-USEDBS = .FALSE.; //USEDBS = .FALSE.
-USEDRQ = .FALSE.; //USEDRQ = .FALSE.
+USEDBS =  false; //USEDBS = .FALSE.
+USEDRQ =  false; //USEDRQ = .FALSE.
 //*                    Bisection is initially turned off unless it is forced
-NEEDBS =  .NOT.TRYRQC; //NEEDBS =  .NOT.TRYRQC
+NEEDBS =   !TRYRQC; //NEEDBS =  .NOT.TRYRQC
 120                 CONTINUE; //120                 CONTINUE
 //*                    Check if bisection should be used to refine eigenvalue
 if (NEEDBS) { //IF(NEEDBS) THEN
 //*                       Take the bisection as new iterate
-USEDBS = .TRUE.; //USEDBS = .TRUE.
+USEDBS =  true; //USEDBS = .TRUE.
 ITMP1 = IWORK( IINDR+WINDEX ); //ITMP1 = IWORK( IINDR+WINDEX )
 OFFSET = INDEXW( WBEGIN ) - 1; //OFFSET = INDEXW( WBEGIN ) - 1
 CALL DLARRB( IN, D(IBEGIN),WORK(INDLLD+IBEGIN-1),INDEIG,INDEIG,ZERO, TWO*EPS, OFFSET,WORK(WBEGIN),WGAP(WBEGIN),WERR(WBEGIN),WORK( INDWRK ),IWORK( IINDWK ), PIVMIN, SPDIAM,ITMP1, IINFO ); //CALL DLARRB( IN, D(IBEGIN),WORK(INDLLD+IBEGIN-1),INDEIG,INDEIG,ZERO, TWO*EPS, OFFSET,WORK(WBEGIN),WGAP(WBEGIN),WERR(WBEGIN),WORK( INDWRK ),IWORK( IINDWK ), PIVMIN, SPDIAM,ITMP1, IINFO )
@@ -628,7 +628,7 @@ LAMBDA = WORK( WINDEX ); //LAMBDA = WORK( WINDEX )
 IWORK( IINDR+WINDEX ) = 0; //IWORK( IINDR+WINDEX ) = 0
 } // ENDIF
 //*                    Given LAMBDA, compute the eigenvector.
-CALL DLAR1V( IN, 1, IN, LAMBDA, D( IBEGIN ),L( IBEGIN ), WORK(INDLD+IBEGIN-1),WORK(INDLLD+IBEGIN-1),PIVMIN, GAPTOL, Z( IBEGIN, WINDEX ),.NOT.USEDBS, NEGCNT, ZTZ, MINGMA,IWORK( IINDR+WINDEX ), ISUPPZ( 2*WINDEX-1 ),NRMINV, RESID, RQCORR, WORK( INDWRK ) ); //CALL DLAR1V( IN, 1, IN, LAMBDA, D( IBEGIN ),L( IBEGIN ), WORK(INDLD+IBEGIN-1),WORK(INDLLD+IBEGIN-1),PIVMIN, GAPTOL, Z( IBEGIN, WINDEX ),.NOT.USEDBS, NEGCNT, ZTZ, MINGMA,IWORK( IINDR+WINDEX ), ISUPPZ( 2*WINDEX-1 ),NRMINV, RESID, RQCORR, WORK( INDWRK ) )
+CALL DLAR1V( IN, 1, IN, LAMBDA, D( IBEGIN ),L( IBEGIN ), WORK(INDLD+IBEGIN-1),WORK(INDLLD+IBEGIN-1),PIVMIN, GAPTOL, Z( IBEGIN, WINDEX ), !USEDBS, NEGCNT, ZTZ, MINGMA,IWORK( IINDR+WINDEX ), ISUPPZ( 2*WINDEX-1 ),NRMINV, RESID, RQCORR, WORK( INDWRK ) ); //CALL DLAR1V( IN, 1, IN, LAMBDA, D( IBEGIN ),L( IBEGIN ), WORK(INDLD+IBEGIN-1),WORK(INDLLD+IBEGIN-1),PIVMIN, GAPTOL, Z( IBEGIN, WINDEX ),.NOT.USEDBS, NEGCNT, ZTZ, MINGMA,IWORK( IINDR+WINDEX ), ISUPPZ( 2*WINDEX-1 ),NRMINV, RESID, RQCORR, WORK( INDWRK ) )
 if (ITER  ==  0) { //IF(ITER .EQ. 0) THEN
 BSTRES = RESID; //BSTRES = RESID
 BSTW = LAMBDA; //BSTW = LAMBDA
@@ -647,7 +647,7 @@ ITER = ITER + 1; //ITER = ITER + 1
 //*                    Convergence test for Rayleigh-Quotient iteration
 //*                    (omitted when Bisection has been used)
 //*
-if ( RESID > TOL*GAP  &&  ABS( RQCORR ) > RQTOL*ABS( LAMBDA )  &&  .NOT. USEDBS)THEN; //IF( RESID.GT.TOL*GAP .AND. ABS( RQCORR ).GT.RQTOL*ABS( LAMBDA ) .AND. .NOT. USEDBS)THEN
+if ( RESID > TOL*GAP  &&  ABS( RQCORR ) > RQTOL*ABS( LAMBDA )  &&   ! USEDBS)THEN; //IF( RESID.GT.TOL*GAP .AND. ABS( RQCORR ).GT.RQTOL*ABS( LAMBDA ) .AND. .NOT. USEDBS)THEN
 //*                       We need to check that the RQCORR update doesn't
 //*                       move the eigenvalue away from the desired one and
 //*                       towards a neighbor. -> protection with bisection
@@ -661,7 +661,7 @@ SGNDEF = ONE; //SGNDEF = ONE
 //*                       We only use the RQCORR if it improves the
 //*                       the iterate reasonably.
 if ( ( RQCORR*SGNDEF >= ZERO ) && ( LAMBDA + RQCORR <=  RIGHT) && ( LAMBDA + RQCORR >=  LEFT)) { //IF( ( RQCORR*SGNDEF.GE.ZERO ).AND.( LAMBDA + RQCORR.LE. RIGHT).AND.( LAMBDA + RQCORR.GE. LEFT)) THEN
-USEDRQ = .TRUE.; //USEDRQ = .TRUE.
+USEDRQ =  true; //USEDRQ = .TRUE.
 //*                          Store new midpoint of bisection interval in WORK
 if (SGNDEF == ONE) { //IF(SGNDEF.EQ.ONE) THEN
 //*                             The current LAMBDA is on the left of the true
@@ -688,31 +688,31 @@ LAMBDA = LAMBDA + RQCORR; //LAMBDA = LAMBDA + RQCORR
 //*                          Update width of error interval
 WERR( WINDEX ) =HALF * (RIGHT-LEFT); //WERR( WINDEX ) =HALF * (RIGHT-LEFT)
 } else { // ELSE
-NEEDBS = .TRUE.; //NEEDBS = .TRUE.
+NEEDBS =  true; //NEEDBS = .TRUE.
 } // ENDIF
 if (RIGHT-LEFT < RQTOL*ABS(LAMBDA)) { //IF(RIGHT-LEFT.LT.RQTOL*ABS(LAMBDA)) THEN
 //*                             The eigenvalue is computed to bisection accuracy
 //*                             compute eigenvector and stop
-USEDBS = .TRUE.; //USEDBS = .TRUE.
+USEDBS =  true; //USEDBS = .TRUE.
 GOTO 120; //GOTO 120
 ELSEIF( ITER < MAXITR ) THEN; //ELSEIF( ITER.LT.MAXITR ) THEN
 GOTO 120; //GOTO 120
 ELSEIF( ITER == MAXITR ) THEN; //ELSEIF( ITER.EQ.MAXITR ) THEN
-NEEDBS = .TRUE.; //NEEDBS = .TRUE.
+NEEDBS =  true; //NEEDBS = .TRUE.
 GOTO 120; //GOTO 120
 } else { // ELSE
 INFO = 5; //INFO = 5
 } // RETURN
 } // END IF
 } else { // ELSE
-STP2II = .FALSE.; //STP2II = .FALSE.
+STP2II =  false; //STP2II = .FALSE.
 if (USEDRQ  &&  USEDBS  && BSTRES <= RESID) { //IF(USEDRQ .AND. USEDBS .AND.BSTRES.LE.RESID) THEN
 LAMBDA = BSTW; //LAMBDA = BSTW
-STP2II = .TRUE.; //STP2II = .TRUE.
+STP2II =  true; //STP2II = .TRUE.
 } // ENDIF
 if  (STP2II) { //IF (STP2II) THEN
 //*                          improve error angle by second step
-CALL DLAR1V( IN, 1, IN, LAMBDA,D( IBEGIN ), L( IBEGIN ),WORK(INDLD+IBEGIN-1),WORK(INDLLD+IBEGIN-1),PIVMIN, GAPTOL, Z( IBEGIN, WINDEX ),.NOT.USEDBS, NEGCNT, ZTZ, MINGMA,IWORK( IINDR+WINDEX ),ISUPPZ( 2*WINDEX-1 ),NRMINV, RESID, RQCORR, WORK( INDWRK ) ); //CALL DLAR1V( IN, 1, IN, LAMBDA,D( IBEGIN ), L( IBEGIN ),WORK(INDLD+IBEGIN-1),WORK(INDLLD+IBEGIN-1),PIVMIN, GAPTOL, Z( IBEGIN, WINDEX ),.NOT.USEDBS, NEGCNT, ZTZ, MINGMA,IWORK( IINDR+WINDEX ),ISUPPZ( 2*WINDEX-1 ),NRMINV, RESID, RQCORR, WORK( INDWRK ) )
+CALL DLAR1V( IN, 1, IN, LAMBDA,D( IBEGIN ), L( IBEGIN ),WORK(INDLD+IBEGIN-1),WORK(INDLLD+IBEGIN-1),PIVMIN, GAPTOL, Z( IBEGIN, WINDEX ), !USEDBS, NEGCNT, ZTZ, MINGMA,IWORK( IINDR+WINDEX ),ISUPPZ( 2*WINDEX-1 ),NRMINV, RESID, RQCORR, WORK( INDWRK ) ); //CALL DLAR1V( IN, 1, IN, LAMBDA,D( IBEGIN ), L( IBEGIN ),WORK(INDLD+IBEGIN-1),WORK(INDLLD+IBEGIN-1),PIVMIN, GAPTOL, Z( IBEGIN, WINDEX ),.NOT.USEDBS, NEGCNT, ZTZ, MINGMA,IWORK( IINDR+WINDEX ),ISUPPZ( 2*WINDEX-1 ),NRMINV, RESID, RQCORR, WORK( INDWRK ) )
 } // ENDIF
 WORK( WINDEX ) = LAMBDA; //WORK( WINDEX ) = LAMBDA
 } // END IF
@@ -746,7 +746,7 @@ W( WINDEX ) = LAMBDA+SIGMA; //W( WINDEX ) = LAMBDA+SIGMA
 //*                    cancellation and doesn't reflect the theory
 //*                    where the initial gaps are underestimated due
 //*                    to WERR being too crude.)
-if (.NOT.ESKIP) { //IF(.NOT.ESKIP) THEN
+if ( !ESKIP) { //IF(.NOT.ESKIP) THEN
 if ( K > 1) { //IF( K.GT.1) THEN
 WGAP( WINDMN ) = MAX( WGAP(WINDMN),W(WINDEX)-WERR(WINDEX)- W(WINDMN)-WERR(WINDMN) ); //WGAP( WINDMN ) = MAX( WGAP(WINDMN),W(WINDEX)-WERR(WINDEX)- W(WINDMN)-WERR(WINDMN) )
 } // ENDIF

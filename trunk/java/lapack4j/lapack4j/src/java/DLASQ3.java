@@ -18,15 +18,27 @@ import static lapack4j.src.java.DISNAN.DISNAN;
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,20/10/11,4:01 PM
  */
 public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QMAX, NFAIL,ITER, NDIV, IEEE, TTYPE, DMIN1, DMIN2, DN, DN1,DN2, G, TAU )
-  public static void DLASQ3(final int I0
-    , IntRef pN0, final double[] Z, IntRef pPP
-    , DblRef pDMIN, DblRef pSIGMA, DblRef pDESIG
-    , final double QMAX, IntRef pNFAIL
-    , IntRef pITER, IntRef pNDIV
-    , final boolean IEEE
-    , IntRef pTTYPE
-    , DblRef pDMIN1, DblRef pDMIN2, DblRef pDN, DblRef pDN1, DblRef pDN2
-    , DblRef pG, DblRef pTAU ) { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QMAX, NFAIL,ITER, NDIV, IEEE, TTYPE, DMIN1, DMIN2, DN, DN1,DN2, G, TAU )
+  public static void DLASQ3(final int I0   //I0     (input) INTEGER
+    , IntRef pN0     //N0     (input/output) INTEGER
+    , final double[] Z   //Z      (input) DOUBLE PRECISION array, dimension ( 4*N )
+    , IntRef pPP     //PP     (input/output) INTEGER
+    , DblRef pDMIN   //DMIN   (output) DOUBLE PRECISION
+    , DblRef pSIGMA  //SIGMA  (output) DOUBLE PRECISION
+    , DblRef pDESIG  //DESIG  (input/output) DOUBLE PRECISION
+    , DblRef pQMAX   //QMAX   (input) DOUBLE PRECISION//todo: bug? QMAX value is changed here
+    , IntRef pNFAIL  //NFAIL  (output) INTEGER
+    , IntRef pITER   //ITER   (output) INTEGER
+    , IntRef pNDIV   //NDIV   (output) INTEGER
+    , final boolean IEEE   //IEEE   (input) LOGICAL
+    , IntRef pTTYPE   //TTYPE  (input/output) INTEGER
+    , DblRef pDMIN1   //DMIN1  (input/output) DOUBLE PRECISION
+    , DblRef pDMIN2   //DMIN2  (input/output) DOUBLE PRECISION
+    , DblRef pDN      //DN     (input/output) DOUBLE PRECISION
+    , DblRef pDN1     //DN1    (input/output) DOUBLE PRECISION
+    , DblRef pDN2     //DN2    (input/output) DOUBLE PRECISION
+    , DblRef pG       //G      (input/output) DOUBLE PRECISION
+    , DblRef pTAU     //TAU    (input/output) DOUBLE PRECISION
+  ) { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QMAX, NFAIL,ITER, NDIV, IEEE, TTYPE, DMIN1, DMIN2, DN, DN1,DN2, G, TAU )
     //*
     //*  -- LAPACK routine (version 3.2.2)                                    --
     //*
@@ -39,20 +51,29 @@ public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QM
     //*  -- Univ. of California Berkeley, Univ. of Colorado Denver and NAG Ltd..--
     //*
     //*     .. Scalar Arguments ..
-    //    boolean IEEE; //LOGICAL            IEEE
-    int ITER = 0, N0 = pN0.get()
-      , NDIV = 0, NFAIL = 0
-      , PP = pPP.get(); //INTEGER            I0, ITER, N0, NDIV, NFAIL, PP
-    double DESIG = pDESIG.get()
-      , DMIN = pDMIN.get()
-      , DMIN1 = pDMIN1.get()
-      , DMIN2 = pDMIN2.get()
-      , DN = pDN.get()
-      , DN1 = pDN1.get()
-      , DN2 = pDN2.get()
-      , G  = pG.get()
-      , SIGMA = 0
-      , TAU = pTAU.get(); //DOUBLE PRECISION   DESIG, DMIN, DMIN1, DMIN2, DN, DN1, DN2, G,QMAX, SIGMA, TAU
+    //    boolean IEEE; //IEEE   (input) LOGICAL//LOGICAL            IEEE
+    int ITER = 0  //ITER   (output) INTEGER
+      //I0     (input) INTEGER
+      , N0 = pN0.get()    //N0     (input/output) INTEGER
+      , NDIV = 0    //NDIV   (output) INTEGER
+      , NFAIL = 0  //NFAIL  (output) INTEGER
+      , PP = pPP.get()  //PP     (input/output) INTEGER
+      , TTYPE = pTTYPE.get() //TTYPE  (input/output) INTEGER
+      ; //INTEGER            I0, ITER, N0, NDIV, NFAIL, PP
+    pITER.set(ITER);  pNDIV.set(NDIV);  pNFAIL.set(NFAIL); //update outputs
+    double DESIG = pDESIG.get()  //DESIG  (input/output) DOUBLE PRECISION
+      , DMIN = 0 //DMIN   (output) DOUBLE PRECISION
+      , DMIN1 = pDMIN1.get()  //DMIN1  (input/output)
+      , DMIN2 = pDMIN2.get()  //DMIN2  (input/output)
+      , DN = pDN.get()        //DN     (input/output) DOUBLE PRECISION
+      , DN1 = pDN1.get()      //DN1    (input/output) DOUBLE PRECISION
+      , DN2 = pDN2.get()      //DN2    (input/output) DOUBLE PRECISION
+      , G  = pG.get()         //(input/output) DOUBLE PRECISION
+      , QMAX = pQMAX.get()   //todo: bug?  //QMAX   (input) DOUBLE PRECISION
+      , SIGMA = 0      //SIGMA  (output) DOUBLE PRECISION
+      , TAU = pTAU.get()  //TAU    (input/output) DOUBLE PRECISION
+      ; //DOUBLE PRECISION   DESIG, DMIN, DMIN1, DMIN2, DN, DN1, DN2, G,QMAX, SIGMA, TAU
+    pDMIN.set(DMIN);  pSIGMA.set(SIGMA);       //update outputs
     //*     ..
     //*     .. Array Arguments ..
     //    double Z[]; //DOUBLE PRECISION   Z( * )
@@ -94,6 +115,7 @@ public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QM
     //*
     //*  QMAX   (input) DOUBLE PRECISION
     //*         Maximum value of q.
+    ////todo: bug? QMAX value is changed here
     //*
     //*  NFAIL  (output) INTEGER
     //*         Number of times shift was too big.
@@ -136,16 +158,16 @@ public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QM
     {  ZERO = 0.0D; QURTR = 0.250D; HALF = 0.5D; ONE = 1.0D; TWO = 2.0D; HUNDRD = 100.0D; } //PARAMETER          ( ZERO = 0.0D0, QURTR = 0.250D0, HALF = 0.5D0,ONE = 1.0D0, TWO = 2.0D0, HUNDRD = 100.0D0 )
     //*     ..
     //*     .. Local Scalars ..
-    int IPN4, J4, N0IN, NN
-      , TTYPE; //INTEGER            IPN4, J4, N0IN, NN, TTYPE
+    int IPN4, J4, N0IN, NN;
+    //, TTYPE; //INTEGER            IPN4, J4, N0IN, NN, TTYPE
     double EPS, S, T, TEMP, TOL, TOL2; //DOUBLE PRECISION   EPS, S, T, TEMP, TOL, TOL2
     //*     ..
     //*     .. External Subroutines ..
     //    EXTERNAL           DLASQ4, DLASQ5, DLASQ6; //EXTERNAL           DLASQ4, DLASQ5, DLASQ6
     //*     ..
     //*     .. External Function ..
-    double DLAMCH; //DOUBLE PRECISION   DLAMCH
-    boolean DISNAN; //LOGICAL            DISNAN
+    //    double DLAMCH; //DOUBLE PRECISION   DLAMCH
+    //    boolean DISNAN; //LOGICAL            DISNAN
     //    EXTERNAL           DISNAN, DLAMCH; //EXTERNAL           DISNAN, DLAMCH
     //*     ..
     //*     .. Intrinsic Functions ..
@@ -162,12 +184,13 @@ public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QM
     //*
     for (;;) { //10 CONTINUE
       //*
-      if ( N0 < I0 )
+      if ( N0 < I0 )   {
         return; //IF( N0.LT.I0 )RETURN
-      NN = 4*N0 + PP - 1; //TODO: Bug fix? duplicated to compile in java
+      }
+      NN = 4*N0 + PP - 1; //TODO: note -1 //Bug fix? duplicated to compile in java ;
       try {
         if ( N0 != I0 ) { //IF( N0.EQ.I0 )GO TO 20
-          NN = 4*N0 + PP - 1; //NN = 4*N0 + PP
+          NN = 4*N0 + PP - 1; //todo note -1; //NN = 4*N0 + PP
           if ( N0 == ( I0+1 ) )
             throw new GO_TO_40(); //IF( N0.EQ.( I0+1 ) )GO TO 40
           //*
@@ -178,8 +201,8 @@ public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QM
           //*
         } //20 CONTINUE
         //*
-        Z[ 4*N0-3 ] = Z[ 4*N0+PP-3 ] + SIGMA; //Z( 4*N0-3 ) = Z( 4*N0+PP-3 ) + SIGMA
-        N0 = N0 - 1; //N0 = N0 - 1
+        Z[ 4*N0-3 -1 ] = Z[ 4*N0+PP-3 -1] + SIGMA; //todo: note -1; //Z( 4*N0-3 ) = Z( 4*N0+PP-3 ) + SIGMA
+        N0 = N0 - 1; pN0.set(N0); //N0 = N0 - 1
         continue; //GO TO 10
         //*
         //*     Check  whether E(N0-2) is negligible, 2 eigenvalues.
@@ -208,49 +231,59 @@ public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QM
         Z[ NN-3 ] = Z[ NN-3 ]*( Z[ NN-7 ] / T ); //Z( NN-3 ) = Z( NN-3 )*( Z( NN-7 ) / T )
         Z[ NN-7 ] = T; //Z( NN-7 ) = T
       } // END IF
-      Z[ 4*N0-7 ] = Z[ NN-7 ] + SIGMA; //Z( 4*N0-7 ) = Z( NN-7 ) + SIGMA
-      Z[ 4*N0-3 ] = Z[ NN-3 ] + SIGMA; //Z( 4*N0-3 ) = Z( NN-3 ) + SIGMA
-      N0 = N0 - 2; //N0 = N0 - 2
+      Z[ 4*N0-7 -1] = Z[ NN-7 ] + SIGMA; //todo: note -1; //Z( 4*N0-7 ) = Z( NN-7 ) + SIGMA
+      Z[ 4*N0-3 -1] = Z[ NN-3 ] + SIGMA; //todo: note -1; //Z( 4*N0-3 ) = Z( NN-3 ) + SIGMA
+      N0 = N0 - 2; pN0.set(N0); //N0 = N0 - 2
     }//GO TO 10
     //*
     //50 CONTINUE
-    if ( PP == 2 )
-      PP = 0; //IF( PP.EQ.2 ) PP = 0
+    if ( PP == 2 )  {
+      PP = 0; pPP.set(PP); //IF( PP.EQ.2 ) PP = 0
+    }
     //*
     //*     Reverse the qd-array, if warranted.
     //*
     if ( DMIN <= ZERO  ||  N0 < N0IN ) { //IF( DMIN.LE.ZERO .OR. N0.LT.N0IN ) THEN
-      if ( CBIAS*Z[ 4*I0+PP-3 ] < Z[ 4*N0+PP-3 ] ) { //IF( CBIAS*Z( 4*I0+PP-3 ).LT.Z( 4*N0+PP-3 ) ) THEN
-        IPN4 = 4*( I0+N0 ); //IPN4 = 4*( I0+N0 )
-        for (J4 = 4*I0 - 1; J4 < 2*( I0+N0-1 ); J4 += 4) { //DO 60 J4 = 4*I0, 2*( I0+N0-1 ), 4
+      if ( CBIAS*Z[ 4*I0+PP-3 -1] < Z[ 4*N0+PP-3 -1] ) { //todo: note -1;//IF( CBIAS*Z( 4*I0+PP-3 ).LT.Z( 4*N0+PP-3 ) ) THEN
+        IPN4 = 4*( I0+N0 ) - 1; //todo: note -1; //IPN4 = 4*( I0+N0 )
+        for (J4 = 4*I0 - 1; J4 < 2*( I0+N0-1 ); J4 += 4) { //todo: note -1; //DO 60 J4 = 4*I0, 2*( I0+N0-1 ), 4
+          //todo: NOTE both IPN4 and J4 are now (-1), so IPN4-J4 should have (-1)
           TEMP = Z[ J4-3 ]; //TEMP = Z( J4-3 )
-          Z[ J4-3 ] = Z[ IPN4-J4-3 ]; //Z( J4-3 ) = Z( IPN4-J4-3 )
-          Z[ IPN4-J4-3 ] = TEMP; //Z( IPN4-J4-3 ) = TEMP
+          Z[ J4-3 ] = Z[ IPN4-J4-3 -1]; //todo: note -1;//Z( J4-3 ) = Z( IPN4-J4-3 )
+          Z[ IPN4-J4-3 -1] = TEMP; //todo: note -1;//Z( IPN4-J4-3 ) = TEMP
           TEMP = Z[ J4-2 ]; //TEMP = Z( J4-2 )
-          Z[ J4-2 ] = Z[ IPN4-J4-2 ]; //Z( J4-2 ) = Z( IPN4-J4-2 )
-          Z[ IPN4-J4-2 ] = TEMP; //Z( IPN4-J4-2 ) = TEMP
+          Z[ J4-2 ] = Z[ IPN4-J4-2 -1]; //todo: note -1;//Z( J4-2 ) = Z( IPN4-J4-2 )
+          Z[ IPN4-J4-2 -1] = TEMP; //todo: note -1;//Z( IPN4-J4-2 ) = TEMP
           TEMP = Z[ J4-1 ]; //TEMP = Z( J4-1 )
-          Z[ J4-1 ] = Z[ IPN4-J4-5 ]; //Z( J4-1 ) = Z( IPN4-J4-5 )
-          Z[ IPN4-J4-5 ] = TEMP; //Z( IPN4-J4-5 ) = TEMP
+          Z[ J4-1 ] = Z[ IPN4-J4-5 -1]; //todo: note -1;//Z( J4-1 ) = Z( IPN4-J4-5 )
+          Z[ IPN4-J4-5 -1] = TEMP; //todo: note -1;//Z( IPN4-J4-5 ) = TEMP
           TEMP = Z[ J4 ]; //TEMP = Z( J4 )
-          Z[ J4 ] = Z[ IPN4-J4-4 ]; //Z( J4 ) = Z( IPN4-J4-4 )
-          Z[ IPN4-J4-4 ] = TEMP; //Z( IPN4-J4-4 ) = TEMP
+          Z[ J4 ] = Z[ IPN4-J4-4 -1]; //todo: note -1;//Z( J4 ) = Z( IPN4-J4-4 )
+          Z[ IPN4-J4-4 -1] = TEMP; //todo: note -1;//Z( IPN4-J4-4 ) = TEMP
         } //60       CONTINUE
         if ( N0-I0 <= 4 ) { //IF( N0-I0.LE.4 ) THEN
-          Z[ 4*N0+PP-1 ] = Z[ 4*I0+PP-1 ]; //Z( 4*N0+PP-1 ) = Z( 4*I0+PP-1 )
-          Z[ 4*N0-PP ] = Z[ 4*I0-PP ]; //Z( 4*N0-PP ) = Z( 4*I0-PP )
+          Z[ 4*N0+PP-1 -1] = Z[ 4*I0+PP-1 -1]; //todo: note -1;//Z( 4*N0+PP-1 ) = Z( 4*I0+PP-1 )
+          Z[ 4*N0-PP -1] = Z[ 4*I0-PP -1]; //todo: note -1;//Z( 4*N0-PP ) = Z( 4*I0-PP )
         } // END IF
-        DMIN2 = MIN( DMIN2, Z[ 4*N0+PP-1 ] ); //DMIN2 = MIN( DMIN2, Z( 4*N0+PP-1 ) )
-        Z[ 4*N0+PP-1 ] = MIN( Z[ 4*N0+PP-1 ], Z[ 4*I0+PP-1 ], Z[ 4*I0+PP+3 ] ); //Z( 4*N0+PP-1 ) = MIN( Z( 4*N0+PP-1 ), Z( 4*I0+PP-1 ),Z( 4*I0+PP+3 ) )
-        Z[ 4*N0-PP ] = MIN( Z[ 4*N0-PP ], Z[ 4*I0-PP ], Z[ 4*I0-PP+4 ] ); //Z( 4*N0-PP ) = MIN( Z( 4*N0-PP ), Z( 4*I0-PP ),Z( 4*I0-PP+4 ) )
-        QMAX = MAX( QMAX, Z[ 4*I0+PP-3 ], Z[ 4*I0+PP+1 ] ); //QMAX = MAX( QMAX, Z( 4*I0+PP-3 ), Z( 4*I0+PP+1 ) )
-        DMIN = -ZERO; //DMIN = -ZERO
+        DMIN2 = MIN( DMIN2, Z[ 4*N0+PP-1 -1] ); //todo: note -1;//DMIN2 = MIN( DMIN2, Z( 4*N0+PP-1 ) )
+        pDMIN2.set(DMIN2);
+        Z[ 4*N0+PP-1 -1] = MIN( Z[ 4*N0+PP-1 -1]   //todo: note -1;
+          , Z[ 4*I0+PP-1 -1]                     //todo: note -1;
+          , Z[ 4*I0+PP+3 -1] ); //todo: note -1;//Z( 4*N0+PP-1 ) = MIN( Z( 4*N0+PP-1 ), Z( 4*I0+PP-1 ),Z( 4*I0+PP+3 ) )
+        Z[ 4*N0-PP -1] = MIN( Z[ 4*N0-PP -1]    //todo: note -1;
+          , Z[ 4*I0-PP -1]   //todo: note -1;
+          , Z[ 4*I0-PP+4 -1] ); //todo: note -1;//Z( 4*N0-PP ) = MIN( Z( 4*N0-PP ), Z( 4*I0-PP ),Z( 4*I0-PP+4 ) )
+        QMAX = MAX( QMAX
+          , Z[ 4*I0+PP-3 -1]   //todo: note -1;
+          , Z[ 4*I0+PP+1 -1] ); //todo: note -1;//QMAX = MAX( QMAX, Z( 4*I0+PP-3 ), Z( 4*I0+PP+1 ) )
+        pQMAX.set(QMAX);
+        DMIN = -ZERO; pDMIN.set(DMIN);//DMIN = -ZERO
       } // END IF
     } // END IF
     //*
     //*     Choose a shift.
     //*
-    pTAU.set(TAU); pG.set(G);
+    pTAU.set(TAU);  pTTYPE.set(TTYPE);  pG.set(G);
     DLASQ4(I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMIN2, DN, DN1, DN2
       , pTAU, pTTYPE, pG); //CALL DLASQ4( I0, N0, Z, PP, N0IN, DMIN, DMIN1, DMIN2, DN, DN1,DN2, TAU, TTYPE, G )
     TAU = pTAU.get();  TTYPE = pTTYPE.get();  G = pG.get();
@@ -264,8 +297,8 @@ public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QM
       DMIN = pDMIN.get(); DMIN1 = pDMIN1.get(); DMIN2 = pDMIN2.get();
       DN = pDN.get(); DN1 = pDN1.get(); DN2 = pDN2.get();
       //*
-      NDIV = NDIV + ( N0-I0+2 ); //NDIV = NDIV + ( N0-I0+2 )
-      ITER = ITER + 1; //ITER = ITER + 1
+      NDIV = NDIV + ( N0-I0+2 );  pNDIV.set(NDIV);//NDIV = NDIV + ( N0-I0+2 )
+      ITER = ITER + 1;  pITER.set(ITER); //ITER = ITER + 1
       //*
       //*     Check status.
       //*
@@ -277,12 +310,12 @@ public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QM
           break; //GO TO 90
           //*
         } else if ( DMIN < ZERO  &&  DMIN1 > ZERO
-          &&  Z[ 4*( N0-1 )-PP - 1] < TOL*( SIGMA+DN1 )
+          &&  Z[ 4*( N0-1 )-PP - 1] < TOL*( SIGMA+DN1 )        //todo: note -1;
           && ABS( DN ) < TOL*SIGMA ) { //ELSE IF( DMIN.LT.ZERO .AND. DMIN1.GT.ZERO .AND. Z( 4*( N0-1 )-PP ).LT.TOL*( SIGMA+DN1 ) .AND.ABS( DN ).LT.TOL*SIGMA ) THEN
           //*
           //*        Convergence hidden by negative DN.
           //*
-          Z[ 4*( N0-1 )-PP+1 ] = ZERO; //Z( 4*( N0-1 )-PP+2 ) = ZERO
+          Z[ 4*( N0-1 )-PP+2 -1] = ZERO; //todo: note -1;//Z( 4*( N0-1 )-PP+2 ) = ZERO
           DMIN = ZERO; //DMIN = ZERO
           break; //GO TO 90
         } else if ( DMIN < ZERO ) { //ELSE IF( DMIN.LT.ZERO ) THEN
@@ -333,6 +366,8 @@ public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QM
       DblRef.set(pDN, DN, pDN1, DN1, pDN2, DN2);
       DLASQ6( I0, N0, Z, PP
         , pDMIN, pDMIN1, pDMIN2, pDN, pDN1, pDN2 ); //CALL DLASQ6( I0, N0, Z, PP, DMIN, DMIN1, DMIN2, DN, DN1, DN2 )
+      DMIN = pDMIN.get(); DMIN1 = pDMIN1.get(); DMIN2 = pDMIN2.get();
+      DN = pDN.get(); DN1 = pDN1.get(); DN2 = pDN2.get();
       NDIV = NDIV + ( N0-I0+2 ); //NDIV = NDIV + ( N0-I0+2 )
       ITER = ITER + 1; //ITER = ITER + 1
       TAU = ZERO; //TAU = ZERO
@@ -346,8 +381,16 @@ public class DLASQ3 { //SUBROUTINE DLASQ3( I0, N0, Z, PP, DMIN, SIGMA, DESIG, QM
       T = SIGMA + TAU; //T = SIGMA + TAU
       DESIG = SIGMA - ( T-TAU ) + DESIG; //DESIG = SIGMA - ( T-TAU ) + DESIG
     } // END IF
-    SIGMA = T; //SIGMA = T
+    SIGMA = T; pSIGMA.set(SIGMA);//SIGMA = T
     //*
+    IntRef.set(pN0, N0, pITER, ITER);
+    IntRef.set(pNDIV, NDIV, pPP, PP);
+    pTTYPE.set(TTYPE);
+    pNFAIL.set(NFAIL);
+    DblRef.set(pDMIN, DMIN, pDMIN1, DMIN1, pDMIN2, DMIN2);
+    DblRef.set(pDN, DN, pDN1, DN1, pDN2, DN2);
+    DblRef.set(pTAU, TAU, pQMAX, QMAX, pDESIG, DESIG);
+    pG.set(G);
   } // RETURN
   //*
   //*     End of DLASQ3

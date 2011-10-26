@@ -273,9 +273,9 @@ IIU = IU; //IIU = IU
 } // ENDIF
 //*
 INFO = 0; //INFO = 0
-if ( .NOT.( WANTZ  ||  LSAME( JOBZ, 'N' ) ) ) { //IF( .NOT.( WANTZ .OR. LSAME( JOBZ, 'N' ) ) ) THEN
+if (  !( WANTZ  ||  LSAME( JOBZ, 'N' ) ) ) { //IF( .NOT.( WANTZ .OR. LSAME( JOBZ, 'N' ) ) ) THEN
 INFO = -1; //INFO = -1
-} else if ( .NOT.( ALLEIG  ||  VALEIG  ||  INDEIG ) ) { //ELSE IF( .NOT.( ALLEIG .OR. VALEIG .OR. INDEIG ) ) THEN
+} else if (  !( ALLEIG  ||  VALEIG  ||  INDEIG ) ) { //ELSE IF( .NOT.( ALLEIG .OR. VALEIG .OR. INDEIG ) ) THEN
 INFO = -2; //INFO = -2
 } else if ( N < 0 ) { //ELSE IF( N.LT.0 ) THEN
 INFO = -3; //INFO = -3
@@ -287,9 +287,9 @@ INFO = -8; //INFO = -8
 INFO = -9; //INFO = -9
 } else if ( LDZ < 1  ||  ( WANTZ  &&  LDZ < N ) ) { //ELSE IF( LDZ.LT.1 .OR. ( WANTZ .AND. LDZ.LT.N ) ) THEN
 INFO = -13; //INFO = -13
-} else if ( LWORK < LWMIN  &&  .NOT.LQUERY ) { //ELSE IF( LWORK.LT.LWMIN .AND. .NOT.LQUERY ) THEN
+} else if ( LWORK < LWMIN  &&   !LQUERY ) { //ELSE IF( LWORK.LT.LWMIN .AND. .NOT.LQUERY ) THEN
 INFO = -17; //INFO = -17
-} else if ( LIWORK < LIWMIN  &&  .NOT.LQUERY ) { //ELSE IF( LIWORK.LT.LIWMIN .AND. .NOT.LQUERY ) THEN
+} else if ( LIWORK < LIWMIN  &&   !LQUERY ) { //ELSE IF( LIWORK.LT.LIWMIN .AND. .NOT.LQUERY ) THEN
 INFO = -19; //INFO = -19
 } // END IF
 //*
@@ -318,7 +318,7 @@ NZCMIN = 0; //NZCMIN = 0
 } // ENDIF
 if ( ZQUERY  &&  INFO == 0 ) { //IF( ZQUERY .AND. INFO.EQ.0 ) THEN
 Z( 1,1 ) = NZCMIN; //Z( 1,1 ) = NZCMIN
-} else if ( NZC < NZCMIN  &&  .NOT.ZQUERY ) { //ELSE IF( NZC.LT.NZCMIN .AND. .NOT.ZQUERY ) THEN
+} else if ( NZC < NZCMIN  &&   !ZQUERY ) { //ELSE IF( NZC.LT.NZCMIN .AND. .NOT.ZQUERY ) THEN
 INFO = -14; //INFO = -14
 } // END IF
 } // END IF
@@ -346,7 +346,7 @@ M = 1; //M = 1
 W( 1 ) = D( 1 ); //W( 1 ) = D( 1 )
 } // END IF
 } // END IF
-if ( WANTZ && (.NOT.ZQUERY) ) { //IF( WANTZ.AND.(.NOT.ZQUERY) ) THEN
+if ( WANTZ && ( !ZQUERY) ) { //IF( WANTZ.AND.(.NOT.ZQUERY) ) THEN
 Z( 1, 1 ) = ONE; //Z( 1, 1 ) = ONE
 ISUPPZ(1) = 1; //ISUPPZ(1) = 1
 ISUPPZ(2) = 1; //ISUPPZ(2) = 1
@@ -355,15 +355,15 @@ ISUPPZ(2) = 1; //ISUPPZ(2) = 1
 } // END IF
 //*
 if ( N == 2 ) { //IF( N.EQ.2 ) THEN
-if ( .NOT.WANTZ ) { //IF( .NOT.WANTZ ) THEN
+if (  !WANTZ ) { //IF( .NOT.WANTZ ) THEN
 CALL DLAE2( D(1), E(1), D(2), R1, R2 ); //CALL DLAE2( D(1), E(1), D(2), R1, R2 )
-} else if ( WANTZ && (.NOT.ZQUERY) ) { //ELSE IF( WANTZ.AND.(.NOT.ZQUERY) ) THEN
+} else if ( WANTZ && ( !ZQUERY) ) { //ELSE IF( WANTZ.AND.(.NOT.ZQUERY) ) THEN
 CALL DLAEV2( D(1), E(1), D(2), R1, R2, CS, SN ); //CALL DLAEV2( D(1), E(1), D(2), R1, R2, CS, SN )
 } // END IF
 if ( ALLEIG || (VALEIG && (R2 > WL) && (R2 <= WU)) || (INDEIG && (IIL == 1)) ) { //IF( ALLEIG.OR.(VALEIG.AND.(R2.GT.WL).AND.(R2.LE.WU)).OR.(INDEIG.AND.(IIL.EQ.1)) ) THEN
 M = M+1; //M = M+1
 W( M ) = R2; //W( M ) = R2
-if ( WANTZ && (.NOT.ZQUERY) ) { //IF( WANTZ.AND.(.NOT.ZQUERY) ) THEN
+if ( WANTZ && ( !ZQUERY) ) { //IF( WANTZ.AND.(.NOT.ZQUERY) ) THEN
 Z( 1, M ) = -SN; //Z( 1, M ) = -SN
 Z( 2, M ) = CS; //Z( 2, M ) = CS
 //*              Note: At most one of SN and CS can be zero.
@@ -384,7 +384,7 @@ ISUPPZ(2*M) = 2; //ISUPPZ(2*M) = 2
 if ( ALLEIG || (VALEIG && (R1 > WL) && (R1 <= WU)) || (INDEIG && (IIU == 2)) ) { //IF( ALLEIG.OR.(VALEIG.AND.(R1.GT.WL).AND.(R1.LE.WU)).OR.(INDEIG.AND.(IIU.EQ.2)) ) THEN
 M = M+1; //M = M+1
 W( M ) = R1; //W( M ) = R1
-if ( WANTZ && (.NOT.ZQUERY) ) { //IF( WANTZ.AND.(.NOT.ZQUERY) ) THEN
+if ( WANTZ && ( !ZQUERY) ) { //IF( WANTZ.AND.(.NOT.ZQUERY) ) THEN
 Z( 1, M ) = CS; //Z( 1, M ) = CS
 Z( 2, M ) = SN; //Z( 2, M ) = SN
 //*              Note: At most one of SN and CS can be zero.
@@ -463,7 +463,7 @@ THRESH = EPS; //THRESH = EPS
 } else { // ELSE
 THRESH = -EPS; //THRESH = -EPS
 //*        relative accuracy is desired but T does not guarantee it
-TRYRAC = .FALSE.; //TRYRAC = .FALSE.
+TRYRAC =  false; //TRYRAC = .FALSE.
 } // ENDIF
 //*
 if ( TRYRAC ) { //IF( TRYRAC ) THEN
@@ -475,7 +475,7 @@ for ( 5 J = 1; N-1) { //DO 5 J = 1, N-1
 WORK( INDE2+J-1 ) = E(J)**2; //WORK( INDE2+J-1 ) = E(J)**2
 5    CONTINUE; //5    CONTINUE
 //*     Set the tolerance parameters for bisection
-if ( .NOT.WANTZ ) { //IF( .NOT.WANTZ ) THEN
+if (  !WANTZ ) { //IF( .NOT.WANTZ ) THEN
 //*        DLARRE computes the eigenvalues to full precision.
 RTOL1 = FOUR * EPS; //RTOL1 = FOUR * EPS
 RTOL2 = FOUR * EPS; //RTOL2 = FOUR * EPS
@@ -558,7 +558,7 @@ CALL DSCAL( M, ONE / SCALE, W, 1 ); //CALL DSCAL( M, ONE / SCALE, W, 1 )
 //*     possibly along with eigenvectors.
 //*
 if ( NSPLIT > 1 ) { //IF( NSPLIT.GT.1 ) THEN
-if ( .NOT. WANTZ ) { //IF( .NOT. WANTZ ) THEN
+if (  ! WANTZ ) { //IF( .NOT. WANTZ ) THEN
 CALL DLASRT( 'I', M, W, IINFO ); //CALL DLASRT( 'I', M, W, IINFO )
 if ( IINFO != 0 ) { //IF( IINFO.NE.0 ) THEN
 INFO = 3; //INFO = 3

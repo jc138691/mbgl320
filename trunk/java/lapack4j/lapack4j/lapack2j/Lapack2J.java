@@ -16,7 +16,7 @@ public class Lapack2J extends TestUtils {
     "dcopy.f", "disnan.f"
     , "dlae2.f", "dlaev2.f", "dlaisnan.f"
     , "dlamch.f"
-    , "dlanst.f"
+    , "dlaneg.f", "dlanst.f"
     , "dlarra.f", "dlarrb.f", "dlarrc.f", "dlarrd.f", "dlarre.f", "dlarrj.f", "dlarrr.f", "dlarrv.f"
     , "dlasq2.f", "dlasq3.f", "dlasq4.f", "dlasq5.f", "dlasq6.f"
     , "dscal.f"
@@ -105,7 +105,10 @@ public class Lapack2J extends TestUtils {
     res = res.replace("( * )", "[]");
     res = res.replace("( *)", "[]");
     res = res.replace("(* )", "[]");
+    res = res.replace(".TRUE.", " true ");
+    res = res.replace(".FALSE.", " false ");
     res = res.replace(".EQ.", " == ");
+    res = res.replace(".NOT.", " !");
     res = res.replace(".NE.", " != ");
     res = res.replace(".GE.", " >= ");
     res = res.replace(".GT.", " > ");

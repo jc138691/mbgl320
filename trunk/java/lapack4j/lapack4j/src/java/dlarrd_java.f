@@ -247,7 +247,7 @@ IRANGE = 0; //IRANGE = 0
 //*
 if ( IRANGE <= 0 ) { //IF( IRANGE.LE.0 ) THEN
 INFO = -1; //INFO = -1
-} else if ( .NOT.(LSAME(ORDER,'B') || LSAME(ORDER,'E')) ) { //ELSE IF( .NOT.(LSAME(ORDER,'B').OR.LSAME(ORDER,'E')) ) THEN
+} else if (  !(LSAME(ORDER,'B') || LSAME(ORDER,'E')) ) { //ELSE IF( .NOT.(LSAME(ORDER,'B').OR.LSAME(ORDER,'E')) ) THEN
 INFO = -2; //INFO = -2
 } else if ( N < 0 ) { //ELSE IF( N.LT.0 ) THEN
 INFO = -3; //INFO = -3
@@ -264,8 +264,8 @@ if ( INFO != 0 ) { //IF( INFO.NE.0 ) THEN
 } // END IF
 //*     Initialize error flags
 INFO = 0; //INFO = 0
-NCNVRG = .FALSE.; //NCNVRG = .FALSE.
-TOOFEW = .FALSE.; //TOOFEW = .FALSE.
+NCNVRG =  false; //NCNVRG = .FALSE.
+TOOFEW =  false; //TOOFEW = .FALSE.
 //*     Quick return if possible
 M = 0; //M = 0
 if ( N == 0 ) return; //IF( N.EQ.0 ) RETURN
@@ -503,7 +503,7 @@ TMP1 = HALF*( WORK( J+N )+WORK( J+IN+N ) ); //TMP1 = HALF*( WORK( J+N )+WORK( J+
 TMP2 = HALF*ABS( WORK( J+N )-WORK( J+IN+N ) ); //TMP2 = HALF*ABS( WORK( J+N )-WORK( J+IN+N ) )
 if ( J > IOUT-IINFO ) { //IF( J.GT.IOUT-IINFO ) THEN
 //*                 Flag non-convergence.
-NCNVRG = .TRUE.; //NCNVRG = .TRUE.
+NCNVRG =  true; //NCNVRG = .TRUE.
 IB = -JBLK; //IB = -JBLK
 } else { // ELSE
 IB = JBLK; //IB = JBLK
@@ -614,12 +614,12 @@ IBLOCK( IM ) = IBLOCK( JE ); //IBLOCK( IM ) = IBLOCK( JE )
 M = IM; //M = IM
 } // END IF
 if ( IDISCL < 0  ||  IDISCU < 0 ) { //IF( IDISCL.LT.0 .OR. IDISCU.LT.0 ) THEN
-TOOFEW = .TRUE.; //TOOFEW = .TRUE.
+TOOFEW =  true; //TOOFEW = .TRUE.
 } // END IF
 } // END IF
 //*
 if (( IRANGE == ALLRNG  &&  M != N ) || ( IRANGE == INDRNG  &&  M != IU-IL+1 ) ) { //IF(( IRANGE.EQ.ALLRNG .AND. M.NE.N ).OR.( IRANGE.EQ.INDRNG .AND. M.NE.IU-IL+1 ) ) THEN
-TOOFEW = .TRUE.; //TOOFEW = .TRUE.
+TOOFEW =  true; //TOOFEW = .TRUE.
 } // END IF
 //*     If ORDER='B', do nothing the eigenvalues are already sorted by
 //*        block.

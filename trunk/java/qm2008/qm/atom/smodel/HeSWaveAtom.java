@@ -12,7 +12,7 @@ public class HeSWaveAtom {
   public static final double E_1s3s_1S = -2.06079;
 
   // http://pra.aps.org/abstract/PRA/v50/i5/p3793_1
-  //Phys. Rev. A 50, 3793–3808 (1994)
+  //Phys. Rev. A 50, 3793-3808 (1994)
   //One- and two-electron excitations of helium in the s-wave model
   //M. Draeger, G. Handke, W. Ihra, and H. Friedrich
   public static double[] E_1S = {
