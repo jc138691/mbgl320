@@ -1,0 +1,66 @@
+package scatt.jm_2008.jm.fanox;
+
+import atom.energy.ConfOverlap;
+import atom.energy.part_wave.PartHMtrx;
+import math.mtrx.Mtrx;
+import math.mtrx.MtrxDbgView;
+import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e2.JmMethodE2;
+
+import javax.utilx.log.Log;
+
+/**
+ * Created by Dmitry.A.Konovalov@gmail.com, 02/06/2010, 9:11:39 AM
+ *
+ * TODO: This is working correctly, see HySWaveViaOverlap_OLD
+ */
+public class JmMethodFanoE2 extends JmMethodE2 {
+  public static Log log = Log.getLog(JmMethodFanoE2.class);
+  private ConfOverlap chiOverlap;
+  private PartHMtrx targetH;
+
+  public JmMethodFanoE2(JmOptE1 potOpt) {
+    super(potOpt);
+  }
+
+  protected double[][] calcC() {
+    double[][] sC = sysH.getEigVec().getArray();   log.dbg("C_ij=", new MtrxDbgView(sysH.getEigVec()));
+    return sC;
+  }
+
+  // THIS works only for two electrons, see  JmMethodJmBasisE3 for a general case of any electrons
+  @Override protected Mtrx calcX() {
+    // [for JmMethodFanoX] Next line was MOVED to calcC();
+//    double[][] sC = sysH.getEigVec().getArray();   log.dbg("C_ij=", new MtrxDbgView(sysH.getEigVec()));
+    double[][] sC = calcC();   log.dbg("C_ij=", new MtrxDbgView(sysH.getEigVec()));
+
+    double[][] chiOv = chiOverlap.getArray();
+    double[][] tC = targetH.getEigVec().getArray();  log.dbg("D_ij=", new MtrxDbgView(targetH.getEigVec()));
+    int sN = getSysBasisSize();
+    int cN = getChNum();
+    Mtrx res = new Mtrx(cN, sN);
+    for (int g = 0; g < cN; g++) {  // target channel/state
+      for (int i = 0; i < sN; i++) {  // system states
+        double sum = 0;
+        for (int t2 = 0; t2 < cN; t2++) {
+          for (int j = 0; j < sN; j++) {
+            double c = sC[j][i] * tC[t2][g]; //log.dbg("c = ", c); // note order [j][i]
+            double d = chiOv[j][t2];         //log.dbg("d = ", d);
+            sum += (c * d);                  //log.dbg("sum = ", sum);
+          }
+        }
+        res.set(g, i, sum);                           //log.dbg("X[" + g + ", " + i + "]=", sum);
+      }
+    }
+    return res;
+  }
+
+  public void setChiOverlap(ConfOverlap chiOverlap) {
+    this.chiOverlap = chiOverlap;
+  }
+
+  public void setTargetH(PartHMtrx targetH) {
+    this.targetH = targetH;
+  }
+}
+

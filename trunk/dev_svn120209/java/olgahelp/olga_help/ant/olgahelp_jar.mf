@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: Dmitry Konovalov
+Signature-Version: 0.090220
+Main-Class: olga.RunOlgaHelp
