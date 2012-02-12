@@ -1,0 +1,535 @@
+%%\documentclass[aip,jcp]{revtex4-1}
+\documentclass[aip
+, pra
+, showpacs
+, aps
+, twocolumn
+%, onecolumn
+, groupedaddress
+, floatfix
+%, preprint
+]{revtex4}
+%]{revtex4-1}
+\usepackage{graphicx, amsbsy, bm, dcolumn, amsmath}
+
+\newcommand{\etal}{{\em et~al.\/}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\vecr}{{\bf r}}
+\newcommand{\dd}{\mbox{d}}
+\newcommand{\dr}{\mbox{d} r}
+\newcommand{\vare}{\varepsilon}
+\newcommand{\calN}{{\cal N}}
+\newcommand{\di}{_{\mbox{\tiny{di}}}}
+\newcommand{\ex}{_{\mbox{\tiny{ex}}}}
+
+
+
+\newcommand{\isum}%
+{\mathop{\hbox{$\displaystyle\sum\kern-13.2pt\int\kern1.5pt$}}}
+
+\begin{document}
+
+\title {$J$-matrix method for Electron-Atom Ionization Amplitude}
+
+\author{Dmitry A. Konovalov}
+\affiliation{Discipline of Information Technology, School of Business, James Cook University, Townsville, Queensland 4811, Australia}
+
+\author{Dmitry V. Fursa}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
+
+\author{Alisher S. Kadyrov}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
+
+\author{Igor Bray}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
+
+\date{\today}
+
+\begin{abstract}
+
+
+\end{abstract}
+
+\pacs{34.80.Dp} %34.80.Dp	Atomic excitation and ionization
+\maketitle
+
+
+\section{INTRODUCTION}
+
+\cite{KMSB03l}
+
+
+\section{THEORY}
+
+\subsection{Wave functions}
+Let the nonorthogonal Laguerre functions used in the original JM method \cite{HY74p1201,BR76p1491}
+be referred to as the JM functions and denoted by $\{\xi_p(r)\}_{p=0}^\infty$,
+\[
+\xi_p(r) = x^{l+1} \mbox{e}^{-x /2}
+L_p^{2l+1}(x), \ \ \ p = 0, 1, ..., \infty,
+\]
+where $x=\lambda_{\rm L} r$,  $\lambda_{\rm L}$ is the Laguerre exponential falloff,
+$l \equiv 0$ (for the $S$-model), and $L_p^{\alpha}(x)$ are the associated Laguerre polynomials \cite{abramowitz}.
+The JM method splits the one-electron radial functional space into {\em inner} $\{\xi_p\}_{p=0}^{N-1}$
+and {\em outer} $\{\xi_p\}_{p=N}^\infty$
+subsets controlled by the number ($N$) of JM functions in the inner subset \cite{HY74p1201,BR76p1491}.
+
+
+It is computationally convenient to use the corresponding {\em orthogonal} Laguerre functions,
+hereafter referred to as the Laguerre functions (or basis) and denoted by $\{\hat{\xi}_p(r)\}_{p=0}^\infty$,
+\[
+\hat{\xi}_p(r) = C_p^{-1/2} x^{l+1} \mbox{e}^{-x /2}
+L_p^{2l+2}(x), \ \ \ p = 0, 1, ..., \infty,
+\]
+\[
+\int_0^{\infty} \mbox{d}r \ \hat{\xi}_p(r) \hat{\xi}_{p'}(r)=\delta_{pp'},
+\]
+where $C_p=(p+2l+2)!/(\lambda_{\rm L} p!)$.
+Due to the following property of the Laguerre polynomials \cite{abramowitz},
+\[
+L_p^{\alpha + 1}(x)=\sum_{p'=0}^{p}L_{p'}^{\alpha}(x),
+\]
+for the purpose of the JM method, any $\xi_p$ could be replaced by the corresponding $\hat{\xi}_p$
+within the JM's inner region of $p < N$ \cite{KB10p022708, KFB11}.
+That is, the functional space created by $\{\xi_p\}_{p=0}^{N-1}$ is identical
+to the one created by $\{\hat{\xi}_p\}_{p=0}^{N-1}$ and therefore $\{\xi_p\}_{p=0}^{N-1}$ are not required
+in practice. Moreover, the scattering contribution of the outer subset is accounted for analytically within the JM method,
+hence in fact none of the JM functions are calculated nor used \cite{KB10p022708, KFB11}.
+
+
+The $N$  Laguerre functions from the inner functional space could now be used to construct $N$ {\em target orbitals}
+$\{P_\lambda(r)\}_{\lambda=1}^{N}$.
+The frozen-core model of helium was used in \cite{KFB11}, where it required the He$^+(1s)$ one-electron radial wave function
+$P^+_{1s}(r)$ to be well approximated by one of the target orbitals, for example $P^+_{1s}(r) \approx P_1(r)$.
+This was achieved in \cite{KFB11} by using first $N_t$ (mnemonic "t" is for target) Laguerre functions
+\beq
+P^+_\lambda(r)=\sum_{p=0}^{N_t-1} \hat{D}_{\lambda p} \hat{\xi}_p(r),
+\ \ \ \langle P^+_\lambda|P^+_{\lambda'}\rangle=\delta_{\lambda\lambda'},
+\label{P_ion_sum} \eeq
+and diagonalizing the $S$-wave term of the one-electron Hamiltonian $h$,
+\beq
+h = -\frac{1}{2} \frac{d^2} {dr^2} - \frac{Z}{r},
+\label{h}
+\eeq
+\beq
+\langle P_\lambda^+|h|P^+_{\lambda'}\rangle=\varepsilon_\lambda \delta_{\lambda \lambda'},
+\ \ \varepsilon_\lambda < \varepsilon_{\lambda+1},
+\label{P_h_P}
+\eeq
+where atomic units are used throughout this manuscript,
+$Z=2$, $N_t<N$, $1 \leq \lambda,\lambda' \leq N_t$,
+and where superscript $'+'$ reminds that the resulting orbitals $\{P^+_\lambda\}_{\lambda=1}^{N_t}$ are eigenstates of helium one-electron ion and will be referred to as the {\em helium-ion} basis (or orbitals).
+The remaining $\{P^+_\lambda\}_{\lambda=N_t+1}^{N}$ orbitals were directly assigned to the Laguerre functions in \cite{KFB11},
+\beq
+P^+_\lambda(r)= \hat{\xi}_{\lambda-1}(r),  \ \ \ N_t < \lambda \leq N,
+\label{P_ion_N} \eeq
+arriving at the first (considered here) target basis $\{P^+_\lambda\}_{\lambda=1}^{N}$.
+
+
+Since the frozen-core model is not utilized in this study,
+the one-electron diagonalization step [Eq.~(\ref{P_h_P})] is no longer essential
+and the second (considered here) target basis is naturally given by just the Laguerre functions,
+\beq
+P_\lambda(r)= \hat{\xi}_{\lambda-1}(r),  \ \ \ 1 \leq \lambda \leq N.
+\label{P_N} \eeq
+
+
+The preceding part of this section describes how the two considered one-electron target bases are constructed.
+Those are the helium-ion basis $\{P^+_\lambda\}_{\lambda=1}^{N}$ [Eqs.~(\ref{P_ion_sum}), (\ref{P_h_P}) and (\ref{P_ion_N})] and the Laguerre basis $\{P_\lambda\}_{\lambda=1}^{N}$ [Eq.~(\ref{P_N})]. Regardless of the chosen one-electron basis, the required two- and three-electron basis configurations are constructed as follows.
+The $a$-electron square-integrable ($L^2$) wave functions
+are obtained by diagonalizing the $S$-wave term of the total $a$-electron  Hamiltonian $H_a$,
+\beq
+H_{a} = \sum_{b=1}^{a} h_b + \sum_{b=1}^{a} \sum_{b'=1}^{b-1}
+\frac{1}{\max{(r_{b}, r_{b'})}}. \\
+\label{H_a}
+\eeq
+Specifically, the two-electron $\{ \psi_{\gamma} \}_{\gamma=1}^{N_2}$ and three-electron
+$\{ \Psi^{\Gamma}_i \}_{i=1}^{N_3}$ wave functions  are given by
+\beq
+\langle\psi_\gamma|H_t|\psi_{\gamma'}\rangle=e_\gamma \delta_{\gamma\gamma'}, \ \
+ e_\gamma < e_{\gamma+1},
+\label{psi_H_psi}
+\eeq
+\beq
+| \psi_\gamma \rangle= \sum_{\beta=1}^{N_2} C^t_{\gamma\beta} | \hat{A}\phi_\beta \rangle, \ \
+\langle\psi_\gamma|\psi_{\gamma'}\rangle=\delta_{\gamma\gamma'},
+\label{psi_H_psi_2}
+\eeq
+\beq
+\langle\Psi_i^\Gamma|H|\Psi_{i'}^\Gamma\rangle=E_i\delta_{ii'},
+\ \  E_i < E_{i+1},
+\label{Psi_from_Fano} \eeq
+\beq
+| \Psi_i^\Gamma \rangle= \sum_{\beta=1}^{N_3} C_{i\beta} | \hat{A}\Phi_\beta^\Gamma \rangle,
+ \ \ \langle\Psi_i|\Psi_{i'}\rangle=\delta_{ii'},
+\label{Psi_from_Fano_2} \eeq
+respectively,
+where (i) $N_a$ is the size of the $a$-electron basis, $H_t \equiv H_{a=2}$, $H \equiv H_{a=3}$;
+(ii) the eigenstates are labeled in ascending order of their eigenvalues; (iii) $\hat{A}$ is antisymmetrization operation;
+(iv) $C^t_{\gamma\beta}$ and $C_{i \beta}$  are configuration-interaction (CI) coefficients;
+(v) and where Fano's \cite{Fano65,KFB11} subshell-structured $a$-electron configurations $\{ \phi_{\beta} \}_{\beta=1}^{N_2}$
+or $\{ \Phi_\beta^\Gamma \}_{\beta=1}^{N_3}$
+are labeled in some arbitrary but fixed order.
+
+
+One of the advantages of the JM method is its computational efficiency.
+For example, so far in our last two JM papers \cite{KB10p022708, KFB11},
+the JM results were obtained on a consumer-grade personal computer using freely available Java programming language \cite{JMatrixWebsite}.
+In an attempt to maintain that computational "affordability" (and exclusively for that purpose),
+the number of permitted "core" orbitals ($N_c$) of the first target electron is introduced as
+an optimization parameter,
+where $N_c=1$ corresponds to the frozen-core model in \cite{KFB11}.
+Given the three interacting electrons of the considered problem, $N_c$, $N_t$ and $N$ control
+how the two-electron $\phi_\beta$ and three-electron $\Phi_\beta^\Gamma$ basis configurations are constructed via
+\beq
+| \phi_\beta \rangle = | \lambda_{\beta 1} \lambda_{\beta 2} \rangle, \ \ \lambda_{\beta 1} \leq \lambda_{\beta 2},
+\eeq
+\beq
+| \Phi_\beta^\Gamma \rangle = | \lambda_{\beta 1} \lambda_{\beta 2} \lambda_{\beta 3} \rangle,
+\ \ \lambda_{\beta 1} \leq \lambda_{\beta 2} \leq \lambda_{\beta 3},
+\eeq
+\beq
+1 \leq \lambda_{\beta 1} <= N_c, \ \ N_c \leq N_t,
+\eeq
+\beq
+1 \leq \lambda_{\beta 2} <= N_t, \ \ N_t < N,
+\eeq
+\beq
+1 \leq \lambda_{\beta 3} <= N,
+\eeq
+where each used $\lambda$ describes an electron occupying a subshell orbital
+with $P_\lambda(r)$ (or $P^+_\lambda(r)$) as its radial component.
+Note that the preceding parametrization implies (not shown here) the relevant spin coupling and subshell antisymmetrization
+as per the general procedure for building $a$-electron subshell-based configurations from \cite{KFB11}.
+
+
+Once $N_c$, $N_t$ and $N$ are selected,
+all combinatorially possible unique configurations are included into the $\{ \phi_{\beta} \}_{\beta=1}^{N_2}$
+and $\{ \Phi_\beta^\Gamma \}_{\beta=1}^{N_3}$ bases,
+subject to spin coupling and antisymmetrization rules.
+For example, the total number $N_2$, the numbers of singlet $N_2({^1S})$ and triplet $N_2({^3S})$ two-electron configurations become
+\beq
+N_2=N_2({^1S}) + N_2({^3S}),
+\label{N_2}
+\eeq
+\beq
+N_2({^1S})=N_c(N_c+1)/2+ N_c (N_t-N_c),
+\label{N_1S}
+\eeq
+\beq
+N_2({^3S})=N_c(N_c-1)/2+ N_c (N_t-N_c),
+\label{N_3S}
+\eeq
+respectively. Note that if $N_c$ is not optimized, then $N_c \equiv N_t$, $N_2 = N_t^2$, and the two considered orbital bases
+$\{ P_\lambda(r) \}_{\lambda=1}^N$ and $\{ P^+_\lambda(r) \}_{\lambda=1}^N$ yield identical eigenstates
+$\{ \psi_{\gamma} \}$ and $\{ \Psi_i^\Gamma \}$.
+
+
+
+\subsection{JM method}
+
+This section describes how the required wave functions are constructed, where
+the full description of our version of the JM method could be found in \cite{KB10p022708, KFB11}.
+
+
+
+The scattering problem is described by
+\[ (H - E) | \Psi_E \rangle = 0, \ \ E = e_{\gamma_0} + E_0, \ \ \ E_0 = k_0^2/2, \]
+where: $H\equiv H_{a+1}$ (\ref{H_a}); $E$ is the given total energy of the $(a+1)$-electron system;
+the target is assumed to be in $\gamma_0$ state before the collision;
+$E_0$ is the incident electron energy.
+A set of scattering channels $\{ \chi_{\gamma}^{\Gamma} \}$ is defined \cite{BR76p1491,KFB11} by
+spin-coupling the target eigenstates $|\psi_{\gamma} \rangle$ and the spin of the scattering electron
+$s\equiv \frac{1}{2}$
+\beq \barr{l}
+| \chi_{\gamma}^{\Gamma} \rangle = \sum_{\mu \mu_\gamma}
+C_{S_\gamma \mu_\gamma s \mu}^{S_\Gamma \mu_\Gamma}
+|\psi_{\gamma \mu_\gamma} \rangle \ |s \mu  \rangle, \ \ \Gamma \equiv \{S_\Gamma,\mu_\Gamma\},
+\earr \label{psi_phi_Gamma}
+\eeq
+where: $C_{j_1m_1j_2m_2}^{jm} \equiv \langle j_1m_1 j_2 m_2| jm\rangle$ are the Clebsch-Gordan coefficients; $|s \mu \rangle$ is Pauli spinor;
+each scattering channel is labeled by a $\{\gamma, \Gamma\}$-pair.
+For a given $\Gamma$ and similar to the $a$-electron case (\ref{psi_H_psi}), the $(a+1)$-electron $L^2$ wave functions $\{ \Psi_i^\Gamma \}$
+are obtained by diagonalizing $H_{a+1}$ (\ref{H_a}),
+where now $\{ \Phi_j^\Gamma \}$ are the Fano's \cite{Fano65,KFB11} subshell-structured $(a+1)$-electron configurations
+labeled in some fixed order.
+
+
+The full scattering wave function $|\Psi_E \rangle$ is approximated by the JM multichannel expansion
+\cite{KB10p022708,KFB11},
+\beq
+\barr{l}
+|\Psi_E \rangle \approx \sum_\Gamma | \Psi_N^{\Gamma} \rangle, \\
+| \Psi_N^\Gamma \rangle =\sum_j | \Psi_j^\Gamma \rangle \ a_j
++ \sum_{\gamma} \sum_{p=N}^{\infty}
+| \Psi_{\gamma p}^{\Gamma} \rangle \ f^{\gamma \gamma_0}_{p}, \\
+f^{\gamma \gamma_0}_{p} = (\pi|k_{\gamma}|/2)^{-1/2} \left( s_{p}^{\gamma} \delta_{\gamma \gamma_0}
++ c_{p}^{\gamma} R_{\gamma \gamma_0} \right) ,
+\earr \label{Psi_E_N} \eeq
+where $k_{\gamma}=\sqrt{2(E-e_{\gamma})}$, and where coefficients $s_{p}^{\gamma}$ and $c_{p}^{\gamma}$
+are known \cite{BR76p1491} from the JM method. Let matrices $\hat{k}$ and $\hat{k}^{-1}$ be defined as
+\beq
+\hat{k}_{\gamma' \gamma} =  \delta_{\gamma \gamma'} |k_{\gamma}|^{1/2}, \ \
+\hat{k}_{\gamma' \gamma}^{-1} =  \delta_{\gamma \gamma'} |k_{\gamma}|^{-1/2},
+\label{k_matrix} \eeq
+then
+the reactance matrix $R_{\gamma \gamma_0}$ from \cite{BR76p1491} could be expressed as
+\beq \barr{rl}
+R &= - \hat{k} Z^{-1}Y\hat{k}^{-1},\\
+R_{\gamma \gamma_0} &= - (|k_{\gamma}|/|k_{\gamma_0}|)^{-1/2} \sum_{\gamma'} Z^{-1}_{\gamma \gamma'} Y_{\gamma' \gamma_0},\\
+Y_{\gamma' \gamma} &=   W_{\gamma' \gamma} J_{N-1,N}^{\gamma} s_N^{\gamma}
++ \delta_{\gamma \gamma'}s_{N-1}^{\gamma}  ,\\
+Z_{\gamma' \gamma} &=  W_{\gamma' \gamma}  J_{N-1,N}^{\gamma} c_N^{\gamma}
++ \delta_{\gamma \gamma'}c_{N-1}^{\gamma}   ,\\
+\earr \label{R_matrix} \eeq
+where $J_{p'p}^{\gamma} = \langle \xi_{p'} |K - (E-e_\gamma) | \xi_{p}  \rangle$, and
+\beq \barr{l}
+W_{\gamma' \gamma}= \sum_j  X_j^{\gamma'} X_j^{\gamma} / (E_j-E),
+\earr \label{W_gg} \eeq
+\beq \barr{l}
+X_i^\gamma =  \sum_{\lambda=N_t+1}^N C_{i \gamma\lambda}^\Gamma D_{\lambda, N-1}, \\
+C_{i\gamma\lambda}^\Gamma =  \sum_\beta  C^t_{\gamma\beta} C_{i, j=\{\beta \lambda\} } .
+\earr \label{X_ig} \eeq
+
+
+
+\subsection{Radial electron distribution}
+A resonance $(a+1)$-electron state could be further examined using its radial electron distribution (RED).
+In the notation of \citet{KFB11} and using (\ref{Psi_from_Fano}),
+the probability density of finding an electron at radial distance $r$ is given by
+\beq \barr{rl}
+f_i(r) &= \sum_\nu \isum \dd {\bf q} \ |\Psi^\Gamma_i({\bf q}, r, \nu)|^2=\\
+&= \sum_{jj'} C_{ij}C_{ij'} f_{jj'}(r),\\
+\earr \label{f_i} \eeq
+\beq
+{\bf q} \equiv (q_1, q_2, ..., q_a),
+\eeq
+\beq
+f_{jj'}(r) = \sum_\nu \isum \dd {\bf q} \
+\langle \hat{A}\Phi^\Gamma_j({\bf q}, r, \nu) |\hat{A}\Phi^\Gamma_{j'}({\bf q}, r, \nu) \rangle,\\
+\label{f_jj} \eeq
+where $q_b \equiv (r_b, \nu_b)$ denotes the radial $r_b$ and spin $\nu_b$ coordinates of the $b$th electron.
+Before the Fano's formalism \cite{Fano65,KFB11} for the subshell-structured wave-functions could be applied,
+Eq.~(\ref{f_jj}) is re-written in terms of one-electron matrix elements as
+\beq \barr{l}
+f_{jj'}(r) = \frac{1}{a+1} \sum_{b=1}^{a+1}
+\langle \hat{A}\Phi^\Gamma_j |  \delta(r-r_b)|\hat{A}\Phi^\Gamma_{j'} \rangle.
+\earr \label{f_jj_delta} \eeq
+Eq.~(34) of \cite{KFB11} is now directly applicable, arriving at
+\beq \barr{rl}
+f_{jj'}(r) =&  \frac{1}{a+1} \sum_{\sigma \sigma'} [a_{j \sigma}a_{j' \sigma'}]^{1/2}
+ (-1)^{P_\sigma + P_{\sigma'}} \\
+& \times \langle \Phi_{j \sigma} | \delta(r-r_{a+1}) |\Phi_{j' \sigma'} \rangle,
+\earr \label{RED} \eeq
+where $a_{j\lambda}$ is the number of equivalent electrons in the $\lambda$th subshell
+of the $j$th $(a+1)$-electron basis function $\Phi_j^\Gamma$.
+
+
+
+
+
+
+
+
+\section{RESULTS}
+\subsection{Basis optimization}
+The Laguerre exponential falloff $\lambda_{\rm L}$ is optimized (Fig.~\ref{Fig_LAMBDAS} and Table~\ref{Tab_LAMBDAS})
+for each considered pair of $N_c$ and $N_t$ by minimizing
+the following maximum positive error (MPE)
+\beq
+{\rm MPE} = \max_{\gamma = 1}^{n_\gamma} (e_\gamma - e_\gamma^{\mbox{\tiny{DHIF}} }),
+\label{MPE}
+\eeq
+where (i) $n_\gamma$ is the number of first (with the lowest energies) singlet and triplet helium bound states used
+in the optimization;
+(ii) $\{e_\gamma\}_{\gamma=1}^{n_\gamma}$ are the eigenvalue energies from Eq.~(\ref{psi_H_psi}); and
+(iii) $e_\gamma^{\mbox{\tiny{DHIF}}}$ are the corresponding to $e_\gamma$ energies from \citet{DHIF94}, see Table~\ref{Tab_ENGS}.
+Fig.~\ref{Fig_LAMBDAS} clearly shows that the helium-ion basis very quickly reaches its descriptive limit, see line labeled $N_c^+=5$.
+The limited power of the basis is due to its first $N_c$
+orbitals becoming more and more like the $Z=2$ Coulomb field discrete states as $N_t$ increases.
+Therefore the $1s$-like state of the "first" electron is not improving even if the best possible $\lambda_{\rm L}$  is chosen
+(Table~\ref{Tab_LAMBDAS}).
+On the other hand, the Laguerre basis continues to deliver better helium bound states as $N_t$ increases with the same fixed $N_c$,
+see the $N_c=5$ line compared with the $N_c^+=5$ line.
+
+
+Within the JM method, the three-electron matrix elements [Eq.~(\ref{Psi_from_Fano})] are the main computational cost which
+grows quadratic with the number of three-electron configurations $N_3$, where
+\beq N_3 \sim N_2 N.
+\eeq
+Therefore the bottom sub-figure in Fig.~\ref{Fig_LAMBDAS} examines the lowest achieved MPE values
+against the resulting total two-electron basis size $N_2$.
+The result is somewhat surprising in that fixing $N_c$ is in fact produces less optimal basis (for the same $N_2$)
+than the unrestricted $N_c=N_t$, subject to $\lambda_{\rm L}$ being independently optimized
+for both cases (Table~\ref{Tab_LAMBDAS}).
+
+
+\subsection{Resonances in $e$-He $S$-wave scattering}
+
+see the resulting energy levels for two $\lambda_{\rm L}$ optimized with $n_\gamma=5$ and $n_\gamma=7$.
+Note that $e^{\mbox{\tiny{DHIF}}}(1s2s,^1S)=-2.14418810$ from \cite{DHIF94} is inconsistent
+and it is likely an error $-2.14419810$?
+
+
+TODO Error in exact energy triplet?
+
+[TODO]
+Atomic unit of energy (or Hartree) was set to 27.21138386 eV \cite{MTN08}. A tabular
+form of the JM and CCC cross sections is available from jmatrix.googlecode.com.
+
+
+Cross sections are used to verify the negative-ion eigenstates responsible for resonances.
+Verification is done by excluding a particular negative-ion state from the JM calculation and observing disappearance of the resonance behavior.
+Once identified, their radial electron distributions are used to classify the resonances relative to the target eigenstates.
+
+
+
+
+
+
+Again, both CCC and JM methods described the target helium atom
+, where the target eigenstates were constructed from the first $N_t$ JM functions (\ref{psi_H_psi}). Convergence in the CCC cross sections
+(Figs.~\ref{Fig_He_n2} and \ref{Fig_He_n3}) was achieved at $N_t=?$, where the corresponding JM cross sections
+converged at $N_t=?$ and $N=?$.
+
+
+
+
+\begin{table}[htb]
+\caption{\label{Tab_LAMBDAS}
+The Laguerre exponential falloff $\lambda_{\rm L}$ minimizing the maximum positive error (MPE)
+for selected $N_c$ and $N_t$ values, where $n_\gamma=5$ in Eq.~(\ref{MPE}), and $N_2$ is
+the total number of helium eigenstates [Eq.~(\ref{N_2})].
+All results are for the Laguerre basis [Eq.~(\ref{P_N})] except for the
+the "5+" labeled rows obtained with the helium-ion basis
+[Eqs.~(\ref{P_ion_sum}), (\ref{P_h_P}) and (\ref{P_ion_N})].
+Superscripts indicate powers of 10.
+}
+\begin{ruledtabular}
+%\begin{tabular}{lcr}
+\begin{tabular}{llllll}
+$N_c$ & $N_t$ & $N_2$ & MPE & $\lambda_{\rm L}$ \\
+\hline
+5+  & 10  &  75   & 3.4$^{-3}$ &	2.187\\
+5+  & 15  & 125   & 3.4$^{-3}$ &	3.177\\
+\hline
+5  & 10  &  75   & 2.5$^{-3}$ &	1.963 \\
+5  & 15  & 125   & 2.9$^{-4}$ &	2.350 \\
+5  & 20  & 175   & 1.0$^{-4}$ &	2.960 \\
+5  & 25  & 225   & 6.3$^{-5}$ &	3.540 \\
+5  & 30  & 275   & 4.3$^{-5}$ &	4.112 \\
+5  & 35  & 325   & 3.1$^{-5}$ &	4.681 \\
+\hline
+10 & 10  & 100  & 3.5$^{-4}$ &	1.728 \\
+11 & 11  & 121  & 2.0$^{-4}$ &	1.807 \\
+12 & 12  & 144  & 1.2$^{-4}$ &	1.881 \\
+13 & 13  & 169  & 8.1$^{-5}$ &	1.964 \\
+14 & 14  & 196  & 5.5$^{-5}$ &	2.048 \\
+15 & 15  & 225  & 3.8$^{-5}$ &	2.132 \\
+16 & 16  & 256  & 2.7$^{-5}$ &	2.220 \\
+17 & 17  & 289  & 1.9$^{-5}$ &	2.306 \\
+18 & 18  & 324  & 1.4$^{-5}$ &	2.397 \\
+19 & 19  & 361  & 1.1$^{-5}$ &	2.488 \\
+20 & 20  & 400  & 7.8$^{-6}$ &	2.582 \\
+21 & 21  & 441  & 5.8$^{-6}$ &	2.676 \\
+22 & 22  & 484  & 4.3$^{-6}$ &	2.773 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{table}[htb]
+\caption{\label{Tab_ENGS}
+Energies and classifications for $S$-wave helium electron configurations.
+Energies $e_i$  and $E_i$ are from Eqs.~(\ref{psi_H_psi}) and (\ref{Psi_from_Fano}), respectively.
+$\lambda_{\rm L}=4$, $N_c=N_t$
+}
+
+\begin{ruledtabular}
+%\begin{tabular}{lcr}
+\begin{tabular}{llll}
+Classification & threshold & $e_i$  or $E_i$ &    \\
+\hline
+                      &    & -2.879 028 767 315 &  Ref. \cite{G94}    \\
+                      &    & -2.879 028 732   &  Ref. \cite{JB97p2614}    \\
+$\mbox{He}(1s^2,^1S)$ &  0 & -2.879 028 569 1 &  $N_t=50$   \\ %-2.879028569120921, -2.1441972587315763, -2.060794037546864,
+                      &    & -2.879 028 504   &  $N_t=45$   \\
+                      &    & -2.879 027 69    &  Ref. \cite{DHIF94}    \\
+                      &    & -2.879 03        &  Ref. \cite{HMR05R}    \\
+                      &    & -2.878 95        &  Ref. \cite{BS10p022715}    \\
+\hline
+$\mbox{He}^-(1s2s,^2S)$  &&		  &  \\
+\hline
+$\mbox{He}(1s2s,^3S)$    & 0.704 763 712  & -2.174 264 856 2 & $N_t=50$ \\  %-2.174264856287701, -2.0684901366080752,
+                         &                & -2.174 264 856 2 & $N_t=45$ \\
+                         &                & -2.174 264 80  & \\
+                         &                & -2.174 26      & \\
+                         &                & -2.174 26      & \\
+\hline
+$\mbox{He}^-(1s2s,^2S)$  &&      & \\
+\hline
+$\mbox{He}(1s2s,^1S)$    & 0.734 831 310 & -2.144 197 258 7 &  $N_t=50$ \\
+                         &               & -2.144 197 253   &  $N_t=45$   \\
+                         &               & -2.144 188 10    &    \\
+                         &               & -2.144 20        &    \\
+                         &               & -2.144 19        &    \\
+\hline
+$\mbox{He}^-(1s3s,^2S)$  &&     	 &  \\
+\hline
+$\mbox{He}(1s3s,^3S)$    & 0.810 538 432 & -2.068 490 136 6 & $N_t=50$  \\
+                         &               & -2.068 490 135   & $N_t=45$\\
+                         &               & -2.068 490 12    & \\
+                         &               & -2.068 49        & \\
+                         &               & -2.068 48        & \\
+\hline
+$\mbox{He}^-(1s3s,^2S)$  &&     	 &  \\
+\hline
+$\mbox{He}(1s3s,^1S)$    & 0.818 234 531 & -2.060 794 037 5 & $N_t=50$ \\
+                         &               & -2.060 794 025   & $N_t=45$\\
+                         &               & -2.060 788 24    & \\
+                         &               & -2.060 79        & \\
+                         &               & -2.060 79        & \\
+\hline
+$\mbox{He}^-(1s3s,^2S)$  &&       &	   \\
+\hline
+$\mbox{He}(1s4s,^3S)$    & 0.842 589 989 & -2.036 438 58    & Ref. \cite{DHIF94} \\
+\hline
+$\mbox{He}^+(1s)$        & 0.879 028 569 & -2 	 &    \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+
+\section{CONCLUSIONS}
+
+
+In order to achieve the stated goal we apply the $J$-matrix (JM) approach to electron-atom scattering,
+which has been recently revised by merging it with the Fano's multi-configuration interaction matrix elements \cite{Fano65}.
+In that preceding JM paper \cite{BF11},
+the $S$-wave $e$-He scattering problem was solved within the frozen-core (FC) model of helium for
+the elastic, $2^{1,3}S$-excitation, and single ionization cross sections for impact energies in the range 0.1-1000eV.
+The reported in \cite{BF11} "proof-of-principle" JM calculations were in complete agreement with the convergent-close-coupling (CCC) method,
+within the FC model.
+In this sequel, the scattering target helium atom is described at much higher level of accuracy overcoming the FC model.
+It is found that the theory in \cite{BF11} is sufficient to fully solve the $S$-model below the single ionization threshold.
+The presented JM results (1-30 eV) are confirmed by the corresponding CCC calculations providing
+total elastic, $2^{1,3}S$ and $3^{1,3}S$ excitation cross sections with a "benchmark"-level of accuracy for the first time for the considered $S$-wave model.
+
+
+\begin{acknowledgments}
+This work was supported by the Australian Research Council. IB
+acknowledges the Australian National Computational Infrastructure
+Facility and its Western Australian node iVEC.
+\end{acknowledgments}
+
+
+
+\bibliographystyle{apsrev}
+\bibliography{../bibtex/qm_references}
+
+\end{document}
