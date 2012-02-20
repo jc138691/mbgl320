@@ -87,8 +87,15 @@ To help explain the logic, the new method (denoted KB) is presented together wit
 \beq 
 f_p = s_p + R_0 c_p, \ \ \ R_0 = \tan \delta_0,
 \eeq
+\beq \barr{l}
+\Psi_E^{\KB}(r) =\sum_j \Psi_j^{\KB}(r) b_j  + c_0 \psi_1(r)  + s_0 \psi_2(r) ,\\
+c_0 = \cos(\delta_0), \ \ s_0 = \sin(\delta_0),\\
+\psi_1(r) = (1-\hat{P}_{\KB}) \sin(kr),\\
+\psi_2(r) = (1-\hat{P}_{\KB}) \cos(kr),
+\earr \eeq
 \beq
-\Psi_E^{\KB}(r) =\sum_j \Psi_j^{\KB}(r) b_j  + (1-\hat{P}_{\KB}) \sin(kr + \delta_0),
+\psi_1(r) c_0 + \psi_2(r) s_0 =
+(1-\hat{P}_{\KB}) \sin(kr + \delta_0),\\
 \eeq
 where $\Delta_0 = \exp(i\delta_0)$, 
 $a_m$ are the {\em inner}-space expansion coefficients describing  the electron's interaction with  $V(r)$, and
@@ -96,55 +103,44 @@ $R_0$ is the $s$-wave term of the reactance matrix (also known as the $K$ matrix
 
 
 The unknown $a_m$ and $R$ are found by simultaneously solving
-\beq \barr{l}
-\langle\Psi_i^{\JM}|H-E|\Psi_E^{\JM}\rangle= 0, \\
-\langle\Psi_i^{\KB}|H-E|\Psi_E^{\KB}\rangle=0 , 
+\beq \barr{rl}
+JM: & \langle\Psi_i^{\JM}|H-E|\Psi_E^{\JM}\rangle= 0, \\
+KB: & \langle\Psi_i^{\KB}|H-E|\Psi_E^{\KB}\rangle=0 ,
 \earr \eeq
-\beq \barr{l}
-\langle\phi_n|H-E|\Psi_E^{\JM}\rangle=0 , \ \ \ n \geq N.\\
-\langle\phi_n|H-E|\Psi_E^{\KB}\rangle=0 , \ \ \ n \geq N.
-\earr \eeq
-Note that the equations (\ref{JnmSCm}) are central to the JM formalism as they could be solved analytically for some types of the basis functions \cite{YAA01p042703}. To take advantage of the analytical solutions for $s_n$  and  $c_n$, the representation of $V(r)$  in the chosen basis is truncated to an $N\times N$  matrix by retaining only the inner functional-space contributions,
-\beq
-V_{nm} \approx V_{nm}^N = \left\{
-\begin{array}{ll}
-\langle\phi_n|V|\phi_m\rangle & \mbox{if $n,m < N$} \\
-0 & \mbox{otherwise,}   \end{array}  \right.
-\label{V_N}
-\eeq
-obtaining
-\beq
-\langle\chi_n|H-E|\phi_p\rangle \approx \langle\chi_n|K-E|\phi_p\rangle, \ \ \ n<N, \ p\geq N,
-\label{chi_H_E_phi_p}
-\eeq
-\beq
-\langle\phi_p|H-E|\phi_{p'}\rangle \approx J_{pp'}, \ \ \ p,p'\geq N.
-\label{phi_H_E_phi_p}
-\eeq
- By this neglecting $V_{nm}$ in the outer functional space, Eqs. (\ref{chi_H_E_Psi}) and (\ref{phi_H_E_Psi}) are reduced to the following three cases
-\beq
-(e_n-E)a_n=-D_{n,N-1}J_{N-1,N}f_N, \ \ \ n<N,
-\label{n_N_1}
-\eeq
-\beq
-\sum_{m=0}^{N-1}  D_{m,N-1}a_m=f_{N-1}, \ \ \ n=N,
-\label{n_N}
-\eeq
-\beq
-\sum_{p=N}^{\infty}  J_{np}f_p=0, \ \ \ n>N,
-\label{n_GT_N}
-\eeq
-where (\ref{n_GT_N}) is automatically satisfied via (\ref{JnmSCm}) and
-\beq
-J_{NN}f_N+J_{N,N+1}f_{N+1}=-J_{N,N-1}f_{N-1}
-\eeq
-was used in (\ref{n_N}).
 
-Note that while the original JM formulation used $\phi_m(r)$ instead of $\chi_m(r)$ in (\ref{Psi_N}), the final expression for $R$ remains the same completing the JM treatment of the potential scattering,
-\beq
-R= - (WCJC)^{-1} (WSJS),
-\label{R}
-\eeq
+\beq \barr{rl}
+JM: & a_i = - \sum_{p=N}^{\infty} X_{ip} f_p / (E_i-E),\\
+& X_{ip}=  \langle\Psi_i^{\JM}|H-E| \phi_p \rangle ,\\
+& G_{pp'}= \sum_j X_{jp} X_{jp'}/(E_j-E),
+\earr \eeq
+
+\beq \barr{rl}
+KB: & b_i = - (S_i c_0 + C_i s_0) / (E_i-E), \\
+& S_i = \langle\Psi_i^{\KB}|H-E|  \psi_1 \rangle ,\\
+& C_i = \langle\Psi_i^{\KB}|H-E|  \psi_2 \rangle ,\\
+& g_1= \sum_j S_{j} S_{j}/(E_j-E),\\
+& g_2= \sum_j S_{j} C_{j}/(E_j-E),
+\earr \eeq
+
+\beq \barr{rl}
+JM: & \langle\phi_p|H-E|\Psi_E^{\JM}\rangle=0 , \ \ \ p \geq N.\\
+KB: & \langle \psi_1 |H-E|\Psi_E^{\JM}\rangle=0,
+\earr \eeq
+
+\beq \barr{rl}
+JM: & \sum_j X_{jp} a_j = - \sum_{p'=N}^{\infty} W_{pp'} f_p',\\
+& W_{pp'}  = \langle \phi_p | H-E | \phi_{p'} \rangle,\\
+& \sum_{p'=N}^{\infty} f_{p'}  \sum_j G_{jp,jp'} = \sum_{p'=N}^{\infty} W_{pp'} f_{p'},\\
+\earr \eeq
+
+\beq \barr{rl}
+KB: & \sum_j S_{j} b_j = - (w_1 c_0 +  w_2 s_0), \\
+ & w_1  = \langle \psi_1 |H-E| \psi_1 \rangle,\\
+ & w_2 = \langle \psi_1 |H-E| \psi_2 \rangle,\\
+ & g_1 c_0 + g_2 s_0 = w_1 c_0 +  w_2 s_0,\\
+ & R = -(w_1 - g_1) / (w_2 - g_2),
+\earr \eeq
+
 where the $s$-wave partial $S$-matrix and elastic cross section are given by
 \beq
 S_{00}=(1+\mbox{i}R)(1-\mbox{i}R)^{-1},
@@ -164,6 +160,7 @@ W= \sum_{m=0}^{N-1} \frac{D_{m,N-1}^2}{e_m-E}.
 \label{g}
 \eeq
 
+\subsection{Coulomb-tail potential scattering}
 
 
 
