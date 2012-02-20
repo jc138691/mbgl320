@@ -1,0 +1,182 @@
+%%\documentclass[aip,jcp]{revtex4-1}
+\documentclass[aip
+, pra
+, showpacs
+, aps
+, twocolumn
+%, onecolumn
+, groupedaddress
+, floatfix
+%, preprint
+]{revtex4}
+%]{revtex4-1}
+\usepackage{graphicx, amsbsy, bm, dcolumn, amsmath}
+
+\newcommand{\etal}{{\em et~al.\/}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\vecr}{{\bf r}}
+\newcommand{\JM}{\mbox{\tiny{JM}}}
+\newcommand{\KB}{\mbox{\tiny{KB}}}
+\newcommand{\vare}{\varepsilon}
+
+
+\newcommand{\isum}%
+{\mathop{\hbox{$\displaystyle\sum\kern-13.2pt\int\kern1.5pt$}}}
+
+\begin{document}
+
+\title {Electron-atom scattering theory via a short-range $L^2$ basis}
+
+\author{Dmitry A. Konovalov}
+\affiliation{Discipline of Information Technology, School of Business, James Cook University, Townsville, Queensland 4811, Australia}
+
+\author{Igor Bray}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
+
+
+\date{\today}
+
+\begin{abstract}
+TODO
+
+\end{abstract}
+
+\pacs{34.80.Dp} %34.80.Dp	Atomic excitation and ionization
+\maketitle
+
+\section{INTRODUCTION}
+TODO
+
+\section{THEORY}
+\subsection{Short-range potential scattering}
+After the partial-wave expansion and retaining only the $s$-wave terms $(l=0)$, the potential scattering problem is reduced \cite{LL85, Taylor72} to solving the radial Schr\"odinger equation
+\beq
+(H-E) | \Psi_E \rangle =0, \ \ \ E=k^2/2,
+\eeq
+\beq
+\Psi_E(r \rightarrow \infty) \sim \sin(kr+\delta_0), \ \ \ \Psi_E(r \rightarrow 0)=0,
+\eeq
+\beq
+H=K+V(r), \ \ \ K=-\frac{1}{2} \frac{\mbox{d}^2}{\mbox{d}r^2}, \label{K}
+\eeq
+where $\delta_0$ is the $s$-wave phase shift and $E$ is the total energy of the system.
+
+\beq
+\langle \xi_m | \xi_{m'} \rangle=\delta_{mm'}, \ \ \ m,m'=0,1,...,\infty,
+\eeq
+\beq
+\langle \Psi_i |H| \Psi_j \rangle = E_i \delta_{ij} , \ \ \ \langle \Psi_i | \Psi_j \rangle=\delta_{ij}. 
+\eeq
+\beq \barr{l}
+\Psi_i^{\JM}(r) = \sum_{m=0}^{N-1} A_{im} \phi_m(r), \\
+\Psi_i^{\KB}(r) = \sum_{m=0}^{N-1} B_{im} \xi_m(r),
+\earr \eeq
+\beq
+\hat{P}_{\KB} = \sum_{m=0}^{N-1} | \xi_m \rangle \langle \xi_m |.
+\eeq
+
+
+To help explain the logic, the new method (denoted KB) is presented together with the original JM method,
+\beq 
+\Psi_E^{\JM}(r) =\sum_j \Psi_j^{\JM}(r)a_j  + \sum_{p=N}^{\infty} \phi_p(r) f_p, 
+\eeq
+\beq 
+f_p = s_p + R_0 c_p, \ \ \ R_0 = \tan \delta_0,
+\eeq
+\beq
+\Psi_E^{\KB}(r) =\sum_j \Psi_j^{\KB}(r) b_j  + (1-\hat{P}_{\KB}) \sin(kr + \delta_0),
+\eeq
+where $\Delta_0 = \exp(i\delta_0)$, 
+$a_m$ are the {\em inner}-space expansion coefficients describing  the electron's interaction with  $V(r)$, and
+$R_0$ is the $s$-wave term of the reactance matrix (also known as the $K$ matrix \cite{Taylor72}).
+
+
+The unknown $a_m$ and $R$ are found by simultaneously solving
+\beq \barr{l}
+\langle\Psi_i^{\JM}|H-E|\Psi_E^{\JM}\rangle= 0, \\
+\langle\Psi_i^{\KB}|H-E|\Psi_E^{\KB}\rangle=0 , 
+\earr \eeq
+\beq \barr{l}
+\langle\phi_n|H-E|\Psi_E^{\JM}\rangle=0 , \ \ \ n \geq N.\\
+\langle\phi_n|H-E|\Psi_E^{\KB}\rangle=0 , \ \ \ n \geq N.
+\earr \eeq
+Note that the equations (\ref{JnmSCm}) are central to the JM formalism as they could be solved analytically for some types of the basis functions \cite{YAA01p042703}. To take advantage of the analytical solutions for $s_n$  and  $c_n$, the representation of $V(r)$  in the chosen basis is truncated to an $N\times N$  matrix by retaining only the inner functional-space contributions,
+\beq
+V_{nm} \approx V_{nm}^N = \left\{
+\begin{array}{ll}
+\langle\phi_n|V|\phi_m\rangle & \mbox{if $n,m < N$} \\
+0 & \mbox{otherwise,}   \end{array}  \right.
+\label{V_N}
+\eeq
+obtaining
+\beq
+\langle\chi_n|H-E|\phi_p\rangle \approx \langle\chi_n|K-E|\phi_p\rangle, \ \ \ n<N, \ p\geq N,
+\label{chi_H_E_phi_p}
+\eeq
+\beq
+\langle\phi_p|H-E|\phi_{p'}\rangle \approx J_{pp'}, \ \ \ p,p'\geq N.
+\label{phi_H_E_phi_p}
+\eeq
+ By this neglecting $V_{nm}$ in the outer functional space, Eqs. (\ref{chi_H_E_Psi}) and (\ref{phi_H_E_Psi}) are reduced to the following three cases
+\beq
+(e_n-E)a_n=-D_{n,N-1}J_{N-1,N}f_N, \ \ \ n<N,
+\label{n_N_1}
+\eeq
+\beq
+\sum_{m=0}^{N-1}  D_{m,N-1}a_m=f_{N-1}, \ \ \ n=N,
+\label{n_N}
+\eeq
+\beq
+\sum_{p=N}^{\infty}  J_{np}f_p=0, \ \ \ n>N,
+\label{n_GT_N}
+\eeq
+where (\ref{n_GT_N}) is automatically satisfied via (\ref{JnmSCm}) and
+\beq
+J_{NN}f_N+J_{N,N+1}f_{N+1}=-J_{N,N-1}f_{N-1}
+\eeq
+was used in (\ref{n_N}).
+
+Note that while the original JM formulation used $\phi_m(r)$ instead of $\chi_m(r)$ in (\ref{Psi_N}), the final expression for $R$ remains the same completing the JM treatment of the potential scattering,
+\beq
+R= - (WCJC)^{-1} (WSJS),
+\label{R}
+\eeq
+where the $s$-wave partial $S$-matrix and elastic cross section are given by
+\beq
+S_{00}=(1+\mbox{i}R)(1-\mbox{i}R)^{-1},
+\eeq
+\beq
+\sigma_{00}=\frac{\pi}{k^2} |S_{00}-1|^2,
+\eeq
+respectively, and where
+\beq
+(WSJS) = W s_N J_{N,N-1} + s_{N-1},
+\eeq
+\beq
+(WCJC) = W c_N J_{N,N-1} + c_{N-1},
+\eeq
+\beq
+W= \sum_{m=0}^{N-1} \frac{D_{m,N-1}^2}{e_m-E}.
+\label{g}
+\eeq
+
+
+
+
+\section{CONCLUSIONS}
+TODO
+
+
+\begin{acknowledgments}
+\end{acknowledgments}
+
+
+
+\bibliographystyle{apsrev}
+\bibliography{..//bibtex//qm_references}
+%\bibliography{qm_references}
+\end{document}
