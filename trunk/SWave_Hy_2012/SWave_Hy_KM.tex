@@ -53,12 +53,13 @@ TODO
 
 \section{THEORY}
 \subsection{Short-range potential scattering}
-To help explain this new scattering method, the new method (denoted KB) is presented together and in parallel with the original JM method.
+To illustrate its logic, this new scattering method (denoted KB) is presented by comparing it with the JM method.
 
-After the partial-wave expansion and retaining only the $s$-wave terms $(l=0)$, 
+
+After the partial-wave expansion and retaining only the $s$-wave terms $(l=0)$,
 the potential scattering problem is reduced \cite{LL85, Taylor72} to solving the radial Schr\"odinger equation
 \beq
-(H-E) | \Psi_E \rangle =0, \ \ \ E=k^2/2,
+(H-E) | \Psi_E \rangle =0, \ \ \ E=k^2/2,  \label{H_E_Psi_E}
 \eeq
 \beq
 \Psi_E(r \rightarrow \infty) \sim \sin(kr+\delta_0), \ \ \ \Psi_E(r= 0)=0,
@@ -68,113 +69,107 @@ H=K+V(r), \ \ \ K=-\frac{1}{2} \frac{\mbox{d}^2}{\mbox{d}r^2}, \label{K}
 \eeq
 where $\delta_0$ is the $s$-wave elastic scattering phase shift and $E$ is the total energy of the system.
 
+
 Let $\{\xi_p(r)\}_{p=0}^\infty$ be a square-integrable ($L^2$) orthonormal basis
 such that
 for any $p,p'=0,1,...,\infty$
 \beq
 \langle \xi_p | \xi_{p'} \rangle=\delta_{pp'}, \ \ \ \xi_p(r=0)=0.
 \eeq
-The corresponding JM basis is denoted as $\{\phi_p(r)\}_{p=0}^\infty$, where $\phi_p(r=0)=0$ 
+The corresponding JM basis is denoted as $\{\phi_p(r)\}_{p=0}^\infty$, where $\phi_p(r=0)=0$
 and where other special properties of the basis are not relevant in this presentation.
-In both cases the system's Hamiltonian is diagonalized within the functional space of first $N$ basis functions,  
-\beq 
-\mbox{\{JM, KB\}:} \ \ \langle \Psi_i |H| \Psi_j \rangle = E_i \delta_{ij} , \ \ \langle \Psi_i | \Psi_j \rangle=\delta_{ij},
+In both cases the system's Hamiltonian is diagonalized within the functional space of first $N$ basis functions,
+\beq
+\langle \Psi_i |H| \Psi_j \rangle = E_i \delta_{ij} , \ \ \langle \Psi_i | \Psi_j \rangle=\delta_{ij},
 \eeq
 \beq
-\Psi_i^{\JM}(r) = \sum_{p=0}^{N-1} C_{ip}^{\JM} \phi_p(r), \  
+\Psi_i^{\JM}(r) = \sum_{p=0}^{N-1} C_{ip}^{\JM} \phi_p(r), \
 \Psi_i^{\KB}(r) = \sum_{p=0}^{N-1} C_{ip}^{\KB} \xi_p(r).
 \eeq
-Note that both cases could be made identical by using nonorthogonal and orthogonal Laguerre functions for 
+Note that both cases could be made identical by using nonorthogonal and orthogonal Laguerre functions for
 $\{\phi_p(r)\}_{p=0}^\infty$ and $\{\xi_p(r)\}_{p=0}^\infty$, respectively \cite{KB10p022708}.
+
 
 The exact solution $\Psi_E(r)$ is approximated by the sum of {\em inner} and {\em outer} functional space expansions
 \beq
-\Psi_E^{\JM}(r) =\sum_j \Psi_j^{\JM}(r)a_j  + \sum_{p=N}^{\infty} \phi_p(r) f_p,
+\Psi_E^{\JM}(r) =\sum_j \Psi_j^{\JM}(r)a_j  + \sum_{p=N}^{\infty} \phi_p(r) f_p,  \label{Psi_JM}
 \eeq
 \beq
-\Psi_E^{\KB}(r) =\sum_j \Psi_j^{\KB}(r) b_j  + c_0 \hat{\psi}_1(r)  + s_0 \hat{\psi}_2(r) ,
+\Psi_E^{\KB}(r) =\sum_j \Psi_j^{\KB}(r) b_j  + c_0 \hat{\psi}_1(r)  + s_0 \hat{\psi}_2(r), \label{Psi_KB}
 \eeq
-where $a_j$ and $b_j$ try to describe the full complexity of the considered scattering system, that is, 
-the electron's interaction with  $V(r)$ in this case. 
-In the JM case, the correct scattering boundary condition is parameterized via     
+where $a_j$ and $b_j$ try to describe the full complexity of the considered scattering system, that is,
+the electron's interaction with  $V(r)$ in this instance.
+In the JM case, the correct scattering boundary condition is parameterized via
 \beq
-\mbox{JM:} \ \ \ f_p = s_p + R_0 c_p, \ \ \ R_0 = \tan \delta_0,
+f_p = s_p + R_0 c_p, \ \ \ R_0 = \tan \delta_0,  \label{R_0}
 \eeq
-where $s_p$ and $c_p$  are known within the JM method, and where $R_0$ is the $s$-wave term of the reactance matrix \cite{Taylor72}.
-In the KB case, the outer functions $\{\xi_p(r)\}_{p=N}^\infty$ are used to approximate the required boundary condition via 
+where: $s_p$ and $c_p$  are known within the JM method; 
+$R_0$ is the $s$-wave term of the reactance matrix \cite{Taylor72};
+and where the $s$-wave partial $S$-matrix and elastic cross section are given by
+\beq
+S_{00}=(1+\mbox{i}R_0)(1-\mbox{i}R_0)^{-1},
+\eeq
+\beq
+\sigma_{00}=\frac{\pi}{k^2} |S_{00}-1|^2.
+\eeq
+
+
+In the KB case, the outer functions $\{\xi_p(r)\}_{p=N}^\infty$ are used to approximate the required boundary condition via
 \beq
 \hat{\psi}_1(r) c_0 + \hat{\psi}_2(r) s_0 =
 (1-\hat{P}_N) \sin(kr + \delta_0),\\
 \eeq
-where $c_0 = \cos(\delta_0)$, $s_0 = \sin(\delta_0)$, 
+where $c_0 = \cos(\delta_0)$, $s_0 = \sin(\delta_0)$,
 \beq \barr{l}
 \hat{\psi}_1(r) = (1-\hat{P}_N) \sin(kr),\\
 \hat{\psi}_2(r) = (1-\hat{P}_N) \cos(kr),
 \earr \eeq
-and where the inner space projection operator $\hat{P}_N$ is given by \\
+and where the inner space projection operator $\hat{P}_N$ is by definition short-range and is given by \\
 \beq
 \hat{P}_N = \sum_{p=0}^{N-1} | \xi_p \rangle \langle \xi_p |.
 \eeq
 
 
-
-The unknown $a_m$ and $R$ are found by simultaneously solving
-\beq \barr{rl}
-JM: & \langle\Psi_i^{\JM}|H-E|\Psi_E^{\JM}\rangle= 0, \\
-\mbox{KB:} & \langle\Psi_i^{\KB}|H-E|\Psi_E^{\KB}\rangle=0 ,
+The unknown expansion coefficients in Eqs.~(\ref{Psi_JM}) and (\ref{Psi_KB}) 
+are found by satisfying the system's  Schr\"odinger Eq.~(\ref{H_E_Psi_E}) 
+separately within the inner and outer functional spaces
+arriving at the two set of conditions 
+\beq \barr{l}
+\langle\Psi_i^{\JM}|H-E|\Psi_E^{\JM}\rangle= 0, \\
+\langle\Psi_i^{\KB}|H-E|\Psi_E^{\KB}\rangle=0,
 \earr \eeq
-
-\beq \barr{rl}
-JM: & a_i = - \sum_{p=N}^{\infty} X_{ip} f_p / (E_i-E),\\
-& X_{ip}=  \langle\Psi_i^{\JM}|H-E| \phi_p \rangle ,\\
-& G_{pp'}= \sum_j X_{jp} X_{jp'}/(E_j-E),
+\beq \barr{l}
+\langle\phi_p|H-E|\Psi_E^{\JM}\rangle=0 , \ \ \ p \geq N.\\
+\langle \hat{\psi}_1 |H-E|\Psi_E^{\JM}\rangle=0,
 \earr \eeq
-
-\beq \barr{rl}
-KB: & b_i = - (S_i c_0 + C_i s_0) / (E_i-E), \\
-& S_i = \langle\Psi_i^{\KB}|H-E|  \psi_1 \rangle ,\\
-& C_i = \langle\Psi_i^{\KB}|H-E|  \psi_2 \rangle ,\\
-& g_1= \sum_j S_{j} S_{j}/(E_j-E),\\
-& g_2= \sum_j S_{j} C_{j}/(E_j-E),
+The first set of conditions are solved for $a_i$ and $b_i$
+\beq \barr{l}
+a_i = - \sum_{p=N}^{\infty} X_{ip} f_p / (E_i-E),\\
+X_{ip}=  \langle\Psi_i^{\JM}|H-E| \phi_p \rangle ,\\
 \earr \eeq
-
-\beq \barr{rl}
-JM: & \langle\phi_p|H-E|\Psi_E^{\JM}\rangle=0 , \ \ \ p \geq N.\\
-KB: & \langle \psi_1 |H-E|\Psi_E^{\JM}\rangle=0,
+\beq \barr{l}
+b_i = - (S_i c_0 + C_i s_0) / (E_i-E), \\
+S_i = \langle\Psi_i^{\KB}|H-E|  \hat{\psi}_1 \rangle, \ \ 
+C_i = \langle\Psi_i^{\KB}|H-E|  \hat{\psi}_2 \rangle.
 \earr \eeq
-
-\beq \barr{rl}
-JM: & \sum_j X_{jp} a_j = - \sum_{p'=N}^{\infty} W_{pp'} f_p',\\
-& W_{pp'}  = \langle \phi_p | H-E | \phi_{p'} \rangle,\\
-& \sum_{p'=N}^{\infty} f_{p'}  \sum_j G_{jp,jp'} = \sum_{p'=N}^{\infty} W_{pp'} f_{p'},\\
+Substituting $a_i$ and $b_i$ into the second set of conditions yields the final equations for $R_0$ (\ref{R_0})
+\beq \barr{l}
+\sum_{p'=N}^{\infty} f_{p'}  G_{pp'} = \sum_{p'=N}^{\infty} W_{pp'} f_{p'},\\
+W_{pp'}  = \langle \phi_p | H-E | \phi_{p'} \rangle,\\
+G_{pp'}= \sum_j X_{jp} X_{jp'}/(E_j-E),
+\label{JM2} \earr \eeq
+\beq \barr{l}
+R_0 = -(w_1 - g_1) / (w_2 - g_2),\\
+g_1= \sum_j S_{j} S_{j}/(E_j-E),\\
+g_2= \sum_j S_{j} C_{j}/(E_j-E),\\
+w_1  = \langle \hat{\psi}_1 |H-E| \hat{\psi}_1 \rangle,\ \ 
+w_2 = \langle \hat{\psi}_1 |H-E| \hat{\psi}_2 \rangle,
 \earr \eeq
+where the JM method proceeds by solving Eq.~(\ref{JM2}) using the JM's specific technique. 
 
-\beq \barr{rl}
-KB: & \sum_j S_{j} b_j = - (w_1 c_0 +  w_2 s_0), \\
- & w_1  = \langle \psi_1 |H-E| \psi_1 \rangle,\\
- & w_2 = \langle \psi_1 |H-E| \psi_2 \rangle,\\
- & g_1 c_0 + g_2 s_0 = w_1 c_0 +  w_2 s_0,\\
- & R = -(w_1 - g_1) / (w_2 - g_2),
-\earr \eeq
 
-where the $s$-wave partial $S$-matrix and elastic cross section are given by
-\beq
-S_{00}=(1+\mbox{i}R)(1-\mbox{i}R)^{-1},
-\eeq
-\beq
-\sigma_{00}=\frac{\pi}{k^2} |S_{00}-1|^2,
-\eeq
-respectively, and where
-\beq
-(WSJS) = W s_N J_{N,N-1} + s_{N-1},
-\eeq
-\beq
-(WCJC) = W c_N J_{N,N-1} + c_{N-1},
-\eeq
-\beq
-W= \sum_{m=0}^{N-1} \frac{D_{m,N-1}^2}{e_m-E}.
-\label{g}
-\eeq
+One of the main technical issue with the existing JM method is the difficulty of extracting ionization amplitudes. 
+
 
 \subsection{Coulomb-tail potential scattering}
 
