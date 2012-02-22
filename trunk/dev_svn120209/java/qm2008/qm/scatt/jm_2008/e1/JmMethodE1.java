@@ -1,6 +1,8 @@
 package scatt.jm_2008.e1;
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import flanagan.complex.Cmplx;
 import math.func.FuncVec;
+import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.jm.JmRes;
@@ -19,19 +21,24 @@ public class JmMethodE1 extends JmMethodBaseE1 {   // E1 - one electron
   }
 
   public JmRes calc(Vec engs) {
+    JmRes res = new JmRes();
+    int chNum = getChNum();
+    int eN = engs.size();
+
     JmLgrrModel model = jmOpt.getJmModel();
     int N = model.getN();
     double lambda = model.getLambda();
-    JmRes res = new JmRes();
-//    Vec arrR = new Vec(engs.size());
-    FuncVec arrCross = new FuncVec(engs);
+
     FuncVec arrShift = new FuncVec(engs);
+    Mtrx mCs = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
+    res.setCrossSecs(mCs);
     for (int i = 0; i < engs.size(); i++) {              log.dbg("i = ", i);
-      double E = engs.get(i);                            log.dbg("E = ", E);
-      double Jnn = JmTheory.calcJnnL0byE(N, E, lambda);    log.dbg("Jnn = ", Jnn);
-      Cmplx sc = JmTheory.calcSCnL0byE(N, E, lambda);      log.dbg("sc_N = ", sc);
-      Cmplx sc1 = JmTheory.calcSCnL0byE(N - 1, E, lambda); log.dbg("sc_{N-1} = ", sc1);
-      double G = calcG(E);                                 log.dbg("G = ", G);
+      double scattE = engs.get(i);                            log.dbg("E = ", scattE);
+      mCs.set(i, IDX_ENRGY, scattE);
+      double Jnn = JmTheory.calcJnnL0byE(N, scattE, lambda);    log.dbg("Jnn = ", Jnn);
+      Cmplx sc = JmTheory.calcSCnL0byE(N, scattE, lambda);      log.dbg("sc_N = ", sc);
+      Cmplx sc1 = JmTheory.calcSCnL0byE(N - 1, scattE, lambda); log.dbg("sc_{N-1} = ", sc1);
+      double G = calcG(scattE);                                 log.dbg("G = ", G);
       double g = Jnn * G;                                  log.dbg("g = ", g);
       double sN1 = sc1.getIm();
       double cN1 = sc1.getRe();
@@ -41,14 +48,14 @@ public class JmMethodE1 extends JmMethodBaseE1 {   // E1 - one electron
       double shift = Math.atan(R);
       Cmplx S = new Cmplx(1., R).div(new Cmplx(1., -R));   log.dbg("S = ", S);
       S = S.add(-1);
-      double k = Scatt.calcMomFromE(E);                    log.dbg("k = ", k);
+      double k = Scatt.calcMomFromE(scattE);                    log.dbg("k = ", k);
       double k2 = k * k;
 //      double sigma = Math.PI * S.abs2();              log.dbg("sigma = ", sigma).eol();
       double sigma = Math.PI * S.abs2() / k2;              log.dbg("sigma = ", sigma).eol();
-      arrCross.set(i, sigma);
+//      arrCross.set(i, sigma);
+      mCs.set(i, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
       arrShift.set(i, shift);
     }
-    res.setCross(arrCross);
     res.setShift(arrShift);
     return res;
   }
