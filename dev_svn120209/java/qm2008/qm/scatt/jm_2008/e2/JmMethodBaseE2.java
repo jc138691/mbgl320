@@ -25,7 +25,6 @@ public abstract class JmMethodBaseE2 extends JmMethodBaseE1 {
   private static int MAGIC_EPS_N = 1000; // MAGIC NUMBERS!!!!!!!!!!!!!!!!!!!!!!!
   protected static final int IDX_IONIZ = 1;
   protected static final int SDCS_ENG_OFFSET = 1;
-  protected static final int IDX_ENRGY = 0;
   //  protected static final int SC_SYS_ENG_OFFSET = 1;
   protected static final int SDCS_CH_OFFSET = 1;
   //  protected static final int CS_ENG_OFFSET = 1;
@@ -95,15 +94,15 @@ public abstract class JmMethodBaseE2 extends JmMethodBaseE1 {
   @Override
   public JmRes calc(Vec engs) {          //JmMethodJmBasisE3.log.setDbg();
     JmRes res = new JmRes();
-    int cN = getChNum();
+    int chNum = getChNum();
     int eN = engs.size();
 
     Mtrx X = calcX();                 log.dbg("X=", new MtrxDbgView(X));
     new JmResonancesE2(this).calc(res, X);
 
-    Mtrx mCs = new Mtrx(eN, cN + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
+    Mtrx mCs = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
     Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
-    res.setSdcs(new Mtrx(cN + 1, eN + 1));
+    res.setSdcs(new Mtrx(chNum + 1, eN + 1));
     //    res.setSdcsSf(new Mtrx(eN, SDCS_FIT_IDX_MAX + 1));
     //    res.setSdcsSfLin(new Mtrx(eN, SDCS_FIT_IDX_MAX + 1));
     res.setCrossSecs(mCs);
@@ -116,8 +115,8 @@ public abstract class JmMethodBaseE2 extends JmMethodBaseE1 {
       chArr = loadChArr(sysE);
 
       Mtrx W = calcW(sysE, X.getArray());       log.dbg("W=\n", new MtrxDbgView(W));
-      CmplxMtrx zp = new CmplxMtrx(cN, cN); // Z^+
-      CmplxMtrx zm = new CmplxMtrx(cN, cN); // Z^-
+      CmplxMtrx zp = new CmplxMtrx(chNum, chNum); // Z^+
+      CmplxMtrx zm = new CmplxMtrx(chNum, chNum); // Z^-
       loadZ(zp, zm, W, chArr);           log.dbg("Z^+=\n", new CmplxMtrxDbgView(zp));  log.dbg("Z^-=\n", new CmplxMtrxDbgView(zm));
 
       CmplxMtrx zpInv = null;
@@ -196,12 +195,12 @@ public abstract class JmMethodBaseE2 extends JmMethodBaseE1 {
     return res;
   }
   protected void calcCrossSecs(int i, JmRes res, CmplxMtrx mS) {
-    int cN = getChNum();
+    int chNum = getChNum();
     Mtrx mCs = res.getCrossSecs();
     Mtrx mTics = res.getTics();
     double ionSum = 0;
     int initChIdx = trgtE2.getInitTrgtIdx();
-    for (int to = 0; to < cN; to++) {
+    for (int to = 0; to < chNum; to++) {
       log.dbg("to = ", to);  // Target channels
       JmCh ch = chArr[to];
       double k0 = chArr[initChIdx].getAbsMom();

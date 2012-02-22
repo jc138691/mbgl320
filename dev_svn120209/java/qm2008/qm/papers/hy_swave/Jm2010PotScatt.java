@@ -73,11 +73,14 @@ public class Jm2010PotScatt extends Jm2010CommonR {
     JmRes res = method.calcEngGrid();                  log.dbg("res=", res);
 //    JmRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
 
-    FuncVec func = new FuncVecToString(res.getCross());
-    FileX.writeToFile(func.toString(), HOME_DIR, "cross", "cross_"+ basisOptN.makeLabel()+".csv");
+//    FuncVec func = new FuncVecToString(res.getCross());
+//    FileX.writeToFile(func.toString(), HOME_DIR, "cross", "cross_"+ basisOptN.makeLabel()+".csv");
 
-    func = new FuncVecToString(res.getShift());
-    FileX.writeToFile(func.toString(), HOME_DIR, "shift", "shift_"+ basisOptN.makeLabel()+".csv");
+//    func = new FuncVecToString(res.getShift());
+//    FileX.writeToFile(func.toString(), HOME_DIR, "shift", "shift_"+ basisOptN.makeLabel()+".csv");
+
+    setupJmRes(res, method);
+    res.writeToFiles();
 
     // JM-properties
 //    EngModel eng = jmOpt.getGridEng();    log.dbg("Incident Energies =", eng);
