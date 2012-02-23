@@ -8,7 +8,7 @@ import javax.utilx.log.Log;
 import project.workflow.task.DefaultTaskUI;
 import math.func.arr.FuncArr;
 import math.vec.grid.StepGrid;
-import scatt.jm_2008.jm.laguerre.JmLgrrOrthR;
+import scatt.jm_2008.jm.laguerre.LgrrOrthR;
 import atom.wf.WFQuadrR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 13/11/2008, Time: 14:23:56
@@ -23,6 +23,6 @@ public class UCPlotJmLagrrOrthR extends UCPlotFuncArr {
     CalcOptE1 model = project.getJmPotOptR();    // R
     StepGrid r = new StepGrid(model.getGrid());    log.dbg("r grid=", r);
     WFQuadrR w = new WFQuadrR(r);     log.dbg("integration weights=", w);
-    return new JmLgrrOrthR(w, model.getLgrrModel() );
+    return new LgrrOrthR(w, model.getLgrrModel() );
   }
 }

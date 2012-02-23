@@ -11,9 +11,9 @@ import junit.framework.TestCase;
  * Copyright dmitry.konovalov@jcu.edu.au Date: 22/10/2008, Time: 16:41:18
  */
 public class JmLagrrBiRTest extends FlowTest {
-  private static JmLgrrR arr;
-  private static JmLagrrBiR bio;
-  public JmLagrrBiRTest(JmLgrrR basis, JmLagrrBiR bio) {
+  private static LgrrR arr;
+  private static LagrrBiR bio;
+  public JmLagrrBiRTest(LgrrR basis, LagrrBiR bio) {
     super(JmLagrrBiRTest.class);
     arr = basis;
     this.bio = bio;
@@ -23,8 +23,8 @@ public class JmLagrrBiRTest extends FlowTest {
   public void testNorm() {
     TaskProgressMonitor monitor = ProjectProgressMonitor.getInstance();
 
-    log.dbg("testing " + JmLagrrBiR.HELP);
-    log.dbg("JmLgrrR.HELP: " + JmLgrrR.HELP);
+    log.dbg("testing " + LagrrBiR.HELP);
+    log.dbg("LgrrR.HELP: " + LgrrR.HELP);
     log.dbg("running JmLagrrBiRTest: JM-Laguerre and Bi-diagonal Laguerre function orthonormality");
     log.dbg("TEST_{n,m} = Intergal[0,rMax] R_n(r) * BiR_m(r) = delta(n, m)");
     log.dbg("Max relative intergation error =" + getMaxErr());

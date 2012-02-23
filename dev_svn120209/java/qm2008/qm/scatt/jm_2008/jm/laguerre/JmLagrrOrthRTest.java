@@ -11,8 +11,8 @@ import junit.framework.TestCase;
  * Copyright dmitry.konovalov@jcu.edu.au Date: 13/11/2008, Time: 14:31:44
  */
 public class JmLagrrOrthRTest extends FlowTest {
-  private static JmLgrrOrthR arr;
-  public JmLagrrOrthRTest(JmLgrrOrthR basis) {
+  private static LgrrOrthR arr;
+  public JmLagrrOrthRTest(LgrrOrthR basis) {
     super(JmLagrrOrthRTest.class);
     arr = basis;
   }
@@ -21,7 +21,7 @@ public class JmLagrrOrthRTest extends FlowTest {
   public void testNorm() {
     TaskProgressMonitor monitor = ProjectProgressMonitor.getInstance();
 
-    log.dbg("testing " + JmLgrrOrthR.HELP);
+    log.dbg("testing " + LgrrOrthR.HELP);
     log.dbg("TEST_{n,m} = Intergal[0,rMax] R_n(r) * R_m(r) = delta(n, m)");
     log.dbg("Max relative intergation error =", getMaxErr());
     WFQuadrR w = new WFQuadrR((StepGrid)arr.getX());

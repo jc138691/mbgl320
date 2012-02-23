@@ -19,7 +19,7 @@ import project.workflow.task.test.FlowTest;
 import qm_station.QMSProject;
 import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmTrgtE3;
 import stats.VecStats;
 
@@ -291,7 +291,7 @@ public class OptimLambda extends HeSWaveScatt {
     basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
     LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
-    orthonNt = new JmLgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("JmLgrrOrthLcr(N_t) = ", orthonNt);
+    orthonNt = new LgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthonNt);
     potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-1./r
     pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
@@ -321,7 +321,7 @@ public class OptimLambda extends HeSWaveScatt {
     basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
     LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
-    orthonNt = new JmLgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("JmLgrrOrthLcr(N_t) = ", orthonNt);
+    orthonNt = new LgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthonNt);
     potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-1./r
     pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 

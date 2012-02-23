@@ -19,9 +19,9 @@ public class Jm2010CommonR extends Jm2010Common {
   public static Log log = Log.getLog(Jm2010CommonR.class);
 //  protected static int R_N = 1301;
 
-  protected static JmLgrrR basis;
-  protected static JmLgrrOrthR orth;
-  protected static JmLagrrBiR bi;
+  protected static LgrrR basis;
+  protected static LgrrOrthR orth;
+  protected static LagrrBiR bi;
   protected static WFQuadrR quadr;
 
   protected void initJm() {
@@ -38,19 +38,19 @@ public class Jm2010CommonR extends Jm2010Common {
     if (!new BooleQuadrTest().ok())         return;
 
     basisOptN = calcOpt.getLgrrModel();          log.dbg("Laguerr model =", basisOptN);
-    basis = new JmLgrrR(quadr, basisOptN);   log.dbg("JmLgrrR =\n", basis);
+    basis = new LgrrR(quadr, basisOptN);   log.dbg("LgrrR =\n", basis);
 
-    // JM-jmBasisN
+    // JM-basisN
     if (!new JmLagrrRTest(basis).ok())         return;
-    bi = new JmLagrrBiR(quadr, basisOptN);      log.dbg("JmLagrrBiR =\n", bi);
+    bi = new LagrrBiR(quadr, basisOptN);      log.dbg("LagrrBiR =\n", bi);
     if (!new JmLagrrBiRTest(basis, bi).ok())   return;
-    orth = new JmLgrrOrthR(quadr, basisOptN);  log.dbg("JmLgrrOrthR = ", orth);
+    orth = new LgrrOrthR(quadr, basisOptN);  log.dbg("LgrrOrthR = ", orth);
     if (!new JmLagrrOrthRTest(orth).ok())      return;
 
     // H-integration
     if (!new H_Hy_P1s_RTest(quadr).ok())           return;
 
-    // Making inner-jmBasisN
+    // Making inner-basisN
     if (!new JmPotEigVecRTest(orth).ok())      return;    
   }
 

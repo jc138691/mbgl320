@@ -9,7 +9,7 @@ import project.workflow.task.DefaultTaskUI;
 import math.func.arr.FuncArr;
 import math.vec.grid.StepGridModel;
 import math.vec.grid.StepGrid;
-import scatt.partial.wf.SinPWaveR;
+import scatt.partial.wf.eng_arr_not_used.SinPWaveEArrR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 11:59:26
  */
@@ -23,6 +23,6 @@ public class UCPlotSinPWaveR extends UCPlotFuncArr {
     CalcOptE1 model = project.getJmPotOptR();    // R
     StepGridModel sg = model.getGrid();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
-    return new SinPWaveR(r, model.getGridEng(), model.getLgrrModel().getL() ); //
+    return new SinPWaveEArrR(r, model.getGridEng(), model.getLgrrModel().getL() ); //
   }
 }

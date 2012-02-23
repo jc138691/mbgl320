@@ -9,7 +9,7 @@ import javax.utilx.log.Log;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
 import math.func.arr.FuncArr;
-import scatt.jm_2008.jm.laguerre.JmLgrrR;
+import scatt.jm_2008.jm.laguerre.LgrrR;
 import atom.wf.WFQuadrR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 26/09/2008, Time: 17:10:49
@@ -25,6 +25,6 @@ public class UCPlotJmLagrrR extends UCPlotFuncArr {
     StepGridModel sg = model.getGrid();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
     WFQuadrR w = new WFQuadrR(r);
-    return new JmLgrrR(w, model.getLgrrModel() );
+    return new LgrrR(w, model.getLgrrModel() );
   }
 }

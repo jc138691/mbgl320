@@ -84,7 +84,7 @@ public class Jm2008PotR extends Jm2008Common {
     WFQuadrR w = new WFQuadrR(r);            log.dbg("r weights =", w);
 
     LgrrModel lgrrOpt = potOpt.getLgrrModel(); log.dbg("Laguerr model =", lgrrOpt);
-    JmLgrrR basis = new JmLgrrR(w, lgrrOpt);  log.dbg("JmLgrrR =\n", basis);
+    LgrrR basis = new LgrrR(w, lgrrOpt);  log.dbg("LgrrR =\n", basis);
     TestModel testOpt = potOpt.getTestModel();
     FlowTest.setMaxErr(testOpt.getMaxIntgrlErr());
     FlowTest.setLog(log);
@@ -92,11 +92,11 @@ public class Jm2008PotR extends Jm2008Common {
     // H-integration
     if (!new H_Hy_P1s_RTest(w).ok())           return;
 
-    // JM-jmBasisN
+    // JM-basisN
     if (!new JmLagrrRTest(basis).ok())         return;
-    JmLagrrBiR bi = new JmLagrrBiR(w, lgrrOpt );  log.dbg("JmLagrrBiR =\n", bi);
+    LagrrBiR bi = new LagrrBiR(w, lgrrOpt );  log.dbg("LagrrBiR =\n", bi);
     if (!new JmLagrrBiRTest(basis, bi).ok())   return;
-    JmLgrrOrthR orth = new JmLgrrOrthR(w, lgrrOpt );  log.dbg("JmLgrrOrthR = ", orth);
+    LgrrOrthR orth = new LgrrOrthR(w, lgrrOpt );  log.dbg("LgrrOrthR = ", orth);
     if (!new JmLagrrOrthRTest(orth).ok())      return;
     if (!new JmPotEigVecRTest(orth).ok())      return;
 

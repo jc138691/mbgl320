@@ -1,8 +1,9 @@
-package scatt.partial.wf;
+package scatt.partial.wf.k_matrix_idea;
 import javax.utilx.log.Log;
 
 import math.vec.Vec;
 import math.func.FuncVec;
+import scatt.partial.wf.eng_arr_not_used.EngFuncArr;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 19/11/2008, Time: 10:07:06
  */

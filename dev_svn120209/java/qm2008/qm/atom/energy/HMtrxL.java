@@ -72,14 +72,14 @@ public class HMtrxL extends Mtrx {
     eigVec = new WFArrL(basis.getL(), basis.getNormQuadr());
     Vec x = getX();
 
-    // f_i = SUM_j C_ij * jmBasisN(j)
+    // f_i = SUM_j C_ij * basisN(j)
     EigenSymm thisEig = eig();
     Mtrx v = thisEig.getV();
     double[][] C = v.getArray();
     for (int i = 0; i < basis.size(); i++) {
       FuncVec f_i = new FuncVec(x);
       for (int j = 0; j < basis.size(); j++) {
-//        f_i.addMultSafe(C[i][j], jmBasisN.get(j));  // this is WRONG!!!
+//        f_i.addMultSafe(C[i][j], basisN.get(j));  // this is WRONG!!!
         f_i.addMultSafe(C[j][i], basis.get(j));   // this is correct!!!
       }
       eigVec.add(f_i);

@@ -5,7 +5,7 @@ import math.mtrx.Mtrx;
 
 import javax.utilx.log.Log;
 
-import scatt.jm_2008.jm.laguerre.JmLgrrR;
+import scatt.jm_2008.jm.laguerre.LgrrR;
 import atom.energy.part_wave.PartHR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 17/12/2008, Time: 13:51:25
@@ -15,12 +15,12 @@ public class JmJMtrxR extends Mtrx {
   public static Log log = Log.getLog(JmJMtrxR.class);
   private double E;
 
-  public JmJMtrxR(JmLgrrR arr, double E) {
+  public JmJMtrxR(LgrrR arr, double E) {
     super(arr.size(), arr.size());
     this.E = E;                      log.dbg("E=", E);
     calc(arr);
   }
-  private void calc(JmLgrrR arr) {
+  private void calc(LgrrR arr) {
     WFQuadr w = arr.getQuadr();
     PartHR partH = new PartHR(w);
     int L = arr.getModel().getL();

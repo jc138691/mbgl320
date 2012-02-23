@@ -13,8 +13,7 @@ import math.func.arr.FuncArr;
 import math.vec.grid.StepGridModel;
 import math.vec.grid.StepGrid;
 import math.vec.VecDbgView;
-import scatt.partial.wf.CosPWaveLCR;
-
+import scatt.partial.wf.eng_arr_not_used.CosPWaveEArrLcr;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 13:57:38
  */
@@ -29,6 +28,6 @@ public class UCPlotCosPWaveLCR extends UCPlotFuncArr {
     StepGridModel sg = model.getGrid();
     StepGrid x = new StepGrid(sg);    log.dbg("LCR grid=", x);
     WFQuadrLcr w = new WFQuadrLcr(x);             log.dbg("LCR integration weights, WFQuadrLcr=", new VecDbgView(w));
-    return new CosPWaveLCR(w, model.getGridEng(), model.getLgrrModel().getL() ); //
+    return new CosPWaveEArrLcr(w, model.getGridEng(), model.getLgrrModel().getL() ); //
   }
 }

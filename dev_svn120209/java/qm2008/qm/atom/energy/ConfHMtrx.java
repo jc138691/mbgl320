@@ -50,7 +50,7 @@ public class ConfHMtrx extends HMtrx {
 //      double val = m.get(r, col);  // BY ROW is correct!   see HydrogenJUnit.test_2s
 //      for (int r2 = 0; r2 < m.getNumRows(); r2++) {
 //        double val2 = m.get(r2, col);  // BY ROW is correct!   see HydrogenJUnit.test_2s
-//        Energy configE = atom.calcH(jmBasisN.get(r), jmBasisN.get(r2));
+//        Energy configE = atom.calcH(basisN.get(r), basisN.get(r2));
 //        res.kin += (configE.kin * val * val2);
 //        res.pot += (configE.pot * val * val2);
 //      }
@@ -64,7 +64,7 @@ public class ConfHMtrx extends HMtrx {
 //      double val = m.get(r, col);  // BY ROW is correct!   see HydrogenJUnit.test_2s
 //      for (int r2 = 0; r2 < m.getNumRows(); r2++) {
 //        double val2 = m.get(r2, col);  // BY ROW is correct!   see HydrogenJUnit.test_2s
-//        FuncVec conf = atom.calcConfigDensity(jmBasisN.get(r), jmBasisN.get(r2));
+//        FuncVec conf = atom.calcConfigDensity(basisN.get(r), basisN.get(r2));
 //        if (conf == null)
 //          continue;
 //        conf.multSelf(val * val2);

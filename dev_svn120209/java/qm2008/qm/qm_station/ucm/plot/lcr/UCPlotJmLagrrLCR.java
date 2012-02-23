@@ -12,7 +12,7 @@ import qm_station.QMS;
 import qm_station.QMSProject;
 import qm_station.ucm.plot.UCPlotFuncArr;
 import qm_station.ucm.plot.UCPlotJmLagrrR;
-import scatt.jm_2008.jm.laguerre.lcr.JmLagrrLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
 
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 29/09/2008, Time: 15:57:18
@@ -28,6 +28,6 @@ public class UCPlotJmLagrrLCR extends UCPlotFuncArr {
     StepGridModel sg = model.getGrid();
     StepGrid x = new StepGrid(sg);    log.dbg("LCR grid = x =", x);
     WFQuadrLcr w = new WFQuadrLcr(x);     log.dbg("integration weights=", w);
-    return new JmLagrrLcr(w, model.getLgrrModel() );
+    return new LagrrLcr(w, model.getLgrrModel() );
   }
 }

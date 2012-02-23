@@ -1,4 +1,4 @@
-package scatt.partial.wf;
+package scatt.partial.wf.eng_arr_not_used;
 import math.func.arr.FuncArr;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;

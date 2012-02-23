@@ -11,24 +11,23 @@ import math.func.simple.FuncPowInt;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import project.workflow.task.test.FlowTest;
-import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
-
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 21/11/2008, Time: 17:25:16
  */
 public class JmPotEigVecLcrTest extends FlowTest {
   // NOTE!! class variables are static to work with FlowTest
-  private static JmLgrrOrthLcr funcArr;
+  private static LgrrOrthLcr funcArr;
   private static double Z = 1.;     // 1. for hydrogen
   private static boolean relErr;
 
-  public JmPotEigVecLcrTest(double zIn, JmLgrrOrthLcr arr) {
+  public JmPotEigVecLcrTest(double zIn, LgrrOrthLcr arr) {
     super(JmPotEigVecLcrTest.class);
     funcArr = arr;
     Z = zIn;
     relErr = true;
   }
-  public JmPotEigVecLcrTest(double zIn, JmLgrrOrthLcr arr, boolean rel) {
+  public JmPotEigVecLcrTest(double zIn, LgrrOrthLcr arr, boolean rel) {
     super(JmPotEigVecLcrTest.class);
     funcArr = arr;
     Z = zIn;

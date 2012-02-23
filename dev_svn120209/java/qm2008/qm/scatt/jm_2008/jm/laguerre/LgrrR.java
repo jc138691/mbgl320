@@ -11,24 +11,24 @@ import atom.wf.WFQuadrR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 16/09/2008, Time: 10:31:43
  */
-public class JmLgrrR extends LgrrArr implements IWFuncArr {
-  public static String HELP = "JM-matrix Laguerre jmBasisN:\n"
+public class LgrrR extends LgrrArr implements IWFuncArr {
+  public static String HELP = "JM-matrix Laguerre basisN:\n"
   + "R(n, a, lambda, r) = exp(-x/2) x^((a+1)/2) L^a_n(x),\n"
   + "where x = lambda * r;  a = alpha=2*L+1, L - angular momentum; L^a_n - the associated Laguerre polynomials.";
-  public static Log log = Log.getLog(JmLgrrR.class);
+  public static Log log = Log.getLog(LgrrR.class);
   protected LgrrModel model;
   private WFQuadrR quadr;
 
   public LgrrModel getModel() {
     return model;
   }
-  public JmLgrrR(WFQuadrR w, LgrrModel model) {
+  public LgrrR(WFQuadrR w, LgrrModel model) {
     super(w.getX(), model.getN(), 2 * model.getL() + 1, model.getLambda());
     this.model = model;
     quadr = w;
     mult(makeNormFunc());
   }
-  public JmLgrrR(Vec r, LgrrModel model) {
+  public LgrrR(Vec r, LgrrModel model) {
     super(r, model.getN(), 2 * model.getL() + 1, model.getLambda());
     this.model = model;
     mult(makeNormFunc());

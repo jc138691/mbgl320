@@ -54,14 +54,14 @@ public abstract class PartHMtrx extends HMtrx {
     Vec x = basis.getX();
     eigVec = new FuncArr(x, basis.size());
 
-    // f_i = SUM_j C_ij * jmBasisN(j)
+    // f_i = SUM_j C_ij * basisN(j)
     EigenSymm thisEig = eig();
     Mtrx v = thisEig.getV();
     double[][] C = v.getArray();
     for (int i = 0; i < basis.size(); i++) {
       FuncVec f_i = new FuncVec(x);
       for (int j = 0; j < basis.size(); j++) {
-//        f_i.addMultSafe(C[i][j], jmBasisN.getFunc(j));  // this is WRONG!!!
+//        f_i.addMultSafe(C[i][j], basisN.getFunc(j));  // this is WRONG!!!
         f_i.addMultSafe(C[j][i], basis.getFunc(j));   // this is correct!!!
       }
       eigVec.set(i, f_i);

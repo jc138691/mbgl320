@@ -146,7 +146,7 @@ abstract public class AtomFano1965 {
       double ang = calcTwoElecCoupling(a, b, a2, b2, kk, LL);
       if (AtomUtil.isZero(ang))
         continue;
-//         res += ang * TRk<FUNC>(jmBasisN().w(), jmBasisN().r()
+//         res += ang * TRk<FUNC>(basisN().w(), basisN().r()
 //            , *sp.a(), *sp.b(), *sp2.a(), *sp2.b(), kk);
       res += ang * calcRk(a, b, a2, b2, kk);
     }

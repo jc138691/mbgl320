@@ -20,7 +20,7 @@ import math.vec.Vec;
 import math.vec.grid.StepGrid;
 import project.workflow.task.test.FlowTest;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 16/02/2010, 11:12:27 AM
  */
@@ -92,7 +92,7 @@ public class HeClementiTest extends FlowTest {
     model.setL(L);
     model.setLambda((float)lambda);
     model.setN(N);
-    FuncArr arr = new JmLgrrOrthLcr(w, model);
+    FuncArr arr = new LgrrOrthLcr(w, model);
     AtomUtil.trimTailSLOW(arr);
     
     OrthonFactory.log.setDbg();

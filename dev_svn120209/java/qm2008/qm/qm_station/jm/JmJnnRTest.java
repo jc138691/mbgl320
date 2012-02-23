@@ -3,7 +3,7 @@ import project.workflow.task.test.FlowTest;
 import project.workflow.task.TaskProgressMonitor;
 import project.workflow.task.ProjectProgressMonitor;
 import scatt.eng.EngModel;
-import scatt.jm_2008.jm.laguerre.JmLgrrR;
+import scatt.jm_2008.jm.laguerre.LgrrR;
 import scatt.jm_2008.jm.theory.JmTheory;
 import math.vec.Vec;
 import junit.framework.TestCase;
@@ -11,9 +11,9 @@ import junit.framework.TestCase;
  * Copyright dmitry.konovalov@jcu.edu.au Date: 19/11/2008, Time: 15:45:52
  */
 public class JmJnnRTest extends FlowTest {
-  private static JmLgrrR funcArr;
+  private static LgrrR funcArr;
   private static EngModel eng;
-  public JmJnnRTest(JmLgrrR arr, EngModel eng) {
+  public JmJnnRTest(LgrrR arr, EngModel eng) {
     super(JmJnnRTest.class);
     this.funcArr = arr;
     this.eng = eng;

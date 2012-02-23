@@ -12,7 +12,7 @@ import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
 import project.workflow.task.test.FlowTest;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.triplet.Int3;
 import javax.utilx.intx.ArrInt4;
@@ -47,8 +47,8 @@ public class ConfArrFactoryE3 extends FlowTest {
     WFQuadrLcr quadrLcr = new WFQuadrLcr(x);
     log.dbg("x weights =", quadrLcr);
     LgrrModel basisOptN = new LgrrModel(L, MAX_N, LAMBDA);
-    JmLgrrOrthLcr orthonN = new JmLgrrOrthLcr(quadrLcr, basisOptN);
-    log.dbg("JmLgrrOrthLcr = ", orthonN);
+    LgrrOrthLcr orthonN = new LgrrOrthLcr(quadrLcr, basisOptN);
+    log.dbg("LgrrOrthLcr = ", orthonN);
     ShWf.convertToShWf(orthonN, L);
 
     int N = 1;

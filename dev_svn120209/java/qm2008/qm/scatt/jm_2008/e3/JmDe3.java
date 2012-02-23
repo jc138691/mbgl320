@@ -1,28 +1,28 @@
 package scatt.jm_2008.e3;
 import scatt.jm_2008.jm.TestModel;
-import scatt.jm_2008.jm.laguerre.lcr.JmLagrrBiLcr;
-import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LagrrBiLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.theory.JmD;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,29/04/11,1:20 PM
  */
-// THIS IS ONLY for JmLgrrOrthLcr!!!!!!
+// THIS IS ONLY for LgrrOrthLcr!!!!!!
 public class JmDe3 extends JmD {
   // chi_n = Sum_m D_{nm} * phi_m(r)
   // D_{nm} = < bi_m | chi_n >
   // D_{n, N-1} = < bi_{N-1} | chi_n >
-  public JmDe3(JmLagrrBiLcr bi, JmLgrrOrthLcr basisArr, TestModel jmOpt) {
+  public JmDe3(LagrrBiLcr bi, LgrrOrthLcr basisArr, TestModel jmOpt) {
     super(bi, basisArr);
     if (!validate(basisArr, jmOpt)) {
       throw new IllegalArgumentException(log.error("!validate(basisArr)"));
     }
   }
-  private boolean validate(JmLgrrOrthLcr basisArr, TestModel jmOpt) {
+  private boolean validate(LgrrOrthLcr basisArr, TestModel jmOpt) {
     if (size() <= 2)   // something is wrong!
       return false;
     double maxErr = jmOpt.getMaxIntgrlErr();
     double[] correct = basisArr.getFromNonOrth();
-    // THIS IS ONLY for JmLgrrOrthLcr!!!!!!
+    // THIS IS ONLY for LgrrOrthLcr!!!!!!
     for (int i = 0; i < size(); i++) {
       double d_i = get(i);
       double c_i = correct[i];

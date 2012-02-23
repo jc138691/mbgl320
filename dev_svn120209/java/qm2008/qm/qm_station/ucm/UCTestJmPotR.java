@@ -61,8 +61,8 @@ public class UCTestJmPotR extends UCRunDefaultTask<QMS> {
     log.dbg("LgrrModel = ", potOpt.getLgrrModel());
     WFQuadrR w = new WFQuadrR(r);
     log.dbg("integration weights=", w);
-    JmLgrrR jm = new JmLgrrR(w, potOpt.getLgrrModel());
-    log.dbg("JmLgrrR = ", new FuncArrDbgView(jm));
+    LgrrR jm = new LgrrR(w, potOpt.getLgrrModel());
+    log.dbg("LgrrR = ", new FuncArrDbgView(jm));
     Vec pot = CoulombWFFactory.makePotHy_1s_e(r);
     log.dbg("V_1s(r)=", pot);
 
@@ -78,13 +78,13 @@ public class UCTestJmPotR extends UCRunDefaultTask<QMS> {
       if (!new JmLagrrRTest(jm).ok())
         return false;
 
-      JmLagrrBiR bi = new JmLagrrBiR(w, potOpt.getLgrrModel());
-      log.dbg("JmLagrrBiR = ", bi);
+      LagrrBiR bi = new LagrrBiR(w, potOpt.getLgrrModel());
+      log.dbg("LagrrBiR = ", bi);
       if (!new JmLagrrBiRTest(jm, bi).ok())
         return false;
 
-      JmLgrrOrthR orth = new JmLgrrOrthR(w, potOpt.getLgrrModel());
-      log.dbg("JmLgrrOrthR = ", orth);
+      LgrrOrthR orth = new LgrrOrthR(w, potOpt.getLgrrModel());
+      log.dbg("LgrrOrthR = ", orth);
       if (!new JmLagrrOrthRTest(orth).ok())
         return false;
       if (!new JmPotEigVecRTest(orth).ok())

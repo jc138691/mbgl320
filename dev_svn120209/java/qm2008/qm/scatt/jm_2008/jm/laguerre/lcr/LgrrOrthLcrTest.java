@@ -2,24 +2,23 @@ package scatt.jm_2008.jm.laguerre.lcr;
 import atom.wf.log_cr.WFQuadrLcr;
 import math.func.FuncVec;
 import project.workflow.task.test.FlowTest;
-import math.vec.Vec;
 import math.Mathx;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 13/11/2008, Time: 14:51:59
  */
-public class JmLgrrOrthLcrTest extends FlowTest {
-  private static JmLgrrOrthLcr arr;
-  public JmLgrrOrthLcrTest(JmLgrrOrthLcr basis) {
-    super(JmLgrrOrthLcrTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
+public class LgrrOrthLcrTest extends FlowTest {
+  private static LgrrOrthLcr arr;
+  public LgrrOrthLcrTest(LgrrOrthLcr basis) {
+    super(LgrrOrthLcrTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
     arr = basis;
   }
-  public JmLgrrOrthLcrTest() {
-    super(JmLgrrOrthLcrTest.class);
+  public LgrrOrthLcrTest() {
+    super(LgrrOrthLcrTest.class);
   }
   public void testNorm() {
 //    TaskProgressMonitor monitor = ProjectProgressMonitor.getInstance();
 
-    log.dbg("testing " + JmLgrrOrthLcr.HELP);
+    log.dbg("testing " + LgrrOrthLcr.HELP);
     log.dbg("TEST_{n,m} = Intergal[0,rMax] R_n(r) * R_m(r) = delta(n, m)");
     log.dbg("Max relative intergation error =", getMaxErr());
     WFQuadrLcr w = arr.getQuadr();

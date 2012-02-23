@@ -144,7 +144,7 @@ public class ConfArrFactoryE2 {
   public static ConfArr makeOneElec(int N, int L, FuncArr from) {
     log.dbg("makeOneElec(N=", N);
     log.dbg("L=", L);
-    log.dbg("from jmBasisN=", from);
+    log.dbg("from basisN=", from);
     ConfArr res = new ConfArr();
     for (int n = 0; n < N; n++) {
       Shell sh = new Shell(n, from.get(n), L);

@@ -72,7 +72,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
     N = newN;
     Nt = newNt;
     initProject();
-    jmPotTestOk();  // jmBasisN, biorthN, orthonN, quadrLcr
+    jmPotTestOk();  // basisN, biorthN, orthonN, quadrLcr
     jmHyTestOk(TARGET_Z);  // pot, orthonNt
 
     trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPartH=", trgtPartH);

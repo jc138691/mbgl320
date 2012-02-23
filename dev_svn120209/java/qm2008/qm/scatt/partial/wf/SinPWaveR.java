@@ -1,15 +1,17 @@
 package scatt.partial.wf;
-import math.func.Func;
+import math.func.FuncVec;
 import math.vec.Vec;
-import scatt.eng.EngModel;
+
+import javax.utilx.log.Log;
 /**
- * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 12:52:31
+ * Copyright dmitry.konovalov@jcu.edu.au Date: 23/07/2008, Time: 16:32:32
  */
-public class SinPWaveR extends PartWaveR {
-  public static String HELP = "Sin-like partial plain wave.";
-//  public static Log log = Log.getLog(SinPWaveR.class);
-  public SinPWaveR(Vec r, EngModel model, int L) {
-    super(r, model, L);
+public class SinPWaveR extends FuncVec {
+  public static Log log = Log.getLog(SinPWaveR.class);
+  public SinPWaveR(final Vec x, final double p, final int L) {
+    super(x, new SinPWaveFunc(p, L));
+    if (L > 0) {
+      throw new IllegalArgumentException(log.error("todo L>0"));
+    }
   }
-  protected Func makeFunc(double p, int L) { return new SinPartPWaveFunc(p, L); }
 }

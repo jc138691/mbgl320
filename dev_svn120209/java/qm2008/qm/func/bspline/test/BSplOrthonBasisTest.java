@@ -24,7 +24,7 @@ public class BSplOrthonBasisTest extends TestCase {
     BooleQuadr w = new BooleQuadr(x);
     StepGrid knots = new StepGrid(FIRST, LAST, Math.round((float) LAST + 1));
     BSplOrthonBasis arr = new BSplOrthonBasis(w, knots, k);
-//    saveArrayK(x, arr, k, "jmBasisN");
+//    saveArrayK(x, arr, k, "basisN");
     OrthonFactory.makeOrthon(arr, w);
     double normErr = OrthonFactory.calcMaxOrthonErr(arr, w); //double normErr = w.calcMaxNormError(arr);
 //    saveArrayK(x, arr, k, "orthog");

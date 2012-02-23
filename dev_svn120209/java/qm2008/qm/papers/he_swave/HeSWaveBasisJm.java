@@ -15,7 +15,7 @@ import scatt.jm_2008.e3.JmDe3;
 import scatt.jm_2008.e3.JmMethodJmBasisE3;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmTrgtE3;
 
 import javax.iox.FileX;
@@ -94,7 +94,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     N = newN;
     Nt = newNt;
     initProject();
-    jmPotTestOk();     // out: jmBasisN, orthonN, biorthN
+    jmPotTestOk();     // out: basisN, orthonN, biorthN
     jmHyTestOk(AtomHy.Z);      // out: pot (for Hy), orthonNt
     jmHyTestOk(AtomHe.Z);      // out: pot (for He), orthonNt
     jmHeTestOk();      // out: re-loading pot (for He)
@@ -106,7 +106,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     // Making He+ eigen-states from Nc (core N).   this is only to calc ionization threshold
     LgrrModel lgrrOptNc = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNc.setN(Nc);                                    log.dbg("Laguerr model (N_c)=", lgrrOptNc);
-    orthonNc = new JmLgrrOrthLcr(quadrLcr, lgrrOptNc);     log.dbg("JmLgrrOrthLcr(N_c) = ", orthonNc);
+    orthonNc = new LgrrOrthLcr(quadrLcr, lgrrOptNc);     log.dbg("LgrrOrthLcr(N_c) = ", orthonNc);
     trgtPartH = new PartHMtrxLcr(L, orthonNc, pot);        log.dbg("trgtPartH=", trgtPartH);
     Vec basisEngs = trgtPartH.getEigVal();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_NcEngs_" + makeLabelNc());
