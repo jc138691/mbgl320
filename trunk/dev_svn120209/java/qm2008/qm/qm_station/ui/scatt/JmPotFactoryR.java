@@ -3,7 +3,7 @@ import qm_station.QMS;
 import qm_station.QMSProject;
 import math.vec.grid.StepGridModel;
 import math.vec.grid.StepGrid;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.CalcOptE1;
 
 import javax.utilx.log.Log;
 /**
@@ -14,7 +14,7 @@ public class JmPotFactoryR {
 
   public static StepGrid makeGrid() {
     QMS project = QMSProject.getInstance();
-    JmOptE1 model = project.getJmPotOptR();    // R
+    CalcOptE1 model = project.getJmPotOptR();    // R
     StepGridModel sg = model.getGrid();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
     return r;

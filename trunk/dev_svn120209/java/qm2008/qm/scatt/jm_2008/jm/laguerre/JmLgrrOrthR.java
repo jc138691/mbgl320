@@ -10,11 +10,11 @@ public class JmLgrrOrthR extends LgrrOrth implements IWFuncArr {
   + "R(n, a, lambda, r) = C_n * exp(-x/2) x^(a/2) L^a_n(x),\n"
   + "where x = lambda * r,  a = alpha = 2*l+2, l - angular momentum, L^a_n - the associated Laguerre polynomials.";
 
-  public JmLgrrOrthR(WFQuadrR w, JmLgrrModel model) {
+  public JmLgrrOrthR(WFQuadrR w, LgrrModel model) {
     super(w.getX(), model.getN(), 2 * model.getL() + 2, model.getLambda());
     quadr = w;
   }
-//  public JmLgrrOrthR(Vec r, JmLgrrModel model) {
+//  public JmLgrrOrthR(Vec r, LgrrModel model) {
 //    super(r, model.getMaxN(), 2 * model.getTotL() + 2, model.getLambda());
 //  }
   public WFQuadrR getQuadr() {

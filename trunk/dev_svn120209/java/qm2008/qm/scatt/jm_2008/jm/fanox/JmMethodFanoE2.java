@@ -4,7 +4,7 @@ import atom.energy.ConfOverlap;
 import atom.energy.part_wave.PartHMtrx;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e2.JmMethodE2;
 
 import javax.utilx.log.Log;
@@ -19,20 +19,20 @@ public class JmMethodFanoE2 extends JmMethodE2 {
   private ConfOverlap chiOverlap;
   private PartHMtrx targetH;
 
-  public JmMethodFanoE2(JmOptE1 potOpt) {
+  public JmMethodFanoE2(CalcOptE1 potOpt) {
     super(potOpt);
   }
 
   protected double[][] calcC() {
-    double[][] sC = sysH.getEigVec().getArray();   log.dbg("C_ij=", new MtrxDbgView(sysH.getEigVec()));
+    double[][] sC = sysConfH.getEigVec().getArray();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
     return sC;
   }
 
   // THIS works only for two electrons, see  JmMethodJmBasisE3 for a general case of any electrons
   @Override protected Mtrx calcX() {
     // [for JmMethodFanoX] Next line was MOVED to calcC();
-//    double[][] sC = sysH.getEigVec().getArray();   log.dbg("C_ij=", new MtrxDbgView(sysH.getEigVec()));
-    double[][] sC = calcC();   log.dbg("C_ij=", new MtrxDbgView(sysH.getEigVec()));
+//    double[][] sC = sysConfH.getEigVec().getArray();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
+    double[][] sC = calcC();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
 
     double[][] chiOv = chiOverlap.getArray();
     double[][] tC = targetH.getEigVec().getArray();  log.dbg("D_ij=", new MtrxDbgView(targetH.getEigVec()));

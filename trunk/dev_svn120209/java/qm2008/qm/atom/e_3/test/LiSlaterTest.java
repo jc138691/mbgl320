@@ -121,7 +121,7 @@ public class LiSlaterTest extends FlowTest {
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
     ConfHMtrx sysH = new ConfHMtrx(cfArr, sys);
-    log.dbg("sysH=\n", new MtrxDbgView(sysH));
+    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     Vec sysE = sysH.getEigVal();
     log.dbg("sysE=", new VecDbgView(sysE));
     assertEqualsRel("AtomLiSlaterJoy.E_ZETA_TOT = -7.4184820;", atomLi.getEngTot(), sysE.get(0), true);//
@@ -146,7 +146,7 @@ public class LiSlaterTest extends FlowTest {
     cfArr.add(cf);
     cfArr.add(cf2);
     sysH = new ConfHMtrx(cfArr, sys);
-    log.dbg("sysH=\n", new MtrxDbgView(sysH));
+    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigVal();
     log.dbg("sysE=", new VecDbgView(sysE));
     assertEqualsRel("AtomLiSlaterJoy.E_ZETA_TOT = -7.4184820;", atomLi.getEngTot(), sysE.get(0), true);
@@ -181,7 +181,7 @@ public class LiSlaterTest extends FlowTest {
     AtomShModelE3 modelLi = new AtomShModelE3(3, 3, 3, LS);
     ConfArr cfArr = ConfArrFactoryE3.makePoetClosedShell(modelLi, basis);//    ALL CLOSED SHELLS
     ConfHMtrx sysH = new ConfHMtrx(cfArr, sys);
-    log.dbg("sysH=\n", new MtrxDbgView(sysH));
+    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     Vec sysE = sysH.getEigVal();
     log.dbg("sysE=", new VecDbgView(sysE));
     //    assertEqualsRel("CLOSED SHELLS = -7.357639;", -7.357639, sysE.get(0), true);
@@ -204,14 +204,14 @@ public class LiSlaterTest extends FlowTest {
     cfArr.add(cf);
     //    Energy e = sys.calcH(cf, cfArr.get(2));         log.dbg("e=", e);
     sysH = new ConfHMtrx(cfArr, sys);
-    log.dbg("sysH=\n", new MtrxDbgView(sysH));
+    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigVal();
     log.dbg("sysE=", new VecDbgView(sysE));
     //    assertEqualsRel("Full= -7.4322894; S1=-7.383171, S3=-7.4235334;", atomLi.getEngTot(), sysE.get(0), true);
     // STOPPED HERE 8Dec2010: expected:<-7.4322896> but was:<-7.453902>, -7.445353(13Dec);
     cfArr = ConfArrFactoryE3.makeSModel(modelLi, basis);//
     sysH = new ConfHMtrx(cfArr, sys);
-    log.dbg("sysH=\n", new MtrxDbgView(sysH));
+    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigVal();
     log.dbg("sysE=", new VecDbgView(sysE));
     //    assertEqualsRel("AtomLiSlaterJoy3.E_ZETA_TOT = -7.4322894;", atomLi.getEngTot(), sysE.get(0), true);

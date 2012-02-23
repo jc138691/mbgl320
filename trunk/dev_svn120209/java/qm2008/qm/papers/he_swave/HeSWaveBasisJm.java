@@ -13,8 +13,8 @@ import qm_station.QMSProject;
 import scatt.jm_2008.e2.JmResonancesE2;
 import scatt.jm_2008.e3.JmDe3;
 import scatt.jm_2008.e3.JmMethodJmBasisE3;
-import scatt.jm_2008.jm.JmRes;
-import scatt.jm_2008.jm.laguerre.JmLgrrModel;
+import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmTrgtE3;
 
@@ -104,7 +104,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     calcLi(slater);
 
     // Making He+ eigen-states from Nc (core N).   this is only to calc ionization threshold
-    JmLgrrModel lgrrOptNc = new JmLgrrModel(basisOptN); // for the target N, i.e. N_t
+    LgrrModel lgrrOptNc = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNc.setN(Nc);                                    log.dbg("Laguerr model (N_c)=", lgrrOptNc);
     orthonNc = new JmLgrrOrthLcr(quadrLcr, lgrrOptNc);     log.dbg("JmLgrrOrthLcr(N_c) = ", orthonNc);
     trgtPartH = new PartHMtrxLcr(L, orthonNc, pot);        log.dbg("trgtPartH=", trgtPartH);
@@ -116,7 +116,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
-    jmTrgt.removeClosed(jmOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
+    jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
     jmTrgt.setNt(trgtBasisNt.size());
 //    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED, );   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
 //    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
@@ -125,12 +125,12 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
 
     ConfHMtrx sysH = makeSysBasisN(slater);
 
-    JmMethodJmBasisE3 method = new JmMethodJmBasisE3(jmOpt);
+    JmMethodJmBasisE3 method = new JmMethodJmBasisE3(calcOpt);
     method.setTrgtE3(jmTrgt);
-    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysH=", sEngs);
+    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
     method.setSysEngs(sEngs);
-    method.setSysH(sysH);
-    Vec D = new JmDe3(biorthN, orthonN, method.getJmOpt().getJmTest());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
+    method.setSysConfH(sysH);
+    Vec D = new JmDe3(biorthN, orthonN, method.getCalcOpt().getTestModel());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
     method.setOverD(D);
 
     if (CALC_DENSITY) {          log.info("if (CALC_DENSITY) {");
@@ -139,7 +139,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelNc(method));
     }
 
-    JmRes res;
+    ScattRes res;
     if (scttEngs != null) {
       res = method.calc(scttEngs);                  log.dbg("res=", res);
     }
@@ -148,7 +148,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     }
     setupJmRes(res, method);
 
-//    JmResonancesE2.saveResRadDist(RES_MAX_LEVEL, res, sysH);
+//    JmResonancesE2.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
     res.writeToFiles();
   }
 

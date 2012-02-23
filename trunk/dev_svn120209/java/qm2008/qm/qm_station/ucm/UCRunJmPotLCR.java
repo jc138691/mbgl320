@@ -1,6 +1,6 @@
 package qm_station.ucm;
 import atom.wf.log_cr.WFQuadrLcr;
-import qm_station.ui.scatt.JmOptLcr;
+import qm_station.ui.scatt.CalcOptLcr;
 import qm_station.QMS;
 import qm_station.QMSProject;
 
@@ -34,7 +34,7 @@ public class UCRunJmPotLCR extends UCRunDefaultTask<QMS> {
 
     log.dbg("run()");
     QMS project = QMSProject.getInstance();
-    JmOptLcr model = project.getJmPotOptLcr();
+    CalcOptLcr model = project.getJmPotOptLcr();
     StepGridModel sg = model.getGrid();
     StepGrid x = new StepGrid(sg);    log.dbg("LogCR grid = x =", x);
     WFQuadrLcr w = new WFQuadrLcr(x);     log.dbg("integration weights=", w);

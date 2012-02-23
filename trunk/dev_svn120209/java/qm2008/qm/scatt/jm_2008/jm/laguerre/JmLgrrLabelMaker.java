@@ -3,10 +3,10 @@ package scatt.jm_2008.jm.laguerre;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 15/04/2010, 9:14:40 AM
  */
-public class JmLgrrLabelMaker extends JmLgrrModel {
+public class JmLgrrLabelMaker extends LgrrModel {
   private int targetN;
 
-  public JmLgrrLabelMaker(JmLgrrModel from, int nt) {
+  public JmLgrrLabelMaker(LgrrModel from, int nt) {
     super(from);
     this.targetN = nt;
   }

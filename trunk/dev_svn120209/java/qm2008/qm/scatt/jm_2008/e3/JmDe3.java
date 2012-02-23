@@ -1,5 +1,5 @@
 package scatt.jm_2008.e3;
-import scatt.jm_2008.jm.JmTestModel;
+import scatt.jm_2008.jm.TestModel;
 import scatt.jm_2008.jm.laguerre.lcr.JmLagrrBiLcr;
 import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
 import scatt.jm_2008.jm.theory.JmD;
@@ -11,13 +11,13 @@ public class JmDe3 extends JmD {
   // chi_n = Sum_m D_{nm} * phi_m(r)
   // D_{nm} = < bi_m | chi_n >
   // D_{n, N-1} = < bi_{N-1} | chi_n >
-  public JmDe3(JmLagrrBiLcr bi, JmLgrrOrthLcr basisArr, JmTestModel jmOpt) {
+  public JmDe3(JmLagrrBiLcr bi, JmLgrrOrthLcr basisArr, TestModel jmOpt) {
     super(bi, basisArr);
     if (!validate(basisArr, jmOpt)) {
       throw new IllegalArgumentException(log.error("!validate(basisArr)"));
     }
   }
-  private boolean validate(JmLgrrOrthLcr basisArr, JmTestModel jmOpt) {
+  private boolean validate(JmLgrrOrthLcr basisArr, TestModel jmOpt) {
     if (size() <= 2)   // something is wrong!
       return false;
     double maxErr = jmOpt.getMaxIntgrlErr();

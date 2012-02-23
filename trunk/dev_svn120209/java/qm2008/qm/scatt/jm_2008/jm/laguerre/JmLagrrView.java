@@ -21,7 +21,7 @@ public class JmLagrrView extends GridBagView {
   private JLabel LLbl;
   private IntField L;
 
-  public JmLagrrView(JmLgrrModel model)    {
+  public JmLagrrView(LgrrModel model)    {
     super("JM-Laguerre");
     init();
     loadFrom(model);
@@ -45,12 +45,12 @@ public class JmLagrrView extends GridBagView {
     maxN = new IntField(INT_SIZE, 1, 30);
     maxN.setToolTipText("Maximum n in L^v_n(x), i.e. 0 <= n <= maxN");
   }
-  public void loadTo(JmLgrrModel model) {
+  public void loadTo(LgrrModel model) {
     model.setLambda(lambda.getInput());
     model.setL(L.getInput());
     model.setN(maxN.getInput());
   }
-  public void loadFrom(JmLgrrModel model) {
+  public void loadFrom(LgrrModel model) {
     lambda.setValue(model.getLambda());
     L.setValue(model.getL());
     maxN.setValue(model.getN());

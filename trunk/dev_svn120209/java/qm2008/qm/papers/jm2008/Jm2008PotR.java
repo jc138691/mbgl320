@@ -1,6 +1,6 @@
 package papers.jm2008;
-import qm_station.ui.scatt.JmOptR;
-import scatt.jm_2008.e1.JmOptE1;
+import qm_station.ui.scatt.CalcOptR;
+import scatt.jm_2008.e1.CalcOptE1;
 import scatt.eng.EngModel;
 import qm_station.QMS;
 import qm_station.QMSProject;
@@ -15,7 +15,7 @@ import math.func.FuncVec;
 import atom.wf.WFQuadrR;
 import atom.wf.coulomb.CoulombWFFactory;
 import scatt.jm_2008.jm.laguerre.*;
-import scatt.jm_2008.jm.JmTestModel;
+import scatt.jm_2008.jm.TestModel;
 import project.workflow.task.test.FlowTest;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 16/12/2008, Time: 13:05:09
@@ -29,8 +29,8 @@ public class Jm2008PotR extends Jm2008Common {
     log.setDbg();
   }
 
-  public static JmLgrrModel makeJmLagrr() {
-    JmLgrrModel res = new JmLgrrModel();
+  public static LgrrModel makeJmLagrr() {
+    LgrrModel res = new LgrrModel();
     res.setL(0);
     res.setLambda(1);
     res.setN(10);
@@ -43,8 +43,8 @@ public class Jm2008PotR extends Jm2008Common {
     res.setNumPoints(1301);
     return res;
   }
-  public static JmTestModel makeJmTest() {
-    JmTestModel res = new JmTestModel();
+  public static TestModel makeJmTest() {
+    TestModel res = new TestModel();
     res.setMaxIntgrlErr(0.001f);
     return res;
   }
@@ -55,11 +55,11 @@ public class Jm2008PotR extends Jm2008Common {
     res.setNumPoints(3);
     return res;
   }
-  public static JmOptR makeJmPotOpt() {
-    JmOptR res = new JmOptR();
+  public static CalcOptR makeJmPotOpt() {
+    CalcOptR res = new CalcOptR();
     res.setGrid(makeStepGridModel());
-    res.setJmModel(makeJmLagrr());
-    res.setJmTest(makeJmTest());
+    res.setLgrrModel(makeJmLagrr());
+    res.setTestModel(makeJmTest());
     res.setGridEng(makeGridEng());
     return res;
   }
@@ -78,14 +78,14 @@ public class Jm2008PotR extends Jm2008Common {
   public void testHyPot() {
     QMS project = makeProject();
 
-    JmOptE1 potOpt = project.getJmPotOptR();
+    CalcOptE1 potOpt = project.getJmPotOptR();
     StepGridModel sg = potOpt.getGrid();     log.dbg("r step grid model =", sg);
     StepGrid r = new StepGrid(sg);           log.dbg("r grid =", r);
     WFQuadrR w = new WFQuadrR(r);            log.dbg("r weights =", w);
 
-    JmLgrrModel lgrrOpt = potOpt.getJmModel(); log.dbg("Laguerr model =", lgrrOpt);
+    LgrrModel lgrrOpt = potOpt.getLgrrModel(); log.dbg("Laguerr model =", lgrrOpt);
     JmLgrrR basis = new JmLgrrR(w, lgrrOpt);  log.dbg("JmLgrrR =\n", basis);
-    JmTestModel testOpt = potOpt.getJmTest();
+    TestModel testOpt = potOpt.getTestModel();
     FlowTest.setMaxErr(testOpt.getMaxIntgrlErr());
     FlowTest.setLog(log);
 

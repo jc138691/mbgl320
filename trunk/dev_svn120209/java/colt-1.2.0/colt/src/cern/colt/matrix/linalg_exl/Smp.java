@@ -6,11 +6,12 @@ that both that copyright notice and this permission notice appear in supporting 
 CERN makes no representations about the suitability of this software for any purpose. 
 It is provided "as is" without expressed or implied warranty.
 */
-package cern.colt.matrix.linalg;
+package cern.colt.matrix.linalg_exl;
 
 import cern.colt.matrix.DoubleMatrix2D;
 import EDU.oswego.cs.dl.util.concurrent.FJTask;
 import EDU.oswego.cs.dl.util.concurrent.FJTaskRunnerGroup;
+import cern.colt.matrix.linalg.Matrix2DMatrix2DFunction;
 /*
 */
 class Smp {

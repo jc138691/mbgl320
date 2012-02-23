@@ -1,8 +1,6 @@
 package scatt.jm_2008.jm.laguerre;
 import math.vec.Vec;
 import math.func.Func;
-import math.func.FactLn;
-
 import atom.wf.WFQuadrR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 22/10/2008, Time: 16:41:56
@@ -11,12 +9,12 @@ public class JmLagrrBiR extends JmLgrrR {
   public static String HELP = "Bio-diagonal JM-matrix Laguerre jmBasisN:\n"
     + "BioR(n, a, lambda, r) = [n! / (n + a)!] * R(n, a, lambda, r) / r,\n"
     + "see JmLgrrR.HELP for R";
-  public JmLagrrBiR(WFQuadrR w, JmLgrrModel model) {
+  public JmLagrrBiR(WFQuadrR w, LgrrModel model) {
     super(w, model);
 //    multSelf(new ThisNormFunc()); // THIS IS called in super
     calcBioNorm();
   }
-  public JmLagrrBiR(Vec r, JmLgrrModel model) {
+  public JmLagrrBiR(Vec r, LgrrModel model) {
     super(r, model);
 //    multSelf(new ThisNormFunc()); // THIS IS called in super
     calcBioNorm();

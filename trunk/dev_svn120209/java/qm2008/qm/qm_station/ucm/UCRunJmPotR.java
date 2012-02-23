@@ -1,7 +1,7 @@
 package qm_station.ucm;
 import javax.utilx.log.Log;
 
-import qm_station.ui.scatt.JmOptR;
+import qm_station.ui.scatt.CalcOptR;
 import qm_station.QMS;
 import qm_station.QMSProject;
 import math.vec.grid.StepGridModel;
@@ -33,7 +33,7 @@ public class UCRunJmPotR extends UCRunDefaultTask<QMS> {
 
     log.dbg("run()");
     QMS project = QMSProject.getInstance();
-    JmOptR model = project.getJmPotOptR();
+    CalcOptR model = project.getJmPotOptR();
 
     StepGridModel sg = model.getGrid();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);

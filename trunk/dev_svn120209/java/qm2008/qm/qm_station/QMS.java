@@ -4,8 +4,8 @@ import project.ProjectModel;
 
 import javax.utilx.log.Log;
 
-import qm_station.ui.scatt.JmOptLcr;
-import qm_station.ui.scatt.JmOptR;
+import qm_station.ui.scatt.CalcOptR;
+import qm_station.ui.scatt.CalcOptLcr;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/08/2008, Time: 14:42:52
  */
@@ -14,15 +14,15 @@ public class QMS extends Project {
   public static final String PROJECT_FILE_EXTENSION = "qms";
 
   private String resultsFileName;
-  private JmOptR jmPotOptR;
-  private JmOptLcr jmPotOptLcr;
+  private CalcOptR jmPotOptR;
+  private CalcOptLcr jmPotOptLcr;
 
   public QMS() {
     init();
   }
   private void init() {
-    jmPotOptR = new JmOptR();
-    jmPotOptLcr = new JmOptLcr();
+    jmPotOptR = new CalcOptR();
+    jmPotOptLcr = new CalcOptLcr();
   }
   public void loadDefault(String appName, String appVersion) {    log.dbg("loadDefault(appName=", appName);
     log.dbg("appVersion=", appVersion);
@@ -56,16 +56,16 @@ public class QMS extends Project {
   public void setResultsFileName(String resultsFileName) {
     this.resultsFileName = resultsFileName;
   }
-  public JmOptR getJmPotOptR() {
+  public CalcOptR getJmPotOptR() {
     return jmPotOptR;
   }
-  public void setJmPotOptR(JmOptR jmPotOptR) {
+  public void setJmPotOptR(CalcOptR jmPotOptR) {
     this.jmPotOptR = jmPotOptR;
   }
-  public JmOptLcr getJmPotOptLcr() {
+  public CalcOptLcr getJmPotOptLcr() {
     return jmPotOptLcr;
   }
-  public void setJmPotOptLcr(JmOptLcr jmPotOptLcr) {
+  public void setJmPotOptLcr(CalcOptLcr jmPotOptLcr) {
     this.jmPotOptLcr = jmPotOptLcr;
   }
 }

@@ -8,11 +8,11 @@ public class JmPotOptLCRView extends JmPotOptView {
     super(model);
   }
   public void loadTo(QMS project) {
-    JmOptLcr model = project.getJmPotOptLcr();
+    CalcOptLcr model = project.getJmPotOptLcr();
     loadTo(model);
   }
   public void loadFrom(QMS project) {
-    JmOptLcr model = project.getJmPotOptLcr();
+    CalcOptLcr model = project.getJmPotOptLcr();
     model.setGridName("LCR grid");
     loadFrom(model);
   }

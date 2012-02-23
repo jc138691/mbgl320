@@ -2,14 +2,9 @@ package scatt.jm_2008.e3;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,4/04/11,9:55 AM
  */
-import atom.energy.ConfHMtrx;
-import atom.shell.Conf;
 import atom.shell.ConfArr;
-import atom.shell.Ls;
-import atom.shell.Shell;
 import math.mtrx.Mtrx;
-import scatt.jm_2008.e1.JmOptE1;
-import scatt.jm_2008.jm.target.ChConf;
+import scatt.jm_2008.e1.CalcOptE1;
 
 import javax.utilx.log.Log;
 import java.util.HashMap;
@@ -19,17 +14,17 @@ import java.util.HashMap;
 public class JmMethodJmBasisE3 extends JmMethodAnyBasisE3 { // many electrons (more than 2). TODO: this should work for e-H as well
   public static Log log = Log.getLog(JmMethodJmBasisE3.class);
 
-  public JmMethodJmBasisE3(JmOptE1 jmOpt) {
-    super(jmOpt);
+  public JmMethodJmBasisE3(CalcOptE1 calcOpt) {
+    super(calcOpt);
   }
 
   @Override
   protected Mtrx calcX() {
     double[] D = getOverD().getArr();
-    ConfArr sysBasis = sysH.getBasis();
+    ConfArr sysBasis = sysConfH.getBasis();
     int sN = getSysBasisSize();
     int cN = getChNum();
-    int N = jmOpt.getN();  // big N
+    int N = calcOpt.getN();  // big N
     int nt = trgtE2.getNt();
 
     // optimization

@@ -5,14 +5,14 @@ import math.vec.Vec;
 import math.vec.grid.StepGridModel;
 import project.workflow.task.test.FlowTest;
 import qm_station.QMS;
+import qm_station.ui.scatt.CalcOptR;
 import scatt.eng.EngModel;
-import qm_station.ui.scatt.JmOptR;
-import scatt.jm_2008.e1.JmMethodBaseE1;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.ScattMethodBaseE1;
+import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e2.JmMethodBaseE2;
-import scatt.jm_2008.jm.JmRes;
-import scatt.jm_2008.jm.JmTestModel;
-import scatt.jm_2008.jm.laguerre.JmLgrrModel;
+import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.TestModel;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 
 import javax.utilx.log.Log;
 /**
@@ -23,9 +23,9 @@ protected static String HOME_DIR = "HOME_DIR";
 protected static String MODEL_NAME = "MODEL_NAME";
 protected static String MODEL_DIR = "MODEL_DIR";
 protected static QMS project;
-protected static JmOptE1 jmOpt;
-protected static JmTestModel testOpt;
-protected static JmLgrrModel basisOptN;
+protected static CalcOptE1 calcOpt;
+protected static TestModel testOpt;
+protected static LgrrModel basisOptN;
 protected static Vec rVec;
 protected static FuncVec pot;
 protected static PartHMtrx trgtPartH;
@@ -54,14 +54,14 @@ public StepGridModel makeStepGridModelR() {
   res.setNumPoints(R_N);
   return res;
 }
-public void setupJmRes(JmRes res, JmMethodBaseE1 method) {
+public void setupScattRes(ScattRes res, ScattMethodBaseE1 method) {
   res.setHomeDir(HOME_DIR);
   res.setModelDir(MODEL_DIR);
   res.setModelName(MODEL_NAME);
   res.setMethod(method);
 }
 protected static String makeLabelBasisOptOpen(JmMethodBaseE2 method) {
-  if (method.getJmOpt().getUseClosed()) {
+  if (method.getCalcOpt().getUseClosed()) {
     return basisOptN.makeLabel() + ".dat";
   } else {
     return basisOptN.makeLabel() + "_OPEN.dat";
@@ -70,16 +70,16 @@ protected static String makeLabelBasisOptOpen(JmMethodBaseE2 method) {
 protected static String makeLabelBasisOptN() {
   return basisOptN.makeLabel() + ".dat";
 }
-public JmOptR makeJmPotOptR() {
-  JmOptR res = new JmOptR();
+public CalcOptR makeJmPotOptR() {
+  CalcOptR res = new CalcOptR();
   res.setGrid(makeStepGridModelR());
-  res.setJmModel(makeJmLagrr());
-  res.setJmTest(makeJmTest());
+  res.setLgrrModel(makeJmLagrr());
+  res.setTestModel(makeJmTest());
   res.setGridEng(makeGridEng());
   return res;
 }
-public JmTestModel makeJmTest() {
-  JmTestModel res = new JmTestModel();
+public TestModel makeJmTest() {
+  TestModel res = new TestModel();
   res.setMaxIntgrlErr(MAX_INTGRL_ERR);
   return res;
 }
@@ -90,8 +90,8 @@ public EngModel makeGridEng() {
   res.setNumPoints(ENG_N);
   return res;
 }
-public JmLgrrModel makeJmLagrr() {
-  JmLgrrModel res = new JmLgrrModel();
+public LgrrModel makeJmLagrr() {
+  LgrrModel res = new LgrrModel();
   res.setL(0);
   res.setLambda(LAMBDA);
   res.setN(N);

@@ -1,25 +1,28 @@
 package scatt.jm_2008.e1;
+import atom.energy.ConfHMtrx;
+import atom.energy.HMtrx;
 import math.vec.Vec;
 import scatt.eng.EngGrid;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
-import scatt.jm_2008.jm.JmRes;
+import scatt.jm_2008.jm.ScattRes;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,1/04/11,3:43 PM
  */
-public abstract class JmMethodBaseE1 {
+public abstract class ScattMethodBaseE1 {
 protected static final int IDX_ENRGY = 0;
 private Vec overD;      // overlap coefficients D
 protected Vec sysEngs;
-protected final JmOptE1 jmOpt;
-public JmMethodBaseE1(JmOptE1 jmOpt) {
-  this.jmOpt = jmOpt;
+protected HMtrx sysH;
+protected final CalcOptE1 calcOpt;
+public ScattMethodBaseE1(CalcOptE1 calcOpt) {
+  this.calcOpt = calcOpt;
 }
-public JmOptE1 getJmOpt() {
-  return jmOpt;
+public CalcOptE1 getCalcOpt() {
+  return calcOpt;
 }
-public JmRes calcEngGrid() {
-  EngModel eng = jmOpt.getGridEng();    //log.dbg("Incident Energies =", eng);
+public ScattRes calcEngGrid() {
+  EngModel eng = calcOpt.getGridEng();    //log.dbg("Incident Energies =", eng);
   EngGrid engs = new EngGrid(eng);
   return calc(engs);
 }
@@ -32,15 +35,15 @@ public Vec getSysEngs() {
 public int getChNum() { // number of target channels
   return 1; // only one for pot-scattering
 }
-public JmRes calcMidSysEngs() {
+public ScattRes calcMidSysEngs() {
   Vec scttEngs = EngGridFactory.makeMidPoints(sysEngs);
   return calc(scttEngs);
 }
-public JmRes calcWithMidSysEngs() {
+public ScattRes calcWithMidSysEngs() {
   Vec scttEngs = EngGridFactory.makeWithMidPoints(sysEngs);
   return calc(scttEngs);
 }
-public abstract JmRes calc(Vec engs);
+public abstract ScattRes calc(Vec engs);
 public void setSysEngs(Vec engs) {
   this.sysEngs = engs;
 }
@@ -49,5 +52,11 @@ public void setOverD(Vec overD) {
 }
 public Vec getOverD() {
   return overD;
+}
+public HMtrx getSysH() {
+  return sysH;
+}
+public void setSysH(HMtrx sysH) {
+  this.sysH = sysH;
 }
 }

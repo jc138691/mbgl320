@@ -3,7 +3,7 @@ import atom.wf.log_cr.WFQuadrLcr;
 import qm_station.ucm.plot.UCPlotFuncArr;
 import qm_station.QMS;
 import qm_station.QMSProject;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.CalcOptE1;
 
 import javax.utilx.log.Log;
 
@@ -22,9 +22,9 @@ public class UCPlotJmLagrrOrthLCR extends UCPlotFuncArr {
   }
   public FuncArr makeFuncArr() {
     QMS project = QMSProject.getInstance();
-    JmOptE1 model = project.getJmPotOptLcr();    // LCR
+    CalcOptE1 model = project.getJmPotOptLcr();    // LCR
     StepGrid x = new StepGrid(model.getGrid());    log.dbg("LCR grid = x =", x);
     WFQuadrLcr w = new WFQuadrLcr(x);     log.dbg("integration weights=", w);
-    return new JmLgrrOrthLcr(w, model.getJmModel() );
+    return new JmLgrrOrthLcr(w, model.getLgrrModel() );
   }
 }

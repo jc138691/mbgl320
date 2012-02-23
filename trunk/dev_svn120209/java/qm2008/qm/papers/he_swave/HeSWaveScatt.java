@@ -38,8 +38,8 @@ import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
 import scatt.eng.EngModelArr;
 import scatt.jm_2008.e2.JmMethodBaseE2;
-import scatt.jm_2008.jm.JmRes;
-import scatt.jm_2008.jm.laguerre.JmLgrrModel;
+import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmTrgtE3;
 
@@ -85,7 +85,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     FileX.writeToFile(ionEngs.toCSV(), HOME_DIR, MODEL_DIR
       , MODEL_NAME+"_thisTrgEngs_S3_ion_eV_" + makeLabelNc());  // THIS target energies, not the true S-wave energies
   }
-  public void setupJmRes(JmRes res, JmMethodBaseE2 method) {
+  public void setupJmRes(ScattRes res, JmMethodBaseE2 method) {
     super.setupJmRes(res, method);
     res.setCalcLabel(makeLabelNc(method));
   }
@@ -339,7 +339,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     // E(Nt=11,lambda=2.6) = -7.4483075
     // E(Nt=11,lambda=2.7) = -7.448364
     // E(Nt=11,lambda=2.8) = -7.4484067
-    JmLgrrModel optLiNt = new JmLgrrModel(basisOptN); // for the target N, i.e. N_t
+    LgrrModel optLiNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     optLiNt.setN(LI_Nt);
     optLiNt.setLambda(lambdaLi);          log.dbg("Laguerr model (N_t, lambda)=", optLiNt);
     JmLgrrOrthLcr orthonLiNt = new JmLgrrOrthLcr(quadrLcr, optLiNt);        log.dbg("JmLgrrOrthLcr(N_t) = ", orthonLiNt);
@@ -372,7 +372,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     sysArr = ConfArrFactoryE3.makePoetDiffShells(modelE3, orthonLiNt);
     log.dbg("sysArr=", sysArr);
     sysH = new ConfHMtrx(sysArr, tgrtE3);
-    log.dbg("sysH=\n", new MtrxDbgView(sysH));
+    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigVal();
     log.dbg("sysE=", new VecDbgView(sysE));
 
@@ -380,13 +380,13 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     sysArr = ConfArrFactoryE3.makePoetClosedShell(modelE3, orthonLiNt);
     log.dbg("sysArr=", sysArr);
     sysH = new ConfHMtrx(sysArr, tgrtE3);
-    log.dbg("sysH=\n", new MtrxDbgView(sysH));
+    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigVal();
     log.dbg("sysE=", new VecDbgView(sysE));
 
     // Test with all possible shells
     sysArr = ConfArrFactoryE3.makeSModel(modelE3, orthonLiNt);    log.dbg("sysArr=", sysArr);
-    sysH = new ConfHMtrx(sysArr, tgrtE3);    log.dbg("sysH=\n", new MtrxDbgView(sysH));
+    sysH = new ConfHMtrx(sysArr, tgrtE3);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigVal();    log.dbg("sysE=", new VecDbgView(sysE));
     assertFloorRel("E_1s2_2s_2S_CI", AtomLi.E_1s2_2s_2S_CI, sysE.get(0), 0.005);
 
@@ -424,7 +424,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     ConfArr arrS3 = ConfArrFactoryE2.makeSModelE2(S3, orthonNt, orthonNt);
     log.dbg("trgtArr=", arrS3);
     ConfHMtrx htS3 = new ConfHMtrx(arrS3, tgrtF);
-    log.dbg("sysH=\n", new MtrxDbgView(htS3));
+    log.dbg("sysConfH=\n", new MtrxDbgView(htS3));
     Vec etS3 = htS3.getEigVal();
     log.dbg("eigVal=", new VecDbgView(etS3));
     if (!IGNORE_BUG_PoetHeAtom) {

@@ -16,19 +16,19 @@ public class JmLgrrR extends LgrrArr implements IWFuncArr {
   + "R(n, a, lambda, r) = exp(-x/2) x^((a+1)/2) L^a_n(x),\n"
   + "where x = lambda * r;  a = alpha=2*L+1, L - angular momentum; L^a_n - the associated Laguerre polynomials.";
   public static Log log = Log.getLog(JmLgrrR.class);
-  protected JmLgrrModel model;
+  protected LgrrModel model;
   private WFQuadrR quadr;
 
-  public JmLgrrModel getModel() {
+  public LgrrModel getModel() {
     return model;
   }
-  public JmLgrrR(WFQuadrR w, JmLgrrModel model) {
+  public JmLgrrR(WFQuadrR w, LgrrModel model) {
     super(w.getX(), model.getN(), 2 * model.getL() + 1, model.getLambda());
     this.model = model;
     quadr = w;
     mult(makeNormFunc());
   }
-  public JmLgrrR(Vec r, JmLgrrModel model) {
+  public JmLgrrR(Vec r, LgrrModel model) {
     super(r, model.getN(), 2 * model.getL() + 1, model.getLambda());
     this.model = model;
     mult(makeNormFunc());
