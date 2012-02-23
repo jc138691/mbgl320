@@ -8,11 +8,11 @@ public class JmPotOptRView extends JmPotOptView {
     super(model);
   }
   public void loadTo(QMS project) {
-    JmOptR model = project.getJmPotOptR();
+    CalcOptR model = project.getJmPotOptR();
     loadTo(model);
   }
   public void loadFrom(QMS project) {
-    JmOptR model = project.getJmPotOptR();
+    CalcOptR model = project.getJmPotOptR();
     model.setGridName("Radial grid");
     loadFrom(model);
   }

@@ -11,6 +11,7 @@ package cern.colt.matrix.linalg;
 import cern.colt.matrix.DoubleFactory2D;
 import cern.colt.matrix.DoubleMatrix1D;
 import cern.colt.matrix.DoubleMatrix2D;
+import cern.colt.matrix.linalg_exl.SmpBlas;
 /**
  * Linear algebraic matrix operations operating on {@link DoubleMatrix2D}; concentrates most functionality of this package.
  *

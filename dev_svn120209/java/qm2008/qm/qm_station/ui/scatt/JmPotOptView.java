@@ -3,10 +3,10 @@ import qm_station.QMS;
 import qm_station.ui.StepGridView;
 import project.workflow.task.TaskOptView;
 import project.workflow.task.UCRunTask;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.jm.laguerre.JmLagrrView;
 import scatt.jm_2008.jm.JmTestView;
-import scatt.partial.wf.JmPotPlotListView;
+import scatt.partial.wf.JmPotPlotListView_DEL;
 
 import javax.swingx.panelx.GridBagView;
 import javax.swing.*;
@@ -20,7 +20,7 @@ abstract public class JmPotOptView extends TaskOptView<QMS> {
   protected StepGridView engView;
   protected JmLagrrView lagrrView;
   protected JmTestView testView;
-  protected JmPotPlotListView listOptView;
+  protected JmPotPlotListView_DEL listOptView;
 
   protected JmPotOptView(QMS model) {
     init();
@@ -45,20 +45,20 @@ abstract public class JmPotOptView extends TaskOptView<QMS> {
     endRow(panel);
 
   }
-  public void loadTo(JmOptE1 model) {
+  public void loadTo(CalcOptE1 model) {
     gridView.loadTo(model.getGrid());
-    lagrrView.loadTo(model.getJmModel());
+    lagrrView.loadTo(model.getLgrrModel());
     engView.loadTo(model.getGridEng());
-    testView.loadTo(model.getJmTest());
+    testView.loadTo(model.getTestModel());
     listOptView.loadTo(model);
   }
-  public void loadFrom(JmOptE1 model) {
+  public void loadFrom(CalcOptE1 model) {
     gridView = new StepGridView(model.getGrid(), model.getGridName());
-    lagrrView = new JmLagrrView(model.getJmModel());
-    testView = new JmTestView(model.getJmTest());
+    lagrrView = new JmLagrrView(model.getLgrrModel());
+    testView = new JmTestView(model.getTestModel());
     engView = new StepGridView(model.getGridEng(), "Energy grid");
 
-    listOptView = new JmPotPlotListView(model);
+    listOptView = new JmPotPlotListView_DEL(model);
   }
   public void setRunTest(UCRunTask uc) {
     testView.runTest(uc);

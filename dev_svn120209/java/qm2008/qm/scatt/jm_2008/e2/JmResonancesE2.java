@@ -1,8 +1,6 @@
 package scatt.jm_2008.e2;
 import atom.data.AtomUnits;
-import atom.energy.ConfHMtrx;
 import flanagan.complex.Cmplx;
-import math.Calc;
 import math.Mathx;
 import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
@@ -11,8 +9,7 @@ import math.complex.CmplxVecDbgView;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.mtrx.MtrxInfo;
-import math.vec.IntVec;
-import scatt.jm_2008.jm.JmRes;
+import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.JmCh;
 
 import static java.lang.Math.abs;
@@ -20,7 +17,6 @@ import static java.lang.Math.min;
 
 import javax.utilx.arraysx.StrVec;
 import javax.utilx.log.Log;
-import java.util.ArrayList;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,6/06/11,9:55 AM
  */
@@ -43,7 +39,7 @@ public class JmResonancesE2 {
     this.jmm = method;
   }
 
-  public void calc(JmRes res, Mtrx mX) {
+  public void calc(ScattRes res, Mtrx mX) {
     CmplxVec resDlts = calc(mX);
     res.setResDlts(resDlts);
     res.setResInfo(loadResInfo(resDlts));
@@ -139,7 +135,7 @@ public class JmResonancesE2 {
 //    }
 //    return new IntVec(IntVec.toArray(arr.toArray()));
 //  }
-//  public static void saveResRadDist(double resMaxLevel, JmRes res, ConfHMtrx sysH) {
+//  public static void saveResRadDist(double resMaxLevel, ScattRes res, ConfHMtrx sysConfH) {
 //    IntVec idxArr = JmResonancesE2.getResIdxArr(resMaxLevel, res.getResInfo());
 //
 //  }

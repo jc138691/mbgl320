@@ -3,7 +3,7 @@ import atom.wf.log_cr.WFQuadrLcr;
 import qm_station.ucm.plot.UCPlotFuncArr;
 import qm_station.QMS;
 import qm_station.QMSProject;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.CalcOptE1;
 
 import javax.utilx.log.Log;
 
@@ -28,10 +28,10 @@ public class UCPlotPotNumerovLCR extends UCPlotFuncArr {
   }
   public FuncArr makeFuncArr() {
     QMS project = QMSProject.getInstance();
-    JmOptE1 model = project.getJmPotOptLcr();    // LCR
+    CalcOptE1 model = project.getJmPotOptLcr();    // LCR
     StepGridModel sg = model.getGrid();
     StepGrid x = new StepGrid(sg);    log.dbg("LCR grid=", x);
     WFQuadrLcr w = new WFQuadrLcr(x); log.dbg("LCR integration weights, WFQuadrLcr=", new VecDbgView(w));
-    return new SinPWaveLCR(w, model.getGridEng(), model.getJmModel().getL() ); //
+    return new SinPWaveLCR(w, model.getGridEng(), model.getLgrrModel().getL() ); //
   }
 }

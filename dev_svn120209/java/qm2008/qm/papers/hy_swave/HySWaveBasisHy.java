@@ -18,7 +18,7 @@ import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
 import scatt.jm_2008.e2.JmMethodE2;
-import scatt.jm_2008.jm.JmRes;
+import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.JmTrgtE2;
 import scatt.jm_2008.jm.coulomb.JmCoulombLcrTest;
 import scatt.jm_2008.jm.theory.JmD;
@@ -92,7 +92,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
     jmTrgt.loadSdcsW();
     if (CALC_TRUE_CONTINUUM) {
       // TARGET CONTINUUM
-      double maxSysEng = jmOpt.getGridEng().getLast() + targetEngs.get(0); // ASSUMED FROM H(1s)
+      double maxSysEng = calcOpt.getGridEng().getLast() + targetEngs.get(0); // ASSUMED FROM H(1s)
       JmCoulombLcr clmbNt = new JmCoulombLcr(L, AtomHy.Z, targetEngs, maxSysEng, quadrLcr);      log.dbg("JmCoulombLcr =\n", clmbNt);
       AtomUtil.setTailFrom(clmbNt, trgtBasisNt);
       FileX.writeToFile(clmbNt.toTab(), HOME_DIR, "wf", "clmbNt.dat");
@@ -119,16 +119,16 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
     SlaterLcr slater = new SlaterLcr(quadrLcr);
 //    SysE2_OLD sys = new SysE2_OLD(-1., slater);// NOTE -1 for Hydrogen
     SysAtomE2 sys = new SysAtomE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
-    ConfHMtrx sysH = new ConfHMtrx(sysArr, sys);    log.dbg("sysH=\n", new MtrxDbgView(sysH));
-    Vec sysEngs = sysH.getEigVal();                 log.dbg("sysH=", sysEngs);
+    ConfHMtrx sysH = new ConfHMtrx(sysArr, sys);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
+    Vec sysEngs = sysH.getEigVal();                 log.dbg("sysConfH=", sysEngs);
 //    double e0 = sysEngs.get(0);
 
-    JmMethodE2 method = new JmMethodE2(jmOpt);
+    JmMethodE2 method = new JmMethodE2(calcOpt);
     method.setTrgtE2(jmTrgt);
     method.setOverD(D);
-    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysH=", sEngs);
+    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
     method.setSysEngs(sEngs);
-    method.setSysH(sysH);
+    method.setSysConfH(sysH);
     method.setSysEngs(sysEngs);
 
     if (CALC_DENSITY) {
@@ -137,7 +137,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelTrgtS2(method));
     }
 
-    JmRes res;
+    ScattRes res;
     res = method.calcMidSysEngs();                  log.dbg("res=", res);
     if (scttEngs != null) {
       res = method.calc(scttEngs);                  log.dbg("res=", res);
@@ -145,7 +145,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
     else {
       res = method.calcEngGrid();                  log.dbg("res=", res);
     }
-//    JmRes res = method.calcSysEngs();                  log.dbg("res=", res);
+//    ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
     setupJmRes(res, method);                        log.dbg("res=", res);
     res.writeToFiles();
   }

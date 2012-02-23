@@ -7,7 +7,7 @@ import math.vec.grid.StepGridModel;
 import project.workflow.task.test.FlowTest;
 import qm_station.jm.H_Hy_P1s_RTest;
 import qm_station.jm.JmPotEigVecRTest;
-import scatt.jm_2008.jm.JmTestModel;
+import scatt.jm_2008.jm.TestModel;
 import scatt.jm_2008.jm.laguerre.*;
 
 import javax.utilx.log.Log;
@@ -27,17 +27,17 @@ public class Jm2010CommonR extends Jm2010Common {
   protected void initJm() {
     project.setJmPotOptR(makeJmPotOptR());
 
-    jmOpt = project.getJmPotOptR();
-    JmTestModel testOpt = jmOpt.getJmTest();
+    calcOpt = project.getJmPotOptR();
+    TestModel testOpt = calcOpt.getTestModel();
     FlowTest.setMaxErr(testOpt.getMaxIntgrlErr());
     FlowTest.setLog(log);
 
-    StepGridModel sg = jmOpt.getGrid();    log.dbg("r step grid model =", sg);
+    StepGridModel sg = calcOpt.getGrid();    log.dbg("r step grid model =", sg);
     quadr = new WFQuadrR(new StepGrid(sg));            log.dbg("r weights =", quadr);
     rVec = quadr.getR();                   log.dbg("r grid =", rVec);
     if (!new BooleQuadrTest().ok())         return;
 
-    basisOptN = jmOpt.getJmModel();          log.dbg("Laguerr model =", basisOptN);
+    basisOptN = calcOpt.getLgrrModel();          log.dbg("Laguerr model =", basisOptN);
     basis = new JmLgrrR(quadr, basisOptN);   log.dbg("JmLgrrR =\n", basis);
 
     // JM-jmBasisN

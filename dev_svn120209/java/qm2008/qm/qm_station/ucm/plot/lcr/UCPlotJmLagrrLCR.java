@@ -7,7 +7,7 @@ import math.vec.grid.StepGridModel;
 import javax.utilx.log.Log;
 
 import project.workflow.task.DefaultTaskUI;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.CalcOptE1;
 import qm_station.QMS;
 import qm_station.QMSProject;
 import qm_station.ucm.plot.UCPlotFuncArr;
@@ -24,10 +24,10 @@ public class UCPlotJmLagrrLCR extends UCPlotFuncArr {
   }
   public FuncArr makeFuncArr() {
     QMS project = QMSProject.getInstance();
-    JmOptE1 model = project.getJmPotOptLcr();    // LCR
+    CalcOptE1 model = project.getJmPotOptLcr();    // LCR
     StepGridModel sg = model.getGrid();
     StepGrid x = new StepGrid(sg);    log.dbg("LCR grid = x =", x);
     WFQuadrLcr w = new WFQuadrLcr(x);     log.dbg("integration weights=", w);
-    return new JmLagrrLcr(w, model.getJmModel() );
+    return new JmLagrrLcr(w, model.getLgrrModel() );
   }
 }

@@ -24,7 +24,7 @@ public class JmTestView extends GridBagView {
 //  private JLabel maxNLbl;
 //  private IntField maxN;
 
-  public JmTestView(JmTestModel model)    {
+  public JmTestView(TestModel model)    {
     super("Self-test");
     init();
     loadFrom(model);
@@ -48,10 +48,10 @@ public class JmTestView extends GridBagView {
 //    maxN = new IntField(INT_SIZE, 1, 30);
 //    maxN.setToolTipText("Maximum n in L^v_n(x), i.e. 0 <= n <= maxN");
   }
-  public void loadTo(JmTestModel model) {
+  public void loadTo(TestModel model) {
     model.setMaxIntgrlErr(maxErr.getInput());
   }
-  public void loadFrom(JmTestModel model) {
+  public void loadFrom(TestModel model) {
     maxErr.setValue(model.getMaxIntgrlErr());
 //    maxN.setValue(model.getMaxN());
   }

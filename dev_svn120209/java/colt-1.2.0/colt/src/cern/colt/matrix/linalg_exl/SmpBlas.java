@@ -6,11 +6,14 @@ that both that copyright notice and this permission notice appear in supporting 
 CERN makes no representations about the suitability of this software for any purpose. 
 It is provided "as is" without expressed or implied warranty.
 */
-package cern.colt.matrix.linalg;
+package cern.colt.matrix.linalg_exl;
 
 import cern.colt.matrix.DoubleMatrix1D;
 import cern.colt.matrix.DoubleMatrix2D;
 import EDU.oswego.cs.dl.util.concurrent.FJTask;
+import cern.colt.matrix.linalg.Blas;
+import cern.colt.matrix.linalg.Matrix2DMatrix2DFunction;
+import cern.colt.matrix.linalg.SeqBlas;
 /**
 Parallel implementation of the Basic Linear Algebra System for symmetric multi processing boxes.
 Currently only a few algorithms are parallelised; the others are fully functional, but run in sequential mode.

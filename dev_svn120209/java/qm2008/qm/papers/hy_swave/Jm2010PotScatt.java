@@ -3,18 +3,15 @@ package papers.hy_swave;
 import atom.energy.part_wave.PartHMtrx;
 import atom.energy.part_wave.PartHMtrxR;
 import atom.wf.coulomb.CoulombWFFactory;
-import math.func.FuncVec;
-import math.func.FuncVecToString;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
 import scatt.jm_2008.e1.JmMethodE1;
-import scatt.jm_2008.jm.JmRes;
+import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.theory.JmD;
 
-import javax.iox.FileX;
 import javax.utilx.log.Log;
 
 /**
@@ -67,11 +64,11 @@ public class Jm2010PotScatt extends Jm2010CommonR {
 
     Vec D = new JmD(bi, eigVec);                log.dbg("D_{n,N-1}=", D);
 
-    JmMethodE1 method = new JmMethodE1(jmOpt);
+    JmMethodE1 method = new JmMethodE1(calcOpt);
     method.setOverD(D);
     method.setSysEngs(eigEng);
-    JmRes res = method.calcEngGrid();                  log.dbg("res=", res);
-//    JmRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
+    ScattRes res = method.calcEngGrid();                  log.dbg("res=", res);
+//    ScattRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
 
 //    FuncVec func = new FuncVecToString(res.getCross());
 //    FileX.writeToFile(func.toString(), HOME_DIR, "cross", "cross_"+ basisOptN.makeLabel()+".csv");
@@ -79,11 +76,11 @@ public class Jm2010PotScatt extends Jm2010CommonR {
 //    func = new FuncVecToString(res.getShift());
 //    FileX.writeToFile(func.toString(), HOME_DIR, "shift", "shift_"+ basisOptN.makeLabel()+".csv");
 
-    setupJmRes(res, method);
+    setupScattRes(res, method);
     res.writeToFiles();
 
     // JM-properties
-//    EngModel eng = jmOpt.getGridEng();    log.dbg("Incident Energies =", eng);
+//    EngModel eng = calcOpt.getGridEng();    log.dbg("Incident Energies =", eng);
 //    if (!new JmJnnRTest(jmBasisN, eng).ok())      return;
 //    if (!new JmJnmSCmRTest(jmBasisN, eng).ok())      return;
 

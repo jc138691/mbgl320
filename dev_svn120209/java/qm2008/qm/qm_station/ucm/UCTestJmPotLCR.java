@@ -3,7 +3,7 @@ import atom.wf.log_cr.WFQuadrLcr;
 import qm_station.QMS;
 import qm_station.QMSProject;
 import qm_station.jm.*;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.CalcOptE1;
 import scatt.eng.EngModel;
 import qm_station.ui.StepGridView;
 import project.workflow.task.DefaultTaskUI;
@@ -20,7 +20,7 @@ import math.vec.Vec;
 import math.vec.VecDbgView;
 import math.func.arr.FuncArrDbgView;
 import scatt.jm_2008.jm.laguerre.lcr.*;
-import scatt.jm_2008.jm.JmTestModel;
+import scatt.jm_2008.jm.TestModel;
 import atom.wf.coulomb.CoulombWFFactory;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 22/10/2008, Time: 13:04:14
@@ -47,16 +47,16 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
     getOptView().loadTo(project);
     project.saveProjectToDefaultLocation();
 
-    JmOptE1 potOpt = project.getJmPotOptLcr();    // LCR
+    CalcOptE1 potOpt = project.getJmPotOptLcr();    // LCR
     StepGridModel sg = potOpt.getGrid();           log.dbg("StepGridModel = ", sg);
     StepGrid x = new StepGrid(sg);                log.dbg("LogCR grid, StepGrid=", new VecDbgView(x));
     WFQuadrLcr w = new WFQuadrLcr(x);             log.dbg("integration weights, WFQuadrLcr=", new VecDbgView(w));
     Vec r = w.getR();                             log.dbg("StepGrid r = ", new VecDbgView(r));
-                                                  log.dbg("JmLgrrModel = ", potOpt.getJmModel());
-    JmLagrrLcr basis = new JmLagrrLcr(w, potOpt.getJmModel() );   log.dbg("JmLagrrLcr = ", new FuncArrDbgView(basis));
+                                                  log.dbg("LgrrModel = ", potOpt.getLgrrModel());
+    JmLagrrLcr basis = new JmLagrrLcr(w, potOpt.getLgrrModel() );   log.dbg("JmLagrrLcr = ", new FuncArrDbgView(basis));
 
     // RUN ALL TESTS
-    JmTestModel testOpt = potOpt.getJmTest();
+    TestModel testOpt = potOpt.getTestModel();
     FlowTest.setMaxErr(testOpt.getMaxIntgrlErr());
     FlowTest.setLog(log);
     if (!new PartHMtrxLCRTest(w).ok())
@@ -65,11 +65,11 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
     if (!new JmLagrrLcrTest(basis).ok())
         return false;
 
-    JmLagrrBiLcr bi = new JmLagrrBiLcr(w, potOpt.getJmModel() );  log.dbg("JmLagrrBiLcr = ", new FuncArrDbgView(bi));
+    JmLagrrBiLcr bi = new JmLagrrBiLcr(w, potOpt.getLgrrModel() );  log.dbg("JmLagrrBiLcr = ", new FuncArrDbgView(bi));
     if (!new JmLagrrBiLcrTest(basis, bi).ok())
       return false;
 
-    JmLgrrOrthLcr orth = new JmLgrrOrthLcr(w, potOpt.getJmModel() );  log.dbg("JmLgrrOrthLcr = ", new FuncArrDbgView(bi));
+    JmLgrrOrthLcr orth = new JmLgrrOrthLcr(w, potOpt.getLgrrModel() );  log.dbg("JmLgrrOrthLcr = ", new FuncArrDbgView(bi));
     if (!new JmLgrrOrthLcrTest(orth).ok())
       return false;
 

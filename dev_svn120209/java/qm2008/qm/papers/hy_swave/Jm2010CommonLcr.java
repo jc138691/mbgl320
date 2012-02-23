@@ -18,7 +18,7 @@ import math.vec.test.FastLoopTest;
 import project.workflow.task.test.FlowTest;
 import qm_station.jm.H_Hy_P1s_LcrTest;
 import qm_station.jm.JmPotEigVecLcrTest;
-import qm_station.ui.scatt.JmOptLcr;
+import qm_station.ui.scatt.CalcOptLcr;
 import scatt.jm_2008.jm.laguerre.lcr.*;
 
 import javax.utilx.log.Log;
@@ -45,11 +45,11 @@ public class Jm2010CommonLcr extends Jm2010Common {
     return res;
   }
 
-  public JmOptLcr makeJmPotOptLcr() {
-    JmOptLcr res = new JmOptLcr();
+  public CalcOptLcr makeJmPotOptLcr() {
+    CalcOptLcr res = new CalcOptLcr();
     res.setGrid(makeStepGridModel());
-    res.setJmModel(makeJmLagrr());
-    res.setJmTest(makeJmTest());
+    res.setLgrrModel(makeJmLagrr());
+    res.setTestModel(makeJmTest());
     res.setGridEng(makeGridEng());
     return res;
   }
@@ -59,8 +59,8 @@ public class Jm2010CommonLcr extends Jm2010Common {
     project.setJmPotOptLcr(makeJmPotOptLcr());
     project.setJmPotOptR(makeJmPotOptR());
 
-    jmOpt = project.getJmPotOptLcr();
-    testOpt = jmOpt.getJmTest();
+    calcOpt = project.getJmPotOptLcr();
+    testOpt = calcOpt.getTestModel();
     log.info("<--initProject()");
   }
 
@@ -76,7 +76,7 @@ public class Jm2010CommonLcr extends Jm2010Common {
       if (!new FastLoopTest().ok()) return;
       if (!new InterpolCubeTest().ok()) return;
 
-      StepGridModel sg = jmOpt.getGrid();           log.dbg("x step grid model =", sg);
+      StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
       StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
       quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);
       rVec = quadrLcr.getR();                        log.dbg("r grid =", rVec);
@@ -86,7 +86,7 @@ public class Jm2010CommonLcr extends Jm2010Common {
 
     if (!new YkLcrFlowTest(quadrLcr).ok()) return;
 
-    basisOptN = jmOpt.getJmModel();                 log.dbg("Laguerr model =", basisOptN);
+    basisOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", basisOptN);
     jmBasisN = new JmLagrrLcr(quadrLcr, basisOptN);    log.dbg("JmLagrrLcr =\n", jmBasisN);
 
     FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());       // LOCK MAX ERR

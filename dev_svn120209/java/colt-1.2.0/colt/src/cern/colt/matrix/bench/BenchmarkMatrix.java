@@ -12,6 +12,7 @@ import cern.colt.matrix.DoubleFactory2D;
 import cern.colt.matrix.DoubleFactory3D;
 import cern.colt.matrix.DoubleMatrix2D;
 import cern.colt.matrix.DoubleMatrix3D;
+import cern.colt.matrix.linalg_exl.SmpBlas;
 /**
 Configurable matrix benchmark.
 Runs the operations defined in main(args) or in the file specified by args.
@@ -59,7 +60,7 @@ protected static void bench_dgemm(String[] args) {
 		return;
 	}
 
-	cern.colt.matrix.linalg.SmpBlas.allocateBlas(cpus,cern.colt.matrix.linalg.SeqBlas.seqBlas);
+	SmpBlas.allocateBlas(cpus, cern.colt.matrix.linalg.SeqBlas.seqBlas);
 	Double2DProcedure fun = fun_dgemm(transposeA,transposeB);
 	String title = fun.toString();
 	String params = transposeA +", "+transposeB+", 1, A, B, 0, C";
@@ -94,7 +95,7 @@ protected static void bench_dgemv(String[] args) {
 		return;
 	}
 
-	cern.colt.matrix.linalg.SmpBlas.allocateBlas(cpus,cern.colt.matrix.linalg.SeqBlas.seqBlas);
+	SmpBlas.allocateBlas(cpus, cern.colt.matrix.linalg.SeqBlas.seqBlas);
 	Double2DProcedure fun = fun_dgemv(transposeA);
 	String title = fun.toString();
 	String params = transposeA +", 1, A, B, 0, C";
@@ -129,7 +130,7 @@ protected static void bench_pow(String[] args) {
 		return;
 	}
 
-	cern.colt.matrix.linalg.SmpBlas.allocateBlas(cpus,cern.colt.matrix.linalg.SeqBlas.seqBlas);
+	SmpBlas.allocateBlas(cpus, cern.colt.matrix.linalg.SeqBlas.seqBlas);
 	Double2DProcedure fun = fun_pow(exponent);
 	String title = fun.toString();
 	String params = "A,"+exponent;
@@ -162,7 +163,7 @@ protected static void benchGeneric(Double2DProcedure fun, String[] args) {
 		return;
 	}
 
-	cern.colt.matrix.linalg.SmpBlas.allocateBlas(cpus,cern.colt.matrix.linalg.SeqBlas.seqBlas);
+	SmpBlas.allocateBlas(cpus, cern.colt.matrix.linalg.SeqBlas.seqBlas);
 	String title = fun.toString();
 	run(minSecs,title,fun,types,sizes,densities);
 }
@@ -186,7 +187,7 @@ protected static Double2DProcedure fun_dgemm(final boolean transposeA, final boo
 		}
 		public void init() { C.assign(D); }
 		public void apply(cern.colt.Timer timer) { 
-			cern.colt.matrix.linalg.SmpBlas.smpBlas.dgemm(transposeA,transposeB,1,A,B,0,C); 
+			SmpBlas.smpBlas.dgemm(transposeA,transposeB,1,A,B,0,C);
 		}
 		public double operations() { // Mflops
 			double m = A.rows();
@@ -210,7 +211,7 @@ protected static Double2DProcedure fun_dgemv(final boolean transposeA) {
 		}
 		public void init() { C.viewRow(0).assign(D.viewRow(0)); }
 		public void apply(cern.colt.Timer timer) { 
-			cern.colt.matrix.linalg.SmpBlas.smpBlas.dgemv(transposeA,1,A,B.viewRow(0),0,C.viewRow(0)); 
+			SmpBlas.smpBlas.dgemv(transposeA,1,A,B.viewRow(0),0,C.viewRow(0));
 		}
 		public double operations() { // Mflops
 			double m = A.rows();
@@ -326,7 +327,7 @@ protected static Double2DProcedure funAssignLog() {
 		public String toString() { return "A[i,j] = log(A[i,j]) via Blas.assign(fun) [Mflops/sec]";	}
 		public void init() { A.assign(C); }		
 		public void apply(cern.colt.Timer timer) {
-			cern.colt.matrix.linalg.SmpBlas.smpBlas.assign(A,cern.jet.math.Functions.log);
+			SmpBlas.smpBlas.assign(A,cern.jet.math.Functions.log);
 		}
 	};
 }
@@ -338,7 +339,7 @@ protected static Double2DProcedure funAssignPlusMult() {
 		public String toString() { return "A[i,j] = A[i,j] + s*B[i,j] via Blas.assign(fun) [Mflops/sec]";	}
 		public void init() { A.assign(C); }		
 		public void apply(cern.colt.Timer timer) {
-			cern.colt.matrix.linalg.SmpBlas.smpBlas.assign(A,B,cern.jet.math.Functions.plusMult(0.5));
+			SmpBlas.smpBlas.assign(A,B,cern.jet.math.Functions.plusMult(0.5));
 		}
 		public double operations() { // Mflops
 			double m = A.rows();
@@ -376,7 +377,7 @@ protected static Double2DProcedure funElementwiseMult() {
 		public String toString() { return "A.assign(F.mult(0.5)) via Blas [Mflops/sec]";	}
 		public void init() { A.assign(C); }		
 		public void apply(cern.colt.Timer timer) {
-			cern.colt.matrix.linalg.SmpBlas.smpBlas.assign(A,cern.jet.math.Functions.mult(0.5));
+			SmpBlas.smpBlas.assign(A,cern.jet.math.Functions.mult(0.5));
 		}
 	};
 }
@@ -388,7 +389,7 @@ protected static Double2DProcedure funElementwiseMultB() {
 		public String toString() { return "A.assign(B,F.mult) via Blas [Mflops/sec]";	}
 		public void init() { A.assign(C); }		
 		public void apply(cern.colt.Timer timer) {
-			cern.colt.matrix.linalg.SmpBlas.smpBlas.assign(A,B,cern.jet.math.Functions.mult);
+			SmpBlas.smpBlas.assign(A,B,cern.jet.math.Functions.mult);
 		}
 	};
 }

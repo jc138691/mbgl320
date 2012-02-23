@@ -18,7 +18,7 @@ import papers.he_swave.HeSWaveScatt;
 import project.workflow.task.test.FlowTest;
 import qm_station.QMSProject;
 import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
-import scatt.jm_2008.jm.laguerre.JmLgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmTrgtE3;
 import stats.VecStats;
@@ -281,15 +281,15 @@ public class OptimLambda extends HeSWaveScatt {
     TAG = "_HeIon";
     initProject();
     // from jmPotTestOk
-    StepGridModel sg = jmOpt.getGrid();           log.dbg("x step grid model =", sg);
+    StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
     quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);
     rVec = quadrLcr.getR();                        log.dbg("r grid =", rVec);
-    basisOptN = jmOpt.getJmModel();                 log.dbg("Laguerr model =", basisOptN);
+    basisOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", basisOptN);
 
     // from jmHyTestOk
     basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
-    JmLgrrModel lgrrOptNt = new JmLgrrModel(basisOptN); // for the target N, i.e. N_t
+    LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
     orthonNt = new JmLgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("JmLgrrOrthLcr(N_t) = ", orthonNt);
     potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-1./r
@@ -311,15 +311,15 @@ public class OptimLambda extends HeSWaveScatt {
     TAG = "_JM";
     initProject();
     // from jmPotTestOk
-    StepGridModel sg = jmOpt.getGrid();           log.dbg("x step grid model =", sg);
+    StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
     quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);
     rVec = quadrLcr.getR();                        log.dbg("r grid =", rVec);
-    basisOptN = jmOpt.getJmModel();                 log.dbg("Laguerr model =", basisOptN);
+    basisOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", basisOptN);
 
     // Nt-part
     basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
-    JmLgrrModel lgrrOptNt = new JmLgrrModel(basisOptN); // for the target N, i.e. N_t
+    LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
     orthonNt = new JmLgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("JmLgrrOrthLcr(N_t) = ", orthonNt);
     potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-1./r

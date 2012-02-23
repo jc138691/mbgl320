@@ -1,7 +1,6 @@
 package papers.hy_swave;
 import atom.angular.Spin;
 import atom.energy.ConfHMtrx;
-import atom.shell.ConfArrFactoryE2;
 import atom.shell.Ls;
 import atom.wf.coulomb.CoulombNmrvLcr;
 import atom.wf.coulomb.CoulombNmrvR;
@@ -18,11 +17,9 @@ import math.vec.VecDbgView;
 import project.workflow.task.test.FlowTest;
 import qm_station.jm.JmPotEigVecLcrTest;
 import scatt.jm_2008.e2.JmMethodBaseE2;
-import scatt.jm_2008.e3.JmMethodJmBasisE3;
-import scatt.jm_2008.jm.JmRes;
-import scatt.jm_2008.jm.fanox.JmMethodFanoE2;
+import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
-import scatt.jm_2008.jm.laguerre.JmLgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcrTest;
 import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
 
@@ -78,10 +75,10 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
   protected void jmHyTestOk(int trgtZ) {
     FlowTest.setLog(log);
 
-    jmOpt.setUseClosed(USE_CLOSED_CHANNELS);
+    calcOpt.setUseClosed(USE_CLOSED_CHANNELS);
 
     basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
-    JmLgrrModel lgrrOptNt = new JmLgrrModel(basisOptN); // for the target N, i.e. N_t
+    LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
 
     orthonNt = new JmLgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("JmLgrrOrthLcr(N_t) = ", orthonNt);
@@ -108,8 +105,8 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
 
   }
 
-  public void setupJmRes(JmRes res, JmMethodBaseE2 method) {
-    super.setupJmRes(res, method);
+  public void setupJmRes(ScattRes res, JmMethodBaseE2 method) {
+    super.setupScattRes(res, method);
     res.setCalcLabel(makeLabelTrgtS2(method));
   }
   protected static String makeLabelTrgtS2(JmMethodBaseE2 method) {

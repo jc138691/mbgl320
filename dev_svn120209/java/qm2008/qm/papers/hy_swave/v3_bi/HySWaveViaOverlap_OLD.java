@@ -13,7 +13,7 @@ import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import papers.hy_swave.HySWaveBasisHy;
-import scatt.jm_2008.jm.JmRes;
+import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.JmTrgtE2;
 import scatt.jm_2008.jm.fanox.JmMethodFanoE2;
 
@@ -59,17 +59,17 @@ public class HySWaveViaOverlap_OLD extends HySWaveBasisHy {
     SlaterLcr slater = new SlaterLcr(quadrLcr);
     SysE2_OLD sys = new SysE2_OLD(-AtomHy.Z, slater);// NOTE -1 for Hydrogen
     ConfOverlap chiOv = new ConfOverlap(sConfArr, sys, chiArr);     log.dbg("chiOv=\n", new MtrxDbgView(chiOv));
-    ConfHMtrx sysH = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysH=\n", new MtrxDbgView(sysH));
+    ConfHMtrx sysH = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
 
-    JmMethodFanoE2 method = new JmMethodFanoE2(jmOpt);
-    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysH=", sEngs);
+    JmMethodFanoE2 method = new JmMethodFanoE2(calcOpt);
+    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
 //    double e0 = sEngs.get(0);
     method.setSysEngs(sEngs);
-    method.setSysH(sysH);
+    method.setSysConfH(sysH);
     method.setTrgtE2(trgtUtils);
     method.setTargetH(trgtPartH);
     method.setChiOverlap(chiOv);
-    JmRes res = method.calcEngGrid();                  log.dbg("res=", res);
+    ScattRes res = method.calcEngGrid();                  log.dbg("res=", res);
 
     FileX.writeToFile(sEngs.toCSV(), HOME_DIR, "hy"
       , "hy_poet_sysEngs_S" + sLs.getS21() + "_" + basisOptN.makeLabel()+"_v3.dat");

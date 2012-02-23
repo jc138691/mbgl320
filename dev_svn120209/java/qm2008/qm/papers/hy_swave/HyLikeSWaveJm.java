@@ -14,7 +14,7 @@ import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import scatt.jm_2008.e3.JmDe3;
 import scatt.jm_2008.e3.JmMethodJmBasisE3;
-import scatt.jm_2008.jm.JmRes;
+import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.JmTrgtE3;
 
 import javax.iox.FileX;
@@ -44,17 +44,17 @@ public abstract class HyLikeSWaveJm extends HyLikeSWave {
     jmTrgt.setIonGrndEng(0);
     jmTrgt.setNt(orthonNt.size());
     jmTrgt.loadSdcsW();
-    jmTrgt.removeClosed(jmOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
+    jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
 
     ConfHMtrx sysH = makeSysH(SYS_LS, slater);
 
-    JmMethodJmBasisE3 method = new JmMethodJmBasisE3(jmOpt);
+    JmMethodJmBasisE3 method = new JmMethodJmBasisE3(calcOpt);
     method.setExclSysIdx(EXCL_SYS_RESON_IDX);     // [15Jun2011] TODO: remember to remove this
     method.setTrgtE3(jmTrgt);
-    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysH=", sEngs);
+    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
     method.setSysEngs(sEngs);
-    method.setSysH(sysH);
-    Vec D = new JmDe3(biorthN, orthonN, method.getJmOpt().getJmTest());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
+    method.setSysConfH(sysH);
+    Vec D = new JmDe3(biorthN, orthonN, method.getCalcOpt().getTestModel());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
     method.setOverD(D);
 
     if (CALC_DENSITY) {
@@ -63,7 +63,7 @@ public abstract class HyLikeSWaveJm extends HyLikeSWave {
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelTrgtS2(method));
     }
 
-    JmRes res;
+    ScattRes res;
     if (scttEngs != null) {
       res = method.calc(scttEngs);                  log.dbg("res=", res);
     }
@@ -95,7 +95,7 @@ public abstract class HyLikeSWaveJm extends HyLikeSWave {
 //    SysAtomE2 sys = new SysAtomE2(-AtomHy.Z, slater);// NOTE -1 for Hydrogen
     SysAtomE2 sys = new SysAtomE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
     ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthonNt, orthonN);   log.dbg("sysArr=", sConfArr);
-    ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysH=\n", new MtrxDbgView(res));
+    ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(res));
     return res;
   }
 }

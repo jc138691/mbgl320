@@ -2,7 +2,7 @@ package scatt.jm_2008.e2;
 import atom.shell.*;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.CalcOptE1;
 
 import javax.utilx.log.Log;
 /**
@@ -10,8 +10,8 @@ import javax.utilx.log.Log;
  */
 public class JmMethodE2 extends JmMethodBaseE2 {  // two-electrons
   public static Log log = Log.getLog(JmMethodE2.class);
-  public JmMethodE2(JmOptE1 jmOpt) {
-    super(jmOpt);
+  public JmMethodE2(CalcOptE1 calcOpt) {
+    super(calcOpt);
   }
 
   /*
@@ -20,10 +20,10 @@ X_i^{\alpha} = \sum_{j}  \delta_{j_1,\alpha} C_{ij} A_j D_{j_2,N-1},
   */
   @Override
   protected Mtrx calcX() {
-    double[][] C = sysH.getEigVec().getArray();      log.dbg("C_ij=", new MtrxDbgView(sysH.getEigVec()));
+    double[][] C = sysConfH.getEigVec().getArray();      log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
     double[] D = getOverD().getArr();
     log.dbg("D_j2=", getOverD());
-    ConfArr sysBasis = sysH.getBasis();
+    ConfArr sysBasis = sysConfH.getBasis();
     int sN = getSysBasisSize();
     int cN = getChNum();
     Mtrx res = new Mtrx(cN, sN);

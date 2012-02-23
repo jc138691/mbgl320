@@ -1,7 +1,7 @@
 package qm_station.ucm.plot;
 import qm_station.QMS;
 import qm_station.QMSProject;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.CalcOptE1;
 
 import javax.utilx.log.Log;
 
@@ -28,10 +28,10 @@ public class UCPlotPotNmrvR extends UCPlotFuncArr {
   }
   public FuncArr makeFuncArr() {
     QMS project = QMSProject.getInstance();
-    JmOptE1 model = project.getJmPotOptR();    // R
+    CalcOptE1 model = project.getJmPotOptR();    // R
     StepGridModel sg = model.getGrid();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
     FuncVec pot = CoulombWFFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", pot);
-    return new NmrvPotR(pot, model.getGridEng(), model.getJmModel().getL() ); //
+    return new NmrvPotR(pot, model.getGridEng(), model.getLgrrModel().getL() ); //
   }
 }

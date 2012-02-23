@@ -2,7 +2,7 @@ package qm_station.jm;
 import math.vec.Vec;
 import flanagan.complex.Cmplx;
 import scatt.eng.EngGrid;
-import scatt.jm_2008.jm.laguerre.JmLgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.theory.JmTheory;
 
 import javax.utilx.log.Log;
@@ -17,11 +17,11 @@ public class JmEngSC_NN1 extends EngGrid {
   private Vec sn1;
   private Vec cn;
   private Vec cn1;
-  public JmEngSC_NN1(JmLgrrModel jmLagrr, EngModel engModel) {
+  public JmEngSC_NN1(LgrrModel jmLagrr, EngModel engModel) {
     super(engModel);
     calc(jmLagrr);
   }
-  private void calc(JmLgrrModel jmLagrr) {
+  private void calc(LgrrModel jmLagrr) {
     int L = jmLagrr.getL();           log.dbg("L=", L);
     double lambda = jmLagrr.getLambda(); log.dbg("lambda=", lambda);
     int N = jmLagrr.getN();           log.dbg("N=", N);

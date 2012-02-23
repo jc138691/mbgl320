@@ -2,12 +2,12 @@ package scatt.jm_2008.jm;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 7/10/2008, Time: 16:44:49
  */
-public class JmTestModel {
+public class TestModel {
   private float maxIntgrlErr;
   public void loadDefault() {
     loadDefault(this);
   }
-  public static void loadDefault(JmTestModel model) {
+  public static void loadDefault(TestModel model) {
     model.setMaxIntgrlErr(0.000001f);    
   }
   public float getMaxIntgrlErr() {

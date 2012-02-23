@@ -1,7 +1,7 @@
 package scatt.jm_2008.jm.target;
 
 import flanagan.complex.Cmplx;
-import scatt.jm_2008.jm.laguerre.JmLgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.theory.JmTools;
 
 import javax.utilx.log.Log;
@@ -13,9 +13,9 @@ import javax.utilx.log.Log;
  c     I  - J.T.Broad and W.P.Reinhardt, J.Phys.B9, 1491 (1976).
  c     II - H.A.Yamani and L.Fishman, J.Math.Phys.16, 410 (1975).
  */
-public class JmCh //extends JmLgrrModel
+public class JmCh //extends LgrrModel
 {   // target channel
-  private final JmLgrrModel jmModel;
+  private final LgrrModel jmModel;
   public static Log log = Log.getLog(JmCh.class);
   private Cmplx jnn; // from cjm
   private Cmplx scattMom; // scattering momentum; from q
@@ -37,7 +37,7 @@ public class JmCh //extends JmLgrrModel
   /*
   see J_matrix
    */
-  public JmCh(double sysEng, double chEng, JmLgrrModel jmModel, int jmZ) { // channel energy
+  public JmCh(double sysEng, double chEng, LgrrModel jmModel, int jmZ) { // channel energy
     this.jmModel = jmModel;
     init();
     eng = chEng;

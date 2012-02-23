@@ -4,7 +4,7 @@ import math.func.arr.FuncArr;
 import qm_station.QMSProject;
 import qm_station.QMS;
 import qm_station.jm.JmEngSC_NN1;
-import scatt.jm_2008.e1.JmOptE1;
+import scatt.jm_2008.e1.CalcOptE1;
 import scatt.eng.EngModel;
 import project.workflow.task.DefaultTaskUI;
 
@@ -36,10 +36,10 @@ public class UCPlotEngKnnR extends UCPlotFuncArr {
   }
   public FuncVec makeJmK() {
     QMS project = QMSProject.getInstance();
-    JmOptE1 model = project.getJmPotOptR();
+    CalcOptE1 model = project.getJmPotOptR();
 
     EngModel eng = model.getGridEng();    log.dbg("eng model=", eng);
-    JmEngSC_NN1 jmSC = new JmEngSC_NN1(model.getJmModel(), eng);
+    JmEngSC_NN1 jmSC = new JmEngSC_NN1(model.getLgrrModel(), eng);
 
 //    UCPlotEngGnnR gnn = new UCPlotEngGnnR(getDefaultUi());
 //    FuncVec g = gnn.makeFuncVec();        log.dbg("G_{N,N-1}(E)=", g);

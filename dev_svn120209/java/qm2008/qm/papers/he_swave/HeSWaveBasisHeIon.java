@@ -15,7 +15,7 @@ import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
 import scatt.jm_2008.e3.JmMethodAnyBasisE3;
-import scatt.jm_2008.jm.JmRes;
+import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.JmTrgtE3;
 import scatt.jm_2008.jm.theory.JmD;
 
@@ -129,18 +129,18 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
-    jmTrgt.removeClosed(jmOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
+    jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
     jmTrgt.setNt(trgtBasisNt.size());
     jmTrgt.loadSdcsW();
     saveTrgtInfo(jmTrgt);
 
     ConfHMtrx sysH = makeSysBasisN(slater);
 
-    JmMethodAnyBasisE3 method = new JmMethodAnyBasisE3(jmOpt);
+    JmMethodAnyBasisE3 method = new JmMethodAnyBasisE3(calcOpt);
     method.setTrgtE3(jmTrgt);
-    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysH=", sEngs);
+    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
     method.setSysEngs(sEngs);
-    method.setSysH(sysH);
+    method.setSysConfH(sysH);
     Vec D = new JmD(biorthN, trgtBasisN);             log.dbg("D_{n,N-1}=", D);
     method.setOverD(D);
 
@@ -150,7 +150,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelNc(method));
     }
 
-    JmRes res;
+    ScattRes res;
     if (scttEngs != null) {
       res = method.calc(scttEngs);                  log.dbg("res=", res);
     }
@@ -159,7 +159,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     }
     setupJmRes(res, method);
 
-//    JmResonancesE2.saveResRadDist(RES_MAX_LEVEL, res, sysH);
+//    JmResonancesE2.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
     res.writeToFiles();
   }
 

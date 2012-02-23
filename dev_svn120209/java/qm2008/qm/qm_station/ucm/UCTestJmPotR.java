@@ -18,8 +18,8 @@ import qm_station.jm.JmJnnRTest;
 import qm_station.jm.JmPotEigVecRTest;
 import qm_station.ui.StepGridView;
 import scatt.eng.EngModel;
-import scatt.jm_2008.e1.JmOptE1;
-import scatt.jm_2008.jm.JmTestModel;
+import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.jm.TestModel;
 import scatt.jm_2008.jm.laguerre.*;
 
 import javax.swingx.textx.TextView;
@@ -53,21 +53,21 @@ public class UCTestJmPotR extends UCRunDefaultTask<QMS> {
     getOptView().loadTo(project);
     project.saveProjectToDefaultLocation();
 
-    JmOptE1 potOpt = project.getJmPotOptR();    // R
+    CalcOptE1 potOpt = project.getJmPotOptR();    // R
     StepGridModel sg = potOpt.getGrid();
     log.dbg("StepGridModel = ", sg);
     StepGrid r = new StepGrid(sg);
     log.dbg("StepGrid r = ", new VecDbgView(r));
-    log.dbg("JmLgrrModel = ", potOpt.getJmModel());
+    log.dbg("LgrrModel = ", potOpt.getLgrrModel());
     WFQuadrR w = new WFQuadrR(r);
     log.dbg("integration weights=", w);
-    JmLgrrR jm = new JmLgrrR(w, potOpt.getJmModel());
+    JmLgrrR jm = new JmLgrrR(w, potOpt.getLgrrModel());
     log.dbg("JmLgrrR = ", new FuncArrDbgView(jm));
     Vec pot = CoulombWFFactory.makePotHy_1s_e(r);
     log.dbg("V_1s(r)=", pot);
 
     // RUN ALL TESTS
-    JmTestModel testOpt = potOpt.getJmTest();
+    TestModel testOpt = potOpt.getTestModel();
     FlowTest.setLog(log);
 
     FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());     // LOCK MAX ERR
@@ -78,12 +78,12 @@ public class UCTestJmPotR extends UCRunDefaultTask<QMS> {
       if (!new JmLagrrRTest(jm).ok())
         return false;
 
-      JmLagrrBiR bi = new JmLagrrBiR(w, potOpt.getJmModel());
+      JmLagrrBiR bi = new JmLagrrBiR(w, potOpt.getLgrrModel());
       log.dbg("JmLagrrBiR = ", bi);
       if (!new JmLagrrBiRTest(jm, bi).ok())
         return false;
 
-      JmLgrrOrthR orth = new JmLgrrOrthR(w, potOpt.getJmModel());
+      JmLgrrOrthR orth = new JmLgrrOrthR(w, potOpt.getLgrrModel());
       log.dbg("JmLgrrOrthR = ", orth);
       if (!new JmLagrrOrthRTest(orth).ok())
         return false;

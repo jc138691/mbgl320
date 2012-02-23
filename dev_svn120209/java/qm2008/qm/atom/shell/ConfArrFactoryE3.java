@@ -11,7 +11,7 @@ import math.func.arr.FuncArr;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
 import project.workflow.task.test.FlowTest;
-import scatt.jm_2008.jm.laguerre.JmLgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
 
 import javax.triplet.Int3;
@@ -46,7 +46,7 @@ public class ConfArrFactoryE3 extends FlowTest {
     log.dbg("x grid =", x);
     WFQuadrLcr quadrLcr = new WFQuadrLcr(x);
     log.dbg("x weights =", quadrLcr);
-    JmLgrrModel basisOptN = new JmLgrrModel(L, MAX_N, LAMBDA);
+    LgrrModel basisOptN = new LgrrModel(L, MAX_N, LAMBDA);
     JmLgrrOrthLcr orthonN = new JmLgrrOrthLcr(quadrLcr, basisOptN);
     log.dbg("JmLgrrOrthLcr = ", orthonN);
     ShWf.convertToShWf(orthonN, L);
