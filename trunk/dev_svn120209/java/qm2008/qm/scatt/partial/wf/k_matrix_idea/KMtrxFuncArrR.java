@@ -1,7 +1,8 @@
-package scatt.partial.wf;
+package scatt.partial.wf.k_matrix_idea;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.vec.Vec;
+import scatt.partial.wf.eng_arr_not_used.EngFuncArr;
 
 import javax.utilx.log.Log;
 /**
@@ -24,7 +25,7 @@ public class KMtrxFuncArrR extends FuncArr {
       for (int ix = 0; ix < x.size(); ix++) {
         double K = 0;
         if (ix > 0) {
-          K = KMtrxR.calc(f, E, ix-1);
+          K = KMtrxR.calc(f, E, ix - 1);
         }
         res.set(ix, K);
       }

@@ -6,9 +6,9 @@ import javax.utilx.log.Log;
 import project.workflow.task.DefaultTaskUI;
 import math.vec.grid.StepGrid;
 import math.func.arr.FuncArr;
+import scatt.partial.wf.eng_arr_not_used.EngFuncArr;
+import scatt.partial.wf.k_matrix_idea.KMtrxFuncArrR;
 import scatt.partial.wf.numerov.NmrvPotR;
-import scatt.partial.wf.EngFuncArr;
-import scatt.partial.wf.KMtrxFuncArrR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 19/11/2008, Time: 12:32:34
  */

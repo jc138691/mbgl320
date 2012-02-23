@@ -13,7 +13,7 @@ import math.vec.Vec;
 import atom.energy.part_wave.PartHMtrx;
 import atom.wf.coulomb.CoulombWFFactory;
 import scatt.jm_2008.jm.laguerre.IWFuncArr;
-import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 20/11/2008, Time: 16:11:29
@@ -37,7 +37,7 @@ public class UCPlotPotEigFuncLCR extends UCPlotFuncArr {
 
   protected PartHMtrx makeH() {
     UCPlotJmLagrrOrthLCR uc = new UCPlotJmLagrrOrthLCR(getDefaultUi());
-    IWFuncArr arr = (JmLgrrOrthLcr)uc.makeFuncArr();
+    IWFuncArr arr = (LgrrOrthLcr)uc.makeFuncArr();
     WFQuadr w = arr.getQuadr();
     Vec x = w.getX();
     Vec r = w.getR();

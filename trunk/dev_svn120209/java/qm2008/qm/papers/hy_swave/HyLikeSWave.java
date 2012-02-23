@@ -20,8 +20,8 @@ import scatt.jm_2008.e2.JmMethodBaseE2;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcrTest;
-import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcrTest;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.utilx.log.Log;
 /**
@@ -30,7 +30,7 @@ import javax.utilx.log.Log;
 public abstract class HyLikeSWave extends Jm2010CommonLcr {
   public static Log log = Log.getLog(HyLikeSWave.class);
   protected static FuncArr trgtBasisNt;
-  protected static JmLgrrOrthLcr orthonNt;  // for N_t
+  protected static LgrrOrthLcr orthonNt;  // for N_t
   protected static int Nt = 20;
   protected static int FROM_CH = 0;  // initial scattering channel
   protected static Spin SPIN;
@@ -81,10 +81,10 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
     LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
 
-    orthonNt = new JmLgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("JmLgrrOrthLcr(N_t) = ", orthonNt);
+    orthonNt = new LgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthonNt);
     FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
     {
-      if (!new JmLgrrOrthLcrTest(orthonNt).ok()) return;
+      if (!new LgrrOrthLcrTest(orthonNt).ok()) return;
 //      if (!new JmPotEigVecLcrTest(AtomHy.Z, orthonNt).ok()) return;
       if (!new JmPotEigVecLcrTest(trgtZ, orthonNt).ok()) return;
     }

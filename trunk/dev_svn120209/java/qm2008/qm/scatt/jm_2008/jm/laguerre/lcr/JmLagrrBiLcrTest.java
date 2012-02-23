@@ -8,9 +8,9 @@ import math.Mathx;
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 10:28:06
  */
 public class JmLagrrBiLcrTest extends FlowTest {
-  private static JmLagrrLcr arr;
-  private static JmLagrrBiLcr bio;
-  public JmLagrrBiLcrTest(JmLagrrLcr basis, JmLagrrBiLcr bio) {
+  private static LagrrLcr arr;
+  private static LagrrBiLcr bio;
+  public JmLagrrBiLcrTest(LagrrLcr basis, LagrrBiLcr bio) {
     super(JmLagrrBiLcrTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
     arr = basis;
     this.bio = bio;
@@ -20,7 +20,7 @@ public class JmLagrrBiLcrTest extends FlowTest {
   public void testNorm() {
 //    TaskProgressMonitor monitor = ProjectProgressMonitor.getInstance();
 
-    log.dbg("testing " + JmLagrrBiLcr.HELP);
+    log.dbg("testing " + LagrrBiLcr.HELP);
     log.dbg("running JmLagrrBiLCRRTest: JM-Laguerre and Bi-diagonal Laguerre function orthonormality");
     log.dbg("TEST_{n,m} = Intergal[0,rMax] R_n(r) * BiR_m(r) = delta(n, m)");
     log.dbg("Max relative intergation error =" + getMaxErr());

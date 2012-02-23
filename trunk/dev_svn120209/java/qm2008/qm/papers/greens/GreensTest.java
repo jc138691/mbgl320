@@ -1,4 +1,4 @@
-package scatt.work_in_progress.greens;
+package papers.greens;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.Conf;
 import atom.shell.Ls;

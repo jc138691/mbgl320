@@ -1,7 +1,7 @@
 package qm_station.jm;
 import atom.wf.WFQuadr;
 import scatt.eng.EngGrid;
-import scatt.jm_2008.jm.laguerre.JmLgrrR;
+import scatt.jm_2008.jm.laguerre.LgrrR;
 
 import javax.utilx.log.Log;
 
@@ -15,11 +15,11 @@ public class JmJnnR extends FuncVec {
   public static String HELP = "The JM's J_{N,N-1}; calculated by numerical integration";
   public static Log log = Log.getLog(JmJnnR.class);
 
-  public JmJnnR(JmLgrrR arr, EngModel eng) {
+  public JmJnnR(LgrrR arr, EngModel eng) {
     super(new EngGrid(eng));   // energy grid storred in x
     calc(arr);
   }
-  private void calc(JmLgrrR arr) {
+  private void calc(LgrrR arr) {
     WFQuadr w = arr.getQuadr();
     PartHR partH = new PartHR(w);
     FuncVec f = arr.getFunc(arr.size()-1);

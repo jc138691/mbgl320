@@ -1,14 +1,19 @@
 package scatt.partial.wf;
 import atom.wf.log_cr.WFQuadrLcr;
-import scatt.eng.EngModel;
-import math.func.Func;
+import math.func.FuncVec;
+
+import javax.utilx.log.Log;
 /**
- * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 14:11:32
+ * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 23/02/12, 2:06 PM
  */
-public class CosPWaveLCR extends PWaveLcr {
-  public static String HELP = "Cos-like partial plain wave after the LCR transform.";
-  public CosPWaveLCR(WFQuadrLcr w, EngModel model, int L) {
-    super(w, model, L);
+public class CosPWaveLcr extends FuncVec {
+public static Log log = Log.getLog(CosPWaveLcr.class);
+public CosPWaveLcr(WFQuadrLcr w, final double p, final int L) {
+  super(w.getR(), new CosPWaveFunc(p, L));
+  if (L > 0) {
+    throw new IllegalArgumentException(log.error("todo L>0"));
   }
-  protected Func makeFunc(double p, int L) { return new CosPartPWaveFunc(p, L); }
+  mult(w.getDivSqrtCR());                          // NOTE!!!  /qsrt(c+r)
+  setX(w.getX());             // NOTE!!! but stores LCR as x
+}
 }

@@ -81,8 +81,8 @@ public class Jm2010PotScatt extends Jm2010CommonR {
 
     // JM-properties
 //    EngModel eng = calcOpt.getGridEng();    log.dbg("Incident Energies =", eng);
-//    if (!new JmJnnRTest(jmBasisN, eng).ok())      return;
-//    if (!new JmJnmSCmRTest(jmBasisN, eng).ok())      return;
+//    if (!new JmJnnRTest(basisN, eng).ok())      return;
+//    if (!new JmJnmSCmRTest(basisN, eng).ok())      return;
 
   }
 

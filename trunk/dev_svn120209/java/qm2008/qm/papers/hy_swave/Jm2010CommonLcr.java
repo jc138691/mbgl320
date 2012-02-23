@@ -33,9 +33,9 @@ public class Jm2010CommonLcr extends Jm2010Common {
 //  protected static final int HY_Z = 1;
 
   protected static FuncArr trgtBasisN;
-  protected static JmLagrrLcr jmBasisN;
-  protected static JmLgrrOrthLcr orthonN;
-  protected static JmLagrrBiLcr biorthN;
+  protected static LagrrLcr basisN;
+  protected static LgrrOrthLcr orthonN;
+  protected static LagrrBiLcr biorthN;
   protected static WFQuadrLcr quadrLcr;
   protected static Func potFunc;
 
@@ -87,20 +87,20 @@ public class Jm2010CommonLcr extends Jm2010Common {
     if (!new YkLcrFlowTest(quadrLcr).ok()) return;
 
     basisOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", basisOptN);
-    jmBasisN = new JmLagrrLcr(quadrLcr, basisOptN);    log.dbg("JmLagrrLcr =\n", jmBasisN);
+    basisN = new LagrrLcr(quadrLcr, basisOptN);    log.dbg("LagrrLcr =\n", basisN);
 
     FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());       // LOCK MAX ERR
     {
-      // JM-jmBasisN
-      if (!new JmLagrrLcrTest(jmBasisN).ok()) return;
-      biorthN = new JmLagrrBiLcr(quadrLcr, basisOptN);           log.dbg("JmLagrrBiLcr =\n", biorthN);
-      if (!new JmLagrrBiLcrTest(jmBasisN, biorthN).ok()) return;
-      orthonN = new JmLgrrOrthLcr(quadrLcr, basisOptN);         log.dbg("JmLgrrOrthLcr = ", orthonN);
-      if (!new JmLgrrOrthLcrTest(orthonN).ok()) return;
+      // JM-basisN
+      if (!new LagrrLcrTest(basisN).ok()) return;
+      biorthN = new LagrrBiLcr(quadrLcr, basisOptN);           log.dbg("LagrrBiLcr =\n", biorthN);
+      if (!new JmLagrrBiLcrTest(basisN, biorthN).ok()) return;
+      orthonN = new LgrrOrthLcr(quadrLcr, basisOptN);         log.dbg("LgrrOrthLcr = ", orthonN);
+      if (!new LgrrOrthLcrTest(orthonN).ok()) return;
 
 //    // H-integration
       if (!new H_Hy_P1s_LcrTest(quadrLcr).ok()) return;
-      // Making inner-jmBasisN
+      // Making inner-basisN
 
       if (!new JmPotEigVecLcrTest(AtomHy.Z, orthonN).ok()) return;
     }

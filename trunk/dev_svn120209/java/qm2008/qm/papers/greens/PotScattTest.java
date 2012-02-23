@@ -1,4 +1,4 @@
-package scatt.work_in_progress.greens;
+package papers.greens;
 import atom.wf.bspline.BSplBoundBasis;
 import atom.wf.WFArrL;
 import atom.wf.log_cr.TransLcrToR;
@@ -23,7 +23,7 @@ import math.func.FuncVec;
 import func.bspline.BSplOrthonBasis;
 import func.bspline.BSplArr;
 import func.bspline.BSplBasisFactory;
-import scatt.partial.wf.SinPartPWaveR;
+import scatt.partial.wf.SinPWaveR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 23/07/2008, Time: 10:10:32
  */
@@ -65,7 +65,7 @@ public class PotScattTest extends TestCase {
     for (int i = 0; i < incP.size(); i++) {
       double testB = arrB.get(i);                log.dbg("testB=", testB);
       double p = arrB.getX().get(i);             log.dbg("p=", p);
-      FuncVec upl = new SinPartPWaveR(r, p, L);   log.dbg("upl=", upl);
+      FuncVec upl = new SinPWaveR(r, p, L);   log.dbg("upl=", upl);
       upl.mult(logCRToR.getDivSqrtCR());  log.dbg("upl/sqrt(y)=", upl);// convert to F(x)=P(r)/sqrt(c+r)
       double calcB = wCR2.calc(V_1s, upl, upl);     log.info("calcB=", calcB);  log.info("calcB-testB=", calcB-testB);
       log.assertZero("calcB-testB=", calcB - testB, 8e-7);
@@ -92,7 +92,7 @@ public class PotScattTest extends TestCase {
     for (int i = 0; i < incP.size(); i++) {
       double testB = arrB.get(i);                log.dbg("testB=", testB);
       double p = arrB.getX().get(i);             log.info("p=", p);
-      FuncVec upl = new SinPartPWaveR(r, p, L);   log.dbg("upl=", upl);
+      FuncVec upl = new SinPWaveR(r, p, L);   log.dbg("upl=", upl);
       double calcB = w.calc(V_1s, upl, upl);     log.info("calcB=", calcB); log.info("calcB-testB=", calcB-testB);
       log.assertZero("calcB-testB", calcB - testB, 3e-4);
     }

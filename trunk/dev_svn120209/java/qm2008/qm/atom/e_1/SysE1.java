@@ -10,7 +10,7 @@ import atom.shell.Conf;
 public class SysE1 extends AtomFano1965 {
   private final static int ONE_ELEC = 1;
   public SysE1(double z
-    , Slater si) { // grid/jmBasisN dependent!!!
+    , Slater si) { // grid/basisN dependent!!!
     super(z, si);
   }
   public int getNumElec() {

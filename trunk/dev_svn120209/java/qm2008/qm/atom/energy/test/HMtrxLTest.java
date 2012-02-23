@@ -49,7 +49,7 @@ public class HMtrxLTest extends TestCase {
 //    Log.getLog(HMtrxL.class).setDebug();
 //    int L = 0;
 //    SlaterR slater = new SlaterR(w);
-//    WFArrL wfBasis = new WFArrL(L, slater, jmBasisN);
+//    WFArrL wfBasis = new WFArrL(L, slater, basisN);
 //    HMtrxL H = new HMtrxL(wfBasis, slater, zPot);
 //    EigenSymm eig = H.eig();      log.debug("H=", new Vec(eig.getRealEVals()));
 
@@ -87,13 +87,13 @@ public class HMtrxLTest extends TestCase {
 //
 //    // 22Jul08:  check P_1s(x)=SUM <fn|P_1s> fn(x)
 //    Log.getLog(BSplOrthonBasis.class).setDebug();
-//    FuncVec f2 = jmBasisN.expand(f);
+//    FuncVec f2 = basisN.expand(f);
 //    Vec diff = f2.copy();
 //    diff.addMultSafe(-1, f);
 //    log.saveToFile(VecToString.toCsv(logCR) + "\n" + VecToString.toCsv(f), ".", "wf", "F_1s.csv");
 //    log.saveToFile(VecToString.toCsv(logCR) + "\n" + VecToString.toCsv(f2), ".", "wf", "F_1s_from_bspline.csv");
 //    log.saveToFile(VecToString.toCsv(logCR) + "\n" + VecToString.toCsv(diff), ".", "wf", "F_1s_diff.csv");
-//    log.saveToFile(jmBasisN.toCSV(), ".", "wf", "BSplineBasis.csv");
+//    log.saveToFile(basisN.toCSV(), ".", "wf", "BSplineBasis.csv");
 //    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(f, f2)), 2e-5);
   }
 }

@@ -13,7 +13,7 @@ import math.func.arr.FuncArr;
 import math.vec.grid.StepGridModel;
 import math.vec.grid.StepGrid;
 import math.vec.VecDbgView;
-import scatt.partial.wf.SinPWaveLCR;
+import scatt.partial.wf.eng_arr_not_used.SinPWaveEArrLcr;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 13:56:08
  */
@@ -33,6 +33,6 @@ public class UCPlotSinPWaveLCR extends UCPlotFuncArr {
     StepGridModel sg = model.getGrid();
     StepGrid x = new StepGrid(sg);    log.dbg("LCR grid=", x);
     WFQuadrLcr w = new WFQuadrLcr(x); log.dbg("LCR integration weights, WFQuadrLcr=", new VecDbgView(w));
-    return new SinPWaveLCR(w, model.getGridEng(), model.getLgrrModel().getL() ); //
+    return new SinPWaveEArrLcr(w, model.getGridEng(), model.getLgrrModel().getL() ); //
   }
 }

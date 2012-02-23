@@ -4,7 +4,7 @@ import atom.wf.log_cr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import project.workflow.task.test.FlowTest;
-import scatt.jm_2008.jm.laguerre.lcr.JmLagrrBiLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LagrrBiLcr;
 import scatt.partial.wf.JmCoulombLcr;
 
 import javax.utilx.log.Log;
@@ -26,7 +26,7 @@ public class JmCoulombLcrTest extends FlowTest {
   public JmCoulombLcrTest() {
   }
   public void testNorm() {
-    log.dbg("testing " + JmLagrrBiLcr.HELP);
+    log.dbg("testing " + LagrrBiLcr.HELP);
     log.dbg("running JmLagrrBiLCRRTest: JM-Laguerre and Bi-diagonal Laguerre function orthonormality");
     log.dbg("TEST_{n,m} = Intergal[0,rMax] R_n(r) * BiR_m(r) = delta(n, m)");
     log.dbg("Max relative intergation error =" + getMaxErr());

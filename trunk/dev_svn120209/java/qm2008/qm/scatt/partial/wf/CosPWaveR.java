@@ -1,15 +1,19 @@
 package scatt.partial.wf;
-import math.func.Func;
+
+import math.func.FuncVec;
 import math.vec.Vec;
-import scatt.eng.EngModel;
+
+import javax.utilx.log.Log;
+
 /**
- * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 13:11:24
+ * Created by Dmitry.A.Konovalov@gmail.com, 14/05/2010, 9:06:26 AM
  */
-public class CosPWaveR extends PartWaveR {
-  public static String HELP = "Cos-like partial plain wave.";
-//  public static Log log = Log.getLog(SinPWaveR.class);
-  public CosPWaveR(Vec r, EngModel model, int L) {
-    super(r, model, L);
+public class CosPWaveR extends FuncVec {
+  public static Log log = Log.getLog(CosPWaveR.class);
+  public CosPWaveR(final Vec x, final double p, final int L) {
+    super(x, new CosPWaveFunc(p, L));
+    if (L > 0) {
+      throw new IllegalArgumentException(log.error("todo L>0"));
+    }
   }
-  protected Func makeFunc(double p, int L) { return new CosPartPWaveFunc(p, L); }
 }

@@ -68,6 +68,7 @@ public void calc(int newN) {
   KmMethodE1 method = new KmMethodE1(calcOpt);
   method.setSysEngs(sysEngs);
   method.setSysH(sysH);
+  method.setOrthonN(orthonN);
   ScattRes res = method.calcEngGrid();      log.dbg("res=", res);
   setupScattRes(res, method);
   res.setCalcLabel(makeLabel(method));

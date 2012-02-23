@@ -10,8 +10,8 @@ import junit.framework.TestCase;
  * Copyright dmitry.konovalov@jcu.edu.au Date: 3/10/2008, Time: 14:58:40
  */
 public class JmLagrrRTest extends FlowTest {
-  private static JmLgrrR arr;
-  public JmLagrrRTest(JmLgrrR basis) {
+  private static LgrrR arr;
+  public JmLagrrRTest(LgrrR basis) {
     super(JmLagrrRTest.class);
     arr = basis;
   }
@@ -20,11 +20,11 @@ public class JmLagrrRTest extends FlowTest {
   public void testNorm() {
     TaskProgressMonitor monitor = ProjectProgressMonitor.getInstance();
 
-    log.dbg("testing " + JmLgrrR.HELP);
+    log.dbg("testing " + LgrrR.HELP);
     log.dbg("JmLagrrRTest: JM-Laguerre function normalization");
     log.dbg("TEST_n = Integral[0,rMax] R_n^2(r) = C_n + C_(n-1), where C_n=(n+v+1)!/(lambda * n!)");
     log.dbg("Max relative integration error =" + getMaxErr());
-//    log.dbg("testing " + JmLgrrR.HELP);
+//    log.dbg("testing " + LgrrR.HELP);
 //    log.dbg("JmLagrrRTest: JM-Laguerre function normalization");
 //    log.dbg("TEST_n = Integral[0,rMax] R_n^2(r) = C_n + C_(n-1), where C_n=(n+v+1)!/(lambda * n!)");
 //    log.dbg("Max relative integration error =" + getMaxErr());

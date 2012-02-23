@@ -3,7 +3,7 @@ import math.func.FuncVec;
 import math.func.simple.FuncConst;
 import math.vec.Vec;
 import scatt.eng.EngModel;
-import scatt.partial.wf.EngFuncArr;
+import scatt.partial.wf.eng_arr_not_used.EngFuncArr;
 
 import javax.utilx.log.Log;
 /**

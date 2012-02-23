@@ -1,11 +1,11 @@
 package scatt.jm_2008.e1;
-import atom.energy.ConfHMtrx;
 import atom.energy.HMtrx;
 import math.vec.Vec;
 import scatt.eng.EngGrid;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
 import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,1/04/11,3:43 PM
  */
@@ -14,6 +14,7 @@ protected static final int IDX_ENRGY = 0;
 private Vec overD;      // overlap coefficients D
 protected Vec sysEngs;
 protected HMtrx sysH;
+protected LgrrOrthLcr orthonN;
 protected final CalcOptE1 calcOpt;
 public ScattMethodBaseE1(CalcOptE1 calcOpt) {
   this.calcOpt = calcOpt;
@@ -58,5 +59,11 @@ public HMtrx getSysH() {
 }
 public void setSysH(HMtrx sysH) {
   this.sysH = sysH;
+}
+public LgrrOrthLcr getOrthonN() {
+  return orthonN;
+}
+public void setOrthonN(LgrrOrthLcr orthonN) {
+  this.orthonN = orthonN;
 }
 }

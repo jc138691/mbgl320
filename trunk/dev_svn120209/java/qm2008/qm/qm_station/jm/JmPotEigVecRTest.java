@@ -2,7 +2,7 @@ package qm_station.jm;
 import project.workflow.task.test.FlowTest;
 import project.workflow.task.TaskProgressMonitor;
 import project.workflow.task.ProjectProgressMonitor;
-import scatt.jm_2008.jm.laguerre.JmLgrrOrthR;
+import scatt.jm_2008.jm.laguerre.LgrrOrthR;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
@@ -19,8 +19,8 @@ import atom.wf.coulomb.CoulombWFFactory;
  * Copyright dmitry.konovalov@jcu.edu.au Date: 21/11/2008, Time: 15:42:20
  */
 public class JmPotEigVecRTest extends FlowTest {
-  private static JmLgrrOrthR funcArr;
-  public JmPotEigVecRTest(JmLgrrOrthR arr) {
+  private static LgrrOrthR funcArr;
+  public JmPotEigVecRTest(LgrrOrthR arr) {
     super(JmPotEigVecRTest.class);
     this.funcArr = arr;
   }

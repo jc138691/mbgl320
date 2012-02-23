@@ -8,14 +8,19 @@ import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.theory.JmTheory;
 
 import javax.utilx.log.Log;
+import javax.utilx.pair.Dble2;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 23/02/12, 11:18 AM
  */
 public class KmMethodE1 extends ScattMethodBaseE1 {   // E1 - one electron
 public static Log log = Log.getLog(KmMethodE1.class);
+private static final int SC_N_ROWS = 2;
+private static final int IDX_S = 0;
+private static final int IDX_C = 1;
 public KmMethodE1(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
@@ -23,25 +28,17 @@ public ScattRes calc(Vec engs) {
   ScattRes res = new ScattRes();
   int chNum = getChNum();
   int eN = engs.size();
-  LgrrModel model = calcOpt.getLgrrModel();
-  int N = model.getN();
-  double lambda = model.getLambda();
-  Mtrx mCs = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
-  res.setCrossSecs(mCs);
+  Mtrx mCrss = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
+  res.setCrossSecs(mCrss);
+  Mtrx sc = new Mtrx(SC_N_ROWS, orthonN.size());
+  Mtrx psi = new Mtrx(SC_N_ROWS, orthonN.size());
   for (int i = 0; i < engs.size(); i++) {              log.dbg("i = ", i);
     double scattE = engs.get(i);                           log.dbg("E = ", scattE);
-    mCs.set(i, IDX_ENRGY, scattE);
-    double Jnn = JmTheory.calcJnnL0byE(N, scattE, lambda);       log.dbg("Jnn = ", Jnn);
-    Cmplx sc = JmTheory.calcSCnL0byE(N, scattE, lambda);            log.dbg("sc_N = ", sc);
-    Cmplx sc1 = JmTheory.calcSCnL0byE(N - 1, scattE, lambda);        log.dbg("sc_{N-1} = ", sc1);
-    double G = calcG(scattE);                                         log.dbg("G = ", G);
-    double g = Jnn * G;                                               log.dbg("g = ", g);
-    double sN1 = sc1.getIm();
-    double cN1 = sc1.getRe();
-    double sN = sc.getIm();
-    double cN = sc.getRe();
-    double R = -(w1 + g1) / (w2 + g2);                               log.dbg("R = ", R);
-//      double shift = Math.atan(R);
+    mCrss.set(i, IDX_ENRGY, scattE);
+    loadSC(scattE);
+    Dble2 g = calcG(sc, scattE);                                         log.dbg("g = ", g);
+    Dble2 w = calcW(psi, psi2, scattE);                                         log.dbg("w = ", w);
+    double R = -(w.a + g.a) / (w.b + g.b);                               log.dbg("R = ", R);
     Cmplx S = new Cmplx(1., R).div(new Cmplx(1., -R));
     log.dbg("S = ", S);
     S = S.add(-1);
@@ -50,19 +47,21 @@ public ScattRes calc(Vec engs) {
     double k2 = k * k;
     double sigma = Math.PI * S.abs2() / k2;
     log.dbg("sigma = ", sigma).eol();
-    mCs.set(i, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
+    mCrss.set(i, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
   }
   return res;
 }
-private double calcG(double E) {
-  double res = 0;
-  Vec d = getOverD();
+private Dble2 calcG(Mtrx mSC, double E) {
+  Dble2 res = new Dble2();
+  double[][] arr = mSC.getArray();
   for (int i = 0; i < sysEngs.size(); i++) {
     double ei = sysEngs.get(i);
-    double d2 = d.get(i) * d.get(i);
+    double ss = arr[IDX_S][i] * arr[IDX_S][i];
+    double sc = arr[IDX_S][i] * arr[IDX_C][i];
     if (Float.compare((float) ei, (float) E) == 0)
       throw new IllegalArgumentException(log.error("E=e_i=" + (float) E));
-    res += (d2 / (ei - E));
+    res.a += (ss / (ei - E));
+    res.b += (sc / (ei - E));
   }
   return res;
 }

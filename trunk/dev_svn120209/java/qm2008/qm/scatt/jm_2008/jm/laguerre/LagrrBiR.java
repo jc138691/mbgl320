@@ -5,16 +5,16 @@ import atom.wf.WFQuadrR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 22/10/2008, Time: 16:41:56
  */
-public class JmLagrrBiR extends JmLgrrR {
-  public static String HELP = "Bio-diagonal JM-matrix Laguerre jmBasisN:\n"
+public class LagrrBiR extends LgrrR {
+  public static String HELP = "Bio-diagonal JM-matrix Laguerre basisN:\n"
     + "BioR(n, a, lambda, r) = [n! / (n + a)!] * R(n, a, lambda, r) / r,\n"
-    + "see JmLgrrR.HELP for R";
-  public JmLagrrBiR(WFQuadrR w, LgrrModel model) {
+    + "see LgrrR.HELP for R";
+  public LagrrBiR(WFQuadrR w, LgrrModel model) {
     super(w, model);
 //    multSelf(new ThisNormFunc()); // THIS IS called in super
     calcBioNorm();
   }
-  public JmLagrrBiR(Vec r, LgrrModel model) {
+  public LagrrBiR(Vec r, LgrrModel model) {
     super(r, model);
 //    multSelf(new ThisNormFunc()); // THIS IS called in super
     calcBioNorm();

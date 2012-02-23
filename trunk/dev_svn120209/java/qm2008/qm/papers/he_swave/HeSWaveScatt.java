@@ -40,7 +40,7 @@ import scatt.eng.EngModelArr;
 import scatt.jm_2008.e2.JmMethodBaseE2;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.laguerre.lcr.JmLgrrOrthLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmTrgtE3;
 
 import javax.iox.FileX;
@@ -51,7 +51,7 @@ import javax.utilx.log.Log;
 abstract public class HeSWaveScatt  extends HyLikeSWave {
   public static Log log = Log.getLog(HeSWaveScatt.class);
   protected boolean IGNORE_BUG_PoetHeAtom = false;
-  protected static JmLgrrOrthLcr orthonNc;  // for N_c
+  protected static LgrrOrthLcr orthonNc;  // for N_c
   protected static int Nc = 1;
 
 
@@ -342,7 +342,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     LgrrModel optLiNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     optLiNt.setN(LI_Nt);
     optLiNt.setLambda(lambdaLi);          log.dbg("Laguerr model (N_t, lambda)=", optLiNt);
-    JmLgrrOrthLcr orthonLiNt = new JmLgrrOrthLcr(quadrLcr, optLiNt);        log.dbg("JmLgrrOrthLcr(N_t) = ", orthonLiNt);
+    LgrrOrthLcr orthonLiNt = new LgrrOrthLcr(quadrLcr, optLiNt);        log.dbg("LgrrOrthLcr(N_t) = ", orthonLiNt);
 
     FlowTest.lockMaxErr(ABS_LI_ENG_ERR);      // LOCK MAX ERR
     {

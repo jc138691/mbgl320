@@ -1,4 +1,4 @@
-package scatt.partial.wf;
+package scatt.partial.wf.eng_arr_not_used;
 import math.func.FuncVec;
 import math.func.Func;
 import math.vec.Vec;
@@ -10,11 +10,11 @@ import scatt.Scatt;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 13:18:04
  */
-public abstract class PartWaveR extends EngFuncArr {
-  public static Log log = Log.getLog(PartWaveR.class);
+public abstract class PWaveEArrR extends EngFuncArr {
+  public static Log log = Log.getLog(PWaveEArrR.class);
   protected int L;
 
-  public PartWaveR(Vec r, EngModel model, int L) {
+  public PWaveEArrR(Vec r, EngModel model, int L) {
     super(r, model);
     this.L = L;
     load();

@@ -4,7 +4,7 @@ import flanagan.complex.Cmplx;
 
 import javax.utilx.log.Log;
 
-import scatt.jm_2008.jm.laguerre.JmLgrrR;
+import scatt.jm_2008.jm.laguerre.LgrrR;
 import scatt.jm_2008.jm.theory.JmTheory;
 
 /**
@@ -15,12 +15,12 @@ public class JmSm extends Vec {
   public static Log log = Log.getLog(JmJMtrxR.class);
   protected double E;
 
-  public JmSm(JmLgrrR bi, double E) {
+  public JmSm(LgrrR bi, double E) {
     super(bi.size());
     this.E = E;                      log.dbg("E=", E);
     calc(bi);
   }
-  protected void calc(JmLgrrR arr) {
+  protected void calc(LgrrR arr) {
     int L = arr.getModel().getL();
     double lambda = arr.getModel().getLambda();
     for (int n = 0; n < size(); n++) {

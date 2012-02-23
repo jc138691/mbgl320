@@ -11,7 +11,7 @@ import project.workflow.task.DefaultTaskUI;
 import math.func.arr.FuncArr;
 import math.vec.grid.StepGridModel;
 import math.vec.grid.StepGrid;
-import scatt.jm_2008.jm.laguerre.lcr.JmLagrrBiLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LagrrBiLcr;
 
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 15:15:16
@@ -27,6 +27,6 @@ public class UCPlotJmLagrrBiLCR extends UCPlotFuncArr {
     StepGridModel sg = model.getGrid();
     StepGrid x = new StepGrid(sg);    log.dbg("LCR grid = x =", x);
     WFQuadrLcr w = new WFQuadrLcr(x);     log.dbg("integration weights=", w);
-    return new JmLagrrBiLcr(w, model.getLgrrModel() );
+    return new LagrrBiLcr(w, model.getLgrrModel() );
   }
 }
