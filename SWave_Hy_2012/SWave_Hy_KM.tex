@@ -103,7 +103,7 @@ In the JM case, the correct scattering boundary condition is parameterized via
 \beq
 f_p = s_p + R_0 c_p, \ \ \ R_0 = \tan \delta_0,  \label{R_0}
 \eeq
-where: $s_p$ and $c_p$  are known within the JM method; 
+where: $s_p$ and $c_p$  are known within the JM method;
 $R_0$ is the $s$-wave term of the reactance matrix \cite{Taylor72};
 and where the $s$-wave partial $S$-matrix and elastic cross section are given by
 \beq
@@ -130,10 +130,10 @@ and where the inner space projection operator $\hat{P}_N$ is by definition short
 \eeq
 
 
-The unknown expansion coefficients in Eqs.~(\ref{Psi_JM}) and (\ref{Psi_KB}) 
-are found by satisfying the system's  Schr\"odinger Eq.~(\ref{H_E_Psi_E}) 
+The unknown expansion coefficients in Eqs.~(\ref{Psi_JM}) and (\ref{Psi_KB})
+are found by satisfying the system's  Schr\"odinger Eq.~(\ref{H_E_Psi_E})
 separately within the inner and outer functional spaces
-arriving at the two set of conditions 
+arriving at the two set of conditions
 \beq \barr{l}
 \langle\Psi_i^{\JM}|H-E|\Psi_E^{\JM}\rangle= 0, \\
 \langle\Psi_i^{\KB}|H-E|\Psi_E^{\KB}\rangle=0,
@@ -149,7 +149,7 @@ X_{ip}=  \langle\Psi_i^{\JM}|H-E| \phi_p \rangle ,\\
 \earr \eeq
 \beq \barr{l}
 b_i = - (S_i c_0 + C_i s_0) / (E_i-E), \\
-S_i = \langle\Psi_i^{\KB}|H-E|  \hat{\psi}_1 \rangle, \ \ 
+S_i = \langle\Psi_i^{\KB}|H-E|  \hat{\psi}_1 \rangle, \ \
 C_i = \langle\Psi_i^{\KB}|H-E|  \hat{\psi}_2 \rangle.
 \earr \eeq
 Substituting $a_i$ and $b_i$ into the second set of conditions yields the final equations for $R_0$ (\ref{R_0})
@@ -162,13 +162,21 @@ G_{pp'}= \sum_j X_{jp} X_{jp'}/(E_j-E),
 R_0 = -(w_1 - g_1) / (w_2 - g_2),\\
 g_1= \sum_j S_{j} S_{j}/(E_j-E),\\
 g_2= \sum_j S_{j} C_{j}/(E_j-E),\\
-w_1  = \langle \hat{\psi}_1 |H-E| \hat{\psi}_1 \rangle,\ \ 
+w_1  = \langle \hat{\psi}_1 |H-E| \hat{\psi}_1 \rangle,\ \
 w_2 = \langle \hat{\psi}_1 |H-E| \hat{\psi}_2 \rangle,
 \earr \eeq
-where the JM method proceeds by solving Eq.~(\ref{JM2}) using the JM's specific technique. 
+where the JM method proceeds by solving Eq.~(\ref{JM2}) using the JM's specific technique.
 
 
-One of the main technical issue with the existing JM method is the difficulty of extracting ionization amplitudes. 
+\beq \barr{l}
+S_i \approx \langle\Psi_i^{\KB}|V|  \hat{\psi}_1 \rangle, \ \
+C_i \approx \langle\Psi_i^{\KB}|V|  \hat{\psi}_2 \rangle,\\
+w_1 \approx \langle \hat{\psi}_1 |V| \hat{\psi}_1 \rangle,\ \
+w_2 \approx \langle \hat{\psi}_1 |V| \hat{\psi}_2 \rangle,
+\earr \eeq
+
+
+One of the main technical issue with the existing JM method is the difficulty of extracting ionization amplitudes.
 
 
 \subsection{Coulomb-tail potential scattering}
