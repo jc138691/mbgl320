@@ -60,7 +60,7 @@ public void runJob() {
 public void calcJm(int newN) {
   N = newN;
   initProject();
-  jmPotTestOk();
+  potScattTestOk();
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
   PartHMtrx sysH = new PartHMtrxLcr(L, orthonN, pot);
 ////    PartH partH = sysConfH.makePartH();

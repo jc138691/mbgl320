@@ -30,7 +30,7 @@ public class YkLcrFlowTest extends FlowTest {
     TransLcrToR xToR = quadr.getLcrToR();
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
     f.mult(quadr.getDivSqrtCR());
-    double res = quadr.calcOverlap(f, f);
+    double res = quadr.calcInt(f, f);
     assertEquals(0, Math.abs(res - 1), MAX_INTGRL_ERR);
     String help = "< P1s | P1s > = ";
     assertEqualsRel(help, 1., res, true);   log.dbg(help, res);
@@ -53,9 +53,9 @@ public class YkLcrFlowTest extends FlowTest {
     // 1s-2s
     FuncVec f2 = CoulombWFFactory.makeP2s(r, 1.);
     f2.mult(xToR.getDivSqrtCR());
-    res = quadr.calcOverlap(f, f2);
+    res = quadr.calcInt(f, f2);
     assertEquals(0, Math.abs(res), MAX_INTGRL_ERR);
-    res = quadr.calcOverlap(f2, f2);
+    res = quadr.calcInt(f2, f2);
     assertEquals(1, Math.abs(res), MAX_INTGRL_ERR);
 //    Y = new YkLcr(xToR, f, f2, 0).calcYk();
     T = CoulombWFFactory.makeY_0_2s(r); // valid
@@ -65,7 +65,7 @@ public class YkLcrFlowTest extends FlowTest {
     // 2p
     f = CoulombWFFactory.makeP2p(r, 1.);
     f.mult(xToR.getDivSqrtCR());
-    res = quadr.calcOverlap(f, f);
+    res = quadr.calcInt(f, f);
     assertEquals(0, Math.abs(res - 1), MAX_INTGRL_ERR);
     T = CoulombWFFactory.makeY_0_2p(r); // valid
     Y = new YkLcr(xToR, f, f, 0).calcYk();

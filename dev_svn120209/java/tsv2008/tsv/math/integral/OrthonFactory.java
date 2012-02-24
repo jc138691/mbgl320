@@ -18,7 +18,7 @@ public class OrthonFactory {
     double res = 0;
     for (int n = 0; n < arr.size(); n++) {
       for (int n2 = 0; n2 <= n; n2++) {
-        double norm = w.calcOverlap(arr.get(n), arr.get(n2));
+        double norm = w.calcInt(arr.get(n), arr.get(n2));
         log.dbg("norm error[" + n + ", " + n2 + "]=" + (float) norm);
         if (n == n2)
           norm = Math.abs(1. - norm);
@@ -37,7 +37,7 @@ public class OrthonFactory {
     Mtrx BB = new Mtrx(from.size(), from.size());
     for (int r = 0; r < from.size(); r++) {
       for (int c = 0; c <= r; c++) {
-        double q = w.calcOverlap(from.get(r), from.get(c));
+        double q = w.calcInt(from.get(r), from.get(c));
         BB.set(r, c, q);
         BB.set(c, r, q);
       }
@@ -101,7 +101,7 @@ public class OrthonFactory {
   public static void norm(FuncArr arr, Quadr w) {
     for (int r = 0; r < arr.size(); r++) {
       FuncVec f = arr.get(r);
-      double s = w.calcOverlap(f, f);
+      double s = w.calcInt(f, f);
       s = 1. / Math.sqrt(s);
       f.mult(s);
     }

@@ -35,9 +35,9 @@ public class JmCoulombLcrTest extends FlowTest {
       FuncVec f = cont.getFunc(n);
       for (int m = 0; m < target.size(); m++) {
         FuncVec f2 = target.getFunc(m);
-        double norm = w.calcOverlap(f, f2); 
+        double norm = w.calcInt(f, f2);
         if (n == m) {
-          log.info("w.calcOverlap(f, f2)=" + norm);
+          log.info("w.calcInt(f, f2)=" + norm);
         }
         else {
 //          double corr = Mathx.delta(n, m);

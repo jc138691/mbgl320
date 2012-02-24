@@ -37,7 +37,7 @@ public class LgrrOrthLcrTest extends FlowTest {
       for (int m = 0; m < arr.size(); m++) {
         FuncVec f2 = arr.getFunc(m);
 //        double norm = w.getWithCR2().calc(f, f2);  // NOTE!! with getWithCR2
-        double norm = w.calcOverlap(f, f2);  // NOTE!! with getWithCR2
+        double norm = w.calcInt(f, f2);  // NOTE!! with getWithCR2
         double corr = Mathx.dlt(n, m);
         assertEquals("TEST[" + n + ", " + m +"]", corr, norm, true);
       }

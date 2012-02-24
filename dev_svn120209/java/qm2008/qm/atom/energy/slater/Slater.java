@@ -23,7 +23,7 @@ public class Slater extends Quadr {
     throw new IllegalArgumentException(log.error("must implement calcKin(Shell"));
   }
   public double calcOverlap(Shell sh, Shell sh2) {
-    throw new IllegalArgumentException(log.error("must implement calcOverlap(Shell"));
+    throw new IllegalArgumentException(log.error("must implement calcInt(Shell"));
   }
   public double calcKin(int L, FuncVec wf, FuncVec wf2) {
     throw new IllegalArgumentException(log.error("must implement calcKin(WFunc"));

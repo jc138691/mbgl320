@@ -28,7 +28,7 @@ public class RkLcrFlowTest extends FlowTest {
     Vec r = quadr.getR();
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
     f.mult(quadr.getDivSqrtCR());
-    double res = quadr.calcOverlap(f, f);
+    double res = quadr.calcInt(f, f);
     setMaxErr(MAX_INTGRL_ERR);
     setShowDbg(log.getDbg());
     assertEquals("<1s|1s>", 0, Math.abs(res - 1));
@@ -44,7 +44,7 @@ public class RkLcrFlowTest extends FlowTest {
     FuncVec f2s = CoulombWFFactory.makeP2s(r, 1.);
     f2s.mult(quadr.getDivSqrtCR());
 //    res = FastLoop.dot(f2s, f2s, quadr.getWithCR2());
-    res = quadr.calcOverlap(f2s, f2s);
+    res = quadr.calcInt(f2s, f2s);
     assertEquals("2s", 0, Math.abs(res - 1));
     res = RkLcr.calc(quadr, f, f2s, f, f2s, 0);
     //CRkH  F_2s1s(new CRk(w, r, f_1s, f_2s, f_1s, f_2s, CL(0)));
@@ -74,7 +74,7 @@ public class RkLcrFlowTest extends FlowTest {
 
     FuncVec f2p = CoulombWFFactory.makeP2p(r, 1.);
     f2p.mult(quadr.getDivSqrtCR());
-    res = quadr.calcOverlap(f2p, f2p);
+    res = quadr.calcInt(f2p, f2p);
     int count = 0;
     assertEquals(""+count++, 0, Math.abs(res - 1), 7e-14);
 

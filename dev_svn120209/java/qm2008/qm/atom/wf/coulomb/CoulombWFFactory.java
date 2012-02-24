@@ -40,7 +40,7 @@ public class CoulombWFFactory extends FlowTest {
   // INT  dr  V_1s sin^2(pr) = 1/4 * [ln(1+p^2) + p^2/(1+p^2)]
   // 0
   public static FuncVec calcBornDirHy_1s(Vec pArr) {
-    // NOTE: This is NOT the sacttering amplitude, just the integral
+    // NOTE: This is NOT the scattering amplitude, just the integral
     return new FuncVec(pArr, new FuncBornDirHy_1s());
   }
 

@@ -41,7 +41,7 @@ public class PotScattTest extends TestCase {
     return suite;
   }
 
-  public void testFirstBornInLogCR() {  //    log.setDebug();
+  public void testFirstBornLcr() {  //    log.setDebug();
     double FIRST = -2;
     double LAST = Math.log(15);
     int BASIS_SIZE = 20;//20
@@ -50,8 +50,8 @@ public class PotScattTest extends TestCase {
     BSplBoundBasis basis = BSplBasisFactory.makeDefaultLogCR(FIRST, LAST, BASIS_SIZE, N_BLOCKS_PER_KNOT);
     WFQuadrLcr w = (WFQuadrLcr)basis.getRefQuadr();
     WFQuadrLcr wCR2 = (WFQuadrLcr)basis.getNormQuadr();
-    TransLcrToR logCRToR = w.getLcrToR();
-    Vec r = logCRToR;
+    TransLcrToR lcrToR = w.getLcrToR();
+    Vec r = lcrToR;
     Vec x = basis.getX();
     Vec V_1s = CoulombWFFactory.makePotHy_1s(r);  log.dbg("V_1s=", V_1s);
 
@@ -66,7 +66,7 @@ public class PotScattTest extends TestCase {
       double testB = arrB.get(i);                log.dbg("testB=", testB);
       double p = arrB.getX().get(i);             log.dbg("p=", p);
       FuncVec upl = new SinPWaveR(r, p, L);   log.dbg("upl=", upl);
-      upl.mult(logCRToR.getDivSqrtCR());  log.dbg("upl/sqrt(y)=", upl);// convert to F(x)=P(r)/sqrt(c+r)
+      upl.mult(lcrToR.getDivSqrtCR());  log.dbg("upl/sqrt(y)=", upl);// convert to F(x)=P(r)/sqrt(c+r)
       double calcB = wCR2.calc(V_1s, upl, upl);     log.info("calcB=", calcB);  log.info("calcB-testB=", calcB-testB);
       log.assertZero("calcB-testB=", calcB - testB, 8e-7);
     }

@@ -33,7 +33,7 @@ import math.vec.VecDbgView;
 import papers.hy_swave.HyLikeSWave;
 import papers.hy_swave.Jm2010Common;
 import project.workflow.task.test.FlowTest;
-import qm_station.jm.JmPotEigVecLcrTest;
+import qm_station.jm.PotEigVecLcrTest;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
 import scatt.eng.EngModelArr;
@@ -296,7 +296,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
       if (!new CoulombWFFactory().ok()) return;
       if (!new SlaterWFFactory(quadrLcr).ok()) return;
 
-      if (!new JmPotEigVecLcrTest(AtomHe.Z, orthonNt).ok()) return;
+      if (!new PotEigVecLcrTest(AtomHe.Z, orthonNt).ok()) return;
       if (!new Wign3jTest().ok()) return;
       if (!new Wign6jTest().ok()) return;
       if (!new HeClementiTest().ok()) return;
@@ -346,16 +346,16 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
 
     FlowTest.lockMaxErr(ABS_LI_ENG_ERR);      // LOCK MAX ERR
     {
-      if (!new JmPotEigVecLcrTest(AtomLi.Z, orthonLiNt, false).ok()) return;
-      if (!new JmPotEigVecLcrTest(AtomHe.Z, orthonLiNt, false).ok()) return;
-      if (!new JmPotEigVecLcrTest(AtomHy.Z, orthonLiNt, false).ok()) return;
+      if (!new PotEigVecLcrTest(AtomLi.Z, orthonLiNt, false).ok()) return;
+      if (!new PotEigVecLcrTest(AtomHe.Z, orthonLiNt, false).ok()) return;
+      if (!new PotEigVecLcrTest(AtomHy.Z, orthonLiNt, false).ok()) return;
     }
     FlowTest.unlockMaxErr();                             // FREE MAX ERR
     FlowTest.lockMaxErr(REL_LI_ENG_ERR);      // LOCK MAX ERR
     {
-      if (!new JmPotEigVecLcrTest(AtomLi.Z, orthonLiNt).ok()) return;
-      if (!new JmPotEigVecLcrTest(AtomHe.Z, orthonLiNt).ok()) return;
-      if (!new JmPotEigVecLcrTest(AtomHy.Z, orthonLiNt).ok()) return;
+      if (!new PotEigVecLcrTest(AtomLi.Z, orthonLiNt).ok()) return;
+      if (!new PotEigVecLcrTest(AtomHe.Z, orthonLiNt).ok()) return;
+      if (!new PotEigVecLcrTest(AtomHy.Z, orthonLiNt).ok()) return;
     }
     FlowTest.unlockMaxErr();                             // FREE MAX ERR
 

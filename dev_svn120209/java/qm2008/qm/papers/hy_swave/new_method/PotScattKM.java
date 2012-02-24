@@ -12,6 +12,7 @@ import papers.hy_swave.Jm2010CommonLcr;
 import qm_station.QMSProject;
 import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.jm.ScattRes;
+import scatt.partial.born.PBornDirScattTest;
 
 import javax.utilx.log.Log;
 /**
@@ -40,14 +41,15 @@ public void setUp() {
 //    log = Log.getRootLog();
   log.info("log.info(PotScattKM)");
 //    JmMethodE1.log.setDbg();
+  PBornDirScattTest.log.setDbg();
   log.setDbg();
 }
 public void runJob() {
   LAMBDA = 1f;
   LCR_N = 301;
   R_LAST = 100;
-  ENG_FIRST = 0.01f;
-  ENG_LAST = 0.51f;
+  ENG_FIRST = 0.1f;
+  ENG_LAST = 1.1f;
   ENG_N = 50;
   calc(10);
   calc(12);
@@ -60,7 +62,7 @@ public void runJob() {
 public void calc(int newN) {
   N = newN;
   initProject();
-  jmPotTestOk();
+  potScattTestOk();
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);             log.dbg("V_1s(r)=", new VecDbgView(pot));
   PartHMtrx sysH = new PartHMtrxLcr(L, orthonN, pot);
   Vec sysEngs = sysH.getEigVal();            log.dbg("eigVal=", new VecDbgView(sysEngs));

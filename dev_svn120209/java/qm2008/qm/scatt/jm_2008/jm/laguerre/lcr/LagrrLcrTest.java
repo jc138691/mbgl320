@@ -34,7 +34,7 @@ public class LagrrLcrTest extends FlowTest {
 //        TestCase.fail();
 //      }
       FuncVec f = arr.getFunc(n);
-      double norm = w.calcOverlap(f, f);
+      double norm = w.calcInt(f, f);
       double corr = arr.calcNorm(n);
       assertEqualsRel("TEST_" + n, corr, norm, true);
     }

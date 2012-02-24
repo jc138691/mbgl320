@@ -58,7 +58,7 @@ public class JmTrgtE2 {   // target properties
       double e = engs.get(i);
       double w = 0;
       if (e > 0) {
-        w = quadr.calcOverlap(cont, wf);
+        w = quadr.calcInt(cont, wf);
         w = 1. / (w * w);
       }
       res.set(i, w);

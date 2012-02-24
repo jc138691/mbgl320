@@ -116,26 +116,26 @@ public class AtomLiSlaterJoy extends FlowTest {
 
     FuncVec f = makeRawP1s(r);
     f.mult(quadr.getDivSqrtCR());
-    double res = quadr.calcOverlap(f, f);
+    double res = quadr.calcInt(f, f);
     assertEquals("AtomLiSlaterJoy.makeRawP1s norm=", 0, res - 1, 1e-5);
 
     FuncVec fn = makeNormP1sLcr(quadr);
-    double norm = quadr.calcOverlap(fn, fn);
+    double norm = quadr.calcInt(fn, fn);
     assertEquals("AtomLiSlaterJoy.makeNormP1s norm=", 0, norm - 1, 1e-15);
 
     FuncVec f2 = makeRawP2s(r);
     f2.mult(quadr.getDivSqrtCR());
-    res = quadr.calcOverlap(f2, f2);
+    res = quadr.calcInt(f2, f2);
     assertEquals("AtomLiSlaterJoy.makeRawP2s norm=", 0, res - 1, 1e-5);
 
     FuncVec fn2 = makeNormP2sLcr(quadr);
-    res = quadr.calcOverlap(fn2, fn2);
+    res = quadr.calcInt(fn2, fn2);
     assertEquals("AtomLiSlaterJoy.makeNormP2s norm=", 0, res - 1, 2e-15);
 
-    res = quadr.calcOverlap(f, f2);
+    res = quadr.calcInt(f, f2);
     assertEquals("AtomLiSlaterJoy.<raw 1s|raw 2s>=", 0, res, 4.e-5);
 
-    res = quadr.calcOverlap(fn, fn2);
+    res = quadr.calcInt(fn, fn2);
     assertEquals("AtomLiSlaterJoy.<norm 1s|norm 2s>=", 0, res, 1.e-15);
   }
 

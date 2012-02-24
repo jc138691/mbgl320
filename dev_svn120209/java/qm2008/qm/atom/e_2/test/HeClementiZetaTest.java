@@ -33,7 +33,7 @@ public class HeClementiZetaTest extends FlowTest {
     FuncVec f = CoulombWFFactory.makeP1s(r, effZ);
     f.mult(quadr.getDivSqrtCR());
     f.setX(quadr.getX()); // MUST change grid for derivatives
-    double res = quadr.calcOverlap(f, f);
+    double res = quadr.calcInt(f, f);
     assertEqualsRel("norm=<1s|1s>=", 1, res, true);
 
     // Making He(1s^2)
