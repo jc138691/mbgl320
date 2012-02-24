@@ -61,6 +61,7 @@ protected void initProject() {
   project.setJmPotOptR(makeJmPotOptR());
 
   calcOpt = project.getJmPotOptLcr();
+  calcOpt.setHomeDir(HOME_DIR);
   testOpt = calcOpt.getTestModel();
   log.info("<--initProject()");
 }

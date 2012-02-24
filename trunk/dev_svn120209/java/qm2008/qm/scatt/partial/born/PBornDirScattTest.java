@@ -7,7 +7,7 @@ import math.vec.grid.StepGrid;
 import project.workflow.task.test.FlowTest;
 import scatt.Scatt;
 import scatt.eng.EngModel;
-import scatt.partial.wf.SinPWaveLcr_;
+import scatt.partial.wf.SinPWaveLcr;
 
 import javax.utilx.log.Log;
 /**
@@ -40,7 +40,7 @@ public void testFirstBornOk() throws Exception {
   for (int i = 0; i < incP.size(); i++) {
     double corr = arrB.get(i);                log.dbg("corr=", corr);
     double p = arrB.getX().get(i);             log.info("p=", p);
-    FuncVec upl = new SinPWaveLcr_(quadr, p, L);   log.dbg("upl=", upl);
+    FuncVec upl = new SinPWaveLcr(quadr, p, L);   log.dbg("upl=", upl);
     double res = quadr.calcInt(V_1s, upl, upl);     log.info("res=", res); log.info("res-corr=", res - corr);
     assertEqualsRel("p=" + (float) p, corr, res, true);
   }
