@@ -42,6 +42,7 @@ public void setUp() {
   log.info("log.info(PotScattKM)");
 //    JmMethodE1.log.setDbg();
   PBornDirScattTest.log.setDbg();
+  KmMethodE1.log.setDbg();
   log.setDbg();
 }
 public void runJob() {
@@ -52,9 +53,9 @@ public void runJob() {
   ENG_LAST = 1.1f;
   ENG_N = 50;
   calc(10);
-  calc(12);
-  calc(14);
-  calc(16);
+//  calc(12);
+//  calc(14);
+//  calc(16);
 //  calcJm(18);
 //  calcJm(20);
 //    calcJm(8);
