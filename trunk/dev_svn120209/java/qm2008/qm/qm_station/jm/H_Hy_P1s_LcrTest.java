@@ -29,7 +29,7 @@ public class H_Hy_P1s_LcrTest extends FlowTest {
     FuncVec f = CoulombWFFactory.makeP1s(r, Z); log.dbg("ground state P(r) = ", new VecDbgView(f));
     f.setX(w.getX()); // MUST change grid for derivatives
     f.mult(w.getDivSqrtCR());
-    double normF = w.calcOverlap(f, f);
+    double normF = w.calcInt(f, f);
     assertEqualsRel("<P|P> = ", 1., normF, true);
 
     PartHLcr partH = new PartHLcr(w);

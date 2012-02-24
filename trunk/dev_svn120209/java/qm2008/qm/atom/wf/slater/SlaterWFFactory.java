@@ -61,17 +61,17 @@ public class SlaterWFFactory extends FlowTest {
 
     FuncVec f = SlaterWFFactory.makeP2s(r, 1.);
     f.mult(quadr.getDivSqrtCR());
-    double res = quadr.calcOverlap(f, f);
+    double res = quadr.calcInt(f, f);
     assertEqualsRel("SlaterWFFactory.makeRawP2s(zeta=1) norm=", 1, res, true);
 
     f = SlaterWFFactory.makeP2s(r, 2.);
     f.mult(quadr.getDivSqrtCR());
-    res = quadr.calcOverlap(f, f);
+    res = quadr.calcInt(f, f);
     assertEqualsRel("SlaterWFFactory.makeRawP2s(zeta=2) norm=", 1, res, true);
 
     f = SlaterWFFactory.makeP2s(r, 3.);
     f.mult(quadr.getDivSqrtCR());
-    res = quadr.calcOverlap(f, f);
+    res = quadr.calcInt(f, f);
     assertEqualsRel("SlaterWFFactory.makeRawP2s(zeta=3) norm=", 1, res, true);
   }
 

@@ -72,7 +72,7 @@ public class SlaterR extends Slater {
       return 0.;
     return calcZPot(z, sh.getWf(), sh2.getWf());
   }
-  public double calcOverlap(Vec wf, Vec wf2) {
+  public double calcInt(Vec wf, Vec wf2) {
     //  oo                            oo
     //  | r^2 dr Rn(r) Rn'(r) Fn(r) = I dr Rn(r) Rn'(r) r^2;
     //  o                             o

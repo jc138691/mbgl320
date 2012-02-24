@@ -39,7 +39,7 @@ public class JmLagrrBiLcrTest extends FlowTest {
       FuncVec f = arr.getFunc(n);
       for (int m = 0; m < bio.size(); m++) {
         FuncVec f2 = bio.getFunc(m);
-        double norm = w.calcOverlap(f, f2);  // NOTE!! with getWithCR2
+        double norm = w.calcInt(f, f2);  // NOTE!! with getWithCR2
         double corr = Mathx.dlt(n, m);
         assertEquals("TEST[" + n + ", " + m +"]", corr, norm, true);
       }

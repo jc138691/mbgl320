@@ -15,7 +15,7 @@ import math.vec.DbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import project.workflow.task.test.FlowTest;
-import qm_station.jm.JmPotEigVecLcrTest;
+import qm_station.jm.PotEigVecLcrTest;
 import scatt.jm_2008.e2.JmMethodBaseE2;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
@@ -85,8 +85,8 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
     FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
     {
       if (!new LgrrOrthLcrTest(orthonNt).ok()) return;
-//      if (!new JmPotEigVecLcrTest(AtomHy.Z, orthonNt).ok()) return;
-      if (!new JmPotEigVecLcrTest(trgtZ, orthonNt).ok()) return;
+//      if (!new PotEigVecLcrTest(AtomHy.Z, orthonNt).ok()) return;
+      if (!new PotEigVecLcrTest(trgtZ, orthonNt).ok()) return;
     }
     FlowTest.unlockMaxErr();                             // FREE MAX ERR
 

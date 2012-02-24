@@ -51,7 +51,7 @@ public class HeClementiTest extends FlowTest {
     FuncVec f = CoulombWFFactory.makeP1s(r, Zeff);
     f.setX(w.getX()); // MUST change grid for derivatives
     f.mult(xToR.getDivSqrtCR());
-    double res = w.calcOverlap(f, f);
+    double res = w.calcInt(f, f);
     assertEquals(0, Math.abs(res - 1), 3e-11);
     Ls LS = new Ls(0, Spin.SINGLET);
     Shell sh = new Shell(1, f, 2, LS.getL(), LS);

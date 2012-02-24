@@ -15,27 +15,27 @@ import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 21/11/2008, Time: 17:25:16
  */
-public class JmPotEigVecLcrTest extends FlowTest {
+public class PotEigVecLcrTest extends FlowTest {
   // NOTE!! class variables are static to work with FlowTest
   private static LgrrOrthLcr funcArr;
   private static double Z = 1.;     // 1. for hydrogen
   private static boolean relErr;
 
-  public JmPotEigVecLcrTest(double zIn, LgrrOrthLcr arr) {
-    super(JmPotEigVecLcrTest.class);
+  public PotEigVecLcrTest(double zIn, LgrrOrthLcr arr) {
+    super(PotEigVecLcrTest.class);
     funcArr = arr;
     Z = zIn;
     relErr = true;
   }
-  public JmPotEigVecLcrTest(double zIn, LgrrOrthLcr arr, boolean rel) {
-    super(JmPotEigVecLcrTest.class);
+  public PotEigVecLcrTest(double zIn, LgrrOrthLcr arr, boolean rel) {
+    super(PotEigVecLcrTest.class);
     funcArr = arr;
     Z = zIn;
     relErr = rel;
   }
 
-  public JmPotEigVecLcrTest() {      // needed by FlowTest
-    super(JmPotEigVecLcrTest.class);
+  public PotEigVecLcrTest() {      // needed by FlowTest
+    super(PotEigVecLcrTest.class);
   }
 
   public void testNorm() throws Exception {

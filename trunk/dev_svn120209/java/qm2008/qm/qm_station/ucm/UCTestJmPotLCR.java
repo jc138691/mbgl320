@@ -74,7 +74,7 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
       return false;
 
     double Z = 1; // for hydrogen 
-    if (!new JmPotEigVecLcrTest(Z, orth).ok())
+    if (!new PotEigVecLcrTest(Z, orth).ok())
       return false;
 
     EngModel eng = potOpt.getGridEng();

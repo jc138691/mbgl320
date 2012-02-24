@@ -280,7 +280,7 @@ public class OptimLambda extends HeSWaveScatt {
   public double calcErrHeIon() {
     TAG = "_HeIon";
     initProject();
-    // from jmPotTestOk
+    // from potScattTestOk
     StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
     quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);
@@ -310,7 +310,7 @@ public class OptimLambda extends HeSWaveScatt {
   public double calcErrJm() {
     TAG = "_JM";
     initProject();
-    // from jmPotTestOk
+    // from potScattTestOk
     StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
     quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);

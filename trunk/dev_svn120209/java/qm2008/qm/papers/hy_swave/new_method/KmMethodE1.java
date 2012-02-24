@@ -1,6 +1,8 @@
 package papers.hy_swave.new_method;
+import atom.wf.log_cr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.func.FuncVec;
+import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
@@ -25,18 +27,22 @@ public KmMethodE1(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScattRes calc(Vec engs) {
+  WFQuadrLcr quadr = orthonN.getQuadr();
+  Vec r = quadr.getR();
+
   ScattRes res = new ScattRes();
   int chNum = getChNum();
   int eN = engs.size();
   Mtrx mCrss = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   res.setCrossSecs(mCrss);
   Mtrx sc = new Mtrx(SC_N_ROWS, orthonN.size());
-  Mtrx psi = new Mtrx(SC_N_ROWS, orthonN.size());
+  FuncArr psi = new FuncArr(r, SC_N_ROWS);
   for (int i = 0; i < engs.size(); i++) {              log.dbg("i = ", i);
     double scattE = engs.get(i);                           log.dbg("E = ", scattE);
     mCrss.set(i, IDX_ENRGY, scattE);
-    loadSC(scattE);
-    Dble2 g = calcG(sc, scattE);                                         log.dbg("g = ", g);
+    loadPsi(scattE, psi, orthonN);
+//    loadSC(scattE);
+//    Dble2 g = calcG(sc, scattE);                                         log.dbg("g = ", g);
     Dble2 w = calcW(psi, psi2, scattE);                                         log.dbg("w = ", w);
     double R = -(w.a + g.a) / (w.b + g.b);                               log.dbg("R = ", R);
     Cmplx S = new Cmplx(1., R).div(new Cmplx(1., -R));
@@ -45,11 +51,16 @@ public ScattRes calc(Vec engs) {
     double k = Scatt.calcMomFromE(scattE);
     log.dbg("k = ", k);
     double k2 = k * k;
-    double sigma = Math.PI * S.abs2() / k2;
+//    double sigma = Math.PI * S.abs2() / k2;
+    double sigma = 0;
     log.dbg("sigma = ", sigma).eol();
     mCrss.set(i, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
   }
   return res;
+}
+private void loadPsi(double scattE, Mtrx psi, LgrrOrthLcr orthonN) {
+  double momP = Scatt.calcMomFromE(scattE);
+
 }
 private Dble2 calcG(Mtrx mSC, double E) {
   Dble2 res = new Dble2();

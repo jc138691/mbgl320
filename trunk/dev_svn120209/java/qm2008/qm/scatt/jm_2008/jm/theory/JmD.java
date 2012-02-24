@@ -18,7 +18,7 @@ public class JmD extends Vec {
     WFQuadr w = bi.getQuadr();
     FuncVec lastBi = bi.getFunc(bi.size() - 1);
     for (int i = 0; i < size(); i++) {
-      double overlap = w.calcOverlap(lastBi, basisArr.get(i));
+      double overlap = w.calcInt(lastBi, basisArr.get(i));
       set(i, overlap);
     }
   }
