@@ -14,8 +14,6 @@ import javax.utilx.log.Log;
 public class YkLcrFlowTest extends FlowTest {
   public static Log log = Log.getLog(YkLcrFlowTest.class);
   private static WFQuadrLcr quadr;
-  private static final double MAX_DIFF_ERR = 1e-7;
-  private static final double MAX_INTGRL_ERR = 1e-10;
 
   public YkLcrFlowTest(WFQuadrLcr w) {
     super(YkLcrFlowTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
@@ -31,14 +29,14 @@ public class YkLcrFlowTest extends FlowTest {
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
     f.mult(quadr.getDivSqrtCR());
     double res = quadr.calcInt(f, f);
-    assertEquals(0, Math.abs(res - 1), MAX_INTGRL_ERR);
+    assertEquals(0, Math.abs(res - 1), MAX_INTGRL_ERR_E10);
     String help = "< P1s | P1s > = ";
     assertEqualsRel(help, 1., res, true);   log.dbg(help, res);
 
     FuncVec T = CoulombWFFactory.makeZ_1_1s(r); // valid
     FuncVec zk = new YkLcr(xToR, f, f, 1).calcZk();
     double absDist = Math.abs(DistMaxAbsErr.distSLOW(T, zk));   log.dbg("DistMaxAbsErr.distSLOW(T, zk)=", absDist);
-    setMaxErr(MAX_DIFF_ERR);
+    setMaxErr(MAX_WF_DIFF_ERR_E7);
     setShowDbg(log.getDbg());
     assertEquals("Z_1_1s = ", 0, absDist);
 
@@ -54,27 +52,27 @@ public class YkLcrFlowTest extends FlowTest {
     FuncVec f2 = CoulombWFFactory.makeP2s(r, 1.);
     f2.mult(xToR.getDivSqrtCR());
     res = quadr.calcInt(f, f2);
-    assertEquals(0, Math.abs(res), MAX_INTGRL_ERR);
+    assertEquals(0, Math.abs(res), MAX_INTGRL_ERR_E10);
     res = quadr.calcInt(f2, f2);
-    assertEquals(1, Math.abs(res), MAX_INTGRL_ERR);
+    assertEquals(1, Math.abs(res), MAX_INTGRL_ERR_E10);
 //    Y = new YkLcr(xToR, f, f2, 0).calcYk();
     T = CoulombWFFactory.makeY_0_2s(r); // valid
     Y = new YkLcr(xToR, f2, f2, 0).calcYk();
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), MAX_DIFF_ERR);
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), MAX_WF_DIFF_ERR_E7);
 
     // 2p
     f = CoulombWFFactory.makeP2p(r, 1.);
     f.mult(xToR.getDivSqrtCR());
     res = quadr.calcInt(f, f);
-    assertEquals(0, Math.abs(res - 1), MAX_INTGRL_ERR);
+    assertEquals(0, Math.abs(res - 1), MAX_INTGRL_ERR_E10);
     T = CoulombWFFactory.makeY_0_2p(r); // valid
     Y = new YkLcr(xToR, f, f, 0).calcYk();
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), MAX_DIFF_ERR);
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), MAX_WF_DIFF_ERR_E7);
 
     // 2p
     T = CoulombWFFactory.makeY_2_2p(r); // valid
     Y = new YkLcr(xToR, f, f, 2).calcYk();
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), MAX_DIFF_ERR);
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), MAX_WF_DIFF_ERR_E7);
   }
 
 }

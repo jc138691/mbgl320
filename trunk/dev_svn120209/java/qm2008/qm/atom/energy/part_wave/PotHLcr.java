@@ -41,9 +41,9 @@ import javax.utilx.log.Log;
 //    check r->oo; R=P(r)/sqrt(r); x=ln(r)
 //
 // w are for 'x' integral
-public class PartHLcr extends PartH {
-  public static Log log = Log.getLog(PartHLcr.class);
-  public PartHLcr(WFQuadr quadr) {
+public class PotHLcr extends PotH {
+  public static Log log = Log.getLog(PotHLcr.class);
+  public PotHLcr(WFQuadr quadr) {
     super(quadr);
   }
 

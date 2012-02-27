@@ -4,7 +4,7 @@ import atom.data.AtomHy;
 import atom.e_2.SysE2_OLD;
 import atom.energy.ConfHMtrx;
 import atom.energy.ConfOverlap;
-import atom.energy.part_wave.PartHMtrxLcr;
+import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.ConfArr;
 import atom.shell.ConfArrFactoryE2;
@@ -40,8 +40,8 @@ public class HySWaveViaOverlap_OLD extends HySWaveBasisHy {
     potScattTestOk();
     jmHyTestOk(AtomHy.Z);
 
-    trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);   log.dbg("trgtPartH=", trgtPartH);
-    Vec trgtEngs = trgtPartH.getEigVal();                     log.dbg("eigVal=", new VecDbgView(trgtEngs));
+    trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);   log.dbg("trgtPotH=", trgtPotH);
+    Vec trgtEngs = trgtPotH.getEigVal();                     log.dbg("eigVal=", new VecDbgView(trgtEngs));
 
     JmTrgtE2 trgtUtils = new JmTrgtE2();
     trgtUtils.setEngs(trgtEngs);
@@ -67,7 +67,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveBasisHy {
     method.setSysEngs(sEngs);
     method.setSysConfH(sysH);
     method.setTrgtE2(trgtUtils);
-    method.setTargetH(trgtPartH);
+    method.setTargetH(trgtPotH);
     method.setChiOverlap(chiOv);
     ScattRes res = method.calcEngGrid();                  log.dbg("res=", res);
 

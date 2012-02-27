@@ -1,4 +1,5 @@
 package qm_station.jm;
+import atom.energy.part_wave.PotHR;
 import project.workflow.task.test.FlowTest;
 import math.vec.VecDbgView;
 import math.vec.Vec;
@@ -6,7 +7,6 @@ import math.func.FuncVec;
 import math.func.simple.FuncPowInt;
 import atom.wf.coulomb.CoulombWFFactory;
 import atom.wf.WFQuadrR;
-import atom.energy.part_wave.PartHR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 21/11/2008, Time: 16:31:01
  */
@@ -29,7 +29,7 @@ public class H_Hy_P1s_RTest extends FlowTest {
     double normF = w.calc(f, f);
     assertEqualsRel("<P|P> = ", 1., normF, true);
 
-    PartHR partH = new PartHR(w);
+    PotHR partH = new PotHR(w);
     double kinF = partH.calcKin(L, f, f);
     double totEng = -0.5;
     double kinEng = -totEng;

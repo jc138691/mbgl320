@@ -1,7 +1,7 @@
 package papers.hy_swave;
 import atom.data.AtomHy;
-import atom.energy.part_wave.PartHMtrx;
-import atom.energy.part_wave.PartHMtrxLcr;
+import atom.energy.part_wave.PotHMtrx;
+import atom.energy.part_wave.PotHMtrxLcr;
 import atom.wf.coulomb.CoulombWFFactory;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
@@ -62,8 +62,8 @@ public void calcJm(int newN) {
   initProject();
   potScattTestOk();
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
-  PartHMtrx sysH = new PartHMtrxLcr(L, orthonN, pot);
-////    PartH partH = sysConfH.makePartH();
+  PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
+////    PotH partH = sysConfH.makePotH();
   Vec sysEngs = sysH.getEigVal();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
   FuncArr sysWFuncs = sysH.getEigFuncArr();         log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   Vec D = new JmD(biorthN, sysWFuncs);              log.dbg("D_{n,N-1}=", D);

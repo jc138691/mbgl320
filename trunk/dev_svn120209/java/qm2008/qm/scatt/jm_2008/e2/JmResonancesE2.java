@@ -34,8 +34,8 @@ public class JmResonancesE2 {
 //  public static final int RES_INFO_ABS_RATIO = count++;
   public static final int RES_INFO_SIZE = count++;
 
-  private JmMethodBaseE2 jmm;
-  public JmResonancesE2(JmMethodBaseE2 method) {
+  private ScattMethodBaseE2 jmm;
+  public JmResonancesE2(ScattMethodBaseE2 method) {
     this.jmm = method;
   }
 

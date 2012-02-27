@@ -19,8 +19,8 @@ import javax.utilx.log.Log;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,1/04/11,4:34 PM
  */
-public abstract class JmMethodBaseE2 extends ScattMethodBaseE1 {
-public static Log log = Log.getLog(JmMethodBaseE2.class);
+public abstract class ScattMethodBaseE2 extends ScattMethodBaseE1 {
+public static Log log = Log.getLog(ScattMethodBaseE2.class);
 private static double MAGIC_MAX_EPS = 0.00000001; // MAGIC NUMBERS!!!!!!!!!!!!!!!!!!!!!!!
 private static int MAGIC_EPS_N = 1000; // MAGIC NUMBERS!!!!!!!!!!!!!!!!!!!!!!!
 protected static final int IDX_IONIZ = 1;
@@ -33,7 +33,7 @@ protected ConfHMtrx sysConfH;
 private int exclSysIdx = -1;
 protected JmCh[] chArr;
 protected JmTrgtE2 trgtE2;
-public JmMethodBaseE2(CalcOptE1 calcOpt) {
+public ScattMethodBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 protected abstract Mtrx calcX();
@@ -80,12 +80,9 @@ public void setOverD(Vec overD) {
   }
   super.setOverD(overD);
 }
-//  public ConfHMtrx getSysH() {
-//    return sysConfH;
-//  }
 public void setSysConfH(ConfHMtrx sysConfH) {
   this.sysConfH = sysConfH;
-  setSysH(sysConfH);
+//  setPotH(sysConfH);
 //    setSysEngs(sysConfH.getEigVal(H_OVERWRITE));
 }
 public int getChNum() { // number of target channels

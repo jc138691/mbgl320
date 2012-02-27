@@ -3,7 +3,7 @@ package scatt.jm_2008.e3;
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,4/04/11,9:55 AM
  */
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e2.JmMethodBaseE2;
+import scatt.jm_2008.e2.ScattMethodBaseE2;
 import scatt.jm_2008.jm.target.JmTrgtE3;
 import scatt.jm_2008.jm.target.JmTrgtE2;
 
@@ -11,7 +11,7 @@ import javax.utilx.log.Log;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,1/04/11,4:54 PM
  */
-public abstract class JmMethodBaseE3 extends JmMethodBaseE2 {   // many-electrons (three or more)
+public abstract class JmMethodBaseE3 extends ScattMethodBaseE2 {   // many-electrons (three or more)
   public static Log log = Log.getLog(JmMethodBaseE3.class);
   protected JmTrgtE3 trgtE3;
   public JmMethodBaseE3(CalcOptE1 calcOpt) {

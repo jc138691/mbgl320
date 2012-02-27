@@ -1,5 +1,5 @@
 package scatt.jm_2008.jm.laguerre.lcr;
-import atom.energy.part_wave.PartHLcr;
+import atom.energy.part_wave.PotHLcr;
 import atom.wf.log_cr.WFQuadrLcr;
 import project.workflow.task.test.FlowTest;
 import project.workflow.task.TaskProgressMonitor;
@@ -33,7 +33,7 @@ public class PartHMtrxLCRTest extends FlowTest {
     double normF = w.getWithCR2().calc(f, f);
     assertEqualsRel("<P|P> = ", 1., normF, true);
 
-    PartHLcr partH = new PartHLcr(w);
+    PotHLcr partH = new PotHLcr(w);
     double kinF = partH.calcKin(L, f, f);
     double totEng = -0.5;
     double kinEng = -totEng;

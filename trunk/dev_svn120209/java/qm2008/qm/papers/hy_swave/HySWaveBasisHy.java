@@ -4,8 +4,8 @@ import atom.AtomUtil;
 import atom.data.AtomHy;
 import atom.e_2.SysAtomE2;
 import atom.energy.ConfHMtrx;
-import atom.energy.part_wave.PartHMtrx;
-import atom.energy.part_wave.PartHMtrxLcr;
+import atom.energy.part_wave.PotHMtrx;
+import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.ConfArr;
 import atom.shell.ConfArrFactoryE2;
@@ -75,9 +75,9 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
     potScattTestOk();  // basisN, biorthN, orthonN, quadrLcr
     jmHyTestOk(TARGET_Z);  // pot, orthonNt
 
-    trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPartH=", trgtPartH);
-    Vec targetEngs = trgtPartH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));
-    trgtBasisNt = trgtPartH.getEigFuncArr();      log.dbg("trgtBasisNt=", new FuncArrDbgView(trgtBasisNt));
+    trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
+    Vec targetEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));
+    trgtBasisNt = trgtPotH.getEigFuncArr();      log.dbg("trgtBasisNt=", new FuncArrDbgView(trgtBasisNt));
     FileX.writeToFile(trgtBasisNt.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtLcr_" + makeLabelTrgtS2());
 
     FuncArr basisR = LcrFactory.wfLcrToR(trgtBasisNt, quadrLcr);
@@ -104,7 +104,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
       FileX.writeToFile(jmTrgt.toTab(), HOME_DIR, "wf", "target_" + basisOptN.makeLabel() + ".dat");
     }
 
-    PartHMtrx targetHTest = new PartHMtrxLcr(L, trgtBasisNt, pot, orthonNt.getQuadr());  log.dbg("targetHTest=", targetHTest); // only for debugging
+    PotHMtrx targetHTest = new PotHMtrxLcr(L, trgtBasisNt, pot, orthonNt.getQuadr());  log.dbg("targetHTest=", targetHTest); // only for debugging
     Vec D = new JmD(biorthN, trgtBasisNt);      log.dbg("D_{n,m>=Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
 
     SYS_LS = new Ls(0, SPIN);

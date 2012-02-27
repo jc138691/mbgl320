@@ -1,4 +1,5 @@
 package qm_station.jm;
+import atom.energy.part_wave.PotHLcr;
 import atom.wf.log_cr.WFQuadrLcr;
 import math.func.FuncVec;
 
@@ -7,7 +8,6 @@ import javax.utilx.log.Log;
 import scatt.eng.EngGrid;
 import scatt.eng.EngModel;
 import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
-import atom.energy.part_wave.PartHLcr;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 20/11/2008, Time: 13:45:18
  */
@@ -21,7 +21,7 @@ public class JmJnnLCR extends FuncVec {
   }
   private void calc(LagrrLcr arr) {
     WFQuadrLcr w = arr.getQuadrLCR();
-    PartHLcr partH = new PartHLcr(w);
+    PotHLcr partH = new PotHLcr(w);
     FuncVec f = arr.getFunc(arr.size()-1);
     FuncVec f2 = arr.getFunc(arr.size()-2);
     int L = 0;

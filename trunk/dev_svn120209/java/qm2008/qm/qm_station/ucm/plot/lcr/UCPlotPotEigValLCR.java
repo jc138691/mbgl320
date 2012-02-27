@@ -7,7 +7,7 @@ import javax.utilx.log.Log;
 import project.workflow.task.DefaultTaskUI;
 import math.func.FuncVec;
 import math.vec.Vec;
-import atom.energy.part_wave.PartHMtrx;
+import atom.energy.part_wave.PotHMtrx;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 20/11/2008, Time: 16:11:40
  */
@@ -25,7 +25,7 @@ public class UCPlotPotEigValLCR extends UCPlotFuncVec {
   public FuncVec makeFuncVec() {
     UCPlotPotEigFuncLCR uc = new UCPlotPotEigFuncLCR(getDefaultUi());
 
-    PartHMtrx H = uc.makeH();
+    PotHMtrx H = uc.makeH();
     Vec val = H.getEigVal();                     log.dbg("eigVal=", val);
     Vec x = new Vec(val.size());
     for (int i = 0; i < x.size(); i++) {

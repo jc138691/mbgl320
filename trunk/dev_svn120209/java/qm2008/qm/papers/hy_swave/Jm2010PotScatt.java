@@ -1,7 +1,7 @@
 package papers.hy_swave;
 
-import atom.energy.part_wave.PartHMtrx;
-import atom.energy.part_wave.PartHMtrxR;
+import atom.energy.part_wave.PotHMtrx;
+import atom.energy.part_wave.PotHMtrxR;
 import atom.wf.coulomb.CoulombWFFactory;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
@@ -57,8 +57,8 @@ public class Jm2010PotScatt extends Jm2010CommonR {
 
     pot = CoulombWFFactory.makePotHy_1s_e(rVec);  log.dbg("V_1s(r)=", new VecDbgView(pot));
 
-    PartHMtrx H = new PartHMtrxR(L, orth, pot);
-//    PartH partH = H.makePartH();
+    PotHMtrx H = new PotHMtrxR(L, orth, pot);
+//    PotH partH = H.makePotH();
     Vec eigEng = H.getEigVal();                     log.dbg("eigVal=", new VecDbgView(eigEng));
     FuncArr eigVec = H.getEigFuncArr();                 log.dbg("eigVec=", new FuncArrDbgView(eigVec));
 

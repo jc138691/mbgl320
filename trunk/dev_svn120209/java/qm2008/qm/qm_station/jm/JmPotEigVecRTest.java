@@ -1,4 +1,7 @@
 package qm_station.jm;
+import atom.energy.part_wave.PotH;
+import atom.energy.part_wave.PotHMtrx;
+import atom.energy.part_wave.PotHMtrxR;
 import project.workflow.task.test.FlowTest;
 import project.workflow.task.TaskProgressMonitor;
 import project.workflow.task.ProjectProgressMonitor;
@@ -11,9 +14,6 @@ import math.func.arr.FuncArr;
 import math.func.FuncVec;
 import math.func.simple.FuncPowInt;
 import junit.framework.TestCase;
-import atom.energy.part_wave.PartHMtrx;
-import atom.energy.part_wave.PartH;
-import atom.energy.part_wave.PartHMtrxR;
 import atom.wf.coulomb.CoulombWFFactory;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 21/11/2008, Time: 15:42:20
@@ -33,15 +33,15 @@ public class JmPotEigVecRTest extends FlowTest {
     log.dbg("testing diagonalisation of H=K-1/r");
     StepGrid r = (StepGrid)funcArr.getX();
     FuncVec pot = new FuncVec(r, new FuncPowInt(-1., -1)); log.dbg("-1/r=", new VecDbgView(pot));
-    PartHMtrx H = new PartHMtrxR(L, funcArr, pot);
+    PotHMtrx H = new PotHMtrxR(L, funcArr, pot);
     Vec eigEng = H.getEigVal();                     log.dbg("eigVal=", new VecDbgView(eigEng));
     assertEqualsRel("EigenE(1s) =", -1./2., eigEng.get(0), true);
     assertEqualsRel("EigenE(2s) =", -1./8., eigEng.get(1), true);
 
     log.dbg("testing diagonalisation of H=K+V_1s, where V_1s(r) is felt by an electron");
     pot = CoulombWFFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", new VecDbgView(pot));
-    H = new PartHMtrxR(L, funcArr, pot);
-    PartH partH = H.makePartH();
+    H = new PotHMtrxR(L, funcArr, pot);
+    PotH partH = H.makePotH();
     eigEng = H.getEigVal();                     log.dbg("eigVal=", new VecDbgView(eigEng));
     FuncArr eigVec = H.getEigFuncArr();                 log.dbg("eigVec=", new FuncArrDbgView(eigVec));
 

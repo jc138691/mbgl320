@@ -1,6 +1,6 @@
 package qm_station.jm;
 
-import atom.energy.part_wave.PartHLcr;
+import atom.energy.part_wave.PotHLcr;
 import atom.wf.coulomb.CoulombWFFactory;
 import atom.wf.log_cr.WFQuadrLcr;
 import math.func.FuncVec;
@@ -32,7 +32,7 @@ public class H_Hy_P1s_LcrTest extends FlowTest {
     double normF = w.calcInt(f, f);
     assertEqualsRel("<P|P> = ", 1., normF, true);
 
-    PartHLcr partH = new PartHLcr(w);
+    PotHLcr partH = new PotHLcr(w);
     double kinF = partH.calcKin(L, f, f);
     double totEng = -0.5;
     double kinEng = -totEng;

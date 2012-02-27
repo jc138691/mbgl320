@@ -1,6 +1,9 @@
 package scatt.jm_2008.e1;
 import atom.energy.HMtrx;
+import atom.energy.part_wave.PotHMtrx;
+import math.func.FuncVec;
 import math.vec.Vec;
+import project.workflow.task.test.FlowTest;
 import scatt.eng.EngGrid;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
@@ -9,13 +12,14 @@ import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,1/04/11,3:43 PM
  */
-public abstract class ScattMethodBaseE1 {
+public abstract class ScattMethodBaseE1 extends FlowTest {
 protected static final int IDX_ENRGY = 0;
 private Vec overD;      // overlap coefficients D
 protected Vec sysEngs;
-protected HMtrx sysH;
+protected PotHMtrx potH;
 protected LgrrOrthLcr orthonN;
 protected final CalcOptE1 calcOpt;
+//protected FuncVec pot;
 public ScattMethodBaseE1(CalcOptE1 calcOpt) {
   this.calcOpt = calcOpt;
 }
@@ -54,11 +58,11 @@ public void setOverD(Vec overD) {
 public Vec getOverD() {
   return overD;
 }
-public HMtrx getSysH() {
-  return sysH;
+public PotHMtrx getPotH() {
+  return potH;
 }
-public void setSysH(HMtrx sysH) {
-  this.sysH = sysH;
+public void setPotH(PotHMtrx potH) {
+  this.potH = potH;
 }
 public LgrrOrthLcr getOrthonN() {
   return orthonN;
@@ -66,4 +70,7 @@ public LgrrOrthLcr getOrthonN() {
 public void setOrthonN(LgrrOrthLcr orthonN) {
   this.orthonN = orthonN;
 }
+//public void setPot(FuncVec pot) {
+//  this.pot = pot;
+//}
 }
