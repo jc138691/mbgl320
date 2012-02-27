@@ -16,19 +16,19 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 23/02/12, 9:23 AM
  */
-public class PotScattKM extends Jm2010CommonLcr {
-public static Log log = Log.getLog(PotScattKM.class);
+public class PotScattKB extends Jm2010CommonLcr {
+public static Log log = Log.getLog(PotScattKB.class);
 public static void main(String[] args) {
   // NOTE!!! for Nt>20 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
-  PotScattKM runMe = new PotScattKM();
+  PotScattKB runMe = new PotScattKB();
   runMe.setUp();
   runMe.testRun();
 }
 public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-  project = QMSProject.makeInstance("PotScattKM", "110606");
+  project = QMSProject.makeInstance("PotScattKB", "110606");
   TARGET_Z = AtomHy.Z;
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
-  MODEL_NAME = "PotScattKM";
+  MODEL_NAME = "PotScattKB";
   MODEL_DIR = MODEL_NAME;
   LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   // Note: run one at a time as only one set of result files is produced
@@ -37,22 +37,22 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
 public void setUp() {
   super.setUp();
 //    log = Log.getRootLog();
-  log.info("log.info(PotScattKM)");
+  log.info("log.info(PotScattKB)");
 //    JmMethodE1.log.setDbg();
   PBornDirScattTest.log.setDbg();
-  KmMethodE1.log.setDbg();
+  KbMethodE1.log.setDbg();
   log.setDbg();
 }
 public void runJob() {
   LAMBDA = 1f;
   LCR_N = 301;
   R_LAST = 100;
-  ENG_FIRST = 0.1f;
-  ENG_LAST = 1.1f;
-  ENG_N = 50;
+  ENG_FIRST = 0.5f;
+  ENG_LAST = 0.6f;
+  ENG_N = 101;
 //  calc(10);
 //  calc(12);
-  calc(14);
+  calc(16);
 //  calc(16);
 //  calcJm(18);
 //  calcJm(20);
@@ -60,13 +60,16 @@ public void runJob() {
 }
 public void calc(int newN) {
   N = newN;
+  Nt = N -2 ;
   initProject();
-  potScattTestOk();
+  potScattTestOk();   // basisN, biorthN, orthonN, quadrLcr
+  hydrScattTestOk(TARGET_Z);  // pot, orthonNt
+
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);             log.dbg("V_1s(r)=", new VecDbgView(pot));
-  PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
+  PotHMtrx sysH = new PotHMtrxLcr(L, orthonNt, pot);
   Vec sysEngs = sysH.getEigVal();            log.dbg("eigVal=", new VecDbgView(sysEngs));
 //  FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
-  KmMethodE1 method = new KmMethodE1(calcOpt);
+  KbMethodE1 method = new KbMethodE1(calcOpt);
 //  method.setPot(pot);
   method.setSysEngs(sysEngs);
   method.setPotH(sysH);

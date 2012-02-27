@@ -30,8 +30,6 @@ import javax.utilx.log.Log;
 public abstract class HyLikeSWave extends Jm2010CommonLcr {
   public static Log log = Log.getLog(HyLikeSWave.class);
   protected static FuncArr trgtBasisNt;
-  protected static LgrrOrthLcr orthonNt;  // for N_t
-  protected static int Nt = 20;
   protected static int FROM_CH = 0;  // initial scattering channel
   protected static Spin SPIN;
   protected static Ls SYS_LS;
@@ -40,7 +38,7 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
   protected static Vec scttEngs;
   protected static double RES_MAX_LEVEL = 0.5; // maximum abs(Delta)/abs(Energy_distance)to be called a resonance
   protected static int KEEP_CLOSED_N = 10;  // number of closed channels to keep
-  protected static boolean USE_CLOSED_CHANNELS = true;
+//  protected static boolean USE_CLOSED_CHANNELS = true;
   protected static int EXCL_SYS_RESON_IDX = -1;
   protected static boolean CALC_DENSITY = false;
   protected static int CALC_DENSITY_MAX_NUM = 1;
@@ -72,38 +70,38 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
 
   abstract public void calcJm(int newN, int newNt);
 
-  protected void jmHyTestOk(int trgtZ) {
-    FlowTest.setLog(log);
-
-    calcOpt.setUseClosed(USE_CLOSED_CHANNELS);
-
-    basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
-    LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
-    lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
-
-    orthonNt = new LgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthonNt);
-    FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
-    {
-      if (!new LgrrOrthLcrTest(orthonNt).ok()) return;
-//      if (!new PotEigVecLcrTest(AtomHy.Z, orthonNt).ok()) return;
-      if (!new PotEigVecLcrTest(trgtZ, orthonNt).ok()) return;
-    }
-    FlowTest.unlockMaxErr();                             // FREE MAX ERR
-
-//    potFunc = new FuncPowInt(-AtomHy.Z, -1);  // f(r)=-1./r
-    potFunc = new FuncPowInt(-trgtZ, -1);  // f(r)=-1./r
-    pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
-
-    if (!new YkLcrTest().ok()) return;
-    if (!new YkLcrFlowTest(quadrLcr).ok()) return;
-
-    if (!new RkLcrTest().ok()) return;
-    if (!new RkLcrFlowTest(quadrLcr).ok()) return;
-
-    if (!new CoulombNmrvR().ok()) return;
-    if (!new CoulombNmrvLcr().ok()) return;
-
-  }
+//  protected void hydrScattTestOk(int trgtZ) {
+//    FlowTest.setLog(log);
+//
+//    calcOpt.setUseClosed(USE_CLOSED_CHANNELS);
+//
+//    basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
+//    LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
+//    lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
+//
+//    orthonNt = new LgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthonNt);
+//    FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
+//    {
+//      if (!new LgrrOrthLcrTest(orthonNt).ok()) return;
+////      if (!new PotEigVecLcrTest(AtomHy.Z, orthonNt).ok()) return;
+//      if (!new PotEigVecLcrTest(trgtZ, orthonNt).ok()) return;
+//    }
+//    FlowTest.unlockMaxErr();                             // FREE MAX ERR
+//
+////    potFunc = new FuncPowInt(-AtomHy.Z, -1);  // f(r)=-1./r
+//    potFunc = new FuncPowInt(-trgtZ, -1);  // f(r)=-1./r
+//    pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
+//
+//    if (!new YkLcrTest().ok()) return;
+//    if (!new YkLcrFlowTest(quadrLcr).ok()) return;
+//
+//    if (!new RkLcrTest().ok()) return;
+//    if (!new RkLcrFlowTest(quadrLcr).ok()) return;
+//
+//    if (!new CoulombNmrvR().ok()) return;
+//    if (!new CoulombNmrvLcr().ok()) return;
+//
+//  }
 
   public void setupJmRes(ScattRes res, ScattMethodBaseE2 method) {
     super.setupScattRes(res, method);

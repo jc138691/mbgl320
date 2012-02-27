@@ -1,17 +1,25 @@
 package papers.hy_swave;
 
 import atom.data.AtomHy;
+import atom.wf.coulomb.CoulombNmrvLcr;
+import atom.wf.coulomb.CoulombNmrvR;
 import atom.wf.coulomb.CoulombWFFactory;
 import atom.wf.log_cr.LcrFactory;
+import atom.wf.log_cr.RkLcrFlowTest;
 import atom.wf.log_cr.WFQuadrLcr;
 import atom.wf.log_cr.YkLcrFlowTest;
+import atom.wf.log_cr.test.RkLcrTest;
+import atom.wf.log_cr.test.YkLcrTest;
 import calc.interpol.InterpolCubeTest;
 import math.complex.Cmplx1F1;
 import math.complex.Cmplx2F1;
 import math.complex.CmplxGamma;
 import math.func.Func;
+import math.func.FuncVec;
 import math.func.arr.FuncArr;
+import math.func.simple.FuncPowInt;
 import math.integral.test.BooleQuadrTest;
+import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
 import math.vec.test.FastLoopTest;
@@ -19,6 +27,8 @@ import project.workflow.task.test.FlowTest;
 import qm_station.jm.H_Hy_P1s_LcrTest;
 import qm_station.jm.PotEigVecLcrTest;
 import qm_station.ui.scatt.CalcOptLcr;
+import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.*;
 import scatt.partial.born.PBornDirScattTest;
 
@@ -36,9 +46,12 @@ protected static int LCR_FIRST = -4;// -1 for Hydrogen
 protected static FuncArr trgtBasisN;
 protected static LagrrLcr basisN;
 protected static LgrrOrthLcr orthonN;
+protected static LgrrOrthLcr orthonNt;  // for N_t
 protected static LagrrBiLcr biorthN;
 protected static WFQuadrLcr quadrLcr;
 protected static Func potFunc;
+protected static int Nt = 20;
+protected static boolean USE_CLOSED_CHANNELS = true;
 
 public StepGridModel makeStepGridModel() {
   StepGridModel modelR = new StepGridModel(R_FIRST, R_LAST, R_N); // R_N not used!!!
@@ -109,5 +122,37 @@ protected void potScattTestOk() {
   }
   FlowTest.unlockMaxErr();         // FREE MAX ERR
   log.info("<--potScattTestOk()");
+}
+protected void hydrScattTestOk(int trgtZ) {
+  FlowTest.setLog(log);
+
+  calcOpt.setUseClosed(USE_CLOSED_CHANNELS);
+
+  basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
+  LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
+  lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
+
+  orthonNt = new LgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthonNt);
+  FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
+  {
+    if (!new LgrrOrthLcrTest(orthonNt).ok()) return;
+//      if (!new PotEigVecLcrTest(AtomHy.Z, orthonNt).ok()) return;
+    if (!new PotEigVecLcrTest(trgtZ, orthonNt).ok()) return;
+  }
+  FlowTest.unlockMaxErr();                             // FREE MAX ERR
+
+//    potFunc = new FuncPowInt(-AtomHy.Z, -1);  // f(r)=-1./r
+  potFunc = new FuncPowInt(-trgtZ, -1);  // f(r)=-1./r
+  pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
+
+  if (!new YkLcrTest().ok()) return;
+  if (!new YkLcrFlowTest(quadrLcr).ok()) return;
+
+  if (!new RkLcrTest().ok()) return;
+  if (!new RkLcrFlowTest(quadrLcr).ok()) return;
+
+  if (!new CoulombNmrvR().ok()) return;
+  if (!new CoulombNmrvLcr().ok()) return;
+
 }
 }

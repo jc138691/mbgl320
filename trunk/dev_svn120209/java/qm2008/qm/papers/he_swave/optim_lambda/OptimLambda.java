@@ -287,7 +287,7 @@ public class OptimLambda extends HeSWaveScatt {
     rVec = quadrLcr.getR();                        log.dbg("r grid =", rVec);
     basisOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", basisOptN);
 
-    // from jmHyTestOk
+    // from hydrScattTestOk
     basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
     LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);

@@ -16,7 +16,7 @@ public abstract class PotH {
   public abstract double calcKin(int L, FuncVec wf, FuncVec wf2);
 
   public double calcPot(FuncVec pot, FuncVec wf, FuncVec wf2) {
-    double res = quadr.calcPot(pot, wf, wf2);  log.dbg("res=", res);
+    double res = quadr.calcInt(pot, wf, wf2);  log.dbg("res=", res);
     return res;
   }
   public double calcDrv2(FuncVec wf, FuncVec wf2) {

@@ -38,7 +38,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveBasisHy {
     Nt = newNt;
     initProject();
     potScattTestOk();
-    jmHyTestOk(AtomHy.Z);
+    hydrScattTestOk(AtomHy.Z);
 
     trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);   log.dbg("trgtPotH=", trgtPotH);
     Vec trgtEngs = trgtPotH.getEigVal();                     log.dbg("eigVal=", new VecDbgView(trgtEngs));

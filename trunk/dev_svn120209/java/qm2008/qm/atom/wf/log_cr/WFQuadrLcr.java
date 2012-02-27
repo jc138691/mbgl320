@@ -32,10 +32,10 @@ public double calcPotDivR(Vec wf, Vec wf2, Vec wf3) {
   return getWithCR2DivR().calc(wf, wf2, wf3);
 }
 
-@Override
-public double calcPot(Vec pot, Vec wf, Vec wf2) {
-  return getWithCR2().calc(pot, wf, wf2);
-}
+//@Override
+//public double calcPot(Vec pot, Vec wf, Vec wf2) {
+//  return getWithCR2().calc(pot, wf, wf2);
+//}
 
 @Override
 public double calcInt(Vec wf, Vec wf2) {

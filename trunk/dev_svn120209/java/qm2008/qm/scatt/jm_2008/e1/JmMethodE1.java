@@ -43,13 +43,9 @@ public ScattRes calc(Vec engs) {
     double cN = sc.getRe();
     double R = -(sN1 + g * sN) / (cN1 + g * cN);                        log.dbg("R = ", R);
     double shift = Math.atan(R);
-    Cmplx S = new Cmplx(1., R).div(new Cmplx(1., -R));
-    log.dbg("S = ", S);
-    S = S.add(-1);
-    double k = Scatt.calcMomFromE(scattE);
-    log.dbg("k = ", k);
-    double k2 = k * k;
-    double sigma = Math.PI * S.abs2() / k2;
+    Cmplx S = Scatt.calcSFromR(R);                                          log.dbg("S = ", S);
+//    double sigma = Scatt.calcSigmaPiFromS(S, scattE);
+    double sigma = R;
     log.dbg("sigma = ", sigma).eol();
     mCs.set(i, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
     arrShift.set(i, shift);
