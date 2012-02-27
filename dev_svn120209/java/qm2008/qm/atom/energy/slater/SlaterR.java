@@ -1,5 +1,5 @@
 package atom.energy.slater;
-import atom.energy.part_wave.PartHR;
+import atom.energy.part_wave.PotHR;
 import atom.shell.Shell;
 import atom.wf.WFQuadrR;
 import math.vec.Vec;
@@ -15,10 +15,10 @@ public class SlaterR extends Slater {
   public static Log log = Log.getLog(SlaterR.class);
   private Vec divR2;
   private Vec divR;
-  private PartHR partH;
+  private PotHR partH;
   public SlaterR(Quadr w) {
     super(w);
-    partH = new PartHR((WFQuadrR)w);
+    partH = new PotHR((WFQuadrR)w);
   }
 //   * THIS FUNCTION IS BASIS DEPENDANT !!!!!!!!!!!
 //   * // After r*Rn(r) = Un(r)

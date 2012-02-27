@@ -3,7 +3,7 @@ import atom.angular.Spin;
 import atom.data.AtomHe;
 import atom.data.AtomHy;
 import atom.energy.ConfHMtrx;
-import atom.energy.part_wave.PartHMtrxLcr;
+import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.wf.log_cr.LcrFactory;
 import math.func.arr.FuncArr;
@@ -107,8 +107,8 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     LgrrModel lgrrOptNc = new LgrrModel(basisOptN); // for the target N, i.e. N_t
     lgrrOptNc.setN(Nc);                                    log.dbg("Laguerr model (N_c)=", lgrrOptNc);
     orthonNc = new LgrrOrthLcr(quadrLcr, lgrrOptNc);     log.dbg("LgrrOrthLcr(N_c) = ", orthonNc);
-    trgtPartH = new PartHMtrxLcr(L, orthonNc, pot);        log.dbg("trgtPartH=", trgtPartH);
-    Vec basisEngs = trgtPartH.getEigVal();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
+    trgtPotH = new PotHMtrxLcr(L, orthonNc, pot);        log.dbg("trgtPotH=", trgtPotH);
+    Vec basisEngs = trgtPotH.getEigVal();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_NcEngs_" + makeLabelNc());
 
     trgtBasisNt = orthonNt;

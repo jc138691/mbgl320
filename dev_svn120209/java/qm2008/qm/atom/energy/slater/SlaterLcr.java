@@ -1,5 +1,5 @@
 package atom.energy.slater;
-import atom.energy.part_wave.PartHLcr;
+import atom.energy.part_wave.PotHLcr;
 import atom.shell.Shell;
 import atom.wf.log_cr.TransLcrToR;
 import atom.wf.log_cr.WFQuadrLcr;
@@ -10,12 +10,12 @@ import math.func.FuncVec;
 public class SlaterLcr extends SlaterLr {
   final private TransLcrToR logCRToR; // r = exp(x)-exp(xFirst)
   final private WFQuadrLcr wLogCR;
-  private PartHLcr partH;
+  private PotHLcr partH;
   public SlaterLcr(WFQuadrLcr w) {
     super(w);
     this.logCRToR = w.getLcrToR();
     wLogCR = w;
-    partH = new PartHLcr(w);
+    partH = new PotHLcr(w);
   }
 
   public final TransLcrToR getLogCRToR() {
@@ -26,7 +26,7 @@ public class SlaterLcr extends SlaterLr {
   }
   /**
    * THIS FUNCTION IS BASIS DEPENDANT !!!!!!!!!!!
-   * see derivation in PartHLcr
+   * see derivation in PotHLcr
    * HF = -1/2F" +1/2*{1/4 + L(L+1)*(y/r)^2}*F + y^2U(r)*F
    * //  INTL dx Fn'(x) H Fn(x) = delta_n'n
    */

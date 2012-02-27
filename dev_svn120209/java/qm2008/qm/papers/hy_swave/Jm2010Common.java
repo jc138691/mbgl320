@@ -1,5 +1,5 @@
 package papers.hy_swave;
-import atom.energy.part_wave.PartHMtrx;
+import atom.energy.part_wave.PotHMtrx;
 import math.func.FuncVec;
 import math.vec.Vec;
 import math.vec.grid.StepGridModel;
@@ -9,7 +9,7 @@ import qm_station.ui.scatt.CalcOptR;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e2.JmMethodBaseE2;
+import scatt.jm_2008.e2.ScattMethodBaseE2;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.TestModel;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
@@ -28,7 +28,7 @@ protected static TestModel testOpt;
 protected static LgrrModel basisOptN;
 protected static Vec rVec;
 protected static FuncVec pot;
-protected static PartHMtrx trgtPartH;
+protected static PotHMtrx trgtPotH;
 protected static int N = 10;
 protected static double LAMBDA = 1.1f;
 protected static int R_FIRST = 0;
@@ -60,7 +60,7 @@ public void setupScattRes(ScattRes res, ScattMethodBaseE1 method) {
   res.setModelName(MODEL_NAME);
   res.setMethod(method);
 }
-protected static String makeLabelBasisOptOpen(JmMethodBaseE2 method) {
+protected static String makeLabelBasisOptOpen(ScattMethodBaseE2 method) {
   if (method.getCalcOpt().getUseClosed()) {
     return basisOptN.makeLabel() + ".dat";
   } else {

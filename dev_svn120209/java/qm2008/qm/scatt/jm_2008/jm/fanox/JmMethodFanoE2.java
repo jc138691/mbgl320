@@ -1,7 +1,7 @@
 package scatt.jm_2008.jm.fanox;
 
 import atom.energy.ConfOverlap;
-import atom.energy.part_wave.PartHMtrx;
+import atom.energy.part_wave.PotHMtrx;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
 import scatt.jm_2008.e1.CalcOptE1;
@@ -17,7 +17,7 @@ import javax.utilx.log.Log;
 public class JmMethodFanoE2 extends JmMethodE2 {
   public static Log log = Log.getLog(JmMethodFanoE2.class);
   private ConfOverlap chiOverlap;
-  private PartHMtrx targetH;
+  private PotHMtrx targetH;
 
   public JmMethodFanoE2(CalcOptE1 potOpt) {
     super(potOpt);
@@ -59,7 +59,7 @@ public class JmMethodFanoE2 extends JmMethodE2 {
     this.chiOverlap = chiOverlap;
   }
 
-  public void setTargetH(PartHMtrx targetH) {
+  public void setTargetH(PotHMtrx targetH) {
     this.targetH = targetH;
   }
 }

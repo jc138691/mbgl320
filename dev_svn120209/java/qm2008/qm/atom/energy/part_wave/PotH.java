@@ -1,17 +1,16 @@
 package atom.energy.part_wave;
 import atom.wf.WFQuadr;
 import math.func.FuncVec;
-import math.integral.Quadr;
 
 import javax.utilx.log.Log;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 21/11/2008, Time: 11:46:18
  */
-public abstract class PartH {
-  public static Log log = Log.getLog(PartH.class);
+public abstract class PotH {
+  public static Log log = Log.getLog(PotH.class);
   protected WFQuadr quadr;
 
-  public PartH(WFQuadr quadr) {
+  public PotH(WFQuadr quadr) {
     this.quadr = quadr;
   }
   public abstract double calcKin(int L, FuncVec wf, FuncVec wf2);

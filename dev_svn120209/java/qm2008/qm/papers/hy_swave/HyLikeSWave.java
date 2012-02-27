@@ -16,7 +16,7 @@ import math.vec.Vec;
 import math.vec.VecDbgView;
 import project.workflow.task.test.FlowTest;
 import qm_station.jm.PotEigVecLcrTest;
-import scatt.jm_2008.e2.JmMethodBaseE2;
+import scatt.jm_2008.e2.ScattMethodBaseE2;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
@@ -105,11 +105,11 @@ public abstract class HyLikeSWave extends Jm2010CommonLcr {
 
   }
 
-  public void setupJmRes(ScattRes res, JmMethodBaseE2 method) {
+  public void setupJmRes(ScattRes res, ScattMethodBaseE2 method) {
     super.setupScattRes(res, method);
     res.setCalcLabel(makeLabelTrgtS2(method));
   }
-  protected static String makeLabelTrgtS2(JmMethodBaseE2 method) {
+  protected static String makeLabelTrgtS2(ScattMethodBaseE2 method) {
     return "S" + SYS_LS.getS21() + "_" + Jm2010Common.makeLabelBasisOptOpen(method);
   }
   protected static String makeLabelTrgtS2() {

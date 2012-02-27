@@ -113,7 +113,7 @@ public class ConfHMtrx extends HMtrx {
       }
       FuncVec f_i = new FuncVec(x);
       for (int j = 0; j < basis.size(); j++) {
-        double cij = C[j][r];  // [j][i] is correct, see  PartHMtrx;  // BY ROW is correct!   see HydrogenJUnit.test_2s
+        double cij = C[j][r];  // [j][i] is correct, see  PotHMtrx;  // BY ROW is correct!   see HydrogenJUnit.test_2s
         for (int j2 = 0; j2 < basis.size(); j2++) {
           FuncVec conf = confArr[j][j2];
           if (conf == null  &&  !doneArr[j][j2]) {
@@ -125,7 +125,7 @@ public class ConfHMtrx extends HMtrx {
           }
           if (conf == null)
             continue;
-          double c2 = C[j2][r];  // [j][i] is correct, see  PartHMtrx
+          double c2 = C[j2][r];  // [j][i] is correct, see  PotHMtrx
           f_i.addMultSafe(cij * c2, conf);
         }
       }

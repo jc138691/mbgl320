@@ -1,4 +1,5 @@
 package qm_station.jm;
+import atom.energy.part_wave.PotHR;
 import atom.wf.WFQuadr;
 import scatt.eng.EngGrid;
 import scatt.jm_2008.jm.laguerre.LgrrR;
@@ -7,7 +8,6 @@ import javax.utilx.log.Log;
 
 import scatt.eng.EngModel;
 import math.func.FuncVec;
-import atom.energy.part_wave.PartHR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 19/11/2008, Time: 15:46:32
  */
@@ -21,7 +21,7 @@ public class JmJnnR extends FuncVec {
   }
   private void calc(LgrrR arr) {
     WFQuadr w = arr.getQuadr();
-    PartHR partH = new PartHR(w);
+    PotHR partH = new PotHR(w);
     FuncVec f = arr.getFunc(arr.size()-1);
     FuncVec f2 = arr.getFunc(arr.size()-2);
     int L = 0;

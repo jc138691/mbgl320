@@ -1,7 +1,7 @@
 package papers.he_swave.optim_lambda;
 import atom.angular.Spin;
 import atom.data.AtomHe;
-import atom.energy.part_wave.PartHMtrxLcr;
+import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.smodel.HeSWaveAtom;
 import atom.smodel.HeSWaveAtomNt50_LMBD4p0;
@@ -296,9 +296,9 @@ public class OptimLambda extends HeSWaveScatt {
     pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
     // Making He+ eigen-states
-    trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);       //log.dbg("trgtPartH=", trgtPartH);
-    Vec basisEngs = trgtPartH.getEigVal();                log.dbg("basisEngs=", new VecDbgView(basisEngs));
-    trgtBasisNt = trgtPartH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
+    trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);       //log.dbg("trgtPotH=", trgtPotH);
+    Vec basisEngs = trgtPotH.getEigVal();                log.dbg("basisEngs=", new VecDbgView(basisEngs));
+    trgtBasisNt = trgtPotH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
     SlaterLcr slater = new SlaterLcr(quadrLcr);
     JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
 

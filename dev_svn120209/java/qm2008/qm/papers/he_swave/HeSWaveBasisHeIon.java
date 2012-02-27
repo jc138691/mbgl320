@@ -4,7 +4,7 @@ import atom.angular.Spin;
 import atom.data.AtomHe;
 import atom.data.AtomHy;
 import atom.energy.ConfHMtrx;
-import atom.energy.part_wave.PartHMtrxLcr;
+import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.wf.log_cr.LcrFactory;
 import math.func.arr.FuncArr;
@@ -109,11 +109,11 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     calcLi(slater);
 
     // Making He+ eigen-states
-    trgtPartH = new PartHMtrxLcr(L, orthonNt, pot);       log.dbg("trgtPartH=", trgtPartH);
-    Vec basisEngs = trgtPartH.getEigVal();                log.dbg("eigVal=", new VecDbgView(basisEngs));
-    Mtrx basisVecs = trgtPartH.getEigVec();               log.dbg("eigVec=", new MtrxDbgView(basisVecs));
+    trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);       log.dbg("trgtPotH=", trgtPotH);
+    Vec basisEngs = trgtPotH.getEigVal();                log.dbg("eigVal=", new VecDbgView(basisEngs));
+    Mtrx basisVecs = trgtPotH.getEigVec();               log.dbg("eigVec=", new MtrxDbgView(basisVecs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_basisEngs_" + makeLabelNc());
-    trgtBasisNt = trgtPartH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
+    trgtBasisNt = trgtPotH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
 
     FuncArr basisR = LcrFactory.wfLcrToR(trgtBasisNt, quadrLcr);
     AtomUtil.trimTailSLOW(basisR);
