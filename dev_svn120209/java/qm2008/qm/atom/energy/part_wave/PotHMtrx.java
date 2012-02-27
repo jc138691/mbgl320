@@ -78,6 +78,9 @@ public void loadEigVec() {
     }
   }
 }
+public IFuncArr getBasis() {
+  return basis;
+}
 public FuncVec getPot() {
   return pot;
 }

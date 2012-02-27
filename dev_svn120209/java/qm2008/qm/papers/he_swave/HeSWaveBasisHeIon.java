@@ -100,8 +100,8 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     Nt = newNt;
     initProject();
     potScattTestOk();     // out: basisN, orthonN, biorthN
-    jmHyTestOk(AtomHy.Z);      // out: pot (for Hy), orthonNt
-    jmHyTestOk(AtomHe.Z);      // out: pot (for Hy), orthonNt
+    hydrScattTestOk(AtomHy.Z);      // out: pot (for Hy), orthonNt
+    hydrScattTestOk(AtomHe.Z);      // out: pot (for Hy), orthonNt
     jmHeTestOk();      // out: re-loading pot (for He)
     initLiJm();
     SlaterLcr slater = new SlaterLcr(quadrLcr);

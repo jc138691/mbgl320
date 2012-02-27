@@ -73,7 +73,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
     Nt = newNt;
     initProject();
     potScattTestOk();  // basisN, biorthN, orthonN, quadrLcr
-    jmHyTestOk(TARGET_Z);  // pot, orthonNt
+    hydrScattTestOk(TARGET_Z);  // pot, orthonNt
 
     trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
     Vec targetEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));

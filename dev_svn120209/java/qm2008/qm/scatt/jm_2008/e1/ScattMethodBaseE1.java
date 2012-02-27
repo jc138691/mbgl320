@@ -19,7 +19,6 @@ protected Vec sysEngs;
 protected PotHMtrx potH;
 protected LgrrOrthLcr orthonN;
 protected final CalcOptE1 calcOpt;
-//protected FuncVec pot;
 public ScattMethodBaseE1(CalcOptE1 calcOpt) {
   this.calcOpt = calcOpt;
 }
@@ -70,7 +69,4 @@ public LgrrOrthLcr getOrthonN() {
 public void setOrthonN(LgrrOrthLcr orthonN) {
   this.orthonN = orthonN;
 }
-//public void setPot(FuncVec pot) {
-//  this.pot = pot;
-//}
 }
