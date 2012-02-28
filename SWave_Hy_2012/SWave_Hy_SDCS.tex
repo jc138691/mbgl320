@@ -1,0 +1,192 @@
+%%\documentclass[aip,jcp]{revtex4-1}
+\documentclass[aip
+, pra
+, showpacs
+, aps
+, twocolumn
+%, onecolumn
+, groupedaddress
+, floatfix
+%, preprint
+]{revtex4}
+%]{revtex4-1}
+\usepackage{graphicx, amsbsy, bm, dcolumn, amsmath}
+
+\newcommand{\etal}{{\em et~al.\/}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\vecr}{{\bf r}}
+\newcommand{\JM}{\mbox{\tiny{JM}}}
+\newcommand{\KB}{\mbox{\tiny{KB}}}
+\newcommand{\vare}{\varepsilon}
+
+
+\newcommand{\isum}%
+{\mathop{\hbox{$\displaystyle\sum\kern-13.2pt\int\kern1.5pt$}}}
+
+\begin{document}
+
+\title {Calculation of excitation and single-ionization amplitudes using a short-range $L^2$ basis}
+
+\author{Dmitry A. Konovalov}
+\affiliation{Discipline of Information Technology, School of Business, James Cook University, Townsville, Queensland 4811, Australia}
+
+\author{Igor Bray}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
+
+
+\date{\today}
+
+\begin{abstract}
+It is shown that existing JM method could be significantly simplified without the loss of convergence rate or accuracy.
+
+\end{abstract}
+
+\pacs{34.80.Dp} %34.80.Dp	Atomic excitation and ionization
+\maketitle
+
+\section{INTRODUCTION}
+TODO
+
+\section{THEORY}
+\subsection{Short-range potential scattering}
+
+
+Expansion Approach to Scattering by \citet{Harris67}, e-H low energy \cite{MH67}
+
+$(1-\exp(-r))\cos$ \cite{Nesbet68}
+
+
+To illustrate its logic, this  scattering method (denoted EA) is presented by comparing it with the JM method.
+
+
+After the partial-wave expansion and retaining only the $s$-wave terms $(l=0)$,
+the potential scattering problem is reduced \cite{LL85, Taylor72} to solving the radial Schr\"odinger equation
+\beq
+(H-E) | \Psi_E \rangle =0, \ \ \ E=k^2/2,  \label{H_E_Psi_E}
+\eeq
+\beq
+\Psi_E(r \rightarrow \infty) \sim \sin(kr+\delta_0), \ \ \ \Psi_E(r= 0)=0,
+\eeq
+\beq
+H=K+V(r), \ \ \ K=-\frac{1}{2} \frac{\mbox{d}^2}{\mbox{d}r^2}, \label{K}
+\eeq
+where $\delta_0$ is the $s$-wave elastic scattering phase shift and $E$ is the total energy of the system.
+
+
+Let $\{\xi_p(r)\}_{p=0}^\infty$ be a square-integrable ($L^2$) orthonormal basis
+such that
+for any $p,p'=0,1,...,\infty$
+\beq
+\langle \xi_p | \xi_{p'} \rangle=\delta_{pp'}, \ \ \ \xi_p(r=0)=0.
+\eeq
+The corresponding JM basis is denoted as $\{\phi_p(r)\}_{p=0}^\infty$, where $\phi_p(r=0)=0$
+and where other special properties of the basis are not relevant in this presentation.
+In both cases the system's Hamiltonian is diagonalized within the functional space of first $N$ basis functions,
+\beq
+\langle \Psi_i |H| \Psi_j \rangle = E_i \delta_{ij} , \ \ \langle \Psi_i | \Psi_j \rangle=\delta_{ij},
+\eeq
+\beq
+\Psi_i^{\JM}(r) = \sum_{p=0}^{N-1} C_{ip}^{\JM} \phi_p(r), \
+\Psi_i^{\KB}(r) = \sum_{p=0}^{N-1} C_{ip}^{\KB} \xi_p(r).
+\eeq
+Note that both cases could be made identical by using nonorthogonal and orthogonal Laguerre functions for
+$\{\phi_p(r)\}_{p=0}^\infty$ and $\{\xi_p(r)\}_{p=0}^\infty$, respectively \cite{KB10p022708}.
+
+
+The exact solution $\Psi_E(r)$ is approximated by the sum of {\em inner} and {\em outer} functional space expansions
+\beq
+\Psi_E^{\JM}(r) =\sum_j \Psi_j^{\JM}(r)a_j  + \sum_{p=N}^{\infty} \phi_p(r) f_p,  \label{Psi_JM}
+\eeq
+\beq
+\Psi_{E_i}^{\KB}(r) = \Psi_i^{\KB}(r) b_i  + c_0 \hat{\psi}_1(r)  + s_0 \hat{\psi}_2(r), \label{Psi_KB}
+\eeq
+where $a_j$ and $b_j$ try to describe the full complexity of the considered scattering system, that is,
+the electron's interaction with  $V(r)$ in this instance.
+In the JM case, the correct scattering boundary condition is parameterized via
+\beq
+f_p = s_p + R_0 c_p, \ \ \ R_0 = \tan \delta_0,  \label{R_0}
+\eeq
+where: $s_p$ and $c_p$  are known within the JM method;
+$R_0$ is the $s$-wave term of the reactance matrix \cite{Taylor72};
+and where the $s$-wave partial $S$-matrix and elastic cross section are given by
+\beq
+S_{00}=(1+\mbox{i}R_0)(1-\mbox{i}R_0)^{-1},
+\eeq
+\beq
+\sigma_{00}=\frac{\pi}{k^2} |S_{00}-1|^2.
+\eeq
+
+
+In the KB case, the outer functions $\{\xi_p(r)\}_{p=N}^\infty$ are used to approximate the required boundary condition via
+\beq
+\hat{\psi}_1(r) c_0 + \hat{\psi}_2(r) s_0 =
+(1-\hat{P}_N) \sin(kr + \delta_0),\\
+\eeq
+where $c_0 = \cos(\delta_0)$, $s_0 = \sin(\delta_0)$,
+\beq \barr{l}
+\hat{\psi}_1(r) = (1-\hat{P}_N) \sin(kr),\\
+\hat{\psi}_2(r) = (1-\hat{P}_N) \cos(kr),
+\earr \eeq
+and where the inner space projection operator $\hat{P}_N$ is by definition short-range and is given by \\
+\beq
+\hat{P}_N = \sum_{p=0}^{N-1} | \xi_p \rangle \langle \xi_p |.
+\eeq
+
+
+The unknown expansion coefficients in Eqs.~(\ref{Psi_JM}) and (\ref{Psi_KB})
+are found by satisfying the system's  Schr\"odinger Eq.~(\ref{H_E_Psi_E})
+separately within the inner and outer functional spaces
+arriving at the two set of conditions
+\beq \barr{l}
+\langle\Psi_i^{\JM}|H-E|\Psi_E^{\JM}\rangle= 0, \\
+\langle\Psi_i^{\KB}|H-E_i|\Psi_{E_i}^{\KB}\rangle=0,
+\earr \eeq
+\beq \barr{l}
+\langle\phi_p|H-E|\Psi_E^{\JM}\rangle=0 , \ \ \ p \geq N.
+\earr \eeq
+The first set of conditions are solved for $a_i$ and $b_i$
+\beq \barr{l}
+a_i = - \sum_{p=N}^{\infty} X_{ip} f_p / (E_i-E),\\
+X_{ip}=  \langle\Psi_i^{\JM}|H-E| \phi_p \rangle ,\\
+\earr \eeq
+\beq \barr{l}
+S_i c_0 + C_i s_0 = 0, \ \ \ 
+R_0 = - S_i / C_i, \\
+S_i = \langle\Psi_i^{\KB}|H-E_i|  \hat{\psi}_1 \rangle, \ \ 
+C_i = \langle\Psi_i^{\KB}|H-E_i|  \hat{\psi}_2 \rangle.
+\earr \eeq
+Substituting $a_i$ and $b_i$ into the second set of conditions yields the final equations for $R_0$ (\ref{R_0})
+\beq \barr{l}
+\sum_{p'=N}^{\infty} f_{p'}  G_{pp'} = \sum_{p'=N}^{\infty} W_{pp'} f_{p'},\\
+W_{pp'}  = \langle \phi_p | H-E | \phi_{p'} \rangle,\\
+G_{pp'}= \sum_j X_{jp} X_{jp'}/(E_j-E),
+\label{JM2} \earr \eeq
+where the JM method proceeds by solving Eq.~(\ref{JM2}) using the JM's specific technique.
+
+
+
+
+One of the main technical issue with the existing JM method is the difficulty of extracting ionization amplitudes.
+
+
+\subsection{Coulomb-tail potential scattering}
+
+
+
+\section{CONCLUSIONS}
+TODO
+
+
+\begin{acknowledgments}
+\end{acknowledgments}
+
+
+
+\bibliographystyle{apsrev}
+\bibliography{..//bibtex//qm_references}
+%\bibliography{qm_references}
+\end{document}
