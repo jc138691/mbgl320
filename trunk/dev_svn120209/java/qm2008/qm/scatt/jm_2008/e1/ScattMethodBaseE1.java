@@ -30,6 +30,9 @@ public ScattRes calcEngGrid() {
   EngGrid engs = new EngGrid(eng);
   return calc(engs);
 }
+public ScattRes calcSysEngs() {
+  return calc(sysEngs);
+}
 public int getSysBasisSize() {
   return sysEngs.size();
 }
@@ -39,14 +42,14 @@ public Vec getSysEngs() {
 public int getChNum() { // number of target channels
   return 1; // only one for pot-scattering
 }
-public ScattRes calcMidSysEngs() {
-  Vec scttEngs = EngGridFactory.makeMidPoints(sysEngs);
-  return calc(scttEngs);
-}
-public ScattRes calcWithMidSysEngs() {
-  Vec scttEngs = EngGridFactory.makeWithMidPoints(sysEngs);
-  return calc(scttEngs);
-}
+//public ScattRes calcMidSysEngs() {
+//  Vec scttEngs = EngGridFactory.makeMidPoints(sysEngs);
+//  return calc(scttEngs);
+//}
+//public ScattRes calcWithMidSysEngs() {
+//  Vec scttEngs = EngGridFactory.makeWithMidPoints(sysEngs);
+//  return calc(scttEngs);
+//}
 public abstract ScattRes calc(Vec engs);
 public void setSysEngs(Vec engs) {
   this.sysEngs = engs;

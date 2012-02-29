@@ -14,8 +14,6 @@ import scatt.Scatt;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.laguerre.IWFuncArr;
-import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.partial.wf.CosRegPWaveLcr;
 import scatt.partial.wf.SinPWaveLcr;
 
@@ -24,20 +22,16 @@ import javax.utilx.pair.Dble2;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 23/02/12, 11:18 AM
  */
-public class KbMethodE1 extends ScattMethodBaseE1 {   // E1 - one electron
-public static Log log = Log.getLog(KbMethodE1.class);
+public class EaMethodE1v1_wrong extends ScattMethodBaseE1 {   // E1 - one electron
+public static Log log = Log.getLog(EaMethodE1v1_wrong.class);
 private static final int SC_N_ROWS = 3;
 private static final int IDX_S = 0;
 private static final int IDX_C = 1;
 private static final int IDX_D = 2;
-public KbMethodE1(CalcOptE1 calcOpt) {
+public EaMethodE1v1_wrong(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScattRes calc(Vec engs) {
-
-//  WFQuadrLcr quadr = orthonN.getQuadr();
-//  Vec r = quadr.getR();
-
   ScattRes res = new ScattRes();
   int chNum = getChNum();
   int eN = engs.size();
@@ -107,7 +101,7 @@ private FuncArr calcPsi(double scattE, PotHMtrx potH, int idxCount) {
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
   FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
-  FuncVec cosL = new CosRegPWaveLcr(quadr, momP, L);   log.dbg("cosL=", cosL);
+  FuncVec cosL = new CosRegPWaveLcr(quadr, momP, L, momP);   log.dbg("cosL=", cosL);
 
   res.add(sinL.copyY());
   res.add(cosL.copyY());

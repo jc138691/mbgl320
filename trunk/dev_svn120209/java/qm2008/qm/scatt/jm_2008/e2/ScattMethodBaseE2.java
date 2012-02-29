@@ -37,6 +37,10 @@ public ScattMethodBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 protected abstract Mtrx calcX();
+public ScattRes calcSysEngs() {
+  throw new IllegalArgumentException(log.error("TODO: sysEngs - trgtGrndEng"));
+//  return calc(sysEngs);
+}
 public JmTrgtE2 getTrgtE2() {
   return trgtE2;
 }
