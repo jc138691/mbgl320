@@ -52,6 +52,6 @@ public class LgrrModel {
   }
 
   public String makeLabel() {
-    return "L" + L + "_LMBD" + lambda + "_N" + N;
+    return "L" + L + "_LMBD" + (float)lambda + "_N" + N;
   }
 }

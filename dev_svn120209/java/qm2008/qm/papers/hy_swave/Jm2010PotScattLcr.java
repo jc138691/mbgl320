@@ -43,15 +43,16 @@ public void setUp() {
   log.setDbg();
 }
 public void runJob() {
-  LAMBDA = 1f;
-  LCR_N = 301;
-  R_LAST = 100;
-  ENG_FIRST = 0.5f;
-  ENG_LAST = 0.6f;
-  ENG_N = 101;
+  LAMBDA = 1.;
+  LCR_FIRST = -5;
+  LCR_N = 701;
+  R_LAST = 200;
+  ENG_FIRST = 0.01f;
+  ENG_LAST = 4.01f;
+  ENG_N = 2001;
 //  calcJm(10);
 //  calcJm(12);
-  calcJm(14);
+  calcJm(20);
 //  calcJm(16);
 //  calcJm(18);
 //  calcJm(20);
