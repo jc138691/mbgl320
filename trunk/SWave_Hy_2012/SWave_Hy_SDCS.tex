@@ -52,53 +52,113 @@ It is shown that existing JM method could be significantly simplified without th
 TODO
 
 \section{THEORY}
-\subsection{Short-range potential scattering}
+\subsection{One-channel scattering}
 
-
-Expansion Approach to Scattering by \citet{Harris67}, e-H low energy \cite{MH67}
 
 $(1-\exp(-r))\cos$ \cite{Nesbet68} not correct!
 
 
+After the partial-wave expansion \cite{Taylor72,N82} and focusing only on the $s$-wave terms $(l=0)$,
+electron scattering on a spherically symmetric potential $V(r)$
+could be described by the time-independent radial Schr\"odinger equation
+\beq
+(H-E) | \Psi_E \rangle =0,  \ \ \ H = H_0 + V, \label{H_E_Psi_E}
+\eeq
+where $E=k^2/2$ and $k$ are the incident electron energy and momentum, respectively. 
+Let $\psi_1$ and $\psi_2$ be real regular and irregular solutions for $H_0$,
+\beq \barr{l}
+(H_0-E) | \psi_1 \rangle =0,  \ \ \ \psi_1(r=0) = 0,\\
+(H_0-E) | \psi_2 \rangle =0,  \ \ \ \psi_2(r=0) \neq 0,\\
+\earr \label{H_0_E_psi}\eeq
+then for the short-range potential $V(r)$, 
+\beq \barr{l}
+H_0 = \hat{K},\ \ \ \hat{K} = -(1/2) d^2/dr^2,\\
+\psi_1(r) = \sin(kr), \ \ \ \psi_2(r) = \cos(kr).
+\earr \label{K} \eeq
+If present, the long-range Coulomb potential $V_c=-Z/r$ is included into $H_0$ 
+and $\psi_1$ and $\psi_2$ become the corresponding Coulomb wave functions satisfying Eq.~(\ref{H_0_E_psi})
+with $H_0 = \hat{K} + V_c$.  
 
-After the partial-wave expansion and retaining only the $s$-wave terms $(l=0)$,
-the potential scattering problem is reduced \cite{LL85, Taylor72} to solving the radial Schr\"odinger equation
-\beq
-(H-E) | \Psi_E \rangle =0, \ \ \ E=k^2/2,  \label{H_E_Psi_E}
-\eeq
-\beq
-\Psi_E(r \rightarrow \infty) \sim \sin(kr+\delta_0), \ \ \ \Psi_E(r= 0)=0,
-\eeq
-\beq
-H=K+V(r), \ \ \ K=-\frac{1}{2} \frac{\mbox{d}^2}{\mbox{d}r^2}, \label{K}
-\eeq
-where $\delta_0$ is the $s$-wave elastic scattering phase shift and $E$ is the total energy of the system.
 
 
-Let $\{\xi_p(r)\}_{p=0}^\infty$ be a square-integrable ($L^2$) orthonormal basis
-such that
-for any $p,p'=0,1,...,\infty$
+In 1967, \citet{Harris67} showed that Eq.~(\ref{H_E_Psi_E}) could be solved 
+approximately using a square-integrable ($L^2$) basis.
+Let $\{\xi_p(r)\}_{p=0}^\infty$ be an $L^2$-complete set of real orthonormal functions
+such that for any $p,p'=0,1,...,\infty$
 \beq
-\langle \xi_p | \xi_{p'} \rangle=\delta_{pp'}, \ \ \ \xi_p(r=0)=0.
+\langle \xi_p | \xi_{p'} \rangle=\delta_{pp'}, \ \ \ \xi_p(r=0)=0,
 \eeq
-The system's Hamiltonian is diagonalized within the functional space of first $N$ basis functions,
+of which the first $N$ basis functions are used to diagonalize $H$ arriving at
 \beq
 \langle \Psi_i |H| \Psi_j \rangle = E_i \delta_{ij} , \ \ \langle \Psi_i | \Psi_j \rangle=\delta_{ij},
 \eeq
 \beq
 \Psi_i(r) = \sum_{p=0}^{N-1} C_{ip} \xi_p(r).
 \eeq
-The exact solution $\Psi_E(r)$ is approximated by the sum of {\em inner} and {\em outer} functional space expansions
+Then $\Psi_E(r)$ is approximated at the system's eigenvalues $\{E_i\}_{i=1}^{N}$ as 
+\cite{Harris67}
+\beq \barr{l}
+\Psi_{E_i}(r) = \Psi_i(r) b_i  + c_0 \hat{\psi}_1(r)  + s_0 \hat{\psi}_2(r),\\ 
+c_0 = \cos(\delta_0), \ \ \ s_0 = \sin(\delta_0),
+\earr \label{Psi_EES} \eeq
+where the {\em standing}-wave (rather than {\em incoming}- or {\em outgoing}-wave) boundary conditions are satisfied
 \beq
-\Psi_{E_i}(r) = \Psi_i(r) b_i  + c_0 \hat{\psi}_1(r)  + s_0 \hat{\psi}_2(r), \label{Psi_KB}
+\Psi_E(r \rightarrow \infty) \sim \sin(kr+\delta_0), \ \ \ \Psi_E(r= 0)=0,
 \eeq
-and where the $s$-wave partial $S$-matrix and elastic cross section are given by
+and where "hat"-decorated $\hat{\psi}_{\{1,2\}}$ are related to $\psi_{\{1,2\}}$ and will be defined later.
+The $s$-wave elastic scattering results could be expressed via:
+phase shift ($\delta_0$), $K$-matrix ($K_0$), $S$-matrix ($S_{0}$) and cross section ($\sigma_{0}$) 
+as follows
+\beq \barr{l}
+K_0 = \tan{\delta_0} = s_0 / c_0, \\
+S_{0}=(1+\mbox{i}K_0)(1-\mbox{i}K_0)^{-1}, \\
+\sigma_{0}=\pi k^{-2} |S_{0}-1|^2.
+\earr \eeq
+
+
+The goal here is to improve upon the Harris' {\em Expansion Approach} \cite{Harris67} to the extent that the Eq.~(\ref{Psi_EES}) 
+converges to the exact solution as $N$ increases. 
+To achieve the stated goal, this Eigenstate Expansion for Scattering (EES) method relies on the following conjecture.
+
+
+{\em Within the functional space of $N$ basis $L^2$ functions  $\{\xi_p(r)\}_{p=0}^N$, 
+the eigenstates $\{\Psi_i\}_{i=1}^{N}$ are the best possible solutions of the scattering problem in Eq.~(\ref{H_E_Psi_E})
+with the standing-wave boundary conditions at the corresponding eigenvalues $\{E_i\}_{i=1}^{N}$.
+}
+
+
+Accepting the conjecture, it immediately follows that the {\em inner} functional space must be removed from 
+\beq \barr{l}
+\hat{\psi}_1(r) = (1-\hat{P}_N) \phi_1(r),\\
+\hat{\psi}_2(r) = (1-\hat{P}_N) \phi_2(r),
+\earr \eeq
 \beq
-S_{00}=(1+\mbox{i}R_0)(1-\mbox{i}R_0)^{-1},
+\hat{P}_N = \sum_{p=0}^{N-1} | \xi_p \rangle \langle \xi_p |.
 \eeq
+
+From the general theory of the second-order linear differential equations
+\beq \barr{l}
+H_0 y(r) = (p(r) y')' - q(r) y,\\
+p \equiv -1/2, \ \ q = 0,\\
+w = \psi_1(r) \psi_2'(r) - \psi_2(r) \psi_1'(r) \equiv -k,\\
+a = (pw)^{-1}= 2/k,
+\earr \eeq
+TODO: is it the same for Coulomb?
 \beq
-\sigma_{00}=\frac{\pi}{k^2} |S_{00}-1|^2.
+(H_0 - E) G_0(r,r') = \delta(r-r'), 
 \eeq
+\beq \barr{l}
+G_0(r,r') = G_0(r',r) = a \psi_1(r_{<}) \psi_2(r_{>}), \\
+G_0(r \rightarrow \infty,r') = a \psi_1(r') \psi_2(r), \\
+\earr \eeq
+\beq \barr{l}
+| \Psi_E \rangle = | \psi_1 \rangle + G_0 V |\Psi_E \rangle,\\
+\Psi_E(r) = \psi_1(r) +  \int_0^\infty dr'\ G_0(r,r') V(r') \Psi_E(r'),
+\earr \eeq
+\beq \barr{l}
+K_0 = a \langle \psi_1 | V | \Psi_E \rangle =\\
+\ \ = a \int_0^\infty  dr\ \psi_1(r) V(r) \Psi_E(r),
+\earr \eeq
 
 
 The outer functions $\{\xi_p(r)\}_{p=N}^\infty$ are used to approximate the required boundary condition via
@@ -107,21 +167,14 @@ The outer functions $\{\xi_p(r)\}_{p=N}^\infty$ are used to approximate the requ
 (1-\hat{P}_N) \sin(kr + \delta_0),\\
 \eeq
 where $c_0 = \cos(\delta_0)$, $s_0 = \sin(\delta_0)$,
-\beq \barr{l}
-\hat{\psi}_1(r) = (1-\hat{P}_N) \sin(kr),\\
-\hat{\psi}_2(r) = (1-\hat{P}_N) \cos(kr),
-\earr \eeq
 and where the inner space projection operator $\hat{P}_N$ is by definition short-range and is given by \\
-\beq
-\hat{P}_N = \sum_{p=0}^{N-1} | \xi_p \rangle \langle \xi_p |.
-\eeq
 
 
 The unknown expansion coefficients in Eqs.~(\ref{Psi_JM}) and (\ref{Psi_KB})
 are found by satisfying the system's  Schr\"odinger Eq.~(\ref{H_E_Psi_E})
 separately within the inner and outer functional spaces
 arriving at the two set of conditions
-\beq 
+\beq
 \langle\Psi_i|H-E_i|\Psi_{E_i}\rangle=0,
 \eeq
 The first set of conditions are solved for $a_i$ and $b_i$
