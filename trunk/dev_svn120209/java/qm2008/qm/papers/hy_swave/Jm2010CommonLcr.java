@@ -18,7 +18,8 @@ import math.func.Func;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.simple.FuncPowInt;
-import math.integral.test.BooleQuadrTest;
+import math.integral.test.QuadrStepTest;
+import math.interpol.test.PolynomInterpolTest;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
@@ -95,7 +96,8 @@ protected void potScattTestOk() {
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
     quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);
     rVec = quadrLcr.getR();                        log.dbg("r grid =", rVec);
-    if (!new BooleQuadrTest().ok()) return;
+    if (!new QuadrStepTest().ok()) return;
+    if (!new PolynomInterpolTest().ok()) return;
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
 

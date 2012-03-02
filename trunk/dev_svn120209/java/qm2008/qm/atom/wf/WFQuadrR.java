@@ -1,5 +1,4 @@
 package atom.wf;
-import math.integral.BooleQuadr;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import math.func.FuncVec;

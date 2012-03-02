@@ -4,7 +4,7 @@ import atom.wf.log_cr.TransLcrToR;
 import atom.wf.log_cr.WFQuadrLcr;
 import atom.wf.log_cr.YkLcr;
 import atom.wf.coulomb.CoulombWFFactory;
-import math.integral.BooleQuadr;
+import math.integral.QuadrStep5;
 import math.vec.Vec;
 import math.vec.metric.DistMaxAbsErr;
 import math.vec.grid.StepGrid;
@@ -25,7 +25,7 @@ public class YkLcrTest extends FlowTest {
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
     TransLcrToR xToR = new TransLcrToR(x);
     Vec r = xToR;
-    BooleQuadr w = new BooleQuadr(x);
+    QuadrStep5 w = new QuadrStep5(x);
     WFQuadrLcr wCR = new WFQuadrLcr(x);
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(f), ".", "wf", "P1s_test.csv");
@@ -54,7 +54,7 @@ public class YkLcrTest extends FlowTest {
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
     TransLcrToR xToR = new TransLcrToR(x);
     Vec r = xToR;
-    BooleQuadr w = new BooleQuadr(x);
+    QuadrStep5 w = new QuadrStep5(x);
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
     double res = w.calc(f, f, xToR.getCR());
     assertEquals(0, Math.abs(res - 1), 6e-13);
@@ -74,7 +74,7 @@ public class YkLcrTest extends FlowTest {
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
     TransLcrToR xToR = new TransLcrToR(x);
     Vec r = xToR;
-    BooleQuadr w = new BooleQuadr(x);
+    QuadrStep5 w = new QuadrStep5(x);
 
     // 1s
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
@@ -128,7 +128,7 @@ public class YkLcrTest extends FlowTest {
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
     TransLcrToR xToR = new TransLcrToR(x);
     Vec r = xToR;
-    BooleQuadr w = new BooleQuadr(x);
+    QuadrStep5 w = new QuadrStep5(x);
 
     // 2p
     FuncVec f = CoulombWFFactory.makeP2p(r, 1.);

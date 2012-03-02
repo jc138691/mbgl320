@@ -59,8 +59,8 @@ public void runJob() {
 //  LAMBDA = 1.1;  calc(20);
 
   double LAMBDA_MIN = 1;
-  double LAMBDA_MAX = 1.2;
-  int LAMBDA_N = 21;
+  double LAMBDA_MAX = 1.5;
+  int LAMBDA_N = 51;
   StepGrid lamGrid = new StepGrid(new StepGridModel(LAMBDA_MIN, LAMBDA_MAX, LAMBDA_N));
   for (int i = 0; i < lamGrid.size(); i++) {
      LAMBDA = lamGrid.get(i);
@@ -76,8 +76,8 @@ public void calc(int newN) {
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);             log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
   Vec sysEngs = sysH.getEigVal();            log.dbg("eigVal=", new VecDbgView(sysEngs));
-//  EaMethodE1v2_ok method = new EaMethodE1v2_ok(calcOpt);
-  EaMethodE1v3 method = new EaMethodE1v3(calcOpt);
+  EaMethodE1v2_ok method = new EaMethodE1v2_ok(calcOpt);
+//  EaMethodE1v3 method = new EaMethodE1v3(calcOpt);
 //  method.setPot(pot);
   method.setSysEngs(sysEngs);
   method.setPotH(sysH);

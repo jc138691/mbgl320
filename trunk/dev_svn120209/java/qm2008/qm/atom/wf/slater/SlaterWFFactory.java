@@ -6,7 +6,7 @@ import atom.wf.log_cr.WFQuadrLcr;
 import atom.wf.log_r.TransLrToR;
 import math.func.Func;
 import math.func.FuncVec;
-import math.integral.BooleQuadr;
+import math.integral.QuadrStep5;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
 import project.workflow.task.test.FlowTest;
@@ -83,7 +83,7 @@ public class SlaterWFFactory extends FlowTest {
     TransLcrToR logCR = new TransLcrToR(x);
     TransLrToR logR = new TransLrToR(x);
     Vec r = logR;
-    BooleQuadr w = new BooleQuadr(x);
+    QuadrStep5 w = new QuadrStep5(x);
     FuncVec f = SlaterWFFactory.makeP2s(r, 1.);
     double res = w.calc(f, f, r);
     assertEquals(0, Math.abs(res - 1), 6e-10);

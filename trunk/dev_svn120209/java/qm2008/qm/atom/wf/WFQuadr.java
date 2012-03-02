@@ -1,14 +1,13 @@
 package atom.wf;
 
-import math.func.FuncVec;
-import math.integral.BooleQuadr;
+import math.integral.QuadrStep5;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
 
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 15/02/2010, 10:25:22 AM
  */
-public abstract class WFQuadr extends BooleQuadr {
+public abstract class WFQuadr extends QuadrStep5 {
   public WFQuadr(StepGrid x) {
     super(x);
   }
