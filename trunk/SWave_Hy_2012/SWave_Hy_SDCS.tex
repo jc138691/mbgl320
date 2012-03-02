@@ -31,7 +31,9 @@
 \title {Calculation of excitation and single-ionization amplitudes using a short-range $L^2$ basis}
 
 \author{Dmitry A. Konovalov}
-\affiliation{Discipline of Information Technology, School of Business, James Cook University, Townsville, Queensland 4811, Australia}
+\affiliation{Discipline of Information Technology, School of Business}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+James Cook University, Townsville, Queensland 4811, Australia}
 
 \author{Igor Bray}
 \affiliation{ARC Centre for Antimatter-Matter Studies,
@@ -64,24 +66,24 @@ could be described by the time-independent radial Schr\"odinger equation
 \beq
 (H-E) | \Psi_E \rangle =0,  \ \ \ H = H_0 + V, \label{H_E_Psi_E}
 \eeq
-where $E=k^2/2$ and $k$ are the incident electron energy and momentum, respectively. 
+where $E=k^2/2$ and $k$ are the incident electron energy and momentum, respectively.
 Let $\psi_1$ and $\psi_2$ be real regular and irregular solutions for $H_0$,
 \beq \barr{l}
 (H_0-E) | \psi_1 \rangle =0,  \ \ \ \psi_1(r=0) = 0,\\
 (H_0-E) | \psi_2 \rangle =0,  \ \ \ \psi_2(r=0) \neq 0,\\
 \earr \label{H_0_E_psi}\eeq
-then for the short-range potential $V(r)$, 
+then for the short-range potential $V(r)$,
 \beq \barr{l}
 H_0 = \hat{K},\ \ \ \hat{K} = -(1/2) d^2/dr^2,\\
 \psi_1(r) = \sin(kr), \ \ \ \psi_2(r) = \cos(kr).
 \earr \label{K} \eeq
-If present, the long-range Coulomb potential $V_c=-Z/r$ is included into $H_0$ 
+If present, the long-range Coulomb potential $V_c=-Z/r$ is included into $H_0$
 and $\psi_1$ and $\psi_2$ become the corresponding Coulomb wave functions satisfying Eq.~(\ref{H_0_E_psi})
-with $H_0 = \hat{K} + V_c$.  
+with $H_0 = \hat{K} + V_c$.
 
 
 
-In 1967, \citet{Harris67} showed that Eq.~(\ref{H_E_Psi_E}) could be solved 
+In 1967, \citet{Harris67} showed that Eq.~(\ref{H_E_Psi_E}) could be solved
 approximately using a square-integrable ($L^2$) basis.
 Let $\{\xi_p(r)\}_{p=0}^\infty$ be an $L^2$-complete set of real orthonormal functions
 such that for any $p,p'=0,1,...,\infty$
@@ -95,39 +97,38 @@ of which the first $N$ basis functions are used to diagonalize $H$ arriving at
 \beq
 \Psi_i(r) = \sum_{p=0}^{N-1} C_{ip} \xi_p(r).
 \eeq
-Then $\Psi_E(r)$ is approximated at the system's eigenvalues $\{E_i\}_{i=1}^{N}$ as 
+Then $\Psi_E(r)$ is approximated at the system's eigenvalues $\{E_i\}_{i=1}^{N}$ as
 \cite{Harris67}
 \beq \barr{l}
-\Psi_{E_i}(r) = \Psi_i(r) b_i  + c_0 \hat{\psi}_1(r)  + s_0 \hat{\psi}_2(r),\\ 
-c_0 = \cos(\delta_0), \ \ \ s_0 = \sin(\delta_0),
+\Psi_{E_i}(r) = a_i \Psi_i(r)  + \phi_1(r)  + K_0 \phi_2(r),\\
+K_0 = \tan{\delta_0}, 
 \earr \label{Psi_EES} \eeq
 where the {\em standing}-wave (rather than {\em incoming}- or {\em outgoing}-wave) boundary conditions are satisfied
 \beq
 \Psi_E(r \rightarrow \infty) \sim \sin(kr+\delta_0), \ \ \ \Psi_E(r= 0)=0,
 \eeq
-and where "hat"-decorated $\hat{\psi}_{\{1,2\}}$ are related to $\psi_{\{1,2\}}$ and will be defined later.
+and where $\phi_{\{1,2\}}$ are related to $\psi_{\{1,2\}}$ and will be defined later.
 The $s$-wave elastic scattering results could be expressed via:
-phase shift ($\delta_0$), $K$-matrix ($K_0$), $S$-matrix ($S_{0}$) and cross section ($\sigma_{0}$) 
+phase shift ($\delta_0$), $K$-matrix ($K_0$), $S$-matrix ($S_{0}$) and cross section ($\sigma_{0}$)
 as follows
 \beq \barr{l}
-K_0 = \tan{\delta_0} = s_0 / c_0, \\
 S_{0}=(1+\mbox{i}K_0)(1-\mbox{i}K_0)^{-1}, \\
 \sigma_{0}=\pi k^{-2} |S_{0}-1|^2.
 \earr \eeq
 
 
-The goal here is to improve upon the Harris' {\em Expansion Approach} \cite{Harris67} to the extent that the Eq.~(\ref{Psi_EES}) 
-converges to the exact solution as $N$ increases. 
+The goal here is to improve upon the Harris' {\em Expansion Approach} \cite{Harris67} to the extent that the Eq.~(\ref{Psi_EES})
+converges to the exact solution as $N$ increases.
 To achieve the stated goal, this Eigenstate Expansion for Scattering (EES) method relies on the following conjecture.
 
 
-{\em Within the functional space of $N$ basis $L^2$ functions  $\{\xi_p(r)\}_{p=0}^N$, 
+{\em Within the functional space of $N$ basis $L^2$ functions  $\{\xi_p(r)\}_{p=0}^N$,
 the eigenstates $\{\Psi_i\}_{i=1}^{N}$ are the best possible solutions of the scattering problem in Eq.~(\ref{H_E_Psi_E})
 with the standing-wave boundary conditions at the corresponding eigenvalues $\{E_i\}_{i=1}^{N}$.
 }
 
 
-Accepting the conjecture, it immediately follows that the {\em inner} functional space must be removed from 
+Accepting the conjecture, it immediately follows that the {\em inner} functional space must be removed from
 \beq \barr{l}
 \hat{\psi}_1(r) = (1-\hat{P}_N) \phi_1(r),\\
 \hat{\psi}_2(r) = (1-\hat{P}_N) \phi_2(r),
@@ -141,33 +142,38 @@ From the general theory of the second-order linear differential equations
 H_0 y(r) = (p(r) y')' - q(r) y,\\
 p \equiv -1/2, \ \ q = 0,\\
 w = \psi_1(r) \psi_2'(r) - \psi_2(r) \psi_1'(r) \equiv -k,\\
-a = (pw)^{-1}= 2/k,
+b = (pw)^{-1}= 2/k,
 \earr \eeq
 TODO: is it the same for Coulomb?
-\beq
-(H_0 - E) G_0(r,r') = \delta(r-r'), 
-\eeq
 \beq \barr{l}
-G_0(r,r') = G_0(r',r) = a \psi_1(r_{<}) \psi_2(r_{>}), \\
-G_0(r \rightarrow \infty,r') = a \psi_1(r') \psi_2(r), \\
+(H_0 - E) G_0(r,r') = \delta(r-r'),\\
+G_0(r,r') = G_0(r',r) = b \psi_1(r_{<}) \psi_2(r_{>}), 
 \earr \eeq
 \beq \barr{l}
 | \Psi_E \rangle = | \psi_1 \rangle + G_0 V |\Psi_E \rangle,\\
 \Psi_E(r) = \psi_1(r) +  \int_0^\infty dr'\ G_0(r,r') V(r') \Psi_E(r'),
 \earr \eeq
 \beq \barr{l}
-K_0 = a \langle \psi_1 | V | \Psi_E \rangle =\\
-\ \ = a \int_0^\infty  dr\ \psi_1(r) V(r) \Psi_E(r),
+\Psi_E(r) = \psi_1(r) +  g_2(r) \psi_1(r) + g_1(r) \psi_2(r),\\
+\Psi_{E_i}(r) = a_i \Psi_i(r)  + (1-P)\psi_1(r)  \\
+\ \ \ + K_0 (1-P)g(r)\psi_2(r),
+\earr \eeq
+
+\beq \barr{l}
+g(r) \approx b \int_0^r dr'\ \psi_1(r') V(r') \psi_1(r'), \\
+g(r) \approx b \int_0^r dr'\ \psi_1(r') V(r') \Psi_i(r'), \\
+\earr \eeq
+
+\beq \barr{l}
+g_1(r) = b \int_0^r dr'\ \psi_1(r') V(r') \Psi_E(r'), \\
+g_2(r) = b \int_r^\infty dr'\ \psi_2(r') V(r') \Psi_E(r'),
+\earr \eeq
+\beq \barr{l}
+K_0 = b \langle \psi_1 | V | \Psi_E \rangle =\\
+\ \ = b \int_0^\infty  dr\ \psi_1(r) V(r) \Psi_E(r),
 \earr \eeq
 
 
-The outer functions $\{\xi_p(r)\}_{p=N}^\infty$ are used to approximate the required boundary condition via
-\beq
-\hat{\psi}_1(r) c_0 + \hat{\psi}_2(r) s_0 =
-(1-\hat{P}_N) \sin(kr + \delta_0),\\
-\eeq
-where $c_0 = \cos(\delta_0)$, $s_0 = \sin(\delta_0)$,
-and where the inner space projection operator $\hat{P}_N$ is by definition short-range and is given by \\
 
 
 The unknown expansion coefficients in Eqs.~(\ref{Psi_JM}) and (\ref{Psi_KB})
@@ -188,7 +194,6 @@ C_i = \langle\Psi_i|H-E_i|  \hat{\psi}_2 \rangle.
 
 
 
-One of the main technical issue with the existing JM method is the difficulty of extracting ionization amplitudes.
 
 
 \subsection{Coulomb-tail potential scattering}
