@@ -2,8 +2,8 @@ package func.bspline.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 11/07/2008, Time: 10:27:40 */
 import junit.framework.*;
 import func.bspline.BSplOrthonBasis;
+import math.integral.QuadrStep5;
 import math.vec.grid.StepGrid;
-import math.integral.BooleQuadr;
 import math.integral.OrthonFactory;
 
 import javax.utilx.log.Log;
@@ -21,7 +21,7 @@ public class BSplOrthonBasisTest extends TestCase {
     double LAST = 5;
     int NUM_STEPS = 101;
     StepGrid x = new StepGrid(FIRST, LAST, NUM_STEPS);
-    BooleQuadr w = new BooleQuadr(x);
+    QuadrStep5 w = new QuadrStep5(x);
     StepGrid knots = new StepGrid(FIRST, LAST, Math.round((float) LAST + 1));
     BSplOrthonBasis arr = new BSplOrthonBasis(w, knots, k);
 //    saveArrayK(x, arr, k, "basisN");

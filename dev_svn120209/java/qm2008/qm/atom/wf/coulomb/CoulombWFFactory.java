@@ -3,7 +3,7 @@ import atom.wf.log_cr.TransLcrToR;
 import atom.wf.log_r.TransLrToR;
 import math.func.FuncVec;
 import math.func.Func;
-import math.integral.BooleQuadr;
+import math.integral.QuadrStep5;
 import math.vec.Vec;
 import math.Mathx;
 import math.vec.grid.StepGrid;
@@ -94,7 +94,7 @@ public class CoulombWFFactory extends FlowTest {
     TransLcrToR logCR = new TransLcrToR(x);
     TransLrToR logR = new TransLrToR(x);
     Vec r = logR;
-    BooleQuadr w = new BooleQuadr(x);
+    QuadrStep5 w = new QuadrStep5(x);
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);  // by log(r)
     double res = w.calc(f, f, r);
 //    double res = FastLoop.dot(f, f, w, r);
@@ -123,7 +123,7 @@ public class CoulombWFFactory extends FlowTest {
 //    LogCRToR logCR = new LogCRToR(x);
     TransLcrToR logCR = new TransLcrToR(x);
     Vec r = logCR;
-    BooleQuadr w = new BooleQuadr(x);
+    QuadrStep5 w = new QuadrStep5(x);
     FuncVec f = CoulombWFFactory.makeP2s(r, 1.); // by log(c+r)
 //    double res = FastLoop.dot(f, f, w, logCR.getCR());
     double res = w.calc(f, f, logCR.getCR());
@@ -156,7 +156,7 @@ public class CoulombWFFactory extends FlowTest {
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
     TransLcrToR logCR = new TransLcrToR(x);
     Vec r = logCR;
-    BooleQuadr w = new BooleQuadr(x);
+    QuadrStep5 w = new QuadrStep5(x);
     FuncVec f = CoulombWFFactory.makeP3s(r, 1.); // by log(c+r)
 //    double res = FastLoop.dot(f, f, w, logCR.getCR());
     double res = w.calc(f, f, logCR.getCR());

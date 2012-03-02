@@ -10,9 +10,9 @@ import javax.utilx.log.Log;
 import math.func.arr.FuncArrTailSearch;
 import math.func.arr.FuncArr;
 import math.func.polynom.laguerre.LgrrOrth;
+import math.integral.QuadrStep5;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
-import math.integral.BooleQuadr;
 import math.integral.OrthonFactory;
 
 /**
@@ -35,7 +35,7 @@ public class LagrrOrthLCRTest_tmp extends TestCase {
     double LAST = 60;
     int GRID_SIZE = 501;
     StepGrid r = new StepGrid(FIRST, LAST, GRID_SIZE);
-    BooleQuadr w = new BooleQuadr(r);
+    QuadrStep5 w = new QuadrStep5(r);
 
     int L = 0;
     int N = 4;

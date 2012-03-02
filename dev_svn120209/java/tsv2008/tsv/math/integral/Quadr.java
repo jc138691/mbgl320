@@ -18,7 +18,6 @@ public Quadr(Vec x) {
 public Quadr(Quadr from) {
   super(from);
 }
-
 public double calcInt(Vec f, Vec f2) {
   return calc(f, f2);
 }

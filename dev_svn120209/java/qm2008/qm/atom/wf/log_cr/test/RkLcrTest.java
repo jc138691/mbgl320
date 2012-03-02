@@ -25,7 +25,7 @@ public class RkLcrTest extends FlowTest {
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
     TransLcrToR xToR = new TransLcrToR(x);
     Vec r = xToR;
-//      BooleQuadr w = new BooleQuadr(x);
+//      QuadrStep5 w = new QuadrStep5(x);
     WFQuadrLcr wCR = new WFQuadrLcr(x);
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
     f.mult(xToR.getDivSqrtCR());
