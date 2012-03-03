@@ -1,37 +1,34 @@
 package math.integral;
 import math.func.FuncVec;
+import math.func.deriv.DerivPts5;
+import math.mtrx.Mtrx;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
-import javax.utilx.log.Log;
 
-import static math.Mathx.dlt;
+import javax.utilx.log.Log;
 /**
-* Copyright dmitry.konovalov@jcu.edu.au Date: 10/07/2008, Time: 16:42:54
-*/
+ * Copyright dmitry.konovalov@jcu.edu.au Date: 10/07/2008, Time: 16:42:54
+ */
 public class QuadrStep5 extends QuadrStep { // mistakenly known as Bode
 public static Log log = Log.getLog(QuadrStep5.class);
-public static final int MIN_GRID_SIZE = 5;
+private Mtrx mIntr;
 public QuadrStep5(StepGrid grid) {
-  super(grid);
-  if (isValid(size()))   {
+  super(grid, 5);
+  if (isValid(size())) {
     loadWeights(grid.getGridStep());
-  }
-  else {
+  } else {
     throw new IllegalArgumentException(log.error("invalid size=" + size()));
   }
 }
 public Vec makeQuadrFuncInt(double step) {
-  double a[] = makeQuadrFuncArr(step);
+  double a[] = makeQuadrArr(step);
   return new Vec(a);
 }
-public static double[] makeQuadrFuncArr(double step) {
+public static double[] makeQuadrArr(double step) {
   double tmp = 2.0 * step / 45.0;
   double a[] = {tmp * 7, tmp * 32, tmp * 12, tmp * 32, tmp * 7};
   return a;
 }
-//  public int getMinGridSize() {
-//    return MIN_GRID_SIZE;
-//  }
 private void loadWeights(double step) {
   double tmp = 2.0 * step / 45.0;
   double a[] = {tmp * 14, tmp * 32, tmp * 12, tmp * 32};
@@ -41,52 +38,42 @@ private void loadWeights(double step) {
   arr[0] *= 0.5;
   arr[size() - 1] *= 0.5;
 }
-private boolean isValid(int size) {
-  //c     Bode's w
-  // 5 * n - (n - 1) = N grid points
-  // 4 * n + 1 = N
-  // n = (N - 1) / 4
-  if ((size - 1) % 4 != 0) {
-    int n = (size - 1) / 4;
-    String error = "if ((size - 1) % 4 != 0); "
-      + ((size - 1) % 4) + "!=0; "
-      + "nearest sizes = " + (4 * n + 1) + " or " + (4 * (n + 1) + 1);
-    throw new IllegalArgumentException(log.error(error));
-  }
-  return true;
-}
-public FuncVec calcFuncInt(Vec f) {
+public FuncVec calcFuncIntOLD(Vec funcV) { // TODO: remove; this was a wrong way
+  double[] f = funcV.getArr();
   FuncVec resF = new FuncVec(getX());
   double[] res = resF.getArr();
   double step = getStepGrid().getGridStep();
-
-  double[] a2 = QuadrStep2.makeQuadrFuncArr(step);
-  double[] a3 = QuadrStep3.makeQuadrFuncArr(step);
-  double[] a4 = QuadrStep4.makeQuadrFuncArr(step);
-  double[] a5 = QuadrStep5.makeQuadrFuncArr(step);
-
+  double[] a2 = QuadrStep2.makeQuadrArr(step);
+  double[] a32 = QuadrStep3.makeQuadrArr_2From3(step);
+  double[] a3 = QuadrStep3.makeQuadrArr(step);
+  double[] a4 = QuadrStep4.makeQuadrArr(step);
+  double[] a5 = QuadrStep5.makeQuadrArr(step);
   double currTot = 0;
   double curr = 0;
+  int ptsPerStep = getNextN();
   res[0] = 0; // integral from A to A
-  for (int i = 1; i < size(); i++) {
-    int switchType = i % 5;
+  for (int i = 1; i < size(); i++) {               // NOTE: starts from 1
+    int switchType = (i - 1) % ptsPerStep;
     switch (switchType) {
       case 0:
-       break;
+//        curr = a2[0] * f[i-1] + a2[1] * f[i];
+        curr = a32[0] * f[i - 1] + a32[1] * f[i] + a32[2] * f[i + 1];
+        break;
       case 1:
-       break;
+        curr = a3[0] * f[i - 2] + a3[1] * f[i - 1] + a3[2] * f[i];
+        break;
       case 2:
-       break;
+        curr = a4[0] * f[i - 3] + a4[1] * f[i - 2] + a4[2] * f[i - 1] + a4[3] * f[i];
+        break;
       case 3:
-       break;
-      case 4:
-       break;
+        curr = a5[0] * f[i - 4] + a5[1] * f[i - 3] + a5[2] * f[i - 2] + a5[3] * f[i - 1] + a5[4] * f[i];
+        currTot += curr;
+        curr = 0;
+        break;
       default:
     }
-    set(i, currTot + curr);
+    res[i] = currTot + curr;
   }
-
-  return res;
+  return resF;
 }
-
 }

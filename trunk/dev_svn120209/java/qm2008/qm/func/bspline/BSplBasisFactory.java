@@ -22,7 +22,7 @@ public class BSplBasisFactory {
   public static BSplBoundBasis makeDefaultLogCR(double first, double last
     , int basisSize, int nBlocksPerKnot) {
     // determine num grid points
-    int wSize = WFQuadrLcr.MIN_GRID_SIZE;  // 5
+    int wSize = WFQuadrLcr.POINTS_N;  // 5
     int drvSize = DerivPts9.MIN_GRID_SIZE;   // 9
     int kBspl = 5;
     int nKnots = BSplBoundBasis.calcKnotsNumFromBasisSize(basisSize, kBspl); log.dbg("nKnots=", nKnots);
@@ -43,7 +43,7 @@ public class BSplBasisFactory {
   public static BSplBoundBasis makeDefaultR(double first, double last
     , int basisSize, int nBlocksPerKnot) {
     // determine num grid points
-    int wSize = WFQuadrLcr.MIN_GRID_SIZE;  // 5
+    int wSize = WFQuadrLcr.POINTS_N;  // 5
     int drvSize = DerivPts9.MIN_GRID_SIZE;   // 9
     int kBspl = 5;
     int nKnots = BSplBoundBasis.calcKnotsNumFromBasisSize(basisSize, kBspl); log.dbg("nKnots=", nKnots);

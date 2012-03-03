@@ -1,5 +1,7 @@
 package math.integral.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 10/07/2008, Time: 16:51:43 */
+import math.func.deriv.DerivPts5;
+import math.func.intrg.IntgPts5;
 import math.integral.QuadrStep4;
 import math.integral.QuadrStep5;
 import math.vec.grid.StepGrid;
@@ -11,12 +13,14 @@ import math.func.simple.FuncConst;
 import math.Calc;
 import project.workflow.task.test.FlowTest;
 
+import javax.utilx.log.Log;
 public class QuadrStepTest extends FlowTest {
+public static Log log = Log.getLog(QuadrStepTest.class);
 public QuadrStepTest() {
   super(QuadrStepTest.class);  // NOTE!!! this is needed for FlowTest
 }
 
-public void testBooleIntegral() throws Exception {
+public void testBooleIntegral() throws Exception {    log.setDbg();
   StepGrid grid = new StepGrid(0., 1., 5);
   QuadrStep5 w = new QuadrStep5(grid);
   assertEquals(0.5 * 7.0 / 45, w.get(0), Calc.EPS_16);
@@ -27,7 +31,13 @@ public void testBooleIntegral() throws Exception {
   FuncVec func = new FuncVec(grid, new FuncConst(1.0));
   assertEquals(1.0, w.calc(func), Calc.EPS_16);
 
-  FuncVec funcInt = w.calcFuncInt(func);
+  // fi(x) = Int_0^x 1 = x;
+  FuncVec fi = w.calcFuncIntOLD(func);
+  // Int_0^1 fi(x) = 0.5
+  assertEquals(0.5, w.calc(fi), Calc.EPS_16);
+  FuncVec fi2 = new DerivPts5(func);                   log.info("DerivPts5(func)=", fi2);
+  fi2 = new IntgPts5(func);                            log.info("IntgPts5(func)=", fi2);
+  assertEquals(0.5, w.calc(fi2), Calc.EPS_32);
 
   StepGrid grid4 = new StepGrid(0., 1., 4);
   QuadrStep4 w4 = new QuadrStep4(grid4);
@@ -50,12 +60,22 @@ public void testBooleIntegral() throws Exception {
   func = new FuncVec(grid, new FuncPolynom(c2));
   assertEquals(0.5, w.calc(func), Calc.EPS_16);
 
+  // fi(x) = Int_0^x r = 0.5 r^2;
+  fi = w.calcFuncIntOLD(func);
+  // Int_0^1 fi(x) = 0.5/3
+  assertEquals(0.5 / 3, w.calc(fi), Calc.EPS_16);
+
   f4 = new FuncVec(grid4, new FuncPolynom(c2));
   assertEquals(0.5, w4.calc(f4), Calc.EPS_16);
 
   double[] c3 = {0, 0, 1};
   func = new FuncVec(grid, new FuncPolynom(c3));
   assertEquals(1. / 3, w.calc(func), Calc.EPS_16);
+
+  // fi(x) = Int_0^x r^2 = 1/3 r^3;
+  fi = w.calcFuncIntOLD(func);
+  // Int_0^1 fi(x) = 1/3 1/4
+  assertEquals(1. / (3 * 4), w.calc(fi), Calc.EPS_16);
 
   f4 = new FuncVec(grid4, new FuncPolynom(c3));
   assertEquals(1. / 3, w4.calc(f4), Calc.EPS_16);
@@ -70,6 +90,23 @@ public void testBodeWeights2() {
   w = new QuadrStep5(grid);
   func = new FuncVec(grid, new FuncSin());
   assertEquals(2., w.calc(func), 2e-5);
+
+  // fi(x) = Int_0^x sin(r) = 1 - cos(x);
+  FuncVec fi = w.calcFuncIntOLD(func);
+  // Int_0^PI [1 - cos(x)] = PI
+  assertEquals(Math.PI, w.calc(fi), 1e-3);
+
+  grid = new StepGrid(0., Math.PI, 13);
+  w = new QuadrStep5(grid);
+  func = new FuncVec(grid, new FuncSin());
+  fi = w.calcFuncIntOLD(func);
+  assertEquals(Math.PI, w.calc(fi), 1e-4);
+
+  grid = new StepGrid(0., Math.PI, 21);
+  w = new QuadrStep5(grid);
+  func = new FuncVec(grid, new FuncSin());
+  fi = w.calcFuncIntOLD(func);
+  assertEquals(Math.PI, w.calc(fi), 1e-5);
 
   StepGrid grid4 = new StepGrid(0., Math.PI, 10);
   QuadrStep4 w4 = new QuadrStep4(grid4);

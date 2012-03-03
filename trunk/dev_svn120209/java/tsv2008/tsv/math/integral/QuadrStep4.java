@@ -10,7 +10,7 @@ public class QuadrStep4 extends QuadrStep {
 public static Log log = Log.getLog(QuadrStep4.class);
 public static final int MIN_GRID_SIZE = 4;
 public QuadrStep4(StepGrid grid) {
-  super(grid);
+  super(grid, 4);
   if (isValid(size()))   {
     loadWeights(grid.getGridStep());
   }
@@ -19,10 +19,10 @@ public QuadrStep4(StepGrid grid) {
   }
 }
 public Vec makeQuadrFuncInt(double step) {
-  double a[] = makeQuadrFuncArr(step);
+  double a[] = makeQuadrArr(step);
   return new Vec(a);
 }
-public static double[] makeQuadrFuncArr(double step) {
+public static double[] makeQuadrArr(double step) {
   double tmp = 3.0 * step / 8.0;
   double a[] = {tmp, tmp * 3, tmp * 3, tmp};
   return a;
@@ -35,15 +35,5 @@ private void loadWeights(double step) {
   }
   arr[0] *= 0.5;
   arr[size() - 1] *= 0.5;
-}
-private boolean isValid(int size) {
-  if ((size - 1) % 3 != 0) {
-    int n = (size - 1) / 3;
-    String error = "if ((size - 1) % 3 != 0); "
-      + ((size - 1) % 3) + "!=0; "
-      + "nearest sizes = " + (3 * n + 1) + " or " + (3 * (n + 1) + 1);
-    throw new IllegalArgumentException(log.error(error));
-  }
-  return true;
 }
 }
