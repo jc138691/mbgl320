@@ -17,6 +17,8 @@ import math.complex.CmplxGamma;
 import math.func.Func;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
+import math.func.deriv.test.DerivPts5Test;
+import math.func.deriv.test.DerivPts9Test;
 import math.func.simple.FuncPowInt;
 import math.integral.test.QuadrStepTest;
 import math.interpol.test.PolynomInterpolTest;
@@ -91,6 +93,9 @@ protected void potScattTestOk() {
     if (!new Cmplx2F1().ok()) return;
     if (!new FastLoopTest().ok()) return;
     if (!new InterpolCubeTest().ok()) return;
+    if (!new DerivPts5Test().ok()) return;
+    if (!new DerivPts9Test().ok()) return;
+
 
     StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);

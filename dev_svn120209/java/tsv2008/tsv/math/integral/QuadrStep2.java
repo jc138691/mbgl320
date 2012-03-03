@@ -10,7 +10,7 @@ public class QuadrStep2 extends QuadrStep {
 public static Log log = Log.getLog(QuadrStep2.class);
 public static final int MIN_GRID_SIZE = 2;
 public QuadrStep2(StepGrid grid) {
-  super(grid);
+  super(grid, 2);
   if (isValid(size()))   {
     loadWeights(grid.getGridStep());
   }
@@ -19,10 +19,10 @@ public QuadrStep2(StepGrid grid) {
   }
 }
 public Vec makeQuadrFuncInt(double step) {
-  double a[] = makeQuadrFuncArr(step);
+  double a[] = makeQuadrArr(step);
   return new Vec(a);
 }
-public static double[] makeQuadrFuncArr(double step) {
+public static double[] makeQuadrArr(double step) {
   double tmp = step * 0.5;
   double a[] = {tmp, tmp};
   return a;
@@ -35,7 +35,7 @@ private void loadWeights(double step) {
   arr[0] *= 0.5;
   arr[size() - 1] *= 0.5;
 }
-private boolean isValid(int size) {
+public boolean isValid(int size) {
   return true;
 }
 }
