@@ -385,7 +385,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/interpol/test/PolynomInterpolTest.java" line="19" class="math.interpol.test.PolynomInterpolTest" package="math.interpol.test">
+      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts5_TODO.java" line="33" class="math.func.intrg.IntgPts5_TODO" package="math.func.intrg">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -398,7 +398,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrStepTest.java" line="65" class="math.integral.test.QuadrStepTest" package="math.integral.test">
+      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts5_TODO.java" line="47" class="math.func.intrg.IntgPts5_TODO" package="math.func.intrg">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -411,33 +411,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrStepTest.java" line="37" class="math.integral.test.QuadrStepTest" package="math.integral.test">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts5.java" line="27" class="math.func.intrg.IntgPts5" package="math.func.intrg">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts5.java" line="29" class="math.func.intrg.IntgPts5" package="math.func.intrg">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/EaMethodE1v2b.java" line="51" class="papers.hy_swave.new_method.EaMethodE1v2b" package="papers.hy_swave.new_method">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -498,8 +472,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -510,10 +484,37 @@
     <splitter split-orientation="horizontal" split-proportion="0.47867563">
       <split-first>
         <leaf>
-          <file leaf-file-name="QuadrStep5.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep5.java">
+          <file leaf-file-name="Func.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/Func.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="59" column="0" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0">
+                <state line="4" column="17" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EaMethodE1v2_ok.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/EaMethodE1v2_ok.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="99" column="44" selection-start="4098" selection-end="4098" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EaMethodE1v3.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/EaMethodE1v3.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="41" column="37" selection-start="1515" selection-end="1515" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EaMethodE1v2b.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/EaMethodE1v2b.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="48" column="75" selection-start="1855" selection-end="1855" vertical-scroll-proportion="0.2625571">
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -524,83 +525,25 @@
           <file leaf-file-name="QuadrStepTest.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrStepTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="38" column="0" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.0">
+                <state line="56" column="0" selection-start="2337" selection-end="2337" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DerivPts5.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts5.java">
+          <file leaf-file-name="WFQuadrLcr.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/log_cr/WFQuadrLcr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="21" column="18" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Calc.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/Calc.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="19" column="27" selection-start="727" selection-end="727" vertical-scroll-proportion="0.0">
+                <state line="67" column="19" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IntgPts5.java" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts5.java">
+          <file leaf-file-name="PotScattEA.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/PotScattEA.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="31" column="0" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.6064442">
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="QRDecomposition.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/QRDecomposition.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="96" column="18" selection-start="2599" selection-end="2599" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Jm2010PotScattLcr.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScattLcr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="67" column="26" selection-start="2085" selection-end="2085" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="HMtrx.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="19" column="20" selection-start="455" selection-end="455" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EigenSymm.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/jamax/EigenSymm.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="11" column="7" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EigenvalueDecomposition.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/EigenvalueDecomposition.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="760" column="9" selection-start="22281" selection-end="22281" vertical-scroll-proportion="0.0">
+                <state line="86" column="0" selection-start="2875" selection-end="2875" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -610,19 +553,19 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="WFQuadrLcr.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/log_cr/WFQuadrLcr.java">
+          <file leaf-file-name="QuadrStep5.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep5.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="31" column="3" selection-start="776" selection-end="776" vertical-scroll-proportion="0.0">
+                <state line="41" column="15" selection-start="1204" selection-end="1204" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DerivPts5Test.java" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/test/DerivPts5Test.java">
+          <file leaf-file-name="PolynomInterpolTest.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/interpol/test/PolynomInterpolTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="19" column="0" selection-start="546" selection-end="607" vertical-scroll-proportion="0.16831683">
+                <state line="19" column="0" selection-start="704" selection-end="704" vertical-scroll-proportion="0.22442244">
                   <folding />
                 </state>
               </provider>
@@ -649,22 +592,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/PotScattEA.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/BooleQuadr.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/Quadr.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/Calc.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/interpol/test/PolynomInterpolTest.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep2.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep4.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep3.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/test/DerivPts5Test.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/test/DerivPts9Test.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010CommonLcr.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep5.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrStepTest.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts5.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/func/bspline/BSplBasisFactory.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/simple/FuncCos.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts5.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts5_TODO.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts5.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrStepTest.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/PotScattEA.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/EaMethodE1v3.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/EaMethodE1v2_ok.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/EaMethodE1v2b.java" />
       </list>
     </option>
   </component>
@@ -785,142 +728,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tsv2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tsv2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="math" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tsv2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="math" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="func" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tsv2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="math" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="func" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intrg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="papers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="papers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jm2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="papers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hy_swave" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1067,6 +876,108 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="papers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="papers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="papers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hy_swave" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="papers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hy_swave" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_method" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1084,9 +995,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -1106,29 +1017,7 @@
       <recent name="papers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.QuadrStepTest">
-    <configuration default="false" name="PotScattTest.testFirstBornLcr" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="qm2008" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="papers.greens" />
-      <option name="MAIN_CLASS_NAME" value="papers.greens.PotScattTest" />
-      <option name="METHOD_NAME" value="testFirstBornLcr" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.PotScattEA">
     <configuration default="false" name="PolynomInterpolTest" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="tsv2008" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1221,6 +1110,28 @@
       <patterns />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="64955" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="PotScattEA" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="papers.hy_swave.new_method.PotScattEA" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="qm2008" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="58049" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
@@ -1356,11 +1267,11 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.RunOlgaHelp" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.HySWaveBasisHy" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.PotScattTest.testFirstBornLcr" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.PolynomInterpolTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.DerivPts5Test" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.DerivPts9Test" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.QuadrStepTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PolynomInterpolTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DerivPts5Test" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.DerivPts9Test" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.QuadrStepTest" />
+      <item index="6" class="java.lang.String" itemvalue="Application.PotScattEA" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -1444,23 +1355,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1848" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1848" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41500765" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2469537" sideWeight="0.6340378" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29530916" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5074627" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36034116" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22921109" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4520256" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24757281" sideWeight="0.5926748" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.65072304" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39946738" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18350169" sideWeight="0.49253732" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18350169" sideWeight="0.7100213" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4498934" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28997868" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
@@ -1474,6 +1384,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289941" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29530916" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1604,118 +1515,116 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScattLcr.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="26" selection-start="2085" selection-end="2085" vertical-scroll-proportion="0.0">
+        <state line="18" column="9" selection-start="365" selection-end="365" vertical-scroll-proportion="0.14726028">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/test/DerivPts9Test.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/FuncVec.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="13" selection-start="538" selection-end="538" vertical-scroll-proportion="0.1173763">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/log_cr/WFQuadrLcr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="3" selection-start="776" selection-end="776" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/Calc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="27" selection-start="727" selection-end="727" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/Mtrx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="25" selection-start="878" selection-end="878" vertical-scroll-proportion="0.17123288">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/LUDecomposition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="1434" selection-end="1434" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/EigenvalueDecomposition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="760" column="9" selection-start="22281" selection-end="22281" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/test/DerivPts5Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="546" selection-end="607" vertical-scroll-proportion="0.16831683">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="20" selection-start="455" selection-end="455" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/jamax/EigenSymm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="7" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/Matrix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="840" column="0" selection-start="21554" selection-end="21554" vertical-scroll-proportion="0.15074798">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/QRDecomposition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="18" selection-start="2599" selection-end="2599" vertical-scroll-proportion="0.0">
+        <state line="18" column="6" selection-start="488" selection-end="488" vertical-scroll-proportion="0.1650165">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts5.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="18" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
+        <state line="24" column="39" selection-start="673" selection-end="673" vertical-scroll-proportion="0.3630363">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/Mtrx.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="156" selection-end="156" vertical-scroll-proportion="0.140625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts5_TODO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="24" selection-start="1370" selection-end="1370" vertical-scroll-proportion="0.53683037">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrStepTest.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/Func.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.0">
+        <state line="4" column="17" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts5.java">
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScattLcr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1066" selection-end="1066" vertical-scroll-proportion="0.6064442">
+        <state line="66" column="22" selection-start="2039" selection-end="2039" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/Quadr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="448" selection-end="448" vertical-scroll-proportion="0.29109588">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/log_cr/WFQuadrLcr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="19" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep5.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="15" selection-start="1204" selection-end="1204" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/interpol/test/PolynomInterpolTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="704" selection-end="704" vertical-scroll-proportion="0.22442244">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/EaMethodE1v3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="37" selection-start="1515" selection-end="1515" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/PotScattEA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="0" selection-start="2875" selection-end="2875" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrStepTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="0" selection-start="2337" selection-end="2337" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/EaMethodE1v2_ok.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="44" selection-start="4098" selection-end="4098" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/new_method/EaMethodE1v2b.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="75" selection-start="1855" selection-end="1855" vertical-scroll-proportion="0.2625571">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

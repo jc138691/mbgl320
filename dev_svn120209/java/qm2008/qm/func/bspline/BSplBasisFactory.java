@@ -2,6 +2,7 @@ package func.bspline;
 import atom.wf.bspline.BSplBoundBasis;
 import atom.wf.log_cr.WFQuadrLcr;
 import atom.wf.WFQuadrR;
+import math.integral.QuadrStep5;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
 import math.func.deriv.DerivPts9;
@@ -22,7 +23,7 @@ public class BSplBasisFactory {
   public static BSplBoundBasis makeDefaultLogCR(double first, double last
     , int basisSize, int nBlocksPerKnot) {
     // determine num grid points
-    int wSize = WFQuadrLcr.POINTS_N;  // 5
+    int wSize = QuadrStep5.PTS_N;  // 5
     int drvSize = DerivPts9.MIN_GRID_SIZE;   // 9
     int kBspl = 5;
     int nKnots = BSplBoundBasis.calcKnotsNumFromBasisSize(basisSize, kBspl); log.dbg("nKnots=", nKnots);
@@ -43,7 +44,7 @@ public class BSplBasisFactory {
   public static BSplBoundBasis makeDefaultR(double first, double last
     , int basisSize, int nBlocksPerKnot) {
     // determine num grid points
-    int wSize = WFQuadrLcr.POINTS_N;  // 5
+    int wSize = QuadrStep5.PTS_N;  // 5
     int drvSize = DerivPts9.MIN_GRID_SIZE;   // 9
     int kBspl = 5;
     int nKnots = BSplBoundBasis.calcKnotsNumFromBasisSize(basisSize, kBspl); log.dbg("nKnots=", nKnots);

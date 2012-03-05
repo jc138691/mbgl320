@@ -41,7 +41,7 @@ public ScattRes calcSysEngs() {
   for (int i = 0; i < engs.size(); i++) {              log.dbg("i = ", i);
     double scattE = engs.get(i);                           log.dbg("E = ", scattE);
     mCrss.set(i, IDX_ENRGY, scattE);
-    FuncArr psi = calcPsi(scattE, potH);
+    FuncArr psi = calcPsi(scattE, i, potH);
     Dble2 sc = calcSC(psi, scattE, i);
     double R = -sc.a / sc.b;                               log.dbg("R = ", R);
     Cmplx S = Scatt.calcSFromR(R);                                          log.dbg("S = ", S);
@@ -79,7 +79,7 @@ private Dble2 calcSC(FuncArr psi, double scattE, int engIdx) {
   res.b = calcHE(sysPsi, potH, psiC, scattE);    log.dbg("C_i=", res.b);
   return res;
 }
-protected FuncArr calcPsi(double scattE, PotHMtrx potH) {
+protected FuncArr calcPsi(double scattE, int engIdx_NOT_USED_HERE, PotHMtrx potH) {
   int L = 0;
   double momP = Scatt.calcMomFromE(scattE);
   WFQuadrLcr quadr = (WFQuadrLcr)potH.getQuadr();    // CASTING!!! NOT GOOD
@@ -97,7 +97,7 @@ protected FuncArr calcPsi(double scattE, PotHMtrx potH) {
   FuncVec resC = res.get(IDX_P_IRR);          log.dbg("resC=", resC);
 
   for (int i = 0; i < basis.size(); i++) {
-    FuncVec fi = basis.getFunc(i);            log.dbg("fi=", fi);
+    FuncVec fi = basis.getFunc(i);          log.dbg("fi=", fi);
     double dS = quadr.calcInt(sinL, fi);    log.dbg("dS=", dS);
     double dC = quadr.calcInt(cosL, fi);    log.dbg("dC=", dC);
     resS.addMultSafe(-dS, fi);              log.dbg("resS=", resS);
