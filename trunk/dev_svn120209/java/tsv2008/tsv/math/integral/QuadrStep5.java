@@ -10,6 +10,7 @@ import javax.utilx.log.Log;
  * Copyright dmitry.konovalov@jcu.edu.au Date: 10/07/2008, Time: 16:42:54
  */
 public class QuadrStep5 extends QuadrStep { // mistakenly known as Bode
+public static final int PTS_N = 5;
 public static Log log = Log.getLog(QuadrStep5.class);
 private Mtrx mIntr;
 public QuadrStep5(StepGrid grid) {
@@ -38,7 +39,7 @@ private void loadWeights(double step) {
   arr[0] *= 0.5;
   arr[size() - 1] *= 0.5;
 }
-public FuncVec calcFuncIntOLD(Vec funcV) { // TODO: remove; this was a wrong way
+public FuncVec calcFuncIntOK(Vec funcV) { // TODO: remove; this was a wrong way
   double[] f = funcV.getArr();
   FuncVec resF = new FuncVec(getX());
   double[] res = resF.getArr();

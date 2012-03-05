@@ -76,7 +76,8 @@ public void calc(int newN) {
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);             log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
   Vec sysEngs = sysH.getEigVal();            log.dbg("eigVal=", new VecDbgView(sysEngs));
-  EaMethodE1v2_ok method = new EaMethodE1v2_ok(calcOpt);
+  EaMethodE1v2b method = new EaMethodE1v2b(calcOpt);
+//  EaMethodE1v2_ok method = new EaMethodE1v2_ok(calcOpt);
 //  EaMethodE1v3 method = new EaMethodE1v3(calcOpt);
 //  method.setPot(pot);
   method.setSysEngs(sysEngs);
