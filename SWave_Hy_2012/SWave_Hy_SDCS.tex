@@ -69,13 +69,13 @@ could be described by the time-independent radial Schr\"odinger equation
 where $E=k^2/2$ and $k$ are the incident electron energy and momentum, respectively.
 Let $\psi_1$ and $\psi_2$ be real regular and irregular solutions for $H_0$,
 \beq \barr{l}
-(H_0-E) | \psi_1 \rangle =0,  \ \ \ \psi_1(r=0) = 0,\\
-(H_0-E) | \psi_2 \rangle =0,  \ \ \ \psi_2(r=0) \neq 0,\\
+(H_0-E) | \psi_k \rangle =0,  \ \ \ \psi_k(r=0) = 0,\\
+(H_0-E) | \chi_k \rangle =0,  \ \ \ \chi_k(r=0) \neq 0,\\
 \earr \label{H_0_E_psi}\eeq
 then for the short-range potential $V(r)$,
 \beq \barr{l}
 H_0 = \hat{K},\ \ \ \hat{K} = -(1/2) d^2/dr^2,\\
-\psi_1(r) = \sin(kr), \ \ \ \psi_2(r) = \cos(kr).
+\psi_k(r) = \sin(kr), \ \ \ \chi_k(r) = \cos(kr).
 \earr \label{K} \eeq
 If present, the long-range Coulomb potential $V_c=-Z/r$ is included into $H_0$
 and $\psi_1$ and $\psi_2$ become the corresponding Coulomb wave functions satisfying Eq.~(\ref{H_0_E_psi})
@@ -100,7 +100,7 @@ of which the first $N$ basis functions are used to diagonalize $H$ arriving at
 Then $\Psi_E(r)$ is approximated at the system's eigenvalues $\{E_i\}_{i=1}^{N}$ as
 \cite{Harris67}
 \beq \barr{l}
-\Psi_{E_i}(r) = a_i \Psi_i(r)  + \phi_1(r)  + K_0 \phi_2(r),\\
+\Psi_{E_i}(r) = a_i \Psi_i(r)  + [\hat{\psi}_{k_i}(r)  + K_0 \hat{\chi}_{k_i}(r)],\\
 K_0 = \tan{\delta_0},
 \earr \label{Psi_EES} \eeq
 where the {\em standing}-wave (rather than {\em incoming}- or {\em outgoing}-wave) boundary conditions are satisfied
@@ -130,8 +130,8 @@ with the standing-wave boundary conditions at the corresponding eigenvalues $\{E
 
 Accepting the conjecture, it immediately follows that the {\em inner} functional space must be removed from
 \beq \barr{l}
-\hat{\psi}_1(r) = (1-\hat{P}_N) \phi_1(r),\\
-\hat{\psi}_2(r) = (1-\hat{P}_N) \phi_2(r),
+\phi_1(r) = (1-\hat{P}_N) \psi_1(r),\\
+\phi_2(r) = (1-\hat{P}_N) \hat{\psi}_2(r),
 \earr \eeq
 \beq
 \hat{P}_N = \sum_{p=0}^{N-1} | \xi_p \rangle \langle \xi_p |.
@@ -167,8 +167,6 @@ g(r) \approx b \int_0^r dr'\ \psi_1(r') V(r') \Psi_i(r'), \\
 \earr \eeq
 
 \beq \barr{l}
-\earr \eeq
-\beq \barr{l}
 K_0 = b \langle \psi_1 | V | \Psi_E \rangle =\\
 \ \ = b \int_0^\infty  dr\ \psi_1(r) V(r) \Psi_E(r),
 \earr \eeq
@@ -180,14 +178,10 @@ The unknown expansion coefficients in Eqs.~(\ref{Psi_JM}) and (\ref{Psi_KB})
 are found by satisfying the system's  Schr\"odinger Eq.~(\ref{H_E_Psi_E})
 separately within the inner and outer functional spaces
 arriving at the two set of conditions
-\beq
-\langle\Psi_i|H-E_i|\Psi_{E_i}\rangle=0,
-\eeq
-The first set of conditions are solved for $a_i$ and $b_i$
 \beq \barr{l}
-S_i c_0 + C_i s_0 = 0, \ \ \
+\langle\Psi_i|H-E_i|\Psi_{E_i}\rangle=0,\\
 R_0 = - S_i / C_i, \\
-S_i = \langle\Psi_i|H-E_i|  \hat{\psi}_1 \rangle, \ \
+S_i = \langle\Psi_i|H-E_i|  \hat{\psi}_1 \rangle, \\
 C_i = \langle\Psi_i|H-E_i|  \hat{\psi}_2 \rangle.
 \earr \eeq
 
@@ -198,6 +192,30 @@ C_i = \langle\Psi_i|H-E_i|  \hat{\psi}_2 \rangle.
 
 \subsection{Coulomb-tail potential scattering}
 
+\subsection{Multichannel scattering}
+\beq \barr{ll}
+\langle \Phi_\gamma|H_t|\Phi_{\gamma'}\rangle=e_\gamma \delta_{\gamma\gamma'}, \ \
+& \langle \Phi_\gamma|\Phi_{\gamma'}\rangle=\delta_{\gamma\gamma'},\\
+\earr \label{psi_H_psi} \eeq
+\beq \barr{ll}
+\langle\Psi_i^\Gamma|H|\Psi_j^\Gamma\rangle=E_i\delta_{ij}, \ \
+& \langle\Psi_i^\Gamma|\Psi_j^\Gamma\rangle=\delta_{ij},\\
+\earr \label{Psi_H_Psi_JM} \eeq
+
+
+\beq \barr{l}
+\Psi_{E_i}^{\Gamma}(r) = a_i \Psi_i^\Gamma(r) + \\  
+\ \ \ + \sum_{\gamma} \Phi_{\gamma} [ \hat{\psi}_{k_\gamma}(r)  
+ +  K_{\gamma \gamma_0}  \hat{\chi}_{k_\gamma}(r)],
+\earr \label{Psi_EES} \eeq
+
+
+\beq \barr{l}
+\langle\Psi_i|H-E_i|\Psi_{E_i}\rangle=0,\\
+R_{\gamma \gamma} = - S_i / C_i, \\
+S_i = \langle\Psi_i^{\Gamma}|H-E_i|   \Phi_{\gamma} \hat{\psi}_1 \rangle, \\
+C_i = \langle\Psi_i^{\Gamma}|H-E_i|  \hat{\psi}_2 \rangle.
+\earr \eeq
 
 
 \section{CONCLUSIONS}
