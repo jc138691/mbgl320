@@ -1,9 +1,6 @@
 package papers.hy_swave.new_method;
-import atom.energy.part_wave.PotH;
 import atom.energy.part_wave.PotHMtrx;
 import atom.wf.WFQuadr;
-import atom.wf.log_cr.WFQuadrLcr;
-import flanagan.complex.Cmplx;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
@@ -12,19 +9,15 @@ import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.jm.ScattRes;
-import scatt.partial.wf.CosRegPWaveLcr;
-import scatt.partial.wf.SinPWaveLcr;
 
 import javax.utilx.log.Log;
-import javax.utilx.pair.Dble2;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 29/02/12, 11:49 AM
  */
-public class EaMethodE1v3 extends EaMethodE1v2_ok {   // E1 - one electron
-public static Log log = Log.getLog(EaMethodE1v3.class);
-public EaMethodE1v3(CalcOptE1 calcOpt) {
+public class EaMethodE1v3_idea extends EaMethodE1v2_ok {   // E1 - one electron
+public static Log log = Log.getLog(EaMethodE1v3_idea.class);
+public EaMethodE1v3_idea(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScattRes calcSysEngs() {
@@ -86,11 +79,12 @@ private double calcF(double a, FuncArr psi, double scattE, int engIdx) {
   return res;
 }
 private double calcBornR(FuncArr psi, double scattE) {
+  double momP = Scatt.calcMomFromE(scattE);
   FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
-  FuncVec psiReg = psi.get(IDX_REG);          log.dbg("resS=", psiReg);
-  double sysA = calcV(psiReg, potH, psiReg);    log.dbg("sysA=", sysA);
+  FuncVec psi1 = psi.get(IDX_REG);          log.dbg("resS=", psi1);
+  double sysA = calcV(psi1, potH, psi1);    log.dbg("sysA=", sysA);
 //  double res = - sysA / (scattE * 4.0 * Math.PI);    log.dbg("res=", res);
-  double res = - Math.PI * sysA / (scattE);    log.dbg("res=", res);
+  double res = -2 * sysA / momP;    log.dbg("res=", res);
   return res;
 }
 }
