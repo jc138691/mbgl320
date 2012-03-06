@@ -48,8 +48,8 @@ public void setUp() {
 public void runJob() {
   LAMBDA = 1.2;
   LCR_FIRST = -5;
-  LCR_N = 701;
-  R_LAST = 200;
+  LCR_N = 1501;
+  R_LAST = 150;
 //  LCR_N = 301;
 //  R_LAST = 150;
   ENG_FIRST = 0.1f;
@@ -76,9 +76,9 @@ public void calc(int newN) {
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);             log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
   Vec sysEngs = sysH.getEigVal();            log.dbg("eigVal=", new VecDbgView(sysEngs));
-  EaMethodE1v2b method = new EaMethodE1v2b(calcOpt);
-//  EaMethodE1v2_ok method = new EaMethodE1v2_ok(calcOpt);
-//  EaMethodE1v3 method = new EaMethodE1v3(calcOpt);
+//  EaMethodE1v2_idea method = new EaMethodE1v2_idea(calcOpt);
+  EaMethodE1v2_ok method = new EaMethodE1v2_ok(calcOpt);
+//  EaMethodE1v3_idea method = new EaMethodE1v3_idea(calcOpt);
 //  method.setPot(pot);
   method.setSysEngs(sysEngs);
   method.setPotH(sysH);
