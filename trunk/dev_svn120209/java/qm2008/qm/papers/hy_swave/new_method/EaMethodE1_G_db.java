@@ -14,15 +14,15 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 5/03/12, 4:04 PM
  */
-public class EaMethodE1v2_idea extends EaMethodE1v2_ok {   // E1 - one electron
-public static Log log = Log.getLog(EaMethodE1v2_idea.class);
-public EaMethodE1v2_idea(CalcOptE1 calcOpt) {
+public class EaMethodE1_G_db extends EaMethodE1_ok {   // E1 - one electron
+public static Log log = Log.getLog(EaMethodE1_G_db.class);
+public EaMethodE1_G_db(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-protected FuncArr calcPsi(double scattE, int engIdx, PotHMtrx potH) {  log.setDbg();
+protected FuncArr calcPsi(double scattE, int engIdx) {  log.setDbg();
   int L = 0;
   double momP = Scatt.calcMomFromE(scattE);
-  WFQuadrLcr quadr = (WFQuadrLcr)potH.getQuadr();    // CASTING!!! NOT GOOD
+  WFQuadrLcr quadr = (WFQuadrLcr) potH.getQuadr();    // CASTING!!! NOT GOOD
   IFuncArr basis = potH.getBasis();
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);

@@ -42,7 +42,7 @@ public void setUp() {
   log.info("log.info(PotScattEA)");
 //    JmMethodE1.log.setDbg();
   PBornDirScattTest.log.setDbg();
-  EaMethodE1v1_wrong.log.setDbg();
+  EaMethodE1_all_engs_wrong.log.setDbg();
   log.setDbg();
 }
 public void runJob() {
@@ -76,9 +76,9 @@ public void calc(int newN) {
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);             log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
   Vec sysEngs = sysH.getEigVal();            log.dbg("eigVal=", new VecDbgView(sysEngs));
-//  EaMethodE1v2_idea method = new EaMethodE1v2_idea(calcOpt);
-  EaMethodE1v2_ok method = new EaMethodE1v2_ok(calcOpt);
-//  EaMethodE1v3_idea method = new EaMethodE1v3_idea(calcOpt);
+//  EaMethodE1_G_db method = new EaMethodE1_G_db(calcOpt);
+  EaMethodE1_ok method = new EaMethodE1_ok(calcOpt);
+//  EaMethodE1_FBorn_db method = new EaMethodE1_FBorn_db(calcOpt);
 //  method.setPot(pot);
   method.setSysEngs(sysEngs);
   method.setPotH(sysH);

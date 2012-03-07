@@ -22,13 +22,13 @@ import javax.utilx.pair.Dble2;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 23/02/12, 11:18 AM
  */
-public class EaMethodE1v1_wrong extends ScattMethodBaseE1 {   // E1 - one electron
-public static Log log = Log.getLog(EaMethodE1v1_wrong.class);
+public class EaMethodE1_all_engs_wrong extends ScattMethodBaseE1 {   // E1 - one electron
+public static Log log = Log.getLog(EaMethodE1_all_engs_wrong.class);
 private static final int SC_N_ROWS = 3;
 private static final int IDX_S = 0;
 private static final int IDX_C = 1;
 private static final int IDX_D = 2;
-public EaMethodE1v1_wrong(CalcOptE1 calcOpt) {
+public EaMethodE1_all_engs_wrong(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScattRes calc(Vec engs) {
