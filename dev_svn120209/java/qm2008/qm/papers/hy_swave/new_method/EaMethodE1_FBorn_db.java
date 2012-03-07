@@ -15,9 +15,9 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 29/02/12, 11:49 AM
  */
-public class EaMethodE1v3_idea extends EaMethodE1v2_ok {   // E1 - one electron
-public static Log log = Log.getLog(EaMethodE1v3_idea.class);
-public EaMethodE1v3_idea(CalcOptE1 calcOpt) {
+public class EaMethodE1_FBorn_db extends EaMethodE1_ok {   // E1 - one electron
+public static Log log = Log.getLog(EaMethodE1_FBorn_db.class);
+public EaMethodE1_FBorn_db(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScattRes calcSysEngs() {
@@ -32,7 +32,7 @@ public ScattRes calcSysEngs() {
     double scattE = engs.get(i);                           log.dbg("E = ", scattE);
     double momP = Scatt.calcMomFromE(scattE);
     mCrss.set(i, IDX_ENRGY, scattE);
-    FuncArr psi = calcPsi(scattE, i, potH);
+    FuncArr psi = calcPsi(scattE, i);
     double a = calcA(psi, scattE, i);
 //    double f = calcF(a, psi, scattE, i);
 //    double f = calcBornF(psi, scattE);
@@ -50,12 +50,6 @@ public ScattRes calcSysEngs() {
 public ScattRes calc(Vec engs) {
   throw new IllegalArgumentException(log.error("use calcSysEngs()"));
 }
-private double calcV(FuncVec wf, PotHMtrx potH, FuncVec wf2) {
-  FuncVec pot = potH.getPot();
-  WFQuadr quadr = potH.getQuadr();
-  double res = quadr.calcInt(wf, pot, wf2);
-  return res;
-}
 private double calcA(FuncArr psi, double scattE, int engIdx) {
   FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psiS = psi.get(IDX_P_REG);          log.dbg("resS=", psiS);
@@ -71,10 +65,10 @@ private double calcF(double a, FuncArr psi, double scattE, int engIdx) {
   FuncVec psiS = psi.get(IDX_P_REG);          log.dbg("resS=", psiS);
   FuncVec sysPsi = sysWFuncs.get(engIdx);            log.dbg("sysPsi=", sysPsi);
 
-  double sysA = calcV(psiReg, potH, sysPsi);    log.dbg("sysA=", sysA);
+  double sysA = calcV(psiReg, sysPsi);    log.dbg("sysA=", sysA);
   sysA *= a;                                    log.dbg("sysA * a=", sysA);
 
-  double sysB = calcV(psiReg, potH, psiS);    log.dbg("sysB=", sysB);
+  double sysB = calcV(psiReg, psiS);    log.dbg("sysB=", sysB);
   double res = - (sysA + sysB) / scattE;    log.dbg("res=", res);
   return res;
 }
@@ -82,7 +76,7 @@ private double calcBornR(FuncArr psi, double scattE) {
   double momP = Scatt.calcMomFromE(scattE);
   FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psi1 = psi.get(IDX_REG);          log.dbg("resS=", psi1);
-  double sysA = calcV(psi1, potH, psi1);    log.dbg("sysA=", sysA);
+  double sysA = calcV(psi1, psi1);    log.dbg("sysA=", sysA);
 //  double res = - sysA / (scattE * 4.0 * Math.PI);    log.dbg("res=", res);
   double res = -2 * sysA / momP;    log.dbg("res=", res);
   return res;
