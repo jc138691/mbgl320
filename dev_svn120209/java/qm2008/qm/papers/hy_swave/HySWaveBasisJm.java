@@ -31,12 +31,12 @@ public class HySWaveBasisJm extends HyLikeSWaveJm {
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
     MODEL_NAME = "HySWaveBasisJm";    MODEL_DIR = MODEL_NAME;
     CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about times 2.5
-    LAMBDA = 2; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
+    LAMBDA = 1.5; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 
     // Note: run one at a time as only one set of result files is produced
-//    setupEngExcite();
+    setupEngExcite();
 //    setupResonances_n2_S1();
-    setupResonances_n2_n3_S1();
+//    setupResonances_n2_n3_S1();
 //    setupResonances_n2_n3_S3();
 //    setupEngTICS();
 //    setupEngSDCS();
@@ -50,11 +50,18 @@ public class HySWaveBasisJm extends HyLikeSWaveJm {
   }
   public void runJob() {
       // upto N=40
-    int currNt = 40;
-    int currN = 41;
+    int currNt = 20;
+    int currN = 21;
     LCR_FIRST = -5;
     LCR_N = 701;
-    R_LAST = 200;
+    R_LAST = 150;
+
+//      // upto N=40
+//    int currNt = 40;
+//    int currN = 41;
+//    LCR_FIRST = -5;
+//    LCR_N = 701;
+//    R_LAST = 200;
 
 //    // Nt= 50
 //    currN = 51;
@@ -71,10 +78,10 @@ public class HySWaveBasisJm extends HyLikeSWaveJm {
     KEEP_CLOSED_N = 10;
 
     SPIN = Spin.SINGLET;
-    calcJm(currN, currNt);
+    calc(currN, currNt);
 
     SPIN = Spin.TRIPLET;
-    calcJm(currN, currNt);
+    calc(currN, currNt);
   }
   public void runJob_OLD() {
     // upto N=40
@@ -121,10 +128,10 @@ public class HySWaveBasisJm extends HyLikeSWaveJm {
     R_LAST = 250;
 
     SPIN = Spin.SINGLET;
-    calcJm(currN, currNt);
+    calc(currN, currNt);
 
     SPIN = Spin.TRIPLET;
-    calcJm(currN, currNt);
+    calc(currN, currNt);
   }
 
   public void setupResonances_n2_S1() {

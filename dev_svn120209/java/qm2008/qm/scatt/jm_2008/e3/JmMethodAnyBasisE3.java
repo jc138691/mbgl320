@@ -22,13 +22,15 @@ public JmMethodAnyBasisE3(CalcOptE1 calcOpt) {
 }
 //[system i][target gamma][overlap D]
 protected double calcC(int i, int g, int m) { // needed in calcX()
-  double[][] sV = sysConfH.getEigArr(); // systemEigVec
+  double[][] sV = sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = sysConfH.getBasis();     // sBasis
+
   ChConf conf = trgtE3.getChConf(g);
   int gt = conf.fromIdx; // gamma in target H
   ConfHMtrx tH = conf.hMtrx;
   double[][] tV = tH.getEigArr();  // tEigVec
   ConfArr tB = tH.getBasis(); // tBasis
+
   double res = 0;
   for (int b = 0; b < tB.size(); b++) {  // b - for basis index
     Conf tConf = tB.get(b);

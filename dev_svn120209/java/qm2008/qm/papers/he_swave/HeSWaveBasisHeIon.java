@@ -16,7 +16,7 @@ import math.vec.VecDbgView;
 import qm_station.QMSProject;
 import scatt.jm_2008.e3.JmMethodAnyBasisE3;
 import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.target.JmTrgtE3;
+import scatt.jm_2008.jm.target.ScattTrgtE3;
 import scatt.jm_2008.jm.theory.JmD;
 
 import javax.iox.FileX;
@@ -89,13 +89,13 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     IGNORE_BUG_PoetHeAtom = true;
 
     SPIN = Spin.ELECTRON;
-    calcJm(currN, currNt);
-//    calcJm(12, 11);
-//    calcJm(13, 12);
-//    calcJm(14, 13);
+    calc(currN, currNt);
+//    calc(12, 11);
+//    calc(13, 12);
+//    calc(14, 13);
   }
 
-  public void calcJm(int newN, int newNt) {
+  public void calc(int newN, int newNt) {
     N = newN;
     Nt = newNt;
     initProject();
@@ -126,7 +126,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     orthonN = null; // making sure nobody uses old ref
     trgtBasisN.copyFrom(trgtBasisNt, 0, trgtBasisNt.size());
 
-    JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
+    ScattTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
@@ -157,9 +157,9 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     else {
       res = method.calcEngGrid();                  log.dbg("res=", res);
     }
-    setupJmRes(res, method);
+    setupScattRes(res, method);
 
-//    JmResonancesE2.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
+//    ScattResonE2.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
     res.writeToFiles();
   }
 

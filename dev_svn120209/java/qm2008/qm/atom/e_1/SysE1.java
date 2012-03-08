@@ -23,10 +23,9 @@ public class SysE1 extends AtomFano1965 {
     res.pot = calcOnePotZ(fc.getSh(0), fc2.getSh(0)); // potential only
     return res;
   }
-  public Energy calcOverlap(Conf fc, Conf fc2) {
+  public double calcOverlap(Conf fc, Conf fc2) {
     assertLS(fc, fc2);
-    Energy res = new Energy();
-    res.pot = calcOverlap(fc.getSh(0), fc2.getSh(0));
+    double res = calcOverlap(fc.getSh(0), fc2.getSh(0));
     return res;
   }
 }

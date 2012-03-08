@@ -20,8 +20,8 @@ import javax.utilx.log.Log;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,6/06/11,9:55 AM
  */
-public class JmResonancesE2 {
-  public static Log log = Log.getLog(JmResonancesE2.class);
+public class ScattResonE2 {
+  public static Log log = Log.getLog(ScattResonE2.class);
   private static int count = 0;
   public static final int RES_INFO_ID = count++;
   public static final int RES_INFO_ENG = count++;
@@ -35,7 +35,7 @@ public class JmResonancesE2 {
   public static final int RES_INFO_SIZE = count++;
 
   private ScattMethodBaseE2 jmm;
-  public JmResonancesE2(ScattMethodBaseE2 method) {
+  public ScattResonE2(ScattMethodBaseE2 method) {
     this.jmm = method;
   }
 
@@ -136,7 +136,7 @@ public class JmResonancesE2 {
 //    return new IntVec(IntVec.toArray(arr.toArray()));
 //  }
 //  public static void saveResRadDist(double resMaxLevel, ScattRes res, ConfHMtrx sysConfH) {
-//    IntVec idxArr = JmResonancesE2.getResIdxArr(resMaxLevel, res.getResInfo());
+//    IntVec idxArr = ScattResonE2.getResIdxArr(resMaxLevel, res.getResInfo());
 //
 //  }
 }

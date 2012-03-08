@@ -4,10 +4,10 @@ package scatt.jm_2008.e3;
  */
 // This should work/implemented for any number of electrons
 public class JmMapTrgtArrToSys {
-//  private final JmTrgtE3 trgtArr;
+//  private final ScattTrgtE3 trgtArr;
 //  private final ConfArr toSys;
 //  private JmMapTrgtToSys[] maps;
-//  public JmMapTrgtArrToSys(JmTrgtE3 trgtArr, ConfArr toSys) {
+//  public JmMapTrgtArrToSys(ScattTrgtE3 trgtArr, ConfArr toSys) {
 //    this.trgtArr = trgtArr;
 //    this.toSys = toSys;
 //    loadMaps();

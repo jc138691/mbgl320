@@ -37,7 +37,7 @@ abstract public class AtomFano1965 {
   }
   abstract public Energy calcH(Conf fc, Conf fc2);
   public FuncVec calcDensity(Conf fc, Conf fc2) {return null;}
-  abstract public Energy calcOverlap(Conf fc, Conf fc2);
+  abstract public double calcOverlap(Conf fc, Conf fc2);
 
   public void assertLS(Conf fc, Conf fc2) {
     if (!fc.getTotLS().equals(fc2.getTotLS())) {// this is not possible, and must be a bug
@@ -55,25 +55,25 @@ abstract public class AtomFano1965 {
     res.pot += calcTwoPot(LL, a, b, a2, b2);
     return res;
   }
-  public Energy calcOverlap(Shell a, Shell b, Shell a2, Shell b2) {
-    Energy res = new Energy();
+  public double calcOverlap(Shell a, Shell b, Shell a2, Shell b2) {
+    double res = 0;
     if (a.getWfL() != a2.getWfL() || b.getWfL() != b2.getWfL())
       return res;
     // <aa||aa> // note that <aa||cc> = 0 if a!=c
     if (a.getId().equals(b.getId())  // <aa|
       && a2.getId().equals(b2.getId()) //    |cc>
       && a.getId().equals(a2.getId())) { // <aa||aa> no need to calculate the same z_pot twice
-      res.pot = calcOverlap(a, a2);
-      res.pot *= 2;
+      res = calcOverlap(a, a2);
+      res *= 2;
     } else {
       if (a.getId().equals(a2.getId()))  // <ab||ab'>
-        res.pot = calcOverlap(b, b2);  // b, b2 could be different
+        res = calcOverlap(b, b2);  // b, b2 could be different
       if (b.getId().equals(b2.getId())) {  // <ab||a'b>
         double ov2 = calcOverlap(a, a2);  // a, a2 could be different
-        res.pot += ov2;
+        res += ov2;
       }
     }
-    res.pot /= (getNumElec() - 1);
+    res /= (getNumElec() - 1);
     return res;
   }
   public Energy calcOneH(Shell a, Shell b, Shell a2, Shell b2) {

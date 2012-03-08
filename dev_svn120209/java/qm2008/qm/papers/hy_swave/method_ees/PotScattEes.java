@@ -1,4 +1,4 @@
-package papers.hy_swave.new_method;
+package papers.hy_swave.method_ees;
 import atom.data.AtomHy;
 import atom.energy.part_wave.PotHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
@@ -18,19 +18,19 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 23/02/12, 9:23 AM
  */
-public class PotScattEA extends Jm2010CommonLcr {
-public static Log log = Log.getLog(PotScattEA.class);
+public class PotScattEes extends Jm2010CommonLcr {
+public static Log log = Log.getLog(PotScattEes.class);
 public static void main(String[] args) {
   // NOTE!!! for Nt>20 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
-  PotScattEA runMe = new PotScattEA();
+  PotScattEes runMe = new PotScattEes();
   runMe.setUp();
   runMe.testRun();
 }
 public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-  project = QMSProject.makeInstance("PotScattEA", "110606");
+  project = QMSProject.makeInstance("PotScattEes", "110606");
   TARGET_Z = AtomHy.Z;
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
-  MODEL_NAME = "PotScattEA";
+  MODEL_NAME = "PotScattEes";
   MODEL_DIR = MODEL_NAME;
   LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   // Note: run one at a time as only one set of result files is produced
@@ -39,7 +39,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
 public void setUp() {
   super.setUp();
 //    log = Log.getRootLog();
-  log.info("log.info(PotScattEA)");
+  log.info("log.info(PotScattEes)");
 //    JmMethodE1.log.setDbg();
   PBornDirScattTest.log.setDbg();
   EaMethodE1_all_engs_wrong.log.setDbg();
@@ -71,19 +71,18 @@ public void calc(int newN) {
   N = newN;
   initProject();
   potScattTestOk();   // basisN, biorthN, orthonN, quadrLcr
-//  hydrScattTestOk(TARGET_Z);  // pot, orthonNt
 
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);             log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
   Vec sysEngs = sysH.getEigVal();            log.dbg("eigVal=", new VecDbgView(sysEngs));
 //  EaMethodE1_G_db method = new EaMethodE1_G_db(calcOpt);
-  EaMethodE1_ok method = new EaMethodE1_ok(calcOpt);
+  EesMethodE1 method = new EesMethodE1(calcOpt);
 //  EaMethodE1_FBorn_db method = new EaMethodE1_FBorn_db(calcOpt);
 //  method.setPot(pot);
   method.setSysEngs(sysEngs);
   method.setPotH(sysH);
   method.setOrthonN(orthonN);
-//  ScattRes res = method.calcEngGrid();      log.dbg("res=", res);
+
   ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);
   res.setCalcLabel(makeLabel(method));

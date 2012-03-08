@@ -86,7 +86,7 @@ public class HePlusSWaveJm extends HyLikeSWaveJm {
 //    int currN = currNt + 1;
 
     SPIN = Spin.SINGLET;
-    calcJm(currN, currNt);
+    calc(currN, currNt);
   }
 
 }

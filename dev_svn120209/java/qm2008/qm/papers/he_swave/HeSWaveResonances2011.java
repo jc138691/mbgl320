@@ -153,7 +153,7 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 //    int currN = 40;
 
     SPIN = Spin.ELECTRON;
-    calcJm(currN, currNt);
+    calc(currN, currNt);
   }
   public static void setupResEngs_SLOW() {
     EngModelArr arr = new EngModelArr();

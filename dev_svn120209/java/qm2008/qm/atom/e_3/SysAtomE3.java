@@ -144,8 +144,8 @@ public class SysAtomE3 extends AtomE3 {   //
   }
 
   @Override
-  public Energy calcOverlap(Conf fc, Conf fc2) {
-    throw new IllegalArgumentException(log.error("SysAtomE3.calcInt(Conf sa, Conf sa2) todo"));
+  public double calcOverlap(Conf fc, Conf fc2) {
+    throw new IllegalArgumentException(log.error(" todo"));
   }
 
   @Override

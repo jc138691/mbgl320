@@ -19,7 +19,7 @@ import math.vec.VecDbgView;
 import qm_station.QMSProject;
 import scatt.jm_2008.e2.JmMethodE2;
 import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.target.JmTrgtE2;
+import scatt.jm_2008.jm.target.ScattTrgtE2;
 import scatt.jm_2008.jm.coulomb.JmCoulombLcrTest;
 import scatt.jm_2008.jm.theory.JmD;
 import scatt.partial.wf.JmCoulombLcr;
@@ -67,7 +67,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
     log.setDbg();
   }
 
-  public void calcJm(int newN, int newNt) {
+  public void calc(int newN, int newNt) {
     SYS_LS = new Ls(0, SPIN);
     N = newN;
     Nt = newNt;
@@ -86,7 +86,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
 
     AtomUtil.trimTailSLOW(trgtBasisNt);
 
-    JmTrgtE2 jmTrgt = new JmTrgtE2();
+    ScattTrgtE2 jmTrgt = new ScattTrgtE2();
     jmTrgt.setNt(orthonNt.size());
     jmTrgt.setEngs(targetEngs);
     jmTrgt.loadSdcsW();
@@ -146,7 +146,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
       res = method.calcEngGrid();                  log.dbg("res=", res);
     }
 //    ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
-    setupJmRes(res, method);                        log.dbg("res=", res);
+    setupScattRes(res, method);                        log.dbg("res=", res);
     res.writeToFiles();
   }
 

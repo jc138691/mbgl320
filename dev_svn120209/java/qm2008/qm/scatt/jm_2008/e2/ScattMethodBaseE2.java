@@ -13,7 +13,7 @@ import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.target.JmCh;
-import scatt.jm_2008.jm.target.JmTrgtE2;
+import scatt.jm_2008.jm.target.ScattTrgtE2;
 
 import javax.utilx.log.Log;
 /**
@@ -32,7 +32,7 @@ protected static final int CS_CH_OFFSET = 1;
 protected ConfHMtrx sysConfH;
 private int exclSysIdx = -1;
 protected JmCh[] chArr;
-protected JmTrgtE2 trgtE2;
+protected ScattTrgtE2 trgtE2;
 public ScattMethodBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
@@ -41,7 +41,7 @@ public ScattRes calcSysEngs() {
   throw new IllegalArgumentException(log.error("TODO: sysEngs - trgtGrndEng"));
 //  return calc(sysEngs);
 }
-public JmTrgtE2 getTrgtE2() {
+public ScattTrgtE2 getTrgtE2() {
   return trgtE2;
 }
 protected JmCh[] loadChArr(double sysEng) {
@@ -92,7 +92,7 @@ public void setSysConfH(ConfHMtrx sysConfH) {
 public int getChNum() { // number of target channels
   return trgtE2.getEngs().size();
 }
-public void setTrgtE2(JmTrgtE2 trgtE2) {
+public void setTrgtE2(ScattTrgtE2 trgtE2) {
   this.trgtE2 = trgtE2;
 }
 @Override
@@ -102,7 +102,7 @@ public ScattRes calc(Vec engs) {          //JmMethodJmBasisE3.log.setDbg();
   int eN = engs.size();
   Mtrx X = calcX();
   log.dbg("X=", new MtrxDbgView(X));
-  new JmResonancesE2(this).calc(res, X);
+  new ScattResonE2(this).calc(res, X);
   Mtrx mCs = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
   res.setSdcs(new Mtrx(chNum + 1, eN + 1));
@@ -151,7 +151,7 @@ public ScattRes calc_OLD(Vec engs) {          //JmMethodJmBasisE3.log.setDbg();
   int eN = engs.size();
   Mtrx X = calcX();
   log.dbg("X=", new MtrxDbgView(X));
-  new JmResonancesE2(this).calc(res, X);
+  new ScattResonE2(this).calc(res, X);
   Mtrx mCs = new Mtrx(eN, cN + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
   res.setSdcs(new Mtrx(cN + 1, eN + 1));
@@ -295,37 +295,6 @@ protected void loadSdcsW_Simpson(JmCh[] chArr) {
     }
     double t = Mathx.pow(e2 - ePrev, 3);
     double w = t / (8. * (e2 - e) * (e - ePrev));
-    ch.setSdcsW(w);
-  }
-}
-protected void loadSdcsW_OLD(JmCh[] chArr) {
-  boolean first = true;  // first open ionization channel
-  boolean last = false;  // last open ionization channel
-  for (int i = 1; i < chArr.length - 1; i++) {
-    log.dbg("i = ", i);   // NOTE from 1 and "-1"
-    JmCh ch = chArr[i];
-    JmCh ch2 = chArr[i + 1];
-    JmCh chPrev = chArr[i - 1];
-    if (!ch.isOpen() || ch.getEng() <= 0)
-      continue; // nothing to do: not open, or not continuum
-    last = !ch2.isOpen();
-    double e = ch.getEng();
-    double e2 = ch2.getEng();
-    double ePrev = chPrev.getEng();
-    double sysE = ch.getSysEng();
-    if (first) {
-      first = false;
-      double w = 0.5 * (e + e2);
-      ch.setSdcsW(w);
-      continue;
-    }
-    if (last) {
-      first = false;
-      double w = sysE - 0.5 * (e + ePrev);
-      ch.setSdcsW(w);
-      break;
-    }
-    double w = 0.5 * (e2 - ePrev);
     ch.setSdcsW(w);
   }
 }
@@ -584,100 +553,4 @@ public ScattRes calcWithMidSysEngs() {
   scttEngs.add(-initTrgtE);
   return calc(scttEngs);
 }
-//  private void calcSdcsCurveFit(int i, ScattRes res) {
-//    double midCs = calcMidSdcs(i, res);
-//    makeStepLinear(i, res, midCs);
-//    makeStepCube(i, res, midCs);
-//  }
-//  private Func makeQuadFit(int i, ScattRes res) {
-//    double ticsM = res.getTics().get(i, IDX_IONIZ);
-//    JmCh ch0 = chArr[0];
-//    double midE = 0.5 * ch0.getSysEng();
-//    double midE2 = midE * midE / 3.;
-//    ticsM = ticsM / midE;
-//
-//    Mtrx mSdcs = res.getSdcs();
-//
-//    int tN = getChNum();
-//    double sumA = 0;
-//    double sumB = 0;
-//    for (int to = 0; to < tN; to++) {
-//      JmCh ch = chArr[to];
-//      double x = ch.getEng();
-//      if (!ch.isOpen() ||  x < 0  ||  x > midE)
-//        continue;
-//      double y = mSdcs.get(i+ SDCS_ENG_OFFSET, to + SDCS_CH_OFFSET);
-//      double xm = (x - midE) * (x - midE) - midE2;
-//      sumA += xm * xm;
-//      sumB += (ticsM - y) * xm;
-//    }
-//    double a = - sumB / sumA;
-//    double b = ticsM - a * midE2;
-//    return makeStepFunc(a, b, midE);
-//  }
-//  private Func makeStepFunc(final double a, final double b, final double midE) {
-//     return new Func() {
-//      public double calc(double e) {
-//        return a * (e - midE)*(e - midE) + b;
-//      }
-//    };
-//  }
-//  private void makeStepCube(int i, ScattRes res, double midCs) {
-//    JmCh ch0 = chArr[0];
-//    final double midE = 0.5 * ch0.getSysEng();
-//    final double b = 4. * midCs;
-//    double tics = res.getTics().get(i, IDX_IONIZ);
-//    final double a = 3. * (tics - b * midE) / Mathx.pow(midE, 3);
-//    Mtrx mSf = res.getSdcsSf();
-//    mSf.set(i, SDCS_FIT_IDX_A, a);
-//    mSf.set(i, SDCS_FIT_IDX_B, b);
-//    mSf.set(i, SDCS_FIT_IDX_MID_E, midE);
-////    return makeStepFunc(a, b, midE);
-//  }
-//  private void makeStepLinear(int i, ScattRes res, double midCs) {
-//    JmCh ch0 = chArr[0];
-//    final double midE = 0.5 * ch0.getSysEng();
-//    final double b = 4. * midCs;
-//    double tics = res.getTics().get(i, IDX_IONIZ);
-//    final double a = 2. * (tics - b * midE) / Mathx.pow(midE, 2);
-//
-//    Mtrx mSfLin = res.getSdcsSfLin();
-//    mSfLin.set(i, SDCS_FIT_IDX_A, a);
-//    mSfLin.set(i, SDCS_FIT_IDX_B, b);
-//    mSfLin.set(i, SDCS_FIT_IDX_MID_E, midE);
-////    return new Func() {
-////      public double calc(double e) {
-////        return a * Math.abs(e - midE) + b;
-////      }
-////    };
-//  }
-//  private double calcMidSdcs(int i, ScattRes res) {
-//    Mtrx mSdcs = res.getSdcs();
-//    JmCh ch0 = chArr[0];
-//    double midE = 0.5 * ch0.getSysEng();
-//    int tN = getChNum();
-//    double midCs = 0;
-//    for (int to = 0; to < tN-2; to++) {     log.dbg("to = ", to);  // Target channels
-//      midCs = mSdcs.get(i, to);
-//      JmCh ch = chArr[to];
-//      double e = ch.getEng();
-//      JmCh ch2 = chArr[to+1];
-//      double e2 = ch2.getEng();
-//      JmCh ch3 = chArr[to+2];
-//      double e3 = ch3.getEng();
-//      if (ch.isOpen() &&  e < midE      // two points past the mid energy
-//        && ch2.isOpen() && e2 >= midE
-//        && ch3.isOpen() && e3 >= midE
-//        ) {
-//        double y = mSdcs.get(i+ SDCS_ENG_OFFSET, to + SDCS_CH_OFFSET);
-//        double y2 = mSdcs.get(i+ SDCS_ENG_OFFSET, to + SDCS_CH_OFFSET + 1);
-//        double y3 = mSdcs.get(i+ SDCS_ENG_OFFSET, to + SDCS_CH_OFFSET + 2);
-////        Func fOld = new InterpLinear(e, e2, y, y2);
-//        Func f = new InterpCube(e, e2, e3, y, y2, y3);
-//        midCs = f.calc(midE);
-//        break;
-//      }
-//    }
-//    return midCs;
-//  }
 }
