@@ -57,9 +57,6 @@ TODO
 \subsection{One-channel scattering}
 
 
-$(1-\exp(-r))\cos$ \cite{Nesbet68} not correct!
-
-
 After the partial-wave expansion \cite{Taylor72,N82} and focusing only on the $s$-wave terms $(l=0)$,
 electron scattering on a spherically symmetric potential $V(r)$
 could be described by the time-independent radial Schr\"odinger equation
@@ -121,20 +118,14 @@ Eq.~(\ref{Psi_EES}) is solved by
 \beq \barr{l}
 \langle\Psi_i|H-E_i|\Psi_{E_i}\rangle=0,\\
 K_0 = - S_i / C_i, \\
-S_i = \langle\Psi_i|H-E_i|  \hat{\psi}_{k_i} \rangle, \\
-C_i = \langle\Psi_i|H-E_i|  \hat{\chi}_{k_i} \rangle.
+S_i = \langle\Psi_i|H-E_i|  \hat{\psi}_{k_i} \rangle \equiv \langle\Psi_i|H|  \hat{\psi}_{k_i} \rangle, \\
+C_i = \langle\Psi_i|H-E_i|  \hat{\chi}_{k_i} \rangle \equiv \langle\Psi_i|H|  \hat{\chi}_{k_i} \rangle.
 \earr \eeq
-Once $K_0$ is known, $a_i$ is found from 
-\beq \barr{l}
-\langle \hat{\psi}_{k_i} |H-E_i| \Psi_{E_i}\rangle=0,\\
-a_i S_i + A_i + K_0 B_i = 0,\\  
-A_i = \langle \hat{\psi}_{k_i} |H-E_i|  \hat{\psi}_{k_i} \rangle, \\
-B_i = \langle \hat{\psi}_{k_i} |H-E_i|  \hat{\chi}_{k_i} \rangle.
-\earr \eeq
+Once $K_0$ is known, $a_i$ is found from
 \beq \barr{l}
 \langle \xi_{N-1} | \Psi_{E_i}\rangle
 = a_i \langle \xi_{N-1}| \Psi_i \rangle = ,\\
-=  \langle \xi_{N-1}| \psi_{k_i} \rangle 
+=  \langle \xi_{N-1}| \psi_{k_i} \rangle
 + K_0 \langle \xi_{N-1}| \chi_{k_i} \rangle ,\\
 \earr \eeq
 \beq \barr{l}
@@ -208,6 +199,23 @@ K_0 = b \langle \psi_1 | V | \Psi_E \rangle =\\
 \cite{TF79},
 \cite{Nesbet78}, \cite{Lucchese86}
 
+
+\beq \barr{l}
+| \Psi_{E_i}^{\Gamma} \rangle =  |\Psi_i^{\Gamma} \rangle a_i  + A^{\Gamma} |\Phi_{\gamma}\rangle  | \phi_{i\gamma}\rangle,\\
+| \phi_{i\gamma} \rangle = \left( | \hat{\psi}_{k_i}\rangle  + | \hat{\chi}_{k_i}\rangle K_{\gamma\gamma} \right) / \sqrt{k_{i\gamma}},\\
+k_{i\gamma} = \left( 2[E_i - e_\gamma] \right)^{1/2},
+\earr \label{Psi_} \eeq
+
+\beq \barr{l}
+\langle\Psi_i|H-E_i|\Psi_{E_i}\rangle=0,\\
+R_{\gamma \gamma} = - S_i / C_i, \\
+S_i = \langle\Psi_i^{\Gamma}|(H-E_i ) A^{\Gamma} |    \Phi_{\gamma} \hat{\psi}_{k_i} \rangle 
+\equiv \langle\Psi_i^{\Gamma}|H A^{\Gamma} |    \Phi_{\gamma} \hat{\psi}_{k_i} \rangle, \\
+C_i = \langle\Psi_i^{\Gamma}|(H-E_i ) A^{\Gamma} |    \Phi_{\gamma} \hat{\chi}_{k_i} \rangle
+\equiv \langle\Psi_i^{\Gamma}|H A^{\Gamma} |    \Phi_{\gamma} \hat{\chi}_{k_i} \rangle.
+\earr \eeq
+
+
 \beq \barr{ll}
 \langle \Phi_\gamma|H_t|\Phi_{\gamma'}\rangle=e_\gamma \delta_{\gamma\gamma'}, \ \
 & \langle \Phi_\gamma|\Phi_{\gamma'}\rangle=\delta_{\gamma\gamma'},\\
@@ -225,12 +233,6 @@ K_0 = b \langle \psi_1 | V | \Psi_E \rangle =\\
 \earr \label{Psi_EES} \eeq
 
 
-\beq \barr{l}
-\langle\Psi_i|H-E_i|\Psi_{E_i}\rangle=0,\\
-R_{\gamma \gamma} = - S_i / C_i, \\
-S_i = \langle\Psi_i^{\Gamma}|H-E_i|   \Phi_{\gamma} \hat{\psi}_1 \rangle, \\
-C_i = \langle\Psi_i^{\Gamma}|H-E_i|  \hat{\psi}_2 \rangle.
-\earr \eeq
 
 
 \section{CONCLUSIONS}
