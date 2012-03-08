@@ -43,39 +43,6 @@ public class ConfHMtrx extends HMtrx {
       }
     }
   }
-//  public Energy calcH(EigenSymm eig, int col) {
-//    Mtrx m = eig.getV();
-//    Energy res = new Energy();
-//    for (int r = 0; r < m.getNumRows(); r++) {
-//      double val = m.get(r, col);  // BY ROW is correct!   see HydrogenJUnit.test_2s
-//      for (int r2 = 0; r2 < m.getNumRows(); r2++) {
-//        double val2 = m.get(r2, col);  // BY ROW is correct!   see HydrogenJUnit.test_2s
-//        Energy configE = atom.calcH(basisN.get(r), basisN.get(r2));
-//        res.kin += (configE.kin * val * val2);
-//        res.pot += (configE.pot * val * val2);
-//      }
-//    }
-//    return res;
-//  }
-//  public FuncVec calcDensity(EigenSymm eig, int col) {
-//    Mtrx m = eig.getV();
-//    FuncVec res = null;
-//    for (int r = 0; r < m.getNumRows(); r++) {
-//      double val = m.get(r, col);  // BY ROW is correct!   see HydrogenJUnit.test_2s
-//      for (int r2 = 0; r2 < m.getNumRows(); r2++) {
-//        double val2 = m.get(r2, col);  // BY ROW is correct!   see HydrogenJUnit.test_2s
-//        FuncVec conf = atom.calcConfigDensity(basisN.get(r), basisN.get(r2));
-//        if (conf == null)
-//          continue;
-//        conf.multSelf(val * val2);
-//        if (res == null) {
-//          res = new FuncVec(conf);
-//        } else
-//          res.addSafe(conf);
-//      }
-//    }
-//    return res;
-//  }
 
   public FuncArr getDensity(int maxNum) {
     if (density == null) {
@@ -91,13 +58,6 @@ public class ConfHMtrx extends HMtrx {
     if (maxNum > 0) {
       size = Math.min(maxNum, basis.size());
     }
-//    int size;
-//    if (maxNum > 0) {
-//      size = Math.min(maxNum, basis.size());
-//    }
-//    else {
-//      size = basis.size();
-//    }
 
     Vec x = basis.getX();
     FuncArr res = new FuncArr(x, size);

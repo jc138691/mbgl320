@@ -14,8 +14,8 @@ public class ConfOverlap extends ConfHConf {
     for (int r = 0; r < basisL.size(); r++) {
       for (int c = 0; c < basisR.size(); c++) {
         // Atomic system should know how to calculate itself
-        Energy res = atom.calcOverlap(basisL.get(r), basisR.get(c));
-        set(r, c, res.kin + res.pot);
+        double res = atom.calcOverlap(basisL.get(r), basisR.get(c));
+        set(r, c, res);
       }
     }
   }

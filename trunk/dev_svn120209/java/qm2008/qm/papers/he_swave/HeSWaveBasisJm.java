@@ -10,13 +10,13 @@ import math.func.arr.FuncArr;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
-import scatt.jm_2008.e2.JmResonancesE2;
+import scatt.jm_2008.e2.ScattResonE2;
 import scatt.jm_2008.e3.JmDe3;
 import scatt.jm_2008.e3.JmMethodJmBasisE3;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
-import scatt.jm_2008.jm.target.JmTrgtE3;
+import scatt.jm_2008.jm.target.ScattTrgtE3;
 
 import javax.iox.FileX;
 import javax.utilx.log.Log;
@@ -46,7 +46,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
   public void setUp() {
     super.setUp();
     log.info("log.info(HeSWaveBasisJm)");
-    JmResonancesE2.log.setDbg();
+    ScattResonE2.log.setDbg();
     log.setDbg();
   }
 
@@ -82,15 +82,15 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     SAVE_TRGT_ENGS = true;
 
     SPIN = Spin.ELECTRON;
-    calcJm(currN, currNt);
-//    calcJm(12, 11);
-//    calcJm(13, 12);
-//    calcJm(14, 13);
+    calc(currN, currNt);
+//    calc(12, 11);
+//    calc(13, 12);
+//    calc(14, 13);
   }
 
 
-  public void calcJm(int newN, int newNt) {
-    log.info("-->calcJm(newN"+newN+", newNt="+newNt);
+  public void calc(int newN, int newNt) {
+    log.info("-->calc(newN"+newN+", newNt="+newNt);
     N = newN;
     Nt = newNt;
     initProject();
@@ -113,7 +113,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
 
     trgtBasisNt = orthonNt;
     trgtBasisN = orthonN;
-    JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
+    ScattTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
@@ -146,9 +146,9 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     else {
       res = method.calcEngGrid();                  log.dbg("res=", res);
     }
-    setupJmRes(res, method);
+    setupScattRes(res, method);
 
-//    JmResonancesE2.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
+//    ScattResonE2.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
     res.writeToFiles();
   }
 

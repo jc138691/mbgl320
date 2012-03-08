@@ -14,7 +14,7 @@ import math.vec.Vec;
 import math.vec.VecDbgView;
 import papers.hy_swave.HySWaveBasisHy;
 import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.target.JmTrgtE2;
+import scatt.jm_2008.jm.target.ScattTrgtE2;
 import scatt.jm_2008.jm.fanox.JmMethodFanoE2;
 
 import javax.iox.FileX;
@@ -33,7 +33,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveBasisHy {
     runMe.testRun();
   }
 
-  public void calcJm(int newN, int newNt) {
+  public void calc(int newN, int newNt) {
     N = newN;
     Nt = newNt;
     initProject();
@@ -43,7 +43,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveBasisHy {
     trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);   log.dbg("trgtPotH=", trgtPotH);
     Vec trgtEngs = trgtPotH.getEigVal();                     log.dbg("eigVal=", new VecDbgView(trgtEngs));
 
-    JmTrgtE2 trgtUtils = new JmTrgtE2();
+    ScattTrgtE2 trgtUtils = new ScattTrgtE2();
     trgtUtils.setEngs(trgtEngs);
     trgtUtils.loadSdcsW();
 

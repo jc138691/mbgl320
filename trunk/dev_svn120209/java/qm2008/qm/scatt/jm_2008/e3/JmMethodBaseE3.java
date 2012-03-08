@@ -4,8 +4,8 @@ package scatt.jm_2008.e3;
  */
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e2.ScattMethodBaseE2;
-import scatt.jm_2008.jm.target.JmTrgtE3;
-import scatt.jm_2008.jm.target.JmTrgtE2;
+import scatt.jm_2008.jm.target.ScattTrgtE3;
+import scatt.jm_2008.jm.target.ScattTrgtE2;
 
 import javax.utilx.log.Log;
 /**
@@ -13,21 +13,21 @@ import javax.utilx.log.Log;
  */
 public abstract class JmMethodBaseE3 extends ScattMethodBaseE2 {   // many-electrons (three or more)
   public static Log log = Log.getLog(JmMethodBaseE3.class);
-  protected JmTrgtE3 trgtE3;
+  protected ScattTrgtE3 trgtE3;
   public JmMethodBaseE3(CalcOptE1 calcOpt) {
     super(calcOpt);
   }
 
-  public JmTrgtE3 getTrgtE3() {
+  public ScattTrgtE3 getTrgtE3() {
     return trgtE3;
   }
-  public void setTrgtE3(JmTrgtE3 trgtE3) {
+  public void setTrgtE3(ScattTrgtE3 trgtE3) {
     this.trgtE3 = trgtE3;
     this.trgtE2 = trgtE3;
   }
 
   @Override
-  public void setTrgtE2(JmTrgtE2 trgtE2) {
+  public void setTrgtE2(ScattTrgtE2 trgtE2) {
     throw new IllegalArgumentException(log.error("call setTrgtE3 instead"));
   }
 

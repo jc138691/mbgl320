@@ -1,5 +1,4 @@
-package papers.hy_swave.new_method;
-import atom.energy.part_wave.PotHMtrx;
+package papers.hy_swave.method_ees;
 import atom.wf.log_cr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
@@ -14,7 +13,7 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 5/03/12, 4:04 PM
  */
-public class EaMethodE1_G_db extends EaMethodE1_ok {   // E1 - one electron
+public class EaMethodE1_G_db extends EesMethodE1 {   // E1 - one electron
 public static Log log = Log.getLog(EaMethodE1_G_db.class);
 public EaMethodE1_G_db(CalcOptE1 calcOpt) {
   super(calcOpt);

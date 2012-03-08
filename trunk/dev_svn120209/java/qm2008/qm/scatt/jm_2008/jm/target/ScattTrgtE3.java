@@ -9,11 +9,11 @@ import java.util.Comparator;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,1/04/11,6:00 PM
  */
-public class JmTrgtE3 extends JmTrgtE2 {
-  public static Log log = Log.getLog(JmTrgtE3.class);
+public class ScattTrgtE3 extends ScattTrgtE2 {
+  public static Log log = Log.getLog(ScattTrgtE3.class);
   private ArrayList<ConfHMtrx> arrH;
   private ChConf[] confArr;
-  public JmTrgtE3() {
+  public ScattTrgtE3() {
     arrH = new ArrayList<ConfHMtrx>();
   }
   public void add(ConfHMtrx h) {

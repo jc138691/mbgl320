@@ -60,7 +60,7 @@ public void setupScattRes(ScattRes res, ScattMethodBaseE1 method) {
   res.setModelName(MODEL_NAME);
   res.setMethod(method);
 }
-protected static String makeLabelBasisOptOpen(ScattMethodBaseE2 method) {
+protected static String makeLabelBasisOptOpen(ScattMethodBaseE1 method) {
   if (method.getCalcOpt().getUseClosed()) {
     return basisOptN.makeLabel() + ".dat";
   } else {

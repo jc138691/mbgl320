@@ -20,7 +20,7 @@ import qm_station.QMSProject;
 import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
-import scatt.jm_2008.jm.target.JmTrgtE3;
+import scatt.jm_2008.jm.target.ScattTrgtE3;
 import stats.VecStats;
 
 import javax.iox.FileX;
@@ -59,7 +59,7 @@ public class OptimLambda extends HeSWaveScatt {
 //    log.setDbg();
   }
   @Override
-  public void calcJm(int newN, int newNt) {
+  public void calc(int newN, int newNt) {
   }
   public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
     project = QMSProject.makeInstance("HeSWaveBasisHeIon", "110606");
@@ -300,7 +300,7 @@ public class OptimLambda extends HeSWaveScatt {
     Vec basisEngs = trgtPotH.getEigVal();                log.dbg("basisEngs=", new VecDbgView(basisEngs));
     trgtBasisNt = trgtPotH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
     SlaterLcr slater = new SlaterLcr(quadrLcr);
-    JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
+    ScattTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
 
     Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);
     log.info("E_SORTED=", new Vec(HeSWaveAtom.E_SORTED));
@@ -328,7 +328,7 @@ public class OptimLambda extends HeSWaveScatt {
     // making target  JM basis
     trgtBasisNt = orthonNt;
     SlaterLcr slater = new SlaterLcr(quadrLcr);
-    JmTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
+    ScattTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
 
     Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);
     log.info("E_SORTED=", new Vec(HeSWaveAtom.E_SORTED));

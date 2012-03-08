@@ -12,8 +12,8 @@ import javax.utilx.log.Log;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 18/05/2010, 9:19:32 AM
  */
-public class JmTrgtE2 {   // target properties
-  public static Log log = Log.getLog(JmTrgtE2.class);
+public class ScattTrgtE2 {   // target properties
+  public static Log log = Log.getLog(ScattTrgtE2.class);
   private Vec engs;
   private JmCoulombLcr continmE1;
   private FuncArr statesE1;

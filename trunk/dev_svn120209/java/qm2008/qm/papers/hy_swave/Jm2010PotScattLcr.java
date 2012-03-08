@@ -50,13 +50,13 @@ public void runJob() {
   ENG_FIRST = 0.01f;
   ENG_LAST = 4.01f;
   ENG_N = 2001;
-//  calcJm(10);
-//  calcJm(12);
+//  calc(10);
+//  calc(12);
   calcJm(20);
-//  calcJm(16);
-//  calcJm(18);
-//  calcJm(20);
-//    calcJm(8);
+//  calc(16);
+//  calc(18);
+//  calc(20);
+//    calc(8);
 }
 public void calcJm(int newN) {
   N = newN;

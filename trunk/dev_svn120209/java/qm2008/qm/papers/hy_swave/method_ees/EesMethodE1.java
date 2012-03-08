@@ -1,4 +1,4 @@
-package papers.hy_swave.new_method;
+package papers.hy_swave.method_ees;
 import atom.energy.part_wave.PotH;
 import atom.energy.part_wave.PotHMtrx;
 import atom.wf.WFQuadr;
@@ -22,14 +22,14 @@ import javax.utilx.pair.Dble2;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 28/02/12, 11:26 AM
  */
-public class EaMethodE1_ok extends ScattMethodBaseE1 {   // E1 - one electron
-public static Log log = Log.getLog(EaMethodE1_ok.class);
+public class EesMethodE1 extends ScattMethodBaseE1 {   // E1 - one electron
+public static Log log = Log.getLog(EesMethodE1.class);
 protected static final int IDX_REG = 0;
 protected static final int IDX_IRR = 1;
 protected static final int IDX_P_REG = 2;
 protected static final int IDX_P_IRR = 3;
 private static final boolean OPER_P_ON = true;
-public EaMethodE1_ok(CalcOptE1 calcOpt) {
+public EesMethodE1(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScattRes calcSysEngs() {
@@ -74,12 +74,12 @@ protected double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {
   res += HE;
   return res;
 }
-private Dble2 calcSC(FuncArr psi, double scattE, int engIdx) {
+protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   Dble2 res = new Dble2();
   FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psiS = psi.get(IDX_P_REG);          log.dbg("resS=", psiS);
   FuncVec psiC = psi.get(IDX_P_IRR);          log.dbg("resC=", psiC);
-  FuncVec sysPsi = sysWFuncs.get(engIdx);            log.dbg("sysPsi=", sysPsi);
+  FuncVec sysPsi = sysWFuncs.get(sysIdx);            log.dbg("sysPsi=", sysPsi);
   res.a = calcHE(sysPsi, potH, psiS, scattE);    log.dbg("S_i=", res.a);
   res.b = calcHE(sysPsi, potH, psiC, scattE);    log.dbg("C_i=", res.b);
   return res;
@@ -87,8 +87,8 @@ private Dble2 calcSC(FuncArr psi, double scattE, int engIdx) {
 protected FuncArr calcPsi(double scattE, int engIdx_NOT_USED_HERE) {
   int L = 0;
   double momP = Scatt.calcMomFromE(scattE);
-  WFQuadrLcr quadr = (WFQuadrLcr)potH.getQuadr();    // CASTING!!! NOT GOOD
-  IFuncArr basis = potH.getBasis();
+  IFuncArr basis = orthonN;
+  WFQuadrLcr quadr = orthonN.getQuadr();
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
   FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
