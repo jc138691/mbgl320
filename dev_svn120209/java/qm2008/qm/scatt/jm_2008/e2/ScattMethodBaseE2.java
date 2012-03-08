@@ -221,9 +221,12 @@ protected void calcCrossSecs(int i, ScattRes res, CmplxMtrx mS) {
     JmCh ch = chArr[to];
     double k0 = chArr[initChIdx].getAbsMom();
     double k02 = k0 * k0;
+
     Cmplx S = mS.get(to, initChIdx);
     S = S.minus(Mathx.dlt(to, initChIdx));
+
     double sigma = Math.PI * S.abs2() / k02;
+
     log.dbg("sigma = ", sigma).eol();
     //      if (i == 0) { // store channels energies
     //        mCs.set(0, 0, 0); // init the corner
