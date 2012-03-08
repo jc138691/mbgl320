@@ -2,6 +2,8 @@ package papers.hy_swave.method_ees;
 import atom.angular.Spin;
 import atom.data.AtomHy;
 import atom.data.AtomUnits;
+import math.vec.grid.StepGrid;
+import math.vec.grid.StepGridModel;
 import papers.hy_swave.HyLikeSWaveJm;
 import qm_station.QMSProject;
 import scatt.eng.EngGridFactory;
@@ -48,11 +50,18 @@ public class HySWaveEes_Test extends HySWaveEes {
     ENG_FIRST = 0.3;
     ENG_LAST = 0.5;
 
-    SPIN = Spin.SINGLET;
-    calc(currN);
+    double LAMBDA_MIN = 1;
+    double LAMBDA_MAX = 1.5;
+    int LAMBDA_N = 51;
+    StepGrid lamGrid = new StepGrid(new StepGridModel(LAMBDA_MIN, LAMBDA_MAX, LAMBDA_N));
+    for (int i = 0; i < lamGrid.size(); i++) {
+      LAMBDA = lamGrid.get(i);
+      SPIN = Spin.SINGLET;
+      calc(currN);
+    }
 
-    SPIN = Spin.TRIPLET;
-    calc(currN);
+//    SPIN = Spin.TRIPLET;
+//    calc(currN);
   }
 
 

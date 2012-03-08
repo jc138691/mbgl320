@@ -27,8 +27,8 @@ public class DerivPts9 extends FuncVec {
   static Mtrx A = new Mtrx(N_ROW, N_COL, coeff);
 
   public DerivPts9(FuncVec f) {
-    super(f.getX()); log.dbg("f(x)=\n", f);
-    calc(f);               log.dbg("f'(x)=\n", this);
+    super(f.getX());       //log.dbg("f(x)=\n", f);
+    calc(f);               //log.dbg("f'(x)=\n", this);
   }
   private void calc(final FuncVec f) {
     if (!(f.getX() instanceof StepGrid)) {

@@ -20,7 +20,7 @@ super(DerivPts9Test.class);  // NOTE!!! this is needed for FlowTest
 
 public void testDerivPts9() throws Exception {
   Log log = Log.getLog(DerivPts9.class); // note:  DerivPts3
-  log.setDbg();
+  //log.setDbg();
   int idx = 0;
   double first = 0;
   double last = 1;
