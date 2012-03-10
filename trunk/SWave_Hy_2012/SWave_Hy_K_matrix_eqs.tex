@@ -31,8 +31,8 @@
 \title {Calculation of excitation and single-ionization amplitudes using a short-range $L^2$ basis}
 
 \author{Dmitry A. Konovalov}
-\affiliation{ARC Centre for Antimatter-Matter Studies}
-\affiliation{Discipline of Information Technology, School of Business,
+\affiliation{Discipline of Information Technology, School of Business}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
 James Cook University, Townsville, Queensland 4811, Australia}
 
 \author{Igor Bray}
@@ -119,9 +119,9 @@ S_{0}=(1+\mbox{i}K_0)(1-\mbox{i}K_0)^{-1}, \\
 Eq.~(\ref{Psi_EES}) is solved by
 \beq \barr{l}
 \langle\Psi_i|H-E_i|\Psi_{E_i}\rangle=0,\\
-K_{00} = - s / c, \\
-s = \langle\Psi_i|H-E_i|  \phi_{k_i} \rangle \equiv \langle\Psi_i|H|  \phi_{k_i} \rangle, \\
-c = \langle\Psi_i|H-E_i|  \widehat{\phi}_{k_i} \rangle \equiv \langle\Psi_i|H|  \widehat{\phi}_{k_i} \rangle.
+K_{00} = - S_i / C_i, \\
+S_i = \langle\Psi_i|H-E_i|  \phi_{k_i} \rangle \equiv \langle\Psi_i|H|  \phi_{k_i} \rangle, \\
+C_i = \langle\Psi_i|H-E_i|  \widehat{\phi}_{k_i} \rangle \equiv \langle\Psi_i|H|  \widehat{\phi}_{k_i} \rangle.
 \earr \eeq
 Once $K_0$ is known, $a_i$ is found from
 \beq \barr{l}
@@ -147,8 +147,8 @@ with the standing-wave boundary conditions at the corresponding eigenvalues $\{E
 
 Accepting the conjecture, it immediately follows that the {\em inner} functional space must be removed from
 \beq \barr{l}
-\phi_k(r) = (1-\hat{P}_N) \psi(r),\\
-\widehat{\phi}_(r) = (1-\hat{P}_N) [\widehat{\psi}(r) - \exp{(-\lambda r)}],
+\phi_1(r) = (1-\hat{P}_N) \psi_1(r),\\
+\phi_2(r) = (1-\hat{P}_N) \hat{\psi}_2(r),
 \earr \eeq
 \beq
 \hat{P}_N = \sum_{p=0}^{N-1} | \xi_p \rangle \langle \xi_p |.
@@ -156,85 +156,105 @@ Accepting the conjecture, it immediately follows that the {\em inner} functional
 
 
 
+From the general theory of the second-order linear differential equations
+\beq \barr{l}
+H_0 y(r) = (p(r) y')' - q(r) y,\\
+p \equiv -1/2, \ \ q = 0,\\
+w = \psi_1(r) \psi_2'(r) - \psi_2(r) \psi_1'(r) \equiv -k,\\
+b = (pw)^{-1}= 2/k,
+\earr \eeq
+TODO: is it the same for Coulomb?
+\beq \barr{l}
+(H_0 - E) G_0(r,r') = \delta(r-r'),\\
+G_0(r,r') = G_0(r',r) = b \psi_1(r_{<}) \psi_2(r_{>}),
+\earr \eeq
+\beq \barr{l}
+| \Psi_E \rangle = | \psi_1 \rangle + G_0 V |\Psi_E \rangle,\\
+\Psi_E(r) = \psi_1(r) +  \int_0^\infty dr'\ G_0(r,r') V(r') \Psi_E(r'),
+\earr \eeq
+\beq \barr{l}
+\Psi_E(r) = \psi_1(r) +  g_2(r) \psi_1(r) + g_1(r) \psi_2(r),\\
+g_1(r) = b \int_0^r dr'\ \psi_1(r') V(r') \Psi_E(r'), \\
+g_2(r) = b \int_r^\infty dr'\ \psi_2(r') V(r') \Psi_E(r'),
+\earr \eeq
+
+\beq \barr{l}
+\Psi_{E_i}(r) = a_i \Psi_i(r)  + (1-P)\psi_1(r)  \\
+\ \ \ + K_0 (1-P)g(r)\psi_2(r),\\
+g(r) \approx b \int_0^r dr'\ \psi_1(r') V(r') \psi_1(r'), \\
+g(r) \approx b \int_0^r dr'\ \psi_1(r') V(r') \Psi_i(r'), \\
+\earr \eeq
+
+\beq \barr{l}
+K_0 = b \langle \psi_1 | V | \Psi_E \rangle =\\
+\ \ = b \int_0^\infty  dr\ \psi_1(r) V(r) \Psi_E(r),
+\earr \eeq
+
+
+
+
+\subsection{Coulomb-tail potential scattering}
+
 \subsection{Multichannel scattering}
 \cite{CA73} - only elastic
 \cite{NO72},
 \cite{TF79},
 \cite{Nesbet78}, \cite{Lucchese86}
 
-\beq 
-\langle \Phi_\gamma|H_t|\Phi_{\gamma'}\rangle=e_\gamma \delta_{\gamma\gamma'}, \ \
- \langle \Phi_\gamma|\Phi_{\gamma'}\rangle=\delta_{\gamma\gamma'},
- \label{psi_H_psi} \eeq
-\beq 
-\langle\Psi_i^\Gamma|H|\Psi_j^\Gamma\rangle=E_i\delta_{ij}, \ \
- \langle\Psi_i^\Gamma|\Psi_j^\Gamma\rangle=\delta_{ij},
-\label{Psi_H_Psi} \eeq
-
 
 \beq \barr{l}
- \Psi_{E_i}^{\gamma \Gamma}  =  a_{\gamma} \Psi_i^{\Gamma}  
- + A^{\Gamma} \Phi_{\gamma}  \phi_{\gamma}
-+ \sum_{\gamma''} K_{\gamma'' \gamma} A^{\Gamma} \Phi_{\gamma''}   \widehat{\phi}_{\gamma''} ,\\
- \Psi_{E_i}^{\Gamma}  =  a \Psi_i^{\Gamma}
- + A^{\Gamma} \Phi_{\gamma}  \phi_{\gamma}
-+ \sum_{\gamma''} K_{\gamma''} A^{\Gamma} \Phi_{\gamma''}   \widehat{\phi}_{\gamma''} ,
+| \Psi_{E_i}^{\gamma \Gamma} \rangle =  |\Psi_i^{\Gamma} \rangle a_i
+ + A^{\Gamma} |\Phi_{\gamma}\rangle  | \phi_{k_\gamma} \rangle+\\
+\ \ \ \ + \sum_{\gamma''} A^{\Gamma} |\Phi_{\gamma''}\rangle  | \widehat{\phi}_{k_{\gamma''}}\rangle K_{\gamma''\gamma},
 \earr \label{Psi_} \eeq
 \beq
-\phi_{\gamma}\equiv \phi_{k_\gamma}, \ \ \ \psi_{\gamma}\equiv \psi_{k_\gamma}, \ \ \   k_{\gamma}^2 = 2(E_i - e_\gamma),
+E_i = e_\gamma + k_{\gamma}^2/2,
 \eeq
 
 
 \beq \barr{l}
 \langle\Psi_i^\Gamma|H-E_i|\Psi_{E_i}^{\gamma \Gamma}\rangle=0,\\
-K_{\gamma' \gamma} = - \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'}
-| H-E_i | \Psi_{E_i}^{\gamma \Gamma} \rangle,\\
-K_{\gamma'} = - \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'}
-| H-E_i | \Psi_{E_i}^{ \Gamma} \rangle,
+K_{\gamma'\gamma} = - \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{k_{\gamma'}}
+| H-E_i | \Psi_{E_i}^{\gamma \Gamma} \rangle,
 \earr \eeq
 
+\beq
+g_{\gamma}
++ \sum_{\gamma''} \widehat{g}_{\gamma''} K_{\gamma''\gamma} = 0,
+\eeq
 \beq \barr{l}
-\sum_{\gamma''}  c_{\gamma''} K_{\gamma'' \gamma}  = -s_{\gamma}
-, \ \ \ c^t K = -s^t,\\
-\sum_{\gamma''}  c_{\gamma''} K_{\gamma''}  = -s
-, \ \ \ (c K) = -s,
-\earr \eeq
-\beq \barr{l}
-s_{\gamma} = \langle \Psi_i^\Gamma |HA^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
-s = \langle \Psi_i^\Gamma |HA^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
-c_{\gamma'} =  \langle \Psi_i^\Gamma |HA^{\Gamma} |\Phi_{\gamma'} \widehat{\phi}_{\gamma'} \rangle,\\
+g_{\gamma} = \langle \Psi_i^\Gamma |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \phi_{k_\gamma} \rangle,\\
+\widehat{g}_{\gamma} = \langle \Psi_i^\Gamma |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \widehat{\phi}_{k_\gamma} \rangle,\\
 \earr \label{Psi_} \eeq
 
+\beq
+K_{\gamma'\gamma} =  B_{\gamma'}  a_i + G_{\gamma'\gamma}
++ \sum_{\gamma''} \widehat{G}_{\gamma'\gamma''} K_{\gamma''\gamma},
+\eeq
 \beq \barr{l}
-K_{\gamma' \gamma} =   b_{\gamma'} a_{\gamma}   + G_{\gamma' \gamma}
-+ \sum_{\gamma''}  W_{\gamma' \gamma''} K_{\gamma'' \gamma},\\
-K_{\gamma'} =   b_{\gamma'} a   + G_{\gamma'}
-+ \sum_{\gamma''}  W_{\gamma' \gamma''} K_{\gamma''},
-\earr \eeq
-\beq \barr{l}
-K =   b a^t   + G + W K,\\
-K =   b a   + G + W K,
-\earr \eeq
-\beq \barr{l}
-K  =  (I-W)^{-1} (b a^t   + G),\\
-K  = (I-W)^{-1}   (b a   + G),
-\earr \eeq
+B_{\gamma'} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{k_{\gamma'}} |H - E_i |\Psi_i^{\Gamma} \rangle,\\
+G_{\gamma'\gamma} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{k_{\gamma'}} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \phi_{k_\gamma} \rangle,\\
+\widehat{G}_{\gamma'\gamma} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{k_{\gamma'}} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \widehat{\phi}_{k_\gamma} \rangle,\\
+\earr \label{Psi_} \eeq
+
 
 \beq \barr{l}
--s^t  = -x a^t  + c^tG,    \ \ \  x=-(c b),\\
--s = -x a  + y,   ,\\
-x = (c^t (I-W)^{-1} b), \ \ \ y = (c^t (I-W)^{-1} G), 
+R_{\gamma \gamma} = - S_i / C_i, \\
+S_i = \langle\Psi_i^{\Gamma}|(H-E_i ) A^{\Gamma} |    \Phi_{\gamma} \hat{\psi}_{k_i} \rangle
+\equiv \langle\Psi_i^{\Gamma}|H A^{\Gamma} |    \Phi_{\gamma} \hat{\psi}_{k_i} \rangle, \\
+C_i = \langle\Psi_i^{\Gamma}|(H-E_i ) A^{\Gamma} |    \Phi_{\gamma} \hat{\chi}_{k_i} \rangle
+\equiv \langle\Psi_i^{\Gamma}|H A^{\Gamma} |    \Phi_{\gamma} \hat{\chi}_{k_i} \rangle.
 \earr \eeq
-\beq \barr{l}
-b_{\gamma'} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |H - E_i |\Psi_i^{\Gamma} \rangle,\\
-G_{\gamma' \gamma} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
-W_{\gamma' \gamma} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \widehat{\phi}_{\gamma} \rangle,\\
-\earr \label{Psi_} \eeq
-\beq \barr{l}
-b_{\gamma'} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |H - E_i |\Psi_i^{\Gamma} \rangle,\\
-G_{\gamma'} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
-W_{\gamma' \gamma} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \widehat{\phi}_{\gamma} \rangle,\\
-\earr \label{Psi_} \eeq
+
+
+\beq \barr{ll}
+\langle \Phi_\gamma|H_t|\Phi_{\gamma'}\rangle=e_\gamma \delta_{\gamma\gamma'}, \ \
+& \langle \Phi_\gamma|\Phi_{\gamma'}\rangle=\delta_{\gamma\gamma'},\\
+\earr \label{psi_H_psi} \eeq
+\beq \barr{ll}
+\langle\Psi_i^\Gamma|H|\Psi_j^\Gamma\rangle=E_i\delta_{ij}, \ \
+& \langle\Psi_i^\Gamma|\Psi_j^\Gamma\rangle=\delta_{ij},\\
+\earr \label{Psi_H_Psi_JM} \eeq
 
 
 
