@@ -162,20 +162,17 @@ Accepting the conjecture, it immediately follows that the {\em inner} functional
 \cite{TF79},
 \cite{Nesbet78}, \cite{Lucchese86}
 
-\beq 
+\beq
 \langle \Phi_\gamma|H_t|\Phi_{\gamma'}\rangle=e_\gamma \delta_{\gamma\gamma'}, \ \
  \langle \Phi_\gamma|\Phi_{\gamma'}\rangle=\delta_{\gamma\gamma'},
  \label{psi_H_psi} \eeq
-\beq 
+\beq
 \langle\Psi_i^\Gamma|H|\Psi_j^\Gamma\rangle=E_i\delta_{ij}, \ \
  \langle\Psi_i^\Gamma|\Psi_j^\Gamma\rangle=\delta_{ij},
 \label{Psi_H_Psi} \eeq
 
 
 \beq \barr{l}
- \Psi_{E_i}^{\gamma \Gamma}  =  a_{\gamma} \Psi_i^{\Gamma}  
- + A^{\Gamma} \Phi_{\gamma}  \phi_{\gamma}
-+ \sum_{\gamma''} K_{\gamma'' \gamma} A^{\Gamma} \Phi_{\gamma''}   \widehat{\phi}_{\gamma''} ,\\
  \Psi_{E_i}^{\Gamma}  =  a \Psi_i^{\Gamma}
  + A^{\Gamma} \Phi_{\gamma}  \phi_{\gamma}
 + \sum_{\gamma''} K_{\gamma''} A^{\Gamma} \Phi_{\gamma''}   \widehat{\phi}_{\gamma''} ,
@@ -186,56 +183,49 @@ Accepting the conjecture, it immediately follows that the {\em inner} functional
 
 
 \beq \barr{l}
-\langle\Psi_i^\Gamma|H-E_i|\Psi_{E_i}^{\gamma \Gamma}\rangle=0,\\
-K_{\gamma' \gamma} = - \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'}
-| H-E_i | \Psi_{E_i}^{\gamma \Gamma} \rangle,\\
+\langle\Psi_i^\Gamma|H-E_i|\Psi_{E_i}^{\Gamma}\rangle=0,\\
+\sum_{\gamma''}  C_{\gamma''} K_{\gamma''}  = -s
+, \ \ \ ({\bf C}^t {\bf K}) = -s,\\
+s = \langle \Psi_i^\Gamma |HA^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\ \
+C_{\gamma'} =  \langle \Psi_i^\Gamma |HA^{\Gamma} |\Phi_{\gamma'} \widehat{\phi}_{\gamma'} \rangle,
+\earr \label{Psi_} \eeq
+
+\beq \barr{l}
 K_{\gamma'} = - \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'}
-| H-E_i | \Psi_{E_i}^{ \Gamma} \rangle,
+| H-E_i | \Psi_{E_i}^{ \Gamma} \rangle,\\
+K_{\gamma'} =   - [a Y_{\gamma'}   + B_{\gamma'}
++ \sum_{\gamma''}  W_{\gamma' \gamma''} K_{\gamma''}],\\
+{\bf K} =   -[a {\bf Y} + {\bf B} + {\bf W K}],\\
+{\bf K}  = -({\bf I}+{\bf W})^{-1}   (a {\bf Y}    + {\bf B}),
 \earr \eeq
 
 \beq \barr{l}
-\sum_{\gamma''}  c_{\gamma''} K_{\gamma'' \gamma}  = -s_{\gamma}
-, \ \ \ c^t K = -s^t,\\
-\sum_{\gamma''}  c_{\gamma''} K_{\gamma''}  = -s
-, \ \ \ (c K) = -s,
+s = a y  + b,   \\
+a = (s - b) / y,\\
+y = {\bf C}^t ({\bf I}+{\bf W})^{-1}  {\bf Y}, \\
+b = {\bf C}^t ({\bf I}+{\bf W})^{-1}  {\bf B},
 \earr \eeq
 \beq \barr{l}
-s_{\gamma} = \langle \Psi_i^\Gamma |HA^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
-s = \langle \Psi_i^\Gamma |HA^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
-c_{\gamma'} =  \langle \Psi_i^\Gamma |HA^{\Gamma} |\Phi_{\gamma'} \widehat{\phi}_{\gamma'} \rangle,\\
-\earr \label{Psi_} \eeq
-
-\beq \barr{l}
-K_{\gamma' \gamma} =   b_{\gamma'} a_{\gamma}   + G_{\gamma' \gamma}
-+ \sum_{\gamma''}  W_{\gamma' \gamma''} K_{\gamma'' \gamma},\\
-K_{\gamma'} =   b_{\gamma'} a   + G_{\gamma'}
-+ \sum_{\gamma''}  W_{\gamma' \gamma''} K_{\gamma''},
-\earr \eeq
-\beq \barr{l}
-K =   b a^t   + G + W K,\\
-K =   b a   + G + W K,
-\earr \eeq
-\beq \barr{l}
-K  =  (I-W)^{-1} (b a^t   + G),\\
-K  = (I-W)^{-1}   (b a   + G),
-\earr \eeq
-
-\beq \barr{l}
--s^t  = -x a^t  + c^tG,    \ \ \  x=-(c b),\\
--s = -x a  + y,   ,\\
-x = (c^t (I-W)^{-1} b), \ \ \ y = (c^t (I-W)^{-1} G), 
-\earr \eeq
-\beq \barr{l}
-b_{\gamma'} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |H - E_i |\Psi_i^{\Gamma} \rangle,\\
-G_{\gamma' \gamma} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
-W_{\gamma' \gamma} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \widehat{\phi}_{\gamma} \rangle,\\
-\earr \label{Psi_} \eeq
-\beq \barr{l}
-b_{\gamma'} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |H - E_i |\Psi_i^{\Gamma} \rangle,\\
-G_{\gamma'} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
+Y_{\gamma'} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |H - E_i |\Psi_i^{\Gamma} \rangle,\\
+B_{\gamma'} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
 W_{\gamma' \gamma} = \langle A^{\Gamma} \Phi_{\gamma'}  \psi_{\gamma'} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \widehat{\phi}_{\gamma} \rangle,\\
 \earr \label{Psi_} \eeq
 
+\subsection{$S$-wave $e$-H scattering}
+
+
+
+\beq \barr{l}
+Y_{\gamma'} = \langle \Phi_{\gamma'}  \psi_{\gamma'} |(H_t + v - 1/r)|\Psi_i^{\Gamma} \rangle,\\
+B_{\gamma'} = \langle  \Phi_{\gamma'}  \psi_{\gamma'} |(H_t )A^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
+W_{\gamma' \gamma} = \langle \Phi_{\gamma'}  \psi_{\gamma'} |(H - E_i) A^{\Gamma} |\Phi_{\gamma} \widehat{\phi}_{\gamma} \rangle,\\
+\earr \label{Psi_} \eeq
+
+\beq \barr{l}
+\langle  \Phi(r_1) \psi(r_2) |f(r_1) g(r_2) - f(r_2) g(r_1) \rangle = \\
+=\langle  \Phi |f \rangle  \langle  \psi |g \rangle -
+\langle  \Phi |g \rangle  \langle  \psi |f \rangle
+\earr \eeq
 
 
 \section{CONCLUSIONS}
