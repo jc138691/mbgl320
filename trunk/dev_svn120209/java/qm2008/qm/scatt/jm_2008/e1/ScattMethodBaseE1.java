@@ -2,6 +2,7 @@ package scatt.jm_2008.e1;
 import atom.energy.HMtrx;
 import atom.energy.part_wave.PotHMtrx;
 import math.func.FuncVec;
+import math.func.arr.FuncArr;
 import math.vec.Vec;
 import project.workflow.task.test.FlowTest;
 import scatt.eng.EngGrid;
@@ -18,6 +19,7 @@ private Vec overD;      // overlap coefficients D
 protected Vec sysEngs;
 protected PotHMtrx potH;
 protected LgrrOrthLcr orthonN;
+private FuncArr trgtBasisNt;
 protected final CalcOptE1 calcOpt;
 public ScattMethodBaseE1(CalcOptE1 calcOpt) {
   this.calcOpt = calcOpt;
@@ -42,10 +44,6 @@ public Vec getSysEngs() {
 public int getChNum() { // number of target channels
   return 1; // only one for pot-scattering
 }
-//public ScattRes calcMidSysEngs() {
-//  Vec scttEngs = EngGridFactory.makeMidPoints(sysEngs);
-//  return calc(scttEngs);
-//}
 //public ScattRes calcWithMidSysEngs() {
 //  Vec scttEngs = EngGridFactory.makeWithMidPoints(sysEngs);
 //  return calc(scttEngs);
@@ -71,5 +69,8 @@ public LgrrOrthLcr getOrthonN() {
 }
 public void setOrthonN(LgrrOrthLcr orthonN) {
   this.orthonN = orthonN;
+}
+public void setTrgtBasisNt(FuncArr trgtBasisNt) {
+  this.trgtBasisNt = trgtBasisNt;
 }
 }
