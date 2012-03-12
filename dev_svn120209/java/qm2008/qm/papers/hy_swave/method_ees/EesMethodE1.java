@@ -102,7 +102,7 @@ protected FuncArr calcPsi(double scattE, int engIdx_NOT_USED_HERE) {
   FuncVec resS = res.get(IDX_P_REG);          log.dbg("resS=", resS);
   FuncVec resC = res.get(IDX_P_IRR);          log.dbg("resC=", resC);
 
-  if (OPER_P_ON) {
+//  if (OPER_P_ON) {
     for (int i = 0; i < basis.size(); i++) {
       FuncVec fi = basis.getFunc(i);          log.dbg("fi=", fi);
       double dS = quadr.calcInt(sinL, fi);    log.dbg("dS=", dS);
@@ -120,7 +120,7 @@ protected FuncArr calcPsi(double scattE, int engIdx_NOT_USED_HERE) {
       assertEquals("testC_" + i, testC, 0d);
       assertEquals(0, testC, MAX_INTGRL_ERR_E11);
     }
-  }
+//  }
 
 //  FileX.writeToFile(sinL.toTab(), calcOpt.getHomeDir(), "wf", "sin_" + idxCount + ".txt");
 //  FileX.writeToFile(cosL.toTab(), calcOpt.getHomeDir(), "wf", "cos_" + idxCount + ".txt");

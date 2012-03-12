@@ -120,5 +120,4 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   }
   return res;
 }
-
 }
