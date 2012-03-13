@@ -1,24 +1,16 @@
 package papers.hy_swave.method_ees;
-import atom.angular.Spin;
 import atom.data.AtomHy;
-import atom.e_1.SysE1;
-import atom.e_2.SysAtomE2;
 import atom.energy.ConfHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
-import atom.shell.ConfArr;
-import atom.shell.ConfArrFactoryE2;
 import atom.shell.Ls;
 import math.func.arr.FuncArrDbgView;
-import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
-import papers.hy_swave.HyLikeSWave;
 import qm_station.QMSProject;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.ScattTrgtE3;
 
-import javax.iox.FileX;
 import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 12/03/12, 10:05 AM
@@ -59,14 +51,13 @@ public void calc(int newN) {
   hydrScattTestOk(TARGET_Z);      // out: pot (for TARGET_Z), orthonNt
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
-  trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
+  trgtPotH = new PotHMtrxLcr(L, orthonN, pot);    log.dbg("trgtPotH=", trgtPotH);
   Vec targetEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));
-  trgtBasisNt = trgtPotH.getEigFuncArr();      log.dbg("trgtBasisNt=", new FuncArrDbgView(trgtBasisNt));
-  trgtBasisN = null;
+  trgtBasisN = trgtPotH.getEigFuncArr();      log.dbg("trgtBasisNt=", new FuncArrDbgView(trgtBasisNt));
+//  AtomUtil.trimTailSLOW(trgtBasisNt);     // todo: check if needed
+  trgtBasisNt = null;
   orthonNt = null;
-//  orthonN = null;
 
-//  AtomUtil.trimTailSLOW(trgtBasisN);     // todo: check if needed
   ScattTrgtE3 trgt = makeTrgtE3(slater);
   trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE electron
   trgt.setInitTrgtIdx(FROM_CH);
@@ -76,14 +67,15 @@ public void calc(int newN) {
   trgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
 
   ConfHMtrx sysH = makeSysH(SYS_LS, slater);
-
-  EesMethodE2 method = new EesMethodE2(calcOpt);
-  method.setTrgtE3(trgt);
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
+
+//  EesMethodE2_oneChTest method = new EesMethodE2_oneChTest(calcOpt);
+  EesMethodE2_basisHy method = new EesMethodE2_basisHy(calcOpt);
+  method.setTrgtE2(trgt);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
   method.setOrthonN(orthonN);
-  method.setTrgtBasisNt(trgtBasisNt);
+  method.setTrgtBasisN(trgtBasisN);
 
   ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);

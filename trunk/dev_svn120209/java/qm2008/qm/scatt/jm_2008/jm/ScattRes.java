@@ -21,7 +21,7 @@ private String homeDir;
 private String modelDir;
 private String calcLabel;
 private String modelName;
-//private ScattMethodBaseE2 methodE2;
+//private JmMethodBaseE2 methodE2;
 private ScattMethodBaseE1 method;
 public Mtrx getResInfo() {
   return resInfo;
@@ -99,7 +99,7 @@ public void setModelName
      modelName) {
   this.modelName = modelName;
 }
-//public void setMethodE2(ScattMethodBaseE2 methodE2) {
+//public void setMethodE2(JmMethodBaseE2 methodE2) {
 //  this.methodE2 = methodE2;
 //}
 public void setMethod

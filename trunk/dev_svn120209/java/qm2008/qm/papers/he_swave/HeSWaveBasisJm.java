@@ -10,7 +10,7 @@ import math.func.arr.FuncArr;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
-import scatt.jm_2008.e2.ScattResonE2;
+import scatt.jm_2008.e2.JmResonE2;
 import scatt.jm_2008.e3.JmDe3;
 import scatt.jm_2008.e3.JmMethodJmBasisE3;
 import scatt.jm_2008.jm.ScattRes;
@@ -46,7 +46,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
   public void setUp() {
     super.setUp();
     log.info("log.info(HeSWaveBasisJm)");
-    ScattResonE2.log.setDbg();
+    JmResonE2.log.setDbg();
     log.setDbg();
   }
 
@@ -148,7 +148,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     }
     setupScattRes(res, method);
 
-//    ScattResonE2.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
+//    JmResonE2.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
     res.writeToFiles();
   }
 

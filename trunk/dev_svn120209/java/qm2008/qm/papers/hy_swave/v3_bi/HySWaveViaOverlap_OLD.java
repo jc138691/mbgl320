@@ -12,7 +12,7 @@ import atom.shell.Ls;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
-import papers.hy_swave.HySWaveBasisHy;
+import papers.hy_swave.HySWaveJmBasisHy;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.ScattTrgtE2;
 import scatt.jm_2008.jm.fanox.JmMethodFanoE2;
@@ -23,7 +23,7 @@ import javax.utilx.log.Log;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 02/06/2010, 9:08:57 AM
  */
-public class HySWaveViaOverlap_OLD extends HySWaveBasisHy {
+public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
   public static Log log = Log.getLog(HySWaveViaOverlap_OLD.class);
 
   public static void main(String[] args) {

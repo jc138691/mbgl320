@@ -37,7 +37,7 @@ import qm_station.jm.PotEigVecLcrTest;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
 import scatt.eng.EngModelArr;
-import scatt.jm_2008.e2.ScattMethodBaseE2;
+import scatt.jm_2008.e2.JmMethodBaseE2;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
@@ -65,7 +65,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
   public void setUp() {
     super.setUp();
     log.info("log.info(HeSWaveScatt)");
-//    ScattResonE2.log.setDbg();
+//    JmResonE2.log.setDbg();
 //    log.setDbg();
   }
 
@@ -85,7 +85,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     FileX.writeToFile(ionEngs.toCSV(), HOME_DIR, MODEL_DIR
       , MODEL_NAME+"_thisTrgEngs_S3_ion_eV_" + makeLabelNc());  // THIS target energies, not the true S-wave energies
   }
-  public void setupScattRes(ScattRes res, ScattMethodBaseE2 method) {
+  public void setupScattRes(ScattRes res, JmMethodBaseE2 method) {
     super.setupScattRes(res, method);
     res.setCalcLabel(makeLabelNc(method));
   }
@@ -93,7 +93,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
   protected static String makeLabelNc() {
     return "Nc" + Nc + "_" + Jm2010Common.makeLabelBasisOptN();
   }
-  protected static String makeLabelNc(ScattMethodBaseE2 method) {
+  protected static String makeLabelNc(JmMethodBaseE2 method) {
     return "Nc" + Nc + "_" + Jm2010Common.makeLabelBasisOptOpen(method);
   }
 

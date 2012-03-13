@@ -9,7 +9,6 @@ import qm_station.ui.scatt.CalcOptR;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e2.ScattMethodBaseE2;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.TestModel;
 import scatt.jm_2008.jm.laguerre.LgrrModel;

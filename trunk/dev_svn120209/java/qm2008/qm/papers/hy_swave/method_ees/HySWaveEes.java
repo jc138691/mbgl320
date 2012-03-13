@@ -80,10 +80,9 @@ public void calc(int newN) {
   hydrScattTestOk(TARGET_Z);      // out: pot (for TARGET_Z), orthonNt
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
-  trgtBasisNt = orthonN;
-  trgtBasisN = null;
+  trgtBasisN = orthonN;
+  trgtBasisNt = null;
   orthonNt = null;
-  orthonN = null;
 
 //  AtomUtil.trimTailSLOW(trgtBasisN);     // todo: check if needed
   ScattTrgtE3 trgt = makeTrgtE3(slater);
@@ -96,13 +95,13 @@ public void calc(int newN) {
 
   ConfHMtrx sysH = makeSysH(SYS_LS, slater);
 
-  EesMethodE2 method = new EesMethodE2(calcOpt);
-  method.setTrgtE3(trgt);
+  EesMethodE2_oneChTest method = new EesMethodE2_oneChTest(calcOpt);
+  method.setTrgtE2(trgt);
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
   method.setOrthonN(orthonN);
-  method.setTrgtBasisNt(trgtBasisNt);   // is just orthonN, but different in _BasisHy
+  method.setTrgtBasisN(trgtBasisN);   // is just orthonN, but different in _BasisHy
 
   ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);
