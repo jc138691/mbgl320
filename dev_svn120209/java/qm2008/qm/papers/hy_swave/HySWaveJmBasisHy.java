@@ -30,18 +30,18 @@ import javax.utilx.log.Log;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 15/02/2010, 1:03:23 PM
  */
-public class HySWaveBasisHy extends HySWaveBasisJm {
-  public static Log log = Log.getLog(HySWaveBasisHy.class);
+public class HySWaveJmBasisHy extends HySWaveJm {
+  public static Log log = Log.getLog(HySWaveJmBasisHy.class);
 
   public static void main(String[] args) {
     // NOTE!!! for Nt>40 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
-    HySWaveBasisHy runMe = new HySWaveBasisHy();
+    HySWaveJmBasisHy runMe = new HySWaveJmBasisHy();
     runMe.setUp();
     runMe.testRun();
   }
 
   public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-    project = QMSProject.makeInstance("HySWaveBasisHy", "110606");
+    project = QMSProject.makeInstance("HySWaveJmBasisHy", "110606");
     TARGET_Z = AtomHy.Z;
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
     MODEL_NAME = "HySModelBasisHy";    MODEL_DIR = MODEL_NAME;
@@ -63,7 +63,7 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
 
   public void setUp() {
     super.setUp();
-    log.info("log.info(HySWaveBasisHy)");
+    log.info("log.info(HySWaveJmBasisHy)");
     log.setDbg();
   }
 
@@ -86,10 +86,10 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
 
     AtomUtil.trimTailSLOW(trgtBasisNt);
 
-    ScattTrgtE2 jmTrgt = new ScattTrgtE2();
-    jmTrgt.setNt(orthonNt.size());
-    jmTrgt.setEngs(targetEngs);
-    jmTrgt.loadSdcsW();
+    ScattTrgtE2 trgt = new ScattTrgtE2();
+    trgt.setNt(orthonNt.size());
+    trgt.setEngs(targetEngs);
+    trgt.loadSdcsW();
     if (CALC_TRUE_CONTINUUM) {
       // TARGET CONTINUUM
       double maxSysEng = calcOpt.getGridEng().getLast() + targetEngs.get(0); // ASSUMED FROM H(1s)
@@ -98,10 +98,10 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
       FileX.writeToFile(clmbNt.toTab(), HOME_DIR, "wf", "clmbNt.dat");
       if (!new JmCoulombLcrTest(clmbNt, trgtBasisNt).ok()) return;
 
-      jmTrgt.setStatesContE1(clmbNt);
-      jmTrgt.setStatesE1(trgtBasisNt);
-      jmTrgt.loadSdcsContW();
-      FileX.writeToFile(jmTrgt.toTab(), HOME_DIR, "wf", "target_" + basisOptN.makeLabel() + ".dat");
+      trgt.setStatesContE1(clmbNt);
+      trgt.setStatesE1(trgtBasisNt);
+      trgt.loadSdcsContW();
+      FileX.writeToFile(trgt.toTab(), HOME_DIR, "wf", "target_" + basisOptN.makeLabel() + ".dat");
     }
 
     PotHMtrx targetHTest = new PotHMtrxLcr(L, trgtBasisNt, pot, orthonNt.getQuadr());  log.dbg("targetHTest=", targetHTest); // only for debugging
@@ -120,16 +120,14 @@ public class HySWaveBasisHy extends HySWaveBasisJm {
 //    SysE2_OLD sys = new SysE2_OLD(-1., slater);// NOTE -1 for Hydrogen
     SysAtomE2 sys = new SysAtomE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
     ConfHMtrx sysH = new ConfHMtrx(sysArr, sys);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
-    Vec sysEngs = sysH.getEigVal();                 log.dbg("sysConfH=", sysEngs);
+    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 //    double e0 = sysEngs.get(0);
 
     JmMethodE2 method = new JmMethodE2(calcOpt);
-    method.setTrgtE2(jmTrgt);
+    method.setTrgtE2(trgt);
     method.setOverD(D);
-    Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
     method.setSysEngs(sEngs);
     method.setSysConfH(sysH);
-    method.setSysEngs(sysEngs);
 
     if (CALC_DENSITY) {
       FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);

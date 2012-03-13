@@ -14,7 +14,9 @@ import scatt.Scatt;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.partial.wf.CosRegPWaveLcr;
+import scatt.partial.wf.SinKLcr;
 import scatt.partial.wf.SinPWaveLcr;
 
 import javax.utilx.log.Log;
@@ -24,10 +26,10 @@ import javax.utilx.pair.Dble2;
  */
 public class EesMethodE1 extends ScattMethodBaseE1 {   // E1 - one electron
 public static Log log = Log.getLog(EesMethodE1.class);
-protected static final int IDX_REG = 0;
-protected static final int IDX_IRR = 1;
-protected static final int IDX_P_REG = 2;
-protected static final int IDX_P_IRR = 3;
+public static final int IDX_REG = 0;
+public static final int IDX_IRR = 1;
+public static final int IDX_P_REG = 2;
+public static final int IDX_P_IRR = 3;
 private static final boolean OPER_P_ON = true;
 public EesMethodE1(CalcOptE1 calcOpt) {
   super(calcOpt);
@@ -43,7 +45,7 @@ public ScattRes calcSysEngs() {
   for (int i = 0; i < engs.size(); i++) {              log.dbg("i = ", i);
     double scattE = engs.get(i);                           log.dbg("E = ", scattE);
     mCrss.set(i, IDX_ENRGY, scattE);
-    FuncArr psi = calcPsi(scattE, i);
+    FuncArr psi = calcPsi(scattE, orthonN);
     Dble2 sc = calcSC(psi, scattE, i);
     double R = -sc.a / sc.b;                               log.dbg("R = ", R);
     double sysA = calcSysA(psi, scattE, i, R);
@@ -84,16 +86,24 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   res.b = calcHE(sysPsi, potH, psiC, scattE);    log.dbg("C_i=", res.b);
   return res;
 }
-protected FuncArr calcPsi(double scattE, int engIdx_NOT_USED_HERE) {
+// this has 1./sqrt(momP)
+public static FuncVec calcChPsiReg(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
+  int L = 0;
+  double momP = Scatt.calcMomFromE(chScattE);
+  WFQuadrLcr quadr = orthN.getQuadr();
+  FuncVec res = new SinKLcr(quadr, momP, L);   //log.dbg("sinL=", sinL);
+  return res;
+}
+public static FuncArr calcPsi(double scattE, LgrrOrthLcr orthN) {
   int L = 0;
   double momP = Scatt.calcMomFromE(scattE);
-  IFuncArr basis = orthonN;
-  WFQuadrLcr quadr = orthonN.getQuadr();
+  IFuncArr basis = orthN;
+  WFQuadrLcr quadr = orthN.getQuadr();
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
   FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
   FuncVec cosL = new CosRegPWaveLcr(quadr, momP, L
-    , getCalcOpt().getLgrrModel().getLambda());   log.dbg("cosL=", cosL);
+    , orthN.getLambda());   log.dbg("cosL=", cosL);
 
   res.add(sinL.copyY());     // IDX_REG
   res.add(cosL.copyY());     // IDX_IRR
@@ -121,7 +131,6 @@ protected FuncArr calcPsi(double scattE, int engIdx_NOT_USED_HERE) {
       assertEquals(0, testC, MAX_INTGRL_ERR_E11);
     }
 //  }
-
 //  FileX.writeToFile(sinL.toTab(), calcOpt.getHomeDir(), "wf", "sin_" + idxCount + ".txt");
 //  FileX.writeToFile(cosL.toTab(), calcOpt.getHomeDir(), "wf", "cos_" + idxCount + ".txt");
 //  FileX.writeToFile(resS.toTab(), calcOpt.getHomeDir(), "wf", "psi_sin_" + idxCount + ".txt");

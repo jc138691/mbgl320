@@ -159,7 +159,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     }
     setupScattRes(res, method);
 
-//    ScattResonE2.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
+//    JmResonE2.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
     res.writeToFiles();
   }
 

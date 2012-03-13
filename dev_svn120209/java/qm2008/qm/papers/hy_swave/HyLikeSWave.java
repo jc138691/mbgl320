@@ -2,27 +2,11 @@ package papers.hy_swave;
 import atom.angular.Spin;
 import atom.energy.ConfHMtrx;
 import atom.shell.Ls;
-import atom.wf.coulomb.CoulombNmrvLcr;
-import atom.wf.coulomb.CoulombNmrvR;
-import atom.wf.log_cr.RkLcrFlowTest;
-import atom.wf.log_cr.YkLcrFlowTest;
-import atom.wf.log_cr.test.RkLcrTest;
-import atom.wf.log_cr.test.YkLcrTest;
-import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.func.simple.FuncPowInt;
 import math.vec.DbgView;
 import math.vec.Vec;
-import math.vec.VecDbgView;
-import project.workflow.task.test.FlowTest;
-import qm_station.jm.PotEigVecLcrTest;
 import scatt.jm_2008.e1.ScattMethodBaseE1;
-import scatt.jm_2008.e2.ScattMethodBaseE2;
 import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcrTest;
-import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.utilx.log.Log;
 /**

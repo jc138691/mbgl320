@@ -5,7 +5,7 @@ import atom.data.AtomUnits;
 import math.complex.Cmplx2F1;
 import papers.hy_swave.HyLikeSWaveJm;
 import qm_station.QMSProject;
-import scatt.jm_2008.e2.ScattMethodBaseE2;
+import scatt.jm_2008.e2.JmMethodBaseE2;
 import scatt.jm_2008.jm.theory.JmTools;
 
 import javax.utilx.log.Log;
@@ -24,7 +24,7 @@ public class HePlusSWaveJm extends HyLikeSWaveJm {
   public void setUp() {
     super.setUp();
     log.info("log.info(HePlusSWaveJm)");
-    ScattMethodBaseE2.log.setDbg();
+    JmMethodBaseE2.log.setDbg();
     JmTools.log.setDbg();
     Cmplx2F1.log.setDbg();
     log.setDbg();

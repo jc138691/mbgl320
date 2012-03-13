@@ -19,7 +19,6 @@ private Vec overD;      // overlap coefficients D
 protected Vec sysEngs;
 protected PotHMtrx potH;
 protected LgrrOrthLcr orthonN;
-private FuncArr trgtBasisNt;
 protected final CalcOptE1 calcOpt;
 public ScattMethodBaseE1(CalcOptE1 calcOpt) {
   this.calcOpt = calcOpt;
@@ -33,7 +32,8 @@ public ScattRes calcEngGrid() {
   return calc(engs);
 }
 public ScattRes calcSysEngs() {
-  return calc(sysEngs);
+  throw new IllegalArgumentException(log.error("call relevant implementation of calcSysEngs"));
+//  return calc(sysEngs);
 }
 public int getSysBasisSize() {
   return sysEngs.size();
@@ -69,8 +69,5 @@ public LgrrOrthLcr getOrthonN() {
 }
 public void setOrthonN(LgrrOrthLcr orthonN) {
   this.orthonN = orthonN;
-}
-public void setTrgtBasisNt(FuncArr trgtBasisNt) {
-  this.trgtBasisNt = trgtBasisNt;
 }
 }

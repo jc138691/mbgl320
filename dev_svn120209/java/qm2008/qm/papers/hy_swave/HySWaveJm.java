@@ -11,25 +11,25 @@ import javax.utilx.log.Log;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,13/04/11,3:28 PM
  */
-public class HySWaveBasisJm extends HyLikeSWaveJm {
-  public static Log log = Log.getLog(HySWaveBasisJm.class);
+public class HySWaveJm extends HyLikeSWaveJm {
+  public static Log log = Log.getLog(HySWaveJm.class);
 
   public static void main(String[] args) {
     // NOTE!!! for Nt>40 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
-    HySWaveBasisJm runMe = new HySWaveBasisJm();
+    HySWaveJm runMe = new HySWaveJm();
     runMe.setUp();
     runMe.testRun();
   }
   public void setUp() {
     super.setUp();
-    log.info("log.info(HySWaveBasisJm)");
+    log.info("log.info(HySWaveJm)");
     log.setDbg();
   }
   public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-    project = QMSProject.makeInstance("HySWaveBasisJm", "110606");
+    project = QMSProject.makeInstance("HySWaveJm", "110606");
     TARGET_Z = AtomHy.Z;
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
-    MODEL_NAME = "HySWaveBasisJm";    MODEL_DIR = MODEL_NAME;
+    MODEL_NAME = "HySWaveJm";    MODEL_DIR = MODEL_NAME;
     CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about times 2.5
     LAMBDA = 1.5; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 
