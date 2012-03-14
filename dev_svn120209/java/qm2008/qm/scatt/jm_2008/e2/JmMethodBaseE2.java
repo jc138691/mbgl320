@@ -106,8 +106,7 @@ public ScattRes calc(Vec engs) {          //JmMethodJmBasisE3.log.setDbg();
     log.dbg("Z^-=\n", new CmplxMtrxDbgView(zm));
     CmplxMtrx zpInv = null;
     try {
-      zpInv = zp.inverse();
-      log.dbg("(Z^+)^{-1}=\n", new CmplxMtrxDbgView(zpInv));
+      zpInv = zp.inverse();      log.dbg("(Z^+)^{-1}=\n", new CmplxMtrxDbgView(zpInv));
     } catch (java.lang.ArithmeticException ae) {
       log.info("W=\n", new MtrxDbgView(W));
       log.info("WCJC=\n", new CmplxMtrxDbgView(zpInv));
@@ -115,8 +114,7 @@ public ScattRes calc(Vec engs) {          //JmMethodJmBasisE3.log.setDbg();
       log.info("(1-iR)=\n", new CmplxMtrxDbgView(zm));
       throw ae;
     }
-    CmplxMtrx mS = zpInv.times(zm);
-    log.dbg("S matrix=\n", new CmplxMtrxDbgView(mS));
+    CmplxMtrx mS = zpInv.times(zm);    log.dbg("S matrix=\n", new CmplxMtrxDbgView(mS));
     mS = mS.transpose();
     calcCrossSecs(i, res, mS);
     calcSdcs(i, res);
@@ -191,7 +189,7 @@ public ScattRes calc_OLD(Vec engs) {          //JmMethodJmBasisE3.log.setDbg();
 }
 protected void calcCrossSecs(int i, ScattRes res, CmplxMtrx mS) {
   int chNum = getChNum();
-  Mtrx mCs = res.getCrossSecs();
+  Mtrx mCrss = res.getCrossSecs();
   Mtrx mTics = res.getTics();
   double ionSum = 0;
   int initChIdx = trgtE2.getInitTrgtIdx();
@@ -211,7 +209,7 @@ protected void calcCrossSecs(int i, ScattRes res, CmplxMtrx mS) {
     //        mCs.set(0, 0, 0); // init the corner
     //        mCs.set(0, to + 1, ch.getEng());  // NOTE +1; first row has incident energies
     //      }
-    mCs.set(i, to + 1, sigma);  // NOTE +1; first column has incident energies
+    mCrss.set(i, to + 1, sigma);  // NOTE +1; first column has incident energies
     if (trgtE2.getEngs().get(to) > trgtE2.getIonGrndEng()) {  // sum up all positive energy target states
       ionSum += sigma;
     }

@@ -15,8 +15,9 @@ import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
+import scatt.partial.wf.CosRegK2;
 import scatt.partial.wf.CosRegPWaveLcr;
-import scatt.partial.wf.SinKLcr;
+import scatt.partial.wf.SinK2;
 import scatt.partial.wf.SinPWaveLcr;
 
 import javax.utilx.log.Log;
@@ -86,23 +87,23 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   res.b = calcHE(sysPsi, potH, psiC, scattE);    log.dbg("C_i=", res.b);
   return res;
 }
-// this has 1./sqrt(momP)
+// this has sqrt(2./momP)
 public static FuncVec calcChPsiReg(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   WFQuadrLcr quadr = orthN.getQuadr();
-  FuncVec res = new SinKLcr(quadr, momP, L);   //log.dbg("sinL=", sinL);
+  FuncVec res = new SinK2(quadr, momP, L);   //log.dbg("sinL=", sinL);
   return res;
 }
-public static FuncArr calcPsi(double scattE, LgrrOrthLcr orthN) {
+public FuncArr calcPsi(double scattE, LgrrOrthLcr orthN) {
   int L = 0;
   double momP = Scatt.calcMomFromE(scattE);
   IFuncArr basis = orthN;
   WFQuadrLcr quadr = orthN.getQuadr();
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
-  FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
-  FuncVec cosL = new CosRegPWaveLcr(quadr, momP, L
+  FuncVec sinL = new SinK2(quadr, momP, L);   log.dbg("sinL=", sinL);
+  FuncVec cosL = new CosRegK2(quadr, momP, L
     , orthN.getLambda());   log.dbg("cosL=", cosL);
 
   res.add(sinL.copyY());     // IDX_REG
@@ -178,7 +179,8 @@ protected double calcRFromPsiE(FuncArr psi, double scattE, int engIdx, double sy
   double c = calcV(psiS, psiPC);
 
   double res = b + s + R * c;
-  double norm =  -2. / momP;       // WHY -2, not 2?
+//  double norm =  -2. / momP;       // WHY -2, not 2?
+  double norm =  -1;       // Each of of the sinPsi and cosPsi are normalized to sqrt(2./momP)
   res *= norm;
   return res;
 }
