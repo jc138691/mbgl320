@@ -26,11 +26,12 @@ public ScattRes calcSysEngs() {
   Mtrx mCrss = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   res.setCrossSecs(mCrss);
   IFuncArr basis = potH.getBasis();
+  EesMethodE1 methodE1 = new EesMethodE1(calcOpt);
   for (int i = 0; i < engs.size(); i++) {              log.dbg("i = ", i);
     double scattE = engs.get(i);                           log.dbg("E = ", scattE);
     double momP = Scatt.calcMomFromE(scattE);
     mCrss.set(i, IDX_ENRGY, scattE);
-    FuncArr psi = calcPsi(scattE, i);
+    FuncArr psi = methodE1.calcPsi(scattE, orthonN);
     double a = calcA(psi, scattE, i);
 //    double f = calcF(a, psi, scattE, i);
 //    double f = calcBornF(psi, scattE);

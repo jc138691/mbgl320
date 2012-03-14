@@ -35,22 +35,19 @@ public ScattRes calcSysEngs() {
   int eN = sEngs.size();
   Mtrx mCrss = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   res.setCrossSecs(mCrss);
+  EesMethodE1 methodE1 = new EesMethodE1(calcOpt);
   for (int sysIdx = 0; sysIdx < sEngs.size(); sysIdx++) {                log.dbg("i = ", sysIdx);
     double sysE = sEngs.get(sysIdx);                           log.dbg("sysE = ", sysE);
     double scattE = sysE - trgtE2.getInitTrgtEng();      log.dbg("scattE = ", scattE);
+    mCrss.set(sysIdx, IDX_ENRGY, scattE);
     double sigma = 0;
     if (scattE > 0
       &&  engModel.getFirst() <= scattE
       &&  scattE <= engModel.getLast()
       ) {
-      mCrss.set(sysIdx, IDX_ENRGY, scattE);
-      FuncArr psi = EesMethodE1.calcPsi(scattE, orthonN);
+      FuncArr psi = methodE1.calcPsi(scattE, orthonN);
       Dble2 sc = calcSC(psi, scattE, sysIdx);
       double R = -sc.a / sc.b;                               log.dbg("R = ", R);
-  //    double sysA = calcSysA(psi, scattE, i, R);
-
-  // todo: for e-H
-  //    double newR = calcRFromPsiE(psi, scattE, i, sysA, R);   log.dbg("newR = ", newR);
 
       Cmplx S = Scatt.calcSFromR(R);                                          log.dbg("S = ", S);
       sigma = Scatt.calcSigmaPiFromS(S, scattE);

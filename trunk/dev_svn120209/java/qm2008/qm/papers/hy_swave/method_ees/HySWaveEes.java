@@ -113,7 +113,7 @@ protected ScattTrgtE3 makeTrgtE3(SlaterLcr slater) {
   SysE1 tgrtE2 = new SysE1(-TARGET_Z, slater);
   Ls tLs = new Ls(0, Spin.ELECTRON);  // t - for target
 
-  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtBasisNt);     log.dbg("tConfArr=", tConfArr);  // NOTE!  orthonN
+  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtBasisN);     log.dbg("tConfArr=", tConfArr);  // NOTE!  orthonN
 
   ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                  log.dbg("tH=\n", new MtrxDbgView(tH));
   FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
