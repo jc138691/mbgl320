@@ -81,7 +81,7 @@ private int calcReportChNum(Vec engs) {
   }
   return chIdx + 1; // +1 to get count (not index)
 }
-private double calcY(FuncVec tWf, FuncVec tPsi, int sysIdx) {
+private double calcY(Shell tSh, Shell freeSh, int sysIdx) {
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = sysConfH.getBasis();     // sBasis
@@ -93,30 +93,35 @@ private double calcY(FuncVec tWf, FuncVec tPsi, int sysIdx) {
     if (Calc.isZero(term))
       continue;
 
-    STOPPED HERE // Vbf - bound-free; could also be Vff - free-free for ionization
-    double v = sysE2.calcVbf(tWf, tPsi, sysConf);         log.dbg("v=", v);
+    //Vbf - bound-free; could also be Vff - free-free for ionization
+    double v = sysE2.calcVbf(tSh, freeSh, sysConf);         log.dbg("v=", v);
     res += ( term * v );
   }
   return res;
 }
 
 protected Vec calcY(int sysIdx, int chNum) {
+  int L = 0;
+  int FREE_IDX = 999;
+
   Vec res = new Vec(chNum);
   Vec tEngs = trgtE2.getEngs();
   FuncArr trgtWfs = getTrgtBasisN();
   Vec sEngs = getSysEngs();
-  for (int t = 0; t < chNum; t++) {     //log.dbg("t = ", t);  // Target channels
-    double tE = tEngs.get(t);     // target state eng
+  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(tIdx);     // target state eng
     double sE = sEngs.get(sysIdx);  // system total eng
     double chScattE = sE - tE;
     if (chScattE <= 0) {
-      res.set(t, 0);
+      res.set(tIdx, 0);
       continue;
     }
     FuncVec tPsi = EesMethodE1.calcChPsiReg(chScattE, orthonN);
-    FuncVec tWf = trgtWfs.get(t);
-    double y = calcY(tWf, tPsi, sysIdx);
-    res.set(t, y);
+    FuncVec tWf = trgtWfs.get(tIdx);
+    Shell tSh = new Shell(tIdx, tWf, L);
+    Shell psiSh = new Shell(FREE_IDX, tPsi, L);
+    double y = calcY(tSh, psiSh, sysIdx);
+    res.set(tIdx, y);
   }
   return res;
 }
