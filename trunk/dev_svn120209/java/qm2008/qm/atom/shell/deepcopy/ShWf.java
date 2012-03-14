@@ -13,10 +13,6 @@ public class ShWf extends FuncVec {    // partial wave function
     super(rwf);
     id = new ShId(idx, L);
   }
-//  public ShWf(ShWf from) {
-//    super(from);
-//    this.id = from.id;
-//  }
 
   public ShId getId() {
     return id;
