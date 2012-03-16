@@ -54,34 +54,32 @@ It is shown that existing JM method could be significantly simplified without th
 TODO
 this Eigenstate Expansion for Scattering (EES) method relies on the following conjecture.
 
-<ultichannel scattering \cite{CA73, NO72, TF79, Nesbet78, Lucchese86} 
+<ultichannel scattering \cite{CA73, NO72, TF79, Nesbet78, Lucchese86}
 
 \section{THEORY}
 \subsection{One-channel scattering}
 
 
-After the partial-wave expansion \cite{Taylor72,N82} and focusing only on the $s$-wave terms $(l=0)$,
+After the partial-wave expansion \cite{Taylor72,N82} and focusing only on the $s$-wave terms (angular momentum $l=0$),
 electron scattering on a spherically symmetric potential $V(r)$
 could be described by the time-independent radial Schr\"odinger equation
 \beq
-(H-E) | \Psi_E \rangle =0,  \ \ \ H = H_0 + V, \label{H_E_Psi_E}
+(H-E) \Psi_E (r) =0,  \ \ \  \label{H_E_Psi_E}
+\eeq
+\beq
+H = \hat{K} + V(r), \ \ \ \hat{K} = -(1/2) d^2/dr^2,
 \eeq
 where $E=k^2/2$ and $k$ are the incident electron energy and momentum, respectively, and where boundary conditions will be discussed later.
-Let $\psi_k$ and $\overline{\psi}_k$ be real regular and irregular solutions for $H_0$,
+Let $\psi_k$ and $\overline{\psi}_k$ be real (not complex) regular and irregular solutions for $\hat{K}$,
 \beq \barr{l}
-(H_0-E) | \psi_k \rangle =0,  \ \ \ \psi_k(r=0) = 0,\\
-(H_0-E) | \overline{\psi}_k \rangle =0,  \ \ \ \overline{\psi}_k(r=0) \neq 0,\\
+(\hat{K}-E)  \psi_k (r) =0,  \ \ \ \psi_k(r=0) = 0,\\
+(\hat{K}-E)  \overline{\psi}_k (r) =0,  \ \ \ \overline{\psi}_k(r=0) \neq 0,\\
 \earr \label{H_0_E_psi}\eeq
-then for a short-range potential $V(r)$,
 \beq \barr{l}
-H_0 = \hat{K},\ \ \ \hat{K} = -(1/2) d^2/dr^2,\\
 \psi_k(r) = \sin(kr) \sqrt{2/k},\\
 \overline{\psi}_k(r) = \cos(kr) \sqrt{2/k},
 \earr \label{K} \eeq
 where the normalization $\sqrt{2/k}$ will become convenient in the multichannel scattering.
-If present, a long-range Coulomb potential $V_c=-Z/r$ is included into $H_0$
-and $\psi$ and $\overline{\psi}$ become the corresponding Coulomb wave functions satisfying Eq.~(\ref{H_0_E_psi})
-with $H_0 = \hat{K} + V_c$.
 
 
 
@@ -106,28 +104,29 @@ Then $\Psi_E(r)$ is approximated at the system's eigenvalues $\{E_i\}_{i=1}^{N}$
 \label{Psi_EES} \eeq
 where $E_i=k_i^2/2$, the {\em standing}-wave (equal mix of {\em incoming}- and {\em outgoing}-waves) boundary condition is satisfied
 \beq
-\Psi_E(r \rightarrow \infty) \sim  \sin(kr+\delta_0) \sqrt{2/k}, \ \ \ \Psi_E(r= 0)=0,
+\Psi_E(r \rightarrow \infty) \sim  \sin(kr+\delta_0) \sqrt{2/k}, \ \ \ \Psi_E(r= 0)=0,   \label{stand_wave}
 \eeq
 and where the trial functions $\{\phi,\overline{\phi}\}$ are related to $\{\psi,\overline{\psi}\}$ and will be discussed shortly.
 The results of the potential $s$-wave elastic scattering could then be expressed via
-phase shift ($\delta_0$), $K$-matrix ($K_0$), $S$-matrix ($S_{0}$) and/or cross section ($\sigma_{0}$)
+phase shift ($\delta_0$), real $K$-matrix ($K_0$), complex unitary $S$-matrix ($S_{0}$) and/or cross section ($\sigma_{0}$)
 as follows
 \beq \barr{l}
 K_{0} = \tan{\delta_0},\\
 S_{0}=(1+\mbox{i}K_0)(1-\mbox{i}K_0)^{-1}, \\
 \sigma_{0}=\pi k^{-2} |S_{0}-1|^2.
 \earr \eeq
-\citet{Harris67} solved Eq.~(\ref{Psi_EES}) by
+\citet{Harris67} solved Eq.~(\ref{H_E_Psi_E}) by using the pair of trial functions $\{\phiH_k, \overline{\phiH_{k}} \}$ in
+Eq.~(\ref{Psi_EES})
+\beq \barr{l}
+\phiH_k(r) =  \psi_k(r),\ \
+\overline{\phiH_k}(r) =  [\overline{\psi}_k(r) - \exp{(-\lambda r)}],
+\earr \label{def_phi_H} \eeq
 \beq \barr{l}
 \langle\Psi_i|H-E_i|\Psi^N_{E_i}\rangle=0,\ \ \
 K_{0} = - s / c, \\
 s = \langle\Psi_i|H-E_i|  \phiH_{k_i} \rangle, \ \ \
 c = \langle\Psi_i|H-E_i|  \overline{\phiH_{k_i}} \rangle,
 \earr \label{K_0_Harris} \eeq
-\beq \barr{l}
-\phiH_k(r) =  \psi_k(r),\ \ 
-\overline{\phiH_k}(r) =  [\overline{\psi}_k(r) - \exp{(-\lambda r)}],
-\earr \label{def_phi_H} \eeq
 where $\lambda$ is a parameter (typically $\lambda=1$ \cite{Nesbet68}) used to make the irregular solution $\overline{\psi}_k(r)$ regular
 at the origin so that it could be used as a trial function in Eq.~(\ref{Psi_EES}).
 
@@ -136,9 +135,9 @@ at the origin so that it could be used as a trial function in Eq.~(\ref{Psi_EES}
 The goal here is to improve upon the Harris' {\em Expansion Approach} \cite{Harris67} to the extent that the Eq.~(\ref{Psi_EES})
 converges to the exact solution as $N$ increases.
 This is attempted by postulating that
-within the functional space of $N$ basis $L^2$ functions  $\{\xi_p(r)\}_{p=0}^N$,
-the eigenstates $\{\Psi_i\}_{i=1}^{N}$ are the best possible solutions of the scattering problem in Eq.~(\ref{H_E_Psi_E})
-with the standing-wave boundary conditions at the corresponding eigenvalues $\{E_i\}_{i=1}^{N}$.
+within the functional space of $N$ basis $L^2$ functions  $\{\xi_p(r)\}_{p=0}^{N-1}$,
+the eigenstates $\{\Psi_i\}_{i=1}^{N}$ are the best possible solutions of the scattering problem (\ref{H_E_Psi_E})
+with the standing-wave boundary condition (\ref{stand_wave}) at the corresponding eigenvalues $\{E_i\}_{i=1}^{N}$.
 Accepting the conjecture, it immediately follows that the {\em inner} functional space consisting of the first $N$ basis functions
 must be removed from the trial functions $\{\phi,\overline{\phi}\}$ in Eq.~(\ref{Psi_EES}) arriving at
 \beq \barr{l}
@@ -149,30 +148,31 @@ must be removed from the trial functions $\{\phi,\overline{\phi}\}$ in Eq.~(\ref
 \hat{P}_N = \sum_{p=0}^{N-1} | \xi_p \rangle \langle \xi_p |,
 \label{P_N} \eeq
 \beq \barr{l}
-K_{0} = - s / c, \ \ \ 
-s = \langle\Psi_i|H|  \phi_{k_i} \rangle, \ \ \ 
+K_{0} = - s / c, \ \ \
+s = \langle\Psi_i|H|  \phi_{k_i} \rangle, \ \ \
 c =  \langle\Psi_i|H|  \overline{\phi}_{k_i} \rangle.
 \earr \label{K_0_EES} \eeq
 
 
-Please note that in the case of the potential scattering, the trial pairs
-$\{\phiH,\overline{\phiH}\}$ and $\{\phi,\overline{\phi}\}$ yield identical numerical values for $K_0$ 
-via Eqs.~(\ref{K_0_Harris}) and (\ref{K_0_EES}), respectively. 
-This could be viewed as a partial validation of the proposed method, 
-since it is known for the Harris' method to be consistent with other variational scattering methods \cite{Nesbet68}. 
+Note that in the case of the potential scattering, the trial pairs
+$\{\phiH,\overline{\phiH}\}$ and $\{\phi,\overline{\phi}\}$ yield identical numerical values for $K_0$
+via Eqs.~(\ref{K_0_Harris}) and (\ref{K_0_EES}), respectively.
+This could be viewed as a partial validation of the proposed method,
+since it is known for the Harris' method to be consistent with other variational scattering methods \cite{Nesbet68}.
 
 
-The proposed conjecture could also be checked for 
-internal theoretical consistency via the general expression for the $K$-matrix \cite{N82} 
-\beq 
+The presented method could also be checked for
+internal theoretical consistency via the general expression for the $K$-matrix \cite{N82}
+\beq
 \widetilde{K}_0 = -\langle \psi_{k_i} | V | \Psi_{E_i} \rangle\\
 \label{K_theory}\eeq
 and its approximation equivalent
-\beq 
+\beq
 \widetilde{K}^N_0 = -\langle \psi_{k_i} | V | \Psi^N_{E_i} \rangle.
 \label{K_N_theory}\eeq
-If $\Psi_i$ is indeed a $\hat{P}_N$-projection of the correct scattering solution $\Psi_{E_i}$, then its functional-space tail could be used to 
-determine the scale of its contribution to $\Psi_{E_i}$ via
+If $\Psi_i$ is indeed a $\hat{P}_N$-projection of the correct scattering solution $\Psi^N_{E_i}$, 
+then its functional-space tail could be used to
+determine the scale of its contribution to $\Psi^N_{E_i}$ via
 \beq \barr{l}
 \langle \xi_{N-1} | \Psi^N_{E_i}\rangle
 = a \langle \xi_{N-1}| \Psi_i \rangle,\\
@@ -180,9 +180,15 @@ determine the scale of its contribution to $\Psi_{E_i}$ via
  =  \langle \xi_{N-1}| \psi_{k_i} \rangle
 + K_0 \langle \xi_{N-1}| \overline{\psi}_{k_i} \rangle,\\
 \earr \label{Psi_N_1_tail} \eeq
-where $K_0$ is given by Eq.~(\ref{K_0_EES}). Solving Eq.~(\ref{Psi_N_1_tail}) for $a_i$, 
-the full scattering solution $\Psi_{E_i}$ could be reconstructed via Eq.~(\ref{Psi_EES}) and then applied to Eq.~(\ref{K_N_theory}) obtaining 
-$\widetilde{K}^N_0$. Given that $K_0$  converges to the exact value \cite{Nesbet68} 
+where $K_0$ is given by Eq.~(\ref{K_0_EES}). 
+Here it is also assumed that $\xi_{N-1}(r)$ is the least vanishing among $\{\xi_p(r)\}_{p=0}^{N-1}$  at large $r$, which is 
+a common feature of most "standard" $L^2$ bases \cite{abramowitz}, 
+\beq
+|\xi_p(r)| < |\xi_{p'}(r)|, \ \ \ p<p', \ \ \ r \rightarrow \infty. 
+\eeq
+Solving Eq.~(\ref{Psi_N_1_tail}) for $a_i$,
+the full scattering solution $\Psi^N_{E_i}$ could be reconstructed via Eq.~(\ref{Psi_EES}) and then applied to Eq.~(\ref{K_N_theory}) obtaining
+$\widetilde{K}^N_0$. Given that $K_0$  converges to the exact value \cite{Nesbet68}
 \beq
 \lim_{N \rightarrow \infty} K_0 = \widetilde{K}_0,
 \label{K_0_lim} \eeq
@@ -195,30 +201,62 @@ It is shown in the results section that the convergence rate in Eq.~(\ref{K_N_0_
 
 
 \subsection{Multichannel scattering}
-For the purpose of multichannel scattering, the target Hamiltonian $H_t$ is diagonalized within $\hat{P}_N$ (\ref{P_N}) 
+Since the results of this study were limited to the $S$-wave model of scattering, 
+only the spin-related quantum numbers are considered in the
+following multichannel formalism. The extension to non-zero angular momenta is straight forward, see for example \cite{BR76p1491}. 
+ 
+
+Let the {\em target} Hamiltonian $H_t$ of   
+$\mathcal{N}$ electrons
+is diagonalized within $\hat{P}_N$ (\ref{P_N})
 \beq \barr{l}
 \langle \Phi_\gamma|H_t|\Phi_{\gamma'}\rangle=e_\gamma \delta_{\gamma\gamma'}, \ \
 \langle \Phi_\gamma|\Phi_{\gamma'}\rangle=\delta_{\gamma\gamma'},\\
 \Phi_\gamma = \sum_{\beta} C^t_{\gamma \beta} \theta_\beta,
 \earr \label{Phi_H_Phi} \eeq
-where $\{\theta_\beta\}$ denotes a complete set of electron configurations possible  from
-the first $N$ radial basis functions $\{\xi_p(r)\}_{p=0}^{N-1}$, 
-and where $\beta$ labelling is done in some arbitrary but predetermined order. 
-In the case of one-electron targets, each 
-$\theta_\beta$ is just a relevant $\xi_\beta(r)$ together with a required spin component. 
-For targets with more than one electrons, $\{\theta_\beta\}$ could be constructed as $LS$-coupled Fano's subshells \cite{Fano65,KFB11}, 
+where $\{\theta_\beta\}$ denotes a complete set of target electron configurations which could be built from
+the first $N$ radial basis functions $\{\xi_p(r)\}_{p=0}^{N-1}$,
+and where $\beta$ labeling is done in some arbitrary but predetermined order.
+In the case of one-electron targets, each
+$\theta_\beta$ is just a relevant $\xi_\beta(r)$ together with a required spin component.
+For targets with more than one electrons, $\{\theta_\beta\}$ could be constructed as spin-coupled Fano's subshells \cite{Fano65,KFB11},
 where $\{\xi_p(r)\}_{p=0}^{N-1}$ are used to define the radial components of the considered subshells.
 
 
-The total system's eigenstates are constructed by procedure identical to the one used for the target:
+The total scattering system's eigenstates are constructed by the procedure identical to the one used for the target (\ref{Phi_H_Phi}) 
+but now with the $(\mathcal{N}+1)$-electrons,
 \beq \barr{l}
 \langle\Psi_i^\Gamma|H|\Psi_j^\Gamma\rangle=E_i\delta_{ij}, \ \
  \langle\Psi_i^\Gamma|\Psi_j^\Gamma\rangle=\delta_{ij},\\
 \Psi^\Gamma_i = \sum_{j} C_{ij} \Theta^\Gamma_j,
-\earr \label{Psi_H_Psi} \eeq
-where 
+\earr \label{Psi_H_Psi_2} \eeq
+where $H$ is the system Hamiltonian of $(\mathcal{N}+1)$-electrons, $\{\Theta_j^\Gamma\}$
+denotes a complete set of system electron configurations, and where 
+$\Gamma$ denotes quantum numbers conserved by $H$.
+For the considered $S$-wave scattering,
+$\Gamma=\{S_\Gamma,\mu_\Gamma\}$, where $S_\Gamma$ and $\mu_\Gamma$ are the total spin and its $z$ projection, respectively.
 
 
+Closely following the JM method \cite{BR76p1491, KFB11} the scattering channels are defined by spin coupling the target eigenstates 
+and the spin of the scattering electron
+$s\equiv \frac{1}{2}$
+\beq 
+| \Phi_{\gamma}^{\Gamma} \rangle = \sum_{\mu \mu'}
+C_{S_\gamma \mu' s \mu}^{S_\Gamma \mu_\Gamma}
+|\Phi_{\gamma \mu'} \rangle \ |s \mu  \rangle, 
+\label{chi_phi_Gamma} \eeq
+where $|s \mu \rangle$ is Pauli spinor.
+For the considered $S$-wave model, each scattering channel is labeled by a $\{\gamma, \Gamma\}$-pair, where
+$\Gamma=\{S_\Gamma,\mu_\Gamma\}$.
+
+
+
+
+Similar to the potential scattering, the solution of the $(\mathcal{N}+1)$-electron Schr\"odinger equation,
+\beq
+(H-E) | \Psi_E \rangle =0,  \ \ \  \label{H_E_Psi_E_2}
+\eeq
+is approximated at the system's eigenvalues $\{E_i\}$ from Eq.~(\ref{Psi_H_Psi_2})
 \beq \barr{l}
  \Psi_{E_i}^{\Gamma}  =  a \Psi_i^{\Gamma}
  + A^{\Gamma} \Phi_{\gamma}  \phi_{\gamma}
@@ -265,6 +303,17 @@ W_{\gamma' \gamma} = \langle \Phi_{\gamma'}  \psi_{\gamma'} |V A^{\Gamma} |\Phi_
 
 
 \subsection{$S$-wave $e$-H scattering}
+
+Specifically for the considered $S$-wave $e$-H scattering,
+$\Gamma=\{S_\Gamma,\mu_\Gamma\}$, where $S_\Gamma$ and $\mu_\Gamma$ are the total spin and its $z$ projection, respectively.
+The relevant Hamiltonians are given by
+\beq
+H_t = h_1, \ \ \ H = h_1 + h_2 + v_{12},
+\label{H_t} \eeq
+\beq
+h_a = \hat{K}_a  - 1/r_a,\ \ \ v_{12} = 1/\max{(r_{1}, r_{2})}.
+\label{h_b} \eeq
+
 
 Remember definition of a channel: target plus spin of the scattering electron.
 
