@@ -170,7 +170,7 @@ and its approximation equivalent
 \beq
 \widetilde{K}^N_0 = -\langle \psi_{k_i} | V | \Psi^N_{E_i} \rangle.
 \label{K_N_theory}\eeq
-If $\Psi_i$ is indeed a $\hat{P}_N$-projection of the correct scattering solution $\Psi^N_{E_i}$, 
+If $\Psi_i$ is indeed a $\hat{P}_N$-projection of the correct scattering solution $\Psi^N_{E_i}$,
 then its functional-space tail could be used to
 determine the scale of its contribution to $\Psi^N_{E_i}$ via
 \beq \barr{l}
@@ -180,11 +180,11 @@ determine the scale of its contribution to $\Psi^N_{E_i}$ via
  =  \langle \xi_{N-1}| \psi_{k_i} \rangle
 + K_0 \langle \xi_{N-1}| \overline{\psi}_{k_i} \rangle,\\
 \earr \label{Psi_N_1_tail} \eeq
-where $K_0$ is given by Eq.~(\ref{K_0_EES}). 
-Here it is also assumed that $\xi_{N-1}(r)$ is the least vanishing among $\{\xi_p(r)\}_{p=0}^{N-1}$  at large $r$, which is 
-a common feature of most "standard" $L^2$ bases \cite{abramowitz}, 
+where $K_0$ is given by Eq.~(\ref{K_0_EES}).
+Here it is also assumed that $\xi_{N-1}(r)$ is the least vanishing among $\{\xi_p(r)\}_{p=0}^{N-1}$  at large $r$, which is
+a common feature of most "standard" $L^2$ bases \cite{abramowitz},
 \beq
-|\xi_p(r)| < |\xi_{p'}(r)|, \ \ \ p<p', \ \ \ r \rightarrow \infty. 
+|\xi_p(r)| < |\xi_{p'}(r)|, \ \ \ p<p', \ \ \ r \rightarrow \infty.
 \eeq
 Solving Eq.~(\ref{Psi_N_1_tail}) for $a_i$,
 the full scattering solution $\Psi^N_{E_i}$ could be reconstructed via Eq.~(\ref{Psi_EES}) and then applied to Eq.~(\ref{K_N_theory}) obtaining
@@ -201,19 +201,19 @@ It is shown in the results section that the convergence rate in Eq.~(\ref{K_N_0_
 
 
 \subsection{Multichannel scattering}
-Since the results of this study were limited to the $S$-wave model of scattering, 
+Since the results of this study were limited to the $S$-wave model of scattering,
 only the spin-related quantum numbers are considered in the
-following multichannel formalism. The extension to non-zero angular momenta is straight forward, see for example \cite{BR76p1491}. 
- 
+following multichannel formalism. The extension to non-zero angular momenta is straight forward, see for example \cite{BR76p1491}.
 
-Let the {\em target} Hamiltonian $H_t$ of   
+
+Let the {\em target} Hamiltonian $H_t$ of
 $\mathcal{N}$ electrons
 is diagonalized within $\hat{P}_N$ (\ref{P_N})
 \beq \barr{l}
 \langle \Phi_\gamma|H_t|\Phi_{\gamma'}\rangle=e_\gamma \delta_{\gamma\gamma'}, \ \
 \langle \Phi_\gamma|\Phi_{\gamma'}\rangle=\delta_{\gamma\gamma'},\\
 \Phi_\gamma = \sum_{\beta} C^t_{\gamma \beta} \theta_\beta,
-\earr \label{Phi_H_Phi} \eeq
+\earr \label{Phi_H_Phi_2} \eeq
 where $\{\theta_\beta\}$ denotes a complete set of target electron configurations which could be built from
 the first $N$ radial basis functions $\{\xi_p(r)\}_{p=0}^{N-1}$,
 and where $\beta$ labeling is done in some arbitrary but predetermined order.
@@ -223,7 +223,7 @@ For targets with more than one electrons, $\{\theta_\beta\}$ could be constructe
 where $\{\xi_p(r)\}_{p=0}^{N-1}$ are used to define the radial components of the considered subshells.
 
 
-The total scattering system's eigenstates are constructed by the procedure identical to the one used for the target (\ref{Phi_H_Phi}) 
+The total scattering system's eigenstates are constructed by the procedure identical to the one used for the target (\ref{Phi_H_Phi_2})
 but now with the $(\mathcal{N}+1)$-electrons,
 \beq \barr{l}
 \langle\Psi_i^\Gamma|H|\Psi_j^\Gamma\rangle=E_i\delta_{ij}, \ \
@@ -231,41 +231,43 @@ but now with the $(\mathcal{N}+1)$-electrons,
 \Psi^\Gamma_i = \sum_{j} C_{ij} \Theta^\Gamma_j,
 \earr \label{Psi_H_Psi_2} \eeq
 where $H$ is the system Hamiltonian of $(\mathcal{N}+1)$-electrons, $\{\Theta_j^\Gamma\}$
-denotes a complete set of system electron configurations, and where 
+denotes a complete set of system electron configurations, and where
 $\Gamma$ denotes quantum numbers conserved by $H$.
 For the considered $S$-wave scattering,
 $\Gamma=\{S_\Gamma,\mu_\Gamma\}$, where $S_\Gamma$ and $\mu_\Gamma$ are the total spin and its $z$ projection, respectively.
 
 
-Closely following the JM method \cite{BR76p1491, KFB11} the scattering channels are defined by spin coupling the target eigenstates 
+Closely following the JM method \cite{BR76p1491, KFB11} the scattering channels $\{\Phi_\gamma^\Gamma\}$ are defined by spin coupling the target eigenstates
+$\{\Phi_\gamma\}$ (\ref{Phi_H_Phi_2})
 and the spin of the scattering electron
 $s\equiv \frac{1}{2}$
-\beq 
+\beq
 | \Phi_{\gamma}^{\Gamma} \rangle = \sum_{\mu \mu'}
 C_{S_\gamma \mu' s \mu}^{S_\Gamma \mu_\Gamma}
-|\Phi_{\gamma \mu'} \rangle \ |s \mu  \rangle, 
+|\Phi_{\gamma \mu'} \rangle \ |s \mu  \rangle,
 \label{chi_phi_Gamma} \eeq
-where $|s \mu \rangle$ is Pauli spinor.
-For the considered $S$-wave model, each scattering channel is labeled by a $\{\gamma, \Gamma\}$-pair, where
-$\Gamma=\{S_\Gamma,\mu_\Gamma\}$.
+where $|s \mu \rangle$ is Pauli spinor,
+$C_{j_1m_1j_2m_2}^{jm} \equiv \langle j_1m_1 j_2 m_2| jm\rangle$ are the Clebsch-Gordan coefficients, 
+and where each scattering channel is labeled by a $\{\gamma, \Gamma\}$-pair.
 
 
 
-
-Similar to the potential scattering, the solution of the $(\mathcal{N}+1)$-electron Schr\"odinger equation,
+Similar to the potential scattering, the solution of the $(\mathcal{N}+1)$-electron Schr\"odinger equation for a given $\Gamma$,
 \beq
-(H-E) | \Psi_E \rangle =0,  \ \ \  \label{H_E_Psi_E_2}
+(H-E) | \Psi^\Gamma_E \rangle =0,  \ \ \  \label{H_E_Psi_E_2}
 \eeq
-is approximated at the system's eigenvalues $\{E_i\}$ from Eq.~(\ref{Psi_H_Psi_2})
+is approximated at the system's eigenvalues $\{E_i\}$ (\ref{Psi_H_Psi_2}) by
 \beq \barr{l}
  \Psi_{E_i}^{\Gamma}  =  a \Psi_i^{\Gamma}
- + A^{\Gamma} \Phi_{\gamma}  \phi_{\gamma}
-+ \sum_{\gamma''} K_{\gamma''} A^{\Gamma} \Phi_{\gamma''}   \widehat{\phi}_{\gamma''} ,
+ + A \Phi^\Gamma_{\gamma}  \phi_{\gamma}
++ \sum_{\gamma''} K_{\gamma''} A \Phi^\Gamma_{\gamma''}   \overline{\phi}_{\gamma''} ,
 \earr \label{Psi_} \eeq
-Is $K_{\gamma''}$ normalized correctly?
+where the channels' trial functions $\{ \phi_\gamma, \overline{\phi}_\gamma \}$ are defined for the open channels by 
 \beq
-\phi_{\gamma}\equiv \phi_{k_\gamma}, \ \ \ \psi_{\gamma}\equiv \psi_{k_\gamma}, \ \ \   k_{\gamma}^2 = 2(E_i - e_\gamma),
+\phi_{\gamma}\equiv \phi_{k_\gamma}, \ \ \   k_{\gamma}^2 = 2(E_i - e_\gamma) > 0,
 \eeq
+
+Is $K_{\gamma''}$ normalized correctly?
 
 
 \beq \barr{l}
