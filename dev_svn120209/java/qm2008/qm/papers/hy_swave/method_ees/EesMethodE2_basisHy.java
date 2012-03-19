@@ -1,20 +1,23 @@
 package papers.hy_swave.method_ees;
 import atom.e_2.SysAtomE2;
 import atom.shell.*;
+import atom.wf.log_cr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.Calc;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
+import math.func.arr.IFuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e2.ScattMethodBaseE2;
 import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
+import scatt.partial.wf.CosRegK2;
+import scatt.partial.wf.SinK2;
 
 import javax.utilx.log.Log;
-import javax.utilx.pair.Dble2;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 13/03/12, 10:14 AM
  */
@@ -58,7 +61,7 @@ public ScattRes calcSysEngs() {
       continue;
     }
 //    FuncArr psi = methodE1.calcPsi(scattE, orthonN);
-    Vec Y = calcY(sysIdx, chNum);
+    ThisRes2 res2 = calcBXY(sysIdx, chNum);
 
 //      Dble2 sc = calcSC(psi, scattE, sysIdx);
 //      double R = -sc.a / sc.b;                               log.dbg("R = ", R);
@@ -105,7 +108,7 @@ private int calcReportChNum(Vec engs) {
   }
   return chIdx + 1; // +1 to get count (not index)
 }
-private double calcY(Shell tSh, Shell freeSh, int sysIdx) {
+private double calcB(Shell tSh, Shell freeSh, int sysIdx) {
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = sysConfH.getBasis();     // sBasis
@@ -124,29 +127,92 @@ private double calcY(Shell tSh, Shell freeSh, int sysIdx) {
   return res;
 }
 
-protected Vec calcY(int sysIdx, int chNum) {
+protected ThisRes2 calcBXY(int sysIdx, int chNum) {
   int L = 0;
-  int FREE_IDX = 999;
+  int FREE_IDX = -1;
 
-  Vec res = new Vec(chNum);
+  ThisRes2 res = new ThisRes2();
+  Vec vB = new Vec(chNum);
+  Mtrx mX = new Mtrx(chNum, chNum);
+  Mtrx mY = new Mtrx(chNum, chNum);
   Vec tEngs = trgtE2.getEngs();
   FuncArr trgtWfs = getTrgtBasisN();
   Vec sEngs = getSysEngs();
   for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
     double tE = tEngs.get(tIdx);     // target state eng
     double sE = sEngs.get(sysIdx);  // system total eng
-    double chScattE = sE - tE;
-    if (chScattE <= 0) {
-      res.set(tIdx, 0);
+    double tScattE = sE - tE;
+    if (tScattE <= 0) {
+      vB.set(tIdx, 0);
       continue;
     }
-    FuncVec tPsi = EesMethodE1.calcChPsiReg(chScattE, orthonN);
+    FuncVec tPsi = EesMethodE1.calcChPsiReg(tScattE, orthonN);
     FuncVec tWf = trgtWfs.get(tIdx);
     Shell tSh = new Shell(tIdx, tWf, L);
     Shell psiSh = new Shell(FREE_IDX, tPsi, L);
-    double y = calcY(tSh, psiSh, sysIdx);
-    res.set(tIdx, y);
+    double b = calcB(tSh, psiSh, sysIdx);
+    vB.set(tIdx, b);
+
+    for (int t2 = 0; t2 < chNum; t2++) {     //log.dbg("t = ", t);  // Target channels
+      double tE2 = tEngs.get(t2);     // target state eng
+      double tScattE2 = sE - tE2;
+      if (tScattE2 <= 0) {
+        vB.set(tIdx, 0);
+        continue;
+      }
+    }
   }
+  res.vB = vB;
   return res;
+}
+
+public ThisFuncArr calcPsi(double scattE, LgrrOrthLcr orthN) {
+  int L = 0;
+  double momP = Scatt.calcMomFromE(scattE);
+  IFuncArr basis = orthN;
+  WFQuadrLcr quadr = orthN.getQuadr();
+  Vec x = quadr.getX();
+  FuncArr res = new FuncArr(x);
+  FuncVec sinL = new SinK2(quadr, momP, L);   log.dbg("sinL=", sinL);
+  FuncVec cosL = new CosRegK2(quadr, momP, L
+    , orthN.getLambda());   log.dbg("cosL=", cosL);
+
+  res.add(sinL.copyY());     // IDX_REG
+  res.add(cosL.copyY());     // IDX_IRR
+  res.add(sinL.copyY());     // IDX_P_REG
+  res.add(cosL.copyY());     // IDX_P_IRR
+  FuncVec resS = res.get(IDX_P_REG);          log.dbg("resS=", resS);
+  FuncVec resC = res.get(IDX_P_IRR);          log.dbg("resC=", resC);
+
+//  if (OPER_P_ON) {
+    for (int i = 0; i < basis.size(); i++) {
+      FuncVec fi = basis.getFunc(i);          log.dbg("fi=", fi);
+      double dS = quadr.calcInt(sinL, fi);    log.dbg("dS=", dS);
+      double dC = quadr.calcInt(cosL, fi);    log.dbg("dC=", dC);
+      resS.addMultSafe(-dS, fi);              log.dbg("resS=", resS);
+      resC.addMultSafe(-dC, fi);              log.dbg("resC=", resC);
+    }
+    for (int i = 0; i < basis.size(); i++) {
+      FuncVec fi = basis.getFunc(i);            log.dbg("fi=", fi);
+      double testS = quadr.calcInt(resS, fi);    log.dbg("testS=", testS);
+      assertEquals("testS_" + i, testS, 0d);
+      assertEquals(0, testS, MAX_INTGRL_ERR_E11);
+
+      double testC = quadr.calcInt(resC, fi);    log.dbg("testC=", testC);
+      assertEquals("testC_" + i, testC, 0d);
+      assertEquals(0, testC, MAX_INTGRL_ERR_E11);
+    }
+//  }
+//  FileX.writeToFile(sinL.toTab(), calcOpt.getHomeDir(), "wf", "sin_" + idxCount + ".txt");
+//  FileX.writeToFile(cosL.toTab(), calcOpt.getHomeDir(), "wf", "cos_" + idxCount + ".txt");
+//  FileX.writeToFile(resS.toTab(), calcOpt.getHomeDir(), "wf", "psi_sin_" + idxCount + ".txt");
+//  FileX.writeToFile(resC.toTab(), calcOpt.getHomeDir(), "wf", "psi_cos_" + idxCount + ".txt");
+  return res;
+}
+
+private class ThisRes2 {
+  public Vec vB;
+  public Mtrx mX;
+  public Mtrx mY;
 }
 }
