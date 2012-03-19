@@ -119,7 +119,7 @@ S_{0}=(1+\mbox{i}K_0)(1-\mbox{i}K_0)^{-1}, \\
 
 
 Consistent with other variational scattering methods \cite{Nesbet68},
-\citet{Harris67} solved Eq.~(\ref{H_E_Psi_E}) approximately by converting it to 
+\citet{Harris67} solved Eq.~(\ref{H_E_Psi_E}) approximately by converting it to
 \beq
 \langle\Psi_i|H-E_i|\Psi^N_{E_i}\rangle=0,  \label{EES_ONE_C1}
 \eeq
@@ -156,8 +156,8 @@ must be removed from the trial functions $\{\phi,\overline{\phi}\}$ in Eq.~(\ref
 \hat{P}_N = \sum_{p=0}^{N-1} | \xi_p \rangle \langle \xi_p |,
 \label{P_N} \eeq
 \beq \barr{l}
-K_{0} = - s_i / c_i, \\ 
-s_i = \langle\Psi_i|H|  \phi_{k_i} \rangle, \ \ 
+K_{0} = - s_i / c_i, \\
+s_i = \langle\Psi_i|H|  \phi_{k_i} \rangle, \ \
 c_i =  \langle\Psi_i|H|  \overline{\phi}_{k_i} \rangle.
 \earr \label{K_0_EES} \eeq
 
@@ -187,8 +187,8 @@ a common feature of most "standard" $L^2$ bases \cite{abramowitz},
 |\xi_p(r)| < |\xi_{p'}(r)|, \ \ \ p<p', \ \ \ r \rightarrow \infty.
 \eeq
 Solving Eq.~(\ref{Psi_N_1_tail}) for $a_i$,
-the full scattering solution $\Psi^N_{E_i}$ (\ref{Psi_EES}) could be reconstructed and then applied to $\widetilde{K}^N_0$ (\ref{K_N_theory}). 
-In the case of the one-channel scattering, the convergence  
+the full scattering solution $\Psi^N_{E_i}$ (\ref{Psi_EES}) could be reconstructed and then applied to $\widetilde{K}^N_0$ (\ref{K_N_theory}).
+In the case of the one-channel scattering, the convergence
 \beq
 \lim_{N \rightarrow \infty} |\widetilde{K}^N_0 - K_0 | = 0,
 \label{K_N_0_lim} \eeq
@@ -200,7 +200,7 @@ remarkably fast, see the results section.
 \subsection{Multichannel scattering}
 Since the results of this study were limited to the $S$-wave model of scattering,
 only the spin-related quantum numbers are considered in the
-following multichannel formalism. 
+following multichannel formalism.
 
 
 Let the {\em target} Hamiltonian $H_t$ of
@@ -253,7 +253,7 @@ is approximated at the system's eigenvalues $\{E_i\}$ (\ref{Psi_H_Psi_2}) by
  + \hat{A} \Phi^\Gamma_{\gamma}  \phi_{\gamma}
 + \sum_{\gamma''}  \hat{A} \Phi^\Gamma_{\gamma''}   \overline{\phi}_{\gamma''}  K_{\gamma'' \gamma},
 \earr \label{Psi_} \eeq
-where $\hat{A}$ denotes antisymmetrization operator, 
+where $\hat{A}$ denotes antisymmetrization operator,
 and where the channels' trial functions $\{ \phi_\gamma, \overline{\phi}_\gamma \}$ are defined for the open channels as
 \beq
 \phi_{\gamma}\equiv \phi_{k_\gamma}, \ \ \   k_{\gamma}^2 = 2(E_i - e_\gamma) > 0,
@@ -262,10 +262,10 @@ The $\gamma$ labeling in $\Psi_{E_i}^{\gamma \Gamma}$ specifies the initial scat
 
 
 The unknowns, $a_i$ and $K_{\gamma'' \gamma}$ are determined from two conditions. The first is identical to the one-channel scattering (\ref{EES_ONE_C1})
-\beq 
+\beq
 \langle\Psi_i^\Gamma|H-E_i|\Psi_{E_i}^{\gamma \Gamma}\rangle=0,
 \label{EES_MC_C1} \eeq  %multichannel scattering condition #1
-and yields, in vector notation, 
+and yields, in vector notation,
 \beq
 ({\bf C} \cdot {\bf K}_\gamma) = -s_\gamma, \label{CK_s}
 \eeq
@@ -283,24 +283,24 @@ K_{\gamma' \gamma} = - \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'}
 \eeq
 which becomes
 \beq
-{\bf K}_\gamma = -[a_i {\bf Y} + {\bf B}_\gamma + {\bf X K}_\gamma]
+{\bf K}_\gamma = -[a_i {\bf B}_i + {\bf X}_\gamma + {\bf Y K}_\gamma]
 \eeq
-and after defining ${\bf W}=(1+{\bf X})^{-1}$
+and after defining ${\bf W}=(1+{\bf Y})^{-1}$
 \beq
-{\bf K}_\gamma  = -{\bf W}   (a_i {\bf Y}    + {\bf B}_\gamma), \label{K_gamma}
+{\bf K}_\gamma  = -{\bf W}   (a_i {\bf B}_i    + {\bf X}_\gamma), \label{K_gamma}
 \eeq
-where (i) $V$ is the electron-target interaction; (ii) ${\bf B}_\gamma$ is the $\gamma$'th column of the following $B$-matrix;
+where (i) $V$ is the electron-target interaction; (ii) ${\bf X}_\gamma$ is the $\gamma$'th column of the following $X$-matrix;
 and (iii) the required components are given by
 \beq \barr{l}
-Y_{\gamma'} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V |\Psi_i^{\Gamma} \rangle,\\
-B_{\gamma' \gamma} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V | \hat{A} \Phi^\Gamma_{\gamma} \phi_{\gamma} \rangle,\\
-X_{\gamma' \gamma} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V | \hat{A} \Phi^\Gamma_{\gamma} \overline{\phi}_{\gamma} \rangle.
+B_{\gamma' i} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V |\Psi_i^{\Gamma} \rangle,\\
+X_{\gamma' \gamma} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V | \hat{A} \Phi^\Gamma_{\gamma} \phi_{\gamma} \rangle,\\
+Y_{\gamma' \gamma} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V | \hat{A} \Phi^\Gamma_{\gamma} \overline{\phi}_{\gamma} \rangle.
 \earr \label{Y_B_W} \eeq
 Eqs.~(\ref{CK_s}) and (\ref{K_gamma}) are solved for $a_i$ arriving at
 \beq \barr{l}
-a_i = (s_\gamma - b_\gamma) / y_i,\\
-y_i = {\bf C} \cdot {\bf W}  {\bf Y}, \ \ \ 
-b_\gamma = {\bf C} \cdot {\bf W}  {\bf B}_\gamma,
+a_i = (s_\gamma - x_\gamma) / b_i,\\
+b_i = {\bf C} \cdot {\bf W}  {\bf B}_i, \ \ \
+x_\gamma = {\bf C} \cdot {\bf W}  {\bf X}_\gamma,
 \earr \eeq
 and then calculating the corresponding columns of the $K$-matrix via Eq.~(\ref{K_gamma}).
 
