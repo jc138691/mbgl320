@@ -21,6 +21,8 @@
 \newcommand{\KB}{\mbox{\tiny{KB}}}
 \newcommand{\vare}{\varepsilon}
 \newcommand{\phiH}{\phi^{\mbox{\tiny{H}}}}
+\newcommand{\vecCT}{ {\bf C}^{\mbox{\tiny{T}} }}
+
 
 
 \newcommand{\isum}%
@@ -61,7 +63,7 @@ this Eigenstate Expansion for Scattering (EES) method relies on the following co
 
 
 After the partial-wave expansion \cite{Taylor72,N82} and focusing only on the $s$-wave terms (angular momentum $l=0$),
-electron scattering on a spherically symmetric potential $V(r)$
+electron scattering on a spherically symmetric short-range potential $V(r)$
 could be described by the time-independent radial Schr\"odinger equation
 \beq
 (H-E) \Psi_E (r) =0,  \ \ \  \label{H_E_Psi_E}
@@ -71,7 +73,7 @@ H = \hat{K} + V(r), \ \ \ \hat{K} = -(1/2) d^2/dr^2,
 \eeq
 where $E=k^2/2$ and $k$ are the incident electron energy and momentum, respectively, and where
 atomic units are used hereafter.
-Let $\psi_k$ and $\overline{\psi}_k$ be real (not complex) regular and irregular solutions for $\hat{K}$,
+Let $\psi_k$ and $\overline{\psi}_k$ be regular and irregular solutions for $\hat{K}$,
 \beq \barr{l}
 (\hat{K}-E)  \psi_k (r) =0,  \ \ \ \psi_k(r=0) = 0,\\
 (\hat{K}-E)  \overline{\psi}_k (r) =0,  \ \ \ \overline{\psi}_k(r=0) \neq 0,\\
@@ -103,11 +105,10 @@ Then $\Psi_E(r)$ is approximated at the system's eigenvalues $\{E_i\}_{i=1}^{N}$
 \beq
 \Psi^N_{E_i}(r) = a_i \Psi_i(r)  + [\phi_{k_i}(r)  + K_{0} \overline{\phi}_{k_i}(r)],
 \label{Psi_EES} \eeq
-where $E_i=k_i^2/2$, the {\em standing}-wave (equal mix of {\em incoming}- and {\em outgoing}-waves) boundary condition is satisfied
+where $E_i=k_i^2/2$, and where the {\em standing}-wave (equal mix of {\em incoming}- and {\em outgoing}-waves) boundary condition is satisfied
 \beq
-\Psi_E(r \rightarrow \infty) \sim  \sin(kr+\delta_0) \sqrt{2/k}, \ \ \ \Psi_E(0)=0,   \label{stand_wave}
+\Psi_E(r \rightarrow \infty) \sim  \sin(kr+\delta_0) \sqrt{2/k}, \ \ \ \Psi_E(0)=0.   \label{stand_wave}
 \eeq
-and where the trial functions $\{\phi,\overline{\phi}\}$ are related to $\{\psi,\overline{\psi}\}$ and will be discussed shortly.
 The results of the potential $s$-wave elastic scattering could then be expressed via
 phase shift ($\delta_0$), real $K$-matrix ($K_0$), complex unitary $S$-matrix ($S_{0}$) and/or cross section ($\sigma_{0}$)
 as follows
@@ -119,7 +120,7 @@ S_{0}=(1+\mbox{i}K_0)(1-\mbox{i}K_0)^{-1}, \\
 
 
 Consistent with other variational scattering methods \cite{Nesbet68},
-\citet{Harris67} solved Eq.~(\ref{H_E_Psi_E}) approximately by converting it to
+\citet{Harris67} solved Eq.~(\ref{H_E_Psi_E}) approximately by requiring
 \beq
 \langle\Psi_i|H-E_i|\Psi^N_{E_i}\rangle=0,  \label{EES_ONE_C1}
 \eeq
@@ -129,7 +130,7 @@ Eq.~(\ref{Psi_EES})
 \phiH_k(r) =  \psi_k(r),\ \
 \overline{\phiH_k}(r) =  [\overline{\psi}_k(r) - \exp{(-\lambda r)}],
 \earr \label{def_phi_H} \eeq
-arriving at
+arriving at $K_0\approx K^{\mbox{\tiny{H}}}_{0}$,
 \beq \barr{l}
 K^{\mbox{\tiny{H}}}_{0} = - s^{\mbox{\tiny{H}}}_i / c^{\mbox{\tiny{H}}}_i, \\
 s^{\mbox{\tiny{H}}}_i = \langle\Psi_i|H-E_i|  \phiH_{k_i} \rangle, \ \ \
@@ -267,9 +268,10 @@ The unknowns, $a_i$ and $K_{\gamma'' \gamma}$ are determined from two conditions
 \label{EES_MC_C1} \eeq  %multichannel scattering condition #1
 and yields, in vector notation,
 \beq
-({\bf C} \cdot {\bf K}_\gamma) = -s_\gamma, \label{CK_s}
+\vecCT {\bf K}_\gamma = -s_\gamma, \label{CK_s}
 \eeq
-where ${\bf K}_\gamma$ is the $\gamma$'th column of the $K$-matrix, and where $s_\gamma$ and the vector ${\bf C}$ components are given by
+where (i) ${\bf K}_\gamma$ is the $\gamma$'th column of the $K$-matrix; (ii) superscript 'T' denotes transpose;
+and (iii) $s_\gamma$ and the vector ${\bf C}$ components are given by
 \beq \barr{l}
 s_\gamma = \langle \Psi_i^\Gamma |H| \hat{A} \Phi^\Gamma_{\gamma} \phi_{\gamma} \rangle,\\
 C_{\gamma'} =  \langle \Psi_i^\Gamma |H | \hat{A} \Phi^\Gamma_{\gamma'} \overline{\phi}_{\gamma'} \rangle.
@@ -299,8 +301,8 @@ Y_{\gamma' \gamma} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V | \hat{A} 
 Eqs.~(\ref{CK_s}) and (\ref{K_gamma}) are solved for $a_i$ arriving at
 \beq \barr{l}
 a_i = (s_\gamma - x_\gamma) / b_i,\\
-b_i = {\bf C} \cdot {\bf W}  {\bf B}_i, \ \ \
-x_\gamma = {\bf C} \cdot {\bf W}  {\bf X}_\gamma,
+b_i = \vecCT {\bf W}  {\bf B}_i, \ \ \
+x_\gamma = \vecCT {\bf W}  {\bf X}_\gamma,
 \earr \eeq
 and then calculating the corresponding columns of the $K$-matrix via Eq.~(\ref{K_gamma}).
 
