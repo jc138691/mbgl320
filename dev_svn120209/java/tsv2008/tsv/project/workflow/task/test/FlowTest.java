@@ -55,7 +55,7 @@ public void assertEquals(double expected, double actual) {
   assertEquals(null, expected, actual, false);
 }
 
-public void assertEquals(String help, double expected, double actual, boolean showDbg2) {
+public static void assertEquals(String help, double expected, double actual, boolean showDbg2) {
   String mssg = format(help, (float) expected, (float) actual);
   mssg += ", err=" + (float) (expected - actual);
   try {
