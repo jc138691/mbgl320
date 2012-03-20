@@ -44,6 +44,9 @@ public class ShId implements Comparable<ShId> { // "fast" shell is
   // This is some fixed ordering
   // 1s, 2s, 2p, 3s, 3p, 3d, ...
   final public int compareTo(ShId id) {
+    if (this.idx == -1  || id.idx == -1) {
+      throw new IllegalArgumentException(log.error("(this.idx == -1  || id.idx == -1)"));
+    }
     if (id == this)
       return 0;
     int res = this.idx - id.idx;

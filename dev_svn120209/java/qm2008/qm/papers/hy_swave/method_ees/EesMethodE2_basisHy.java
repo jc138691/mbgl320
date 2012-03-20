@@ -23,6 +23,13 @@ import javax.utilx.log.Log;
  */
 public class EesMethodE2_basisHy extends EesMethodE2_oneChTest {
 public static Log log = Log.getLog(EesMethodE2_basisHy.class);
+private Vec vB;
+private Mtrx mX;
+private Mtrx mY;
+private FuncArr freeS;
+private FuncArr phiS;
+private FuncArr phiC;
+
 public EesMethodE2_basisHy(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
@@ -60,8 +67,8 @@ public ScattRes calcSysEngs() {
 //      mCrss.set(sysIdx, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
       continue;
     }
-//    FuncArr psi = methodE1.calcPsi(scattE, orthonN);
-    ThisRes2 res2 = calcBXY(sysIdx, chNum);
+    loadTrialWfs(sysIdx, orthonN, chNum);
+    calcBXY(sysIdx, chNum);
 
 //      Dble2 sc = calcSC(psi, scattE, sysIdx);
 //      double R = -sc.a / sc.b;                               log.dbg("R = ", R);
@@ -84,15 +91,6 @@ private boolean hasOneOpenCh(double sysTotE) {
   Vec tEngs = trgtE2.getEngs();
   return tEngs.get(1) >= sysTotE;  //second target channel is closed
 }
-//private void loadZeroCross(ScattRes res, int sysIdx) {
-//  Mtrx mCrss = res.getCrossSecs();
-//  int nC = mCrss.getNumCols();
-//  for (int c = 0; c < nC; c++) {
-//    if (c == IDX_ENRGY)
-//      continue;
-//    mCrss.set(sysIdx, c, 0);     // NOTE +1; first column has incident energies
-//  }
-//}
 private int calcReportChNum(Vec engs) {
   EngModel engModel = calcOpt.getGridEng();
   double maxScattE = engModel.getLast();
@@ -108,6 +106,36 @@ private int calcReportChNum(Vec engs) {
   }
   return chIdx + 1; // +1 to get count (not index)
 }
+
+protected void loadTrialWfs(int sysIdx, LgrrOrthLcr orthN, int chNum) {
+  IFuncArr basis = orthN;
+  WFQuadrLcr quadr = orthN.getQuadr();
+  Vec x = quadr.getX();
+  freeS = new FuncArr(x);
+  phiS = new FuncArr(x);
+  phiC = new FuncArr(x);
+
+  int L = 0;
+  Vec tEngs = trgtE2.getEngs();
+  Vec sEngs = getSysEngs();
+  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(tIdx);     // target state eng
+    double sE = sEngs.get(sysIdx);  // system total eng
+    double tScattE = sE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec tPsi = EesMethodE1.calcChPsiReg(tScattE, orthonN);
+    freeS.add(tPsi);
+
+    FuncVec tPhiS = EesMethodE1.calcChPhiS(tScattE, orthonN);
+    phiS.add(tPhiS);
+
+    FuncVec tPhiC = EesMethodE1.calcChPhiC(tScattE, orthonN);
+    phiC.add(tPhiC);
+  }
+}
+
 private double calcB(Shell tSh, Shell freeSh, int sysIdx) {
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
@@ -127,14 +155,12 @@ private double calcB(Shell tSh, Shell freeSh, int sysIdx) {
   return res;
 }
 
-protected ThisRes2 calcBXY(int sysIdx, int chNum) {
+protected void calcBXY(int sysIdx, int chNum) {
   int L = 0;
   int FREE_IDX = -1;
-
-  ThisRes2 res = new ThisRes2();
-  Vec vB = new Vec(chNum);
-  Mtrx mX = new Mtrx(chNum, chNum);
-  Mtrx mY = new Mtrx(chNum, chNum);
+  vB = new Vec(chNum);
+  mX = new Mtrx(chNum, chNum);
+  mY = new Mtrx(chNum, chNum);
   Vec tEngs = trgtE2.getEngs();
   FuncArr trgtWfs = getTrgtBasisN();
   Vec sEngs = getSysEngs();
@@ -161,58 +187,9 @@ protected ThisRes2 calcBXY(int sysIdx, int chNum) {
         continue;
       }
     }
+
   }
-  res.vB = vB;
-  return res;
 }
 
-public ThisFuncArr calcPsi(double scattE, LgrrOrthLcr orthN) {
-  int L = 0;
-  double momP = Scatt.calcMomFromE(scattE);
-  IFuncArr basis = orthN;
-  WFQuadrLcr quadr = orthN.getQuadr();
-  Vec x = quadr.getX();
-  FuncArr res = new FuncArr(x);
-  FuncVec sinL = new SinK2(quadr, momP, L);   log.dbg("sinL=", sinL);
-  FuncVec cosL = new CosRegK2(quadr, momP, L
-    , orthN.getLambda());   log.dbg("cosL=", cosL);
 
-  res.add(sinL.copyY());     // IDX_REG
-  res.add(cosL.copyY());     // IDX_IRR
-  res.add(sinL.copyY());     // IDX_P_REG
-  res.add(cosL.copyY());     // IDX_P_IRR
-  FuncVec resS = res.get(IDX_P_REG);          log.dbg("resS=", resS);
-  FuncVec resC = res.get(IDX_P_IRR);          log.dbg("resC=", resC);
-
-//  if (OPER_P_ON) {
-    for (int i = 0; i < basis.size(); i++) {
-      FuncVec fi = basis.getFunc(i);          log.dbg("fi=", fi);
-      double dS = quadr.calcInt(sinL, fi);    log.dbg("dS=", dS);
-      double dC = quadr.calcInt(cosL, fi);    log.dbg("dC=", dC);
-      resS.addMultSafe(-dS, fi);              log.dbg("resS=", resS);
-      resC.addMultSafe(-dC, fi);              log.dbg("resC=", resC);
-    }
-    for (int i = 0; i < basis.size(); i++) {
-      FuncVec fi = basis.getFunc(i);            log.dbg("fi=", fi);
-      double testS = quadr.calcInt(resS, fi);    log.dbg("testS=", testS);
-      assertEquals("testS_" + i, testS, 0d);
-      assertEquals(0, testS, MAX_INTGRL_ERR_E11);
-
-      double testC = quadr.calcInt(resC, fi);    log.dbg("testC=", testC);
-      assertEquals("testC_" + i, testC, 0d);
-      assertEquals(0, testC, MAX_INTGRL_ERR_E11);
-    }
-//  }
-//  FileX.writeToFile(sinL.toTab(), calcOpt.getHomeDir(), "wf", "sin_" + idxCount + ".txt");
-//  FileX.writeToFile(cosL.toTab(), calcOpt.getHomeDir(), "wf", "cos_" + idxCount + ".txt");
-//  FileX.writeToFile(resS.toTab(), calcOpt.getHomeDir(), "wf", "psi_sin_" + idxCount + ".txt");
-//  FileX.writeToFile(resC.toTab(), calcOpt.getHomeDir(), "wf", "psi_cos_" + idxCount + ".txt");
-  return res;
-}
-
-private class ThisRes2 {
-  public Vec vB;
-  public Mtrx mX;
-  public Mtrx mY;
-}
 }
