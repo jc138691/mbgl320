@@ -87,6 +87,7 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   res.b = calcHE(sysPsi, potH, psiC, scattE);    log.dbg("C_i=", res.b);
   return res;
 }
+
 // this has sqrt(2./momP)
 public static FuncVec calcChPsiReg(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
   int L = 0;
@@ -95,6 +96,27 @@ public static FuncVec calcChPsiReg(double chScattE, LgrrOrthLcr orthN) {  // cha
   FuncVec res = new SinK2(quadr, momP, L);   //log.dbg("sinL=", sinL);
   return res;
 }
+
+// this has sqrt(2./momP)
+public static FuncVec calcChPhiS(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
+  int L = 0;
+  double momP = Scatt.calcMomFromE(chScattE);
+  WFQuadrLcr quadr = orthN.getQuadr();
+  FuncVec sinL = new SinK2(quadr, momP, L);   //log.dbg("sinL=", sinL);
+  FuncVec res = removePN(sinL, orthN);          //log.dbg("resS=", resS);
+  return res;
+}
+
+// this has sqrt(2./momP)
+public static FuncVec calcChPhiC(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
+  int L = 0;
+  double momP = Scatt.calcMomFromE(chScattE);
+  WFQuadrLcr quadr = orthN.getQuadr();
+  FuncVec cosL = new CosRegK2(quadr, momP, L, orthN.getLambda());   //log.dbg("sinL=", sinL);
+  FuncVec res = removePN(cosL, orthN);          //log.dbg("resS=", resS);
+  return res;
+}
+
 public FuncArr calcPsi(double scattE, LgrrOrthLcr orthN) {
   int L = 0;
   double momP = Scatt.calcMomFromE(scattE);
@@ -108,34 +130,33 @@ public FuncArr calcPsi(double scattE, LgrrOrthLcr orthN) {
 
   res.add(sinL.copyY());     // IDX_REG
   res.add(cosL.copyY());     // IDX_IRR
-  res.add(sinL.copyY());     // IDX_P_REG
-  res.add(cosL.copyY());     // IDX_P_IRR
-  FuncVec resS = res.get(IDX_P_REG);          log.dbg("resS=", resS);
-  FuncVec resC = res.get(IDX_P_IRR);          log.dbg("resC=", resC);
-
-//  if (OPER_P_ON) {
-    for (int i = 0; i < basis.size(); i++) {
-      FuncVec fi = basis.getFunc(i);          log.dbg("fi=", fi);
-      double dS = quadr.calcInt(sinL, fi);    log.dbg("dS=", dS);
-      double dC = quadr.calcInt(cosL, fi);    log.dbg("dC=", dC);
-      resS.addMultSafe(-dS, fi);              log.dbg("resS=", resS);
-      resC.addMultSafe(-dC, fi);              log.dbg("resC=", resC);
-    }
-    for (int i = 0; i < basis.size(); i++) {
-      FuncVec fi = basis.getFunc(i);            log.dbg("fi=", fi);
-      double testS = quadr.calcInt(resS, fi);    log.dbg("testS=", testS);
-      assertEquals("testS_" + i, testS, 0d);
-      assertEquals(0, testS, MAX_INTGRL_ERR_E11);
-
-      double testC = quadr.calcInt(resC, fi);    log.dbg("testC=", testC);
-      assertEquals("testC_" + i, testC, 0d);
-      assertEquals(0, testC, MAX_INTGRL_ERR_E11);
-    }
-//  }
+  FuncVec resS = removePN(sinL, orthN);          log.dbg("resS=", resS);
+  res.add(resS);
+  FuncVec resC = removePN(cosL, orthN);          log.dbg("resC=", resC);
+  res.add(resC);
 //  FileX.writeToFile(sinL.toTab(), calcOpt.getHomeDir(), "wf", "sin_" + idxCount + ".txt");
 //  FileX.writeToFile(cosL.toTab(), calcOpt.getHomeDir(), "wf", "cos_" + idxCount + ".txt");
 //  FileX.writeToFile(resS.toTab(), calcOpt.getHomeDir(), "wf", "psi_sin_" + idxCount + ".txt");
 //  FileX.writeToFile(resC.toTab(), calcOpt.getHomeDir(), "wf", "psi_cos_" + idxCount + ".txt");
+  return res;
+}
+
+public static FuncVec removePN(FuncVec wf, LgrrOrthLcr orthN) {
+  IFuncArr basis = orthN;
+  WFQuadrLcr quadr = orthN.getQuadr();
+  Vec x = quadr.getX();
+  FuncVec res = wf.copyY();
+  for (int i = 0; i < basis.size(); i++) {
+    FuncVec fi = basis.getFunc(i);         //log.dbg("fi=", fi);
+    double dS = quadr.calcInt(wf, fi);     //log.dbg("d=", dS);
+    res.addMultSafe(-dS, fi);              //log.dbg("res=", res);
+  }
+  for (int i = 0; i < basis.size(); i++) {
+    FuncVec fi = basis.getFunc(i);           //log.dbg("fi=", fi);
+    double testInt = quadr.calcInt(res, fi);   //log.dbg("testS=", testS);
+    assertEquals("testInt_" + i, testInt, 0d);
+    assertEquals(0, testInt, MAX_INTGRL_ERR_E11);
+  }
   return res;
 }
 protected double calcSysA(FuncArr psi, double scattE, int engIdx, double R) {

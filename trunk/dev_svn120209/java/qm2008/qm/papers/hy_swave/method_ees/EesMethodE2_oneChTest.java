@@ -61,7 +61,7 @@ public ScattRes calcSysEngs() {
 }
 protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   int L = 0;
-  int CONT_IDX = 999;
+  int CONT_IDX = -1;
   Dble2 res = new Dble2();
   FuncVec psiS = psi.get(EesMethodE1.IDX_P_REG);          log.dbg("resS=", psiS);
   FuncVec psiC = psi.get(EesMethodE1.IDX_P_IRR);          log.dbg("resC=", psiC);
