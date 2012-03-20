@@ -71,6 +71,7 @@ public class ConfArrFactoryE2 {
   public static ConfArr makePoetConfE2(Ls LS, FuncArr minA, int minN, FuncArr maxA, int maxN) {
     int L = 0;
     ConfArr res = new ConfArr();
+    res.setLs(LS);
     if (minN > maxN) {
       throw new IllegalArgumentException(log.error("arr2.size() < arr.size()!!!!!!!!"));
     }

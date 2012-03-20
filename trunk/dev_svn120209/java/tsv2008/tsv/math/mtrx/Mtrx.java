@@ -48,6 +48,11 @@ public class Mtrx extends Matrix {
     Matrix res = super.inverse();
     return new Mtrx(res.getArray());
   }
+public Mtrx plusEquals(Mtrx B) {
+  super.plusEquals(B);
+  return this;
+}
+
 
   /*
 http://java.sun.com/javase/technologies/desktop/java3d/forDevelopers/j3dapi/javax/vecmath/GMatrix.html#GMatrix(int,%20int,%20double[])

@@ -8,10 +8,17 @@ import javax.utilx.arraysx.TArr;
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,07/06/2010,2:23:47 PM
  */
 public class ConfArr extends TArr<Conf> {
-  public Vec getX() {
+private Ls ls;
+public Vec getX() {
     if (size() == 0) {
       return null;
     }
     return get(0).getX();
   }
+public void setLs(Ls ls) {
+  this.ls = ls;
+}
+public Ls getLs() {
+  return ls;
+}
 }
