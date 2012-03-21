@@ -37,7 +37,7 @@ public ScattRes calcSysEngs() {
 //    double f = calcBornF(psi, scattE);
     double R = calcBornR(psi, scattE);
 //    Cmplx S = Scatt.calcSFromF(f, momP);                                          log.dbg("S = ", S);
-//    double R = Scatt.calcRFromS(S);                               log.dbg("R = ", R);
+//    double R = Scatt.calcKFromS(S);                               log.dbg("R = ", R);
 //    double sigma = Scatt.calcSigmaPiFromS(S, scattE);
     double sigma = R;
     log.dbg("sigma = ", sigma).eol();

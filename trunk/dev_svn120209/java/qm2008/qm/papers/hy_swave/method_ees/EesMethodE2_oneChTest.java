@@ -49,7 +49,7 @@ public ScattRes calcSysEngs() {
       Dble2 sc = calcSC(psi, scattE, sysIdx);
       double R = -sc.a / sc.b;                               log.dbg("R = ", R);
 
-      Cmplx S = Scatt.calcSFromR(R);                                          log.dbg("S = ", S);
+      Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
       sigma = Scatt.calcSigmaPiFromS(S, scattE);
   //    double sigma = R;
   //    double sigma = newR;
@@ -60,13 +60,16 @@ public ScattRes calcSysEngs() {
   return res;
 }
 protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
+  int ID_FREE_S = getChNum() + 1;   // id for free s-like
+  int ID_S = ID_FREE_S + 1;   // id for s-like
+  int ID_C = ID_S + 1;   // id for c-like
+
   int L = 0;
-  int CONT_IDX = -1;
   Dble2 res = new Dble2();
   FuncVec psiS = psi.get(EesMethodE1.IDX_P_REG);          log.dbg("resS=", psiS);
   FuncVec psiC = psi.get(EesMethodE1.IDX_P_IRR);          log.dbg("resC=", psiC);
-  Shell shS = new Shell(CONT_IDX, psiS, L);
-  Shell shC = new Shell(CONT_IDX, psiC, L);
+  Shell shS = new Shell(ID_S, psiS, L);
+  Shell shC = new Shell(ID_C, psiC, L);
 
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec

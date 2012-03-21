@@ -60,15 +60,15 @@ abstract public class AtomFano1965 {
     if (a.getWfL() != a2.getWfL() || b.getWfL() != b2.getWfL())
       return res;
     // <aa||aa> // note that <aa||cc> = 0 if a!=c
-    if (a.getId().equals(b.getId())  // <aa|
-      && a2.getId().equals(b2.getId()) //    |cc>
-      && a.getId().equals(a2.getId())) { // <aa||aa> no need to calculate the same z_pot twice
+    if (a.sameId(b)  // <aa|
+      && a2.sameId(b2) //    |cc>
+      && a.sameId(a2)) { // <aa||aa> no need to calculate the same z_pot twice
       res = calcOverlap(a, a2);
       res *= 2;
     } else {
-      if (a.getId().equals(a2.getId()))  // <ab||ab'>
+      if (a.sameId(a2))  // <ab||ab'>
         res = calcOverlap(b, b2);  // b, b2 could be different
-      if (b.getId().equals(b2.getId())) {  // <ab||a'b>
+      if (b.sameId(b2)) {  // <ab||a'b>
         double ov2 = calcOverlap(a, a2);  // a, a2 could be different
         res += ov2;
       }
@@ -82,16 +82,16 @@ abstract public class AtomFano1965 {
       return res;
 
     // <aa||aa> // note that <aa||cc> = 0 if a!=c
-    if (a.getId().equals(b.getId())  // <aa|
-      && a2.getId().equals(b2.getId()) //    |cc>
-      && a.getId().equals(a2.getId())) { // <aa||aa> no need to calculate the same z_pot twice
+    if (a.sameId(b)  // <aa|
+      && a2.sameId(b2) //    |cc>
+      && a.sameId(a2)) { // <aa||aa> no need to calculate the same z_pot twice
       res = calcOneH(a, a2);
       res.kin *= 2;
       res.pot *= 2;
     } else {
-      if (a.getId().equals(a2.getId()))  // <ab||ab'>
+      if (a.sameId(a2))  // <ab||ab'>
         res = calcOneH(b, b2);  // b, b2 could be different
-      if (b.getId().equals(b2.getId())) {  // <ab||a'b>
+      if (b.sameId(b2)) {  // <ab||a'b>
         Energy res2 = calcOneH(a, a2);  // a, a2 could be different
         res.kin += res2.kin;
         res.pot += res2.pot;
@@ -107,15 +107,15 @@ abstract public class AtomFano1965 {
       return null;
 
     // <aa||aa> // note that <aa||cc> = 0 if a!=c
-    if (a.getId().equals(b.getId())  // <aa|
-      && a2.getId().equals(b2.getId()) //    |cc>
-      && a.getId().equals(a2.getId())) { // <aa||aa> no need to calculate the same twice
+    if (a.sameId(b)  // <aa|
+      && a2.sameId(b2) //    |cc>
+      && a.sameId(a2)) { // <aa||aa> no need to calculate the same twice
       res = calcOneDensity(a, a2);
       res.mult(2);
     } else {
-      if (a.getId().equals(a2.getId()))  // <ab||ab'>
+      if (a.sameId(a2))  // <ab||ab'>
         res = calcOneDensity(b, b2);  // b, b2 could be different
-      if (b.getId().equals(b2.getId())) {  // <ab||a'b>
+      if (b.sameId(b2)) {  // <ab||a'b>
         FuncVec res2 = calcOneDensity(a, a2);  // a, a2 could be different
         if (res == null)
           res = res2;

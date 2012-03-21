@@ -11,18 +11,18 @@ import javax.utilx.log.Log;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 16/02/2010, 10:23:47 AM
  */
-public class RkLcrFlowTest extends FlowTest {
-  public static Log log = Log.getLog(RkLcrFlowTest.class);
+public class RkLcrTest2 extends FlowTest {
+  public static Log log = Log.getLog(RkLcrTest2.class);
   private static WFQuadrLcr quadr;
   private static final double MAX_INTGRL_ERR = 1e-10;
 
-  public RkLcrFlowTest(WFQuadrLcr w) {
-    super(RkLcrFlowTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
+  public RkLcrTest2(WFQuadrLcr w) {
+    super(RkLcrTest2.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
     this.quadr = w;
     setMaxErr(MAX_INTGRL_ERR);
   }
-  public RkLcrFlowTest() {
-    super(RkLcrFlowTest.class);
+  public RkLcrTest2() {
+    super(RkLcrTest2.class);
   }
   public void testCalcRkLcr() throws Exception {
     Vec r = quadr.getR();
@@ -30,7 +30,7 @@ public class RkLcrFlowTest extends FlowTest {
     f.mult(quadr.getDivSqrtCR());
     double res = quadr.calcInt(f, f);
     setMaxErr(MAX_INTGRL_ERR);
-    setShowDbg(log.getDbg());
+//    setShowDbg(log.getDbg());
     assertEquals("<1s|1s>", 0, Math.abs(res - 1));
     FuncVec T = CoulombWFFactory.makeY_0_1s(r); // valid
     FuncVec Y = new YkLcr(quadr.getLcrToR(), f, f, 0).calcYk();

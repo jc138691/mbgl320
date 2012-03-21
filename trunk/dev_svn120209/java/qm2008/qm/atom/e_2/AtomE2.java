@@ -1,7 +1,6 @@
 package atom.e_2;
 
 import atom.AtomLcr;
-import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.Conf;
 import atom.shell.Ls;
@@ -28,18 +27,21 @@ private static final double OVER_SQRT_TWO = Math.sqrt(0.5);
 // wfB(r_1) bound
 // wfF(r_2) free
 // v = -1/r_2 + 1/r_max
-//
-public double calcVbf(Shell bndSh  // bound shell
-  , Shell freeSh  // free moving wf
-  , Conf cnf      // NOTE! bound wf and conf are built from the same radial basis
+// babb - bound-any-bound-bound
+// NOTE!!!!! bX must be
+//   < bX | bX2 > = delta_{bX.id, bX2.id}
+//   < bX | bY2 > = delta_{bX.id, bY2.id}
+public double calcVbabb(
+  Shell bX  // bound shell
+  , Shell aY  // any (free-moving-wf or bound)
+  , Conf bbXY2  // bound-bound-(shell-pair)    // NOTE! bound wf and conf are built from the same radial basis
 ) {
-  Ls ls = cnf.getTotLS();
-  ShPair sp = (ShPair) cnf;
-  Shell a2 = sp.a;
-  Shell b2 = sp.b;
-
-  double dir = calcShPairVbf(ls.getL(), bndSh, freeSh, a2, b2);
-  if (a2.getId().equals(b2.getId())) {
+  Ls ls = bbXY2.getTotLS();
+  ShPair sp = (ShPair) bbXY2;
+  Shell bX2 = sp.a;
+  Shell bY2 = sp.b;
+  double dir = calcShPairVbaba(ls.getL(), bX, aY, bX2, bY2);
+  if (bX2.sameId(bY2)) {
     if (ls.getS() != 0) {
       throw new IllegalArgumentException(log.error("NOT A VALID config: ls.getS() != 0): ERROR when building configs"));
     }
@@ -51,24 +53,36 @@ public double calcVbf(Shell bndSh  // bound shell
   // psi(r1, r2) = 1/sqrt(2) [ f(r1) g(r2) + (-1)^S f(r2) g(r1) ]
   //
   double norm = OVER_SQRT_TWO;
-  double exc = calcShPairVbf(ls.getL(), bndSh, freeSh, b2, a2);
+
+  // NOTE: < bX | bY2 > = delta_{bX.id, bY2.id}  is used here
+  double exc = calcShPairVbaba(ls.getL(), bX, aY, bY2, bX2);
   double res = norm * ( dir + Mathx.pow(-1., ls.getS()) * exc );
   return res;
 }
-private double calcShPairVbf(int LL, Shell a, Shell freeSh, Shell a2, Shell b2) { // modelled on calcShPairEng()
-  double oneV = calcOneVbf(a, freeSh, a2, b2);
-  double pot = calcTwoPot(LL, a, freeSh, a2, b2);    // 1/r_max
+
+private double calcShPairVbaba(int LL
+  , Shell bX, Shell aY
+  , Shell bX2, Shell aY2) { // modelled on calcShPairEng()
+  double oneV = calcOneVbaba(bX, aY, bX2, aY2);
+  double pot = calcTwoPot(LL, bX, aY, bX2, aY2);    // 1/r_max
   return oneV + pot;
 }
-// < a(r_1)  b(r_2)  |  Z/r_2 |  a2(r_1)  b2(r_2)  >
-private double calcOneVbf(Shell a                    // modelled on calcOneH()
-  , Shell freeSh // this is the free moving wf!!!
-  , Shell a2, Shell b2) {
+
+// < bound(x)  free(y)  |  Z/y |  bound(x)  bound(y)  >
+// NOTE: 1/y   - second variable
+// baba --- bound-any-bound-any
+// "bound" means that < bX | bX2 > = delta_{bX.id, bX2.id}
+private double calcOneVbaba(   // modelled on calcOneH()
+                               Shell bX  // bound shell
+  , Shell aY // any (bound or free)
+  , Shell bX2 // bound shell X2
+  , Shell aY2 // any (bound or free) shell Y2
+) {
   double res = 0;
-  if (a.getWfL() != a2.getWfL() || freeSh.getWfL() != b2.getWfL())
+  if (bX.getWfL() != bX2.getWfL() || aY.getWfL() != aY2.getWfL())
     return res;
-  if (a.getId().equals(a2.getId()))  // <ab||ab'>    // NOTE: THIS IS WHERE the same basis is used
-    res = si.calcOneZPot(Z, freeSh, b2);
+  if (bX.sameId(bX2))  // <ab||ab'>    // NOTE: THIS IS WHERE the same basis is used
+    res = si.calcOneZPot(Z, aY, aY2);
   return res;
 }
 }

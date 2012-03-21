@@ -5,6 +5,8 @@ import atom.shell.*;
 import atom.wf.log_cr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.Calc;
+import math.complex.CmplxMtrx;
+import math.complex.CmplxMtrxDbgView;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.arr.IFuncArr;
@@ -32,6 +34,7 @@ private Vec vB;
 private Mtrx mK;
 private Mtrx mX;
 private Mtrx mY;
+private CmplxMtrx cmS; //complex-matrx
 private FuncArr freeS;
 private FuncArr phiS;
 private FuncArr phiC;
@@ -43,18 +46,24 @@ public ScattRes calcSysEngs() {    log.setDbg();
   EngModel engModel = calcOpt.getGridEng();
   ScattRes res = new ScattRes();
 
-  Vec sEngs = getSysEngs();
-  int chNum = calcReportChNum(sEngs);
+  Vec sEngs = getSysEngs();       log.dbg("sEngs=", sEngs);
+  int chNum = calcShowChNum(sEngs);
   int eN = sEngs.size();
+
   Mtrx mCrss = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   res.setCrossSecs(mCrss);
+  Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
+  res.setTics(mTics);
+
   EesMethodE1 methodE1 = new EesMethodE1(calcOpt);
   for (int sysIdx = 0; sysIdx < eN; sysIdx++) {                log.dbg("i = ", sysIdx);
     double sysTotE = sEngs.get(sysIdx);                           log.dbg("sysE = ", sysTotE);
+    chArr = loadChArr(sysTotE);    // used to calc cross_sections
     double scattE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scattE = ", scattE);
     mCrss.set(sysIdx, IDX_ENRGY, scattE);
 
     double sigma = 0;
+    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scattE=" + (float)scattE);
     if (scattE <= 0
       ||  engModel.getFirst() > scattE
       ||  scattE > engModel.getLast()
@@ -62,35 +71,26 @@ public ScattRes calcSysEngs() {    log.setDbg();
       continue;
     }
     if (hasOneOpenCh(sysTotE)) { // just one channel
-
-      //TODO
-
 //      FuncArr psi = methodE1.calcPsi(scattE, orthonN);
 //      Dble2 sc = calcSC(psi, scattE, sysIdx);
 //      double R = -sc.a / sc.b;                               log.dbg("R = ", R);
-//      Cmplx S = Scatt.calcSFromR(R);                                          log.dbg("S = ", S);
+//      Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
 //      sigma = Scatt.calcSigmaPiFromS(S, scattE);
 //      mCrss.set(sysIdx, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
       continue;
     }
+
+    // DEBUGGING ONLY
+    if (!hasTwoOpenChs(sysTotE)) {
+      log.dbg("DEBUGGING ONLY: if (!hasTwoOpenChs(sysTotE))");
+      break;
+    }
+
     loadTrialWfs(sysIdx, orthonN, chNum);
     calcAllVecs(sysIdx, chNum);
     calcK(chNum);
-
-//      Dble2 sc = calcSC(psi, scattE, sysIdx);
-//      double R = -sc.a / sc.b;                               log.dbg("R = ", R);
-      double R = 0;
-  //    double sysA = calcSysA(psi, scattE, i, R);
-
-  // todo: for e-H
-  //    double newR = calcRFromPsiE(psi, scattE, i, sysA, R);   log.dbg("newR = ", newR);
-
-      Cmplx S = Scatt.calcSFromR(R);                                          log.dbg("S = ", S);
-      sigma = Scatt.calcSigmaPiFromS(S, scattE);
-  //    double sigma = R;
-  //    double sigma = newR;
-    log.dbg("sigma = ", sigma).eol();
-    mCrss.set(sysIdx, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
+    cmS = Scatt.calcSFromK(mK);                        log.info("(1-iR)=\n", new CmplxMtrxDbgView(cmS));
+    calcCrossSecs(sysIdx, res, cmS, chNum);
   }
   return res;
 }
@@ -98,7 +98,11 @@ private boolean hasOneOpenCh(double sysTotE) {
   Vec tEngs = trgtE2.getEngs();
   return tEngs.get(1) >= sysTotE;  //second target channel is closed
 }
-private int calcReportChNum(Vec engs) {
+private boolean hasTwoOpenChs(double sysTotE) {
+  Vec tEngs = trgtE2.getEngs();
+  return (tEngs.get(1) < sysTotE  &&  tEngs.get(2) >= sysTotE);  //2nd-open; 3rd-closed
+}
+private int calcShowChNum(Vec engs) {
   EngModel engModel = calcOpt.getGridEng();
   double maxScattE = engModel.getLast();
   double maxTotSysE = trgtE2.getInitTrgtEng() + maxScattE;
@@ -108,10 +112,10 @@ private int calcReportChNum(Vec engs) {
   for (chIdx = 0; chIdx < tN; chIdx++) {     //log.dbg("t = ", t);  // Target channels
     double chE = tEngs.get(chIdx); // channel eng
     if (chE > maxTotSysE) {
-      break;
+      return chIdx + 1; // +1 to get count (not index)
     }
   }
-  return chIdx + 1; // +1 to get count (not index)
+  return tN;
 }
 
 protected void loadTrialWfs(int sysIdx, LgrrOrthLcr orthN, int chNum) {
@@ -150,12 +154,12 @@ private double calcB(Shell tSh, Shell freeSh, int sysIdx) {
   double res = 0;
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
     Conf sysConf = sB.get(sbi);
-    double term = sV[sbi][sysIdx];     log.dbg("term=", term);
+    double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
     if (Calc.isZero(term))
       continue;
 
     //Vbf - bound-free; could also be Vff - free-free for ionization
-    double v = sysE2.calcVbf(tSh, freeSh, sysConf);         log.dbg("v=", v);
+    double v = sysE2.calcVbabb(tSh, freeSh, sysConf);         //log.dbg("v=", v);
     res += ( term * v );
   }
   return res;
@@ -169,15 +173,15 @@ private Dble2 calcSC(ShPair confS, ShPair confC, int sysIdx) {
   Energy eng;
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
     Conf sysConf = sB.get(sbi);
-    double term = sV[sbi][sysIdx];     log.dbg("term=", term);
+    double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
     if (Calc.isZero(term))
       continue;
 
-    eng = sysE2.calcH(sysConf, confS);         log.dbg("eng=", eng);
-    double s = eng.kin + eng.pot;              log.dbg("s=", s);
+    eng = sysE2.calcH(sysConf, confS);         //log.dbg("eng=", eng);
+    double s = eng.kin + eng.pot;              //log.dbg("s=", s);
 
-    eng = sysE2.calcH(sysConf, confC);         log.dbg("eng=", eng);
-    double c = eng.kin + eng.pot;              log.dbg("c=", c);
+    eng = sysE2.calcH(sysConf, confC);         //log.dbg("eng=", eng);
+    double c = eng.kin + eng.pot;              //log.dbg("c=", c);
 
     res.a += ( term * s );
     res.b += ( term * c );
@@ -186,11 +190,15 @@ private Dble2 calcSC(ShPair confS, ShPair confC, int sysIdx) {
 }
 
 protected void calcAllVecs(int sysIdx, int chNum) {
+  // setup ids for continuum wfs. They must be different from target wfs
+  int ID_FREE_S = getChNum() + 1;   // id for free s-like
+  int ID_S = ID_FREE_S + 1;   // id for s-like
+  int ID_C = ID_S + 1;   // id for c-like
+
   Ls LS = sysConfH.getBasis().getLs();
   SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
 
   int L = 0;
-  int FREE_IDX = -1;
   vS = new Vec(chNum);
   vC = new Vec(chNum);
   vB = new Vec(chNum);
@@ -211,19 +219,19 @@ protected void calcAllVecs(int sysIdx, int chNum) {
     Shell tSh = new Shell(g, tWf, L);
 
     FuncVec freePsi = freeS.get(g);
-    Shell freeSh = new Shell(FREE_IDX, freePsi, L);
+    Shell freeSh = new Shell(ID_FREE_S, freePsi, L);
     double b = calcB(tSh, freeSh, sysIdx);
     vB.set(g, b);
 
     FuncVec tPhiS = phiS.get(g);
-    Shell shS = new Shell(FREE_IDX, tPhiS, L);
-    ShPair pairS = new ShPair(tSh, shS, LS);
+    Shell shS = new Shell(ID_S, tPhiS, L);
+    ShPair pS = new ShPair(tSh, shS, LS);
 
     FuncVec tPhiC = phiC.get(g);
-    Shell shC = new Shell(FREE_IDX, tPhiC, L);
-    ShPair pairC = new ShPair(tSh, shC, LS);
+    Shell shC = new Shell(ID_C, tPhiC, L);
+    ShPair pC = new ShPair(tSh, shC, LS);
 
-    Dble2 sc = calcSC(pairS, pairC, sysIdx);
+    Dble2 sc = calcSC(pS, pC, sysIdx);
     vS.set(g, sc.a);
     vC.set(g, sc.b);
 
@@ -235,34 +243,52 @@ protected void calcAllVecs(int sysIdx, int chNum) {
         mY.set(g, t2, 0);
         continue;
       }
-
       FuncVec tWf2 = trgtWfs.get(t2);
       Shell tSh2 = new Shell(t2, tWf2, L);
 
-      FuncVec tPhi2 = phiS.get(t2); // channel S-like
-      Shell sh2 = new Shell(FREE_IDX, tPhi2, L);
-      ShPair pairSh2 = new ShPair(tSh2, sh2, LS);
-      double x = sysE2.calcVbf(tSh, freeSh, pairSh2);         log.dbg("x=", x);
+      // channel S-like
+      ShPair pSh2 = makeShPair(tSh2, phiS.get(t2), ID_S, L, LS);
+      double x = sysE2.calcVbabb(tSh, freeSh, pSh2);         //log.dbg("x=", x);
       mX.set(g, t2, x);
 
-      tPhi2 = phiC.get(t2); // channel C-like
-      sh2 = new Shell(FREE_IDX, tPhi2, L);
-      pairSh2 = new ShPair(tSh2, sh2, LS);
-      double y = sysE2.calcVbf(tSh, freeSh, pairSh2);         log.dbg("y=", y);
+      // channel C-like
+      pSh2 = makeShPair(tSh2, phiC.get(t2), ID_C, L, LS);
+      double y = sysE2.calcVbabb(tSh, freeSh, pSh2);         //log.dbg("y=", y);
       mY.set(g, t2, y);
     }
   }
-  log.dbg("mX=", new MtrxDbgView(mX));
-  log.dbg("mY=", new MtrxDbgView(mY));
+  log.dbg("mX=\n", new MtrxDbgView(mX));
+  log.dbg("mY=\n", new MtrxDbgView(mY));
   log.dbg("vS=", new VecDbgView(vS));
   log.dbg("vC=", new VecDbgView(vC));
   log.dbg("vB=", new VecDbgView(vB));
 }
 protected void calcK(int chNum) {
-  Mtrx oneY = MtrxFactory.makeOneDiag(chNum);  log.dbg("oneDiag=", new MtrxDbgView(oneY));
-  oneY = oneY.plusEquals(mY);       log.dbg("oneY=", new MtrxDbgView(oneY));
-  Mtrx W = oneY.inverse();          log.dbg("W=(1+Y)^{-1}=", new MtrxDbgView(W));
-}
+  Mtrx mOneY = MtrxFactory.makeOneDiag(chNum);  log.dbg("oneDiag=\n", new MtrxDbgView(mOneY));
+  mOneY = mOneY.plusEquals(mY);       log.dbg("mOneY=\n", new MtrxDbgView(mOneY));
+  Mtrx mW = mOneY.inverse();          log.dbg("mW=(1+Y)^{-1}=\n", new MtrxDbgView(mW));
 
+  Vec vWB = mW.times(vB);             log.dbg("vWB=", new VecDbgView(vWB));
+  double beta = vC.dot(vWB);         log.dbg("beta=", beta);
+  double oneBeta = 1. / beta;       log.dbg("oneBeta=1./beta=", oneBeta);
+
+  Mtrx mWX = mW.times(mX);           log.dbg("WX=\n", new MtrxDbgView(mWX));
+  Mtrx mWXt = mWX.transpose();       log.dbg("WXt=\n", new MtrxDbgView(mWXt));
+  Vec vZ = mWXt.times(vC);           log.dbg("Z=WXt * vC=", new VecDbgView(vZ));
+
+  Vec vA = vS.copy();
+  vA.addMultSafe(-1., vZ);           log.dbg("A=S-Z=", new VecDbgView(vA));
+  vA.mult(oneBeta);                 log.dbg("A=(S-Z)/beta=", new VecDbgView(vA));
+
+  Mtrx mAB = MtrxFactory.makeFromTwoVecs(vB, vA);  log.dbg("AB=\n", new MtrxDbgView(mAB));
+  mAB.plusEquals(mX);                              log.dbg("AB=AB+X\n", new MtrxDbgView(mAB));
+  mK = mW.times(mAB);                                   log.dbg("K=W*(AB+X)\n", new MtrxDbgView(mK));
+  mK.timesEquals(-1.);
+}
+private ShPair makeShPair(Shell sh, FuncVec wf, int id, int L, Ls LS) {
+  Shell sh2 = new Shell(id, wf, L);
+  ShPair res = new ShPair(sh, sh2, LS);
+  return res;
+}
 
 }
