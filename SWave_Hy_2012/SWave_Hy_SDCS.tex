@@ -21,7 +21,8 @@
 \newcommand{\KB}{\mbox{\tiny{KB}}}
 \newcommand{\vare}{\varepsilon}
 \newcommand{\phiH}{\phi^{\mbox{\tiny{H}}}}
-\newcommand{\vecCT}{ {\bf C}^{\mbox{\tiny{T}} }}
+\newcommand{\vecCT}{ {\bf c} \cdot }
+%\newcommand{\vecCT}{ {\bf c}^{\mbox{\tiny{T}} }}
 
 
 
@@ -46,6 +47,10 @@ Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
 
 \begin{abstract}
 It is shown that existing JM method could be significantly simplified without the loss of convergence rate or accuracy.
+
+
+The solution is very elegant and arguably somewhat almost trivial, especially when compared to 
+the existing theories.
 
 \end{abstract}
 
@@ -250,7 +255,7 @@ Then, the solution of the $(\mathcal{N}+1)$-electron Schr\"odinger equation for 
 \eeq
 is approximated at the system's eigenvalues $\{E_i\}$ (\ref{Psi_H_Psi_2}) by
 \beq \barr{l}
- \Psi_{E_i}^{\gamma \Gamma}  =  a_i \Psi_i^{\Gamma}
+ \Psi_{E_i}^{\gamma \Gamma}  =  a_\gamma \Psi_i^{\Gamma}
  + \hat{A} \Phi^\Gamma_{\gamma}  \phi_{\gamma}
 + \sum_{\gamma''}  \hat{A} \Phi^\Gamma_{\gamma''}   \overline{\phi}_{\gamma''}  K_{\gamma'' \gamma},
 \earr \label{Psi_} \eeq
@@ -262,47 +267,47 @@ and where the channels' trial functions $\{ \phi_\gamma, \overline{\phi}_\gamma 
 The $\gamma$ labeling in $\Psi_{E_i}^{\gamma \Gamma}$ specifies the initial scattering boundary condition $\hat{A} \Phi^\Gamma_{\gamma}  \phi_{\gamma}$.
 
 
-The unknowns, $a_i$ and $K_{\gamma'' \gamma}$ are determined from two conditions. The first is identical to the one-channel scattering (\ref{EES_ONE_C1})
+The unknowns, $a_\gamma$ and $K_{\gamma'' \gamma}$ are determined from two conditions. The first is identical to the one-channel scattering (\ref{EES_ONE_C1})
 \beq
 \langle\Psi_i^\Gamma|H-E_i|\Psi_{E_i}^{\gamma \Gamma}\rangle=0,
 \label{EES_MC_C1} \eeq  %multichannel scattering condition #1
 and yields, in vector notation,
 \beq
-\vecCT {\bf K}_\gamma = -s_\gamma, \label{CK_s}
+\vecCT {\bf k}_\gamma = -s_\gamma, \label{CK_s}
 \eeq
-where (i) ${\bf K}_\gamma$ is the $\gamma$'th column of the $K$-matrix; (ii) superscript 'T' denotes transpose;
-and (iii) $s_\gamma$ and the vector ${\bf C}$ components are given by
+where ${\bf k}_\gamma$ is the $\gamma$'th column of the $K$-matrix,
+and where $s_\gamma$ and the vector ${\bf c}$ components are given by
 \beq \barr{l}
 s_\gamma = \langle \Psi_i^\Gamma |H| \hat{A} \Phi^\Gamma_{\gamma} \phi_{\gamma} \rangle,\\
-C_{\gamma'} =  \langle \Psi_i^\Gamma |H | \hat{A} \Phi^\Gamma_{\gamma'} \overline{\phi}_{\gamma'} \rangle.
+c_{\gamma} =  \langle \Psi_i^\Gamma |H | \hat{A} \Phi^\Gamma_{\gamma} \overline{\phi}_{\gamma} \rangle.
 \earr \label{Psi_} \eeq
 
 
-The second condition for $a_i$ and $K_{\gamma'' \gamma}$ is given by the definition of the $K$-matrix from the the general scattering theory \cite{N82}
+The second condition for $A_\gamma$ and $K_{\gamma'' \gamma}$ is given by the definition of the $K$-matrix from the the general scattering theory \cite{N82}
 \beq
 K_{\gamma' \gamma} = - \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'}
 | V | \Psi_{E_i}^{\gamma \Gamma} \rangle,
 \eeq
 which becomes
 \beq
-{\bf K}_\gamma = -[a_i {\bf B}_i + {\bf X}_\gamma + {\bf Y K}_\gamma]
+{\bf k}_\gamma = -[a_\gamma {\bf b} + {\bf x}_\gamma + {\bf Y k}_\gamma]
 \eeq
 and after defining ${\bf W}=(1+{\bf Y})^{-1}$
 \beq
-{\bf K}_\gamma  = -{\bf W}   (a_i {\bf B}_i    + {\bf X}_\gamma), \label{K_gamma}
+{\bf k}_\gamma  = -{\bf W}   (a_\gamma {\bf b}    + {\bf x}_\gamma), \label{K_gamma}
 \eeq
-where (i) $V$ is the electron-target interaction; (ii) ${\bf X}_\gamma$ is the $\gamma$'th column of the following $X$-matrix;
+where (i) $V$ is the electron-target interaction; (ii) ${\bf x}_\gamma$ is the $\gamma$'th column of the following $X$-matrix;
 and (iii) the required components are given by
 \beq \barr{l}
-B_{\gamma' i} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V |\Psi_i^{\Gamma} \rangle,\\
+b_{\gamma} = \langle \Phi^\Gamma_{\gamma}  \psi_{\gamma} |V |\Psi_i^{\Gamma} \rangle,\\
 X_{\gamma' \gamma} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V | \hat{A} \Phi^\Gamma_{\gamma} \phi_{\gamma} \rangle,\\
 Y_{\gamma' \gamma} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V | \hat{A} \Phi^\Gamma_{\gamma} \overline{\phi}_{\gamma} \rangle.
 \earr \label{Y_B_W} \eeq
-Eqs.~(\ref{CK_s}) and (\ref{K_gamma}) are solved for $a_i$ arriving at
+Eqs.~(\ref{CK_s}) and (\ref{K_gamma}) are solved for $a_\gamma$ arriving at
 \beq \barr{l}
-a_i = (s_\gamma - x_\gamma) / b_i,\\
-b_i = \vecCT {\bf W}  {\bf B}_i, \ \ \
-x_\gamma = \vecCT {\bf W}  {\bf X}_\gamma,
+a_\gamma = (s_\gamma - z_\gamma) / \beta,\\
+\beta = \vecCT {\bf W}  {\bf b}, \ \ \
+z_\gamma = \vecCT {\bf W}  {\bf x}_\gamma,
 \earr \eeq
 and then calculating the corresponding columns of the $K$-matrix via Eq.~(\ref{K_gamma}).
 
