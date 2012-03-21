@@ -11,16 +11,16 @@ import javax.utilx.log.Log;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 15/02/2010, 2:28:42 PM
  */
-public class YkLcrFlowTest extends FlowTest {
-  public static Log log = Log.getLog(YkLcrFlowTest.class);
+public class YkLcrTest2 extends FlowTest {
+  public static Log log = Log.getLog(YkLcrTest2.class);
   private static WFQuadrLcr quadr;
 
-  public YkLcrFlowTest(WFQuadrLcr w) {
-    super(YkLcrFlowTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
+  public YkLcrTest2(WFQuadrLcr w) {
+    super(YkLcrTest2.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
     quadr = w;
   }
-  public YkLcrFlowTest() {
-    super(YkLcrFlowTest.class);   //??
+  public YkLcrTest2() {
+    super(YkLcrTest2.class);   //??
   }
 
   public void testZ_1() throws Exception { // zk = 1
@@ -37,7 +37,7 @@ public class YkLcrFlowTest extends FlowTest {
     FuncVec zk = new YkLcr(xToR, f, f, 1).calcZk();
     double absDist = Math.abs(DistMaxAbsErr.distSLOW(T, zk));   log.dbg("DistMaxAbsErr.distSLOW(T, zk)=", absDist);
     setMaxErr(MAX_WF_DIFF_ERR_E7);
-    setShowDbg(log.getDbg());
+//    setShowDbg(log.getDbg());
     assertEquals("Z_1_1s = ", 0, absDist);
 
     T = CoulombWFFactory.makeZ_0_1s(r); // valid

@@ -27,7 +27,7 @@ private static boolean lockMaxErr = false;    // this is not good!!!
 
 //  private double maxErr = 1.e-8;
 protected Class theClass;
-private boolean showDbg = true;
+//private boolean showDbg = true;
 
 public FlowTest() {
 }
@@ -51,7 +51,7 @@ public static void setLog(Log dbgLog) {
   log = dbgLog;
 }
 
-public void assertEquals(double expected, double actual) {
+public static void assertEquals(double expected, double actual) {
   assertEquals(null, expected, actual, false);
 }
 
@@ -69,29 +69,29 @@ public static void assertEquals(String help, double expected, double actual, boo
   }
 }
 
-public void assertEquals(String help, double expected, double actual) {
-  assertEquals(help, expected, actual, showDbg);
+public static void assertEquals(String help, double expected, double actual) {
+  assertEquals(help, expected, actual, false);
 }
 
-public void assertEqualsRel(String help, double expected, double actual) {
-  assertEqualsRel(help, expected, actual, showDbg);
+public static void assertEqualsRel(String help, double expected, double actual) {
+  assertEqualsRel(help, expected, actual, false);
 }
 
-public void assertFloorRel(String help, double expected, double actual, double maxRelErr) {
+public static void assertFloorRel(String help, double expected, double actual, double maxRelErr) {
   String mssg = format(help, (float) expected, (float) actual);
   mssg += " relErr=" + (float) ((expected - actual) / expected);
   mssg += " maxRelErr=" + (float) maxRelErr;
   assertFloor(mssg + "; assertFloor", expected, actual, Math.abs(maxRelErr * expected));
 }
 
-public void assertCeilRel(String help, double expected, double actual, double maxRelErr) {
+public static void assertCeilRel(String help, double expected, double actual, double maxRelErr) {
   String mssg = format(help, (float) expected, (float) actual);
   mssg += " relErr=" + (float) ((expected - actual) / expected);
   mssg += " maxRelErr=" + (float) maxRelErr;
   assertCeil(mssg + "; assertCeiling", expected, actual, Math.abs(maxRelErr * expected));
 }
 
-public void assertFloor(String mssg, double floor, double actual, double delta) {
+public static void assertFloor(String mssg, double floor, double actual, double delta) {
   if (Double.compare(floor, actual) == 0)
     return;
   if (floor > actual
@@ -101,7 +101,7 @@ public void assertFloor(String mssg, double floor, double actual, double delta) 
 
 // Ceiling
 
-public void assertCeil(String mssg, double ceil, double actual, double delta) {
+public static void assertCeil(String mssg, double ceil, double actual, double delta) {
   if (Double.compare(ceil, actual) == 0)
     return;
   if (ceil  < actual
@@ -109,7 +109,7 @@ public void assertCeil(String mssg, double ceil, double actual, double delta) {
     failNotEquals(mssg, new Double(ceil), new Double(actual));
 }
 
-public void assertEqualsRel(String help, double expected, double actual, boolean showDbg2) {
+public static void assertEqualsRel(String help, double expected, double actual, boolean showDbg2) {
   String mssg = format(help, (float) expected, (float) actual);
 //    mssg += " err=" + (float) (expected - actual);
   mssg += " relErr=" + (float) ((expected - actual) / expected);
@@ -135,9 +135,9 @@ public boolean ok() {
   return res.wasSuccessful();
 }
 
-public void setShowDbg(boolean showDbg) {
-  this.showDbg = showDbg;
-}
+//public void setShowDbg(boolean showDbg) {
+//  this.showDbg = showDbg;
+//}
 
 private static void setLockMaxErr(boolean lockMaxErr) {
   FlowTest.lockMaxErr = lockMaxErr;

@@ -5,9 +5,9 @@ import atom.wf.coulomb.CoulombNmrvLcr;
 import atom.wf.coulomb.CoulombNmrvR;
 import atom.wf.coulomb.CoulombWFFactory;
 import atom.wf.log_cr.LcrFactory;
-import atom.wf.log_cr.RkLcrFlowTest;
+import atom.wf.log_cr.RkLcrTest2;
 import atom.wf.log_cr.WFQuadrLcr;
-import atom.wf.log_cr.YkLcrFlowTest;
+import atom.wf.log_cr.YkLcrTest2;
 import atom.wf.log_cr.test.RkLcrTest;
 import atom.wf.log_cr.test.YkLcrTest;
 import calc.interpol.InterpolCubeTest;
@@ -106,7 +106,7 @@ protected void potScattTestOk() {
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
 
-  if (!new YkLcrFlowTest(quadrLcr).ok()) return;
+  if (!new YkLcrTest2(quadrLcr).ok()) return;
 
   basisOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", basisOptN);
   basisN = new LagrrLcr(quadrLcr, basisOptN);    log.dbg("LagrrLcr =\n", basisN);
@@ -153,10 +153,10 @@ protected void hydrScattTestOk(int trgtZ) {
   pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
   if (!new YkLcrTest().ok()) return;
-  if (!new YkLcrFlowTest(quadrLcr).ok()) return;
+  if (!new YkLcrTest2(quadrLcr).ok()) return;
 
   if (!new RkLcrTest().ok()) return;
-  if (!new RkLcrFlowTest(quadrLcr).ok()) return;
+  if (!new RkLcrTest2(quadrLcr).ok()) return;
 
   if (!new CoulombNmrvR().ok()) return;
   if (!new CoulombNmrvLcr().ok()) return;

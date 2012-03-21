@@ -17,11 +17,11 @@ public class VecDbgView extends Vec {
     return head + start + ", ..., " + tail + "}";
   }
   public static String toString(double[] a, int firstIdx, int size) {
-    int L = Math.min(a.length, firstIdx + size);
+    int len = Math.min(a.length, firstIdx + size);
     StringBuffer buff = new StringBuffer();
-    for (int i = firstIdx; i < L; i++) {
+    for (int i = firstIdx; i < len; i++) {
       DbgView.append(buff, a[i]);
-      if (i != L - 1)
+      if (i != len - 1)
         buff.append(", ");
     }
     return buff.toString();

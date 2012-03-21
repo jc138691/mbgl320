@@ -42,7 +42,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   runJob();
 }
 
-public void calc(int newN) {
+public void calc(int newN) {      log.setDbg();
   SYS_LS = new Ls(0, SPIN);
   N = newN;
   Nt = newN;
@@ -67,7 +67,7 @@ public void calc(int newN) {
   trgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
 
   ConfHMtrx sysH = makeSysH(SYS_LS, slater);
-  Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
+  Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 
 //  EesMethodE2_oneChTest method = new EesMethodE2_oneChTest(calcOpt);
   EesMethodE2_basisHy method = new EesMethodE2_basisHy(calcOpt);

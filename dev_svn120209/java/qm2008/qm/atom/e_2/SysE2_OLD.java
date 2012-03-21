@@ -29,7 +29,7 @@ public class SysE2_OLD extends AtomE2 {
     Shell b2 = sp2.b;
     Energy dir = calcShPairEng(fc.getTotLS().getL(), a, b, a2, b2); // potential only
     Energy exc = null;
-    if (a2.getId().equals(b2.getId()))
+    if (a2.sameId(b2))
       exc = new Energy(dir);
     else
       exc = calcShPairEng(fc.getTotLS().getL(), a, b, b2, a2);

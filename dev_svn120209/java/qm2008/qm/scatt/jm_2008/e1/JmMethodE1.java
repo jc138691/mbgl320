@@ -43,7 +43,7 @@ public ScattRes calc(Vec engs) {
     double cN = sc.getRe();
     double R = -(sN1 + g * sN) / (cN1 + g * cN);                        log.dbg("R = ", R);
     double shift = Math.atan(R);
-    Cmplx S = Scatt.calcSFromR(R);                                          log.dbg("S = ", S);
+    Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
 //    double sigma = Scatt.calcSigmaPiFromS(S, scattE);
     double sigma = R;
     log.dbg("sigma = ", sigma).eol();

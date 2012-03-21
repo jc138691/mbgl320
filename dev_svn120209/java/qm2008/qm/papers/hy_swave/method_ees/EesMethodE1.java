@@ -16,9 +16,7 @@ import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.partial.wf.CosRegK2;
-import scatt.partial.wf.CosRegPWaveLcr;
 import scatt.partial.wf.SinK2;
-import scatt.partial.wf.SinPWaveLcr;
 
 import javax.utilx.log.Log;
 import javax.utilx.pair.Dble2;
@@ -51,7 +49,7 @@ public ScattRes calcSysEngs() {
     double R = -sc.a / sc.b;                               log.dbg("R = ", R);
     double sysA = calcSysA(psi, scattE, i, R);
     double newR = calcRFromPsiE(psi, scattE, i, sysA, R);   log.dbg("newR = ", newR);
-    Cmplx S = Scatt.calcSFromR(R);                                          log.dbg("S = ", S);
+    Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
 //    double sigma = Scatt.calcSigmaPiFromS(S, scattE);
 //    double sigma = R;
     double sigma = newR;
