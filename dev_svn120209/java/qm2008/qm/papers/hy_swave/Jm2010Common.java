@@ -7,7 +7,7 @@ import project.workflow.task.test.FlowTest;
 import qm_station.QMS;
 import qm_station.ui.scatt.CalcOptR;
 import scatt.eng.EngModel;
-import scatt.jm_2008.e1.ScattMethodBaseE1;
+import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.TestModel;
@@ -53,13 +53,13 @@ public StepGridModel makeStepGridModelR() {
   res.setNumPoints(R_N);
   return res;
 }
-public void setupScattRes(ScattRes res, ScattMethodBaseE1 method) {
+public void setupScattRes(ScattRes res, ScttMthdBaseE1 method) {
   res.setHomeDir(HOME_DIR);
   res.setModelDir(MODEL_DIR);
   res.setModelName(MODEL_NAME);
   res.setMethod(method);
 }
-protected static String makeLabelBasisOptOpen(ScattMethodBaseE1 method) {
+protected static String makeLabelBasisOptOpen(ScttMthdBaseE1 method) {
   if (method.getCalcOpt().getUseClosed()) {
     return basisOptN.makeLabel() + ".dat";
   } else {

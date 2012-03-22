@@ -34,8 +34,8 @@ public class JmResonE2 {
 //  public static final int RES_INFO_ABS_RATIO = count++;
   public static final int RES_INFO_SIZE = count++;
 
-  private JmMethodBaseE2 jmm;
-  public JmResonE2(JmMethodBaseE2 method) {
+  private JmMthdBaseE2 jmm;
+  public JmResonE2(JmMthdBaseE2 method) {
     this.jmm = method;
   }
 

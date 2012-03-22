@@ -8,7 +8,7 @@ import javax.utilx.log.Log;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 16/02/2010, 1:53:49 PM
  */
-public class JmMethodE2 extends JmMethodBaseE2 {  // two-electrons
+public class JmMethodE2 extends JmMthdBaseE2 {  // two-electrons
   public static Log log = Log.getLog(JmMethodE2.class);
   public JmMethodE2(CalcOptE1 calcOpt) {
     super(calcOpt);

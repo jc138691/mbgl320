@@ -8,7 +8,7 @@ import math.func.arr.FuncArrDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
-import scatt.jm_2008.e1.ScattMethodBaseE1;
+import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.e1.JmMethodE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.theory.JmD;
@@ -81,7 +81,7 @@ public void calcJm(int newN) {
   res.setCalcLabel(makeLabel(method));
   res.writeToFiles();
 }
-protected static String makeLabel(ScattMethodBaseE1 method) {
+protected static String makeLabel(ScttMthdBaseE1 method) {
   return Jm2010Common.makeLabelBasisOptN();
 }
 }

@@ -12,7 +12,7 @@ import math.vec.Vec;
 import scatt.Scatt;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e2.ScattMethodBaseE2;
+import scatt.jm_2008.e2.ScttMthdBaseE2;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.ChConf;
 import scatt.jm_2008.jm.target.ScattTrgtE3;
@@ -22,9 +22,9 @@ import javax.utilx.pair.Dble2;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 8/03/12, 9:18 AM
  */
-public class EesMethodE2_oneChTest extends ScattMethodBaseE2 {
-public static Log log = Log.getLog(EesMethodE2_oneChTest.class);
-public EesMethodE2_oneChTest(CalcOptE1 calcOpt) {
+public class EesMethodBasisAnyE2 extends EesMthdBaseE2 {
+public static Log log = Log.getLog(EesMethodBasisAnyE2.class);
+public EesMethodBasisAnyE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScattRes calcSysEngs() {
@@ -40,20 +40,26 @@ public ScattRes calcSysEngs() {
     double sysE = sEngs.get(sysIdx);                           log.dbg("sysE = ", sysE);
     double scattE = sysE - trgtE2.getInitTrgtEng();      log.dbg("scattE = ", scattE);
     mCrss.set(sysIdx, IDX_ENRGY, scattE);
-    double sigma = 0;
-    if (scattE > 0
-      &&  engModel.getFirst() <= scattE
-      &&  scattE <= engModel.getLast()
-      ) {
-      FuncArr psi = methodE1.calcPsi(scattE, orthonN);
-      Dble2 sc = calcSC(psi, scattE, sysIdx);
-      double R = -sc.a / sc.b;                               log.dbg("R = ", R);
+    int openNum = calcOpenChNum(scattE);
 
-      Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
-      sigma = Scatt.calcSigmaPiFromS(S, scattE);
-  //    double sigma = R;
-  //    double sigma = newR;
+    double sigma = 0;
+    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scattE=" + (float)scattE);
+    if (scattE <= 0
+      ||  engModel.getFirst() > scattE
+      ||  scattE > engModel.getLast()
+      ) {
+      continue;
     }
+    loadTrialWfs(sysIdx, orthonN, openNum);
+
+    FuncArr psi = methodE1.calcPsi(scattE, orthonN);
+    Dble2 sc = calcSC(psi, scattE, sysIdx);
+    double R = -sc.a / sc.b;                               log.dbg("R = ", R);
+
+    Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
+    sigma = Scatt.calcSigmaPiFromS(S, scattE);
+//    double sigma = R;
+//    double sigma = newR;
     log.dbg("sigma = ", sigma).eol();
     mCrss.set(sysIdx, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
   }

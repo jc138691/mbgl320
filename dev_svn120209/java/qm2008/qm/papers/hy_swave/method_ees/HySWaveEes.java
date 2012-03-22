@@ -95,7 +95,7 @@ public void calc(int newN) {
 
   ConfHMtrx sysH = makeSysH(SYS_LS, slater);
 
-  EesMethodE2_oneChTest method = new EesMethodE2_oneChTest(calcOpt);
+  EesMethodBasisAnyE2 method = new EesMethodBasisAnyE2(calcOpt);
   method.setTrgtE2(trgt);
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
   method.setSysEngs(sEngs);
@@ -127,8 +127,8 @@ protected ScattTrgtE3 makeTrgtE3(SlaterLcr slater) {
 
 protected ConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
   SysAtomE2 sys = new SysAtomE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
-  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtBasisN, trgtBasisN);   log.dbg("sysArr=", sConfArr);
-  ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(res));
+  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtBasisN, trgtBasisN);   //log.dbg("sysArr=", sConfArr);
+  ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  //log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;
 }
 @Override

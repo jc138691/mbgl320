@@ -5,7 +5,7 @@ import atom.shell.Ls;
 import math.func.arr.FuncArr;
 import math.vec.DbgView;
 import math.vec.Vec;
-import scatt.jm_2008.e1.ScattMethodBaseE1;
+import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScattRes;
 
 import javax.utilx.log.Log;
@@ -45,11 +45,11 @@ public void setUp() {
 
 abstract public void calc(int newN, int newNt);
 
-public void setupScattRes(ScattRes res, ScattMethodBaseE1 method) {
+public void setupScattRes(ScattRes res, ScttMthdBaseE1 method) {
   super.setupScattRes(res, method);
   res.setCalcLabel(makeLabelTrgtS2(method));
 }
-protected static String makeLabelTrgtS2(ScattMethodBaseE1 method) {
+protected static String makeLabelTrgtS2(ScttMthdBaseE1 method) {
   return "S" + SYS_LS.getS21() + "_" + Jm2010Common.makeLabelBasisOptOpen(method);
 }
 protected static String makeLabelTrgtS2() {

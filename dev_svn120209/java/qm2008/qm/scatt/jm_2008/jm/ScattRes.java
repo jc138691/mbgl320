@@ -2,7 +2,7 @@ package scatt.jm_2008.jm;
 import math.complex.CmplxVec;
 import math.func.FuncVec;
 import math.mtrx.Mtrx;
-import scatt.jm_2008.e1.ScattMethodBaseE1;
+import scatt.jm_2008.e1.ScttMthdBaseE1;
 
 import javax.iox.FileX;
 /**
@@ -21,8 +21,8 @@ private String homeDir;
 private String modelDir;
 private String calcLabel;
 private String modelName;
-//private JmMethodBaseE2 methodE2;
-private ScattMethodBaseE1 method;
+//private JmMthdBaseE2 methodE2;
+private ScttMthdBaseE1 method;
 public Mtrx getResInfo() {
   return resInfo;
 }
@@ -99,11 +99,11 @@ public void setModelName
      modelName) {
   this.modelName = modelName;
 }
-//public void setMethodE2(JmMethodBaseE2 methodE2) {
+//public void setMethodE2(JmMthdBaseE2 methodE2) {
 //  this.methodE2 = methodE2;
 //}
 public void setMethod
-(ScattMethodBaseE1
+(ScttMthdBaseE1
    method) {
   this.method = method;
 }

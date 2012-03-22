@@ -69,8 +69,8 @@ public void calc(int newN) {      log.setDbg();
   ConfHMtrx sysH = makeSysH(SYS_LS, slater);
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 
-//  EesMethodE2_oneChTest method = new EesMethodE2_oneChTest(calcOpt);
-  EesMethodE2_basisHy method = new EesMethodE2_basisHy(calcOpt);
+//  EesMethodBasisAnyE2 method = new EesMethodBasisAnyE2(calcOpt);
+  EesMethodBasisHyE2 method = new EesMethodBasisHyE2(calcOpt);
   method.setTrgtE2(trgt);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
