@@ -1,4 +1,4 @@
-package papers.hy_swave.method_ees;
+package papers.hy_swave.ees;
 import atom.e_2.SysAtomE2;
 import atom.energy.ConfHMtrx;
 import atom.energy.Energy;
@@ -12,7 +12,6 @@ import math.vec.Vec;
 import scatt.Scatt;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e2.ScttMthdBaseE2;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.ChConf;
 import scatt.jm_2008.jm.target.ScattTrgtE3;

@@ -1,4 +1,4 @@
-package papers.hy_swave.method_ees;
+package papers.hy_swave.ees;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;

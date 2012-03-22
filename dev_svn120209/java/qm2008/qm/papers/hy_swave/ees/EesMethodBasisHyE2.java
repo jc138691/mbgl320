@@ -1,14 +1,12 @@
-package papers.hy_swave.method_ees;
+package papers.hy_swave.ees;
 import atom.e_2.SysAtomE2;
 import atom.energy.Energy;
 import atom.shell.*;
-import atom.wf.log_cr.WFQuadrLcr;
 import math.Calc;
 import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.func.arr.IFuncArr;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.mtrx.MtrxFactory;
@@ -18,7 +16,6 @@ import scatt.Scatt;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.utilx.log.Log;
 import javax.utilx.pair.Dble2;
@@ -72,9 +69,11 @@ public ScattRes calcSysEngs() {    log.setDbg();
       log.dbg("DEBUGGING ONLY: if (!hasTwoOpenChs(sysTotE))");
       break;
     }
+    if (openNum == 1) {
+      log.dbg("if (openNum == 1)");
+    }
     if (openNum == 2) {
       log.dbg("if (openNum == 2)");
-      int dbg = calcOpenChNum(scattE);
     }
     loadTrialWfs(sysIdx, orthonN, openNum);
     calcAllVecs(sysIdx, openNum);
@@ -221,8 +220,8 @@ protected void calcK(int chNum) {
 
   Mtrx mAB = MtrxFactory.makeFromTwoVecs(vB, vA);  log.dbg("AB=\n", new MtrxDbgView(mAB));
   mAB.plusEquals(mX);                              log.dbg("AB=AB+X\n", new MtrxDbgView(mAB));
-  mK = mW.times(mAB);                                   log.dbg("K=W*(AB+X)\n", new MtrxDbgView(mK));
-  mK.timesEquals(-1.);
+  mK = mW.times(mAB);                              log.dbg("W*(AB+X)\n", new MtrxDbgView(mK));
+  mK.timesEquals(-1.);                             log.dbg("K=-W*(AB+X)\n", new MtrxDbgView(mK));
 }
 private ShPair makeShPair(Shell sh, FuncVec wf, int id, int L, Ls LS) {
   Shell sh2 = new Shell(id, wf, L);
