@@ -1,4 +1,4 @@
-package papers.hy_swave.method_ees;
+package papers.hy_swave.ees;
 import atom.angular.Spin;
 import atom.data.AtomHy;
 import atom.e_1.SysE1;

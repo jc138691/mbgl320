@@ -1,4 +1,4 @@
-package papers.hy_swave.method_ees;
+package papers.hy_swave.ees;
 import atom.data.AtomHy;
 import atom.energy.part_wave.PotHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
