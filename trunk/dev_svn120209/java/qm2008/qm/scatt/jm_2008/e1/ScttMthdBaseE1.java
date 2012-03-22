@@ -13,14 +13,14 @@ import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,1/04/11,3:43 PM
  */
-public abstract class ScattMethodBaseE1 extends FlowTest {
+public abstract class ScttMthdBaseE1 extends FlowTest {
 protected static final int IDX_ENRGY = 0;
 private Vec overD;      // overlap coefficients D
 protected Vec sysEngs;
 protected PotHMtrx potH;
 protected LgrrOrthLcr orthonN;
 protected final CalcOptE1 calcOpt;
-public ScattMethodBaseE1(CalcOptE1 calcOpt) {
+public ScttMthdBaseE1(CalcOptE1 calcOpt) {
   this.calcOpt = calcOpt;
 }
 public CalcOptE1 getCalcOpt() {

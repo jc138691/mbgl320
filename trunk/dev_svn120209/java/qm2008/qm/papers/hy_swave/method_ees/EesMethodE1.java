@@ -12,7 +12,7 @@ import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e1.ScattMethodBaseE1;
+import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.partial.wf.CosRegK2;
@@ -23,7 +23,7 @@ import javax.utilx.pair.Dble2;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 28/02/12, 11:26 AM
  */
-public class EesMethodE1 extends ScattMethodBaseE1 {   // E1 - one electron
+public class EesMethodE1 extends ScttMthdBaseE1 {   // E1 - one electron
 public static Log log = Log.getLog(EesMethodE1.class);
 public static final int IDX_REG = 0;
 public static final int IDX_IRR = 1;

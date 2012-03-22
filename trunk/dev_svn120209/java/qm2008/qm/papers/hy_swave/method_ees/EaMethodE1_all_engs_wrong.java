@@ -12,7 +12,7 @@ import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e1.ScattMethodBaseE1;
+import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.partial.wf.CosRegPWaveLcr;
 import scatt.partial.wf.SinPWaveLcr;
@@ -22,7 +22,7 @@ import javax.utilx.pair.Dble2;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 23/02/12, 11:18 AM
  */
-public class EaMethodE1_all_engs_wrong extends ScattMethodBaseE1 {   // E1 - one electron
+public class EaMethodE1_all_engs_wrong extends ScttMthdBaseE1 {   // E1 - one electron
 public static Log log = Log.getLog(EaMethodE1_all_engs_wrong.class);
 private static final int SC_N_ROWS = 3;
 private static final int IDX_S = 0;

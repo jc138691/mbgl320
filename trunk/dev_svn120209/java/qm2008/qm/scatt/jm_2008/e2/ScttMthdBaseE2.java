@@ -6,8 +6,9 @@ import math.complex.CmplxMtrx;
 import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
+import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e1.ScattMethodBaseE1;
+import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.target.JmCh;
@@ -17,15 +18,15 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 13/03/12, 11:36 AM
  */
-public class ScattMethodBaseE2 extends ScattMethodBaseE1 {
-public static Log log = Log.getLog(ScattMethodBaseE2.class);
+public class ScttMthdBaseE2 extends ScttMthdBaseE1 {
+public static Log log = Log.getLog(ScttMthdBaseE2.class);
 protected static final int IDX_IONIZ = 1;
 protected ScattTrgtE2 trgtE2;
 protected ConfHMtrx sysConfH;
 private FuncArr trgtBasisN;
 protected JmCh[] chArr;
 
-public ScattMethodBaseE2(CalcOptE1 calcOpt) {
+public ScttMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 @Override
@@ -93,4 +94,23 @@ protected JmCh[] loadChArr(double sysEng) {
   }
   return res;
 }
+protected int calcShowChNum() {
+  EngModel engModel = calcOpt.getGridEng();
+  double maxScattE = engModel.getLast();
+  return calcOpenChNum(maxScattE);
+}
+protected int calcOpenChNum(double scattE) {
+  double maxTotSysE = trgtE2.getInitTrgtEng() + scattE;
+  int tN = getChNum();
+  int chIdx = 0;
+  Vec tEngs = trgtE2.getEngs();
+  for (chIdx = 0; chIdx < tN; chIdx++) {     //log.dbg("t = ", t);  // Target channels
+    double chE = tEngs.get(chIdx); // channel eng
+    if (chE > maxTotSysE) {
+      return chIdx;
+    }
+  }
+  return tN;
+}
+
 }

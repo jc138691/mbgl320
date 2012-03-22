@@ -3,7 +3,6 @@ import atom.e_2.SysAtomE2;
 import atom.energy.Energy;
 import atom.shell.*;
 import atom.wf.log_cr.WFQuadrLcr;
-import flanagan.complex.Cmplx;
 import math.Calc;
 import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
@@ -26,8 +25,8 @@ import javax.utilx.pair.Dble2;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 13/03/12, 10:14 AM
  */
-public class EesMethodE2_basisHy extends EesMethodE2_oneChTest {
-public static Log log = Log.getLog(EesMethodE2_basisHy.class);
+public class EesMethodBasisHyE2 extends EesMthdBaseE2 {
+public static Log log = Log.getLog(EesMethodBasisHyE2.class);
 private Vec vS;
 private Vec vC;
 private Vec vB;
@@ -35,11 +34,8 @@ private Mtrx mK;
 private Mtrx mX;
 private Mtrx mY;
 private CmplxMtrx cmS; //complex-matrx
-private FuncArr freeS;
-private FuncArr phiS;
-private FuncArr phiC;
 
-public EesMethodE2_basisHy(CalcOptE1 calcOpt) {
+public EesMethodBasisHyE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScattRes calcSysEngs() {    log.setDbg();
@@ -47,10 +43,10 @@ public ScattRes calcSysEngs() {    log.setDbg();
   ScattRes res = new ScattRes();
 
   Vec sEngs = getSysEngs();       log.dbg("sEngs=", sEngs);
-  int chNum = calcShowChNum(sEngs);
+  int showNum = calcShowChNum();
   int eN = sEngs.size();
 
-  Mtrx mCrss = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
+  Mtrx mCrss = new Mtrx(eN, showNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   res.setCrossSecs(mCrss);
   Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
   res.setTics(mTics);
@@ -61,6 +57,7 @@ public ScattRes calcSysEngs() {    log.setDbg();
     chArr = loadChArr(sysTotE);    // used to calc cross_sections
     double scattE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scattE = ", scattE);
     mCrss.set(sysIdx, IDX_ENRGY, scattE);
+    int openNum = calcOpenChNum(scattE);
 
     double sigma = 0;
     log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scattE=" + (float)scattE);
@@ -70,80 +67,22 @@ public ScattRes calcSysEngs() {    log.setDbg();
       ) {
       continue;
     }
-    if (hasOneOpenCh(sysTotE)) { // just one channel
-//      FuncArr psi = methodE1.calcPsi(scattE, orthonN);
-//      Dble2 sc = calcSC(psi, scattE, sysIdx);
-//      double R = -sc.a / sc.b;                               log.dbg("R = ", R);
-//      Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
-//      sigma = Scatt.calcSigmaPiFromS(S, scattE);
-//      mCrss.set(sysIdx, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
-      continue;
-    }
-
     // DEBUGGING ONLY
-    if (!hasTwoOpenChs(sysTotE)) {
+    if (openNum > 2) {
       log.dbg("DEBUGGING ONLY: if (!hasTwoOpenChs(sysTotE))");
       break;
     }
-
-    loadTrialWfs(sysIdx, orthonN, chNum);
-    calcAllVecs(sysIdx, chNum);
-    calcK(chNum);
+    if (openNum == 2) {
+      log.dbg("if (openNum == 2)");
+      int dbg = calcOpenChNum(scattE);
+    }
+    loadTrialWfs(sysIdx, orthonN, openNum);
+    calcAllVecs(sysIdx, openNum);
+    calcK(openNum);
     cmS = Scatt.calcSFromK(mK);                        log.info("(1-iR)=\n", new CmplxMtrxDbgView(cmS));
-    calcCrossSecs(sysIdx, res, cmS, chNum);
+    calcCrossSecs(sysIdx, res, cmS, openNum);
   }
   return res;
-}
-private boolean hasOneOpenCh(double sysTotE) {
-  Vec tEngs = trgtE2.getEngs();
-  return tEngs.get(1) >= sysTotE;  //second target channel is closed
-}
-private boolean hasTwoOpenChs(double sysTotE) {
-  Vec tEngs = trgtE2.getEngs();
-  return (tEngs.get(1) < sysTotE  &&  tEngs.get(2) >= sysTotE);  //2nd-open; 3rd-closed
-}
-private int calcShowChNum(Vec engs) {
-  EngModel engModel = calcOpt.getGridEng();
-  double maxScattE = engModel.getLast();
-  double maxTotSysE = trgtE2.getInitTrgtEng() + maxScattE;
-  int tN = getChNum();
-  int chIdx = 0;
-  Vec tEngs = trgtE2.getEngs();
-  for (chIdx = 0; chIdx < tN; chIdx++) {     //log.dbg("t = ", t);  // Target channels
-    double chE = tEngs.get(chIdx); // channel eng
-    if (chE > maxTotSysE) {
-      return chIdx + 1; // +1 to get count (not index)
-    }
-  }
-  return tN;
-}
-
-protected void loadTrialWfs(int sysIdx, LgrrOrthLcr orthN, int chNum) {
-  IFuncArr basis = orthN;
-  WFQuadrLcr quadr = orthN.getQuadr();
-  Vec x = quadr.getX();
-  freeS = new FuncArr(x);
-  phiS = new FuncArr(x);
-  phiC = new FuncArr(x);
-
-  Vec tEngs = trgtE2.getEngs();
-  Vec sEngs = getSysEngs();
-  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
-    double tE = tEngs.get(tIdx);     // target state eng
-    double sE = sEngs.get(sysIdx);  // system total eng
-    double tScattE = sE - tE;
-    if (tScattE <= 0) {
-      break;
-    }
-    FuncVec tPsi = EesMethodE1.calcChPsiReg(tScattE, orthN);
-    freeS.add(tPsi);
-
-    FuncVec tPhiS = EesMethodE1.calcChPhiS(tScattE, orthN);
-    phiS.add(tPhiS);
-
-    FuncVec tPhiC = EesMethodE1.calcChPhiC(tScattE, orthN);
-    phiC.add(tPhiC);
-  }
 }
 
 private double calcB(Shell tSh, Shell freeSh, int sysIdx) {

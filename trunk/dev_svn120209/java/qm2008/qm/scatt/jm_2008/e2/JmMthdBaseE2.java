@@ -1,5 +1,4 @@
 package scatt.jm_2008.e2;
-import atom.energy.ConfHMtrx;
 import flanagan.complex.Cmplx;
 import math.Mathx;
 import math.complex.CmplxMtrx;
@@ -9,18 +8,15 @@ import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import scatt.eng.EngGridFactory;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e1.ScattMethodBaseE1;
 import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.target.JmCh;
-import scatt.jm_2008.jm.target.ScattTrgtE2;
 
 import javax.utilx.log.Log;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,1/04/11,4:34 PM
  */
-public abstract class JmMethodBaseE2 extends ScattMethodBaseE2 {
-public static Log log = Log.getLog(JmMethodBaseE2.class);
+public abstract class JmMthdBaseE2 extends ScttMthdBaseE2 {
+public static Log log = Log.getLog(JmMthdBaseE2.class);
 private static double MAGIC_MAX_EPS = 0.00000001; // MAGIC NUMBERS!!!!!!!!!!!!!!!!!!!!!!!
 private static int MAGIC_EPS_N = 1000; // MAGIC NUMBERS!!!!!!!!!!!!!!!!!!!!!!!
 //protected static final int IDX_IONIZ = 1;
@@ -31,7 +27,7 @@ protected static final int SDCS_CH_OFFSET = 1;
 protected static final int CS_CH_OFFSET = 1;
 private int exclSysIdx = -1;
 //protected JmCh[] chArr;
-public JmMethodBaseE2(CalcOptE1 calcOpt) {
+public JmMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 protected abstract Mtrx calcX();
