@@ -78,16 +78,16 @@ H = \hat{K} + V(r), \ \ \ \hat{K} = -(1/2) d^2/dr^2,
 \eeq
 where $E=k^2/2$ and $k$ are the incident electron energy and momentum, respectively, and where
 atomic units are used hereafter.
-Let $\psi_k$ and $\overline{\psi}_k$ be regular and irregular solutions for $\hat{K}$,
+Let $\psi_{0k}$ and $\psi_{1k}$ be regular and irregular solutions for $\hat{K}$,
 \beq \barr{l}
-(\hat{K}-E)  \psi_k (r) =0,  \ \ \ \psi_k(r=0) = 0,\\
-(\hat{K}-E)  \overline{\psi}_k (r) =0,  \ \ \ \overline{\psi}_k(r=0) \neq 0,\\
+(\hat{K}-E)  \psi_{\epsilon k} (r) =0, \ \ \ \epsilon=\{0,1\},\\ 
+\psi_{0k}(r=0) = 0, \ \ \ \psi_{1k}(r=0) \neq 0,\\
 \earr \label{H_0_E_psi}\eeq
 \beq \barr{l}
-\psi_k(r) = \sin(kr) \sqrt{2/k},\\
-\overline{\psi}_k(r) = \cos(kr) \sqrt{2/k},
+\psi_{0k}(r) = \sin(kr) \sqrt{2/k},\\
+\psi_{1k}(r) = \cos(kr) \sqrt{2/k},
 \earr \label{K} \eeq
-where the normalization $\sqrt{2/k}$ will become convenient in the multichannel scattering.
+where the normalization $\sqrt{2/k}$ becomes convenient in the multichannel scattering.
 
 
 
@@ -108,9 +108,12 @@ of which the first $N$ basis functions are used to diagonalize $H$ arriving at
 Then $\Psi_E(r)$ is approximated at the system's eigenvalues $\{E_i\}_{i=1}^{N}$ by $\Psi^N_{E_i}(r)$
 \cite{Harris67}
 \beq
-\Psi^N_{E_i}(r) = a_i \Psi_i(r)  + [\phi_{k_i}(r)  + K_{0} \overline{\phi}_{k_i}(r)],
+\Psi^N_{E_i}(r) = \beta_i \Psi_i(r)  + [\phi_{0k_i}(r)  + K_{0} \phi_{1k_i}(r)],
 \label{Psi_EES} \eeq
-where $E_i=k_i^2/2$, and where the {\em standing}-wave (equal mix of {\em incoming}- and {\em outgoing}-waves) boundary condition is satisfied
+\beq
+\phi_{\epsilon k_i}(r=0) = 0, \ \ \epsilon = \{0,1\},
+\eeq
+where: $E_i=k_i^2/2$; $\{\phi_{\epsilon k}\}$ are the trial continuum functions closely related to $\{\psi_{\epsilon k}\}$; and where the {\em standing}-wave (equal mix of {\em incoming}- and {\em outgoing}-waves) boundary condition is satisfied
 \beq
 \Psi_E(r \rightarrow \infty) \sim  \sin(kr+\delta_0) \sqrt{2/k}, \ \ \ \Psi_E(0)=0.   \label{stand_wave}
 \eeq
@@ -129,19 +132,18 @@ Consistent with other variational scattering methods \cite{Nesbet68},
 \beq
 \langle\Psi_i|H-E_i|\Psi^N_{E_i}\rangle=0,  \label{EES_ONE_C1}
 \eeq
-and using the following pair of trial functions $\{\phiH_k, \overline{\phiH_{k}} \}$ in
+and using the following pair of trial functions $\{\phiH_{0k}, \phiH_{1k} \}$ in
 Eq.~(\ref{Psi_EES})
-\beq \barr{l}
-\phiH_k(r) =  \psi_k(r),\ \
-\overline{\phiH_k}(r) =  [\overline{\psi}_k(r) - \exp{(-\lambda r)}],
-\earr \label{def_phi_H} \eeq
+\beq
+\phiH_{0k}(r) =  \psi_{0k}(r),\ \
+\phiH_{1k}(r) =  [\psi_{1k}(r) - \sqrt{\frac{2}{k}} e^{-\lambda r}],
+\label{def_phi_H} \eeq
 arriving at $K_0\approx K^{\mbox{\tiny{H}}}_{0}$,
 \beq \barr{l}
-K^{\mbox{\tiny{H}}}_{0} = - s^{\mbox{\tiny{H}}}_i / c^{\mbox{\tiny{H}}}_i, \\
-s^{\mbox{\tiny{H}}}_i = \langle\Psi_i|H-E_i|  \phiH_{k_i} \rangle, \ \ \
-c^{\mbox{\tiny{H}}}_i = \langle\Psi_i|H-E_i|  \overline{\phiH_{k_i}} \rangle,
+K^{\mbox{\tiny{H}}}_{0} = - \alpha^{\mbox{\tiny{H}}}_{0i} / \alpha^{\mbox{\tiny{H}}}_{1i}, \ \ \ 
+\alpha^{\mbox{\tiny{H}}}_{\epsilon i} = \langle\Psi_i|H-E_i|  \phiH_{\epsilon k_i} \rangle,
 \earr \label{K_0_Harris} \eeq
-where $\lambda$ is a parameter (typically $\lambda=1$ \cite{Nesbet68}) used to make the irregular solution $\overline{\psi}_k(r)$ regular
+where $\lambda$ is a parameter (typically $\lambda=1$ \cite{Nesbet68}) used to make the irregular solution $\psi_{1k}(r)$ regular
 at the origin so that it could be used as a trial function in Eq.~(\ref{Psi_EES}).
 
 
@@ -154,29 +156,27 @@ the eigenstates $\{\Psi_i\}_{i=1}^{N}$ are the best possible solutions of the sc
 with the standing-wave boundary condition (\ref{stand_wave}) at the corresponding eigenvalues $\{E_i\}_{i=1}^{N}$.
 Accepting the conjecture, it immediately follows that the {\em inner} functional space consisting of the first $N$ basis functions
 must be removed from the trial functions $\{\phi,\overline{\phi}\}$ in Eq.~(\ref{Psi_EES}) arriving at
-\beq \barr{l}
-\phi_k(r) = (1-\hat{P}_N) \psi_k(r),\\
-\overline{\phi}_k(r) = (1-\hat{P}_N) [\overline{\psi}_k(r) - \exp{(-\lambda r)}],
-\earr \label{def_phi} \eeq
+\beq 
+\phi_{\epsilon k}(r) = (1-\hat{P}_N) \phiH_{\epsilon k}(r),\ \ \ \epsilon = \{0,1\},
+\label{def_phi} \eeq
 \beq
 \hat{P}_N = \sum_{p=0}^{N-1} | \xi_p \rangle \langle \xi_p |,
 \label{P_N} \eeq
-\beq \barr{l}
-K_{0} = - s_i / c_i, \\
-s_i = \langle\Psi_i|H|  \phi_{k_i} \rangle, \ \
-c_i =  \langle\Psi_i|H|  \overline{\phi}_{k_i} \rangle.
-\earr \label{K_0_EES} \eeq
+\beq 
+K_{0} = - \alpha_{0i} / \alpha_{1i}, \ \ \ 
+\alpha_{\epsilon i} = \langle\Psi_i|H|  \phi_{\epsilon k_i} \rangle.
+\label{K_0_EES} \eeq
 
-NOTE: TODO correct above: \cite{HM69} - used orthogonal continuum trial functions 
+NOTE: TODO correct above: \cite{HM69} - used orthogonal continuum trial functions
 
 
 The conjecture could be verified numerically via the general expression for the $K$-matrix \cite{N82}
 \beq
-\widetilde{K}_0 = -\langle \psi_{k_i} | V | \Psi_{E_i} \rangle\\
+\widetilde{K}_0 = -\langle \psi_{0k_i} | V | \Psi_{E_i} \rangle\\
 \label{K_theory}\eeq
 and its approximation equivalent
 \beq
-\widetilde{K}^N_0 = -\langle \psi_{k_i} | V | \Psi^N_{E_i} \rangle.
+\widetilde{K}^N_0 = -\langle \psi_{0k_i} | V | \Psi^N_{E_i} \rangle.
 \label{K_N_theory}\eeq
 If $\Psi_i$ is indeed a $\hat{P}_N$-projection of the correct scattering solution $\Psi^N_{E_i}$,
 then its functional-space tail could be used to
@@ -185,8 +185,8 @@ determine the scale of its contribution to $\Psi^N_{E_i}$ via
 \langle \xi_{N-1} | \Psi^N_{E_i}\rangle
 = a_i \langle \xi_{N-1}| \Psi_i \rangle,\\
 \langle \xi_{N-1} | \Psi^N_{E_i}\rangle
- =  \langle \xi_{N-1}| \psi_{k_i} \rangle
-+ K_0 \langle \xi_{N-1}| \overline{\psi}_{k_i} \rangle,\\
+ =  \langle \xi_{N-1}| \psi_{0k_i} \rangle
++ K_0 \langle \xi_{N-1}| \psi_{1k_i} \rangle,\\
 \earr \label{Psi_N_1_tail} \eeq
 where $K_0$ is given by Eq.~(\ref{K_0_EES}).
 Here it is assumed that $\xi_{N-1}(r)$ is the least vanishing among $\{\xi_p(r)\}_{p=0}^{N-1}$  at large $r$, which is
@@ -253,65 +253,61 @@ $C_{j_1m_1j_2m_2}^{jm} \equiv \langle j_1m_1 j_2 m_2| jm\rangle$ are the Clebsch
 and where each scattering channel is labeled by a $\{\gamma, \Gamma\}$-pair.
 Then, the solution of the $(\mathcal{N}+1)$-electron Schr\"odinger equation for a given $\Gamma$,
 \beq
-(H-E) | \Psi^\Gamma_E \rangle =0,  \ \ \  \label{H_E_Psi_E_2}
+(H-E) | \Psi_E \rangle =0,  \ \ \  \label{H_E_Psi_E_2}
 \eeq
 is approximated at the system's eigenvalues $\{E_i\}$ (\ref{Psi_H_Psi_2}) by
-\beq \barr{l}
- \Psi_{E_i}^{\gamma \Gamma}  =  a_\gamma \Psi_i^{\Gamma}
- + \hat{A} \Phi^\Gamma_{\gamma}  \phi_{\gamma}
-+ \sum_{\gamma''}  \hat{A} \Phi^\Gamma_{\gamma''}   \overline{\phi}_{\gamma''}  K_{\gamma'' \gamma},
-\earr \label{Psi_} \eeq
-where $\hat{A}$ denotes antisymmetrization operator,
-and where the channels' trial functions $\{ \phi_\gamma, \overline{\phi}_\gamma \}$ are defined for the open channels as
-\beq
-\phi_{\gamma}\equiv \phi_{k_\gamma}, \ \ \   k_{\gamma}^2 = 2(E_i - e_\gamma) > 0,
+\beq 
+ \Psi_{E_i}  =  \beta_i \Psi_i
++ \sum_{\epsilon \gamma}   \alpha_{\epsilon \gamma}
+\hat{A} \Phi^\Gamma_{\gamma}  \phi_{\epsilon \gamma} ,
 \eeq
-The $\gamma$ labeling in $\Psi_{E_i}^{\gamma \Gamma}$ specifies the initial scattering boundary condition $\hat{A} \Phi^\Gamma_{\gamma}  \phi_{\gamma}$.
-
-
-The unknowns, $a_\gamma$ and $K_{\gamma'' \gamma}$ are determined from two conditions. The first is identical to the one-channel scattering (\ref{EES_ONE_C1})
 \beq
-\langle\Psi_i^\Gamma|H-E_i|\Psi_{E_i}^{\gamma \Gamma}\rangle=0,
+\chi_{\epsilon \gamma} = \hat{A} \Phi^\Gamma_{\gamma}  \phi_{\epsilon \gamma},
+\eeq
+\beq
+ \Psi_{E_i}  =  \beta_i \Psi_i
++ \vec{\alpha}_0 \cdot \vec{\chi}_0 + \vec{\alpha}_1 \cdot \vec{\chi}_1
+\eeq
+where $\hat{A}$ denotes antisymmetrization operator,
+and where the channels' trial functions $\{ \phi_{\epsilon \gamma} \}$ are defined for the open channels as
+\beq
+\phi_{\epsilon \gamma}\equiv \phi_{\epsilon k_\gamma}, \ \ \   k_{\gamma}^2 = 2(E_i - e_\gamma) > 0.
+\eeq
+
+
+The unknowns, $\beta_i$ and $\vec{\alpha}_\epsilon$ are determined from two conditions. The first is identical to the one-channel scattering (\ref{EES_ONE_C1})
+\beq
+\langle\Psi_i|H-E_i|\Psi_{E_i}\rangle=0,
 \label{EES_MC_C1} \eeq  %multichannel scattering condition #1
+\beq
+\langle \vec{\chi}_{0} |H-E_i|\Psi_{E_i}^{\Gamma}\rangle=0,
+\label{EES_MC_C2} \eeq  %multichannel scattering condition #2
 and yields, in vector notation,
 \beq
-\vecCT {\bf k}_\gamma = -s_\gamma, \label{CK_s}
+\vec{B}_0 \vec{\alpha}_0 + \vec{B}_1 \vec{\alpha}_1 = 0, \label{CK_s}
 \eeq
-where ${\bf k}_\gamma$ is the $\gamma$'th column of the $K$-matrix,
-and where $s_\gamma$ and the vector ${\bf c}$ components are given by
-\beq \barr{l}
-s_\gamma = \langle \Psi_i^\Gamma |H| \hat{A} \Phi^\Gamma_{\gamma} \phi_{\gamma} \rangle,\\
-c_{\gamma} =  \langle \Psi_i^\Gamma |H | \hat{A} \Phi^\Gamma_{\gamma} \overline{\phi}_{\gamma} \rangle.
-\earr \label{Psi_} \eeq
+\beq
+{\bf X}_{00} \vec{\alpha}_0 + {\bf X}_{01} \vec{\alpha}_1 = - \beta_i \vec{B}_0
+\eeq
+where the vector $\vec{B}$ and matrix ${\bf X}_{\epsilon\epsilon'}$ components are given by
+\beq
+B_{\epsilon \gamma}
+= \langle \Psi_i |H| \chi_{\epsilon \gamma} \rangle,
+\eeq
+\beq
+X_{\epsilon' \gamma', \epsilon \gamma} = \langle \chi_{\epsilon' \gamma'}  | H-E_i |
+\chi_{\epsilon \gamma} \rangle,
+\label{Y_B_W} \eeq
 
 
-The second condition for $A_\gamma$ and $K_{\gamma'' \gamma}$ is given by the definition of the $K$-matrix from the the general scattering theory \cite{N82}
+The solution 
 \beq
-K_{\gamma' \gamma} = - \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'}
-| V | \Psi_{E_i}^{\gamma \Gamma} \rangle,
+\vec{\alpha}_1= - {\bf X}_{01}^{-1} \{ \beta_i \vec{B} + {\bf X}_{00} \vec{\alpha}_0 \}
 \eeq
-which becomes
-\beq
-{\bf k}_\gamma = -[a_\gamma {\bf b} + {\bf x}_\gamma + {\bf Y k}_\gamma]
-\eeq
-and after defining ${\bf W}=(1+{\bf Y})^{-1}$
-\beq
-{\bf k}_\gamma  = -{\bf W}   (a_\gamma {\bf b}    + {\bf x}_\gamma), \label{K_gamma}
-\eeq
-where (i) $V$ is the electron-target interaction; (ii) ${\bf x}_\gamma$ is the $\gamma$'th column of the following $X$-matrix;
-and (iii) the required components are given by
 \beq \barr{l}
-b_{\gamma} = \langle \Phi^\Gamma_{\gamma}  \psi_{\gamma} |V |\Psi_i^{\Gamma} \rangle,\\
-X_{\gamma' \gamma} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V | \hat{A} \Phi^\Gamma_{\gamma} \phi_{\gamma} \rangle,\\
-Y_{\gamma' \gamma} = \langle \Phi^\Gamma_{\gamma'}  \psi_{\gamma'} |V | \hat{A} \Phi^\Gamma_{\gamma} \overline{\phi}_{\gamma} \rangle.
-\earr \label{Y_B_W} \eeq
-Eqs.~(\ref{CK_s}) and (\ref{K_gamma}) are solved for $a_\gamma$ arriving at
-\beq \barr{l}
-a_\gamma = (s_\gamma - z_\gamma) / \beta,\\
-\beta = \vecCT {\bf W}  {\bf b}, \ \ \
-z_\gamma = \vecCT {\bf W}  {\bf x}_\gamma,
+\beta_i = [ \vec{B}_0 - \vec{B}_1 {\bf X}_{01}^{-1} {\bf X}_{00} ] \cdot \vec{\alpha}_0 / x ,\\
+x = \vec{B}_1 {\bf X}_{01}^{-1} \vec{B}_0,
 \earr \eeq
-and then calculating the corresponding columns of the $K$-matrix via Eq.~(\ref{K_gamma}).
 
 
 
