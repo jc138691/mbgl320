@@ -70,7 +70,8 @@ public void calc(int newN) {      log.setDbg();
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 
 //  EesMethodBasisAnyE2 method = new EesMethodBasisAnyE2(calcOpt);
-  EesMethodBasisHyE2 method = new EesMethodBasisHyE2(calcOpt);
+//  EesMthdBasisHyE2_v1_bad method = new EesMthdBasisHyE2_v1_bad(calcOpt);
+  EesMthdBasisHyE2_v2 method = new EesMthdBasisHyE2_v2(calcOpt);
   method.setTrgtE2(trgt);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
