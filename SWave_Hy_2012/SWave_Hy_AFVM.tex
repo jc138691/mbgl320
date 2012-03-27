@@ -302,15 +302,15 @@ where the vectors $\vec{b}_\epsilon$ and matrices ${\bf M}_{\epsilon\epsilon'}$ 
 
 The solution ONE:
 \beq
-\vec{y}_0 = {\bf M}_{01}^{-1} \vec{b}_0, \ \ \ \ 
-{\bf X} = {\bf M}_{01}^{-1} {\bf M}_{00}, 
+\vec{y}_0 = {\bf M}_{01}^{-1} \vec{b}_0, \ \ \ \
+{\bf X} = {\bf M}_{01}^{-1} {\bf M}_{00},
 \eeq
 \beq
-\vec{a}_1= - c_0 \vec{y}_0   - {\bf X} \vec{a}_0,
+\vec{a}_1= - c_i \vec{y}_0   - {\bf X} \vec{a}_0,
 \eeq
 \beq
-c_0 = [ \vec{b}_0 \cdot \vec{a}_0
-- \vec{b}_1 \cdot {\bf X} \vec{a}_0 ]  / \beta_0 ,\ \ \ 
+c_i = [ \vec{b}_0 \cdot \vec{a}_0
+- \vec{b}_1 \cdot {\bf X} \vec{a}_0 ]  / \beta_0 ,\ \ \
 \beta_0 = \vec{b}_1 \cdot  \vec{y}_0,
 \eeq
 Let $[a_0]_\gamma = \delta_{\gamma \sigma}$, then
@@ -328,10 +328,10 @@ The solution TWO for $K^{-1}$
 {\bf X}^{-1} = {\bf M}_{00}^{-1} {\bf M}_{01},
 \eeq
 \beq
-\vec{a}_0= - c_1 \vec{y}_1   - {\bf X}^{-1} \vec{a}_1
+\vec{a}_0= - c_i \vec{y}_1   - {\bf X}^{-1} \vec{a}_1
 \eeq
 \beq
-c_1 = [ \vec{b}_1 \cdot \vec{a}_1
+c_i = [ \vec{b}_1 \cdot \vec{a}_1
 - \vec{b}_0 \cdot {\bf X}^{-1} \vec{a}_1 ]  / \beta_1 ,\ \ \
 \beta_1 = \vec{b}_0 \cdot  \vec{y}_1,
 \eeq
