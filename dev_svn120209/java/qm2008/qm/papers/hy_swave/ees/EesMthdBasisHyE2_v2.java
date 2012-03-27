@@ -85,24 +85,6 @@ public ScattRes calcSysEngs() {    log.setDbg();
   return res;
 }
 
-//private double calcH(Shell tSh, Shell freeSh, int sysIdx) {
-//  // getting relevant sysEigVec
-//  double[][] sV = sysConfH.getEigArr(); // sysEigVec
-//  ConfArr sB = sysConfH.getBasis();     // sBasis
-//  SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
-//  double res = 0;
-//  for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
-//    Conf sysConf = sB.get(sbi);
-//    double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
-//    if (Calc.isZero(term))
-//      continue;
-//
-//    //Vbf - bound-free; could also be Vff - free-free for ionization
-//    double v = sysE2.calcVbabb(tSh, freeSh, sysConf);         //log.dbg("v=", v);
-//    res += ( term * v );
-//  }
-//  return res;
-//}
 private Dble2 calcSC(ShPair confS, ShPair confC, int sysIdx) {
   Dble2 res = new Dble2();
   // getting relevant sysEigVec
@@ -130,12 +112,13 @@ private Dble2 calcSC(ShPair confS, ShPair confC, int sysIdx) {
 
 protected void calcAllVecs(int sysIdx, int chNum) {
   // setup ids for continuum wfs. They must be different from target wfs
-  int ID_FREE_S = getChNum() + 1;   // id for free s-like
-  int ID_S = ID_FREE_S + 1;   // id for s-like
-  int ID_C = ID_S + 1;   // id for c-like
+  int idx = getChNum() + 1;
+  int ID_S = idx++;   // id for s-like
+  int ID_S2 = idx++;   // id for s-like
+  int ID_C = idx++;   // id for c-like
+  int ID_C2 = idx++;   // id for c-like
 
   Ls LS = sysConfH.getBasis().getLs();
-  SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
 
   int L = 0;
   vB0 = new Vec(chNum);
@@ -156,11 +139,6 @@ protected void calcAllVecs(int sysIdx, int chNum) {
     }
     FuncVec tWf = trgtWfs.get(g);
     Shell tSh = new Shell(g, tWf, L);
-
-//    FuncVec freePsi = freeS.get(g);
-//    Shell freeSh = new Shell(ID_FREE_S, freePsi, L);
-//    double b = calcH(tSh, freeSh, sysIdx);
-//    vB.set(g, b);
 
     FuncVec tPhiS = phiS.get(g);
     Shell shS = new Shell(ID_S, tPhiS, L);
@@ -186,14 +164,14 @@ protected void calcAllVecs(int sysIdx, int chNum) {
       Shell tSh2 = new Shell(t2, tWf2, L);
 
       // channel S-like
-      ShPair pSh2 = makeShPair(tSh2, phiS.get(t2), ID_S, L, LS);
-      double x = sysE2.calcVbabb(tSh, freeSh, pSh2);         //log.dbg("x=", x);
-      mX.set(g, t2, x);
+      ShPair pSh2 = makeShPair(tSh2, phiS.get(t2), ID_S2, L, LS);
+      double x = calcHE(pS, pSh2);         //log.dbg("x=", x);
+      mX00.set(g, t2, x);
 
       // channel C-like
-      pSh2 = makeShPair(tSh2, phiC.get(t2), ID_C, L, LS);
-      double y = sysE2.calcVbabb(tSh, freeSh, pSh2);         //log.dbg("y=", y);
-      mY.set(g, t2, y);
+      pSh2 = makeShPair(tSh2, phiC.get(t2), ID_C2, L, LS);
+      double y = calcHE(pS, pSh2);         //log.dbg("x=", x);
+      mX01.set(g, t2, y);
     }
   }
   log.dbg("mX00=\n", new MtrxDbgView(mX00));
@@ -222,10 +200,5 @@ protected void calcK(int chNum) {
   mAB.plusEquals(mX);                              log.dbg("AB=AB+X\n", new MtrxDbgView(mAB));
   mK = mW.times(mAB);                              log.dbg("W*(AB+X)\n", new MtrxDbgView(mK));
   mK.timesEquals(-1.);                             log.dbg("K=-W*(AB+X)\n", new MtrxDbgView(mK));
-}
-private ShPair makeShPair(Shell sh, FuncVec wf, int id, int L, Ls LS) {
-  Shell sh2 = new Shell(id, wf, L);
-  ShPair res = new ShPair(sh, sh2, LS);
-  return res;
 }
 }

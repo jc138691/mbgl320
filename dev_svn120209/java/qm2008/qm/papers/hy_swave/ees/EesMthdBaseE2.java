@@ -1,4 +1,7 @@
 package papers.hy_swave.ees;
+import atom.shell.Ls;
+import atom.shell.ShPair;
+import atom.shell.Shell;
 import atom.wf.log_cr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
@@ -46,5 +49,10 @@ protected void loadTrialWfs(int sysIdx, LgrrOrthLcr orthN, int chNum) {
     FuncVec tPhiC = EesMethodE1.calcChPhiC(tScattE, orthN);
     phiC.add(tPhiC);
   }
+}
+protected ShPair makeShPair(Shell sh, FuncVec wf, int id, int L, Ls LS) {
+  Shell sh2 = new Shell(id, wf, L);
+  ShPair res = new ShPair(sh, sh2, LS);
+  return res;
 }
 }
