@@ -129,9 +129,10 @@ private Dble2 calcSC(ShPair confS, ShPair confC, int sysIdx) {
 
 protected void calcAllVecs(int sysIdx, int chNum) {
   // setup ids for continuum wfs. They must be different from target wfs
-  int ID_FREE_S = getChNum() + 1;   // id for free s-like
-  int ID_S = ID_FREE_S + 1;   // id for s-like
-  int ID_C = ID_S + 1;   // id for c-like
+  int idx = getChNum() + 1;   // id for free s-like
+  int ID_FREE_S = idx++;   // id for free s-like
+  int ID_S = idx++;   // id for s-like
+  int ID_C = idx++;   // id for c-like
 
   Ls LS = sysConfH.getBasis().getLs();
   SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
@@ -222,11 +223,6 @@ protected void calcK(int chNum) {
   mAB.plusEquals(mX);                              log.dbg("AB=AB+X\n", new MtrxDbgView(mAB));
   mK = mW.times(mAB);                              log.dbg("W*(AB+X)\n", new MtrxDbgView(mK));
   mK.timesEquals(-1.);                             log.dbg("K=-W*(AB+X)\n", new MtrxDbgView(mK));
-}
-private ShPair makeShPair(Shell sh, FuncVec wf, int id, int L, Ls LS) {
-  Shell sh2 = new Shell(id, wf, L);
-  ShPair res = new ShPair(sh, sh2, LS);
-  return res;
 }
 
 }
