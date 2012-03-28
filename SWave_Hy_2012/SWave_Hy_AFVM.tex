@@ -316,7 +316,7 @@ c_i = [ \vec{b}_0 \cdot \vec{a}_0
 Let $[a_0]_\gamma = \delta_{\gamma \sigma}$, then
 \beq
 \vec{d}_0 = [ \vec{b}_0
-- \vec{b}_1 \cdot {\bf X} ]  / \beta_0 ,\\
+-  {\bf X}^T \vec{b}_1 ]  / \beta_0 ,\\
 \eeq
 \beq
 K_{\gamma \sigma}= - [y_0]_\gamma [d_0]_\sigma   - X_{\gamma \sigma}
@@ -347,10 +347,38 @@ K_{\gamma \sigma}^{-1}= - [y_1]_\gamma [d_1]_\sigma   - X_{\gamma \sigma}^{-1}
 
 
 \subsection{$S$-wave $e$-H scattering}
-
+\beq
+E_i = e_\gamma + k^2_\gamma/2,
+\eeq
 \beq \barr{l}
-\psi_k = \phi_k(r) +  \sum_{p=0}^{N-1} s_{pk} \xi_p(r), \ \ \ s_{pk} = \langle \xi_p | \psi_k \rangle,
-\earr \label{Psi_} \eeq
+[M_{0 \epsilon'}]_{\gamma \gamma'} = D_1 + D_2 + (-1)^S D_3,\\
+D_1 = \langle \Phi_\gamma \phi_{\gamma}  | H_t + \hat{K}_2-E_i |
+\Phi_{\gamma'} \phi_{\epsilon' \gamma'} \rangle, \\
+D_2 = \langle \Phi_\gamma \phi_{\gamma}  | V |
+\Phi_{\gamma'} \phi_{\epsilon' \gamma'} \rangle, \\
+D_3 = \langle \Phi_\gamma \phi_{\gamma}  | H -E_i |
+\phi_{\epsilon' \gamma'} \Phi_{\gamma'}  \rangle, \\
+H_t = \hat{K}_1 + v_1, \\
+H = H_t + \hat{K}_2 + V, \ \ \ V = v_2 + v_{12},\\
+\earr \label{Y_B_W} \eeq
+\beq
+\phi_{\gamma} = \psi_{\gamma} - \overline{\phi}_{\gamma}, \ \ \ \overline{\phi}_{\gamma} \equiv \hat{P}_N \psi_\gamma,
+\eeq
+\beq
+D_1 = -\delta_{\gamma \gamma'} \langle \overline{\phi}_{\gamma}  | \hat{K}_2|
+ \phi_{\epsilon' \gamma} \rangle,
+\eeq
+\beq
+D_2 = \delta_{\gamma \gamma'} \langle \phi_{\gamma}  | v |
+\phi_{\epsilon' \gamma'} \rangle + 
+\langle \Phi_\gamma \phi_{\gamma}  | v_{12} |
+\Phi_{\gamma'} \phi_{\epsilon' \gamma'} \rangle,
+\eeq
+\beq
+D_3 =  \langle \Phi_\gamma \phi_{\gamma}  | v_{12}|
+\phi_{\epsilon' \gamma'} \Phi_{\gamma'}  \rangle ,
+\label{eH_ex} \eeq
+
 
 
 Specifically for the considered $S$-wave $e$-H scattering,
@@ -364,20 +392,7 @@ h_a = \hat{K}_a  - 1/r_a,\ \ \ v_{12} = 1/\max{(r_{1}, r_{2})}.
 \label{h_b} \eeq
 
 
-Remember definition of a channel: target plus spin of the scattering electron.
 
-
-\beq \barr{l}
-Y_{\gamma'} = \langle \Phi_{\gamma'}  \psi_{\gamma'} |V|\Psi_i^{\Gamma} \rangle,\\
-B_{\gamma'} = \langle  \Phi_{\gamma'}  \psi_{\gamma'} |VA^{\Gamma} |\Phi_{\gamma} \phi_{\gamma} \rangle,\\
-W_{\gamma' \gamma} = \langle \Phi_{\gamma'}  \psi_{\gamma'} |V A^{\Gamma} |\Phi_{\gamma} \widehat{\phi}_{\gamma} \rangle,\\
-\earr \label{Psi_} \eeq
-
-\beq \barr{l}
-\langle  \Phi(r_1) \psi(r_2) |f(r_1) g(r_2) - f(r_2) g(r_1) \rangle = \\
-=\langle  \Phi |f \rangle  \langle  \psi |g \rangle -
-\langle  \Phi |g \rangle  \langle  \psi |f \rangle
-\earr \eeq
 
 
 \section{RESULTS}
