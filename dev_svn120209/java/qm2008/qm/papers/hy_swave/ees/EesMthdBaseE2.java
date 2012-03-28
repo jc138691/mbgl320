@@ -19,17 +19,16 @@ public class EesMthdBaseE2 extends ScttMthdBaseE2 {
 public static Log log = Log.getLog(EesMthdBaseE2.class);
 protected FuncArr freeS;
 protected FuncArr phiS;
+protected FuncArr pnS;    // pnS = \oveline{\psi} =  \hat{P}_N \psi = \psi - \phi
 protected FuncArr phiC;
 public EesMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-protected void loadTrialWfs(int sysIdx, LgrrOrthLcr orthN, int chNum) {
+protected void loadFreeS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
   IFuncArr basis = orthN;
   WFQuadrLcr quadr = orthN.getQuadr();
   Vec x = quadr.getX();
   freeS = new FuncArr(x);
-  phiS = new FuncArr(x);
-  phiC = new FuncArr(x);
 
   Vec tEngs = trgtE2.getEngs();
   Vec sEngs = getSysEngs();
@@ -42,13 +41,69 @@ protected void loadTrialWfs(int sysIdx, LgrrOrthLcr orthN, int chNum) {
     }
     FuncVec tPsi = EesMethodE1.calcChPsiReg(tScattE, orthN);
     freeS.add(tPsi);
+  }
+}
+protected void loadPWaveS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
+  IFuncArr basis = orthN;
+  WFQuadrLcr quadr = orthN.getQuadr();
+  Vec x = quadr.getX();
+  phiS = new FuncArr(x);
 
-    FuncVec tPhiS = EesMethodE1.calcChPhiS(tScattE, orthN);
+  Vec tEngs = trgtE2.getEngs();
+  Vec sEngs = getSysEngs();
+  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(tIdx);     // target state eng
+    double sE = sEngs.get(sysIdx);  // system total eng
+    double tScattE = sE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec tPhiS = EesMethodE1.calcPWaveS(tScattE, orthN);
     phiS.add(tPhiS);
+  }
+}
+protected void loadPnS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
+  IFuncArr basis = orthN;
+  WFQuadrLcr quadr = orthN.getQuadr();
+  Vec x = quadr.getX();
+  pnS = new FuncArr(x);
 
-    FuncVec tPhiC = EesMethodE1.calcChPhiC(tScattE, orthN);
+  Vec tEngs = trgtE2.getEngs();
+  Vec sEngs = getSysEngs();
+  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(tIdx);     // target state eng
+    double sE = sEngs.get(sysIdx);  // system total eng
+    double tScattE = sE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec tPhiS = EesMethodE1.calcPWavePnS(tScattE, orthN);
+    pnS.add(tPhiS);
+  }
+}
+protected void loadPWaveC(int sysIdx, LgrrOrthLcr orthN, int chNum) {
+  IFuncArr basis = orthN;
+  WFQuadrLcr quadr = orthN.getQuadr();
+  Vec x = quadr.getX();
+  phiC = new FuncArr(x);
+
+  Vec tEngs = trgtE2.getEngs();
+  Vec sEngs = getSysEngs();
+  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(tIdx);     // target state eng
+    double sE = sEngs.get(sysIdx);  // system total eng
+    double tScattE = sE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec tPhiC = EesMethodE1.calcPWaveC(tScattE, orthN);
     phiC.add(tPhiC);
   }
+}
+protected void loadTrialWfs(int sysIdx, LgrrOrthLcr orthN, int chNum) {
+  loadFreeS(sysIdx, orthN, chNum);
+  loadPWaveS(sysIdx, orthN, chNum);
+  loadPWaveC(sysIdx, orthN, chNum);
 }
 protected ShPair makeShPair(Shell sh, FuncVec wf, int id, int L, Ls LS) {
   Shell sh2 = new Shell(id, wf, L);

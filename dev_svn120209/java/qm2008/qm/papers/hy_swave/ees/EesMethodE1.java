@@ -15,8 +15,8 @@ import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
-import scatt.partial.wf.CosRegK2;
-import scatt.partial.wf.SinK2;
+import scatt.partial.wf.CosRegPWaveLcr;
+import scatt.partial.wf.SinPWaveLcr;
 
 import javax.utilx.log.Log;
 import javax.utilx.pair.Dble2;
@@ -86,31 +86,34 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   return res;
 }
 
-// this has sqrt(2./momP)
 public static FuncVec calcChPsiReg(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   WFQuadrLcr quadr = orthN.getQuadr();
-  FuncVec res = new SinK2(quadr, momP, L);   //log.dbg("sinL=", sinL);
+  FuncVec res = new SinPWaveLcr(quadr, momP, L);   //log.dbg("sinL=", sinL);
   return res;
 }
 
-// this has sqrt(2./momP)
-public static FuncVec calcChPhiS(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
+public static FuncVec calcPWaveS(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   WFQuadrLcr quadr = orthN.getQuadr();
-  FuncVec sinL = new SinK2(quadr, momP, L);   //log.dbg("sinL=", sinL);
+  FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   //log.dbg("sinL=", sinL);
   FuncVec res = removePN(sinL, orthN);          //log.dbg("resS=", resS);
   return res;
 }
+public static FuncVec calcPWavePnS(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
+  FuncVec res = calcChPsiReg(chScattE, orthN);
+  FuncVec phiS = calcPWaveS(chScattE, orthN);
+  res.addMultSafe(-1, phiS);
+  return res;
+}
 
-// this has sqrt(2./momP)
-public static FuncVec calcChPhiC(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
+public static FuncVec calcPWaveC(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   WFQuadrLcr quadr = orthN.getQuadr();
-  FuncVec cosL = new CosRegK2(quadr, momP, L, orthN.getLambda());   //log.dbg("sinL=", sinL);
+  FuncVec cosL = new CosRegPWaveLcr(quadr, momP, L, orthN.getLambda());   //log.dbg("sinL=", sinL);
   FuncVec res = removePN(cosL, orthN);          //log.dbg("resS=", resS);
   return res;
 }
@@ -122,8 +125,8 @@ public FuncArr calcPsi(double scattE, LgrrOrthLcr orthN) {
   WFQuadrLcr quadr = orthN.getQuadr();
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
-  FuncVec sinL = new SinK2(quadr, momP, L);   log.dbg("sinL=", sinL);
-  FuncVec cosL = new CosRegK2(quadr, momP, L
+  FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
+  FuncVec cosL = new CosRegPWaveLcr(quadr, momP, L
     , orthN.getLambda());   log.dbg("cosL=", cosL);
 
   res.add(sinL.copyY());     // IDX_REG
