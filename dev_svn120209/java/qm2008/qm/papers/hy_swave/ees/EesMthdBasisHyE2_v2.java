@@ -10,6 +10,7 @@ import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
+import math.mtrx.MtrxFactory;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import scatt.Scatt;
@@ -117,9 +118,7 @@ protected void calcAllVecs(int sysIdx, int chNum) {
   // setup ids for continuum wfs. They must be different from target wfs
   int idx = getChNum() + 1;
   int ID_S = idx++;   // id for s-like
-//  int ID_S2 = idx++;   // id for s-like
   int ID_C = idx++;   // id for c-like
-//  int ID_C2 = idx++;   // id for c-like
 
   Ls LS = sysConfH.getBasis().getLs();
 
@@ -204,34 +203,21 @@ private double calcHE(int g, int g2, FuncVec pw2, Ls ls) {
   return res;
 }
 protected void calcK(int chNum) {
-  Mtrx invM01 = m01.inverse();          log.dbg("m01^{-1}=\n", new MtrxDbgView(mX));
-  Mtrx mX = invM01.times(m00);
-  Mtrx mXt = mX.transpose();
+  Mtrx mInv = m01.inverse();          log.dbg("m01^{-1}=\n", new MtrxDbgView(mInv));
+  Mtrx mX = mInv.times(m00);          log.dbg("mX=\n", new MtrxDbgView(mX));
+  Mtrx mXt = mX.transpose();          log.dbg("mXt=\n", new MtrxDbgView(mXt));
 
-  Vec y0 = invM01.times(vB0);
-  double beta = vB1.dot(y0);
-  Vec vXB1 = mXt.times(vB1);
-  Vec d0 =
+  Vec vY0 = mInv.times(vB0);            log.dbg("vY0=", new VecDbgView(vY0));
+  double beta = vB1.dot(vY0);            log.dbg("beta=", beta);
+  Vec vXB1 = mXt.times(vB1);            log.dbg("vXB1=", new VecDbgView(vXB1));
+  Vec vD0 = vB0.copy();                 log.dbg("vD0=", new VecDbgView(vD0));
+  vD0.addMultSafe(-1., vXB1);           log.dbg("vD0=", new VecDbgView(vD0));
+  vD0.mult(1./beta);                       log.dbg("vD0=", new VecDbgView(vD0));
 
-//  Mtrx mOneY = MtrxFactory.makeOneDiag(chNum);  log.dbg("oneDiag=\n", new MtrxDbgView(mOneY));
-//  mOneY = mOneY.plusEquals(mY);       log.dbg("mOneY=\n", new MtrxDbgView(mOneY));
-//  Mtrx mW = mOneY.inverse();          log.dbg("mW=(1+Y)^{-1}=\n", new MtrxDbgView(mW));
-//
-//  Vec vWB = mW.times(vB);             log.dbg("vWB=", new VecDbgView(vWB));
-//  double beta = vC.dot(vWB);         log.dbg("beta=", beta);
-//  double oneBeta = 1. / beta;       log.dbg("oneBeta=1./beta=", oneBeta);
-//
-//  Mtrx mWX = mW.times(mX);           log.dbg("WX=\n", new MtrxDbgView(mWX));
-//  Mtrx mWXt = mWX.transpose();       log.dbg("WXt=\n", new MtrxDbgView(mWXt));
-//  Vec vZ = mWXt.times(vC);           log.dbg("Z=WXt * vC=", new VecDbgView(vZ));
-//
-//  Vec vA = vS.copy();
-//  vA.addMultSafe(-1., vZ);           log.dbg("A=S-Z=", new VecDbgView(vA));
-//  vA.mult(oneBeta);                 log.dbg("A=(S-Z)/beta=", new VecDbgView(vA));
-//
-//  Mtrx mAB = MtrxFactory.makeFromTwoVecs(vB, vA);  log.dbg("AB=\n", new MtrxDbgView(mAB));
-//  mAB.plusEquals(mX);                              log.dbg("AB=AB+X\n", new MtrxDbgView(mAB));
-//  mK = mW.times(mAB);                              log.dbg("W*(AB+X)\n", new MtrxDbgView(mK));
-//  mK.timesEquals(-1.);                             log.dbg("K=-W*(AB+X)\n", new MtrxDbgView(mK));
+  mK = MtrxFactory.makeFromTwoVecs(vY0, vD0);  log.dbg("mYD=Y0 D0\n", new MtrxDbgView(mK));
+  mK.plusEquals(mX);                           log.dbg("mYD=mYD+X\n", new MtrxDbgView(mK));
+  mK.timesEquals(-1.);                         log.dbg("K=-W*(AB+X)\n", new MtrxDbgView(mK));
+
+  //TODO: correct K for momP/momP'
 }
 }
