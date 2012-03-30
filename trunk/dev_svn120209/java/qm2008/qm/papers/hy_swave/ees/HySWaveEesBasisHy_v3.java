@@ -13,9 +13,9 @@ import scatt.jm_2008.jm.target.ScattTrgtE3;
 
 import javax.utilx.log.Log;
 /**
- * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 12/03/12, 10:05 AM
+ * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 29/03/12, 2:21 PM
  */
-public class HySWaveEesBasisHy extends HySWaveEes {
+public class HySWaveEesBasisHy_v3 extends HySWaveEes {
 public static Log log = Log.getLog(HySWaveEesBasisHy.class);
 
 public static void main(String[] args) {
@@ -30,10 +30,10 @@ public void setUp() {
   log.setDbg();
 }
 public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-  project = QMSProject.makeInstance("HySWaveEesBasisHy", "120308");
+  project = QMSProject.makeInstance("HySWaveEesBasisV3", "120308");
   TARGET_Z = AtomHy.Z;
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
-  MODEL_NAME = "HySWaveEesBasisHy";    MODEL_DIR = MODEL_NAME;
+  MODEL_NAME = "HySWaveEesBasisV3";    MODEL_DIR = MODEL_NAME;
   CALC_TRUE_CONTINUUM = false;
   LAMBDA = 1.5; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 
@@ -42,10 +42,10 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   runJob();
 }
 
-public void calc(int newN) {      log.setDbg();
+public void calc(int newNt) {      log.setDbg();
   SYS_LS = new Ls(0, SPIN);
-  N = newN;
-  Nt = newN;
+  N = newNt+1;
+  Nt = newNt;
   initProject();
   potScattTestOk();     // out: basisN, orthonNt, biorthN
   hydrScattTestOk(TARGET_Z);      // out: pot (for TARGET_Z), orthonNt
@@ -56,7 +56,6 @@ public void calc(int newN) {      log.setDbg();
   trgtBasisNt = trgtPotH.getEigFuncArr();      log.dbg("trgtBasisN=", new FuncArrDbgView(trgtBasisN));
 //  AtomUtil.trimTailSLOW(trgtBasisNt);     // todo: check if needed
   trgtBasisN = null;
-  orthonN = null;
 
   ScattTrgtE3 trgt = makeTrgtE3(slater);
   trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE electron
@@ -77,12 +76,11 @@ public void calc(int newN) {      log.setDbg();
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
   method.setOrthonNt(orthonNt);
+  method.setOrthonN(orthonN);
   method.setTrgtBasisN(trgtBasisNt);
 
   ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);
   res.writeToFiles();
 }
-
-
 }

@@ -70,7 +70,7 @@ public void runJob() {
 public void calc(int newN) {
   N = newN;
   initProject();
-  potScattTestOk();   // basisN, biorthN, orthonN, quadrLcr
+  potScattTestOk();   // basisN, biorthN, orthonNt, quadrLcr
 
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);             log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
@@ -81,7 +81,7 @@ public void calc(int newN) {
 //  method.setPot(pot);
   method.setSysEngs(sysEngs);
   method.setPotH(sysH);
-  method.setOrthonN(orthonN);
+  method.setOrthonNt(orthonN);
 
   ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);
