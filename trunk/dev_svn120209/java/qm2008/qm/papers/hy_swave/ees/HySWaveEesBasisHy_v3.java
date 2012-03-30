@@ -71,7 +71,7 @@ public void calc(int newNt) {      log.setDbg();
 //  EesMethodBasisAnyE2 method = new EesMethodBasisAnyE2(calcOpt);
 //  EesMthdBasisHyE2_v1_bad method = new EesMthdBasisHyE2_v1_bad(calcOpt);
 //  EesMthdBasisHyE2_v2_bad method = new EesMthdBasisHyE2_v2_bad(calcOpt);
-  EesMthdBasisHyE2_v3 method = new EesMthdBasisHyE2_v3(calcOpt);
+  EesMthdBasisHyE2_v3_leftXi method = new EesMthdBasisHyE2_v3_leftXi(calcOpt);
   method.setTrgtE2(trgt);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
