@@ -44,7 +44,7 @@ public ScattRes calcSysEngs() {
   for (int i = 0; i < engs.size(); i++) {              log.dbg("i = ", i);
     double scattE = engs.get(i);                           log.dbg("E = ", scattE);
     mCrss.set(i, IDX_ENRGY, scattE);
-    FuncArr psi = calcPsi(scattE, orthonNt);
+    FuncArr psi = calcPsi(scattE, orthonN);
     Dble2 sc = calcSC(psi, scattE, i);
     double R = -sc.a / sc.b;                               log.dbg("R = ", R);
     double sysA = calcSysA(psi, scattE, i, R);
