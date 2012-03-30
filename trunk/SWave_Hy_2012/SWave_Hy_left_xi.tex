@@ -11,6 +11,8 @@
 ]{revtex4}
 %]{revtex4-1}
 \usepackage{graphicx, amsbsy, bm, dcolumn, amsmath}
+\usepackage{currfile}
+\usepackage{datetime}
 
 \newcommand{\etal}{{\em et~al.\/}}
 \newcommand{\beq}{\begin{equation}}
@@ -43,7 +45,7 @@ James Cook University, Townsville, Queensland 4811, Australia}
 Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
 
 
-\date{\today}
+\date{\today, \currenttime}
 
 \begin{abstract}
 It is shown that existing JM method could be significantly simplified without the loss of convergence rate or accuracy.
@@ -56,6 +58,7 @@ the existing theories.
 
 \pacs{34.80.Dp} %34.80.Dp	Atomic excitation and ionization
 \maketitle
+The current file is: \currfilename.
 
 \section{INTRODUCTION}
 TODO
@@ -84,8 +87,8 @@ Let $\psi_{0k}$ and $\psi_{1k}$ be regular and irregular solutions of
 \psi_{0k}(r=0) = 0, \ \ \ \psi_{1k}(r=0) \neq 0,\\
 \earr \label{H_0_E_psi}\eeq
 which are the $S$-terms of the plain wave
-\beq 
-\psi_{0k}(r) = \sin(kr) ,\ \ \ 
+\beq
+\psi_{0k}(r) = \sin(kr) ,\ \ \
 \psi_{1k}(r) = \cos(kr).
 \label{K} \eeq
 
@@ -280,31 +283,39 @@ The unknowns, $c_i$ and $\vec{\alpha}_\epsilon$ are determined from the followin
 \langle\Psi_i|H-E_i|\Psi_{E_i}\rangle=0,
 \label{EES_MC_C1} \eeq  %multichannel scattering condition #1
 \beq
-\langle \vec{\chi}_{0} |H-E_i|\Psi_{E_i}^{\Gamma}\rangle=0,
+\langle \vec{\eta} |H-E_i|\Psi_{E_i}^{\Gamma}\rangle=0,
 \label{EES_MC_C2} \eeq  %multichannel scattering condition #2
+\beq
+\eta_{\gamma} = \hat{A} \Phi^\Gamma_{\gamma}  \xi_{N},
+\eeq
 and yields, in vector notation,
 \beq
 \vec{b}_0 \cdot \vec{a}_0 + \vec{b}_1 \cdot \vec{a}_1 = 0, \label{CK_s}
 \eeq
 \beq
-{\bf M}_{00} \vec{a}_0 + {\bf M}_{01} \vec{a}_1 = -  \vec{b}_0 c_i
+{\bf M}_{0} \vec{a}_0 + {\bf M}_{1} \vec{a}_1 = -  \vec{g} c_i
 \eeq
 where the vectors $\vec{b}_\epsilon$ and matrices ${\bf M}_{\epsilon\epsilon'}$ components are given by
 \beq
 [b_{\epsilon}]_{\gamma}
-= \langle \Psi_i |H-E_i| \chi_{\epsilon \gamma} \rangle 
+= \langle \Psi_i |H-E_i| \chi_{\epsilon \gamma} \rangle
 \equiv \langle \Psi_i |H| \chi_{\epsilon \gamma} \rangle,
 \eeq
 \beq
-[M_{\epsilon \epsilon'}]_{\gamma \gamma'} = \langle \chi_{\epsilon \gamma}  | H-E_i |
-\chi_{\epsilon' \gamma'} \rangle,
+g_{\gamma}
+= \langle \eta_\gamma |H-E_i| \Psi_i \rangle
+\equiv \langle \eta_\gamma |H| \Psi_i \rangle,
+\eeq
+\beq
+[M_{\epsilon}]_{\gamma \gamma'} = \langle \eta_{\gamma}  | H-E_i |
+\chi_{\epsilon \gamma'} \rangle,
 \label{Y_B_W} \eeq
 
 
 The solution ONE:
 \beq
-\vec{y} = {\bf M}_{01}^{-1} \vec{b}_0, \ \ \ \
-{\bf X} = {\bf M}_{01}^{-1} {\bf M}_{00},
+\vec{y} = {\bf M}_{1}^{-1} \vec{g}, \ \ \ \
+{\bf X} = {\bf M}_{1}^{-1} {\bf M}_{0},
 \eeq
 \beq
 \vec{a}_1= - c_i \vec{y}   - {\bf X} \vec{a}_0,
@@ -314,7 +325,7 @@ c_i = [ \vec{b}_0 \cdot \vec{a}_0
 - \vec{b}_1 \cdot {\bf X} \vec{a}_0 ]  / \beta ,\ \ \
 \beta = \vec{b}_1 \cdot  \vec{y},
 \eeq
-Let $[a_0]_\gamma = \delta_{\gamma \sigma}$, then each $\sigma$ leads to a different solution vector $\vec{a}_{1\sigma}$, which is stored as a matrix $[a_1]_{\gamma \sigma}$ directly linked to the $K$-matrix via 
+Let $[a_0]_\gamma = \delta_{\gamma \sigma}$, then each $\sigma$ leads to a different solution vector $\vec{a}_{1\sigma}$, which is stored as a matrix $[a_1]_{\gamma \sigma}$ directly linked to the $K$-matrix via
 \beq
 K_{\gamma \sigma} = (k_\gamma / k_\sigma)^{1/2} [a_1]_{\gamma \sigma},
 \eeq
@@ -325,7 +336,7 @@ K_{\gamma \sigma} = (k_\sigma / k_\gamma)^{1/2} [a_1]_{\gamma \sigma},
 [a_1]_{\gamma \sigma}= - y_\gamma d_\sigma   - X_{\gamma \sigma}
 \eeq
 \beq
-c_i = \sum_\gamma d_\gamma, \ \ \ 
+c_i = \sum_\gamma d_\gamma, \ \ \
 \vec{d} = [ \vec{b}_0
 -  {\bf X}^T \vec{b}_1 ]  / \beta.\\
 \eeq
@@ -359,28 +370,19 @@ K_{\gamma \sigma}^{-1}= - [y_1]_\gamma [d_1]_\sigma   - X_{\gamma \sigma}^{-1}
 E_i = e_\gamma + k^2_\gamma/2,
 \eeq
 \beq \barr{l}
-[M_{0 \epsilon'}]_{\gamma \gamma'} = D_1 + D_2 + (-1)^S D_3,\\
-D_1 = \langle \Phi_\gamma \phi_{\gamma}  | H_t + \hat{K}_2-E_i |
-\Phi_{\gamma'} \phi_{\epsilon' \gamma'} \rangle, \\
-D_2 = \langle \Phi_\gamma \phi_{\gamma}  | V |
-\Phi_{\gamma'} \phi_{\epsilon' \gamma'} \rangle, \\
-D_3 = \langle \Phi_\gamma \phi_{\gamma}  | H -E_i |
-\phi_{\epsilon' \gamma'} \Phi_{\gamma'}  \rangle, \\
+[M_{\epsilon}]_{\gamma \gamma'} = D_1 + D_2 + (-1)^S D_3,\\
+D_1 = \langle \Phi_\gamma \xi_{N}  | h_1 + h_2-E_i |
+\Phi_{\gamma'} \phi_{\epsilon \gamma'} \rangle, \\
+D_2 = \langle \Phi_\gamma \xi_{N}  | v_{12} |
+\Phi_{\gamma'} \phi_{\epsilon \gamma'} \rangle, \\
+D_3 = \langle \Phi_\gamma \xi_{N}  | H -E_i |
+\phi_{\epsilon \gamma'} \Phi_{\gamma'}  \rangle, \\
 H_t = \hat{K}_1 + v_1, \\
 H = H_t + \hat{K}_2 + V, \ \ \ V = v_2 + v_{12},\\
 \earr \label{Y_B_W} \eeq
 \beq
-\phi_{\gamma} = \psi_{\gamma} - \overline{\phi}_{\gamma}, \ \ \ \overline{\phi}_{\gamma} \equiv \hat{P}_N \psi_\gamma,
-\eeq
-\beq
-D_1 = -\delta_{\gamma \gamma'} \langle \overline{\phi}_{\gamma}  | \hat{K}_2|
- \phi_{\epsilon' \gamma} \rangle,
-\eeq
-\beq
-D_2 = \delta_{\gamma \gamma'} \langle \phi_{\gamma}  | v |
-\phi_{\epsilon' \gamma'} \rangle +
-\langle \Phi_\gamma \phi_{\gamma}  | v_{12} |
-\Phi_{\gamma'} \phi_{\epsilon' \gamma'} \rangle,
+D_1 = \delta_{\gamma \gamma'} [ (e_\gamma -  E_i)
+\langle \xi_N | \phi_{\epsilon \gamma} \rangle + \langle \xi_N | h_2|\phi_{\epsilon \gamma} \rangle],
 \eeq
 \beq
 D_3 =  \langle \Phi_\gamma \phi_{\gamma}  | v_{12}|
@@ -388,16 +390,6 @@ D_3 =  \langle \Phi_\gamma \phi_{\gamma}  | v_{12}|
 \label{eH_ex} \eeq
 
 
-
-Specifically for the considered $S$-wave $e$-H scattering,
-$\Gamma=\{S_\Gamma,\mu_\Gamma\}$, where $S_\Gamma$ and $\mu_\Gamma$ are the total spin and its $z$ projection, respectively.
-The relevant Hamiltonians are given by
-\beq
-H_t = h_1, \ \ \ H = h_1 + h_2 + v_{12},
-\label{H_t} \eeq
-\beq
-h_a = \hat{K}_a  - 1/r_a,\ \ \ v_{12} = 1/\max{(r_{1}, r_{2})}.
-\label{h_b} \eeq
 
 
 
