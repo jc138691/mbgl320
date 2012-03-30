@@ -20,7 +20,7 @@ public static Log log = Log.getLog(HySWaveEesBasisHy.class);
 
 public static void main(String[] args) {
   // NOTE!!! for Nt>40 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
-  HySWaveEesBasisHy runMe = new HySWaveEesBasisHy();
+  HySWaveEesBasisHy_v3 runMe = new HySWaveEesBasisHy_v3();
   runMe.setUp();
   runMe.testRun();
 }
@@ -53,7 +53,7 @@ public void calc(int newNt) {      log.setDbg();
 
   trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
   Vec targetEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));
-  trgtBasisNt = trgtPotH.getEigFuncArr();      log.dbg("trgtBasisN=", new FuncArrDbgView(trgtBasisN));
+  trgtBasisNt = trgtPotH.getEigFuncArr();      log.dbg("trgtBasisNt=", new FuncArrDbgView(trgtBasisNt));
 //  AtomUtil.trimTailSLOW(trgtBasisNt);     // todo: check if needed
   trgtBasisN = null;
 
