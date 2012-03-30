@@ -81,7 +81,7 @@ public void calc(int newN) {
 //  method.setPot(pot);
   method.setSysEngs(sysEngs);
   method.setPotH(sysH);
-  method.setOrthonNt(orthonN);
+  method.setOrthonN(orthonN);
 
   ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);

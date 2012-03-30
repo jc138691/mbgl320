@@ -148,7 +148,6 @@ protected void calcAllVecs(int sysIdx, int chNum) {
     Shell tSh = new Shell(g, tWf, L);
 
     FuncVec tPhiS = phiS.get(g);
-    FuncVec tPnS = pnS.get(g);
     Shell shS = new Shell(ID_S, tPhiS, L);
     ShPair pS = new ShPair(tSh, shS, LS);
 
@@ -216,7 +215,7 @@ protected void calcK(int chNum) {
   Mtrx mX = mInv.times(m0);          log.dbg("mX=\n", new MtrxDbgView(mX));
   Mtrx mXt = mX.transpose();          log.dbg("mXt=\n", new MtrxDbgView(mXt));
 
-  Vec vY = mInv.times(vB0);            log.dbg("vY0=", new VecDbgView(vY));
+  Vec vY = mInv.times(vG);            log.dbg("vY=", new VecDbgView(vY));
   double beta = vB1.dot(vY);            log.dbg("beta=", beta);
   Vec vXB = mXt.times(vB1);            log.dbg("vXB=", new VecDbgView(vXB));
   Vec vD = vB0.copy();                 log.dbg("vD=", new VecDbgView(vD));
@@ -240,59 +239,70 @@ protected void calcK(int chNum) {
   }
   log.dbg("mK=\n", new MtrxDbgView(mK));
   log.dbg("mK2=\n", new MtrxDbgView(mK2));
-}
-protected void calcK2(int chNum) {
-  Mtrx mInv = m00.inverse();          log.dbg("m01^{-1}=\n", new MtrxDbgView(mInv));
-  Mtrx mX = mInv.times(m01);          log.dbg("mX=\n", new MtrxDbgView(mX));
-  Mtrx mXt = mX.transpose();          log.dbg("mXt=\n", new MtrxDbgView(mXt));
 
-  Vec vY = mInv.times(vB1);            log.dbg("vY=", new VecDbgView(vY));
-  double beta = vB0.dot(vY);            log.dbg("beta=", beta);
-  Vec vXB = mXt.times(vB0);            log.dbg("vXB=", new VecDbgView(vXB));
-  Vec vD = vB1.copy();                 log.dbg("vD=", new VecDbgView(vD));
-  vD.addMultSafe(-1., vXB);           log.dbg("vD=", new VecDbgView(vD));
-  vD.mult(1. / beta);                       log.dbg("vD=", new VecDbgView(vD));
-
-  mK = MtrxFactory.makeFromTwoVecs(vY, vD);  log.dbg("Y x D =\n", new MtrxDbgView(mK));
-  mK.plusEquals(mX);                           log.dbg("Y x D + mX\n", new MtrxDbgView(mK));
-  mK.timesEquals(-1.);                         log.dbg("K=-(Y x D + mX)\n", new MtrxDbgView(mK));
-  double[][] aK = mK.getArray();
-  Mtrx mK2 = mK.copy();
-  double[][] aK2 = mK2.getArray();
-  for (int g = 0; g < chNum; g++) {
-    double pg = chArr[g].getAbsMom();
-    for (int g2 = 0; g2 < chNum; g2++) {
-      double pg2 = chArr[g2].getAbsMom();
-      double c = Math.sqrt(pg/pg2);
-      aK[g][g2] /= c;
-      aK2[g][g2] *= c;
-    }
-  }
-  log.dbg("mK2=\n", new MtrxDbgView(mK2));
-  log.dbg("mK=\n", new MtrxDbgView(mK));
-  mK = mK.inverse();
-  mK2 = mK2.inverse();
-  log.dbg("mK2=\n", new MtrxDbgView(mK2));
-  log.dbg("mK=\n", new MtrxDbgView(mK));
+//  for (int g = 0; g < chNum; g++) {
+//    double pg = chArr[g].getAbsMom();
+//    for (int g2 = 0; g2 < g; g2++) {
+//      double maxV = Math.max(aK[g][g2], aK[g2][g]);
+//      aK[g][g2] = maxV;
+//      aK[g2][g] = maxV;
+//    }
+//  }
+//  log.dbg("mK=\n", new MtrxDbgView(mK));
+//  log.dbg("mK2=\n", new MtrxDbgView(mK2));
 }
-protected void calcK3(int chNum) {
-  Mtrx mInv = m01.inverse();          log.dbg("m01^{-1}=\n", new MtrxDbgView(mInv));
-  Mtrx mX = mInv.times(m00);          log.dbg("mX=\n", new MtrxDbgView(mX));
-  mK = mX;
-  mK.timesEquals(-1.);                         log.dbg("K=-X\n", new MtrxDbgView(mK));
-  double[][] aK = mK.getArray();
-  Mtrx mK2 = mK.copy();
-  double[][] aK2 = mK2.getArray();
-  for (int g = 0; g < chNum; g++) {
-    double pg = chArr[g].getAbsMom();
-    for (int g2 = 0; g2 < chNum; g2++) {
-      double pg2 = chArr[g2].getAbsMom();
-      double c = Math.sqrt(pg/pg2);
-      aK[g][g2] /= c;
-      aK2[g][g2] *= c;
-    }
-  }
-  log.dbg("mK=\n", new MtrxDbgView(mK));
-  log.dbg("mK2=\n", new MtrxDbgView(mK2));
-}
+//protected void calcK2(int chNum) {
+//  Mtrx mInv = m0.inverse();          log.dbg("m01^{-1}=\n", new MtrxDbgView(mInv));
+//  Mtrx mX = mInv.times(m1);          log.dbg("mX=\n", new MtrxDbgView(mX));
+//  Mtrx mXt = mX.transpose();          log.dbg("mXt=\n", new MtrxDbgView(mXt));
+//
+//  Vec vY = mInv.times(vB1);            log.dbg("vY=", new VecDbgView(vY));
+//  double beta = vB0.dot(vY);            log.dbg("beta=", beta);
+//  Vec vXB = mXt.times(vB0);            log.dbg("vXB=", new VecDbgView(vXB));
+//  Vec vD = vB1.copy();                 log.dbg("vD=", new VecDbgView(vD));
+//  vD.addMultSafe(-1., vXB);           log.dbg("vD=", new VecDbgView(vD));
+//  vD.mult(1. / beta);                       log.dbg("vD=", new VecDbgView(vD));
+//
+//  mK = MtrxFactory.makeFromTwoVecs(vY, vD);  log.dbg("Y x D =\n", new MtrxDbgView(mK));
+//  mK.plusEquals(mX);                           log.dbg("Y x D + mX\n", new MtrxDbgView(mK));
+//  mK.timesEquals(-1.);                         log.dbg("K=-(Y x D + mX)\n", new MtrxDbgView(mK));
+//  double[][] aK = mK.getArray();
+//  Mtrx mK2 = mK.copy();
+//  double[][] aK2 = mK2.getArray();
+//  for (int g = 0; g < chNum; g++) {
+//    double pg = chArr[g].getAbsMom();
+//    for (int g2 = 0; g2 < chNum; g2++) {
+//      double pg2 = chArr[g2].getAbsMom();
+//      double c = Math.sqrt(pg/pg2);
+//      aK[g][g2] /= c;
+//      aK2[g][g2] *= c;
+//    }
+//  }
+//  log.dbg("mK2=\n", new MtrxDbgView(mK2));
+//  log.dbg("mK=\n", new MtrxDbgView(mK));
+//  mK = mK.inverse();
+//  mK2 = mK2.inverse();
+//  log.dbg("mK2=\n", new MtrxDbgView(mK2));
+//  log.dbg("mK=\n", new MtrxDbgView(mK));
+//}
+//protected void calcK3(int chNum) {
+//  Mtrx mInv = m1.inverse();          log.dbg("m01^{-1}=\n", new MtrxDbgView(mInv));
+//  Mtrx mX = mInv.times(m0);          log.dbg("mX=\n", new MtrxDbgView(mX));
+//  mK = mX;
+//  mK.timesEquals(-1.);                         log.dbg("K=-X\n", new MtrxDbgView(mK));
+//  double[][] aK = mK.getArray();
+//  Mtrx mK2 = mK.copy();
+//  double[][] aK2 = mK2.getArray();
+//  for (int g = 0; g < chNum; g++) {
+//    double pg = chArr[g].getAbsMom();
+//    for (int g2 = 0; g2 < chNum; g2++) {
+//      double pg2 = chArr[g2].getAbsMom();
+//      double c = Math.sqrt(pg/pg2);
+//      aK[g][g2] /= c;
+//      aK2[g][g2] *= c;
+//    }
+//  }
+//  log.dbg("mK=\n", new MtrxDbgView(mK));
+//  log.dbg("mK2=\n", new MtrxDbgView(mK2));
+//}
 }
