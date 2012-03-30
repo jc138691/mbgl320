@@ -11,6 +11,7 @@ import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmCh;
 import scatt.jm_2008.jm.target.ScattTrgtE2;
 
@@ -25,6 +26,13 @@ protected ScattTrgtE2 trgtE2;
 protected ConfHMtrx sysConfH;
 private FuncArr trgtBasisN;
 protected JmCh[] chArr;
+public LgrrOrthLcr getOrthonNt() {
+  return orthonNt;
+}
+public void setOrthonNt(LgrrOrthLcr orthonNt) {
+  this.orthonNt = orthonNt;
+}
+protected LgrrOrthLcr orthonNt;
 
 public ScttMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);

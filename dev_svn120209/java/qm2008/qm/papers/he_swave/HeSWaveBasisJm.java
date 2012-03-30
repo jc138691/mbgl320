@@ -94,7 +94,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     N = newN;
     Nt = newNt;
     initProject();
-    potScattTestOk();     // out: basisN, orthonN, biorthN
+    potScattTestOk();     // out: basisN, orthonNt, biorthN
     hydrScattTestOk(AtomHy.Z);      // out: pot (for Hy), orthonNt
     hydrScattTestOk(AtomHe.Z);      // out: pot (for He), orthonNt
     jmHeTestOk();      // out: re-loading pot (for He)

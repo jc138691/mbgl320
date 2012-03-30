@@ -72,7 +72,7 @@ public class HySWaveJmBasisHy extends HySWaveJm {
     N = newN;
     Nt = newNt;
     initProject();
-    potScattTestOk();  // basisN, biorthN, orthonN, quadrLcr
+    potScattTestOk();  // basisN, biorthN, orthonNt, quadrLcr
     hydrScattTestOk(TARGET_Z);  // pot, orthonNt
 
     trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
@@ -111,7 +111,7 @@ public class HySWaveJmBasisHy extends HySWaveJm {
     ConfArr sysArr = ConfArrFactoryE2.makeSModelE2(SYS_LS, trgtBasisNt, orthonN);    log.dbg("sysArr=", sysArr);
 
     // one electron basis
-    trgtBasisN = orthonN;    // only the last wfs were used from  orthonN, so now we can reuse it
+    trgtBasisN = orthonN;    // only the last wfs were used from  orthonNt, so now we can reuse it
     orthonN = null; // making sure nobody uses old ref
     trgtBasisN.copyFrom(trgtBasisNt, 0, trgtBasisNt.size());
     D = new JmD(biorthN, trgtBasisN);   log.dbg("D_{n,N-1}=", D);

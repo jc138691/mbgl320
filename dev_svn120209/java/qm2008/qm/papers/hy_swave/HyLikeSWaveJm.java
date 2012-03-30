@@ -30,7 +30,7 @@ public void calc(int newN, int newNt) {
   N = newN;
   Nt = newNt;
   initProject();
-  potScattTestOk();     // out: basisN, orthonN, biorthN
+  potScattTestOk();     // out: basisN, orthonNt, biorthN
   hydrScattTestOk(TARGET_Z);      // out: pot (for TARGET_Z), orthonNt
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 

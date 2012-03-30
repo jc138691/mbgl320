@@ -48,6 +48,10 @@ public Mtrx inverse() {
   Matrix res = super.inverse();
   return new Mtrx(res.getArray());
 }
+public Mtrx copy() {
+  Matrix res = super.copy();
+  return new Mtrx(res.getArray());
+}
 public Mtrx plusEquals(Mtrx B) {
   super.plusEquals(B);
   return this;

@@ -75,7 +75,7 @@ public ScattRes calcSysEngs() {    log.setDbg();
     if (openNum == 2) {
       log.dbg("if (openNum == 2)");
     }
-    loadTrialWfs(sysIdx, orthonN, openNum);
+    loadTrialWfs(sysIdx, orthonNt, openNum);
     calcAllVecs(sysIdx, openNum);
     calcK(openNum);
     cmS = Scatt.calcSFromK(mK);                        log.info("(1-iR)=\n", new CmplxMtrxDbgView(cmS));

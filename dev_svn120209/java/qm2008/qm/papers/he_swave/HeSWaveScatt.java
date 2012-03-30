@@ -175,7 +175,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
 //    Ls sLs = new Ls(0, Spin.ELECTRON);     // s - for system
 //    SysAtomE3 sysE3 = new SysAtomE3(-AtomHe.Z, slater);    // NOTE!!! Helium (AtomHe.Z), not Li (AtomLi.Z)
 //    AtomShModelE3 modelE3 = new AtomShModelE3(Nt, Nt, N, sLs);
-//    ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, orthonN);    log.dbg("sConfArr=", sConfArr);
+//    ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, orthonNt);    log.dbg("sConfArr=", sConfArr);
 //    ConfHMtrx res = new ConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
 ////    Vec sEngs = sH.getEigVal();                                        log.dbg("sEngs=", new VecDbgView(sEngs));
 //    return res;

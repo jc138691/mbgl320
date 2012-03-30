@@ -76,7 +76,7 @@ public void calc(int newN) {
   N = newN;
   Nt = newN;  // this is just to keep functions like hydrScattTestOk() working
   initProject();
-  potScattTestOk();     // out: basisN, orthonN, biorthN
+  potScattTestOk();     // out: basisN, orthonNt, biorthN
   hydrScattTestOk(TARGET_Z);      // out: pot (for TARGET_Z), orthonNt
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
@@ -100,8 +100,8 @@ public void calc(int newN) {
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
-  method.setOrthonN(orthonN);
-  method.setTrgtBasisN(trgtBasisN);   // is just orthonN, but different in _BasisHy
+  method.setOrthonNt(orthonN);
+  method.setTrgtBasisN(trgtBasisN);   // is just orthonNt, but different in _BasisHy
 
   ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);
@@ -113,7 +113,7 @@ protected ScattTrgtE3 makeTrgtE3(SlaterLcr slater) {
   SysE1 tgrtE2 = new SysE1(-TARGET_Z, slater);
   Ls tLs = new Ls(0, Spin.ELECTRON);  // t - for target
 
-  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtBasisN);     log.dbg("tConfArr=", tConfArr);  // NOTE!  orthonN
+  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtBasisNt);     log.dbg("tConfArr=", tConfArr);
 
   ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                  log.dbg("tH=\n", new MtrxDbgView(tH));
   FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
@@ -127,7 +127,7 @@ protected ScattTrgtE3 makeTrgtE3(SlaterLcr slater) {
 
 protected ConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
   SysAtomE2 sys = new SysAtomE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
-  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtBasisN, trgtBasisN);   //log.dbg("sysArr=", sConfArr);
+  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtBasisNt, trgtBasisNt);   //log.dbg("sysArr=", sConfArr);
   ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  //log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;
 }
