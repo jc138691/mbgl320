@@ -43,7 +43,7 @@ protected void loadFreeS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
     freeS.add(tPsi);
   }
 }
-protected void loadPWaveS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
+protected void loadPWaveS_OLD(int sysIdx, LgrrOrthLcr orthN, int chNum) {
   IFuncArr basis = orthN;
   WFQuadrLcr quadr = orthN.getQuadr();
   Vec x = quadr.getX();
@@ -55,6 +55,23 @@ protected void loadPWaveS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
     double tE = tEngs.get(tIdx);     // target state eng
     double sE = sEngs.get(sysIdx);  // system total eng
     double tScattE = sE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec tPhiS = EesMethodE1.calcPWaveS(tScattE, orthN);
+    phiS.add(tPhiS);
+  }
+}
+protected void loadPWaveS(double sysTotE, LgrrOrthLcr orthN, int chNum) {
+  WFQuadrLcr quadr = orthN.getQuadr();
+  Vec x = quadr.getX();
+  phiS = new FuncArr(x);
+
+  Vec tEngs = trgtE2.getEngs();
+  Vec sEngs = getSysEngs();
+  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(tIdx);     // target state eng
+    double tScattE = sysTotE - tE;
     if (tScattE <= 0) {
       break;
     }
@@ -81,7 +98,24 @@ protected void loadPnS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
     pnS.add(tPhiS);
   }
 }
-protected void loadPWaveC(int sysIdx, LgrrOrthLcr orthN, int chNum) {
+protected void loadPWaveC(double sysTotE, LgrrOrthLcr orthN, int chNum) {
+  WFQuadrLcr quadr = orthN.getQuadr();
+  Vec x = quadr.getX();
+  phiC = new FuncArr(x);
+
+  Vec tEngs = trgtE2.getEngs();
+  Vec sEngs = getSysEngs();
+  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(tIdx);     // target state eng
+    double tScattE = sysTotE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec tPhiC = EesMethodE1.calcPWaveC(tScattE, orthN);
+    phiC.add(tPhiC);
+  }
+}
+protected void loadPWaveC_OLD(int sysIdx, LgrrOrthLcr orthN, int chNum) {
   IFuncArr basis = orthN;
   WFQuadrLcr quadr = orthN.getQuadr();
   Vec x = quadr.getX();
@@ -102,8 +136,8 @@ protected void loadPWaveC(int sysIdx, LgrrOrthLcr orthN, int chNum) {
 }
 protected void loadTrialWfs(int sysIdx, LgrrOrthLcr orthN, int chNum) {
   loadFreeS(sysIdx, orthN, chNum);
-  loadPWaveS(sysIdx, orthN, chNum);
-  loadPWaveC(sysIdx, orthN, chNum);
+  loadPWaveS_OLD(sysIdx, orthN, chNum);
+  loadPWaveC_OLD(sysIdx, orthN, chNum);
 }
 protected ShPair makeShPair(Shell sh, FuncVec wf, int id, int L, Ls LS) {
   Shell sh2 = new Shell(id, wf, L);
