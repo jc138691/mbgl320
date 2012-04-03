@@ -56,6 +56,10 @@ public Mtrx plusEquals(Mtrx B) {
   super.plusEquals(B);
   return this;
 }
+public Mtrx minusEquals(Mtrx B) {
+  super.minusEquals(B);
+  return this;
+}
 public Mtrx timesEquals(double d) {
   super.timesEquals(d);
   return this;

@@ -1,4 +1,4 @@
-package papers.hy_swave.ees;
+package papers.hy_swave.ees_bad;
 import atom.data.AtomHy;
 import atom.energy.ConfHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
@@ -72,7 +72,8 @@ public void calc(int newNt) {      log.setDbg();
 //  EesMthdBasisHyE2_v1_bad method = new EesMthdBasisHyE2_v1_bad(calcOpt);
 //  EesMthdBasisHyE2_v2_bad method = new EesMthdBasisHyE2_v2_bad(calcOpt);
 //  EesMthdBasisHyE2_v3_leftXi_bad method = new EesMthdBasisHyE2_v3_leftXi_bad(calcOpt);
-  EesMthdBasisHyE2_v3b_AllE method = new EesMthdBasisHyE2_v3b_AllE(calcOpt);
+//  EesMthdBasisHyE2_v3b_AllE_bad method = new EesMthdBasisHyE2_v3b_AllE_bad(calcOpt);
+  EesMthdBasisHyE2_v3c_limitE_bad method = new EesMthdBasisHyE2_v3c_limitE_bad(calcOpt);
   method.setTrgtE2(trgt);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
