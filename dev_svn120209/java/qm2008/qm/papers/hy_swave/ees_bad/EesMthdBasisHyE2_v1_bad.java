@@ -1,4 +1,4 @@
-package papers.hy_swave.ees;
+package papers.hy_swave.ees_bad;
 import atom.e_2.SysAtomE2;
 import atom.energy.Energy;
 import atom.shell.*;

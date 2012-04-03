@@ -1,4 +1,4 @@
-package papers.hy_swave.ees;
+package papers.hy_swave.ees_bad;
 import atom.e_2.SysAtomE2;
 import atom.energy.Energy;
 import atom.shell.*;
@@ -18,21 +18,23 @@ import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.jm.ScattRes;
 
-import javax.triplet.Dble3;
 import javax.utilx.log.Log;
+import javax.utilx.pair.Dble2;
 /**
- * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 29/03/12, 2:17 PM
+ * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 26/03/12, 2:27 PM
  */
-public class EesMthdBasisHyE2_v3_leftXi_bad extends EesMthdBaseE2 {
-public static Log log = Log.getLog(EesMthdBasisHyE2_v3_leftXi_bad.class);
-private Vec vG;
+public class EesMthdBasisHyE2_v2_bad extends EesMthdBaseE2 {
+public static Log log = Log.getLog(EesMthdBasisHyE2_v2_bad.class);
 private Vec vB0;
 private Vec vB1;
 private Mtrx mK;
-private Mtrx m0;
-private Mtrx m1;
+private Mtrx m00;
+private Mtrx m01;
+//private Mtrx mX10;
+//private Mtrx mX11;
 private CmplxMtrx cmS; //complex-matrx
-public EesMthdBasisHyE2_v3_leftXi_bad(CalcOptE1 calcOpt) {
+
+public EesMthdBasisHyE2_v2_bad(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScattRes calcSysEngs() {    log.setDbg();
@@ -76,6 +78,7 @@ public ScattRes calcSysEngs() {    log.setDbg();
       log.dbg("if (openNum == 2)");
     }
     loadPWaveS_OLD(sysIdx, orthonNt, openNum);
+    loadPnS(sysIdx, orthonNt, openNum);
     loadPWaveC_OLD(sysIdx, orthonNt, openNum);
 
     calcAllVecs(sysIdx, openNum);
@@ -88,8 +91,8 @@ public ScattRes calcSysEngs() {    log.setDbg();
   return res;
 }
 
-private Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
-  Dble3 res = new Dble3();
+private Dble2 calcSC(ShPair confS, ShPair confC, int sysIdx) {
+  Dble2 res = new Dble2();
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = sysConfH.getBasis();     // sBasis
@@ -102,17 +105,13 @@ private Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
       continue;
 
     eng = sysE2.calcH(sysConf, confS);         //log.dbg("eng=", eng);
-    double a = eng.kin + eng.pot;              //log.dbg("s=", s);
+    double s = eng.kin + eng.pot;              //log.dbg("s=", s);
 
     eng = sysE2.calcH(sysConf, confC);         //log.dbg("eng=", eng);
-    double b = eng.kin + eng.pot;              //log.dbg("c=", c);
-
-    eng = sysE2.calcH(sysConf, pXi);         //log.dbg("eng=", eng);
     double c = eng.kin + eng.pot;              //log.dbg("c=", c);
 
-    res.a += ( term * a );
-    res.b += ( term * b );
-    res.c += ( term * c );
+    res.a += ( term * s );
+    res.b += ( term * c );
   }
   return res;
 }
@@ -120,18 +119,16 @@ private Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
 protected void calcAllVecs(int sysIdx, int chNum) {
   // setup ids for continuum wfs. They must be different from target wfs
   int idx = getChNum() + 1;
-  int ID_XI = idx++;
   int ID_S = idx++;   // id for s-like
   int ID_C = idx++;   // id for c-like
 
   Ls LS = sysConfH.getBasis().getLs();
 
   int L = 0;
-  vG = new Vec(chNum);
   vB0 = new Vec(chNum);
   vB1 = new Vec(chNum);
-  m0 = new Mtrx(chNum, chNum);
-  m1 = new Mtrx(chNum, chNum);
+  m00 = new Mtrx(chNum, chNum);
+  m01 = new Mtrx(chNum, chNum);
   Vec tEngs = trgtE2.getEngs();
   FuncArr trgtWfs = getTrgtBasisN();
   Vec sEngs = getSysEngs();
@@ -140,12 +137,15 @@ protected void calcAllVecs(int sysIdx, int chNum) {
     double tE = tEngs.get(g);     // target state eng
     double tScattE = sysTotE - tE;
     if (tScattE <= 0) {
+      vB0.set(g, 0);
+      vB1.set(g, 0);
       continue;
     }
     FuncVec tWf = trgtWfs.get(g);
     Shell tSh = new Shell(g, tWf, L);
 
     FuncVec tPhiS = phiS.get(g);
+    FuncVec tPnS = pnS.get(g);
     Shell shS = new Shell(ID_S, tPhiS, L);
     ShPair pS = new ShPair(tSh, shS, LS);
 
@@ -153,35 +153,31 @@ protected void calcAllVecs(int sysIdx, int chNum) {
     Shell shC = new Shell(ID_C, tPhiC, L);
     ShPair pC = new ShPair(tSh, shC, LS);
 
-    FuncVec tXi = orthonN.getLast();
-    Shell shXi = new Shell(ID_XI, tXi, L);
-    ShPair pXi = new ShPair(tSh, shXi, LS);
-
-    Dble3 sc = calcSC(pS, pC, pXi, sysIdx);
+    Dble2 sc = calcSC(pS, pC, sysIdx);
     vB0.set(g, sc.a);                                      log.dbg("sc.a=", sc.a);
     vB1.set(g, sc.b);                                      log.dbg("sc.b=", sc.b);
-    vG.set(g, sc.c);                                      log.dbg("sc.c=", sc.c);
 
     for (int g2 = 0; g2 < chNum; g2++) {     log.dbg("g2 = ", g2);  // Target channels
       double tE2 = tEngs.get(g2);     // target state eng
       double tScattE2 = sysTotE - tE2;
       if (tScattE2 <= 0) {
+        m00.set(g, g2, 0);
+        m01.set(g, g2, 0);
         continue;
       }
-      double ms = calcHE(g, g2, phiS.get(g2), sysTotE, LS);         log.dbg("ms=", ms);
-      m0.set(g, g2, ms);
+      double ms = calcHE(g, g2, phiS.get(g2), LS);         log.dbg("ms=", ms);
+      m00.set(g, g2, ms);
 
-      double mc = calcHE(g, g2, phiC.get(g2), sysTotE, LS);         log.dbg("mc=", mc);
-      m1.set(g, g2, mc);
+      double mc = calcHE(g, g2, phiC.get(g2), LS);         log.dbg("mc=", mc);
+      m01.set(g, g2, mc);
     }
   }
-  log.dbg("m0=\n", new MtrxDbgView(m0));
-  log.dbg("m1=\n", new MtrxDbgView(m1));
+  log.dbg("m00=\n", new MtrxDbgView(m00));
+  log.dbg("m01=\n", new MtrxDbgView(m01));
   log.dbg("vB0=", new VecDbgView(vB0));
   log.dbg("vB1=", new VecDbgView(vB1));
-  log.dbg("vG=", new VecDbgView(vG));
 }
-private double calcHE(int g, int g2, FuncVec pw2, double sysTotE, Ls ls) {
+private double calcHE(int g, int g2, FuncVec pw2, Ls ls) {
   int L = 0;
   SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
   FuncArr trgtWfs = getTrgtBasisN();
@@ -189,31 +185,31 @@ private double calcHE(int g, int g2, FuncVec pw2, double sysTotE, Ls ls) {
   FuncVec tWf = trgtWfs.get(g);
   Shell shB = new Shell(g, tWf, L);    // bound #1
 
-  FuncVec pwXi = orthonN.getLast();
-  Shell shXi = new Shell(-1, pwXi, L);
+  FuncVec pwS = phiS.get(g);   // plain-wave
+  Shell shF = new Shell(-1, pwS, L);
 
   FuncVec tWf2 = trgtWfs.get(g2);
   Shell shB2 = new Shell(g2, tWf2, L); // bound #2
   Shell shF2 = new Shell(-1, pw2, L);
 
   double d1 = 0;
+  double d2 = 0;
   if (g == g2)  {
-    double xi = sysE2.calcOverlap(shXi, shF2);    log.dbg("xi=", xi);
-    Energy he = sysE2.calcOneH(shXi, shF2);       log.dbg("he=", he);
-    double tE = trgtE2.getEngs().get(g);          log.dbg("tE=", tE);
-    d1 = (tE - sysTotE) * xi + he.kin + he.pot;   log.dbg("d1=", d1);
+    Shell sh = new Shell(-1, pnS.get(g), L);
+    d1 = -sysE2.calcOneKin(sh, shF2);     log.dbg("d1=", d1); // NOTE (-1)
+    d2 = sysE2.calcOnePotZ(shF, shF2);                       log.dbg("d2=", d2);
   }
-  double di = sysE2.calcTwoPot(L, shB, shXi, shB2, shF2);     log.dbg("di=", di);
-  double ex = sysE2.calcTwoPot(L, shB, shXi, shF2, shB2);     log.dbg("ex=", ex);
-  double res = d1 + di + Mathx.pow(-1., ls.getS()) * ex;                            log.dbg("res=", res);
+  double di = sysE2.calcTwoPot(L, shB, shF, shB2, shF2);     log.dbg("di=", di);
+  double ex = sysE2.calcTwoPot(L, shB, shF, shF2, shB2);     log.dbg("ex=", ex);
+  double res = d1 + d2 + di + Mathx.pow(-1., ls.getS()) * ex;                            log.dbg("res=", res);
   return res;
 }
 protected void calcK(int chNum) {
-  Mtrx mInv = m1.inverse();          log.dbg("m01^{-1}=\n", new MtrxDbgView(mInv));
-  Mtrx mX = mInv.times(m0);          log.dbg("mX=\n", new MtrxDbgView(mX));
+  Mtrx mInv = m01.inverse();          log.dbg("m01^{-1}=\n", new MtrxDbgView(mInv));
+  Mtrx mX = mInv.times(m00);          log.dbg("mX=\n", new MtrxDbgView(mX));
   Mtrx mXt = mX.transpose();          log.dbg("mXt=\n", new MtrxDbgView(mXt));
 
-  Vec vY = mInv.times(vG);            log.dbg("vY=", new VecDbgView(vY));
+  Vec vY = mInv.times(vB0);            log.dbg("vY0=", new VecDbgView(vY));
   double beta = vB1.dot(vY);            log.dbg("beta=", beta);
   Vec vXB = mXt.times(vB1);            log.dbg("vXB=", new VecDbgView(vXB));
   Vec vD = vB0.copy();                 log.dbg("vD=", new VecDbgView(vD));
@@ -237,16 +233,60 @@ protected void calcK(int chNum) {
   }
   log.dbg("mK=\n", new MtrxDbgView(mK));
   log.dbg("mK2=\n", new MtrxDbgView(mK2));
-
-//  for (int g = 0; g < chNum; g++) {
-//    double pg = chArr[g].getAbsMom();
-//    for (int g2 = 0; g2 < g; g2++) {
-//      double maxV = Math.max(aK[g][g2], aK[g2][g]);
-//      aK[g][g2] = maxV;
-//      aK[g2][g] = maxV;
-//    }
-//  }
-//  log.dbg("mK=\n", new MtrxDbgView(mK));
-//  log.dbg("mK2=\n", new MtrxDbgView(mK2));
 }
+protected void calcK2(int chNum) {
+  Mtrx mInv = m00.inverse();          log.dbg("m01^{-1}=\n", new MtrxDbgView(mInv));
+  Mtrx mX = mInv.times(m01);          log.dbg("mX=\n", new MtrxDbgView(mX));
+  Mtrx mXt = mX.transpose();          log.dbg("mXt=\n", new MtrxDbgView(mXt));
+
+  Vec vY = mInv.times(vB1);            log.dbg("vY=", new VecDbgView(vY));
+  double beta = vB0.dot(vY);            log.dbg("beta=", beta);
+  Vec vXB = mXt.times(vB0);            log.dbg("vXB=", new VecDbgView(vXB));
+  Vec vD = vB1.copy();                 log.dbg("vD=", new VecDbgView(vD));
+  vD.addMultSafe(-1., vXB);           log.dbg("vD=", new VecDbgView(vD));
+  vD.mult(1. / beta);                       log.dbg("vD=", new VecDbgView(vD));
+
+  mK = MtrxFactory.makeFromTwoVecs(vY, vD);  log.dbg("Y x D =\n", new MtrxDbgView(mK));
+  mK.plusEquals(mX);                           log.dbg("Y x D + mX\n", new MtrxDbgView(mK));
+  mK.timesEquals(-1.);                         log.dbg("K=-(Y x D + mX)\n", new MtrxDbgView(mK));
+  double[][] aK = mK.getArray();
+  Mtrx mK2 = mK.copy();
+  double[][] aK2 = mK2.getArray();
+  for (int g = 0; g < chNum; g++) {
+    double pg = chArr[g].getAbsMom();
+    for (int g2 = 0; g2 < chNum; g2++) {
+      double pg2 = chArr[g2].getAbsMom();
+      double c = Math.sqrt(pg/pg2);
+      aK[g][g2] /= c;
+      aK2[g][g2] *= c;
+    }
+  }
+  log.dbg("mK2=\n", new MtrxDbgView(mK2));
+  log.dbg("mK=\n", new MtrxDbgView(mK));
+  mK = mK.inverse();
+  mK2 = mK2.inverse();
+  log.dbg("mK2=\n", new MtrxDbgView(mK2));
+  log.dbg("mK=\n", new MtrxDbgView(mK));
+}
+protected void calcK3(int chNum) {
+  Mtrx mInv = m01.inverse();          log.dbg("m01^{-1}=\n", new MtrxDbgView(mInv));
+  Mtrx mX = mInv.times(m00);          log.dbg("mX=\n", new MtrxDbgView(mX));
+  mK = mX;
+  mK.timesEquals(-1.);                         log.dbg("K=-X\n", new MtrxDbgView(mK));
+  double[][] aK = mK.getArray();
+  Mtrx mK2 = mK.copy();
+  double[][] aK2 = mK2.getArray();
+  for (int g = 0; g < chNum; g++) {
+    double pg = chArr[g].getAbsMom();
+    for (int g2 = 0; g2 < chNum; g2++) {
+      double pg2 = chArr[g2].getAbsMom();
+      double c = Math.sqrt(pg/pg2);
+      aK[g][g2] /= c;
+      aK2[g][g2] *= c;
+    }
+  }
+  log.dbg("mK=\n", new MtrxDbgView(mK));
+  log.dbg("mK2=\n", new MtrxDbgView(mK2));
+}
+
 }
