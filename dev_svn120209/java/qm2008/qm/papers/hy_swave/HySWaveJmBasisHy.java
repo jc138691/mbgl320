@@ -101,7 +101,7 @@ public class HySWaveJmBasisHy extends HySWaveJm {
       trgt.setStatesContE1(clmbNt);
       trgt.setStatesE1(trgtBasisNt);
       trgt.loadSdcsContW();
-      FileX.writeToFile(trgt.toTab(), HOME_DIR, "wf", "target_" + basisOptN.makeLabel() + ".dat");
+//      FileX.writeToFile(trgt.toTab(), HOME_DIR, "wf", "target_" + basisOptN.makeLabel() + ".dat");
     }
 
     PotHMtrx targetHTest = new PotHMtrxLcr(L, trgtBasisNt, pot, orthonNt.getQuadr());  log.dbg("targetHTest=", targetHTest); // only for debugging
@@ -136,7 +136,7 @@ public class HySWaveJmBasisHy extends HySWaveJm {
     }
 
     ScattRes res;
-    res = method.calcMidSysEngs();                  log.dbg("res=", res);
+//    res = method.calcMidSysEngs();                  log.dbg("res=", res);
     if (scttEngs != null) {
       res = method.calc(scttEngs);                  log.dbg("res=", res);
     }

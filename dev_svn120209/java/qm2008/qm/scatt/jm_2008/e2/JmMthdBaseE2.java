@@ -102,7 +102,6 @@ public ScattRes calc(Vec engs) {          //JmMethodJmBasisE3.log.setDbg();
     mS = mS.transpose();
     calcCrossSecs(engIdx, res, mS, chNum);
     calcSdcs(engIdx, res);
-    //      calcSdcsCurveFit(i, res);  // step-function SDCS
   }
   return res;
 }
@@ -116,8 +115,6 @@ public ScattRes calc_OLD(Vec engs) {          //JmMethodJmBasisE3.log.setDbg();
   Mtrx mCs = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
   res.setSdcs(new Mtrx(chNum + 1, eN + 1));
-  //    res.setSdcsSf(new Mtrx(eN, SDCS_FIT_IDX_MAX + 1));
-  //    res.setSdcsSfLin(new Mtrx(eN, SDCS_FIT_IDX_MAX + 1));
   res.setCrossSecs(mCs);
   res.setTics(mTics);
   for (int i = 0; i < eN; i++) {
@@ -183,24 +180,24 @@ protected void loadSdcsW(JmCh[] chArr) {
     ch.setSdcsW(ws.get(i));
   }
 }
-// load E/2-symmetric channel energies
-protected void loadSymmChEnrgsV2(JmCh[] chArr) {
-  // all chE must be <= sysE/2
-  for (int i = 0; i < chArr.length; i++) {
-    JmCh ch = chArr[i];
-    if (!ch.isOpen() || ch.getEng() <= 0)
-      continue; // nothing to do: not open, or not continuum
-    double chE = ch.getEng();
-    double scattE = ch.getScattEng();
-    double sysE = ch.getSysEng();
-    double E2 = sysE / 2.;
-    if (chE <= E2)
-      continue; // all good
-    ch.setScattEng(chE); // swap energies
-    ch.setEng(scattE);
-  }
-  //NOTE!!! the channels are no longer sorted by chE
-}
+//// load E/2-symmetric channel energies
+//protected void loadSymmChEnrgsV2(JmCh[] chArr) {
+//  // all chE must be <= sysE/2
+//  for (int i = 0; i < chArr.length; i++) {
+//    JmCh ch = chArr[i];
+//    if (!ch.isOpen() || ch.getEng() <= 0)
+//      continue; // nothing to do: not open, or not continuum
+//    double chE = ch.getEng();
+//    double scattE = ch.getScattEng();
+//    double sysE = ch.getSysEng();
+//    double E2 = sysE / 2.;
+//    if (chE <= E2)
+//      continue; // all good
+//    ch.setScattEng(chE); // swap energies
+//    ch.setEng(scattE);
+//  }
+//  //NOTE!!! the channels are no longer sorted by chE
+//}
 protected void loadSdcsW_Simpson(JmCh[] chArr) {
   boolean first = true;  // first open ionization channel
   boolean last = false;  // last open ionization channel
