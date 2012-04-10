@@ -11,7 +11,7 @@ import java.util.HashMap;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 02/06/2010, 2:46:32 PM
  */
-public class JmMethodJmBasisE3 extends JmMethodAnyBasisE3 { // many electrons (more than 2). TODO: this should work for e-H as well
+public class JmMethodJmBasisE3 extends JmMethodAnyBasisE3 {
   public static Log log = Log.getLog(JmMethodJmBasisE3.class);
 
   public JmMethodJmBasisE3(CalcOptE1 calcOpt) {
