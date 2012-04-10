@@ -16,6 +16,8 @@ protected Vec sysEngs;
 protected PotHMtrx potH;
 protected LgrrOrthLcr orthonN;
 protected final CalcOptE1 calcOpt;
+protected double scattE;
+protected double sysTotE;
 public ScttMthdBaseE1(CalcOptE1 calcOpt) {
   this.calcOpt = calcOpt;
 }

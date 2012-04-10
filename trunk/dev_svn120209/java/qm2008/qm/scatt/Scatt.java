@@ -2,12 +2,17 @@ package scatt;
 import flanagan.complex.Cmplx;
 import math.Mathx;
 import math.complex.CmplxMtrx;
+import math.complex.CmplxMtrxDbgView;
 import math.mtrx.Mtrx;
+import math.mtrx.MtrxDbgView;
 import math.mtrx.MtrxFactory;
+
+import javax.utilx.log.Log;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 23/07/2008, Time: 16:27:22
  */
 public class Scatt {
+public static Log log = Log.getLog(Scatt.class);
   public static double calcMomFromE(double E) { // momentum
     return Math.sqrt(2. * E);
   }
@@ -46,7 +51,15 @@ public static CmplxMtrx calcSFromK(Mtrx mK) {
       zm.set(r, c, new Cmplx(diag[r][c], -k[r][c]));
     }
   }
-  CmplxMtrx zmInv = zm.inverse();
+  CmplxMtrx zmInv = null;
+  try {
+    zmInv = zm.inverse();
+    log.dbg("(1-iR)^{-1}=\n", new CmplxMtrxDbgView(zm));
+  } catch (java.lang.ArithmeticException ae) {
+    log.info("K=\n", new MtrxDbgView(mK));
+    log.info("(1-iR)=\n", new CmplxMtrxDbgView(zm));
+    throw ae;
+  }
   CmplxMtrx res = zp.times(zmInv);
   return res;
 }

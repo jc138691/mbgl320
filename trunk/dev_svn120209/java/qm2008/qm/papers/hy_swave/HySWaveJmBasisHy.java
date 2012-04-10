@@ -17,7 +17,7 @@ import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
-import scatt.jm_2008.e2.JmMethodE2;
+import scatt.jm_2008.e2.JmMthdBasisHyE2;
 import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.ScattTrgtE2;
 import scatt.jm_2008.jm.coulomb.JmCoulombLcrTest;
@@ -123,7 +123,7 @@ public class HySWaveJmBasisHy extends HySWaveJm {
     Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 //    double e0 = sysEngs.get(0);
 
-    JmMethodE2 method = new JmMethodE2(calcOpt);
+    JmMthdBasisHyE2 method = new JmMthdBasisHyE2(calcOpt);
     method.setTrgtE2(trgt);
     method.setOverD(D);
     method.setSysEngs(sEngs);

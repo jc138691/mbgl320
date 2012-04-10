@@ -5,7 +5,7 @@ import atom.energy.part_wave.PotHMtrx;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e2.JmMethodE2;
+import scatt.jm_2008.e2.JmMthdBasisHyE2;
 
 import javax.utilx.log.Log;
 
@@ -14,7 +14,7 @@ import javax.utilx.log.Log;
  *
  * TODO: This is working correctly, see HySWaveViaOverlap_OLD
  */
-public class JmMethodFanoE2 extends JmMethodE2 {
+public class JmMethodFanoE2 extends JmMthdBasisHyE2 {
   public static Log log = Log.getLog(JmMethodFanoE2.class);
   private ConfOverlap chiOverlap;
   private PotHMtrx targetH;
