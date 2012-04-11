@@ -55,6 +55,8 @@ protected static WFQuadrLcr quadrLcr;
 protected static Func potFunc;
 protected static int Nt = 20;
 protected static boolean USE_CLOSED_CHANNELS = true;
+protected static boolean CALC_SDCS = false;
+
 
 public StepGridModel makeStepGridModel() {
   StepGridModel modelR = new StepGridModel(R_FIRST, R_LAST, R_N); // R_N not used!!!
@@ -134,6 +136,7 @@ protected void hydrScattTestOk(int trgtZ) {
   FlowTest.setLog(log);
 
   calcOpt.setUseClosed(USE_CLOSED_CHANNELS);
+  calcOpt.setCalcSdcs(CALC_SDCS);
 
   basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
   LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t

@@ -1,11 +1,14 @@
 package scatt.jm_2008.e2;
 import flanagan.complex.Cmplx;
+import math.Calc;
 import math.Mathx;
 import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
+import org.junit.runner.notification.StoppedByUserException;
+import scatt.Scatt;
 import scatt.eng.EngGridFactory;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.jm.ScattRes;
@@ -110,12 +113,11 @@ private ScattRes calcV2_ok(Vec engs) {          //JmMethodJmBasisE3.log.setDbg()
   }
   return res;
 }
-private ScattRes calcV1_ok(Vec engs) {          //JmMethodJmBasisE3.log.setDbg();
+private ScattRes calcV1_ok(Vec engs) { log.setDbg();
   ScattRes res = new ScattRes();
   int chNum = getChNum();
   int eN = engs.size();
-  jmX = calcX();
-  log.dbg("X=", new MtrxDbgView(jmX));
+  jmX = calcX();                              log.dbg("X=", new MtrxDbgView(jmX));
   new JmResonE2(this).calc(res, jmX);
   Mtrx mCs = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
@@ -124,30 +126,29 @@ private ScattRes calcV1_ok(Vec engs) {          //JmMethodJmBasisE3.log.setDbg()
   res.setTics(mTics);
   for (int engIdx = 0; engIdx < eN; engIdx++) {
     log.info("i = ", engIdx);
-    scattE = engs.get(engIdx);
-    log.info("scattE = ", scattE);
+    scattE = engs.get(engIdx);             log.info("scattE = ", scattE);
+    int openNum = calcOpenChNum(scattE);
     mCs.set(engIdx, IDX_ENRGY, scattE);
     mTics.set(engIdx, IDX_ENRGY, scattE);                 // first column is for the energies
-    sysTotE = scattE + trgtE2.getInitTrgtEng();
+    sysTotE = scattE + trgtE2.getInitTrgtEng();          log.info("sysTotE = ", sysTotE);
     chArr = loadChArr(sysTotE);
-    Mtrx W;
-    CmplxMtrx WCJC;
-    CmplxMtrx WSJS;
+    Mtrx W;      CmplxMtrx WCJC;      Mtrx WSJS;
     if (calcOpt.getUseClosed()) {
-      W = calcW();                    log.dbg("W=\n", new MtrxDbgView(W));
-      WCJC = calcWCJC(W);      log.dbg("WCJC=\n", new CmplxMtrxDbgView(WCJC));
-      WSJS = calcWSJS(W);      log.dbg("WSJS=\n", new CmplxMtrxDbgView(WSJS));
+      W = calcW();                              log.dbg("W=\n", new MtrxDbgView(W));
+      WCJC = calcWCJC(W);                       log.dbg("WCJC=\n", new CmplxMtrxDbgView(WCJC));
+      WSJS = calcWSJS(W, openNum);                       log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
     } else {
-      W = calcOpenW();    log.dbg("W=\n", new MtrxDbgView(W));
+      W = calcOpenW();                           log.dbg("W=\n", new MtrxDbgView(W));
       WCJC = calcOpenWCJC(W);                    log.dbg("WCJC=\n", new CmplxMtrxDbgView(WCJC));
-      WSJS = calcOpenWSJS(W);                    log.dbg("WSJS=\n", new CmplxMtrxDbgView(WSJS));
+      WSJS = calcOpenWSJS(W, openNum);                    log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
     }
-    cmR = calcR(WCJC, WSJS);     log.dbg("R=\n", new CmplxMtrxDbgView(cmR));
-    CmplxMtrx mS = calcSFromR(cmR);
-    log.dbg("S matrix=\n", new CmplxMtrxDbgView(mS));
+    jmR = calcR(WCJC, WSJS, openNum);                      log.dbg("R=\n", new MtrxDbgView(jmR));
+//    CmplxMtrx mS = calcSFromR(cmR);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(mS));
+    CmplxMtrx mS = Scatt.calcSFromK(jmR);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(mS));
     calcCrossSecs(engIdx, res, mS, chNum);
-    calcSdcs(engIdx, res);
-    //      calcSdcsCurveFit(i, res);  // step-function SDCS
+    if (calcOpt.getCalcSdcs()) {
+      calcSdcs(engIdx, res);
+    }
   }
   return res;
 }
@@ -255,14 +256,12 @@ protected CmplxMtrx calcWCJC(Mtrx mW) {
   CmplxMtrx res = new CmplxMtrx(tN, tN);
   for (int t = 0; t < tN; t++) {
     for (int t2 = 0; t2 < tN; t2++) {
+      StoppedByUserException HERE
       JmCh ch2 = chArr[t2];
       Cmplx wcjc = new Cmplx(Mathx.dlt(t, t2));
-      //        if (ch.isOpen()  && ch2.isOpen()) {   // for openOnly-version
       Cmplx wcj = ch2.getJnn().times(W[t][t2]).mult(ch2.getCn());
       Cmplx c = ch2.getCn1().times(Mathx.dlt(t, t2));
-//        wcjc = wcj.add(c).div(ch2.getSqrtAbsMom());
       wcjc = wcj.add(c);
-      //        }
       res.set(t, t2, wcjc);
     }
   }
@@ -288,30 +287,43 @@ protected void loadZ(CmplxMtrx zp, CmplxMtrx zm, Mtrx mW, JmCh[] chArr) {
     }
   }
 }
-protected CmplxMtrx calcR(CmplxMtrx WCJC, CmplxMtrx WSJS) {
-//      CmplxMtrx invWC = WCJC.inverse();                     log.dbg("WCJC^{-1}=\n", new CmplxMtrxDbgView(invWC));
-//      CmplxMtrx R = invWC.times(WSJS);            log.dbg("R=\n", new CmplxMtrxDbgView(R));
-//      R.timesEquals(-1.);                        log.dbg("R=\n", new CmplxMtrxDbgView(R));
-  CmplxMtrx invWC = WCJC.inverse();
-  log.dbg("WCJC^{-1}=\n", new CmplxMtrxDbgView(invWC));
-  CmplxMtrx R = invWC.times(WSJS);
-  log.dbg("R=\n", new CmplxMtrxDbgView(R));
-  R.timesEquals(-1.);
-  log.dbg("R=\n", new CmplxMtrxDbgView(R));
-  int tN = chArr.length;
-  for (int t = 0; t < tN; t++) {
-    double kg = chArr[t].getSqrtAbsMom(); // k_gamma
-    for (int t2 = 0; t2 < tN; t2++) {
-      JmCh ch2 = chArr[t2];
-      if (ch2.isOpen()) {   // for openOnly-version
-        double kg0 = ch2.getSqrtAbsMom(); // k_{gamma_0}
-        Cmplx newR = R.get(t, t2);
-        newR = newR.times(kg / kg0);
-        R.set(t, t2, newR);
+protected Mtrx calcR(CmplxMtrx WCJC, Mtrx WSJS, int openNum) {
+  CmplxMtrx invWC = WCJC.inverse();                   log.dbg("WCJC^{-1}=\n", new CmplxMtrxDbgView(invWC));
+//  Mtrx R = invWC.times(WSJS);                    log.dbg("R=\n", new CmplxMtrxDbgView(R));
+  Mtrx R = new Mtrx(openNum, openNum);
+  int tN = getChNum();
+  for (int t = 0; t < openNum; t++) {
+    for (int t2 = 0; t2 < openNum; t2++) {
+      double sum = 0;
+      for (int t3 = 0; t3 < tN; t3++) {
+        Cmplx wc = invWC.get(t, t3);
+        if (!Calc.isZero(wc.getIm())) {
+          throw new IllegalArgumentException(log.error("!Calc.isZero(wc.getIm())"));
+        }
+        sum += wc.getRe() * WSJS.get(t3, t2);
       }
+      R.set(t, t2, sum);
     }
   }
+  R.timesEquals(-1.);                                 log.dbg("R=\n", new MtrxDbgView(R));
+  loadSqrtAbsMomK(R, openNum);
   return R;
+}
+protected void loadSqrtAbsMomK(Mtrx mK, int openNum) {
+  for (int t = 0; t < openNum; t++) {
+    JmCh ch = chArr[t];
+    double kg = chArr[t].getSqrtAbsMom(); // k_gamma
+    for (int t2 = 0; t2 < openNum; t2++) {
+      JmCh ch2 = chArr[t2];
+      if (!ch.isOpen()  ||  !ch2.isOpen()) {
+        throw new IllegalArgumentException(log.error("!ch2.isOpen()"));
+      }
+      double kg0 = ch2.getSqrtAbsMom(); // k_{gamma_0}
+      double oldR = mK.get(t, t2);
+      double newR = oldR * (kg / kg0);
+      mK.set(t, t2, newR);
+    }
+  }
 }
 protected CmplxMtrx calcOpenWCJC(Mtrx mW) {
   double[][] W = mW.getArray();
@@ -333,41 +345,38 @@ protected CmplxMtrx calcOpenWCJC(Mtrx mW) {
   }
   return res;
 }
-protected CmplxMtrx calcWSJS(Mtrx mW) {
+protected Mtrx calcWSJS(Mtrx mW, int openNum) {
   double[][] W = mW.getArray();
   int tN = getChNum();
-  CmplxMtrx res = new CmplxMtrx(tN, tN);
+  Mtrx res = new Mtrx(tN, openNum);
   for (int t = 0; t < tN; t++) {
-    for (int t2 = 0; t2 < tN; t2++) {
+    for (int t2 = 0; t2 < openNum; t2++) {
       JmCh ch2 = chArr[t2];
-      Cmplx wsjs = Cmplx.ZERO;
-      if (ch2.isOpen()) {
-        //        if (ch.isOpen()  &&  ch2.isOpen()) {     // for openOnly-version
-        Cmplx wsj = ch2.getJnn().times(W[t][t2]).times(ch2.getSn());
-        double s = ch2.getSn1() * Mathx.dlt(t, t2);
-//          wsjs = wsj.add(s).div(ch2.getSqrtAbsMom());
-        wsjs = wsj.add(s);
+      if (!ch2.isOpen()) {
+        throw new IllegalArgumentException(log.error("!ch2.isOpen()"));
       }
+      double wsj = ch2.getJnn().getRe() * W[t][t2] * ch2.getSn();
+      double s = ch2.getSn1() * Mathx.dlt(t, t2);
+      double wsjs = (wsj + s); // / ch2.getSqrtAbsMom()   MOVED to where R-matrix is calc-ed
       res.set(t, t2, wsjs);
     }
   }
   return res;
 }
-protected CmplxMtrx calcOpenWSJS(Mtrx mW) {
+protected Mtrx calcOpenWSJS(Mtrx mW, int openNum) {
   double[][] W = mW.getArray();
   int tN = getChNum();
-  CmplxMtrx res = new CmplxMtrx(tN, tN);
-  for (int t = 0; t < tN; t++) {
+  Mtrx res = new Mtrx(tN, openNum);
+  for (int t = 0; t < openNum; t++) {
     JmCh ch = chArr[t];
-    for (int t2 = 0; t2 < tN; t2++) {
+    for (int t2 = 0; t2 < openNum; t2++) {
       JmCh ch2 = chArr[t2];
-      Cmplx wsjs = Cmplx.ZERO;
-      if (ch.isOpen() && ch2.isOpen()) {     //v2
-        Cmplx wsj = ch2.getJnn().times(W[t][t2]).times(ch2.getSn());
-        double s = ch2.getSn1() * Mathx.dlt(t, t2);
-//          wsjs = wsj.add(s).div(ch2.getSqrtAbsMom());
-        wsjs = wsj.add(s);
+      if (!ch.isOpen() || !ch2.isOpen()) {
+        throw new IllegalArgumentException(log.error("!ch.isOpen() || !ch2.isOpen()"));
       }
+      double wsj = ch2.getJnn().getRe() * W[t][t2] * ch2.getSn();
+      double s = ch2.getSn1() * Mathx.dlt(t, t2);
+      double wsjs = (wsj + s); // / ch2.getSqrtAbsMom()   MOVED to where R-matrix is calc-ed
       res.set(t, t2, wsjs);
     }
   }

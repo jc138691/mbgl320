@@ -62,7 +62,7 @@ protected Mtrx calcX() {
 }
 
 protected void calcSdcs(int i, ScattRes res) {
-  log.setDbg();
+  //log.setDbg();
   jmF = calcFFromR();     log.dbg("jmF=\n", new MtrxDbgView(jmF));
   Vec vA = calcVecA();    log.dbg("vA=", new VecDbgView(vA));
 
@@ -86,7 +86,7 @@ private Mtrx calcFFromR() {
       }
       double sg = Mathx.dlt(r, c) * ch.getSn();
       double cg = ch2.getCn().getRe();
-      double scR = sg + cg * cmR.get(r, c).getRe();
+      double scR = sg + cg * jmR.get(r, c);
       scR *= ( SQRT_PI2 / ch2.getSqrtAbsMom());
       res.set(r, c, scR);
     }

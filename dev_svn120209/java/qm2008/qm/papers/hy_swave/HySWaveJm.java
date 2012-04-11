@@ -134,12 +134,18 @@ public class HySWaveJm extends HyLikeSWaveJm {
     calc(currN, currNt);
   }
 
-  public void setupResonances_n2_S1() {
+public void setupResonances_n2_S1() {
 //    ENG_FIRST = (float) AtomUnits.fromEV(10.1);
-    ENG_FIRST = (float) AtomUnits.fromEV(9.0);
-    ENG_LAST = (float)AtomUnits.fromEV(10.25);
-    ENG_N = 15001;
-  }
+  ENG_FIRST = (float) AtomUnits.fromEV(9.0);
+  ENG_LAST = (float)AtomUnits.fromEV(10.25);
+  ENG_N = 15001;
+}
+public void setupResonances_n2_S1_TestClosed() {
+//    ENG_FIRST = (float) AtomUnits.fromEV(10.1);
+  ENG_FIRST = (float) AtomUnits.fromEV(10.20);
+  ENG_LAST = (float)AtomUnits.fromEV(10.21);
+  ENG_N = 101;
+}
 
 
   public void setupResonances_n2_n3_S1() {

@@ -7,34 +7,6 @@ import scatt.jm_2008.jm.TestModel;
 * Copyright dmitry.konovalov@jcu.edu.au Date: 29/09/2008, Time: 14:27:22
 */
 public class CalcOptE1 {
-//  public static int N_OPTS = 0;
-//  public static final int OPT_LGRR = N_OPTS++;
-//  public static final int OPT_ORTH = N_OPTS++;
-//  public static final int OPT_POT = N_OPTS++;
-//  public static final int OPT_NUMEROV = N_OPTS++;
-//  public static final int OPT_K_MTRX_FUNC_ARR = N_OPTS++;
-//  public static final int OPT_K_MTRX_ENG = N_OPTS++;
-//  public static final int OPT_GNN_ENG = N_OPTS++;
-//  public static final int OPT_KNN_ENG = N_OPTS++;
-//  public static final String[] OPT_NAMES = {"Lagerre"
-//    , "Orthonormal"
-//    , "r^2 * V_1S(r)"
-//    , "Numerov"
-//    , "K(E, r)"
-//    , "K(E)"
-//    , "G_{N-1,N-1}(E)"
-//    , "K"};
-//  public static final String[] OPT_HELP_TIPS = {
-//    "JM Laguerre functions"
-//    , "JM orthonormal Laguerre functions"
-//    , "Hydrogen ground state potential as felt by an external electron (NOTE! multiplied by r^2)"
-//    , "Numerical solution [d2/dr2+2E-2V]y(r)=0 via the Numerov algorithm"
-//    , "K(E,r) from y(r)=sin(pr)+K(E,r)*cos(pr), y(r) is via Numerov"
-//    , "K(E,r=r_max)-matrix from y(r)=sin(pr)+K(E)*cos(pr), the last K(E,r)"
-//    , "G_{N-1,N-1} * J_{N,N-1}(E)"
-//    , "K(E) - from the J-Matrix method"
-//  };
-
 private EngModel gridEng;
 private StepGridModel grid;
 private LgrrModel lgrrModel;
@@ -44,6 +16,7 @@ private String gridName;
 private int optIdx;
 private boolean useClosed;
 private String homeDir;
+private boolean calcSdcs;
 public CalcOptE1() {
   init();
 }
@@ -116,5 +89,11 @@ this.homeDir = homeDir;
 }
 public String getHomeDir() {
   return homeDir;
+}
+public void setCalcSdcs(boolean calcSdcs) {
+  this.calcSdcs = calcSdcs;
+}
+public boolean getCalcSdcs() {
+  return calcSdcs;
 }
 }
