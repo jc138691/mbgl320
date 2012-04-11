@@ -29,6 +29,7 @@ protected static boolean CALC_DENSITY = false;
 protected static int CALC_DENSITY_MAX_NUM = 1;
 protected static boolean SAVE_TRGT_ENGS = false;
 protected static boolean H_OVERWRITE = false;
+protected static boolean CALC_SDCS = false;
 
 public void setUp() {
   super.setUp();

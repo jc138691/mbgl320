@@ -26,7 +26,7 @@ protected ScattTrgtE2 trgtE2;
 protected ConfHMtrx sysConfH;
 private FuncArr trgtBasisN;
 protected JmCh[] chArr;
-protected CmplxMtrx cmR;
+protected Mtrx jmR;
 public LgrrOrthLcr getOrthonNt() {
   return orthonNt;
 }

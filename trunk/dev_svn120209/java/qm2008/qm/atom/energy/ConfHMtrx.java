@@ -33,7 +33,7 @@ public class ConfHMtrx extends HMtrx {
   private void load() {
     for (int r = 0; r < basis.size(); r++) {
       if ((10*basis.size())%(r+1) == 0) {
-        log.dbg("ConfHMtrx row=", r); log.dbg("ConfHMtrx rows%=", 100.* r / basis.size());
+        log.dbg("ConfHMtrx row=", r); log.dbg("ConfHMtrx rows%=", (int)(100.* r / basis.size()));
       }
       for (int c = r; c < basis.size(); c++) { // NOTE c=r
         // Atomic system should know how to calculate itself

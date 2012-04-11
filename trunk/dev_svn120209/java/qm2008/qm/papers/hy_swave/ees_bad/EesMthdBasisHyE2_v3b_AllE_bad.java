@@ -45,10 +45,10 @@ public ScattRes calcSysEngs() {    log.setDbg();
   EesMethodE1 methodE1 = new EesMethodE1(calcOpt);
   for (int eIdx = 0; eIdx < eN; eIdx++) {                log.dbg("i = ", eIdx);
     // TODO: calc eng arr separately if keeping this
-    double sysTotE = 0.5 * (sEngs.get(eIdx) + sEngs.get(eIdx+1)); log.dbg("sysE = ", sysTotE);
+    sysTotE = 0.5 * (sEngs.get(eIdx) + sEngs.get(eIdx+1)); log.dbg("sysE = ", sysTotE);
 
     chArr = loadChArr(sysTotE);    // used to calc cross_sections
-    double scattE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scattE = ", scattE);
+    scattE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scattE = ", scattE);
     mCrss.set(eIdx, IDX_ENRGY, scattE);
     int openNum = calcOpenChNum(scattE);
 

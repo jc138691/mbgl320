@@ -44,15 +44,16 @@ public class HySWaveJmBasisHy extends HySWaveJm {
     project = QMSProject.makeInstance("HySWaveJmBasisHy", "110606");
     TARGET_Z = AtomHy.Z;
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
-    MODEL_NAME = "HySModelBasisHy";    MODEL_DIR = MODEL_NAME;
+    MODEL_NAME = "HySWaveBasisHy";    MODEL_DIR = MODEL_NAME;
     CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about times 2.5
     LAMBDA = 2; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 //    LAMBDA = 1.7;
 
     // Note: run one at a time as only one set of result files is produced
-    setupEngExcite();
+//    setupEngExcite();
 //    setupResonances_n2_n3_S1();
 //    setupResonances_n2_S1();
+    setupResonances_n2_S1_TestClosed();
 //    setupEngExcite();
 //    setupEngTICS();
 //    setupEngSDCS();
