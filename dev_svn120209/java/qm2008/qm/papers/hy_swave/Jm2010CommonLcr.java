@@ -55,6 +55,7 @@ protected static WFQuadrLcr quadrLcr;
 protected static Func potFunc;
 protected static int Nt = 20;
 protected static boolean USE_CLOSED_CHANNELS = true;
+protected static int KEEP_CLOSED_N = 10;  // number of closed channels to keep
 protected static boolean CALC_SDCS = false;
 
 
@@ -81,6 +82,12 @@ protected void initProject() {
   calcOpt = project.getJmPotOptLcr();
   calcOpt.setHomeDir(HOME_DIR);
   testOpt = calcOpt.getTestModel();
+
+  calcOpt.setUseClosed(USE_CLOSED_CHANNELS);
+  calcOpt.setUseClosedNum(KEEP_CLOSED_N);
+  calcOpt.setCalcSdcs(CALC_SDCS);
+
+
   log.info("<--initProject()");
 }
 
@@ -97,7 +104,6 @@ protected void potScattTestOk() {
     if (!new InterpolCubeTest().ok()) return;
     if (!new DerivPts5Test().ok()) return;
     if (!new DerivPts9Test().ok()) return;
-
 
     StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
@@ -134,9 +140,6 @@ protected void potScattTestOk() {
 }
 protected void hydrScattTestOk(int trgtZ) {
   FlowTest.setLog(log);
-
-  calcOpt.setUseClosed(USE_CLOSED_CHANNELS);
-  calcOpt.setCalcSdcs(CALC_SDCS);
 
   basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
   LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t

@@ -61,7 +61,7 @@ protected Mtrx calcX() {
   return res;
 }
 
-protected void calcSdcs(int i, ScattRes res) {
+protected void calcSdcs_TODO(int i, ScattRes res) {
   //log.setDbg();
   jmF = calcFFromR();     log.dbg("jmF=\n", new MtrxDbgView(jmF));
   Vec vA = calcVecA();    log.dbg("vA=", new VecDbgView(vA));

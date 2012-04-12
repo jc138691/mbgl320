@@ -22,4 +22,16 @@ public static Mtrx makeFromTwoVecs(Vec vR, Vec vC) {
   }
   return res;
 }
+
+public static void makeSymmByAvr(Mtrx m) {
+  // make symmetric
+  double[][] arr = m.getArray();
+  for (int r = 0; r < m.getNumRows(); r++) {
+    for (int c = 0; c < r; c++) {
+      double avr = 0.5 * (arr[r][c] + arr[c][r]);
+      arr[r][c] = avr;
+      arr[c][r] = avr;
+    }
+  }
+}
 }
