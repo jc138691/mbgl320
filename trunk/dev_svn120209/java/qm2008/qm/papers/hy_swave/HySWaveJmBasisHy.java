@@ -58,7 +58,9 @@ public class HySWaveJmBasisHy extends HySWaveJm {
 //    setupEngTICS();
 //    setupEngSDCS();
     USE_CLOSED_CHANNELS = true;
+    KEEP_CLOSED_N = 1;
     CALC_DENSITY = false;
+    CALC_SDCS = false;
     runJob();
   }
 

@@ -17,6 +17,7 @@ private int optIdx;
 private boolean useClosed;
 private String homeDir;
 private boolean calcSdcs;
+private int useClosedNum;
 public CalcOptE1() {
   init();
 }
@@ -95,5 +96,11 @@ public void setCalcSdcs(boolean calcSdcs) {
 }
 public boolean getCalcSdcs() {
   return calcSdcs;
+}
+public void setUseClosedNum(int useClosedNum) {
+  this.useClosedNum = useClosedNum;
+}
+public int getUseClosedNum() {
+  return useClosedNum;
 }
 }

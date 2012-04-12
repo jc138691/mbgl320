@@ -23,13 +23,15 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   TARGET_Z = AtomHy.Z;
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
   MODEL_NAME = "HySWaveBasisHySDCS";    MODEL_DIR = MODEL_NAME;
-  CALC_TRUE_CONTINUUM = true; // if TRUE, increase LCR_N by about times 2.5
   LAMBDA = 1; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 //    LAMBDA = 1.7;
 
   // Note: run one at a time as only one set of result files is produced
   setupEngSDCS();
+  CALC_TRUE_CONTINUUM = true; // if TRUE, increase LCR_N by about times 2.5
+  CALC_SDCS = true;
   USE_CLOSED_CHANNELS = true;
+  KEEP_CLOSED_N = 1;
   CALC_DENSITY = false;
   runJob();
 }
@@ -65,8 +67,6 @@ public void runJob() {
 //    LCR_FIRST = -5;
 //    LCR_N = 1101;
 //    R_LAST = 300;
-
-  KEEP_CLOSED_N = 10;
 
   SPIN = Spin.SINGLET;
   calc(currN, currNt);

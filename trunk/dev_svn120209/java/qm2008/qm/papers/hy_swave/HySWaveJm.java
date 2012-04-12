@@ -75,7 +75,7 @@ public class HySWaveJm extends HyLikeSWaveJm {
 //    LCR_N = 1101;
 //    R_LAST = 300;
 
-    KEEP_CLOSED_N = 10;
+//    KEEP_CLOSED_N = 10;
 
     SPIN = Spin.SINGLET;
     calc(currN, currNt);

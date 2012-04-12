@@ -63,7 +63,6 @@ public FuncArr getTrgtBasisN() {
   return trgtBasisN;
 }
 protected void calcCrossSecs(int i, ScattRes res, CmplxMtrx mS, int chNum) {
-//  int chNum = getChNum();
   Mtrx mCrss = res.getCrossSecs();
   Mtrx mTics = res.getTics();
   double ionSum = 0;
@@ -77,13 +76,7 @@ protected void calcCrossSecs(int i, ScattRes res, CmplxMtrx mS, int chNum) {
     Cmplx S = mS.get(to, initChIdx);
     S = S.minus(Mathx.dlt(to, initChIdx));
 
-    double sigma = Math.PI * S.abs2() / k02;
-
-    log.dbg("sigma = ", sigma).eol();
-    //      if (i == 0) { // store channels energies
-    //        mCs.set(0, 0, 0); // init the corner
-    //        mCs.set(0, to + 1, ch.getEng());  // NOTE +1; first row has incident energies
-    //      }
+    double sigma = Math.PI * S.abs2() / k02;    log.dbg("sigma = ", sigma).eol();
     mCrss.set(i, to + 1, sigma);  // NOTE +1; first column has incident energies
     if (trgtE2.getEngs().get(to) > trgtE2.getIonGrndEng()) {  // sum up all positive energy target states
       ionSum += sigma;
@@ -120,6 +113,12 @@ protected int calcOpenChNum(double scattE) {
     }
   }
   return tN;
+}
+protected int calcCalcChNum(double scattE) {
+  int openN = calcOpenChNum(scattE);
+  int res = openN + calcOpt.getUseClosedNum();
+  int tN = getChNum();
+  return Math.min(tN, res);
 }
 
 }

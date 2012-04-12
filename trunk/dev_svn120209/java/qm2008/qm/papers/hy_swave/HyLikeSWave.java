@@ -22,14 +22,11 @@ protected static final int MAX_ENG_NUM_FOR_SDCS = 10;
 protected static boolean CALC_TRUE_CONTINUUM = false;
 protected static Vec scttEngs;
 protected static double RES_MAX_LEVEL = 0.5; // maximum abs(Delta)/abs(Energy_distance)to be called a resonance
-protected static int KEEP_CLOSED_N = 10;  // number of closed channels to keep
-//  protected static boolean USE_CLOSED_CHANNELS = true;
 protected static int EXCL_SYS_RESON_IDX = -1;
 protected static boolean CALC_DENSITY = false;
 protected static int CALC_DENSITY_MAX_NUM = 1;
 protected static boolean SAVE_TRGT_ENGS = false;
 protected static boolean H_OVERWRITE = false;
-protected static boolean CALC_SDCS = false;
 
 public void setUp() {
   super.setUp();

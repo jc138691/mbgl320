@@ -6,6 +6,7 @@ import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
+import math.mtrx.MtrxFactory;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.eng.EngModel;
@@ -167,16 +168,7 @@ protected void calcK(int chNum) {
   }
   log.dbg("mK=\n", new MtrxDbgView(mK));
   log.dbg("mK2=\n", new MtrxDbgView(mK2));
-
-  // make symmetric
-  for (int g = 0; g < chNum; g++) {
-    double pg = chArr[g].getAbsMom();
-    for (int g2 = 0; g2 < g; g2++) {
-      double avr = 0.5 * (aK[g][g2] + aK[g2][g]);
-      aK[g][g2] = avr;
-      aK[g2][g] = avr;
-    }
-  }
+  MtrxFactory.makeSymmByAvr(mK);
   log.dbg("mK=\n", new MtrxDbgView(mK));
   log.dbg("mK2=\n", new MtrxDbgView(mK2));
 }
