@@ -1,0 +1,405 @@
+%%\documentclass[aip,jcp]{revtex4-1}
+\documentclass[aip
+, pra
+, showpacs
+, aps
+, twocolumn
+%, onecolumn
+, groupedaddress
+, floatfix
+%, preprint
+]{revtex4}
+%]{revtex4-1}
+\usepackage{graphicx, amsbsy, bm, dcolumn, amsmath}
+\usepackage{currfile}
+\usepackage{datetime}
+
+\newcommand{\etal}{{\em et~al.\/}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\JM}{\mbox{\tiny{JM}}}
+\newcommand{\KB}{\mbox{\tiny{KB}}}
+\newcommand{\vare}{\varepsilon}
+\newcommand{\phiH}{\phi^{\mbox{\tiny{H}}}}
+\newcommand{\vecCT}{ {\bf c} \cdot }
+%\newcommand{\vecCT}{ {\bf c}^{\mbox{\tiny{T}} }}
+
+
+
+\newcommand{\isum}%
+{\mathop{\hbox{$\displaystyle\sum\kern-13.2pt\int\kern1.5pt$}}}
+
+\begin{document}
+
+\title {$J$-matrix calculation of electron-hydrogen $S$-wave scattering: Accurate ionization amplitudes}
+
+\author{Dmitry A. Konovalov}
+\affiliation{ARC Centre for Antimatter-Matter Studies}
+\affiliation{Discipline of Information Technology, School of Business,
+James Cook University, Townsville, Queensland 4811, Australia}
+
+\author{Igor Bray}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
+
+
+\date{\today, \currenttime}
+
+\begin{abstract}
+It is shown that existing JM method could be significantly simplified without the loss of convergence rate or accuracy.
+
+
+The solution is very elegant and arguably somewhat almost trivial, especially when compared to
+the existing theories.
+
+\end{abstract}
+
+\pacs{34.80.Dp} %34.80.Dp	Atomic excitation and ionization
+\maketitle
+The current file is: \currfilename.
+
+\section{INTRODUCTION}
+TODO
+this Eigenstate Expansion for Scattering (EES) method relies on the following conjecture.
+
+<ultichannel scattering \cite{CA73, NO72, TF79, Nesbet78, Lucchese86}
+
+\section{THEORY}
+\subsection{One-channel scattering}
+
+This section examines the
+$S$-wave electron scattering on a spherically symmetric short-range potential $V(r)$.
+After the partial-wave expansion \cite{Taylor72,N82} and focusing only on the $S$-wave terms (angular momentum $l=0$), the scattering
+could be described by the time-independent radial Schr\"odinger equation in the following one-dimensional form
+\beq
+(H-E) \Psi_E (r) =0,  \ \ \  \label{H_E_Psi_E}
+\eeq
+\beq
+H = \hat{K} + v(r), \ \ \ \hat{K} = -(1/2) d^2/dr^2,
+\eeq
+where $E=k^2/2$ and $k$ are the incident electron energy and momentum, respectively, and where
+atomic units are used hereafter.
+Let $\psi_{0k}$ and $\psi_{1k}$ be regular and irregular solutions of
+\beq \barr{l}
+(\hat{K}-E)  \psi_{\epsilon k} (r) =0, \ \ \ \epsilon=\{0,1\},\\
+\psi_{0k}(r=0) = 0, \ \ \ \psi_{1k}(r=0) \neq 0,\\
+\earr \label{H_0_E_psi}\eeq
+which are the $S$-terms of the plain wave
+\beq
+\psi_{0k}(r) = \sin(kr) ,\ \ \
+\psi_{1k}(r) = \cos(kr).
+\label{K} \eeq
+
+
+
+In 1967, \citet{Harris67} showed that Eq.~(\ref{H_E_Psi_E}) could be solved
+approximately using a square-integrable ($L^2$) basis.
+Let $\{\xi_p(r)\}_{p=0}^\infty$ be an $L^2$-complete set of real orthonormal functions
+such that for any $p,p'=0,1,...,\infty$
+\beq
+\langle \xi_p | \xi_{p'} \rangle \equiv \int_0^\infty dr \xi_p(r) \xi_{p'}(r) =\delta_{pp'}, \ \ \ \xi_p(0)=0,
+\eeq
+of which the first $N$ basis functions are used to diagonalize $H$ arriving at
+\beq
+\langle \Psi_i |H| \Psi_j \rangle = E_i \delta_{ij} , \ \ \langle \Psi_i | \Psi_j \rangle=\delta_{ij},
+\eeq
+\beq
+\Psi_i(r) = \sum_{p=0}^{N-1} C_{ip} \xi_p(r).
+\eeq
+Then $\Psi_E(r)$ is approximated at the system's eigenvalues $\{E_i\}_{i=1}^{N}$ by $\Psi^N_{E_i}(r)$
+\cite{Harris67}
+\beq
+\Psi^N_{E_i}(r) = c_i \Psi_i(r)  + [a_0 \phi_{0k_i}(r)  + a_1 \phi_{1k_i}(r)],
+\label{Psi_EES} \eeq
+\beq
+\phi_{\epsilon k_i}(r=0) = 0, \ \ \epsilon = \{0,1\},
+\eeq
+where: $E_i=k_i^2/2$; $\{\phi_{\epsilon k}\}$ are the trial continuum functions closely related to $\{\psi_{\epsilon k}\}$; and where the {\em standing}-wave (equal mix of {\em incoming}- and {\em outgoing}-waves) boundary condition is satisfied
+\beq
+\Psi_E(r \rightarrow \infty) \sim  \sin(kr+\delta_0), \ \ \ \Psi_E(0)=0.   \label{stand_wave}
+\eeq
+The results of the potential $S$-wave elastic scattering could then be expressed via
+phase shift ($\delta_0$), real $K$-matrix ($K_0$), complex unitary $S$-matrix ($S_{0}$) and/or cross section ($\sigma_{0}$)
+as follows
+\beq \barr{l}
+K_{0} = \tan{\delta_0} = a_1 / a_0,\\
+S_{0}=(1+\mbox{i}K_0)(1-\mbox{i}K_0)^{-1}, \\
+\sigma_{0}=\pi k^{-2} |S_{0}-1|^2.
+\earr \eeq
+
+
+Consistent with other variational scattering methods \cite{Nesbet68},
+\citet{Harris67} solved Eq.~(\ref{H_E_Psi_E}) approximately by requiring
+\beq
+\langle\Psi_i|H-E_i|\Psi^N_{E_i}\rangle=0,  \label{EES_ONE_C1}
+\eeq
+and using the following pair of trial functions $\{\phiH_{0k}, \phiH_{1k} \}$ in
+Eq.~(\ref{Psi_EES})
+\beq
+\phiH_{0k}(r) =  \psi_{0k}(r),\ \
+\phiH_{1k}(r) =  [\psi_{1k}(r) -  \exp(-\lambda r)],
+\label{def_phi_H} \eeq
+arriving at $K_0\approx K^{\mbox{\tiny{H}}}_{0}$,
+\beq \barr{l}
+K^{\mbox{\tiny{H}}}_{0} = a_1 / a_0 = - b^{\mbox{\tiny{H}}}_{0} / b^{\mbox{\tiny{H}}}_{1}, \ \ \
+b^{\mbox{\tiny{H}}}_{\epsilon} = \langle\Psi_i|H-E_i|  \phiH_{\epsilon k_i} \rangle,
+\earr \label{K_0_Harris} \eeq
+where $\lambda$ is a parameter (typically $\lambda=1$ \cite{Nesbet68}) used to make the irregular solution $\psi_{1k}(r)$ regular
+at the origin so that it could be used as a trial function in Eq.~(\ref{Psi_EES}).
+
+
+
+Our goal here is to improve upon the Harris' {\em Expansion Approach} \cite{Harris67} to the extent that the Eq.~(\ref{Psi_EES})
+converges to the exact solution as $N$ increases.
+This is attempted by postulating that
+within the functional space of $N$ basis $L^2$ functions  $\{\xi_p(r)\}_{p=0}^{N-1}$,
+the eigenstates $\{\Psi_i\}_{i=1}^{N}$ are the best possible solutions of the scattering problem (\ref{H_E_Psi_E})
+with the standing-wave boundary condition (\ref{stand_wave}) at the corresponding eigenvalues $\{E_i\}_{i=1}^{N}$.
+Accepting the conjecture, it immediately follows that the {\em inner} functional space consisting of the first $N$ basis functions
+must be removed from the trial functions $\{\phi,\overline{\phi}\}$ in Eq.~(\ref{Psi_EES}) arriving at
+\beq
+\phi_{\epsilon k}(r) = (1-\hat{P}_N) \phiH_{\epsilon k}(r),\ \ \ \epsilon = \{0,1\},
+\label{def_phi} \eeq
+\beq
+\hat{P}_N = \sum_{p=0}^{N-1} | \xi_p \rangle \langle \xi_p |,
+\label{P_N} \eeq
+\beq
+K_{0} = - \alpha_{0i} / \alpha_{1i}, \ \ \
+\alpha_{\epsilon i} = \langle\Psi_i|H|  \phi_{\epsilon k_i} \rangle.
+\label{K_0_EES} \eeq
+
+NOTE: TODO correct above: \cite{HM69} - used orthogonal continuum trial functions
+
+
+The conjecture could be verified numerically via the general expression for the $K$-matrix \cite{N82}
+\beq
+\widetilde{K}_0 = -\langle \psi_{0k_i} | V | \Psi_{E_i} \rangle\\
+\label{K_theory}\eeq
+and its approximation equivalent
+\beq
+\widetilde{K}^N_0 = -\langle \psi_{0k_i} | V | \Psi^N_{E_i} \rangle.
+\label{K_N_theory}\eeq
+If $\Psi_i$ is indeed a $\hat{P}_N$-projection of the correct scattering solution $\Psi^N_{E_i}$,
+then its functional-space tail could be used to
+determine the scale of its contribution to $\Psi^N_{E_i}$ via
+\beq \barr{l}
+\langle \xi_{N-1} | \Psi^N_{E_i}\rangle
+= a_i \langle \xi_{N-1}| \Psi_i \rangle,\\
+\langle \xi_{N-1} | \Psi^N_{E_i}\rangle
+ =  \langle \xi_{N-1}| \psi_{0k_i} \rangle
++ K_0 \langle \xi_{N-1}| \psi_{1k_i} \rangle,\\
+\earr \label{Psi_N_1_tail} \eeq
+where $K_0$ is given by Eq.~(\ref{K_0_EES}).
+Here it is assumed that $\xi_{N-1}(r)$ is the least vanishing among $\{\xi_p(r)\}_{p=0}^{N-1}$  at large $r$, which is
+a common feature of most "standard" $L^2$ bases \cite{abramowitz},
+\beq
+|\xi_p(r)| < |\xi_{p'}(r)|, \ \ \ p<p', \ \ \ r \rightarrow \infty.
+\eeq
+Solving Eq.~(\ref{Psi_N_1_tail}) for $a_i$,
+the full scattering solution $\Psi^N_{E_i}$ (\ref{Psi_EES}) could be reconstructed and then applied to $\widetilde{K}^N_0$ (\ref{K_N_theory}).
+In the case of the one-channel scattering, the convergence
+\beq
+\lim_{N \rightarrow \infty} |\widetilde{K}^N_0 - K_0 | = 0,
+\label{K_N_0_lim} \eeq
+could be verified numerically and found to be
+remarkably fast, see the results section.
+
+
+
+\subsection{Multichannel scattering}
+Since the results of this study were limited to the $S$-wave model of scattering,
+only the spin-related quantum numbers are considered in the
+following multichannel formalism.
+
+
+Let the {\em target} Hamiltonian $H_t$ of
+$\mathcal{N}$ electrons
+is diagonalized within $\hat{P}_N$ (\ref{P_N})
+\beq \barr{l}
+\langle \Phi_\gamma|H_t|\Phi_{\gamma'}\rangle=e_\gamma \delta_{\gamma\gamma'}, \ \
+\langle \Phi_\gamma|\Phi_{\gamma'}\rangle=\delta_{\gamma\gamma'},\\
+\Phi_\gamma = \sum_{\beta} C^t_{\gamma \beta} \theta_\beta,
+\earr \label{Phi_H_Phi_2} \eeq
+where $\{\theta_\beta\}$ denotes a complete set of target electron configurations which could be built from
+the first $N$ radial basis functions $\{\xi_p(r)\}_{p=0}^{N-1}$.
+In the case of one-electron targets, each
+$\theta_\beta$ is just a relevant $\xi_\beta(r)$ together with a required spin component.
+For targets with more than one electrons, $\{\theta_\beta\}$ could be constructed as spin-coupled Fano's subshells \cite{Fano65,KFB11},
+where $\{\xi_p(r)\}_{p=0}^{N-1}$ are used to define the radial components of the considered subshells.
+The total scattering system's eigenstates are constructed identically to the target (\ref{Phi_H_Phi_2})
+but for $(\mathcal{N}+1)$-electrons,
+\beq \barr{l}
+\langle\Psi_i^\Gamma|H|\Psi_j^\Gamma\rangle=E_i\delta_{ij}, \ \
+ \langle\Psi_i^\Gamma|\Psi_j^\Gamma\rangle=\delta_{ij},\\
+\Psi^\Gamma_i = \sum_{j} C_{ij} \Theta^\Gamma_j,
+\earr \label{Psi_H_Psi_2} \eeq
+where $H$ is the system Hamiltonian of $(\mathcal{N}+1)$-electrons, $\{\Theta_j^\Gamma\}$
+denotes a complete set of system electron configurations, and where
+$\Gamma$ denotes quantum numbers conserved by $H$.
+For the considered $S$-wave scattering,
+$\Gamma=\{S_\Gamma,\mu_\Gamma\}$, where $S_\Gamma$ and $\mu_\Gamma$ are the total spin and its $z$ projection, respectively.
+
+
+Closely following the JM method \cite{BR76p1491, KFB11} the scattering channels $\{\Phi_\gamma^\Gamma\}$ are defined by spin coupling the target eigenstates
+$\{\Phi_\gamma\}$ (\ref{Phi_H_Phi_2})
+and the spin of the scattering electron
+$s\equiv \frac{1}{2}$
+\beq
+| \Phi_{\gamma}^{\Gamma} \rangle = \sum_{\mu \mu'}
+C_{S_\gamma \mu' s \mu}^{S_\Gamma \mu_\Gamma}
+|\Phi_{\gamma \mu'} \rangle \ |s \mu  \rangle,
+\label{chi_phi_Gamma} \eeq
+where $|s \mu \rangle$ is Pauli spinor,
+$C_{j_1m_1j_2m_2}^{jm} \equiv \langle j_1m_1 j_2 m_2| jm\rangle$ are the Clebsch-Gordan coefficients,
+and where each scattering channel is labeled by a $\{\gamma, \Gamma\}$-pair.
+Then, the solution of the $(\mathcal{N}+1)$-electron Schr\"odinger equation for a given $\Gamma$,
+\beq
+(H-E) | \Psi_E \rangle =0,  \ \ \  \label{H_E_Psi_E_2}
+\eeq
+is approximated by
+
+
+\newpage
+TODO: This is for $E=E_i$.
+Using the JM1 and JM2 approximations, Eq.~(\ref{Psi_H_E_JM}) is reduced to
+\beq
+\sum_{\gamma'} W_{\gamma \gamma'} J_{\gamma'} f^{\gamma' \gamma_0}_N
+= - f_{N-1}^{\gamma \gamma_0} ,
+\eeq
+\beq
+W_{\gamma' \gamma}= \sum_j  X_j^{\gamma'} X_j^{\gamma} / (E_j-E).
+\eeq
+\beq
+f^{\gamma \gamma_0}_{p} =  s_{p}^{\gamma} \delta_{\gamma \gamma_0}
++ c_{p}^{\gamma} R_{\gamma \gamma_0},
+\eeq
+\beq
+W_{\gamma \gamma'} \approx  X_i^{\gamma} X_i^{\gamma'} / (E_i-E).
+\eeq
+\beq
+R_{\gamma \gamma_0} =  -
+[ q_{\gamma} \delta_{\gamma \gamma_0} + X_i^{\gamma} Q_{\gamma_0} / (E_i-E)]
+\eeq
+\beq
+q_{\gamma} = s_{N-1}^{\gamma} / c_{N-1}^{\gamma}, \ \
+s_{\gamma} = s_N^{\gamma} / s_{N-1}^{\gamma}, \ \
+c_{\gamma} = c_N^{\gamma} / c_{N-1}^{\gamma},
+\eeq
+\beq
+Q_{\gamma} =  X_i^{\gamma} J_{\gamma} s_{\gamma} q_\gamma +
+\sum_{\gamma'} X_i^{\gamma'} J_{\gamma'} c_{\gamma'} R_{\gamma' \gamma}
+\eeq
+\beq
+Q_{\gamma} = A_i^\gamma  + \Delta_i Q_\gamma / (E_i-E)
+\eeq
+\beq
+Q_{\gamma} = A_i^\gamma  (E_i-E)/ (E_i-E - \Delta_i)
+\eeq
+\beq
+A_i^\gamma =
+X_i^{\gamma} J_{\gamma} q_\gamma [s_{\gamma} -c_{\gamma} ]
+\eeq
+\beq
+\Delta_i = \sum_{\gamma} [X_i^{\gamma}]^2 J_{\gamma} c_{\gamma}
+\eeq
+\beq
+R_{\gamma \gamma_0} =  -
+[ q_{\gamma} \delta_{\gamma \gamma_0} + X_i^{\gamma} A_i^{\gamma_0} / (E_i-E - \Delta_i)]
+\eeq
+
+
+
+OLD Block
+\beq
+ \Psi_{E}  =  \sum_j a_j \Psi_j + \chi_{0 \gamma}
++ \sum_{\gamma'}   K_{\gamma' \gamma}
+\chi_{1 \gamma'} ,
+\eeq
+\beq
+\chi_{\epsilon \gamma} = \hat{A} \Phi^\Gamma_{\gamma}  \phi_{\epsilon \gamma},
+\eeq
+where $\hat{A}$ denotes antisymmetrization operator,
+and where the channels' trial functions $\{ \phi_{\epsilon \gamma} \}$ are defined for the open channels as
+\beq
+\phi_{\epsilon \gamma}\equiv \phi_{\epsilon k_\gamma}, \ \ \   k_{\gamma}^2 = 2(E_i - e_\gamma) > 0.
+\eeq
+
+
+From \cite{HZ11}:
+The single-energy differential cross section (SDCS) is given by Bethe's formula
+\beq
+d\sigma_{\gamma' \gamma} / d \varepsilon = [8/(\pi k_0^3 k_a k_b)] |R_{fi}|^2
+\eeq
+\beq
+\chi_f = [u_a(1) u_b(2) \pm (2|1)] /\sqrt{2}
+\eeq
+\beq
+u_a(1) \rightarrow \sin[k_a r_1 + (Z_a/k_a) \ln(2k_a r_1) + \sigma_0(k_a, Z_a)]
+\eeq
+\beq
+\chi_i = [\psi_0(1) u_0(2) \pm (2|1)] /\sqrt{2}
+\eeq
+\beq
+R_{fi} = \langle (H-E) \chi_f | \Psi_i \rangle \equiv \langle \chi_f | v_{12}|\Psi_i \rangle
+\eeq
+
+
+"Practical calculation of amplitudes for electron-impact ionization" \cite{MHR01}
+\beq
+\Psi^{(+)} = \Psi_{sc}+ \Phi_0
+\eeq
+\beq
+\Phi_0 = (2/k_0)^{1/2}[\exp(i{\bf k}_0 {\bf r}_1) \phi_0({\bf r}_2) \pm (2|1)] / \sqrt{2}
+\eeq
+
+
+\subsection{$S$-wave $e$-H scattering}
+\beq
+E_i = e_\gamma + k^2_\gamma/2,
+\eeq
+\beq \barr{l}
+[M_{\epsilon}]_{\gamma \gamma'} = D_1 + D_2 + (-1)^S D_3,\\
+D_1 = \langle \Phi_\gamma \xi_{N}  | h_1 + h_2-E_i |
+\Phi_{\gamma'} \phi_{\epsilon \gamma'} \rangle, \\
+D_2 = \langle \Phi_\gamma \xi_{N}  | v_{12} |
+\Phi_{\gamma'} \phi_{\epsilon \gamma'} \rangle, \\
+D_3 = \langle \Phi_\gamma \xi_{N}  | H -E_i |
+\phi_{\epsilon \gamma'} \Phi_{\gamma'}  \rangle, \\
+H_t = \hat{K}_1 + v_1, \\
+H = H_t + \hat{K}_2 + V, \ \ \ V = v_2 + v_{12},\\
+\earr \label{Y_B_W} \eeq
+\beq
+D_1 = \delta_{\gamma \gamma'} [ (e_\gamma -  E_i)
+\langle \xi_N | \phi_{\epsilon \gamma} \rangle + \langle \xi_N | h_2|\phi_{\epsilon \gamma} \rangle],
+\eeq
+\beq
+D_3 =  \langle \Phi_\gamma \phi_{\gamma}  | v_{12}|
+\phi_{\epsilon' \gamma'} \Phi_{\gamma'}  \rangle ,
+\label{eH_ex} \eeq
+
+
+
+
+
+
+
+\section{RESULTS}
+TODO: It is shown in the results section that the convergence rate in Eq.~(\ref{K_N_0_lim}) is remarkably fast.
+
+TODO: Figure 1 pot scattering
+
+\section{CONCLUSIONS}
+TODO
+
+
+\begin{acknowledgments}
+\end{acknowledgments}
+
+
+
+\bibliographystyle{apsrev}
+\bibliography{..//bibtex//qm_references}
+%\bibliography{qm_references}
+\end{document}
