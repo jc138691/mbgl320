@@ -52,8 +52,8 @@ public class HySWaveJmBasisHy extends HySWaveJm {
     // Note: run one at a time as only one set of result files is produced
 //    setupEngExcite();
 //    setupResonances_n2_n3_S1();
-    setupResonances_n2_S1();
-//    setupResonances_n2_S1_TestClosed();
+//    setupResonances_n2_S1();
+    setupResonances_n2_S1_TestClosed();
 //    setupEngExcite();
 //    setupEngTICS();
 //    setupEngSDCS();
@@ -140,13 +140,19 @@ public class HySWaveJmBasisHy extends HySWaveJm {
 
     ScattRes res;
 //    res = method.calcMidSysEngs();                  log.dbg("res=", res);
-    if (scttEngs != null) {
-      res = method.calc(scttEngs);                  log.dbg("res=", res);
+    if (scttEngs == null) {
+//      scttEngs = method.calcScattEngs();
+//      Vec sysScatEngs = method.calcSysScatEngs();
+//      scttEngs = scttEngs.append(sysScatEngs);
+//      scttEngs.sort();
+
+      Vec vE = method.calcSysScatEngs();
+      Vec vE2 = method.calcSysScatEngs();
+      vE2.add(+1.0E-6);
+      scttEngs = vE.append(vE2);
+      scttEngs.sort();
     }
-    else {
-//      res = method.calcEngGrid();                  log.dbg("res=", res);
-      res = method.calcSysEngs();                  log.dbg("res=", res);
-    }
+    res = method.calc(scttEngs);                  log.dbg("res=", res);
     setupScattRes(res, method);                        log.dbg("res=", res);
     res.writeToFiles();
   }

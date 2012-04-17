@@ -24,15 +24,19 @@ public ScttMthdBaseE1(CalcOptE1 calcOpt) {
 public CalcOptE1 getCalcOpt() {
   return calcOpt;
 }
-public ScattRes calcEngGrid() {
-  EngModel eng = calcOpt.getGridEng();    //log.dbg("Incident Energies =", eng);
-  EngGrid engs = new EngGrid(eng);
+public ScattRes calcForScatEngModel() {
+  EngGrid engs = calcScattEngs();
   return calc(engs);
 }
-public ScattRes calcSysEngs() {
-  throw new IllegalArgumentException(log.error("call relevant implementation of calcSysEngs"));
-//  return calc(sysEngs);
+public EngGrid calcScattEngs() {
+  EngModel eng = calcOpt.getGridEng();    //log.dbg("Incident Energies =", eng);
+  EngGrid engs = new EngGrid(eng);
+  return engs;
 }
+//public ScattRes calcSysEngs() {
+//  throw new IllegalArgumentException(log.error("call relevant implementation of calcSysEngs"));
+////  return calc(sysEngs);
+//}
 public int getSysBasisSize() {
   return sysEngs.size();
 }

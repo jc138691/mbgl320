@@ -142,8 +142,8 @@ public void setupResonances_n2_S1() {
 }
 public void setupResonances_n2_S1_TestClosed() {
 //    ENG_FIRST = (float) AtomUnits.fromEV(10.1);
-  ENG_FIRST = (float) AtomUnits.fromEV(10.20);
-  ENG_LAST = (float)AtomUnits.fromEV(10.21);
+  ENG_FIRST = (float) AtomUnits.fromEV(10.10);
+  ENG_LAST = (float)AtomUnits.fromEV(10.25);
   ENG_N = 101;
 }
 

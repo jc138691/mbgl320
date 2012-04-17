@@ -33,6 +33,8 @@ private Cmplx cn;       // N
 private double sn;      // N
 private Cmplx csn;      // N
 private double sn1;     // N-1
+private double qn1;     // s_{N-1} / c_{N-1}
+private double snn1;     // s_N / s_{N-1}
 private Cmplx csn1;     // N-1
 public static final double EPS = 1e-10;
 
@@ -53,6 +55,10 @@ public JmCh(double sysEng, double chEng, LgrrModel jmModel, int jmZ) { // channe
   }
   sqrtAbsMom = Math.sqrt(scattMom.abs());
   absMom = scattMom.abs();
+
+  snn1 = sn / sn1;
+  qn1 = (new Cmplx(sn1).div(cn1)).getRe();
+  cnn1 = cn.div(cn1);
   removeZeros();
 }
 private void removeZeros() {
@@ -60,6 +66,10 @@ private void removeZeros() {
     sn = 0;
   if (Calc.isZero(sn1))
     sn1 = 0;
+  if (Calc.isZero(qn1))
+    qn1 = 0;
+  if (Calc.isZero(snn1))
+    snn1 = 0;
   removeZeros(cn);
   removeZeros(cn1);
   removeZeros(cnn1);
@@ -102,8 +112,6 @@ private void loadOpen(int jmZ) {
   csn = JmTools.sc_n(N, L, scattMom, lambda, jmZ, EPS);
   sn = csn.getIm();
   cn = new Cmplx(csn.getRe(), 0);
-
-  cnn1 = cn.div(cn1);
 }
 private void loadClosed(int jmZ) {
   int N = jmModel.getN();
@@ -135,7 +143,6 @@ private void loadClosed(int jmZ) {
 //  cn = new Cmplx(); // DEBUG
   csn = cn;
 
-  cnn1 = cn.div(cn1);
 //  cnn1 = new Cmplx(1); //DEBUG
 }
 
@@ -179,7 +186,12 @@ public double getSn1() {
 public Cmplx getScattMom() {
   return scattMom;
 }
-
+public double getQn1() {
+  return qn1;
+}
+public double getSnn1() {
+  return snn1;
+}
 public double getScattEng() {
   return scattEng;
 }
