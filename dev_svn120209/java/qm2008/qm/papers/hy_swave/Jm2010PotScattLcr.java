@@ -71,7 +71,7 @@ public void calcJm(int newN) {
   JmMethodE1 method = new JmMethodE1(calcOpt);
   method.setOverD(D);
   method.setSysEngs(sysEngs);
-  ScattRes res = method.calcEngGrid();
+  ScattRes res = method.calcForScatEngModel();
   log.dbg("res=", res);
 //    ScattRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
 //

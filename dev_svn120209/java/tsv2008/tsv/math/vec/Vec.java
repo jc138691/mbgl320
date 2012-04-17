@@ -56,11 +56,17 @@ public class Vec {
     this.size = arr.length;
   }
 
-  public Vec copy()     {
-    double[] res = new double[size()];
-    System.arraycopy(arr, 0, res, 0, size());
-    return new Vec(res);
-  }
+public Vec copy()     {
+  double[] res = new double[size()];
+  System.arraycopy(arr, 0, res, 0, size());
+  return new Vec(res);
+}
+public Vec append(Vec v2)     {
+  double[] res = new double[size() + v2.size()];
+  System.arraycopy(arr, 0, res, 0, size());
+  System.arraycopy(v2.arr, 0, res, size(), v2.size());
+  return new Vec(res);
+}
   public void calc(Vec x, Func f) {
     FastLoop.calc(arr, x.getArr(), f);
   }
@@ -223,5 +229,7 @@ public final void mul(GMatrix m1,
     }
     return res;
   }
-  
+public void sort() {
+  Arrays.sort(arr);
+}
 }

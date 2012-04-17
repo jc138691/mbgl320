@@ -67,7 +67,7 @@ public class Jm2010PotScatt extends Jm2010CommonR {
     JmMethodE1 method = new JmMethodE1(calcOpt);
     method.setOverD(D);
     method.setSysEngs(eigEng);
-    ScattRes res = method.calcEngGrid();                  log.dbg("res=", res);
+    ScattRes res = method.calcForScatEngModel();                  log.dbg("res=", res);
 //    ScattRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
 
 //    FuncVec func = new FuncVecToString(res.getCross());

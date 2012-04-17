@@ -111,7 +111,7 @@ public class JmResonE2 {
     for (int i = 0; i < sN; i++) {  // iIdx, system state
       Cmplx sum = new Cmplx();
       for (int g = 0; g < cN; g++) {  // gIdx, g - for "little" gamma; target channel/state
-        Cmplx a = A[g][i].times(Mathx.pow(X[g][i], 2));
+        Cmplx a = A[g][i].times(X[g][i] * X[g][i]);
         sum = sum.add(a);
       }
       res[i] = sum;                           //log.dbg("X[" + g + ", " + i + "]=", sum);
@@ -124,19 +124,4 @@ public class JmResonE2 {
     return resDlts;
   }
 
-  // find all resonances (controlled by 'level') and load their indexes into an array
-//  public static IntVec getResIdxArr(double level, Mtrx mInfo) {
-//    double[][] info = mInfo.getArray();
-//    ArrayList<Integer> arr = new ArrayList<Integer>();
-//    for (int i = 0; i < info.length; i++) {
-//        if (info[i][RES_INFO_ABS_RATIO] < level) {
-//          arr.add(i);
-//      }
-//    }
-//    return new IntVec(IntVec.toArray(arr.toArray()));
-//  }
-//  public static void saveResRadDist(double resMaxLevel, ScattRes res, ConfHMtrx sysConfH) {
-//    IntVec idxArr = JmResonE2.getResIdxArr(resMaxLevel, res.getResInfo());
-//
-//  }
 }

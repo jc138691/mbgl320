@@ -8,6 +8,7 @@ import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.mtrx.MtrxFactory;
 import math.vec.Vec;
+import math.vec.VecDbgView;
 import scatt.Scatt;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
@@ -30,17 +31,23 @@ protected static final int SDCS_CH_OFFSET = 1;
 //  protected static final int CS_ENG_OFFSET = 1;
 protected static final int CS_CH_OFFSET = 1;
 private int exclSysIdx = -1;
+private int incSysIdx = -1;
 protected Mtrx jmX;
 
 public JmMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 protected abstract Mtrx calcX();
-public ScattRes calcSysEngs() {
+public Vec calcSysScatEngs() {
   Vec scttEngs = sysEngs.copy();
   scttEngs.add(-trgtE2.getInitTrgtEng());
-  return calc(scttEngs);
+  return scttEngs;
 }
+//public ScattRes calcSysEngs() {
+//  Vec scttEngs = sysEngs.copy();
+//  scttEngs.add(-trgtE2.getInitTrgtEng());
+//  return calc(scttEngs);
+//}
 private boolean isValidD(Vec overD, int nt) {
   if (overD.size() <= 2 || nt <= 2)   // something is wrong!
     return false;
@@ -89,20 +96,22 @@ private ScattRes calcV3_best(Vec scttEngs) { log.setDbg();
   for (int engIdx = 0; engIdx < eN; engIdx++) {
     log.info("i = ", engIdx);
     scattE = scttEngs.get(engIdx);             log.info("scattE = ", scattE);
-    int openN = calcOpenChNum(scattE);
-    int calcN = calcCalcChNum(scattE);
     mCs.set(engIdx, IDX_ENRGY, scattE);
     mTics.set(engIdx, IDX_ENRGY, scattE);                 // first column is for the energies
     if (scattE <= 0  ||  engModel.getFirst() > scattE ||  scattE > engModel.getLast()) {
       continue;
     }
+    int openN = calcOpenChNum(scattE);
+    int calcN = calcCalcChNum(scattE);
     sysTotE = scattE + trgtE2.getInitTrgtEng();          log.info("sysTotE = ", sysTotE);
     chArr = loadChArr(sysTotE);
     int sysIdx = matchSysTotE();
     if (sysIdx == -1) {
       jmR = calcR(calcN, openN);
+//      jmR = calcR_v1_ok(calcN, openN);
     }
     else {
+//      jmR = calcRSysIdx_bad(calcN, openN, sysIdx);
       jmR = calcRSysIdx(calcN, openN, sysIdx);
     }
     CmplxMtrx mS = Scatt.calcSFromK(jmR);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(mS));
@@ -116,28 +125,58 @@ private ScattRes calcV3_best(Vec scttEngs) { log.setDbg();
 private Mtrx calcR(int calcN, int openN) {
   Mtrx W = null;
   if (calcOpt.getUseClosed()) {
-    W = calcW(calcN);                              log.dbg("W=\n", new MtrxDbgView(W));
+    W = calcW(calcN);
   } else {
-    W = calcW(openN);                           log.dbg("W=\n", new MtrxDbgView(W));
-  }
-  Mtrx WSJS = calcWsjs(W, openN);                       log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
-//    CmplxMtrx WCJC = calcWCJC_v1_ok(W);                       log.dbg("WCJC=\n", new CmplxMtrxDbgView(WCJC));
-//    jmR = calcR_v1_ok(WCJC, WSJS);                      log.dbg("R=\n", new MtrxDbgView(jmR));
-  Mtrx WCJC = calcWcjc(W);                       log.dbg("WCJC=\n", new MtrxDbgView(WCJC));
-  Mtrx res = calcR(WCJC, WSJS);                      log.dbg("R=\n", new MtrxDbgView(res));
+    W = calcW(openN);
+  }                                                log.dbg("W=\n", new MtrxDbgView(W));
+  Mtrx WSJS = calcWsjs(W, openN);                  log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
+  Mtrx WCJC = calcWcjc(W);                         log.dbg("WCJC=\n", new MtrxDbgView(WCJC));
+  Mtrx res = calcR(WCJC, WSJS);                    log.dbg("R=\n", new MtrxDbgView(res));
+  return res;
+}
+private Mtrx calcR_v1_ok(int calcN, int openN) {
+  Mtrx W = null;
+  if (calcOpt.getUseClosed()) {
+    W = calcW(calcN);
+  } else {
+    W = calcW(openN);
+  }                                                 log.dbg("W=\n", new MtrxDbgView(W));
+  Mtrx WSJS = calcWsjs(W, openN);                   log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
+  CmplxMtrx WCJC = calcWCJC_v1_ok(W);               log.dbg("WCJC=\n", new CmplxMtrxDbgView(WCJC));
+  Mtrx res = calcR_v1_ok(WCJC, WSJS);               log.dbg("R=\n", new MtrxDbgView(res));
+  return res;
+}
+private Mtrx calcRSysIdx_bad(int calcN, int openN, int sysIdx) {
+  Mtrx mW = null;
+  if (calcOpt.getUseClosed()) {
+    mW = calcWSysIdx_bad(calcN, sysIdx);
+  } else {
+    mW = calcWSysIdx_bad(openN, sysIdx);
+  }                                                   log.dbg("W=\n", new MtrxDbgView(mW));
+  double dlt = calcDeltaSysIdx_bad(mW);                   log.dbg("dlt_i=", dlt);
+  Vec A = calcAVecSysIdx_bad(sysIdx, openN);              log.dbg("A=\n", new VecDbgView(A));
+  Mtrx res = calcRSysIdx_bad(sysIdx, mW, dlt, A);         log.dbg("R=\n", new MtrxDbgView(res));
   return res;
 }
 private Mtrx calcRSysIdx(int calcN, int openN, int sysIdx) {
-  Mtrx W = null;
-  if (calcOpt.getUseClosed()) {
-    W = calcWSysIdx(calcN, sysIdx);                              log.dbg("W=\n", new MtrxDbgView(W));
-  } else {
-    W = calcWSysIdx(openN, sysIdx);                           log.dbg("W=\n", new MtrxDbgView(W));
-  }
-  Mtrx WSJS = calcWsjsSysIdx(W, openN);                       log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
-  Mtrx WCJC = calcWcjcSysIdx(W);                       log.dbg("WCJC=\n", new MtrxDbgView(WCJC));
-  Mtrx res = calcR(WCJC, WSJS);                      log.dbg("R=\n", new MtrxDbgView(res));
   return res;
+}
+private Mtrx calcRSysIdx_bad(int sysIdx, Mtrx mW, double dlt, Vec vA) {
+  double[][] X = jmX.getArray();
+  int openN = vA.size();
+  Mtrx R = new Mtrx(openN, openN);
+  for (int t = 0; t < openN; t++) {
+    JmCh ch = chArr[t];
+    for (int t2 = 0; t2 < openN; t2++) {
+      double a = -Mathx.dlt(t, t2) * ch.getQn1();
+      double b = X[t][sysIdx] * vA.get(t2) / dlt;
+      double res = a + b;
+      R.set(t, t2, res);             log.dbg("R[t="+t+"][t2="+t2+"]=", R.get(t, t2));
+    }
+  }
+  loadConstsSqrt(R);                               log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
+  MtrxFactory.makeSymmByAvr(R);                log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(R));
+  return R;
 }
 protected void calcSdcs(int i, ScattRes res, int showNum) {
   loadSdcsW(chArr);
@@ -243,19 +282,6 @@ protected Mtrx calcWcjc(Mtrx mW) {
   }
   return res;
 }
-protected Mtrx calcWcjcSysIdx(Mtrx mW) {
-  double[][] W = mW.getArray();
-  int tN = mW.getNumRows();
-  Mtrx res = new Mtrx(tN, tN);
-  for (int t = 0; t < tN; t++) {
-    for (int t2 = 0; t2 < tN; t2++) {
-      JmCh ch2 = chArr[t2];
-      double wcj = ch2.getJnn().getRe() * W[t][t2] * ch2.getCnn1().getRe();
-      res.set(t, t2, wcj);
-    }
-  }
-  return res;
-}
 protected Mtrx calcR_v1_ok(CmplxMtrx WCJC, Mtrx WSJS) {
   int n3 = WCJC.getNumCols();
   int openN = WSJS.getNumCols();
@@ -265,8 +291,8 @@ protected Mtrx calcR_v1_ok(CmplxMtrx WCJC, Mtrx WSJS) {
   for (int t = 0; t < openN; t++) {
     for (int t2 = 0; t2 < openN; t2++) {
       double sum = 0;
-//      for (int t3 = 0; t3 < n3; t3++) {
-        for (int t3 = 0; t3 < openN; t3++) {
+      for (int t3 = 0; t3 < n3; t3++) {  // NOTE!!! n3=WCJC.getNumCols() is correct
+//        for (int t3 = 0; t3 < openN; t3++) { // NOTE!!! openN is WRONG
         Cmplx wc = invWC.get(t, t3);               log.dbg("wc=", wc);
 //        if (!Calc.isZero(wc.getIm())) {
 //          throw new IllegalArgumentException(log.error("!Calc.isZero(wc.getIm())"));
@@ -278,22 +304,22 @@ protected Mtrx calcR_v1_ok(CmplxMtrx WCJC, Mtrx WSJS) {
     }
   }
   R.timesEquals(-1.);                          log.dbg("R.timesEquals(-1.)=\n", new MtrxDbgView(R));
-  loadConsts(R);                               log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
+  loadConstsSqrt(R);                               log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
+  loadConstsCn1(R);                               log.dbg("loadConstsCn1(R)=\n", new MtrxDbgView(R));
   MtrxFactory.makeSymmByAvr(R);                log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(R));
   return R;
 }
 protected Mtrx calcR(Mtrx WCJC, Mtrx WSJS) {
   int n3 = WCJC.getNumCols();
   int openN = WSJS.getNumCols();
-  Mtrx invWC = WCJC.inverse();
-  log.dbg("WCJC^{-1}=\n", new MtrxDbgView(invWC));
+  Mtrx invWC = WCJC.inverse();     log.dbg("WCJC^{-1}=\n", new MtrxDbgView(invWC));
 //  Mtrx R = invWC.times(WSJS);                    log.dbg("R=\n", new CmplxMtrxDbgView(R));
   Mtrx R = new Mtrx(openN, openN);
   for (int t = 0; t < openN; t++) {
     for (int t2 = 0; t2 < openN; t2++) {
       double sum = 0;
-//      for (int t3 = 0; t3 < n3; t3++) {
-      for (int t3 = 0; t3 < openN; t3++) {
+      for (int t3 = 0; t3 < n3; t3++) {  // NOTE!!! n3=WCJC.getNumCols() is correct
+//        for (int t3 = 0; t3 < openN; t3++) { // NOTE!!! openN is WRONG
         double wc = invWC.get(t, t3);
         sum += wc * WSJS.get(t3, t2);
 //        log.dbg("wc=", wc);
@@ -304,26 +330,32 @@ protected Mtrx calcR(Mtrx WCJC, Mtrx WSJS) {
     }
   }
   R.timesEquals(-1.);                          log.dbg("R.timesEquals(-1.)=\n", new MtrxDbgView(R));
-  loadConsts(R);                               log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
+  loadConstsSqrt(R);                               log.dbg("loadConstsSqrt(R)=\n", new MtrxDbgView(R));
+  loadConstsCn1(R);                               log.dbg("loadConstsCn1(R)=\n", new MtrxDbgView(R));
   MtrxFactory.makeSymmByAvr(R);                log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(R));
   return R;
 }
-protected void loadConsts(Mtrx mK) {
+protected void loadConstsSqrt(Mtrx mK) {
   for (int t = 0; t < mK.getNumRows(); t++) {
     JmCh ch = chArr[t];
     double kg = ch.getSqrtAbsMom(); // k_gamma
     Cmplx cn1 = ch.getCn1();
-    if (!Calc.isZero(cn1.getIm())) {
-      throw new IllegalArgumentException(log.error("!Calc.isZero(cn1.getIm())"));
-    }
     for (int t2 = 0; t2 < mK.getNumCols(); t2++) {
       JmCh ch2 = chArr[t2];
-      if (!ch.isOpen()  ||  !ch2.isOpen()) {
-        throw new IllegalArgumentException(log.error("!ch2.isOpen()"));
-      }
       double kg2 = ch2.getSqrtAbsMom(); // k_{gamma_0}
       double oldR = mK.get(t, t2);
-      double newR = oldR * (kg / kg2) / cn1.getRe();
+      double newR = oldR * (kg / kg2);
+      mK.set(t, t2, newR);
+    }
+  }
+}
+protected void loadConstsCn1(Mtrx mK) {
+  for (int t = 0; t < mK.getNumRows(); t++) {
+    JmCh ch = chArr[t];
+    Cmplx cn1 = ch.getCn1();
+    for (int t2 = 0; t2 < mK.getNumCols(); t2++) {
+      double oldR = mK.get(t, t2);
+      double newR = oldR / cn1.getRe();
       mK.set(t, t2, newR);
     }
   }
@@ -346,16 +378,26 @@ protected Mtrx calcWsjs(Mtrx mW, int openN) {
   }
   return res;
 }
-protected Mtrx calcWsjsSysIdx(Mtrx mW, int openN) {
+protected double calcDeltaSysIdx_bad(Mtrx mW) {
   double[][] W = mW.getArray();
   int tN = mW.getNumRows();
-  Mtrx res = new Mtrx(tN, openN);
+  double res = 0;
   for (int t = 0; t < tN; t++) {
-    for (int t2 = 0; t2 < openN; t2++) {
-      JmCh ch2 = chArr[t2];
-      double wsj = ch2.getJnn().getRe() * W[t][t2] * ch2.getSn();
-      res.set(t, t2, wsj);
-    }
+    JmCh ch = chArr[t];
+    double d = ch.getJnn().getRe() * W[t][t] * ch.getCnn1().getRe();
+    res += d;
+  }
+  return res;
+}
+protected Vec calcAVecSysIdx_bad(int sysIdx, int tN) {
+  double[][] X = jmX.getArray();
+  Vec res = new Vec(tN);
+  for (int t = 0; t < tN; t++) {
+    JmCh ch = chArr[t];
+    double a = ch.getJnn().getRe() * X[t][sysIdx] * ch.getQn1();
+    double b = ch.getSnn1() - ch.getCnn1().getRe();
+    double c = a * b;
+    res.set(t, c);
   }
   return res;
 }
@@ -369,17 +411,22 @@ protected Mtrx calcW(int calcNum) {
     for (int t2 = t; t2 < tN; t2++) {
       double G = 0;
       for (int i = 0; i < sN; i++) {
+//        exclSysIdx = 10; // DEBUG
 //        if (exclSysIdx == i) { // DEBUG
 //          continue;
 //        }
+        incSysIdx = 10; // DEBUG
+        if (incSysIdx != i) { // DEBUG
+          continue;
+        }
         double ei = sysE[i];
-        double xx = X[t][i] * X[t2][i];
+        double xx = X[t][i] * X[t2][i];     log.dbg("xx=", xx);
         if (Double.compare(ei, sysTotE) == 0) {
 //          double eps = calcZeroG(i, sysE);
           throw new IllegalArgumentException(log.error("sysE[i="+i+"]=sysTotE=" + sysTotE));
 //          G += (xx / eps);
         } else {
-          G += (xx / (ei - sysTotE));
+          G += (xx / (ei - sysTotE));       log.dbg("G=", G);
         }
       }
       res.set(t, t2, G);
@@ -388,18 +435,18 @@ protected Mtrx calcW(int calcNum) {
   }
   return res;
 }
-protected Mtrx calcWSysIdx(int calcNum, int sysIdx) {
-  log.dbg("jmX=\n", new MtrxDbgView(jmX));
-  Mtrx Xt = jmX.transpose();
-  log.dbg("Xt=\n", new MtrxDbgView(Xt));
-  Mtrx invX = Xt.inverse();
-  log.dbg("invX=\n", new MtrxDbgView(invX));
-
-  Mtrx xx = invX.times(Xt);
-  log.dbg("xx=\n", new MtrxDbgView(xx));
-
-  Mtrx xx2 = Xt.times(invX);
-  log.dbg("xx2=\n", new MtrxDbgView(xx2));
+protected Mtrx calcWSysIdx_bad(int calcNum, int sysIdx) {
+//  log.dbg("jmX=\n", new MtrxDbgView(jmX));
+//  Mtrx Xt = jmX.transpose();
+//  log.dbg("Xt=\n", new MtrxDbgView(Xt));
+//  Mtrx invX = Xt.inverse();
+//  log.dbg("invX=\n", new MtrxDbgView(invX));
+//
+//  Mtrx xx = invX.times(Xt);
+//  log.dbg("xx=\n", new MtrxDbgView(xx));
+//
+//  Mtrx xx2 = Xt.times(invX);
+//  log.dbg("xx2=\n", new MtrxDbgView(xx2));
 
 
   double[][] X = jmX.getArray();
@@ -407,6 +454,14 @@ protected Mtrx calcWSysIdx(int calcNum, int sysIdx) {
   Mtrx res = new Mtrx(tN, tN);
   for (int t = 0; t < tN; t++) {     //log.dbg("t = ", t);  // Target channels
     for (int t2 = t; t2 < tN; t2++) {
+//      log.dbg("X[t][sysIdx-1]=", X[t][sysIdx-1]);
+//      log.dbg("X[t][sysIdx]=", X[t][sysIdx]);
+//      log.dbg("X[t][sysIdx+1]=", X[t][sysIdx+1]);
+
+//      log.dbg("X[t2][sysIdx-1]=", X[t2][sysIdx-1]);
+//      log.dbg("X[t2][sysIdx]=", X[t2][sysIdx]);
+//      log.dbg("X[t2][sysIdx+1]=", X[t2][sysIdx+1]);
+
       double G = X[t][sysIdx] * X[t2][sysIdx];
       res.set(t, t2, G);
       res.set(t2, t, G);
