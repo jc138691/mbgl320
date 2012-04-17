@@ -259,6 +259,59 @@ Then, the solution of the $(\mathcal{N}+1)$-electron Schr\"odinger equation for 
 (H-E) | \Psi_E \rangle =0,  \ \ \  \label{H_E_Psi_E_2}
 \eeq
 is approximated by
+
+
+\newpage
+TODO: This is for $E=E_i$.
+Using the JM1 and JM2 approximations, Eq.~(\ref{Psi_H_E_JM}) is reduced to
+\beq 
+\sum_{\gamma'} W_{\gamma \gamma'} J_{\gamma'} f^{\gamma' \gamma_0}_N
+= - f_{N-1}^{\gamma \gamma_0} ,
+\eeq
+\beq
+W_{\gamma' \gamma}= \sum_j  X_j^{\gamma'} X_j^{\gamma} / (E_j-E).
+\eeq
+\beq
+f^{\gamma \gamma_0}_{p} =  s_{p}^{\gamma} \delta_{\gamma \gamma_0}
++ c_{p}^{\gamma} R_{\gamma \gamma_0}, 
+\eeq
+\beq
+W_{\gamma \gamma'} \approx  X_i^{\gamma} X_i^{\gamma'} / (E_i-E).
+\eeq
+\beq
+R_{\gamma \gamma_0} =  -
+[ q_{\gamma} \delta_{\gamma \gamma_0} + X_i^{\gamma} Q_{\gamma_0} / (E_i-E)]
+\eeq
+\beq
+q_{\gamma} = s_{N-1}^{\gamma} / c_{N-1}^{\gamma}, \ \ 
+s_{\gamma} = s_N^{\gamma} / s_{N-1}^{\gamma}, \ \ 
+c_{\gamma} = c_N^{\gamma} / c_{N-1}^{\gamma}, 
+\eeq
+\beq
+Q_{\gamma} =  X_i^{\gamma} J_{\gamma} s_{\gamma} q_\gamma +
+\sum_{\gamma'} X_i^{\gamma'} J_{\gamma'} c_{\gamma'} R_{\gamma' \gamma}
+\eeq
+\beq
+Q_{\gamma} = A_i^\gamma  + \Delta_i Q_\gamma / (E_i-E)
+\eeq
+\beq
+Q_{\gamma} = A_i^\gamma  (E_i-E)/ (E_i-E - \Delta_i)
+\eeq
+\beq
+A_i^\gamma =
+X_i^{\gamma} J_{\gamma} q_\gamma [s_{\gamma} -c_{\gamma} ]
+\eeq
+\beq
+\Delta_i = \sum_{\gamma} [X_i^{\gamma}]^2 J_{\gamma} c_{\gamma}
+\eeq
+\beq
+R_{\gamma \gamma_0} =  -
+[ q_{\gamma} \delta_{\gamma \gamma_0} + X_i^{\gamma} A_i^{\gamma_0} / (E_i-E - \Delta_i)]
+\eeq
+
+
+
+OLD Block
 \beq
  \Psi_{E}  =  \sum_j a_j \Psi_j + \chi_{0 \gamma}
 + \sum_{\gamma'}   K_{\gamma' \gamma}
@@ -275,7 +328,7 @@ and where the channels' trial functions $\{ \phi_{\epsilon \gamma} \}$ are defin
 
 
 From \cite{HZ11}:
-The single-energy differential cross section (SDCS) is given by Bethe's formula 
+The single-energy differential cross section (SDCS) is given by Bethe's formula
 \beq
 d\sigma_{\gamma' \gamma} / d \varepsilon = [8/(\pi k_0^3 k_a k_b)] |R_{fi}|^2
 \eeq
