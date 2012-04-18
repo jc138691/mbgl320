@@ -8,12 +8,12 @@ import math.vec.Vec;
 * Copyright dmitry.konovalov@jcu.edu.au Date: 16/09/2008, Time: 09:42:35
 */
 public class LgrrArr extends FuncArr {
-final protected int alpha;
+final protected double alpha;
 final protected double lambda;
 protected static FactLn fLn;
 
 public LgrrArr(final Vec x, final int size
-  , final int alpha, final double lambda) {
+  , final double alpha, final double lambda) {
   super(x, size);
   this.alpha = alpha;
   this.lambda = lambda;

@@ -22,8 +22,6 @@ import javax.utilx.log.Log;
  */
 public abstract class JmMthdBaseE2 extends ScttMthdBaseE2 {
 public static Log log = Log.getLog(JmMthdBaseE2.class);
-//private static double MAGIC_MAX_EPS = 0.00000001; // MAGIC NUMBERS!!!!!!!!!!!!!!!!!!!!!!!
-//private static int MAGIC_EPS_N = 1000; // MAGIC NUMBERS!!!!!!!!!!!!!!!!!!!!!!!
 //protected static final int IDX_IONIZ = 1;
 protected static final int SDCS_ENG_OFFSET = 1;
 //  protected static final int SC_SYS_ENG_OFFSET = 1;
@@ -31,9 +29,8 @@ protected static final int SDCS_CH_OFFSET = 1;
 //  protected static final int CS_ENG_OFFSET = 1;
 protected static final int CS_CH_OFFSET = 1;
 private int exclSysIdx = -1;
-private int incSysIdx = -1;
 protected Mtrx jmX;
-
+private static final double MIN_SYS_ENG_DELTA = Calc.EPS_10;
 public JmMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
@@ -43,11 +40,6 @@ public Vec calcSysScatEngs() {
   scttEngs.add(-trgtE2.getInitTrgtEng());
   return scttEngs;
 }
-//public ScattRes calcSysEngs() {
-//  Vec scttEngs = sysEngs.copy();
-//  scttEngs.add(-trgtE2.getInitTrgtEng());
-//  return calc(scttEngs);
-//}
 private boolean isValidD(Vec overD, int nt) {
   if (overD.size() <= 2 || nt <= 2)   // something is wrong!
     return false;
@@ -112,7 +104,7 @@ private ScattRes calcV3_best(Vec scttEngs) { log.setDbg();
     }
     else {
 //      jmR = calcRSysIdx_bad(calcN, openN, sysIdx);
-      jmR = calcRSysIdx(calcN, openN, sysIdx);
+      continue; // ignore
     }
     CmplxMtrx mS = Scatt.calcSFromK(jmR);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(mS));
     calcCrossSecs(engIdx, res, mS, openN);
@@ -132,6 +124,9 @@ private Mtrx calcR(int calcN, int openN) {
   Mtrx WSJS = calcWsjs(W, openN);                  log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
   Mtrx WCJC = calcWcjc(W);                         log.dbg("WCJC=\n", new MtrxDbgView(WCJC));
   Mtrx res = calcR(WCJC, WSJS);                    log.dbg("R=\n", new MtrxDbgView(res));
+  MtrxFactory.makeSymmByAvr(res);                log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(res));
+  JmKatoE2 kato = new JmKatoE2(this);
+//  res = kato.calc(res);     log.dbg("kato.calc(R)=\n", new MtrxDbgView(res));
   return res;
 }
 private Mtrx calcR_v1_ok(int calcN, int openN) {
@@ -156,9 +151,6 @@ private Mtrx calcRSysIdx_bad(int calcN, int openN, int sysIdx) {
   double dlt = calcDeltaSysIdx_bad(mW);                   log.dbg("dlt_i=", dlt);
   Vec A = calcAVecSysIdx_bad(sysIdx, openN);              log.dbg("A=\n", new VecDbgView(A));
   Mtrx res = calcRSysIdx_bad(sysIdx, mW, dlt, A);         log.dbg("R=\n", new MtrxDbgView(res));
-  return res;
-}
-private Mtrx calcRSysIdx(int calcN, int openN, int sysIdx) {
   return res;
 }
 private Mtrx calcRSysIdx_bad(int sysIdx, Mtrx mW, double dlt, Vec vA) {
@@ -332,7 +324,6 @@ protected Mtrx calcR(Mtrx WCJC, Mtrx WSJS) {
   R.timesEquals(-1.);                          log.dbg("R.timesEquals(-1.)=\n", new MtrxDbgView(R));
   loadConstsSqrt(R);                               log.dbg("loadConstsSqrt(R)=\n", new MtrxDbgView(R));
   loadConstsCn1(R);                               log.dbg("loadConstsCn1(R)=\n", new MtrxDbgView(R));
-  MtrxFactory.makeSymmByAvr(R);                log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(R));
   return R;
 }
 protected void loadConstsSqrt(Mtrx mK) {
@@ -411,22 +402,17 @@ protected Mtrx calcW(int calcNum) {
     for (int t2 = t; t2 < tN; t2++) {
       double G = 0;
       for (int i = 0; i < sN; i++) {
-//        exclSysIdx = 10; // DEBUG
 //        if (exclSysIdx == i) { // DEBUG
 //          continue;
 //        }
-        incSysIdx = 10; // DEBUG
-        if (incSysIdx != i) { // DEBUG
-          continue;
-        }
         double ei = sysE[i];
-        double xx = X[t][i] * X[t2][i];     log.dbg("xx=", xx);
+        double xx = X[t][i] * X[t2][i];     //log.dbg("xx=", xx);
         if (Double.compare(ei, sysTotE) == 0) {
 //          double eps = calcZeroG(i, sysE);
           throw new IllegalArgumentException(log.error("sysE[i="+i+"]=sysTotE=" + sysTotE));
 //          G += (xx / eps);
         } else {
-          G += (xx / (ei - sysTotE));       log.dbg("G=", G);
+          G += (xx / (ei - sysTotE));       //log.dbg("G=", G);
         }
       }
       res.set(t, t2, G);
@@ -447,7 +433,6 @@ protected Mtrx calcWSysIdx_bad(int calcNum, int sysIdx) {
 //
 //  Mtrx xx2 = Xt.times(invX);
 //  log.dbg("xx2=\n", new MtrxDbgView(xx2));
-
 
   double[][] X = jmX.getArray();
   int tN = calcNum;
@@ -474,7 +459,7 @@ protected int matchSysTotE() {
   double[] sysE = getSysEngs().getArr();
   for (int i = 0; i < sysE.length; i++) {
     double ei = sysE[i];
-    if (Calc.isZero(ei - sysTotE)) {
+    if (Math.abs(ei - sysTotE) < MIN_SYS_ENG_DELTA) {
       log.dbg("sysE[i="+i+"]=sysTotE=", sysTotE);
       return i;
     }

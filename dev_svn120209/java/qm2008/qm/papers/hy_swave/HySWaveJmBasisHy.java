@@ -141,16 +141,16 @@ public class HySWaveJmBasisHy extends HySWaveJm {
     ScattRes res;
 //    res = method.calcMidSysEngs();                  log.dbg("res=", res);
     if (scttEngs == null) {
-//      scttEngs = method.calcScattEngs();
+      scttEngs = method.calcScattEngs();
 //      Vec sysScatEngs = method.calcSysScatEngs();
 //      scttEngs = scttEngs.append(sysScatEngs);
 //      scttEngs.sort();
 
-      Vec vE = method.calcSysScatEngs();
-      Vec vE2 = method.calcSysScatEngs();
-      vE2.add(+1.0E-6);
-      scttEngs = vE.append(vE2);
-      scttEngs.sort();
+//      Vec vE = method.calcSysScatEngs();
+//      Vec vE2 = method.calcSysScatEngs();
+//      vE2.add(+1.0E-6);
+//      scttEngs = vE.append(vE2);
+//      scttEngs.sort();
     }
     res = method.calc(scttEngs);                  log.dbg("res=", res);
     setupScattRes(res, method);                        log.dbg("res=", res);
