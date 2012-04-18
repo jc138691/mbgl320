@@ -1,0 +1,215 @@
+%%\documentclass[aip,jcp]{revtex4-1}
+\documentclass[aip
+, pra
+, showpacs
+, aps
+, twocolumn
+%, onecolumn
+, groupedaddress
+, floatfix
+%, preprint
+]{revtex4}
+%]{revtex4-1}
+\usepackage{graphicx, amsbsy, bm, dcolumn, amsmath}
+\usepackage{currfile}
+\usepackage{datetime}
+
+\newcommand{\etal}{{\em et~al.\/}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\JM}{\mbox{\tiny{JM}}}
+\newcommand{\Kato}{\mbox{\tiny{Kato}}}
+\newcommand{\vare}{\varepsilon}
+\newcommand{\phiH}{\phi^{\mbox{\tiny{H}}}}
+\newcommand{\vecCT}{ {\bf c} \cdot }
+%\newcommand{\vecCT}{ {\bf c}^{\mbox{\tiny{T}} }}
+
+
+
+\newcommand{\isum}%
+{\mathop{\hbox{$\displaystyle\sum\kern-13.2pt\int\kern1.5pt$}}}
+
+\begin{document}
+
+\title {$J$-matrix calculation of electron-hydrogen $S$-wave scattering: Accurate ionization amplitudes}
+
+\author{Dmitry A. Konovalov}
+\affiliation{ARC Centre for Antimatter-Matter Studies}
+\affiliation{Discipline of Information Technology, School of Business,
+James Cook University, Townsville, Queensland 4811, Australia}
+
+\author{Igor Bray}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
+
+
+\date{\today, \currenttime}
+
+\begin{abstract}
+It is shown that existing JM method could be significantly simplified without the loss of convergence rate or accuracy.
+
+
+The solution is very elegant and arguably somewhat almost trivial, especially when compared to
+the existing theories.
+
+\end{abstract}
+
+\pacs{34.80.Dp} %34.80.Dp	Atomic excitation and ionization
+\maketitle
+The current file is: \currfilename.
+
+\section{INTRODUCTION}
+TODO
+this Eigenstate Expansion for Scattering (EES) method relies on the following conjecture.
+
+<ultichannel scattering \cite{CA73, NO72, TF79, Nesbet78, Lucchese86}
+
+\section{THEORY}
+\subsection{Multichannel scattering}
+Since the results of this study were limited to the $S$-wave model of scattering,
+only the spin-related quantum numbers are considered in the
+following multichannel formalism.
+
+Let $\psi_{0k}$ and $\psi_{1k}$ be regular and irregular solutions of
+\beq \barr{l}
+(\hat{K}-E)  \psi_{\epsilon k} (r) =0, \ \ \ \epsilon=\{0,1\},\\
+\psi_{0k}(r=0) = 0, \ \ \ \psi_{1k}(r=0) \neq 0,\\
+\earr \label{H_0_E_psi}\eeq
+which are the $S$-terms of the plain wave
+\beq
+\psi_{0k}(r) = \sin(kr) ,\ \ \
+\psi_{1k}(r) = \cos(kr).
+\label{K} \eeq
+Let $\{\xi_p(r)\}_{p=0}^\infty$ be an $L^2$-complete set of real orthonormal functions
+such that for any $p,p'=0,1,...,\infty$
+\beq
+\langle \xi_p | \xi_{p'} \rangle \equiv \int_0^\infty dr \xi_p(r) \xi_{p'}(r) =\delta_{pp'}, \ \ \ \xi_p(0)=0,
+\eeq
+\beq
+\hat{P}_{N_t} = \sum_{p=0}^{N_t-1} | \xi_p \rangle \langle \xi_p |,
+\label{P_N} \eeq
+
+
+Let the {\em target} Hamiltonian $H_t$ of
+$\mathcal{N}$ electrons
+is diagonalized within $\hat{P}_N$ (\ref{P_N})
+\beq \barr{l}
+\langle \Phi_\gamma|H_t|\Phi_{\gamma'}\rangle=e_\gamma \delta_{\gamma\gamma'}, \ \
+\langle \Phi_\gamma|\Phi_{\gamma'}\rangle=\delta_{\gamma\gamma'},\\
+\Phi_\gamma = \sum_{\beta} C^t_{\gamma \beta} \theta_\beta,
+\earr \label{Phi_H_Phi_2} \eeq
+where $\{\theta_\beta\}$ denotes a complete set of target electron configurations which could be built from
+the first $N$ radial basis functions $\{\xi_p(r)\}_{p=0}^{N-1}$.
+In the case of one-electron targets, each
+$\theta_\beta$ is just a relevant $\xi_\beta(r)$ together with a required spin component.
+For targets with more than one electrons, $\{\theta_\beta\}$ could be constructed as spin-coupled Fano's subshells \cite{Fano65,KFB11},
+where $\{\xi_p(r)\}_{p=0}^{N-1}$ are used to define the radial components of the considered subshells.
+The total scattering system's eigenstates are constructed identically to the target (\ref{Phi_H_Phi_2})
+but for $(\mathcal{N}+1)$-electrons,
+\beq \barr{l}
+\langle\Psi_i^\Gamma|H|\Psi_j^\Gamma\rangle=E_i\delta_{ij}, \ \
+ \langle\Psi_i^\Gamma|\Psi_j^\Gamma\rangle=\delta_{ij},\\
+\Psi^\Gamma_i = \sum_{j} C_{ij} \Theta^\Gamma_j,
+\earr \label{Psi_H_Psi_2} \eeq
+where $H$ is the system Hamiltonian of $(\mathcal{N}+1)$-electrons, $\{\Theta_j^\Gamma\}$
+denotes a complete set of system electron configurations, and where
+$\Gamma$ denotes quantum numbers conserved by $H$.
+For the considered $S$-wave scattering,
+$\Gamma=\{S_\Gamma,\mu_\Gamma\}$, where $S_\Gamma$ and $\mu_\Gamma$ are the total spin and its $z$ projection, respectively.
+
+
+Closely following the JM method \cite{BR76p1491, KFB11} the scattering channels $\{\Phi_\gamma^\Gamma\}$ are defined by spin coupling the target eigenstates
+$\{\Phi_\gamma\}$ (\ref{Phi_H_Phi_2})
+and the spin of the scattering electron
+$s\equiv \frac{1}{2}$
+\beq
+| \Phi_{\gamma}^{\Gamma} \rangle = \sum_{\mu \mu'}
+C_{S_\gamma \mu' s \mu}^{S_\Gamma \mu_\Gamma}
+|\Phi_{\gamma \mu'} \rangle \ |s \mu  \rangle,
+\label{chi_phi_Gamma} \eeq
+where $|s \mu \rangle$ is Pauli spinor,
+$C_{j_1m_1j_2m_2}^{jm} \equiv \langle j_1m_1 j_2 m_2| jm\rangle$ are the Clebsch-Gordan coefficients,
+and where each scattering channel is labeled by a $\{\gamma, \Gamma\}$-pair.
+Then, the solution of the $(\mathcal{N}+1)$-electron Schr\"odinger equation for a given $\Gamma$,
+\beq
+(H-E) | \Psi_E \rangle =0,  \ \ \  \label{H_E_Psi_E_2}
+\eeq
+is approximated by
+\beq
+ \Psi_{E}^\gamma  =  \sum_j a_j^\gamma \Psi_j + \chi_{0 \gamma}
++ \sum_{\gamma'}  \chi_{1 \gamma'} K_{\gamma' \gamma}
+ ,
+\eeq
+\beq
+\chi_{\epsilon \gamma} = \hat{A} \Phi^\Gamma_{\gamma}  \phi_{\epsilon \gamma},
+\eeq
+where $\hat{A}$ denotes antisymmetrization operator,
+and where the channels' trial functions $\{ \phi_{\epsilon \gamma} \}$ are defined for the open channels as
+\beq
+\phi_{\epsilon \gamma}\equiv \phi_{\epsilon k_\gamma}, \ \ \   k_{\gamma}^2 = 2(E_i - e_\gamma) > 0.
+\eeq
+
+
+NOTE! Look into how to calculate $\{ \phi_{\epsilon \gamma} \}$. In the JM method it will not be just times $P_N$ nor $P_{N_t}$
+\beq
+\phi_{0\gamma} = \sum_{p=N}^\infty s_p^{\gamma} \phi_p^{\JM}
+\eeq
+\beq
+\phi_{1\gamma} = \sum_{p=N}^\infty c_p^{\gamma} \phi_p^{\JM}
+\eeq
+
+Kato correction is given by
+\beq
+K_{\gamma' \gamma}^{\Kato} = K_{\gamma' \gamma}^{\JM} + \Delta_{\gamma' \gamma}
+\eeq
+\beq
+\Delta_{\gamma' \gamma} = - \langle \Psi_E^{\gamma'}  |H-E| \Psi_E^\gamma \rangle
+\eeq
+
+\subsection{$S$-wave $e$-H scattering}
+\beq
+E_i = e_\gamma + k^2_\gamma/2,
+\eeq
+\beq \barr{l}
+[M_{\epsilon}]_{\gamma \gamma'} = D_1 + D_2 + (-1)^S D_3,\\
+D_1 = \langle \Phi_\gamma \xi_{N}  | h_1 + h_2-E_i |
+\Phi_{\gamma'} \phi_{\epsilon \gamma'} \rangle, \\
+D_2 = \langle \Phi_\gamma \xi_{N}  | v_{12} |
+\Phi_{\gamma'} \phi_{\epsilon \gamma'} \rangle, \\
+D_3 = \langle \Phi_\gamma \xi_{N}  | H -E_i |
+\phi_{\epsilon \gamma'} \Phi_{\gamma'}  \rangle, \\
+H_t = \hat{K}_1 + v_1, \\
+H = H_t + \hat{K}_2 + V, \ \ \ V = v_2 + v_{12},\\
+\earr \label{Y_B_W} \eeq
+\beq
+D_1 = \delta_{\gamma \gamma'} [ (e_\gamma -  E_i)
+\langle \xi_N | \phi_{\epsilon \gamma} \rangle + \langle \xi_N | h_2|\phi_{\epsilon \gamma} \rangle],
+\eeq
+\beq
+D_3 =  \langle \Phi_\gamma \phi_{\gamma}  | v_{12}|
+\phi_{\epsilon' \gamma'} \Phi_{\gamma'}  \rangle ,
+\label{eH_ex} \eeq
+
+
+
+
+
+
+
+\section{RESULTS}
+TODO
+\section{CONCLUSIONS}
+TODO
+
+
+\begin{acknowledgments}
+\end{acknowledgments}
+
+
+
+\bibliographystyle{apsrev}
+\bibliography{..//bibtex//qm_references}
+%\bibliography{qm_references}
+\end{document}
