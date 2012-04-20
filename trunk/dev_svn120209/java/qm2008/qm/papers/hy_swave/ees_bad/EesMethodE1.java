@@ -50,7 +50,7 @@ public ScattRes calcSysEngs() {
     double sysA = calcSysA(psi, scattE, i, R);
     double newR = calcRFromPsiE(psi, scattE, i, sysA, R);   log.dbg("newR = ", newR);
     Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
-//    double sigma = Scatt.calcSigmaPiFromS(S, scattE);
+//    double sigma = Scatt.calcSigmaPiFromS(S, scttE);
 //    double sigma = R;
     double sigma = newR;
     log.dbg("sigma = ", sigma).eol();

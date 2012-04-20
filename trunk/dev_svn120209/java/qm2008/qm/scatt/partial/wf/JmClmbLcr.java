@@ -15,11 +15,11 @@ import javax.utilx.log.Log;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 13/05/2010, 4:43:37 PM
  */
-public class JmCoulombLcr extends FuncArr {
-  public static Log log = Log.getLog(JmCoulombLcr.class);
+public class JmClmbLcr extends FuncArr {
+  public static Log log = Log.getLog(JmClmbLcr.class);
   private WFQuadrLcr quadr;
 
-  public JmCoulombLcr(int L, double Z, Vec engs, double maxSysEng, WFQuadrLcr w) {
+  public JmClmbLcr(int L, double Z, Vec engs, double maxSysEng, WFQuadrLcr w) {
     super(w.getR(), engs.size());
     quadr = w;
     TransLcrToR trans = w.getLcrToR();

@@ -34,7 +34,7 @@ public ScattRes calcSysEngs() {    log.setDbg();
   ScattRes res = new ScattRes();
 
   Vec sEngs = getSysEngs();       log.dbg("sEngs=", sEngs);
-  int showNum = calcShowChNum();
+  int showNum = calcPrntChNum();
   int eN = sEngs.size();
   eN--; log.dbg("eN-- = ", eN);// reduce by one
 
@@ -49,15 +49,15 @@ public ScattRes calcSysEngs() {    log.setDbg();
     sysTotE = 0.5 * (sEngs.get(eIdx) + sEngs.get(eIdx+1)); log.dbg("sysE = ", sysTotE);
 
     chArr = loadChArr(sysTotE);    // used to calc cross_sections
-    scattE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scattE = ", scattE);
-    mCrss.set(eIdx, IDX_ENRGY, scattE);
-    int openNum = calcOpenChNum(scattE);
+    scttE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scttE = ", scttE);
+    mCrss.set(eIdx, IDX_ENRGY, scttE);
+    int openNum = calcOpenChNum(scttE);
 
     double sigma = 0;
-    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scattE=" + (float)scattE);
-    if (scattE <= 0
-      ||  engModel.getFirst() > scattE
-      ||  scattE > engModel.getLast()
+    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scttE=" + (float) scttE);
+    if (scttE <= 0
+      ||  engModel.getFirst() > scttE
+      ||  scttE > engModel.getLast()
       ) {
       continue;
     }

@@ -14,10 +14,16 @@ private TestModel testModel;
 private String saveFileName;
 private String gridName;
 private int optIdx;
+
 private boolean useClosed;
-private String homeDir;
-private boolean calcSdcs;
 private int useClosedNum;
+
+private String homeDir;
+
+private boolean calcSdcs;
+private int sdcsEngN;
+private int katoN;
+
 public CalcOptE1() {
   init();
 }
@@ -29,6 +35,18 @@ private void init() {
   saveFileName = "file name";
   gridName = "grid";
 //    optIdx = OPT_LGRR;
+}
+public void setSdcsEngN(int sdcsEngN) {
+  this.sdcsEngN = sdcsEngN;
+}
+public int getSdcsEngN() {
+  return sdcsEngN;
+}
+public int getKatoN() {
+  return katoN;
+}
+public void setKatoN(int katoN) {
+  this.katoN = katoN;
 }
 public EngModel getGridEng() {
   return gridEng;

@@ -36,7 +36,7 @@ public ScattRes calcSysEngs() {    log.setDbg();
   ScattRes res = new ScattRes();
 
   Vec sEngs = getSysEngs();       log.dbg("sEngs=", sEngs);
-  int showNum = calcShowChNum();
+  int showNum = calcPrntChNum();
   int eN = sEngs.size();
 
   Mtrx mCrss = new Mtrx(eN, showNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
@@ -49,12 +49,12 @@ public ScattRes calcSysEngs() {    log.setDbg();
     double sysTotE = sEngs.get(sysIdx); log.dbg("sysE = ", sysTotE);
 
     chArr = loadChArr(sysTotE);    // used to calc cross_sections
-    double scattE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scattE = ", scattE);
+    double scattE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scttE = ", scattE);
     mCrss.set(sysIdx, IDX_ENRGY, scattE);
     int openNum = calcOpenChNum(scattE);
 
     double sigma = 0;
-    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scattE=" + (float)scattE);
+    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scttE=" + (float)scattE);
     if (scattE <= 0
       ||  engModel.getFirst() > scattE
       ||  scattE > engModel.getLast()

@@ -71,7 +71,6 @@ protected void loadPWaveS(double sysTotE, LgrrOrthLcr orthN, int chNum) {
   phiS = new FuncArr(x);
 
   Vec tEngs = trgtE2.getEngs();
-  Vec sEngs = getSysEngs();
   for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
     double tE = tEngs.get(tIdx);     // target state eng
     double tScattE = sysTotE - tE;

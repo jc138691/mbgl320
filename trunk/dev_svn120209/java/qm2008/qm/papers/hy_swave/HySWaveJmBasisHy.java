@@ -22,7 +22,7 @@ import scatt.jm_2008.jm.ScattRes;
 import scatt.jm_2008.jm.target.ScattTrgtE2;
 import scatt.jm_2008.jm.coulomb.JmCoulombLcrTest;
 import scatt.jm_2008.jm.theory.JmD;
-import scatt.partial.wf.JmCoulombLcr;
+import scatt.partial.wf.JmClmbLcr;
 
 import javax.iox.FileX;
 import javax.utilx.log.Log;
@@ -96,7 +96,7 @@ public class HySWaveJmBasisHy extends HySWaveJm {
     if (CALC_TRUE_CONTINUUM) {
       // TARGET CONTINUUM
       double maxSysEng = calcOpt.getGridEng().getLast() + targetEngs.get(0); // ASSUMED FROM H(1s)
-      JmCoulombLcr clmbNt = new JmCoulombLcr(L, AtomHy.Z, targetEngs, maxSysEng, quadrLcr);      log.dbg("JmCoulombLcr =\n", clmbNt);
+      JmClmbLcr clmbNt = new JmClmbLcr(L, AtomHy.Z, targetEngs, maxSysEng, quadrLcr);      log.dbg("JmClmbLcr =\n", clmbNt);
       AtomUtil.setTailFrom(clmbNt, trgtBasisNt);
       FileX.writeToFile(clmbNt.toTab(), HOME_DIR, "wf", "clmbNt.dat");
       if (!new JmCoulombLcrTest(clmbNt, trgtBasisNt).ok()) return;

@@ -48,7 +48,7 @@ public ScattRes calc(Vec engs) {
     Dble2 w = calcW(psi, scattE);                                         log.dbg("w = ", w);
     double R = -(w.a + g.a) / (w.b + g.b);                               log.dbg("R = ", R);
     Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
-//    double sigma = Scatt.calcSigmaPiFromS(S, scattE);
+//    double sigma = Scatt.calcSigmaPiFromS(S, scttE);
     double sigma = R;
 //    double sigma = 0;
     log.dbg("sigma = ", sigma).eol();

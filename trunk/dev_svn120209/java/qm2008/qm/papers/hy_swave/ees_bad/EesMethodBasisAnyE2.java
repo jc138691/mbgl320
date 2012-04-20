@@ -37,12 +37,12 @@ public ScattRes calcSysEngs() {
   EesMethodE1 methodE1 = new EesMethodE1(calcOpt);
   for (int sysIdx = 0; sysIdx < sEngs.size(); sysIdx++) {                log.dbg("i = ", sysIdx);
     double sysE = sEngs.get(sysIdx);                           log.dbg("sysE = ", sysE);
-    double scattE = sysE - trgtE2.getInitTrgtEng();      log.dbg("scattE = ", scattE);
+    double scattE = sysE - trgtE2.getInitTrgtEng();      log.dbg("scttE = ", scattE);
     mCrss.set(sysIdx, IDX_ENRGY, scattE);
     int openNum = calcOpenChNum(scattE);
 
     double sigma = 0;
-    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scattE=" + (float)scattE);
+    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scttE=" + (float)scattE);
     if (scattE <= 0
       ||  engModel.getFirst() > scattE
       ||  scattE > engModel.getLast()
