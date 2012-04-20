@@ -4,7 +4,6 @@ import atom.wf.WFQuadrR;
 import math.func.Func;
 import math.func.polynom.laguerre.LgrrArr;
 import math.vec.Vec;
-import org.junit.runner.notification.StoppedByUserException;
 import scatt.jm_2008.jm.laguerre.IWFuncArr;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 
@@ -15,25 +14,24 @@ import static java.lang.Math.log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 18/04/12, 2:39 PM
  */
-public class GaussR extends LgrrArr implements IWFuncArr {
+public class GaussR_todo extends LgrrArr implements IWFuncArr {
   public static String HELP = "JM-matrix Gaussian basisN:\n"
   + "R(n, a, lambda, r) = exp(-x/2) x^((a+1)/2) L^a_n(x),\n"
   + "where x = lambda * r;  a = alpha=L+1/2, L - angular momentum; L^a_n - the associated Laguerre polynomials.";
-  public static Log log = Log.getLog(GaussR.class);
+  public static Log log = Log.getLog(GaussR_todo.class);
   protected LgrrModel model;
   private WFQuadrR quadr;
 
   public LgrrModel getModel() {
     return model;
   }
-StoppedByUserException
-  public GaussR(WFQuadrR w, LgrrModel model) {
+  public GaussR_todo(WFQuadrR w, LgrrModel model) {
     super(w.getX(), model.getN(), 0.5 + model.getL(), model.getLambda());
     this.model = model;
     quadr = w;
     mult(makeNormFunc());
   }
-  public GaussR(Vec r, LgrrModel model) {
+  public GaussR_todo(Vec r, LgrrModel model) {
     super(r, model.getN(), 2 * model.getL() + 1, model.getLambda());
     this.model = model;
     mult(makeNormFunc());

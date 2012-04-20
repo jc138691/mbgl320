@@ -44,7 +44,7 @@ public ScattRes calc(Vec engs) {
     double R = -(sN1 + g * sN) / (cN1 + g * cN);                        log.dbg("R = ", R);
     double shift = Math.atan(R);
     Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
-//    double sigma = Scatt.calcSigmaPiFromS(S, scattE);
+//    double sigma = Scatt.calcSigmaPiFromS(S, scttE);
     double sigma = R;
     log.dbg("sigma = ", sigma).eol();
     mCs.set(i, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies

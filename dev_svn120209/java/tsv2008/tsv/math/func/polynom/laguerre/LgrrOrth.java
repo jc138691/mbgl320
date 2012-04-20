@@ -47,18 +47,10 @@ public class LgrrOrth extends LgrrArr {
       return;
     }
 
-//[OLD]
-//    FuncGamma G = new FuncGamma();
-//    for (int n = 0; n < size(); n++) {
-//      double normN = 1.0 / Math.sqrt(G.calc(alpha + n + 1) / G.calc(n + 1) / lambda);
-//      get(n).multSelf(normN);
-//    }
-
-    //new 29Apr2011
     FuncGamma G = new FuncGamma();
     for (int n = 0; n < size(); n++) {
-//      double normN = 1.0 / Math.sqrt(G.calc(alpha + n + 1) / G.calc(n + 1) / lambda);
-      double normN = Math.sqrt(lambda * fLn.calcFactDiv(n, alpha + n));
+      double normN = 1.0 / Math.sqrt(G.calc(alpha + n + 1) / G.calc(n + 1) / lambda);  // [dk120420]double alpha is needed for JmGaussianLaguerre
+//      double normN = Math.sqrt(lambda * fLn.calcFactDiv(n, alpha + n));
       fromNonOrth[n] = normN;
       get(n).mult(normN);
     }

@@ -33,12 +33,12 @@ public ScattRes calcSysEngs() {
     mCrss.set(i, IDX_ENRGY, scattE);
     FuncArr psi = methodE1.calcPsi(scattE, orthonN);
     double a = calcA(psi, scattE, i);
-//    double f = calcF(a, psi, scattE, i);
-//    double f = calcBornF(psi, scattE);
+//    double f = calcF(a, psi, scttE, i);
+//    double f = calcBornF(psi, scttE);
     double R = calcBornR(psi, scattE);
 //    Cmplx S = Scatt.calcSFromF(f, momP);                                          log.dbg("S = ", S);
 //    double R = Scatt.calcKFromS(S);                               log.dbg("R = ", R);
-//    double sigma = Scatt.calcSigmaPiFromS(S, scattE);
+//    double sigma = Scatt.calcSigmaPiFromS(S, scttE);
     double sigma = R;
     log.dbg("sigma = ", sigma).eol();
     mCrss.set(i, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
@@ -76,7 +76,7 @@ private double calcBornR(FuncArr psi, double scattE) {
   FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psi1 = psi.get(IDX_REG);          log.dbg("resS=", psi1);
   double sysA = calcV(psi1, psi1);    log.dbg("sysA=", sysA);
-//  double res = - sysA / (scattE * 4.0 * Math.PI);    log.dbg("res=", res);
+//  double res = - sysA / (scttE * 4.0 * Math.PI);    log.dbg("res=", res);
   double res = -2 * sysA / momP;    log.dbg("res=", res);
   return res;
 }

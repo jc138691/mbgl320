@@ -5,7 +5,7 @@ import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import project.workflow.task.test.FlowTest;
 import scatt.jm_2008.jm.laguerre.lcr.LagrrBiLcr;
-import scatt.partial.wf.JmCoulombLcr;
+import scatt.partial.wf.JmClmbLcr;
 
 import javax.utilx.log.Log;
 
@@ -15,9 +15,9 @@ import javax.utilx.log.Log;
 public class JmCoulombLcrTest extends FlowTest {
   public static Log log = Log.getLog(JmCoulombLcrTest.class);
   private static final double MAX_INTGRL_ERR = 1e-4;
-  private static JmCoulombLcr cont;
+  private static JmClmbLcr cont;
   private static FuncArr target;
-  public JmCoulombLcrTest(JmCoulombLcr cont, FuncArr target) {
+  public JmCoulombLcrTest(JmClmbLcr cont, FuncArr target) {
     super(JmCoulombLcrTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
     this.cont = cont;
     this.target = target;

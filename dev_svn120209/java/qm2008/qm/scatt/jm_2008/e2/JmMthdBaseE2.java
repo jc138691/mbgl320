@@ -75,31 +75,31 @@ public ScattRes calc(Vec scttEngs) {          //JmMethodJmBasisE3.log.setDbg();
 private ScattRes calcV3_best(Vec scttEngs) { log.setDbg();
   EngModel engModel = calcOpt.getGridEng();
   ScattRes res = new ScattRes();
-  int showNum = calcShowChNum();
+  int prntNum = calcPrntChNum();
 //  int chNum = getChNum();
   int eN = scttEngs.size();
   jmX = calcX();                              log.dbg("X=", new MtrxDbgView(jmX));
   new JmResonE2(this).calc(res, jmX);
-  Mtrx mCs = new Mtrx(eN, showNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
+  Mtrx mCs = new Mtrx(eN, prntNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
-  res.setSdcs(new Mtrx(showNum + 1, eN + 1));
+  res.setSdcs(new Mtrx(prntNum + 1, eN + 1));
   res.setCrossSecs(mCs);
   res.setTics(mTics);
-  for (int engIdx = 0; engIdx < eN; engIdx++) {
-    log.info("i = ", engIdx);
-    scattE = scttEngs.get(engIdx);             log.info("scattE = ", scattE);
-    mCs.set(engIdx, IDX_ENRGY, scattE);
-    mTics.set(engIdx, IDX_ENRGY, scattE);                 // first column is for the energies
-    if (scattE <= 0  ||  engModel.getFirst() > scattE ||  scattE > engModel.getLast()) {
+  for (int scttIdx = 0; scttIdx < eN; scttIdx++) {
+    log.info("i = ", scttIdx);
+    scttE = scttEngs.get(scttIdx);             log.info("scttE = ", scttE);
+    mCs.set(scttIdx, IDX_ENRGY, scttE);
+    mTics.set(scttIdx, IDX_ENRGY, scttE);                 // first column is for the energies
+    if (scttE <= 0  ||  engModel.getFirst() > scttE ||  scttE > engModel.getLast()) {
       continue;
     }
-    int openN = calcOpenChNum(scattE);
-    int calcN = calcCalcChNum(scattE);
-    sysTotE = scattE + trgtE2.getInitTrgtEng();          log.info("sysTotE = ", sysTotE);
+    openChN = calcOpenChNum(scttE);
+    calcChN = calcCalcChNum(scttE);
+    sysTotE = scttE + trgtE2.getInitTrgtEng();          log.info("sysTotE = ", sysTotE);
     chArr = loadChArr(sysTotE);
     int sysIdx = matchSysTotE();
     if (sysIdx == -1) {
-      jmR = calcR(calcN, openN);
+      jmR = calcR(calcChN, openChN);
 //      jmR = calcR_v1_ok(calcN, openN);
     }
     else {
@@ -107,9 +107,9 @@ private ScattRes calcV3_best(Vec scttEngs) { log.setDbg();
       continue; // ignore
     }
     CmplxMtrx mS = Scatt.calcSFromK(jmR);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(mS));
-    calcCrossSecs(engIdx, res, mS, openN);
+    calcCrossSecs(scttIdx, res, mS, openChN);
     if (calcOpt.getCalcSdcs()) {
-      calcSdcs(engIdx, res, showNum);
+      calcSdcs(scttIdx, res, prntNum);
     }
   }
   return res;
@@ -124,8 +124,8 @@ private Mtrx calcR(int calcN, int openN) {
   Mtrx WSJS = calcWsjs(W, openN);                  log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
   Mtrx WCJC = calcWcjc(W);                         log.dbg("WCJC=\n", new MtrxDbgView(WCJC));
   Mtrx res = calcR(WCJC, WSJS);                    log.dbg("R=\n", new MtrxDbgView(res));
-  MtrxFactory.makeSymmByAvr(res);                log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(res));
-  JmKatoE2 kato = new JmKatoE2(this);
+  MtrxFactory.makeSymmByAvr(res);                  log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(res));
+  JmKatoBasisHyE2 kato = new JmKatoBasisHyE2(this);
 //  res = kato.calc(res);     log.dbg("kato.calc(R)=\n", new MtrxDbgView(res));
   return res;
 }
@@ -147,7 +147,7 @@ private Mtrx calcRSysIdx_bad(int calcN, int openN, int sysIdx) {
     mW = calcWSysIdx_bad(calcN, sysIdx);
   } else {
     mW = calcWSysIdx_bad(openN, sysIdx);
-  }                                                   log.dbg("W=\n", new MtrxDbgView(mW));
+  }                                                       log.dbg("W=\n", new MtrxDbgView(mW));
   double dlt = calcDeltaSysIdx_bad(mW);                   log.dbg("dlt_i=", dlt);
   Vec A = calcAVecSysIdx_bad(sysIdx, openN);              log.dbg("A=\n", new VecDbgView(A));
   Mtrx res = calcRSysIdx_bad(sysIdx, mW, dlt, A);         log.dbg("R=\n", new MtrxDbgView(res));
@@ -166,14 +166,14 @@ private Mtrx calcRSysIdx_bad(int sysIdx, Mtrx mW, double dlt, Vec vA) {
       R.set(t, t2, res);             log.dbg("R[t="+t+"][t2="+t2+"]=", R.get(t, t2));
     }
   }
-  loadConstsSqrt(R);                               log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
+  loadConstsSqrt(R);                           log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
   MtrxFactory.makeSymmByAvr(R);                log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(R));
   return R;
 }
-protected void calcSdcs(int i, ScattRes res, int showNum) {
+protected void calcSdcs(int scttIdx, ScattRes res, int prntN) {
   loadSdcsW(chArr);
   //    loadSdcsW_Simpson(chArr);
-  calcSdcsFromW(i, res, showNum);
+  calcSdcsFromW(scttIdx, res, prntN);
 }
 protected void loadSdcsW(JmCh[] chArr) {
   Vec ws = trgtE2.getSdcsW();
@@ -214,23 +214,23 @@ protected void loadSdcsW_Simpson(JmCh[] chArr) {
     ch.setSdcsW(w);
   }
 }
-protected void calcSdcsFromW(int i, ScattRes res, int showNum) {
+protected void calcSdcsFromW(int scttIdx, ScattRes res, int showNum) {
   int tN = showNum;
   Mtrx mCs = res.getCrossSecs();
   Mtrx mSdcs = res.getSdcs();
   for (int to = 0; to < tN; to++) {
     log.dbg("to = ", to);  // Target channels
     JmCh ch = chArr[to];
-    double sigma = mCs.get(i, to + CS_CH_OFFSET);
-    if (i == 0) { // store channels energies
+    double sigma = mCs.get(scttIdx, to + CS_CH_OFFSET);
+    if (scttIdx == 0) { // store channels energies
       mSdcs.set(0, 0, 0);
       mSdcs.set(to + SDCS_CH_OFFSET, 0, ch.getEng());
     }
-    mSdcs.set(to + SDCS_CH_OFFSET, i + SDCS_ENG_OFFSET, 0);
+    mSdcs.set(to + SDCS_CH_OFFSET, scttIdx + SDCS_ENG_OFFSET, 0);
     if (ch.isOpen() && ch.getEng() > 0) {
       double w = ch.getSdcsW();
       double sdcs = sigma / w;
-      mSdcs.set(to + SDCS_CH_OFFSET, i + SDCS_ENG_OFFSET, sdcs);
+      mSdcs.set(to + SDCS_CH_OFFSET, scttIdx + SDCS_ENG_OFFSET, sdcs);
     }
   }
 }

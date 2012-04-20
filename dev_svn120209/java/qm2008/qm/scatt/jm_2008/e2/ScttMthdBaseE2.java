@@ -27,6 +27,20 @@ protected ConfHMtrx sysConfH;
 private FuncArr trgtBasisN;
 protected JmCh[] chArr;
 protected Mtrx jmR;
+protected int calcChN;
+protected int openChN;
+public int getCalcChN() {
+  return calcChN;
+}
+public int getOpenChN() {
+  return openChN;
+}
+public JmCh[] getChArr() {
+  return chArr;
+}
+public Mtrx getJmR() {
+  return jmR;
+}
 public LgrrOrthLcr getOrthonNt() {
   return orthonNt;
 }
@@ -62,12 +76,12 @@ public void setTrgtBasisN(FuncArr trgtBasisN) {
 public FuncArr getTrgtBasisN() {
   return trgtBasisN;
 }
-protected void calcCrossSecs(int i, ScattRes res, CmplxMtrx mS, int chNum) {
+protected void calcCrossSecs(int i, ScattRes res, CmplxMtrx mS, int openNum) {
   Mtrx mCrss = res.getCrossSecs();
   Mtrx mTics = res.getTics();
   double ionSum = 0;
   int initChIdx = trgtE2.getInitTrgtIdx();
-  for (int to = 0; to < chNum; to++) {
+  for (int to = 0; to < openNum; to++) {
     log.dbg("to = ", to);  // Target channels
     JmCh ch = chArr[to];
     double k0 = chArr[initChIdx].getAbsMom();
@@ -96,7 +110,7 @@ protected JmCh[] loadChArr(double sysEng) {
   }
   return res;
 }
-protected int calcShowChNum() {
+protected int calcPrntChNum() {
   EngModel engModel = calcOpt.getGridEng();
   double maxScattE = engModel.getLast();
   return calcOpenChNum(maxScattE);

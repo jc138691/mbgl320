@@ -5,7 +5,7 @@ import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
-import scatt.partial.wf.JmCoulombLcr;
+import scatt.partial.wf.JmClmbLcr;
 
 import javax.utilx.log.Log;
 
@@ -15,7 +15,7 @@ import javax.utilx.log.Log;
 public class ScattTrgtE2 {   // target properties
   public static Log log = Log.getLog(ScattTrgtE2.class);
   private Vec engs;
-  private JmCoulombLcr continmE1;
+  private JmClmbLcr continmE1;
   private FuncArr statesE1;
   private Vec sdcsContW;
   private Vec sdcsW;
@@ -40,7 +40,7 @@ public class ScattTrgtE2 {   // target properties
     return engs;
   }
 
-  public void setStatesContE1(JmCoulombLcr continmE1) {
+  public void setStatesContE1(JmClmbLcr continmE1) {
     this.continmE1 = continmE1;
   }
 
