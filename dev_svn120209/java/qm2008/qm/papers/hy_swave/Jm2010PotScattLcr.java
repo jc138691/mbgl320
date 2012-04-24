@@ -10,7 +10,7 @@ import math.vec.VecDbgView;
 import qm_station.QMSProject;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.e1.JmMethodE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.theory.JmD;
 
 import javax.utilx.log.Log;
@@ -71,9 +71,9 @@ public void calcJm(int newN) {
   JmMethodE1 method = new JmMethodE1(calcOpt);
   method.setOverD(D);
   method.setSysEngs(sysEngs);
-  ScattRes res = method.calcForScatEngModel();
+  ScttRes res = method.calcForScatEngModel();
   log.dbg("res=", res);
-//    ScattRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
+//    ScttRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
 //
 //  FuncVec cross = new FuncVecToString(res.getCross());
 //  FileX.writeToFile(cross.toString(), HOME_DIR, "cross", "cross_" + basisOptN.makeLabel() + ".csv");

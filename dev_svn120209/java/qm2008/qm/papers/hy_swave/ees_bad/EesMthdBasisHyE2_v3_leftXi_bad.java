@@ -12,7 +12,7 @@ import math.vec.VecDbgView;
 import scatt.Scatt;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 
 import javax.triplet.Dble3;
 import javax.utilx.log.Log;
@@ -31,9 +31,9 @@ private CmplxMtrx cmS; //complex-matrx
 public EesMthdBasisHyE2_v3_leftXi_bad(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-public ScattRes calcSysEngs() {    log.setDbg();
+public ScttRes calcSysEngs() {    log.setDbg();
   EngModel engModel = calcOpt.getGridEng();
-  ScattRes res = new ScattRes();
+  ScttRes res = new ScttRes();
 
   Vec sEngs = getSysEngs();       log.dbg("sEngs=", sEngs);
   int showNum = calcPrntChNum();

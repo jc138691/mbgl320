@@ -11,7 +11,7 @@ import papers.hy_swave.Jm2010Common;
 import papers.hy_swave.Jm2010CommonLcr;
 import qm_station.QMSProject;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.partial.born.PBornDirScattTest;
 
 import javax.utilx.log.Log;
@@ -83,7 +83,7 @@ public void calc(int newN) {
   method.setPotH(sysH);
   method.setOrthonN(orthonN);
 
-  ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
+  ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);
   res.setCalcLabel(makeLabel(method));
   res.writeToFiles();

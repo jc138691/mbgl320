@@ -13,10 +13,10 @@ import qm_station.QMSProject;
 import scatt.jm_2008.e2.JmResonE2;
 import scatt.jm_2008.e3.JmDe3;
 import scatt.jm_2008.e3.JmMethodJmBasisE3;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
-import scatt.jm_2008.jm.target.ScattTrgtE3;
+import scatt.jm_2008.jm.target.ScttTrgtE3;
 
 import javax.iox.FileX;
 import javax.utilx.log.Log;
@@ -111,13 +111,13 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     Vec basisEngs = trgtPotH.getEigVal();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_NcEngs_" + makeLabelNc());
 
-    trgtBasisNt = orthonNt;
+    trgtStatesNt = orthonNt;
     trgtBasisN = orthonN;
-    ScattTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
+    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtStatesNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
-    jmTrgt.setNt(trgtBasisNt.size());
+    jmTrgt.setNt(trgtStatesNt.size());
 //    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED, );   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
 //    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
     jmTrgt.loadSdcsW();
@@ -139,7 +139,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelNc(method));
     }
 
-    ScattRes res;
+    ScttRes res;
     if (scttEngs != null) {
       res = method.calc(scttEngs);                  log.dbg("res=", res);
     }

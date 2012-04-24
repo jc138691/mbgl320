@@ -13,8 +13,8 @@ import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import papers.hy_swave.HySWaveJmBasisHy;
-import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.target.ScattTrgtE2;
+import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.target.ScttTrgtE2;
 import scatt.jm_2008.jm.fanox.JmMethodFanoE2;
 
 import javax.iox.FileX;
@@ -43,7 +43,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
     trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);   log.dbg("trgtPotH=", trgtPotH);
     Vec trgtEngs = trgtPotH.getEigVal();                     log.dbg("eigVal=", new VecDbgView(trgtEngs));
 
-    ScattTrgtE2 trgtUtils = new ScattTrgtE2();
+    ScttTrgtE2 trgtUtils = new ScttTrgtE2();
     trgtUtils.setEngs(trgtEngs);
     trgtUtils.loadSdcsW();
 
@@ -69,7 +69,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
     method.setTrgtE2(trgtUtils);
     method.setTargetH(trgtPotH);
     method.setChiOverlap(chiOv);
-    ScattRes res = method.calcForScatEngModel();                  log.dbg("res=", res);
+    ScttRes res = method.calcForScatEngModel();                  log.dbg("res=", res);
 
     FileX.writeToFile(sEngs.toCSV(), HOME_DIR, "hy"
       , "hy_poet_sysEngs_S" + sLs.getS21() + "_" + basisOptN.makeLabel()+"_v3.dat");

@@ -38,10 +38,10 @@ import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
 import scatt.eng.EngModelArr;
 import scatt.jm_2008.e2.JmMthdBaseE2;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
-import scatt.jm_2008.jm.target.ScattTrgtE3;
+import scatt.jm_2008.jm.target.ScttTrgtE3;
 
 import javax.iox.FileX;
 import javax.utilx.log.Log;
@@ -69,7 +69,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
 //    log.setDbg();
   }
 
-  protected void saveTrgtInfo(ScattTrgtE3 jmTrgt) {
+  protected void saveTrgtInfo(ScttTrgtE3 jmTrgt) {
     double ionGrnd = jmTrgt.getIonGrndEng();
     int S1 = 0;
     Vec ionEngs = jmTrgt.getArrH().get(S1).getEigVal().copy();
@@ -85,7 +85,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     FileX.writeToFile(ionEngs.toCSV(), HOME_DIR, MODEL_DIR
       , MODEL_NAME+"_thisTrgEngs_S3_ion_eV_" + makeLabelNc());  // THIS target energies, not the true S-wave energies
   }
-  public void setupScattRes(ScattRes res, JmMthdBaseE2 method) {
+  public void setupScattRes(ScttRes res, JmMthdBaseE2 method) {
     super.setupScattRes(res, method);
     res.setCalcLabel(makeLabelNc(method));
   }
@@ -97,7 +97,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
     return "Nc" + Nc + "_" + Jm2010Common.makeLabelBasisOptOpen(method);
   }
 
-  protected ScattTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
+  protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
     log.info("-->makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt)");
     SysAtomE2 tgrtE2 = new SysHe(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
 
@@ -126,14 +126,14 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtDensityR_S3_" + makeLabelNc());
     }
 
-    ScattTrgtE3 res = new ScattTrgtE3();
+    ScttTrgtE3 res = new ScttTrgtE3();
     res.add(tH);
     res.add(tH2);
     res.makeReady();
     log.info("<--makeTrgtBasisNt");
     return res;
   }
-//  private ScattTrgtE3 makeTrgtE3_OLD(SlaterLcr slater) {
+//  private ScttTrgtE3 makeTrgtE3_OLD(SlaterLcr slater) {
 //    // NOTE!!!  As of 2011, SysAtomE2 replaces SysE2_OLD.
 //    SysAtomE2 tgrtE2 = new SysHe(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
 //
@@ -153,7 +153,7 @@ abstract public class HeSWaveScatt  extends HyLikeSWave {
 //    FileX.writeToFile(tH2.getEigVal().toCSV(), HOME_DIR, "He"
 //          , "He_SModel_trgEngs_TRIP_" + basisOptN.makeLabel() + ".dat");
 //
-//    ScattTrgtE3 res = new ScattTrgtE3();
+//    ScttTrgtE3 res = new ScttTrgtE3();
 //    res.add(tH);
 //    res.add(tH2);
 //    res.makeReady();

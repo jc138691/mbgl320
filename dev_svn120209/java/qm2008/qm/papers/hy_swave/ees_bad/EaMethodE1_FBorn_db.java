@@ -7,7 +7,7 @@ import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 
 import javax.utilx.log.Log;
 /**
@@ -18,8 +18,8 @@ public static Log log = Log.getLog(EaMethodE1_FBorn_db.class);
 public EaMethodE1_FBorn_db(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-public ScattRes calcSysEngs() {
-  ScattRes res = new ScattRes();
+public ScttRes calcSysEngs() {
+  ScttRes res = new ScttRes();
   int chNum = getChNum();
   Vec engs = getSysEngs();
   int eN = engs.size();
@@ -46,7 +46,7 @@ public ScattRes calcSysEngs() {
   return res;
 }
 @Override
-public ScattRes calc(Vec engs) {
+public ScttRes calc(Vec engs) {
   throw new IllegalArgumentException(log.error("use calcSysEngs()"));
 }
 private double calcA(FuncArr psi, double scattE, int engIdx) {

@@ -9,11 +9,11 @@ import math.vec.Vec;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmCh;
-import scatt.jm_2008.jm.target.ScattTrgtE2;
+import scatt.jm_2008.jm.target.ScttTrgtE2;
 
 import javax.utilx.log.Log;
 /**
@@ -22,13 +22,15 @@ import javax.utilx.log.Log;
 public class ScttMthdBaseE2 extends ScttMthdBaseE1 {
 public static Log log = Log.getLog(ScttMthdBaseE2.class);
 protected static final int IDX_IONIZ = 1;
-protected ScattTrgtE2 trgtE2;
+protected ScttTrgtE2 trgtE2;
 protected ConfHMtrx sysConfH;
-private FuncArr trgtBasisN;
+protected LgrrOrthLcr orthonNt;
+protected FuncArr trgtBasisN;
 protected JmCh[] chArr;
 protected Mtrx jmR;
 protected int calcChN;
 protected int openChN;
+
 public int getCalcChN() {
   return calcChN;
 }
@@ -47,19 +49,18 @@ public LgrrOrthLcr getOrthonNt() {
 public void setOrthonNt(LgrrOrthLcr orthonNt) {
   this.orthonNt = orthonNt;
 }
-protected LgrrOrthLcr orthonNt;
 
 public ScttMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 @Override
-public ScattRes calc(Vec engs) {
+public ScttRes calc(Vec engs) {
   throw new IllegalArgumentException(log.error("call relevant implementation of calc(Vec engs)"));
 }
-public ScattTrgtE2 getTrgtE2() {
+public ScttTrgtE2 getTrgtE2() {
   return trgtE2;
 }
-public void setTrgtE2(ScattTrgtE2 trgtE2) {
+public void setTrgtE2(ScttTrgtE2 trgtE2) {
   this.trgtE2 = trgtE2;
 }
 public void setSysConfH(ConfHMtrx sysConfH) {
@@ -76,7 +77,7 @@ public void setTrgtBasisN(FuncArr trgtBasisN) {
 public FuncArr getTrgtBasisN() {
   return trgtBasisN;
 }
-protected void calcCrossSecs(int i, ScattRes res, CmplxMtrx mS, int openNum) {
+protected void calcCrossSecs(int i, ScttRes res, CmplxMtrx mS, int openNum) {
   Mtrx mCrss = res.getCrossSecs();
   Mtrx mTics = res.getTics();
   double ionSum = 0;
@@ -134,5 +135,4 @@ protected int calcCalcChNum(double scattE) {
   int tN = getChNum();
   return Math.min(tN, res);
 }
-
 }

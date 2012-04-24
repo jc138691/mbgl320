@@ -63,4 +63,8 @@ public static CmplxMtrx calcSFromK(Mtrx mK) {
   CmplxMtrx res = zp.times(zmInv);
   return res;
 }
+public static double calcSdcsNormE2E_todo(double eA, double eB, double e0) {
+
+  return 1.;
+}
 }

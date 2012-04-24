@@ -12,14 +12,13 @@ import javax.utilx.log.Log;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 18/05/2010, 9:19:32 AM
  */
-public class ScattTrgtE2 {   // target properties
-  public static Log log = Log.getLog(ScattTrgtE2.class);
+public class ScttTrgtE2 {   // target properties
+  public static Log log = Log.getLog(ScttTrgtE2.class);
   private Vec engs;
-  private JmClmbLcr continmE1;
+  private JmClmbLcr contE1;
   private FuncArr statesE1;
   private Vec sdcsContW;
   private Vec sdcsW;
-  //  private FuncArr orthon;   // orthonormal radial basis
   private int nt; // Nt - number of target orthonorm basis functions
   private double ionGrndEng;
   private int initTrgtIdx;
@@ -40,20 +39,22 @@ public class ScattTrgtE2 {   // target properties
     return engs;
   }
 
-  public void setStatesContE1(JmClmbLcr continmE1) {
-    this.continmE1 = continmE1;
+  public void setContE1(JmClmbLcr continmE1) {
+    this.contE1 = continmE1;
   }
 
   public void setStatesE1(FuncArr statesE1) {
     this.statesE1 = statesE1;
   }
-
-  // via continuum overlap
+public FuncArr getStatesE1() {
+  return statesE1;
+}
+// via continuum overlap
   public void loadSdcsContW() {
     Vec res =  new Vec(engs.size());
-    WFQuadrLcr quadr = continmE1.getQuadrLcr();
+    WFQuadrLcr quadr = contE1.getQuadrLcr();
     for (int i = 0; i < engs.size(); i++) {              log.dbg("i = ", i);
-      FuncVec cont = continmE1.get(i);
+      FuncVec cont = contE1.get(i);
       FuncVec wf = statesE1.get(i);
       double e = engs.get(i);
       double w = 0;

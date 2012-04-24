@@ -12,9 +12,9 @@ import math.vec.Vec;
 import scatt.Scatt;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.target.ChConf;
-import scatt.jm_2008.jm.target.ScattTrgtE3;
+import scatt.jm_2008.jm.target.ScttTrgtE3;
 
 import javax.utilx.log.Log;
 import javax.utilx.pair.Dble2;
@@ -26,9 +26,9 @@ public static Log log = Log.getLog(EesMethodBasisAnyE2.class);
 public EesMethodBasisAnyE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-public ScattRes calcSysEngs() {
+public ScttRes calcSysEngs() {
   EngModel engModel = calcOpt.getGridEng();
-  ScattRes res = new ScattRes();
+  ScttRes res = new ScttRes();
   int chNum = getChNum();
   Vec sEngs = getSysEngs();
   int eN = sEngs.size();
@@ -84,7 +84,7 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   // getting relevant trgtEigVec
   int CH_IDX = 0; // this is temp for testing
 
-  ChConf conf = ((ScattTrgtE3)trgtE2).getChConf(CH_IDX);
+  ChConf conf = ((ScttTrgtE3)trgtE2).getChConf(CH_IDX);
   int gt = conf.fromIdx; // gamma in target H
   ConfHMtrx tH = conf.hMtrx;
 

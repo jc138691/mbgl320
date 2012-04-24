@@ -9,7 +9,7 @@ import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
 import scatt.jm_2008.e1.JmMethodE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.theory.JmD;
 
 import javax.utilx.log.Log;
@@ -67,8 +67,8 @@ public class Jm2010PotScatt extends Jm2010CommonR {
     JmMethodE1 method = new JmMethodE1(calcOpt);
     method.setOverD(D);
     method.setSysEngs(eigEng);
-    ScattRes res = method.calcForScatEngModel();                  log.dbg("res=", res);
-//    ScattRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
+    ScttRes res = method.calcForScatEngModel();                  log.dbg("res=", res);
+//    ScttRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
 
 //    FuncVec func = new FuncVecToString(res.getCross());
 //    FileX.writeToFile(func.toString(), HOME_DIR, "cross", "cross_"+ basisOptN.makeLabel()+".csv");

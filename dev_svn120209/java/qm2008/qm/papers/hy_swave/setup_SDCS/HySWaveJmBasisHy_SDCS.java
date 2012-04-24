@@ -50,7 +50,7 @@ public void runJob() {
   int currNt = 30;
   int currN = 31;
   LCR_FIRST = -5;
-  LCR_N = 2001;
+  LCR_N = 4001;
   R_LAST = 200;
 
 //      // upto N=40

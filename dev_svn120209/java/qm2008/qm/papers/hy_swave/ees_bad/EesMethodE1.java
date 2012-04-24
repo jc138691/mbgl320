@@ -13,7 +13,7 @@ import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.partial.wf.CosRegPWaveLcr;
 import scatt.partial.wf.SinPWaveLcr;
@@ -33,8 +33,8 @@ private static final boolean OPER_P_ON = true;
 public EesMethodE1(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-public ScattRes calcSysEngs() {
-  ScattRes res = new ScattRes();
+public ScttRes calcSysEngs() {
+  ScttRes res = new ScttRes();
   int chNum = getChNum();
   Vec engs = getSysEngs();
   int eN = engs.size();
@@ -59,7 +59,7 @@ public ScattRes calcSysEngs() {
   return res;
 }
 @Override
-public ScattRes calc(Vec engs) {
+public ScttRes calc(Vec engs) {
   throw new IllegalArgumentException(log.error("use calcSysEngs()"));
 }
 protected double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {

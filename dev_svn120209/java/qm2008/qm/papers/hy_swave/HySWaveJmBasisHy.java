@@ -16,11 +16,12 @@ import math.func.arr.FuncArrDbgView;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
+import project.workflow.task.test.FlowTest;
 import qm_station.QMSProject;
 import scatt.jm_2008.e2.JmMthdBasisHyE2;
-import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.target.ScattTrgtE2;
-import scatt.jm_2008.jm.coulomb.JmCoulombLcrTest;
+import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.target.ScttTrgtE2;
+import scatt.jm_2008.jm.coulomb.ClmbHyContTest;
 import scatt.jm_2008.jm.theory.JmD;
 import scatt.partial.wf.JmClmbLcr;
 
@@ -77,46 +78,46 @@ public class HySWaveJmBasisHy extends HySWaveJm {
     initProject();
     potScattTestOk();  // basisN, biorthN, orthonNt, quadrLcr
     hydrScattTestOk(TARGET_Z);  // pot, orthonNt
+    FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
 
     trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
     Vec targetEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));
-    trgtBasisNt = trgtPotH.getEigFuncArr();      log.dbg("trgtBasisNt=", new FuncArrDbgView(trgtBasisNt));
-    FileX.writeToFile(trgtBasisNt.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtLcr_" + makeLabelTrgtS2());
+    trgtStatesNt = trgtPotH.getEigFuncArr();      log.dbg("trgtStatesNt=", new FuncArrDbgView(trgtStatesNt));
+//    FileX.writeToFile(trgtStatesNt.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtLcr_" + makeLabelTrgtS2());
 
-    FuncArr basisR = LcrFactory.wfLcrToR(trgtBasisNt, quadrLcr);
+    FuncArr basisR = LcrFactory.wfLcrToR(trgtStatesNt, quadrLcr);
     AtomUtil.trimTailSLOW(basisR);
-    FileX.writeToFile(basisR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtR_" + makeLabelTrgtS2());
+//    FileX.writeToFile(basisR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtR_" + makeLabelTrgtS2());
 
-    AtomUtil.trimTailSLOW(trgtBasisNt);
+    AtomUtil.trimTailSLOW(trgtStatesNt);
 
-    ScattTrgtE2 trgt = new ScattTrgtE2();
+    ScttTrgtE2 trgt = new ScttTrgtE2();
     trgt.setNt(orthonNt.size());
+    trgt.setStatesE1(trgtStatesNt);
     trgt.setEngs(targetEngs);
     trgt.loadSdcsW();
-    if (CALC_TRUE_CONTINUUM) {
-      // TARGET CONTINUUM
+    if (CALC_TRUE_CONTINUUM) {      // TARGET CONTINUUM
       double maxSysEng = calcOpt.getGridEng().getLast() + targetEngs.get(0); // ASSUMED FROM H(1s)
       JmClmbLcr clmbNt = new JmClmbLcr(L, AtomHy.Z, targetEngs, maxSysEng, quadrLcr);      log.dbg("JmClmbLcr =\n", clmbNt);
-      AtomUtil.setTailFrom(clmbNt, trgtBasisNt);
-      FileX.writeToFile(clmbNt.toTab(), HOME_DIR, "wf", "clmbNt.dat");
-      if (!new JmCoulombLcrTest(clmbNt, trgtBasisNt).ok()) return;
-
-      trgt.setStatesContE1(clmbNt);
-      trgt.setStatesE1(trgtBasisNt);
+//      AtomUtil.setTailFrom(clmbNt, trgtStatesNt);
+//      FileX.writeToFile(clmbNt.toTab(), HOME_DIR, "wf", "clmbNt.dat");
+      if (!new ClmbHyContTest(clmbNt, trgtStatesNt).ok())
+        return;
+      trgt.setContE1(clmbNt);
       trgt.loadSdcsContW();
 //      FileX.writeToFile(trgt.toTab(), HOME_DIR, "wf", "target_" + basisOptN.makeLabel() + ".dat");
     }
 
-    PotHMtrx targetHTest = new PotHMtrxLcr(L, trgtBasisNt, pot, orthonNt.getQuadr());  log.dbg("targetHTest=", targetHTest); // only for debugging
-    Vec D = new JmD(biorthN, trgtBasisNt);      log.dbg("D_{n,m>=Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
+    PotHMtrx targetHTest = new PotHMtrxLcr(L, trgtStatesNt, pot, orthonNt.getQuadr());  log.dbg("targetHTest=", targetHTest); // only for debugging
+    Vec D = new JmD(biorthN, trgtStatesNt);      log.dbg("D_{n,m>=Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
 
     SYS_LS = new Ls(0, SPIN);
-    ConfArr sysArr = ConfArrFactoryE2.makeSModelE2(SYS_LS, trgtBasisNt, orthonN);    log.dbg("sysArr=", sysArr);
+    ConfArr sysArr = ConfArrFactoryE2.makeSModelE2(SYS_LS, trgtStatesNt, orthonN);    log.dbg("sysArr=", sysArr);
 
     // one electron basis
     trgtBasisN = orthonN;    // only the last wfs were used from  orthonNt, so now we can reuse it
     orthonN = null; // making sure nobody uses old ref
-    trgtBasisN.copyFrom(trgtBasisNt, 0, trgtBasisNt.size());
+    trgtBasisN.copyFrom(trgtStatesNt, 0, trgtStatesNt.size());
     D = new JmD(biorthN, trgtBasisN);   log.dbg("D_{n,N-1}=", D);
 
     SlaterLcr slater = new SlaterLcr(quadrLcr);
@@ -126,22 +127,23 @@ public class HySWaveJmBasisHy extends HySWaveJm {
     Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 //    double e0 = sysEngs.get(0);
 
-    JmMthdBasisHyE2 method = new JmMthdBasisHyE2(calcOpt);
-    method.setTrgtE2(trgt);
-    method.setOverD(D);
-    method.setSysEngs(sEngs);
-    method.setSysConfH(sysH);
+    JmMthdBasisHyE2 mthd = new JmMthdBasisHyE2(calcOpt);
+    mthd.setTrgtE2(trgt);
+    mthd.setOverD(D);
+    mthd.setSysEngs(sEngs);
+    mthd.setSysConfH(sysH);
+    mthd.setQuadrLcr(quadrLcr);
 
     if (CALC_DENSITY) {
       FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);
       FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
-      FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelTrgtS2(method));
+      FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelTrgtS2(mthd));
     }
 
-    ScattRes res;
+    ScttRes res;
 //    res = method.calcMidSysEngs();                  log.dbg("res=", res);
     if (scttEngs == null) {
-      scttEngs = method.calcScattEngs();
+      scttEngs = mthd.calcScattEngs();
 //      Vec sysScatEngs = method.calcSysScatEngs();
 //      scttEngs = scttEngs.append(sysScatEngs);
 //      scttEngs.sort();
@@ -152,8 +154,8 @@ public class HySWaveJmBasisHy extends HySWaveJm {
 //      scttEngs = vE.append(vE2);
 //      scttEngs.sort();
     }
-    res = method.calc(scttEngs);                  log.dbg("res=", res);
-    setupScattRes(res, method);                        log.dbg("res=", res);
+    res = mthd.calc(scttEngs);                  log.dbg("res=", res);
+    setupScattRes(res, mthd);                        log.dbg("res=", res);
     res.writeToFiles();
   }
 

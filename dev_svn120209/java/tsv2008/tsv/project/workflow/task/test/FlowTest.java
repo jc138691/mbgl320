@@ -143,7 +143,7 @@ private static void setLockMaxErr(boolean lockMaxErr) {
   FlowTest.lockMaxErr = lockMaxErr;
 }
 
-public static void lockMaxErr(float err) {
+public static void lockMaxErr(double err) {
   setMaxErr(err);
   setLockMaxErr(true);
 }

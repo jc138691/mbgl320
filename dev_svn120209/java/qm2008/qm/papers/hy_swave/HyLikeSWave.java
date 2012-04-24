@@ -6,7 +6,7 @@ import math.func.arr.FuncArr;
 import math.vec.DbgView;
 import math.vec.Vec;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 
 import javax.utilx.log.Log;
 /**
@@ -14,7 +14,7 @@ import javax.utilx.log.Log;
 */
 public abstract class HyLikeSWave extends Jm2010CommonLcr {
 public static Log log = Log.getLog(HyLikeSWave.class);
-protected static FuncArr trgtBasisNt;
+protected static FuncArr trgtStatesNt;
 protected static int FROM_CH = 0;  // initial scattering channel
 protected static Spin SPIN;
 protected static Ls SYS_LS;
@@ -43,7 +43,7 @@ public void setUp() {
 
 abstract public void calc(int newN, int newNt);
 
-public void setupScattRes(ScattRes res, ScttMthdBaseE1 method) {
+public void setupScattRes(ScttRes res, ScttMthdBaseE1 method) {
   super.setupScattRes(res, method);
   res.setCalcLabel(makeLabelTrgtS2(method));
 }

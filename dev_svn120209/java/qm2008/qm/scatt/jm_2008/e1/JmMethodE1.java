@@ -4,7 +4,7 @@ import math.func.FuncVec;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.theory.JmTheory;
 
@@ -17,8 +17,8 @@ public static Log log = Log.getLog(JmMethodE1.class);
 public JmMethodE1(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-public ScattRes calc(Vec engs) {
-  ScattRes res = new ScattRes();
+public ScttRes calc(Vec engs) {
+  ScttRes res = new ScttRes();
   int chNum = getChNum();
   int eN = engs.size();
   LgrrModel model = calcOpt.getLgrrModel();

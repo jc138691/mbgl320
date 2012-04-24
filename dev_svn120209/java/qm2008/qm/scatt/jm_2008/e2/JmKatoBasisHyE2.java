@@ -14,6 +14,7 @@ public class JmKatoBasisHyE2 {
 public static Log log = Log.getLog(JmKatoBasisHyE2.class);
 protected JmMthdBaseE2 mthd;
 protected Mtrx jmF;
+protected Vec jmA;
 
 public JmKatoBasisHyE2(JmMthdBaseE2 jmMthdBaseE2) {      log.setDbg();
   mthd = jmMthdBaseE2;

@@ -15,8 +15,8 @@ import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
 import scatt.jm_2008.e3.JmMethodAnyBasisE3;
-import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.target.ScattTrgtE3;
+import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.target.ScttTrgtE3;
 import scatt.jm_2008.jm.theory.JmD;
 
 import javax.iox.FileX;
@@ -113,24 +113,24 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     Vec basisEngs = trgtPotH.getEigVal();                log.dbg("eigVal=", new VecDbgView(basisEngs));
     Mtrx basisVecs = trgtPotH.getEigVec();               log.dbg("eigVec=", new MtrxDbgView(basisVecs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_basisEngs_" + makeLabelNc());
-    trgtBasisNt = trgtPotH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
+    trgtStatesNt = trgtPotH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtStatesNt));
 
-    FuncArr basisR = LcrFactory.wfLcrToR(trgtBasisNt, quadrLcr);
+    FuncArr basisR = LcrFactory.wfLcrToR(trgtStatesNt, quadrLcr);
     AtomUtil.trimTailSLOW(basisR);
     FileX.writeToFile(basisR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtR_" + makeLabelNc());
 
 // TODO: check how Vec.size() is used
-//    AtomUtil.trimTailSLOW(trgtBasisNt);
+//    AtomUtil.trimTailSLOW(trgtStatesNt);
 
     trgtBasisN = orthonN;    // only the last wfs were used from  orthonNt, so now we can reuse it
     orthonN = null; // making sure nobody uses old ref
-    trgtBasisN.copyFrom(trgtBasisNt, 0, trgtBasisNt.size());
+    trgtBasisN.copyFrom(trgtStatesNt, 0, trgtStatesNt.size());
 
-    ScattTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
+    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtStatesNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
-    jmTrgt.setNt(trgtBasisNt.size());
+    jmTrgt.setNt(trgtStatesNt.size());
     jmTrgt.loadSdcsW();
     saveTrgtInfo(jmTrgt);
 
@@ -150,7 +150,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelNc(method));
     }
 
-    ScattRes res;
+    ScttRes res;
     if (scttEngs != null) {
       res = method.calc(scttEngs);                  log.dbg("res=", res);
     }
