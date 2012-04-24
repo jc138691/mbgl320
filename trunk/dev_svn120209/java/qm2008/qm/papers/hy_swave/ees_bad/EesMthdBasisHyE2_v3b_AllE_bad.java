@@ -11,7 +11,7 @@ import math.vec.Vec;
 import scatt.Scatt;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 
 import javax.triplet.Dble3;
 import javax.utilx.log.Log;
@@ -29,9 +29,9 @@ private CmplxMtrx cmS; //complex-matrx
 public EesMthdBasisHyE2_v3b_AllE_bad(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-public ScattRes calcSysEngs() {    log.setDbg();
+public ScttRes calcSysEngs() {    log.setDbg();
   EngModel engModel = calcOpt.getGridEng();
-  ScattRes res = new ScattRes();
+  ScttRes res = new ScttRes();
 
   Vec sEngs = getSysEngs();       log.dbg("sEngs=", sEngs);
   int showNum = calcPrntChNum();
@@ -112,8 +112,8 @@ protected void calcAllVecs(double sysTotE, int gNum) {
     FuncVec tWf = trgtWfs.get(g);
     Shell tSh = new Shell(g, tWf, L);
 
-    ShPair pS = makeShPair(tSh, phiS.get(g), ID_S, L, LS);
-    ShPair pC = makeShPair(tSh, phiC.get(g), ID_C, L, LS);
+    ShPair pS = ShPairFactory.makePair(tSh, phiS.get(g), ID_S, L, LS);
+    ShPair pC = ShPairFactory.makePair(tSh, phiC.get(g), ID_C, L, LS);
     ShPair pXi = makeShPair(tSh, orthonN.getLast(), ID_XI, L, LS);
 
     for (int sysIdx = 0; sysIdx < sysNum; sysIdx++) {     //log.dbg("sysIdx = ", sysIdx);  // Target channels

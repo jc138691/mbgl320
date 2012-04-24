@@ -13,7 +13,7 @@ import scatt.Scatt;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.target.JmCh;
 
 import javax.utilx.log.Log;
@@ -22,14 +22,12 @@ import javax.utilx.log.Log;
  */
 public abstract class JmMthdBaseE2 extends ScttMthdBaseE2 {
 public static Log log = Log.getLog(JmMthdBaseE2.class);
-//protected static final int IDX_IONIZ = 1;
-protected static final int SDCS_ENG_OFFSET = 1;
-//  protected static final int SC_SYS_ENG_OFFSET = 1;
-protected static final int SDCS_CH_OFFSET = 1;
-//  protected static final int CS_ENG_OFFSET = 1;
+public static final int SDCS_ENG_OFFSET = 1;
+public static final int SDCS_CH_OFFSET = 1;
 protected static final int CS_CH_OFFSET = 1;
 private int exclSysIdx = -1;
 protected Mtrx jmX;
+
 private static final double MIN_SYS_ENG_DELTA = Calc.EPS_10;
 public JmMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
@@ -69,12 +67,12 @@ public void setOverD(Vec overD) {
   super.setOverD(overD);
 }
 @Override
-public ScattRes calc(Vec scttEngs) {          //JmMethodJmBasisE3.log.setDbg();
+public ScttRes calc(Vec scttEngs) {          //JmMethodJmBasisE3.log.setDbg();
   return calcV3_best(scttEngs);
 }
-private ScattRes calcV3_best(Vec scttEngs) { log.setDbg();
+private ScttRes calcV3_best(Vec scttEngs) { log.setDbg();
   EngModel engModel = calcOpt.getGridEng();
-  ScattRes res = new ScattRes();
+  ScttRes res = new ScttRes();
   int prntNum = calcPrntChNum();
 //  int chNum = getChNum();
   int eN = scttEngs.size();
@@ -170,7 +168,7 @@ private Mtrx calcRSysIdx_bad(int sysIdx, Mtrx mW, double dlt, Vec vA) {
   MtrxFactory.makeSymmByAvr(R);                log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(R));
   return R;
 }
-protected void calcSdcs(int scttIdx, ScattRes res, int prntN) {
+protected void calcSdcs(int scttIdx, ScttRes res, int prntN) {
   loadSdcsW(chArr);
   //    loadSdcsW_Simpson(chArr);
   calcSdcsFromW(scttIdx, res, prntN);
@@ -214,12 +212,11 @@ protected void loadSdcsW_Simpson(JmCh[] chArr) {
     ch.setSdcsW(w);
   }
 }
-protected void calcSdcsFromW(int scttIdx, ScattRes res, int showNum) {
+protected void calcSdcsFromW(int scttIdx, ScttRes res, int showNum) {
   int tN = showNum;
   Mtrx mCs = res.getCrossSecs();
   Mtrx mSdcs = res.getSdcs();
-  for (int to = 0; to < tN; to++) {
-    log.dbg("to = ", to);  // Target channels
+  for (int to = 0; to < tN; to++) {log.dbg("to = ", to);  // Target channels
     JmCh ch = chArr[to];
     double sigma = mCs.get(scttIdx, to + CS_CH_OFFSET);
     if (scttIdx == 0) { // store channels energies
@@ -485,14 +482,14 @@ public int getExclSysIdx() {
 public void setExclSysIdx(int exclSysIdx) {
   this.exclSysIdx = exclSysIdx;
 }
-public ScattRes calcMidSysEngs() {
+public ScttRes calcMidSysEngs() {
   throw new IllegalArgumentException(log.error("[19Sep2011] This idea does not work. The convergence is slow in Nt, not in N!!!"));
 //    Vec scttEngs = EngGridFactory.makeMidPoints(sysEngs);
 //    double initTrgtE = trgtE2.getInitTrgtEng();
 //    scttEngs.add(-initTrgtE);
 //    return calc(scttEngs);
 }
-public ScattRes calcWithMidSysEngs() {
+public ScttRes calcWithMidSysEngs() {
   Vec scttEngs = EngGridFactory.makeWithMidPoints(sysEngs);
   double initTrgtE = trgtE2.getInitTrgtEng();
   scttEngs.add(-initTrgtE);

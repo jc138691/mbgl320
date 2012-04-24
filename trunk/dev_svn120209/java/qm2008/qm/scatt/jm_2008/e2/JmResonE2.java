@@ -1,7 +1,6 @@
 package scatt.jm_2008.e2;
 import atom.data.AtomUnits;
 import flanagan.complex.Cmplx;
-import math.Mathx;
 import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
 import math.complex.CmplxVec;
@@ -9,7 +8,7 @@ import math.complex.CmplxVecDbgView;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.mtrx.MtrxInfo;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.target.JmCh;
 
 import static java.lang.Math.abs;
@@ -39,7 +38,7 @@ public class JmResonE2 {
     this.jmm = method;
   }
 
-  public void calc(ScattRes res, Mtrx mX) {
+  public void calc(ScttRes res, Mtrx mX) {
     CmplxVec resDlts = calc(mX);
     res.setResDlts(resDlts);
     res.setResInfo(loadResInfo(resDlts));

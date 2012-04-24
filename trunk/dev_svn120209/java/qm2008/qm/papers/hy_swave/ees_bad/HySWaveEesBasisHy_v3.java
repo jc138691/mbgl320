@@ -8,8 +8,8 @@ import math.func.arr.FuncArrDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
-import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.target.ScattTrgtE3;
+import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.target.ScttTrgtE3;
 
 import javax.utilx.log.Log;
 /**
@@ -53,11 +53,11 @@ public void calc(int newNt) {      log.setDbg();
 
   trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
   Vec targetEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));
-  trgtBasisNt = trgtPotH.getEigFuncArr();      log.dbg("trgtBasisNt=", new FuncArrDbgView(trgtBasisNt));
-//  AtomUtil.trimTailSLOW(trgtBasisNt);     // todo: check if needed
+  trgtStatesNt = trgtPotH.getEigFuncArr();      log.dbg("trgtStatesNt=", new FuncArrDbgView(trgtStatesNt));
+//  AtomUtil.trimTailSLOW(trgtStatesNt);     // todo: check if needed
   trgtBasisN = null;
 
-  ScattTrgtE3 trgt = makeTrgtE3(slater);
+  ScttTrgtE3 trgt = makeTrgtE3(slater);
   trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE electron
   trgt.setInitTrgtIdx(FROM_CH);
   trgt.setIonGrndEng(0);
@@ -79,9 +79,9 @@ public void calc(int newNt) {      log.setDbg();
   method.setSysConfH(sysH);
   method.setOrthonNt(orthonNt);
   method.setOrthonN(orthonN);
-  method.setTrgtBasisN(trgtBasisNt);
+  method.setTrgtBasisN(trgtStatesNt);
 
-  ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
+  ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);
   res.writeToFiles();
 }

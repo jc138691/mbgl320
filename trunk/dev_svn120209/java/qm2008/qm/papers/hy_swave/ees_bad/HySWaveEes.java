@@ -14,8 +14,8 @@ import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
 import papers.hy_swave.HyLikeSWave;
 import qm_station.QMSProject;
-import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.target.ScattTrgtE3;
+import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.target.ScttTrgtE3;
 
 import javax.iox.FileX;
 import javax.utilx.log.Log;
@@ -81,11 +81,11 @@ public void calc(int newN) {
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
   trgtBasisN = orthonN;
-  trgtBasisNt = null;
+  trgtStatesNt = null;
   orthonNt = null;
 
 //  AtomUtil.trimTailSLOW(trgtBasisN);     // todo: check if needed
-  ScattTrgtE3 trgt = makeTrgtE3(slater);
+  ScttTrgtE3 trgt = makeTrgtE3(slater);
   trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE electron
   trgt.setInitTrgtIdx(FROM_CH);
   trgt.setIonGrndEng(0);
@@ -103,23 +103,23 @@ public void calc(int newN) {
   method.setOrthonNt(orthonN);
   method.setTrgtBasisN(trgtBasisN);   // is just orthonNt, but different in _BasisHy
 
-  ScattRes res = method.calcSysEngs();                  log.dbg("res=", res);
+  ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);
   res.writeToFiles();
 }
 
 
-protected ScattTrgtE3 makeTrgtE3(SlaterLcr slater) {
+protected ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
   SysE1 tgrtE2 = new SysE1(-TARGET_Z, slater);
   Ls tLs = new Ls(0, Spin.ELECTRON);  // t - for target
 
-  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtBasisNt);     log.dbg("tConfArr=", tConfArr);
+  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtStatesNt);     log.dbg("tConfArr=", tConfArr);
 
   ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                  log.dbg("tH=\n", new MtrxDbgView(tH));
   FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
   FileX.writeToFile(tH.getEngEv(0).toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_eV_" + makeLabelBasisOptN());
 
-  ScattTrgtE3 res = new ScattTrgtE3();
+  ScttTrgtE3 res = new ScttTrgtE3();
   res.add(tH);
   res.makeReady();
   return res;
@@ -127,7 +127,7 @@ protected ScattTrgtE3 makeTrgtE3(SlaterLcr slater) {
 
 protected ConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
   SysAtomE2 sys = new SysAtomE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
-  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtBasisNt, trgtBasisNt);   //log.dbg("sysArr=", sConfArr);
+  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtStatesNt, trgtStatesNt);   //log.dbg("sysArr=", sConfArr);
   ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  //log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;
 }

@@ -3,7 +3,7 @@ import atom.shell.*;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 
 import javax.utilx.log.Log;
 /**
@@ -55,7 +55,7 @@ protected Mtrx calcX() {
   return res;
 }
 
-protected void calcSdcs(int i, ScattRes res, int prntN) {
+protected void calcSdcs(int i, ScttRes res, int prntN) {
   JmSdcsBasisHyE2 scds = new JmSdcsBasisHyE2(this);
   scds.calcScds(i, res, prntN);
 }

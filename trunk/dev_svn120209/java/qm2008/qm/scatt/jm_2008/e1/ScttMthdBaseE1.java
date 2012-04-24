@@ -1,10 +1,11 @@
 package scatt.jm_2008.e1;
 import atom.energy.part_wave.PotHMtrx;
+import atom.wf.log_cr.WFQuadrLcr;
 import math.vec.Vec;
 import project.workflow.task.test.FlowTest;
 import scatt.eng.EngGrid;
 import scatt.eng.EngModel;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,1/04/11,3:43 PM
@@ -13,6 +14,7 @@ public abstract class ScttMthdBaseE1 extends FlowTest {
 protected static final int IDX_ENRGY = 0;
 private Vec overD;      // overlap coefficients D
 protected Vec sysEngs;
+protected WFQuadrLcr quadrLcr;
 protected PotHMtrx potH;
 protected LgrrOrthLcr orthonN;
 protected final CalcOptE1 calcOpt;
@@ -30,7 +32,7 @@ public ScttMthdBaseE1(CalcOptE1 calcOpt) {
 public CalcOptE1 getCalcOpt() {
   return calcOpt;
 }
-public ScattRes calcForScatEngModel() {
+public ScttRes calcForScatEngModel() {
   EngGrid engs = calcScattEngs();
   return calc(engs);
 }
@@ -39,7 +41,7 @@ public EngGrid calcScattEngs() {
   EngGrid engs = new EngGrid(eng);
   return engs;
 }
-//public ScattRes calcSysEngs() {
+//public ScttRes calcSysEngs() {
 //  throw new IllegalArgumentException(log.error("call relevant implementation of calcSysEngs"));
 ////  return calc(sysEngs);
 //}
@@ -52,11 +54,11 @@ public Vec getSysEngs() {
 public int getChNum() { // number of target channels
   return 1; // only one for pot-scattering
 }
-//public ScattRes calcWithMidSysEngs() {
+//public ScttRes calcWithMidSysEngs() {
 //  Vec scttEngs = EngGridFactory.makeWithMidPoints(sysEngs);
 //  return calc(scttEngs);
 //}
-public abstract ScattRes calc(Vec engs);
+public abstract ScttRes calc(Vec engs);
 public void setSysEngs(Vec engs) {
   this.sysEngs = engs;
 }
@@ -77,5 +79,11 @@ public LgrrOrthLcr getOrthonN() {
 }
 public void setOrthonN(LgrrOrthLcr orthonN) {
   this.orthonN = orthonN;
+}
+public WFQuadrLcr getQuadrLcr() {
+  return quadrLcr;
+}
+public void setQuadrLcr(WFQuadrLcr quadrLcr) {
+  this.quadrLcr = quadrLcr;
 }
 }

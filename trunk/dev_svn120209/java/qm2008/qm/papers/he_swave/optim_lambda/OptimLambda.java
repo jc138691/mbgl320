@@ -20,7 +20,7 @@ import qm_station.QMSProject;
 import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
-import scatt.jm_2008.jm.target.ScattTrgtE3;
+import scatt.jm_2008.jm.target.ScttTrgtE3;
 import stats.VecStats;
 
 import javax.iox.FileX;
@@ -298,9 +298,9 @@ public class OptimLambda extends HeSWaveScatt {
     // Making He+ eigen-states
     trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);       //log.dbg("trgtPotH=", trgtPotH);
     Vec basisEngs = trgtPotH.getEigVal();                log.dbg("basisEngs=", new VecDbgView(basisEngs));
-    trgtBasisNt = trgtPotH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtBasisNt));
+    trgtStatesNt = trgtPotH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtStatesNt));
     SlaterLcr slater = new SlaterLcr(quadrLcr);
-    ScattTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
+    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtStatesNt);
 
     Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);
     log.info("E_SORTED=", new Vec(HeSWaveAtom.E_SORTED));
@@ -326,9 +326,9 @@ public class OptimLambda extends HeSWaveScatt {
     pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
     // making target  JM basis
-    trgtBasisNt = orthonNt;
+    trgtStatesNt = orthonNt;
     SlaterLcr slater = new SlaterLcr(quadrLcr);
-    ScattTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtBasisNt);
+    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtStatesNt);
 
     Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);
     log.info("E_SORTED=", new Vec(HeSWaveAtom.E_SORTED));

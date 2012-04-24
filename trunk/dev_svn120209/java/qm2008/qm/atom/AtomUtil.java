@@ -25,10 +25,10 @@ public class AtomUtil extends Calc {
       trimTailSLOW(arr.get(i));
     }
   }
-  public static void setTailFrom(FuncArr arr, FuncArr fromArr) {
-    for (int i = 0; i < arr.size(); i++) {
-      arr.get(i).setSize(fromArr.get(i).size());
-    }
-  }
+//  public static void setTailFrom(FuncArr arr, FuncArr fromArr) {
+//    for (int i = 0; i < arr.size(); i++) {
+//      arr.get(i).setSize(fromArr.get(i).size());
+//    }
+//  }
 
 }

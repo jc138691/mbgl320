@@ -9,7 +9,7 @@ import qm_station.ui.scatt.CalcOptR;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.TestModel;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 
@@ -53,7 +53,7 @@ public StepGridModel makeStepGridModelR() {
   res.setNumPoints(R_N);
   return res;
 }
-public void setupScattRes(ScattRes res, ScttMthdBaseE1 method) {
+public void setupScattRes(ScttRes res, ScttMthdBaseE1 method) {
   res.setHomeDir(HOME_DIR);
   res.setModelDir(MODEL_DIR);
   res.setModelName(MODEL_NAME);

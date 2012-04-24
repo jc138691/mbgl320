@@ -14,8 +14,8 @@ import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import scatt.jm_2008.e3.JmDe3;
 import scatt.jm_2008.e3.JmMethodJmBasisE3;
-import scatt.jm_2008.jm.ScattRes;
-import scatt.jm_2008.jm.target.ScattTrgtE3;
+import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.target.ScttTrgtE3;
 
 import javax.iox.FileX;
 import javax.utilx.log.Log;
@@ -34,11 +34,11 @@ public void calc(int newN, int newNt) {
   hydrScattTestOk(TARGET_Z);      // out: pot (for TARGET_Z), orthonNt
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
-  trgtBasisNt = orthonNt;
+  trgtStatesNt = orthonNt;
   trgtBasisN = orthonN;
-  AtomUtil.trimTailSLOW(trgtBasisNt);
+  AtomUtil.trimTailSLOW(trgtStatesNt);
   AtomUtil.trimTailSLOW(trgtBasisN);
-  ScattTrgtE3 trgt = makeTrgtE3(slater);
+  ScttTrgtE3 trgt = makeTrgtE3(slater);
   trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE elelctron
   trgt.setInitTrgtIdx(FROM_CH);
   trgt.setIonGrndEng(0);
@@ -63,7 +63,7 @@ public void calc(int newN, int newNt) {
     FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelTrgtS2(method));
   }
 
-  ScattRes res;
+  ScttRes res;
   if (scttEngs != null) {
     res = method.calc(scttEngs);                  log.dbg("res=", res);
   }
@@ -75,7 +75,7 @@ public void calc(int newN, int newNt) {
 }
 
 
-private ScattTrgtE3 makeTrgtE3(SlaterLcr slater) {
+private ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
 //    SysE1 tgrtE2 = new SysHy(slater);
   SysE1 tgrtE2 = new SysE1(-TARGET_Z, slater);
   Ls tLs = new Ls(0, Spin.ELECTRON);  // t - for target
@@ -86,7 +86,7 @@ private ScattTrgtE3 makeTrgtE3(SlaterLcr slater) {
   FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
   FileX.writeToFile(tH.getEngEv(0).toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_eV_" + makeLabelBasisOptN());
 
-  ScattTrgtE3 res = new ScattTrgtE3();
+  ScttTrgtE3 res = new ScttTrgtE3();
   res.add(tH);
   res.makeReady();
   return res;

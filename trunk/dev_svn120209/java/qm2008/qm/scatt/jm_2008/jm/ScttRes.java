@@ -8,7 +8,7 @@ import javax.iox.FileX;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/08/2008, Time: 17:00:55
  */
-public class ScattRes {
+public class ScttRes {
 //private FuncVec cross;
 private FuncVec shift;
 private Mtrx crossSecs;

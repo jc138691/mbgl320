@@ -13,7 +13,7 @@ import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
-import scatt.jm_2008.jm.ScattRes;
+import scatt.jm_2008.jm.ScttRes;
 import scatt.partial.wf.CosRegPWaveLcr;
 import scatt.partial.wf.SinPWaveLcr;
 
@@ -31,8 +31,8 @@ private static final int IDX_D = 2;
 public EaMethodE1_all_engs_wrong(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-public ScattRes calc(Vec engs) {
-  ScattRes res = new ScattRes();
+public ScttRes calc(Vec engs) {
+  ScttRes res = new ScttRes();
   int chNum = getChNum();
   int eN = engs.size();
   Mtrx mCrss = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
