@@ -114,7 +114,7 @@ protected void calcAllVecs(double sysTotE, int gNum) {
 
     ShPair pS = ShPairFactory.makePair(tSh, phiS.get(g), ID_S, L, LS);
     ShPair pC = ShPairFactory.makePair(tSh, phiC.get(g), ID_C, L, LS);
-    ShPair pXi = makeShPair(tSh, orthonN.getLast(), ID_XI, L, LS);
+    ShPair pXi = ShPairFactory.makePair(tSh, orthonN.getLast(), ID_XI, L, LS);
 
     for (int sysIdx = 0; sysIdx < sysNum; sysIdx++) {     //log.dbg("sysIdx = ", sysIdx);  // Target channels
       Dble3 sc = calcSC(pS, pC, pXi, sysIdx);

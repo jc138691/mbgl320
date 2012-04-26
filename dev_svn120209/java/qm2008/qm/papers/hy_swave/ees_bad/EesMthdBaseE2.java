@@ -141,11 +141,6 @@ protected void loadTrialWfs(int sysIdx, LgrrOrthLcr orthN, int chNum) {
   loadPWaveS_OLD(sysIdx, orthN, chNum);
   loadPWaveC_OLD(sysIdx, orthN, chNum);
 }
-//protected ShPair makePair(Shell sh, FuncVec wf, int id, int L, Ls LS) {
-//  Shell sh2 = new Shell(id, wf, L);
-//  ShPair res = new ShPair(sh, sh2, LS);
-//  return res;
-//}
 protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
   Dble3 res = new Dble3();
   // getting relevant sysEigVec
