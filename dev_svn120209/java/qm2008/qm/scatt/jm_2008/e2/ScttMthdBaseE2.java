@@ -129,6 +129,17 @@ protected int calcOpenChNum(double scattE) {
   }
   return tN;
 }
+protected int calcNumTrgtCont() {
+  int count = 0;
+  Vec tEngs = trgtE2.getEngs();
+  for (int chIdx = 0; chIdx < tEngs.size(); chIdx++) {
+    double chE = tEngs.get(chIdx); // channel eng
+    if (chE > trgtE2.getIonGrndEng()) {
+      return count++;
+    }
+  }
+  return count;
+}
 protected int calcCalcChNum(double scattE) {
   int openN = calcOpenChNum(scattE);
   int res = openN + calcOpt.getUseClosedNum();

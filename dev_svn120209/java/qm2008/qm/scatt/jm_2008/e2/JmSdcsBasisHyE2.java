@@ -5,7 +5,6 @@ import atom.energy.Energy;
 import atom.shell.*;
 import atom.wf.log_cr.WFQuadrLcr;
 import math.Calc;
-import math.Mathx;
 import math.func.FuncVec;
 import math.func.arr.FuncArrDbgView;
 import math.mtrx.Mtrx;
@@ -20,6 +19,7 @@ import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.coulomb.ClmbHyBoundTest;
 import scatt.partial.wf.JmClmbLcr;
 
+import javax.utilx.arraysx.DbleArr;
 import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 20/04/12, 9:34 AM
@@ -28,9 +28,10 @@ public class JmSdcsBasisHyE2 extends JmKatoBasisHyE2 {
 public static Log log = Log.getLog(JmSdcsBasisHyE2.class);
 private JmClmbLcr clmbPsi;
 private JmClmbLcr clmbPsi2;
-private EngGrid sdcsEngs;
-private EngGrid sdcsEngs2;
+private Vec sdcsEngs;
+private Vec sdcsEngs2;
 private Vec vClmbVBasis;
+private Mtrx mSdcs;
 
 public JmSdcsBasisHyE2(JmMthdBasisHyE2 jmMthdBasisHyE2) {
   super(jmMthdBasisHyE2);
@@ -40,11 +41,15 @@ public void calcScds(int scttIdx, ScttRes scttRes, int prntN) {
   jmF = calcFFromR();  log.dbg("jmF=\n", new MtrxDbgView(jmF));
   jmA = calcVecA();    log.dbg("vA=", new VecDbgView(jmA));
 
+  Mtrx resSdcs = scttRes.getSdcs();
+//  makeScdsEngGrid(resSdcs);
+  makeScdsTrgtEngs(resSdcs);
+  log.dbg("sdcsEngs=", new VecDbgView(sdcsEngs));
+  log.dbg("sdcsEngs2=", new VecDbgView(sdcsEngs2));
+
   loadClmbPsi();
 
   double[] engs = sdcsEngs.getArr();
-  Mtrx resSdcs = scttRes.getSdcs();
-  Mtrx mSdcs = new Mtrx(engs.length + 1,  resSdcs.getNumCols());
   scttRes.setSdcs(mSdcs);
   for (int idxA = 0; idxA < engs.length; idxA++) {
     double engA = engs[idxA];
@@ -52,8 +57,8 @@ public void calcScds(int scttIdx, ScttRes scttRes, int prntN) {
       mSdcs.set(0, 0, 0);
       mSdcs.set(idxA + mthd.SDCS_CH_OFFSET, 0, engA);
     }
-    double res = calcScds(idxA);
-    mSdcs.set(idxA + mthd.SDCS_CH_OFFSET, scttIdx + mthd.SDCS_ENG_OFFSET, 0);
+    double res = calcScds(idxA);      log.dbg("calcScds res=", res);
+    mSdcs.set(idxA + mthd.SDCS_CH_OFFSET, scttIdx + mthd.SDCS_ENG_OFFSET, res);
   }
   int dgb = 1;
 }
@@ -71,17 +76,17 @@ protected double calcScds(int idxEngA) {
   log.dbg("vClmbVBasis=", new VecDbgView(vClmbVBasis));
 
   int sN = mthd.getSysBasisSize();
-  double res = 0;
+  double ampl = 0;  // amplitude
   for (int sysIdx = 0; sysIdx < sN; sysIdx++) {
-    double ch = calcClmbVSys(clmbE2, sysIdx);  log.dbg("calcScds ch=", ch);
-    double ah = ch * jmA.get(sysIdx);          log.dbg("calcScds ah=", ah);
-    log.dbg("calcScds old res=", res);
-    res += ah;    log.dbg("calcScds new res=", res);
+    double ch = calcClmbVSys(clmbE2, sysIdx);  //log.dbg("calcScds ch=", ch);
+    double ah = ch * jmA.get(sysIdx);          //log.dbg("calcScds ah=", ah);
+    //log.dbg("calcScds old res=", ampl);
+    ampl += ah;    //log.dbg("calcScds new res=", ampl);
   }
   double norm = Scatt.calcSdcsNormE2E_todo(
     sdcsEngs.get(idxEngA), sdcsEngs2.get(idxEngA)
     , mthd.getScttE());  log.dbg("calcScds norm=", norm);
-  res *= norm;
+  double res = norm * ampl * ampl;
   return res;
 }
 
@@ -124,7 +129,6 @@ protected void loadClmbPsi() {
     return;
   }
   WFQuadrLcr quadr = mthd.getQuadrLcr();
-  makeScdsEngs();
   clmbPsi = new JmClmbLcr(L, AtomHy.Z, sdcsEngs, sysTotE, quadr);    log.dbg("clmbPsi=\n", new FuncArrDbgView(clmbPsi));
   clmbPsi2 = new JmClmbLcr(L, AtomHy.Z, sdcsEngs2, sysTotE, quadr);  log.dbg("clmbPsi2=\n", new FuncArrDbgView(clmbPsi2));
   if (!new ClmbHyBoundTest(clmbPsi, mthd.trgtE2.getStatesE1()).ok())
@@ -134,7 +138,7 @@ protected void loadClmbPsi() {
 
   int stopped = 1;
 }
-private void makeScdsEngs() {
+private void makeScdsEngGrid(Mtrx resSdcs) {
   CalcOptE1 calcOpt = mthd.getCalcOpt();
   int engN = calcOpt.getSdcsEngN();
   double sysTotE = mthd.getSysTotE();
@@ -146,7 +150,39 @@ private void makeScdsEngs() {
   for (int i = 0; i < engs.length; i++) {
     engs[i] = sysTotE - engs[i];
   }
-  log.dbg("sdcsEngs=", new VecDbgView(sdcsEngs));
-  log.dbg("sdcsEngs2=", new VecDbgView(sdcsEngs2));
+
+  if (mSdcs == null) {   // create this mtrx only once
+    mSdcs = new Mtrx(engs.length + 1,  resSdcs.getNumCols());
+  }
+
+}
+private void makeScdsTrgtEngs(Mtrx resSdcs) {
+  CalcOptE1 calcOpt = mthd.getCalcOpt();
+  double sysTotE = mthd.getSysTotE();
+  double maxE = sysTotE / 2;
+
+  DbleArr engs = new DbleArr();
+  DbleArr engs2 = new DbleArr();
+
+  Vec tEngs = mthd.trgtE2.getEngs();
+  int engIdx = 0;
+  for (int chIdx = 0; chIdx < tEngs.size(); chIdx++) {
+    double chE = tEngs.get(chIdx); // channel eng
+    if (chE <= mthd.trgtE2.getIonGrndEng()) {
+      continue;
+    }
+    if (chE >= maxE) {
+      break;
+    }
+    engs.add(chE);
+    engs2.add(sysTotE - chE);
+  }
+  sdcsEngs = new Vec(engs.toArray());
+  sdcsEngs2 = new Vec(engs2.toArray());
+
+  if (mSdcs == null) {   // create this mtrx only once
+    int trgtN = mthd.calcNumTrgtCont();
+    mSdcs = new Mtrx(trgtN + 1,  resSdcs.getNumCols());
+  }
 }
 }

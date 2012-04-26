@@ -24,9 +24,6 @@ public class TArr<T> {
     return arr.get(idx);
   }
 
-//  public void set(int idx, T el) {
-//    arr.set(idx, el);
-//  }
 
   public int size() {
     return arr.size();
