@@ -97,7 +97,7 @@ private double calcB(Shell tSh, Shell freeSh, int sysIdx) {
       continue;
 
     //Vbf - bound-free; could also be Vff - free-free for ionization
-    double v = sysE2.calcVbabb(tSh, freeSh, sysConf);         //log.dbg("v=", v);
+    double v = sysE2.calcVbabb_OLD(tSh, freeSh, sysConf);         //log.dbg("v=", v);
     res += ( term * v );
   }
   return res;
@@ -186,13 +186,13 @@ protected void calcAllVecs(int sysIdx, int chNum) {
       Shell tSh2 = new Shell(t2, tWf2, L);
 
       // channel S-like
-      ShPair pSh2 = makeShPair(tSh2, phiS.get(t2), ID_S, L, LS);
-      double x = sysE2.calcVbabb(tSh, freeSh, pSh2);         //log.dbg("x=", x);
+      ShPair pSh2 = ShPairFactory.makePair(tSh2, phiS.get(t2), ID_S, L, LS);
+      double x = sysE2.calcVbabb_OLD(tSh, freeSh, pSh2);         //log.dbg("x=", x);
       mX.set(g, t2, x);
 
       // channel C-like
-      pSh2 = makeShPair(tSh2, phiC.get(t2), ID_C, L, LS);
-      double y = sysE2.calcVbabb(tSh, freeSh, pSh2);         //log.dbg("y=", y);
+      pSh2 = ShPairFactory.makePair(tSh2, phiC.get(t2), ID_C, L, LS);
+      double y = sysE2.calcVbabb_OLD(tSh, freeSh, pSh2);         //log.dbg("y=", y);
       mY.set(g, t2, y);
     }
   }

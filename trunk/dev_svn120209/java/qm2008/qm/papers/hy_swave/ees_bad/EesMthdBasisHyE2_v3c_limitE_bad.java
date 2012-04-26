@@ -1,6 +1,7 @@
 package papers.hy_swave.ees_bad;
 import atom.shell.Ls;
 import atom.shell.ShPair;
+import atom.shell.ShPairFactory;
 import atom.shell.Shell;
 import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
@@ -109,9 +110,9 @@ protected void calcAllVecs(double sysTotE, int sysIdx, int gNum) {
     FuncVec tWf = trgtWfs.get(g);
     Shell tSh = new Shell(g, tWf, L);
 
-    ShPair pS = makeShPair(tSh, phiS.get(g), ID_S, L, LS);
-    ShPair pC = makeShPair(tSh, phiC.get(g), ID_C, L, LS);
-    ShPair pXi = makeShPair(tSh, orthonN.getLast(), ID_XI, L, LS);
+    ShPair pS = ShPairFactory.makePair(tSh, phiS.get(g), ID_S, L, LS);
+    ShPair pC = ShPairFactory.makePair(tSh, phiC.get(g), ID_C, L, LS);
+    ShPair pXi = ShPairFactory.makePair(tSh, orthonN.getLast(), ID_XI, L, LS);
 
     Dble3 sc = calcSC(pS, pC, pXi, sysIdx);
     vB0.set(g, sc.a);                                      //log.dbg("sc.a=", sc.a);

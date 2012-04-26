@@ -52,7 +52,9 @@ abstract public class AtomFano1965 {
   }
   public Energy calcShPairEng(int LL, Shell a, Shell b, Shell a2, Shell b2) {
     Energy res = calcOneH(a, b, a2, b2);
-    res.pot += calcTwoPot(LL, a, b, a2, b2);
+    double pot2 = calcTwoPot(LL, a, b, a2, b2);
+    res.pot += pot2;
+    res.pot2 += pot2;
     return res;
   }
   public double calcOverlap(Shell a, Shell b, Shell a2, Shell b2) {

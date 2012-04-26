@@ -31,7 +31,7 @@ private static final double OVER_SQRT_TWO = Math.sqrt(0.5);
 // NOTE!!!!! bX must be
 //   < bX | bX2 > = delta_{bX.id, bX2.id}
 //   < bX | bY2 > = delta_{bX.id, bY2.id}
-public double calcVbabb(
+public double calcVbabb_OLD(
   Shell bX  // bound shell
   , Shell aY  // any (free-moving-wf or bound)
   , Conf bbXY2  // bound-bound-(shell-pair)    // NOTE! bound wf and conf are built from the same radial basis
@@ -40,7 +40,7 @@ public double calcVbabb(
   ShPair sp = (ShPair) bbXY2;
   Shell bX2 = sp.a;
   Shell bY2 = sp.b;
-  double dir = calcShPairVbaba(ls.getL(), bX, aY, bX2, bY2);
+  double dir = calcShPairVbaba_OLD(ls.getL(), bX, aY, bX2, bY2);
   if (bX2.sameId(bY2)) {
     if (ls.getS() != 0) {
       throw new IllegalArgumentException(log.error("NOT A VALID config: ls.getS() != 0): ERROR when building configs"));
@@ -55,15 +55,15 @@ public double calcVbabb(
   double norm = OVER_SQRT_TWO;
 
   // NOTE: < bX | bY2 > = delta_{bX.id, bY2.id}  is used here
-  double exc = calcShPairVbaba(ls.getL(), bX, aY, bY2, bX2);
+  double exc = calcShPairVbaba_OLD(ls.getL(), bX, aY, bY2, bX2);
   double res = norm * ( dir + Mathx.pow(-1., ls.getS()) * exc );
   return res;
 }
 
-private double calcShPairVbaba(int LL
+private double calcShPairVbaba_OLD(int LL
   , Shell bX, Shell aY
   , Shell bX2, Shell aY2) { // modelled on calcShPairEng()
-  double oneV = calcOneVbaba(bX, aY, bX2, aY2);
+  double oneV = calcOneVbaba_OLD(bX, aY, bX2, aY2);
   double pot = calcTwoPot(LL, bX, aY, bX2, aY2);    // 1/r_max
   return oneV + pot;
 }
@@ -72,8 +72,8 @@ private double calcShPairVbaba(int LL
 // NOTE: 1/y   - second variable
 // baba --- bound-any-bound-any
 // "bound" means that < bX | bX2 > = delta_{bX.id, bX2.id}
-private double calcOneVbaba(   // modelled on calcOneH()
-                               Shell bX  // bound shell
+private double calcOneVbaba_OLD(   // modelled on calcOneH()
+                                   Shell bX  // bound shell
   , Shell aY // any (bound or free)
   , Shell bX2 // bound shell X2
   , Shell aY2 // any (bound or free) shell Y2
