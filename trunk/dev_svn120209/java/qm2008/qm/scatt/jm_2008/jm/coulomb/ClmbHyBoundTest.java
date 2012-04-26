@@ -23,7 +23,7 @@ public ClmbHyBoundTest(JmClmbLcr cont, FuncArr target) {
 }
 public ClmbHyBoundTest() {
 }
-public void testNorm() {  log.setDbg();
+public void testNorm() {  //log.setDbg();
   double currMaxErr = getMaxErr();
   unlockMaxErr();
   setMaxErr(Math.min(currMaxErr, MAX_INTGRL_ERR));

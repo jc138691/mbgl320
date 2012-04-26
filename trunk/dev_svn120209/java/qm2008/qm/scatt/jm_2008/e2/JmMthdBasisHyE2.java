@@ -11,6 +11,7 @@ import javax.utilx.log.Log;
 */
 public class JmMthdBasisHyE2 extends JmMthdBaseE2 {  // two-electrons
 public static Log log = Log.getLog(JmMthdBasisHyE2.class);
+private JmSdcsBasisHyE2 scdsHyE2;
 
 public JmMthdBasisHyE2(CalcOptE1 calcOpt) {
   super(calcOpt);
@@ -56,7 +57,9 @@ protected Mtrx calcX() {
 }
 
 protected void calcSdcs(int i, ScttRes res, int prntN) {
-  JmSdcsBasisHyE2 scds = new JmSdcsBasisHyE2(this);
-  scds.calcScds(i, res, prntN);
+  if (scdsHyE2 == null) {
+    scdsHyE2 = new JmSdcsBasisHyE2(this);
+  }
+  scdsHyE2.calcScds(i, res, prntN);
 }
 }
