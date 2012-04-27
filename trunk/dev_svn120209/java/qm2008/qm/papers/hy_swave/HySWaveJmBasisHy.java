@@ -81,7 +81,7 @@ public void calc(int newN, int newNt) {
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
 
   trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
-  Vec targetEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));
+  Vec trgtEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(trgtEngs));
   trgtStatesNt = trgtPotH.getEigFuncArr();      log.dbg("trgtStatesNt=", new FuncArrDbgView(trgtStatesNt));
 //    FileX.writeToFile(trgtStatesNt.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtLcr_" + makeLabelTrgtS2());
 
@@ -94,11 +94,11 @@ public void calc(int newN, int newNt) {
   ScttTrgtE2 trgt = new ScttTrgtE2();
   trgt.setNt(orthonNt.size());
   trgt.setStatesE1(trgtStatesNt);
-  trgt.setEngs(targetEngs);
+  trgt.setEngs(trgtEngs);
   trgt.loadSdcsW();                log.dbg("trgt.getSdcsW()=", new VecDbgView(trgt.getSdcsW()));
   if (CALC_TRUE_CONTINUUM) {      // TARGET CONTINUUM
-    double maxSysEng = calcOpt.getGridEng().getLast() + targetEngs.get(0); // ASSUMED FROM H(1s)
-    JmClmbLcr clmbNt = new JmClmbLcr(L, AtomHy.Z, targetEngs, maxSysEng, quadrLcr);      log.dbg("JmClmbLcr =\n", clmbNt);
+    double maxSysEng = calcOpt.getGridEng().getLast() + trgtEngs.get(0); // ASSUMED FROM H(1s)
+    JmClmbLcr clmbNt = new JmClmbLcr(L, AtomHy.Z, trgtEngs, maxSysEng, quadrLcr);      log.dbg("JmClmbLcr =\n", clmbNt);
     clmbNt.normToE();
 //      AtomUtil.setTailFrom(clmbNt, trgtStatesNt);
 //      FileX.writeToFile(clmbNt.toTab(), HOME_DIR, "wf", "clmbNt.dat");

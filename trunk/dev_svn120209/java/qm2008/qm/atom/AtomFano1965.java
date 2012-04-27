@@ -23,7 +23,10 @@ abstract public class AtomFano1965 {
     Z = z;
     this.si = si;
   }
-  final public double calcTot(Conf fc, Conf fc2) {
+public double getZ() {
+  return Z;
+}
+final public double calcTot(Conf fc, Conf fc2) {
     Energy res = calcH(fc, fc2);
     return res.kin + res.pot;
   }

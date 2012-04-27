@@ -14,6 +14,7 @@ import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.target.JmCh;
 
 import javax.utilx.log.Log;
