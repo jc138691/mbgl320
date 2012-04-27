@@ -5,6 +5,7 @@ import atom.energy.Energy;
 import atom.shell.*;
 import atom.wf.log_cr.WFQuadrLcr;
 import math.Calc;
+import math.Mathx;
 import math.func.FuncVec;
 import math.func.arr.FuncArrDbgView;
 import math.mtrx.Mtrx;
@@ -17,6 +18,9 @@ import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.coulomb.ClmbHyBoundTest;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
+import scatt.jm_2008.jm.target.JmCh;
 import scatt.partial.wf.JmClmbLcr;
 
 import javax.utilx.arraysx.DbleArr;
@@ -48,6 +52,7 @@ public void calcScds(int scttIdx, ScttRes scttRes, int prntN) {
   log.dbg("sdcsEngs2=", new VecDbgView(sdcsEngs2));
 
   loadClmbPsi();
+  loadKatoLgrr();
 
   double[] engs = sdcsEngs.getArr();
   scttRes.setSdcs(mSdcs);
@@ -62,34 +67,70 @@ public void calcScds(int scttIdx, ScttRes scttRes, int prntN) {
   }
   int dgb = 1;
 }
-
 protected double calcScds(int idxEngA) {
   int L = 0;
   Ls LS = mthd.sysConfH.getBasis().getLs();
   FuncVec cA = clmbPsi.get(idxEngA);
   FuncVec cB = clmbPsi2.get(idxEngA);
-  int idA = mthd.trgtE2.getNt();
-  int idB = idA + 1;
-  ShPair clmbE2 = ShPairFactory.makePair(cA, idA, L, cB, idB, L, LS);
+  int ID_E2_A = mthd.trgtE2.getNt();
+  int ID_E2_B = ID_E2_A + 1;  // NOTE!!! This will only work for E2!!! TODO: Check this if doing E3+
+  ShPair clmbE2 = ShPairFactory.makePair(cA, ID_E2_A, L, cB, ID_E2_B, L, LS);
 
   vClmbVBasis = calcClmbVBasis(clmbE2); // different for each idxEngA
   log.dbg("vClmbVBasis=", new VecDbgView(vClmbVBasis));
 
-  int sN = mthd.getSysBasisSize();
-  double ampl = 0;  // amplitude
-  for (int sysIdx = 0; sysIdx < sN; sysIdx++) {
-    double ch = calcClmbVSys(clmbE2, sysIdx);  //log.dbg("calcScds ch=", ch);
-    double ah = ch * jmA.get(sysIdx);          //log.dbg("calcScds ah=", ah);
-    //log.dbg("calcScds old res=", ampl);
-    ampl += ah;    //log.dbg("calcScds new res=", ampl);
-  }
-  double norm = Scatt.calcSdcsNormE2E_todo(
+  double partA = calcPartA(clmbE2);
+  double partK = calcPartK(clmbE2);
+  double ampl = partA + partK;
+
+  double norm = Scatt.calcSdcsNormE2E(
     sdcsEngs.get(idxEngA), sdcsEngs2.get(idxEngA)
     , mthd.getScttE());  log.dbg("calcScds norm=", norm);
   double res = norm * ampl * ampl;
   return res;
 }
 
+private double calcPartA(ShPair clmbE2) {
+  int sN = mthd.getSysBasisSize();
+  double res = 0;  // amplitude
+  for (int sysIdx = 0; sysIdx < sN; sysIdx++) {
+    double ch = calcClmbVSys(clmbE2, sysIdx);  //log.dbg("calcScds ch=", ch);
+    double ah = ch * jmA.get(sysIdx);          //log.dbg("calcScds ah=", ah);
+    //log.dbg("calcScds old res=", ampl);
+    res += ah;    //log.dbg("calcScds new res=", ampl);
+  }
+  return res;
+}
+private double calcPartK(ShPair clmbE2) {
+  int L = 0;
+  Ls LS = mthd.sysConfH.getBasis().getLs();
+
+  CalcOptE1 calcOpt = mthd.getCalcOpt();
+  int rN = mthd.openChN;
+  int katoN = calcOpt.getKatoN();
+  int initChIdx = mthd.trgtE2.getInitTrgtIdx();
+  LgrrModel jmModel = calcOpt.getLgrrModel();
+  int N = jmModel.getN();
+  double res = 0;  // amplitude
+  for (int r = 0; r < rN; r++) {     //log.dbg("t = ", t);  // Target channels
+    for (int xiIdx = 0; xiIdx < katoN; xiIdx++) {
+      double f = jmF.get(r, xiIdx);
+      FuncVec xi = katoLgrr.get(N + xiIdx);//TODO: check (N + xiIdx) getting right func
+
+
+      FuncVec cA = clmbPsi.get(idxEngA);
+      FuncVec cB = clmbPsi2.get(idxEngA);
+      int ID_E2_A = mthd.trgtE2.getNt();
+      int ID_E2_B = ID_E2_A + 1;  // NOTE!!! This will only work for E2!!! TODO: Check this if doing E3+
+      ShPair xiConf = ShPairFactory.makePair(cA, ID_E2_A, L, cB, ID_E2_B, L, LS);
+
+
+      double v2 = calcTwoPot(clmbE2, xiConf); //log.dbg("v2=", v2);
+      res += v2;
+    }
+  }
+  return res;
+}
 protected double calcClmbVSys(ShPair clmbE2, int sysIdx) {
   double[][] sV = mthd.sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = mthd.sysConfH.getBasis();     // sBasis

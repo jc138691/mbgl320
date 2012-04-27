@@ -64,6 +64,7 @@ public FuncArr getStatesE1() {
       }
       res.set(i, w);
     }
+    setSdcsW(res);
     setSdcsContW(res);
   }
 

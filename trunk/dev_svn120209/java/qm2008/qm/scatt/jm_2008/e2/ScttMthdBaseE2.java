@@ -135,7 +135,7 @@ protected int calcNumTrgtCont() {
   for (int chIdx = 0; chIdx < tEngs.size(); chIdx++) {
     double chE = tEngs.get(chIdx); // channel eng
     if (chE > trgtE2.getIonGrndEng()) {
-      return count++;
+      count++;
     }
   }
   return count;
