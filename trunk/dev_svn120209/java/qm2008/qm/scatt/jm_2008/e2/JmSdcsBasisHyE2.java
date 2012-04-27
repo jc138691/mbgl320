@@ -7,6 +7,7 @@ import atom.wf.log_cr.WFQuadrLcr;
 import math.Calc;
 import math.Mathx;
 import math.func.FuncVec;
+import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
@@ -105,29 +106,27 @@ private double calcPartK(ShPair clmbE2) {
   int L = 0;
   Ls LS = mthd.sysConfH.getBasis().getLs();
 
+  int ID_E2_XI = 1 + Math.max(clmbE2.a.getIdx(), clmbE2.b.getIdx());
+
   CalcOptE1 calcOpt = mthd.getCalcOpt();
-  int rN = mthd.openChN;
+  int tN = mthd.openChN;
   int katoN = calcOpt.getKatoN();
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   LgrrModel jmModel = calcOpt.getLgrrModel();
   int N = jmModel.getN();
+  FuncArr trgtStates = mthd.trgtE2.getStatesE1();
   double res = 0;  // amplitude
-  for (int r = 0; r < rN; r++) {     //log.dbg("t = ", t);  // Target channels
+  for (int t = 0; t < tN; t++) {     //log.dbg("t = ", t);  // Target channels
+    FuncVec tWf = trgtStates.get(t);
+    Shell tSh = new Shell(t, tWf, L);
+
     for (int xiIdx = 0; xiIdx < katoN; xiIdx++) {
-      double f = jmF.get(r, xiIdx);
+      double f = jmF.get(t, xiIdx);        //log.dbg("f=", f);
       FuncVec xi = katoLgrr.get(N + xiIdx);//TODO: check (N + xiIdx) getting right func
-
-
-      FuncVec cA = clmbPsi.get(idxEngA);
-      FuncVec cB = clmbPsi2.get(idxEngA);
-      int ID_E2_A = mthd.trgtE2.getNt();
-      int ID_E2_B = ID_E2_A + 1;  // NOTE!!! This will only work for E2!!! TODO: Check this if doing E3+
-      ShPair xiConf = ShPairFactory.makePair(cA, ID_E2_A, L, cB, ID_E2_B, L, LS);
-
-
+      ShPair xiConf = ShPairFactory.makePair(tSh, xi, ID_E2_XI, L, LS);
       double v2 = calcTwoPot(clmbE2, xiConf); //log.dbg("v2=", v2);
-      res += v2;
-    }
+      res += (f * v2);       //log.dbg("res=", res);
+    }  log.dbg("res(katoN=" + katoN + ")=", res);
   }
   return res;
 }
