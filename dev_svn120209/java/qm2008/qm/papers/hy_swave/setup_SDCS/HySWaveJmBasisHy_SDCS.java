@@ -31,7 +31,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   CALC_TRUE_CONTINUUM = true; // if TRUE, increase LCR_N by about times 2.5
 
   CALC_SDCS = true;
-  KATO_N = 10; //
+  KATO_N = 1; //
   SDCS_ENG_N = 10;
 
   USE_CLOSED_CHANNELS = true;
@@ -52,6 +52,8 @@ public void runJob() {
   LCR_FIRST = -5;
   LCR_N = 4001;
   R_LAST = 200;
+//  LCR_N = 10001;
+//  R_LAST = 500;
 
 //      // upto N=40
 //    int currNt = 40;

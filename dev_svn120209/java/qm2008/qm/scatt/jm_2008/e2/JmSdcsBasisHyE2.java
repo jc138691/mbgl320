@@ -1,6 +1,7 @@
 package scatt.jm_2008.e2;
 import atom.data.AtomHy;
 import atom.e_2.SysAtomE2;
+import atom.e_2.SysE2_OLD;
 import atom.energy.Energy;
 import atom.shell.*;
 import atom.wf.log_cr.WFQuadrLcr;
@@ -37,6 +38,10 @@ private Vec sdcsEngs;
 private Vec sdcsEngs2;
 private Vec vClmbVBasis;
 private Mtrx mSdcs;
+private static final boolean DEBUG_JM1 = false;
+private int ID_A_OFFSET = 1;
+private int ID_B_OFFSET = 2;
+private int ID_XI_OFFSET = 3;
 
 public JmSdcsBasisHyE2(JmMthdBasisHyE2 jmMthdBasisHyE2) {
   super(jmMthdBasisHyE2);
@@ -66,16 +71,21 @@ public void calcScds(int scttIdx, ScttRes scttRes, int prntN) {
     double res = calcScds(idxA);      log.dbg("calcScds res=", res);
     mSdcs.set(idxA + mthd.SDCS_CH_OFFSET, scttIdx + mthd.SDCS_ENG_OFFSET, res);
   }
-  int dgb = 1;
 }
 protected double calcScds(int idxEngA) {
+  int N = mthd.getN();
   int L = 0;
   Ls LS = mthd.sysConfH.getBasis().getLs();
   FuncVec cA = clmbPsi.get(idxEngA);
   FuncVec cB = clmbPsi2.get(idxEngA);
-  int ID_E2_A = mthd.trgtE2.getNt();
-  int ID_E2_B = ID_E2_A + 1;  // NOTE!!! This will only work for E2!!! TODO: Check this if doing E3+
-  ShPair clmbE2 = ShPairFactory.makePair(cA, ID_E2_A, L, cB, ID_E2_B, L, LS);
+  int ID_E2_A = ID_A_OFFSET + N;
+  int ID_E2_B = ID_B_OFFSET + N;  // NOTE!!! This will only work for E2!!! TODO: Check this if doing E3+
+  Conf clmbE2 = ShPairFactory.makePair(cA, ID_E2_A, L, cB, ID_E2_B, L, LS);
+
+  if (DEBUG_JM1) {
+    ConfArr sB = mthd.sysConfH.getBasis();     // sBasis
+    clmbE2 = sB.get(idxEngA);
+  }
 
   vClmbVBasis = calcClmbVBasis(clmbE2); // different for each idxEngA
   log.dbg("vClmbVBasis=", new VecDbgView(vClmbVBasis));
@@ -91,7 +101,7 @@ protected double calcScds(int idxEngA) {
   return res;
 }
 
-private double calcPartA(ShPair clmbE2) {
+private double calcPartA(Conf clmbE2) {
   int sN = mthd.getSysBasisSize();
   double res = 0;  // amplitude
   for (int sysIdx = 0; sysIdx < sN; sysIdx++) {
@@ -102,11 +112,9 @@ private double calcPartA(ShPair clmbE2) {
   }
   return res;
 }
-private double calcPartK(ShPair clmbE2) {
+private double calcPartK(Conf clmbE2) {
   int L = 0;
   Ls LS = mthd.sysConfH.getBasis().getLs();
-
-  int ID_E2_XI = 1 + Math.max(clmbE2.a.getIdx(), clmbE2.b.getIdx());
 
   CalcOptE1 calcOpt = mthd.getCalcOpt();
   int tN = mthd.openChN;
@@ -115,22 +123,25 @@ private double calcPartK(ShPair clmbE2) {
   LgrrModel jmModel = calcOpt.getLgrrModel();
   int N = jmModel.getN();
   FuncArr trgtStates = mthd.trgtE2.getStatesE1();
+  int ID_E2_XI = ID_XI_OFFSET + N;
+
   double res = 0;  // amplitude
   for (int t = 0; t < tN; t++) {     //log.dbg("t = ", t);  // Target channels
     FuncVec tWf = trgtStates.get(t);
     Shell tSh = new Shell(t, tWf, L);
 
     for (int xiIdx = 0; xiIdx < katoN; xiIdx++) {
-      double f = jmF.get(t, xiIdx);        //log.dbg("f=", f);
+      double f = jmF.get(t, xiIdx);        log.dbg("f=", f);
       FuncVec xi = katoLgrr.get(N + xiIdx);//TODO: check (N + xiIdx) getting right func
       ShPair xiConf = ShPairFactory.makePair(tSh, xi, ID_E2_XI, L, LS);
-      double v2 = calcTwoPot(clmbE2, xiConf); //log.dbg("v2=", v2);
-      res += (f * v2);       //log.dbg("res=", res);
+      double v2 = calcTwoPot(clmbE2, xiConf); log.dbg("v2=", v2);
+      res += (f * v2);       log.dbg("res=", res);
     }  log.dbg("res(katoN=" + katoN + ")=", res);
   }
   return res;
 }
-protected double calcClmbVSys(ShPair clmbE2, int sysIdx) {
+protected double calcClmbVSys(Conf clmbE2, int sysIdx) {
+  // TODO: Fri-27-Apr-2012, STOPED HERE
   double[][] sV = mthd.sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = mthd.sysConfH.getBasis();     // sBasis
   double res = 0;
@@ -144,7 +155,7 @@ protected double calcClmbVSys(ShPair clmbE2, int sysIdx) {
   return res;
 }
 
-protected Vec calcClmbVBasis(ShPair clmbE2) {
+protected Vec calcClmbVBasis(Conf clmbE2) {
   ConfArr sB = mthd.sysConfH.getBasis();     // sBasis
   Vec res = new Vec(sB.size());
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
@@ -155,9 +166,16 @@ protected Vec calcClmbVBasis(ShPair clmbE2) {
   return res;
 }
 
-protected double calcTwoPot(ShPair clmbE2, Conf conf) {
+protected double calcTwoPot(Conf clmbE2, Conf conf) {
   SysAtomE2 sysE2 = (SysAtomE2)mthd.sysConfH.getAtom();
   Energy res = sysE2.calcH(clmbE2, conf);   //log.dbg("calcTwoPot res=", res);
+
+  if (DEBUG_JM1) {
+    SysE2_OLD sys = new SysE2_OLD(sysE2.getZ(), sysE2.getSlaterLcr());
+    double x = sys.calcOverlap(clmbE2, conf);
+    double sysTotE = mthd.getSysTotE();
+    double he = res.kin + res.pot - sysTotE * x;
+  }
   return res.pot2;
 }
 
@@ -175,8 +193,6 @@ protected void loadClmbPsi() {
     return;
   if (!new ClmbHyBoundTest(clmbPsi2, mthd.trgtE2.getStatesE1()).ok())
     return;
-
-  int stopped = 1;
 }
 private void makeScdsEngGrid(Mtrx resSdcs) {
   CalcOptE1 calcOpt = mthd.getCalcOpt();
@@ -197,7 +213,6 @@ private void makeScdsEngGrid(Mtrx resSdcs) {
 
 }
 private void makeScdsTrgtEngs(Mtrx resSdcs) {
-  CalcOptE1 calcOpt = mthd.getCalcOpt();
   double sysTotE = mthd.getSysTotE();
   double maxE = sysTotE / 2;
 
@@ -205,7 +220,6 @@ private void makeScdsTrgtEngs(Mtrx resSdcs) {
   DbleArr engs2 = new DbleArr();
 
   Vec tEngs = mthd.trgtE2.getEngs();
-  int engIdx = 0;
   for (int chIdx = 0; chIdx < tEngs.size(); chIdx++) {
     double chE = tEngs.get(chIdx); // channel eng
     if (chE <= mthd.trgtE2.getIonGrndEng()) {
