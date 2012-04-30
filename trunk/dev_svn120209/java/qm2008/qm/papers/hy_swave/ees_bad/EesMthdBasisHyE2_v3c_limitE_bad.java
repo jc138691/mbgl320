@@ -78,7 +78,7 @@ public ScttRes calcSysEngs() {    log.setDbg();
 
     calcAllVecs(sysTotE, sysIdx, openNum);
     calcK(openNum);
-    cmS = Scatt.calcSFromK(mK);                        log.info("(1-iR)=\n", new CmplxMtrxDbgView(cmS));
+    cmS = Scatt.calcSFromK(mK, openChN);                        log.info("(1-iR)=\n", new CmplxMtrxDbgView(cmS));
     calcCrossSecs(sysIdx, res, cmS, openNum);
   }
   return res;

@@ -49,6 +49,8 @@ public JmCh(double sysEng, double chEng, LgrrModel jmModel, int jmZ) { // channe
   if (scattEng > 0) {
     open = true;
     loadOpen(jmZ);
+    snn1 = sn / sn1;
+    qn1 = (new Cmplx(sn1).div(cn1)).getRe();
   } else {
     open = false;
     loadClosed(jmZ);
@@ -56,9 +58,11 @@ public JmCh(double sysEng, double chEng, LgrrModel jmModel, int jmZ) { // channe
   sqrtAbsMom = Math.sqrt(scattMom.abs());
   absMom = scattMom.abs();
 
-  snn1 = sn / sn1;
-  qn1 = (new Cmplx(sn1).div(cn1)).getRe();
-  cnn1 = cn.div(cn1);
+  if (cn1.abs() == 0) {
+    cnn1 = new Cmplx(0);
+  } else {
+    cnn1 = cn.div(cn1);
+  }
   removeZeros();
 }
 private void removeZeros() {

@@ -42,7 +42,8 @@ protected void loadKatoLgrr() {
 }
 protected Mtrx calcFFromR() {
   CalcOptE1 calcOpt = mthd.getCalcOpt();
-  int rN = mthd.openChN;
+//  int rN = mthd.openChN;
+  int rN = mthd.calcChN;
   int katoN = calcOpt.getKatoN();
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   LgrrModel jmModel = calcOpt.getLgrrModel();
@@ -56,7 +57,16 @@ protected Mtrx calcFFromR() {
       JmCh ch = new JmCh(mthd.getSysTotE(), tEngs.get(r), xiModel
         , -mthd.trgtE2.getScreenZ());
       double sg = Mathx.dlt(r, initChIdx) * ch.getSn();  //log.dbg("sg=", sg);
-      double cg = ch.getCn().getRe();                    //log.dbg("ch.getCn()=", ch.getCn()); log.dbg("cg=", cg);
+      double cg = 0;
+      if (ch.isOpen()) {
+        cg = ch.getCn().getRe();
+      } else {
+        // "closed" is stored as c_{N-1} R_{\gamma \gamma_0}
+        cg = ch.getCnn1().getRe();                    //log.dbg("ch.getCn()=", ch.getCn()); log.dbg("cg=", cg);
+
+//        JmCh dbg = new JmCh(mthd.getSysTotE(), tEngs.get(r), xiModel
+//          , -mthd.trgtE2.getScreenZ());
+      }
       double scR = sg + cg * mthd.jmR.get(r, initChIdx); //log.dbg("scR=", scR);
       res.set(r, xiIdx, scR);
     }
@@ -91,7 +101,7 @@ private double calcAi(int sysIdx) {
     double xx = X[t][sysIdx];
     double f = jmF.get(t, IDX_N);
     double xjf = -xx * ch.getJnn().getRe() * f;
-    res += xjf;       //log.dbg("res=", res);
+    res += xjf;       //if (t == tN-1) { log.dbg("xjf=", xjf); log.dbg("res=", res);}
   }
   return res;
 }
