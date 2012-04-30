@@ -27,7 +27,7 @@ protected ConfHMtrx sysConfH;
 protected LgrrOrthLcr orthonNt;
 protected FuncArr trgtBasisN;
 protected JmCh[] chArr;
-protected Mtrx jmR;
+protected Mtrx jmR;     // NOTE!!! Only open part is corrected by / cn1.getRe();
 protected int calcChN;
 protected int openChN;
 

@@ -39,8 +39,8 @@ public static double calcSigmaPiFromS(Cmplx s, double scattE) {
   double res = Math.PI * (s.add(-1)).abs2() / k2;
   return res;
 }
-public static CmplxMtrx calcSFromK(Mtrx mK) {
-  int chNum = mK.getNumRows();
+public static CmplxMtrx calcSFromK(Mtrx mK, int openChN) {
+  int chNum = openChN;
   double[][] diag = MtrxFactory.makeOneDiag(chNum).getArray();
   double[][] k = mK.getArray();
   CmplxMtrx zp = new CmplxMtrx(chNum, chNum); // (1+iK)

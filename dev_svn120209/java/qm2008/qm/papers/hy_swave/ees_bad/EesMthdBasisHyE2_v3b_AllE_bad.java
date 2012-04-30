@@ -77,7 +77,7 @@ public ScttRes calcSysEngs() {    log.setDbg();
 
     calcAllVecs(sysTotE, openNum);
     calcK(openNum);
-    cmS = Scatt.calcSFromK(mK);                        log.info("(1-iR)=\n", new CmplxMtrxDbgView(cmS));
+    cmS = Scatt.calcSFromK(mK, openChN);                        log.info("(1-iR)=\n", new CmplxMtrxDbgView(cmS));
     calcCrossSecs(eIdx, res, cmS, openNum);
   }
   return res;
@@ -168,7 +168,7 @@ protected void calcK(int chNum) {
   }
   log.dbg("mK=\n", new MtrxDbgView(mK));
   log.dbg("mK2=\n", new MtrxDbgView(mK2));
-  MtrxFactory.makeSymmByAvr(mK);
+  MtrxFactory.makeSymmByAvr(mK, chNum);
   log.dbg("mK=\n", new MtrxDbgView(mK));
   log.dbg("mK2=\n", new MtrxDbgView(mK2));
 }

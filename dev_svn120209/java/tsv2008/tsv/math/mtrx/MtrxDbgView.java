@@ -15,13 +15,13 @@ public MtrxDbgView(Mtrx from) {
 }
 public String toString() {
   double[][] a = getArray();
+  String head = "Mtrx["+getNumRows()+"]["+getNumCols()+"] = {" + SysProp.EOL;
   if (DbgView.getNumShow() >= a.length) {
-    return toString(a, 0, a.length);
+    return head + toString(a, 0, a.length);
   }
   int n = DbgView.getNumShow() / 2;
   String start = toString(a, 0, n);
   String tail = toString(a, a.length - n, n);
-  String head = "Mtrx["+a.length+"][...] = {" + SysProp.EOL;
   return head + start + SysProp.EOL + ", ..., " + SysProp.EOL + tail + SysProp.EOL + "}";
 }
 

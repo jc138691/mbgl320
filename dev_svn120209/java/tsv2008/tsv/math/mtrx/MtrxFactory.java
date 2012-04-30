@@ -23,10 +23,9 @@ public static Mtrx makeFromTwoVecs(Vec vR, Vec vC) {
   return res;
 }
 
-public static void makeSymmByAvr(Mtrx m) {
-  // make symmetric
+public static void makeSymmByAvr(Mtrx m, int openN) {
   double[][] arr = m.getArray();
-  for (int r = 0; r < m.getNumRows(); r++) {
+  for (int r = 0; r < openN; r++) {
     for (int c = 0; c < r; c++) {
       double avr = 0.5 * (arr[r][c] + arr[c][r]);
       arr[r][c] = avr;

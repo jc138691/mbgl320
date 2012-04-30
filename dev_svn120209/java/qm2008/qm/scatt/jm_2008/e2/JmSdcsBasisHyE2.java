@@ -117,11 +117,10 @@ private double calcPartK(Conf clmbE2) {
   Ls LS = mthd.sysConfH.getBasis().getLs();
 
   CalcOptE1 calcOpt = mthd.getCalcOpt();
-  int tN = mthd.openChN;
+  int tN = jmF.getNumRows();
   int katoN = calcOpt.getKatoN();
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
-  LgrrModel jmModel = calcOpt.getLgrrModel();
-  int N = jmModel.getN();
+  int N = mthd.getN();
   FuncArr trgtStates = mthd.trgtE2.getStatesE1();
   int ID_E2_XI = ID_XI_OFFSET + N;
 
@@ -131,17 +130,16 @@ private double calcPartK(Conf clmbE2) {
     Shell tSh = new Shell(t, tWf, L);
 
     for (int xiIdx = 0; xiIdx < katoN; xiIdx++) {
-      double f = jmF.get(t, xiIdx);        log.dbg("f=", f);
-      FuncVec xi = katoLgrr.get(N + xiIdx);//TODO: check (N + xiIdx) getting right func
+      double f = jmF.get(t, xiIdx);        //log.dbg("f=", f);
+      FuncVec xi = katoLgrr.get(N + xiIdx);
       ShPair xiConf = ShPairFactory.makePair(tSh, xi, ID_E2_XI, L, LS);
-      double v2 = calcTwoPot(clmbE2, xiConf); log.dbg("v2=", v2);
-      res += (f * v2);       log.dbg("res=", res);
+      double v2 = calcTwoPot(clmbE2, xiConf); //log.dbg("v2=", v2);
+      res += (f * v2);       //log.dbg("res=", res);
     }  log.dbg("res(katoN=" + katoN + ")=", res);
   }
   return res;
 }
 protected double calcClmbVSys(Conf clmbE2, int sysIdx) {
-  // TODO: Fri-27-Apr-2012, STOPED HERE
   double[][] sV = mthd.sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = mthd.sysConfH.getBasis();     // sBasis
   double res = 0;
