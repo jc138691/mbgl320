@@ -697,7 +697,20 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmSdcsBasisHyE2.java" line="115" class="scatt.jm_2008.e2.JmSdcsBasisHyE2" package="scatt.jm_2008.e2">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmSdcsBasisHyE2.java" line="116" class="scatt.jm_2008.e2.JmSdcsBasisHyE2" package="scatt.jm_2008.e2">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmKatoBasisHyE2.java" line="36" class="scatt.jm_2008.e2.JmKatoBasisHyE2" package="scatt.jm_2008.e2">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -767,98 +780,115 @@
     <favorites_list name="qm2008_intellij" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="JmMthdBasisHyE2.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBasisHyE2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="17" selection-start="2216" selection-end="2216" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JmSdcsBasisHyE2.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmSdcsBasisHyE2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="53" selection-start="2801" selection-end="2801" vertical-scroll-proportion="0.32733408">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JmKatoBasisHyE2.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmKatoBasisHyE2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="15" selection-start="1240" selection-end="1240" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JmCh.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/JmCh.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="1575" selection-end="1575" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JmMthdBaseE2.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBaseE2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="60" selection-start="2722" selection-end="2722" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MtrxDbgView.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxDbgView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="61" selection-start="417" selection-end="417" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScttMthdBaseE2.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/ScttMthdBaseE2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="50" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EesMthdBasisHyE2_v3b_AllE_bad.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EesMthdBasisHyE2_v3b_AllE_bad.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="170" column="37" selection-start="6140" selection-end="6140" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MtrxFactory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="19" selection-start="631" selection-end="631" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Scatt.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/Scatt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="21" selection-start="1241" selection-end="1241" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.55983496">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="JmKatoBasisHyE2.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmKatoBasisHyE2.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="66" column="22" selection-start="1931" selection-end="1931" vertical-scroll-proportion="0.36872146">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Mtrx.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/Mtrx.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="59" column="15" selection-start="1073" selection-end="1073" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Matrix.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/Matrix.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="598" column="17" selection-start="15726" selection-end="15726" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="HySWaveJmBasisHy_SDCS.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/setup_SDCS/HySWaveJmBasisHy_SDCS.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="10" column="55" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="HySWaveJmBasisHy.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJmBasisHy.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="130" column="13" selection-start="5255" selection-end="5255" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="JmMthdBasisHyE2.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBasisHyE2.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="11" column="44" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="JmMthdBaseE2.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBaseE2.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="84" column="0" selection-start="2794" selection-end="2794" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="HySWaveJm.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJm.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="142" column="12" selection-start="3294" selection-end="3294" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MtrxDbgView.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxDbgView.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="12" column="7" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="JmSdcsBasisHyE2.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmSdcsBasisHyE2.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="52" column="0" selection-start="1637" selection-end="1637" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="JmSdcsBasisHyE2.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmSdcsBasisHyE2.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="165" column="0" selection-start="5218" selection-end="5526" vertical-scroll-proportion="0.5234375">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -888,11 +918,11 @@
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxFactory.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EesMthdBasisHyE2_v3b_AllE_bad.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxDbgView.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBaseE2.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/ScttMthdBaseE2.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/JmCh.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmKatoBasisHyE2.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBaseE2.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmSdcsBasisHyE2.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmKatoBasisHyE2.java" />
       </list>
     </option>
   </component>
@@ -1634,20 +1664,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1848" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1848" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36993605" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.608742" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2469537" sideWeight="0.6340378" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44136462" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-2230" y="469" width="3398" height="409" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46268657" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-2230" y="469" width="3398" height="409" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4520256" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24757281" sideWeight="0.5926748" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.65072304" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39946738" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18406285" sideWeight="0.6567164" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18406285" sideWeight="0.391258" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3432836" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1663,7 +1694,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289941" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.608742" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1794,35 +1824,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/log_cr/WFQuadrLcr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="20" selection-start="793" selection-end="793" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/FuncVec.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/log_cr/YkLcr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="9" selection-start="1801" selection-end="1801" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/setup_SDCS/HySWaveJmBasisHy_SDCS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="51" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJmBasisHy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="11" selection-start="5253" selection-end="5253" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/Scatt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="21" selection-start="1241" selection-end="1241" vertical-scroll-proportion="0.0">
@@ -1851,20 +1852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxDbgView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="61" selection-start="417" selection-end="417" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBasisHyE2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="17" selection-start="2216" selection-end="2216" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/ScttMthdBaseE2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="50" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0">
@@ -1879,23 +1866,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmKatoBasisHyE2.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxDbgView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="15" selection-start="1240" selection-end="1240" vertical-scroll-proportion="0.0">
+        <state line="12" column="7" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/setup_SDCS/HySWaveJmBasisHy_SDCS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="55" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="142" column="12" selection-start="3294" selection-end="3294" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJmBasisHy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="13" selection-start="5255" selection-end="5255" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBasisHyE2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="44" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/Matrix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="598" column="17" selection-start="15726" selection-end="15726" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/Mtrx.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="15" selection-start="1073" selection-end="1073" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBaseE2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="60" selection-start="2722" selection-end="2722" vertical-scroll-proportion="0.0">
+        <state line="84" column="0" selection-start="2794" selection-end="2794" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmSdcsBasisHyE2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="53" selection-start="2801" selection-end="2801" vertical-scroll-proportion="0.32733408">
+        <state line="52" column="0" selection-start="1637" selection-end="1637" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmKatoBasisHyE2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="22" selection-start="1931" selection-end="1931" vertical-scroll-proportion="0.36872146">
           <folding />
         </state>
       </provider>
