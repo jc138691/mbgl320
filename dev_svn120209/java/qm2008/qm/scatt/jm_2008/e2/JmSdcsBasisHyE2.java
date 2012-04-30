@@ -48,12 +48,12 @@ public JmSdcsBasisHyE2(JmMthdBasisHyE2 jmMthdBasisHyE2) {
 }
 public void calcScds(int scttIdx, ScttRes scttRes, int prntN) {
   log.setDbg();
-  jmF = calcFFromR();  log.dbg("jmF=\n", new MtrxDbgView(jmF));
-  jmA = calcVecA();    log.dbg("vA=", new VecDbgView(jmA));
+  jmF = calcFFromR();  log.dbg("jmF[0]=\n", new MtrxDbgView(new Mtrx(jmF[0])));
+  jmA = calcVecA();    log.dbg("jmA=", new MtrxDbgView(new Mtrx(jmA)));
 
   Mtrx resSdcs = scttRes.getSdcs();
-//  makeScdsEngGrid(resSdcs);
-  makeScdsTrgtEngs(resSdcs);
+  makeScdsEngGrid(resSdcs);
+//  makeScdsTrgtEngs(resSdcs);
   log.dbg("sdcsEngs=", new VecDbgView(sdcsEngs));
   log.dbg("sdcsEngs2=", new VecDbgView(sdcsEngs2));
 
@@ -102,11 +102,12 @@ protected double calcScds(int idxEngA) {
 }
 
 private double calcPartA(Conf clmbE2) {
+  int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   int sN = mthd.getSysBasisSize();
   double res = 0;  // amplitude
-  for (int sysIdx = 0; sysIdx < sN; sysIdx++) {
-    double ch = calcClmbVSys(clmbE2, sysIdx);  //log.dbg("calcScds ch=", ch);
-    double ah = ch * jmA.get(sysIdx);          //log.dbg("calcScds ah=", ah);
+  for (int s = 0; s < sN; s++) {
+    double ch = calcClmbVSys(clmbE2, s);  //log.dbg("calcScds ch=", ch);
+    double ah = ch * jmA[initChIdx][s];          //log.dbg("calcScds ah=", ah);
     //log.dbg("calcScds old res=", ampl);
     res += ah;    //log.dbg("calcScds new res=", ampl);
   }
@@ -117,7 +118,7 @@ private double calcPartK(Conf clmbE2) {
   Ls LS = mthd.sysConfH.getBasis().getLs();
 
   CalcOptE1 calcOpt = mthd.getCalcOpt();
-  int tN = jmF.getNumRows();
+  int rN = mthd.jmR.getNumRows();
   int katoN = calcOpt.getKatoN();
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   int N = mthd.getN();
@@ -125,12 +126,12 @@ private double calcPartK(Conf clmbE2) {
   int ID_E2_XI = ID_XI_OFFSET + N;
 
   double res = 0;  // amplitude
-  for (int t = 0; t < tN; t++) {     //log.dbg("t = ", t);  // Target channels
-    FuncVec tWf = trgtStates.get(t);
-    Shell tSh = new Shell(t, tWf, L);
+  for (int r = 0; r < rN; r++) {     //log.dbg("t = ", t);  // Target channels
+    FuncVec tWf = trgtStates.get(r);
+    Shell tSh = new Shell(r, tWf, L);
 
     for (int xiIdx = 0; xiIdx < katoN; xiIdx++) {
-      double f = jmF.get(t, xiIdx);        //log.dbg("f=", f);
+      double f = jmF[xiIdx][r][initChIdx];        //log.dbg("f=", f);
       FuncVec xi = katoLgrr.get(N + xiIdx);
       ShPair xiConf = ShPairFactory.makePair(tSh, xi, ID_E2_XI, L, LS);
       double v2 = calcTwoPot(clmbE2, xiConf); //log.dbg("v2=", v2);
@@ -139,7 +140,7 @@ private double calcPartK(Conf clmbE2) {
   }
   return res;
 }
-protected double calcClmbVSys(Conf clmbE2, int sysIdx) {
+private double calcClmbVSys(Conf clmbE2, int sysIdx) {
   double[][] sV = mthd.sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = mthd.sysConfH.getBasis();     // sBasis
   double res = 0;
@@ -153,7 +154,7 @@ protected double calcClmbVSys(Conf clmbE2, int sysIdx) {
   return res;
 }
 
-protected Vec calcClmbVBasis(Conf clmbE2) {
+private Vec calcClmbVBasis(Conf clmbE2) {
   ConfArr sB = mthd.sysConfH.getBasis();     // sBasis
   Vec res = new Vec(sB.size());
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index

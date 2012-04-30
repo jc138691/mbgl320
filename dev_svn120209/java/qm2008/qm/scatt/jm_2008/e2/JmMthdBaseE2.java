@@ -83,6 +83,7 @@ private ScttRes calcV3_best(Vec scttEngs) { log.setDbg();
   res.setSdcs(new Mtrx(prntNum + 1, eN + 1));
   res.setCrossSecs(mCs);
   res.setTics(mTics);
+  JmKatoBasisHyE2 kato = new JmKatoBasisHyE2(this);
   for (int scttIdx = 0; scttIdx < eN; scttIdx++) {
     log.info("i = ", scttIdx);
     scttE = scttEngs.get(scttIdx);             log.info("scttE = ", scttE);
@@ -98,6 +99,7 @@ private ScttRes calcV3_best(Vec scttEngs) { log.setDbg();
     int sysIdx = matchSysTotE();
     if (sysIdx == -1) {
       jmR = calcR(calcChN, openChN);
+      jmR = kato.calcKatoR(jmR);     log.dbg("kato.calc(jmR)=\n", new MtrxDbgView(jmR));
 //      jmR = calcR_v1_ok(calcN, openN);
     }
     else {
@@ -123,8 +125,6 @@ private Mtrx calcR(int calcN, int openN) {
   Mtrx WCJC = calcWcjc(W);                         log.dbg("WCJC=\n", new MtrxDbgView(WCJC));
   Mtrx res = calcR(WCJC, WSJS);                    log.dbg("R=\n", new MtrxDbgView(res));
   MtrxFactory.makeSymmByAvr(res, openN);                  log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(res));
-  JmKatoBasisHyE2 kato = new JmKatoBasisHyE2(this);
-//  res = kato.calc(res);     log.dbg("kato.calc(R)=\n", new MtrxDbgView(res));
   return res;
 }
 private Mtrx calcR_v1_ok(int calcN, int openN) {
