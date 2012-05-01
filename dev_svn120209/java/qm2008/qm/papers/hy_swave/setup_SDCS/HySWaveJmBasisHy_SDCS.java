@@ -32,7 +32,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
 
   CALC_SDCS = true;
   KATO_N = 1; //
-  SDCS_ENG_N = 10;
+  SDCS_ENG_N = 50;
 
   USE_CLOSED_CHANNELS = true;
   KEEP_CLOSED_N = 1;

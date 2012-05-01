@@ -99,15 +99,15 @@ private ScttRes calcV3_best(Vec scttEngs) { log.setDbg();
     int sysIdx = matchSysTotE();
     if (sysIdx == -1) {
       jmR = calcR(calcChN, openChN);
-      jmR = kato.calcKatoR(jmR);     log.dbg("kato.calc(jmR)=\n", new MtrxDbgView(jmR));
+//      jmR = kato.calcKatoR_todo(jmR);     log.dbg("kato.calc(jmR)=\n", new MtrxDbgView(jmR));
 //      jmR = calcR_v1_ok(calcN, openN);
     }
     else {
 //      jmR = calcRSysIdx_bad(calcN, openN, sysIdx);
       continue; // ignore
     }
-    CmplxMtrx mS = Scatt.calcSFromK(jmR, openChN);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(mS));
-    calcCrossSecs(scttIdx, res, mS, openChN);
+    jmS = Scatt.calcSFromK(jmR, openChN);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(jmS));
+    calcCrossSecs(scttIdx, res, jmS, openChN);
     if (calcOpt.getCalcSdcs()) {
       calcSdcs(scttIdx, res, prntNum);
     }
@@ -124,7 +124,7 @@ private Mtrx calcR(int calcN, int openN) {
   Mtrx WSJS = calcWsjs(W, openN);                  log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
   Mtrx WCJC = calcWcjc(W);                         log.dbg("WCJC=\n", new MtrxDbgView(WCJC));
   Mtrx res = calcR(WCJC, WSJS);                    log.dbg("R=\n", new MtrxDbgView(res));
-  MtrxFactory.makeSymmByAvr(res, openN);                  log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(res));
+  MtrxFactory.makeSymmByAvr(res, openN);           log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(res));
   return res;
 }
 private Mtrx calcR_v1_ok(int calcN, int openN) {
