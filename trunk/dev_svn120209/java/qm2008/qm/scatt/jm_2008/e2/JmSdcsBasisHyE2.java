@@ -44,8 +44,8 @@ public void calcScds(int scttIdx, ScttRes scttRes, int prntN) {
   jmCA = calcVecCA();    log.dbg("jmA=", new CmplxMtrxDbgView(new CmplxMtrx(jmCA)));
 
   Mtrx resSdcs = scttRes.getSdcs();
-  makeScdsEngGrid(resSdcs);
-//  makeScdsTrgtEngs(resSdcs);
+//  makeScdsEngGrid(resSdcs);
+  makeScdsTrgtEngs(resSdcs);
   log.dbg("sdcsEngs=", new VecDbgView(sdcsEngs));
   log.dbg("sdcsEngs2=", new VecDbgView(sdcsEngs2));
 
@@ -56,10 +56,10 @@ public void calcScds(int scttIdx, ScttRes scttRes, int prntN) {
   scttRes.setSdcs(mSdcs);
   for (int idxA = 0; idxA < engs.length; idxA++) {
     double engA = engs[idxA];
-    if (scttIdx == 0) { // store channels energies
-      mSdcs.set(0, 0, 0);
-      mSdcs.set(idxA + mthd.SDCS_CH_OFFSET, 0, engA);
-    }
+//    if (scttIdx == 0) { // store channels energies
+    mSdcs.set(0, 0, 0);
+    mSdcs.set(idxA + mthd.SDCS_CH_OFFSET, 0, engA);
+//    }
     double res = calcScds(idxA);      log.dbg("calcScds res=", res);
     mSdcs.set(idxA + mthd.SDCS_CH_OFFSET, scttIdx + mthd.SDCS_ENG_OFFSET, res);
   }
@@ -83,8 +83,10 @@ protected double calcScds(int idxEngA) {
   log.dbg("vHEBasis=", new VecDbgView(vHEBasis));
 
   Cmplx partCA = calcSumCA(clmbE2);
-  Cmplx partCK = calcSumCK(clmbE2);
-  Cmplx amplC = partCA.add(partCK);
+  Cmplx amplC = partCA;
+
+//  Cmplx partCK = calcSumCK(clmbE2);
+//  Cmplx amplC = partCA.add(partCK);
 
   double norm = Scatt.calcSdcsNormE2E(
     sdcsEngs.get(idxEngA), sdcsEngs2.get(idxEngA)
@@ -127,7 +129,8 @@ private void makeScdsEngGrid(Mtrx resSdcs) {
 }
 private void makeScdsTrgtEngs(Mtrx resSdcs) {
   double sysTotE = mthd.getSysTotE();
-  double maxE = sysTotE / 2;
+  double maxE = sysTotE;
+//  double maxE = sysTotE / 2;
 
   DbleArr engs = new DbleArr();
   DbleArr engs2 = new DbleArr();
