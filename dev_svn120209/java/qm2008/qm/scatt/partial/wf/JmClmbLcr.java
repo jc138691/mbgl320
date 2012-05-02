@@ -47,6 +47,20 @@ public void normToE() {
   normToE(engs);
 }
 private void normToE(Vec engs) {    // delta(E-E')
+  // checked, see http://prl.aps.org/abstract/PRL/v83/i8/p1570_1
+ /* @article{PhysRevLett.83.1570,
+  title = {Calculation of Ionization within the Close-Coupling Formalism},
+  author = {Stelbovics, Andris T.},
+  journal = {Phys. Rev. Lett.},
+  volume = {83},
+  issue = {8},
+  pages = {1570--1573},
+  year = {1999},
+  month = {Aug},
+  doi = {10.1103/PhysRevLett.83.1570},
+  url = {http://link.aps.org/doi/10.1103/PhysRevLett.83.1570},
+  publisher = {American Physical Society}
+}*/
   for (int i = 0; i < size(); i++) {
     double E = engs.get(i);
     if (E <= 0)

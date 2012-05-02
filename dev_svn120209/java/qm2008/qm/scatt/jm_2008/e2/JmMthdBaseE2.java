@@ -92,8 +92,10 @@ private ScttRes calcV3_best(Vec scttEngs) { log.setDbg();
     if (scttE <= 0  ||  engModel.getFirst() > scttE ||  scttE > engModel.getLast()) {
       continue;
     }
+
     openChN = calcOpenChNum(scttE);
     calcChN = calcCalcChNum(scttE);
+
     sysTotE = scttE + trgtE2.getInitTrgtEng();          log.info("sysTotE = ", sysTotE);
     chArr = loadChArr(sysTotE);
     int sysIdx = matchSysTotE();
@@ -367,6 +369,9 @@ protected Mtrx calcWsjs(Mtrx mW, int openN) {
       }
       double wsj = ch2.getJnn().getRe() * W[t][t2] * ch2.getSn();
       double s = ch2.getSn1() * Mathx.dlt(t, t2);
+//      if (ch2.getEng() > 0) { // DEBUG
+//        s = 0;
+//      }
       double wsjs = (wsj + s); // / ch2.getSqrtAbsMom()   MOVED to where R-matrix is calc-ed
       res.set(t, t2, wsjs);
     }

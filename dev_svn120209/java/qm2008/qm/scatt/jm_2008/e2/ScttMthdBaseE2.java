@@ -119,6 +119,11 @@ protected int calcPrntChNum() {
 }
 protected int calcOpenChNum(double scattE) {
   double maxTotSysE = trgtE2.getInitTrgtEng() + scattE;
+
+//  if (maxTotSysE > 0) {// DEBUG
+//    maxTotSysE /= 2;  log.dbg("TEST maxTotSysE /= 2=", maxTotSysE);
+//  }
+
   int tN = getChNum();
   int chIdx = 0;
   Vec tEngs = trgtE2.getEngs();
@@ -143,6 +148,7 @@ protected int calcNumTrgtCont() {
 }
 protected int calcCalcChNum(double scattE) {
   int openN = calcOpenChNum(scattE);
+//  return openN;  // DEBUG
   int res = openN + calcOpt.getUseClosedNum();
   int tN = getChNum();
   return Math.min(tN, res);
