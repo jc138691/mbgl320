@@ -7,7 +7,7 @@ import atom.e_3.SysLi;
 import atom.energy.ConfHMtrx;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.slater.SlaterWFFactory;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;

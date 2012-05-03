@@ -1,12 +1,12 @@
 package scatt.jm_2008.jm.laguerre.lcr;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import scatt.jm_2008.jm.laguerre.IWFuncArr;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.LgrrOrthR;
 
 import javax.utilx.log.Log;
 
-import atom.wf.log_cr.FuncRToDivSqrtCR;
+import atom.wf.lcr.FuncRToDivSqrtCR;
 import math.func.polynom.laguerre.LgrrOrth;
 import math.vec.Vec;
 /**

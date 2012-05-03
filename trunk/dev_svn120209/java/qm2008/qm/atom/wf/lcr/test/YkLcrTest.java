@@ -1,8 +1,8 @@
-package atom.wf.log_cr.test;
+package atom.wf.lcr.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 14:29:19 */
-import atom.wf.log_cr.TransLcrToR;
-import atom.wf.log_cr.WFQuadrLcr;
-import atom.wf.log_cr.YkLcr;
+import atom.wf.lcr.TransLcrToR;
+import atom.wf.lcr.WFQuadrLcr;
+import atom.wf.lcr.YkLcr;
 import atom.wf.coulomb.CoulombWFFactory;
 import math.integral.QuadrStep5;
 import math.vec.Vec;

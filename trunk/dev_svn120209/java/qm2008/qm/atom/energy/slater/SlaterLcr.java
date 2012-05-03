@@ -1,8 +1,8 @@
 package atom.energy.slater;
 import atom.energy.part_wave.PotHLcr;
 import atom.shell.Shell;
-import atom.wf.log_cr.TransLcrToR;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.TransLcrToR;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 11:43:22

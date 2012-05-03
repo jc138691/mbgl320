@@ -56,7 +56,7 @@ protected Mtrx calcX() {
   return res;
 }
 
-protected void calcSdcs_new(int i, ScttRes res, int prntN) {
+protected void calcSdcs(int i, ScttRes res, int prntN) {
   if (scdsHyE2 == null) {
     scdsHyE2 = new JmSdcsBasisHyE2(this);
   }

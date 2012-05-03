@@ -1,9 +1,8 @@
 package scatt.jm_2008.e2;
 import atom.e_2.SysAtomE2;
-import atom.e_2.SysE2_OLD;
 import atom.energy.Energy;
 import atom.shell.*;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.Calc;
 import math.Mathx;

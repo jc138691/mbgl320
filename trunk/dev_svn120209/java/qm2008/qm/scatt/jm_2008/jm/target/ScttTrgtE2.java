@@ -1,6 +1,6 @@
 package scatt.jm_2008.jm.target;
 
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;

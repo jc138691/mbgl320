@@ -21,7 +21,7 @@ import atom.shell.ConfArrFactoryE2;
 import atom.shell.ConfArrFactoryE3;
 import atom.shell.Ls;
 import atom.wf.coulomb.CoulombWFFactory;
-import atom.wf.log_cr.LcrFactory;
+import atom.wf.lcr.LcrFactory;
 import atom.wf.slater.SlaterWFFactory;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;

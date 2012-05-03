@@ -4,7 +4,7 @@ import atom.energy.ConfHMtrx;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.ConfArr;
 import atom.shell.Ls;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import math.vec.grid.StepGrid;
@@ -16,7 +16,7 @@ import atom.angular.Spin;
 import atom.shell.ConfArrFactoryE2;
 import func.bspline.BSplBasisFactory;
 import func.bspline.BSplOrthonBasis;
-import atom.wf.log_cr.test.BSplLogCRBasisTest;
+import atom.wf.lcr.test.BSplLogCRBasisTest;
 import atom.wf.bspline.BSplBoundBasis;
 
 import javax.utilx.log.Log;

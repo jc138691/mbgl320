@@ -1,5 +1,5 @@
 package qm_station.ucm.plot.lcr;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import qm_station.ucm.plot.UCPlotFuncArr;
 import qm_station.QMS;
 import qm_station.ui.scatt.JmPotFactoryLCR;

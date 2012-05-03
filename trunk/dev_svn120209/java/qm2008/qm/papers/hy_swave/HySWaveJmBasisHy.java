@@ -10,7 +10,7 @@ import atom.energy.slater.SlaterLcr;
 import atom.shell.ConfArr;
 import atom.shell.ConfArrFactoryE2;
 import atom.shell.Ls;
-import atom.wf.log_cr.LcrFactory;
+import atom.wf.lcr.LcrFactory;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
 import math.mtrx.MtrxDbgView;

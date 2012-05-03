@@ -39,7 +39,7 @@ private void loadWeights(double step) {
   arr[0] *= 0.5;
   arr[size() - 1] *= 0.5;
 }
-public FuncVec calcFuncIntOK(Vec funcV) { // TODO: remove; this was a wrong way
+public FuncVec calcFuncIntOK(Vec funcV) {
   double[] f = funcV.getArr();
   FuncVec resF = new FuncVec(getX());
   double[] res = resF.getArr();

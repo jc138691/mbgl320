@@ -1,6 +1,6 @@
-package atom.wf.log_cr.test;
+package atom.wf.lcr.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 16/07/2008, Time: 10:29:50 */
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import func.bspline.BSplBasisFactory;
 import math.func.arr.FuncArr;
 import math.vec.grid.StepGrid;

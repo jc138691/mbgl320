@@ -1,9 +1,9 @@
 package scatt.partial.wf;
 
 import atom.wf.coulomb.CoulombNmrvLcr;
-import atom.wf.log_cr.FuncRToDivSqrtCR;
-import atom.wf.log_cr.TransLcrToR;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.FuncRToDivSqrtCR;
+import atom.wf.lcr.TransLcrToR;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.vec.Vec;

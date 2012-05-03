@@ -1,4 +1,4 @@
-package atom.wf.log_cr;
+package atom.wf.lcr;
 
 import atom.wf.coulomb.CoulombWFFactory;
 import math.func.FuncVec;

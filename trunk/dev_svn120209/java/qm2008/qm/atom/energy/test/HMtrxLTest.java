@@ -1,6 +1,6 @@
 package atom.energy.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 25/07/2008, Time: 17:19:55 */
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import junit.framework.*;
 import atom.wf.bspline.BSplBoundBasis;
 

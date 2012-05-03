@@ -1,7 +1,7 @@
 package math.integral.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 10/07/2008, Time: 16:51:43 */
 import math.func.deriv.DerivPts5;
-import math.func.intrg.IntgPts5_TODO;
+import math.func.intrg.IntgPts7;
 import math.func.simple.*;
 import math.integral.QuadrStep4;
 import math.integral.QuadrStep5;
@@ -33,16 +33,16 @@ public void testBooleIntegral() throws Exception {    log.setDbg();
   // Int_0^1 fi(x) = 0.5
   assertEquals(0.5, w.calc(fi), Calc.EPS_16);
   FuncVec fi2 = new DerivPts5(func);                   log.info("DerivPts5(func)=", fi2);
-  fi2 = new IntgPts5_TODO(func);                            log.info("IntgPts5(func)=", fi2);
-  assertEquals(0.5, w.calc(fi2), Calc.EPS_16);
+//  fi2 = new IntgPts5_TODO(func);                            log.info("IntgPts5(func)=", fi2);
+//  assertEquals(0.5, w.calc(fi2), Calc.EPS_16);
 
   grid = new StepGrid(0., 1., 9);
   w = new QuadrStep5(grid);
-  func = new FuncVec(grid, new FuncConst(1.0));
+  func = new FuncVec(grid, new FuncConst(1.0));   log.info("func=", func);
   fi = w.calcFuncIntOK(func);
   assertEquals(0.5, w.calc(fi), Calc.EPS_16);
   fi2 = new DerivPts5(func);                   log.info("DerivPts5(func)=", fi2);
-  fi2 = new IntgPts5_TODO(func);                            log.info("IntgPts5(func)=", fi2);
+  fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
   assertEquals(0.5, w.calc(fi2), Calc.EPS_16);
 
   grid = new StepGrid(0., 1., 13);
@@ -51,7 +51,7 @@ public void testBooleIntegral() throws Exception {    log.setDbg();
   fi = w.calcFuncIntOK(func);
   assertEquals(0.5, w.calc(fi), Calc.EPS_16);
   fi2 = new DerivPts5(func);                   log.info("DerivPts5(func)=", fi2);
-  fi2 = new IntgPts5_TODO(func);                            log.info("IntgPts5(func)=", fi2);
+  fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
   assertEquals(0.5, w.calc(fi2), Calc.EPS_16);
 
   StepGrid grid4 = new StepGrid(0., 1., 4);
@@ -79,7 +79,7 @@ public void testBooleIntegral() throws Exception {    log.setDbg();
   fi = w.calcFuncIntOK(func);
   // Int_0^1 fi(x) = 0.5/3
   assertEquals(0.5 / 3, w.calc(fi), Calc.EPS_16);
-  fi2 = new IntgPts5_TODO(func);                            log.info("IntgPts5(func)=", fi2);
+  fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
   assertEquals(0.5 / 3, w.calc(fi2), Calc.EPS_16);
 
   f4 = new FuncVec(grid4, new FuncPolynom(c2));
@@ -93,7 +93,7 @@ public void testBooleIntegral() throws Exception {    log.setDbg();
   fi = w.calcFuncIntOK(func);
   // Int_0^1 fi(x) = 1/3 1/4
   assertEquals(1. / (3 * 4), w.calc(fi), Calc.EPS_16);
-  fi2 = new IntgPts5_TODO(func);                            log.info("IntgPts5(func)=", fi2);
+  fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
   assertEquals(1. / (3 * 4), w.calc(fi2), Calc.EPS_16);
 
   f4 = new FuncVec(grid4, new FuncPolynom(c3));
@@ -121,16 +121,16 @@ public void testBodeWeights2() {
   assertEquals(Math.PI, w.calc(fi), 1e-3);
 
   FuncVec fi2 = new DerivPts5(func);                   //log.info("DerivPts5(Sin)=", fi2);
-  fi2 = new IntgPts5_TODO(func);                            log.info("IntgPts5(Sin)=", fi2);
-  assertEquals(Math.PI, w.calc(fi2), 1e-2);// !!!!!
+  fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
+  assertEquals(Math.PI, w.calc(fi2), 1e-3);// !!!!!
 
   grid = new StepGrid(0., Math.PI, 13);
   w = new QuadrStep5(grid);
   func = new FuncVec(grid, new FuncSin());
   fi = w.calcFuncIntOK(func);
   assertEquals(Math.PI, w.calc(fi), 1e-4);
-  fi2 = new IntgPts5_TODO(func);                            log.info("IntgPts5(func)=", fi2);
-  assertEquals(Math.PI, w.calc(fi2), 1e-2);
+  fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
+  assertEquals(Math.PI, w.calc(fi2), 1e-4);
 
   grid = new StepGrid(0., Math.PI, 21);
   w = new QuadrStep5(grid);

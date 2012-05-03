@@ -1,12 +1,11 @@
 package scatt.jm_2008.e1;
 import atom.energy.part_wave.PotHMtrx;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.vec.Vec;
 import project.workflow.task.test.FlowTest;
 import scatt.eng.EngGrid;
 import scatt.eng.EngModel;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,1/04/11,3:43 PM

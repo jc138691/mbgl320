@@ -1,7 +1,7 @@
 package atom.wf.coulomb;
 
-import atom.wf.log_cr.LcrFactory;
-import atom.wf.log_cr.TransLcrToR;
+import atom.wf.lcr.LcrFactory;
+import atom.wf.lcr.TransLcrToR;
 import math.func.FuncVec;
 import math.func.simple.FuncConst;
 import math.vec.Vec;

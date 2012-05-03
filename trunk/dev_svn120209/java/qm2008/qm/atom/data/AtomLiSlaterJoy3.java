@@ -1,6 +1,6 @@
 package atom.data;
 
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.slater.SlaterWFFactory;
 import math.func.FuncVec;
 import math.vec.Vec;

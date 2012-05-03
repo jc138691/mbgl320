@@ -1,5 +1,5 @@
 package papers.hy_swave.ees_bad;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.arr.IFuncArr;

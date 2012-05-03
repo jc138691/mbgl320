@@ -1,7 +1,6 @@
-package atom.wf.log_cr;
+package atom.wf.lcr;
 import math.func.FuncVec;
 import math.vec.Vec;
-import math.vec.VecDbgView;
 
 import javax.utilx.log.Log;
 /**

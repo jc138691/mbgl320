@@ -1,5 +1,5 @@
 package scatt.partial.wf.eng_arr_not_used;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.Func;
 import scatt.eng.EngModel;
 import scatt.partial.wf.SinPWaveFunc;

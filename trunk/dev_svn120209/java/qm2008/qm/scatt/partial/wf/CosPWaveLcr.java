@@ -1,5 +1,5 @@
 package scatt.partial.wf;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 
 import javax.utilx.log.Log;

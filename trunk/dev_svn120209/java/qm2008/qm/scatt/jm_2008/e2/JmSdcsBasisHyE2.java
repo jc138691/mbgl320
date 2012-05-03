@@ -1,14 +1,13 @@
 package scatt.jm_2008.e2;
 import atom.data.AtomHy;
 import atom.shell.*;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
 import math.func.FuncVec;
 import math.func.arr.FuncArrDbgView;
 import math.mtrx.Mtrx;
-import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import scatt.Scatt;

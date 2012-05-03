@@ -1,5 +1,5 @@
 package qm_station.ucm;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import qm_station.QMS;
 import qm_station.QMSProject;
 import qm_station.jm.*;

@@ -1,4 +1,4 @@
-package atom.wf.log_cr;
+package atom.wf.lcr;
 
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 14/05/2010, 5:04:17 PM

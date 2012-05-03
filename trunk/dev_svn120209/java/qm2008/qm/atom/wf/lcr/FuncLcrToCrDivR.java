@@ -1,4 +1,4 @@
-package atom.wf.log_cr;
+package atom.wf.lcr;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 11/07/2008, Time: 15:38:20
  */
