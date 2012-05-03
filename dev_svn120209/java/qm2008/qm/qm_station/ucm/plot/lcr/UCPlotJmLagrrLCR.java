@@ -1,5 +1,5 @@
 package qm_station.ucm.plot.lcr;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.arr.FuncArr;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;

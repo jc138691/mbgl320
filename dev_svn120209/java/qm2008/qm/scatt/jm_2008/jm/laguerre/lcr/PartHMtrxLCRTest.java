@@ -1,6 +1,6 @@
 package scatt.jm_2008.jm.laguerre.lcr;
 import atom.energy.part_wave.PotHLcr;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import project.workflow.task.test.FlowTest;
 import project.workflow.task.TaskProgressMonitor;
 import project.workflow.task.ProjectProgressMonitor;

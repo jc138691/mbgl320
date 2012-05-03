@@ -1,5 +1,5 @@
 package qm_station.ui.scatt;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
 

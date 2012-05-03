@@ -1,6 +1,6 @@
 package scatt.partial.born;
 import atom.wf.coulomb.CoulombWFFactory;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;

@@ -1,8 +1,8 @@
 package papers.greens;
 import atom.wf.bspline.BSplBoundBasis;
 import atom.wf.WFArrL;
-import atom.wf.log_cr.TransLcrToR;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.TransLcrToR;
+import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.coulomb.CoulombWFFactory;
 import atom.energy.slater.SlaterR;
 import atom.energy.HMtrxL;

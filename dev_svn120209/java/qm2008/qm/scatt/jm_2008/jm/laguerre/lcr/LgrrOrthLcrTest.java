@@ -1,5 +1,5 @@
 package scatt.jm_2008.jm.laguerre.lcr;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import project.workflow.task.test.FlowTest;
 import math.Mathx;

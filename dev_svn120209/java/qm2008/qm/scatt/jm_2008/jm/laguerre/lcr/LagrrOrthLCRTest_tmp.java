@@ -1,6 +1,6 @@
 package scatt.jm_2008.jm.laguerre.lcr;
-import atom.wf.log_cr.FuncRToLcr;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.FuncRToLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import junit.framework.TestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;

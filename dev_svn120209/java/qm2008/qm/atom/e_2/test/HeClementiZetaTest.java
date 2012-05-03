@@ -7,7 +7,7 @@ import atom.e_2.SysHe;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
 import atom.wf.coulomb.CoulombWFFactory;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.vec.Vec;
 import project.workflow.task.test.FlowTest;

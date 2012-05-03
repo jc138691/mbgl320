@@ -2,7 +2,7 @@ package papers.hy_swave.ees_bad;
 import atom.energy.part_wave.PotH;
 import atom.energy.part_wave.PotHMtrx;
 import atom.wf.WFQuadr;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;

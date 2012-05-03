@@ -1,6 +1,6 @@
 package func.bspline;
 import atom.wf.bspline.BSplBoundBasis;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.WFQuadrR;
 import math.integral.QuadrStep5;
 import math.vec.Vec;

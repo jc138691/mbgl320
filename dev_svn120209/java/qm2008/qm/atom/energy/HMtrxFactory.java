@@ -4,7 +4,7 @@ import atom.energy.slater.SlaterLcr;
 
 import atom.shell.ConfArr;
 import atom.shell.ConfArrFactoryE2;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.vec.grid.StepGrid;
 import math.func.arr.FuncArr;
 import func.bspline.BSplBasisFactory;

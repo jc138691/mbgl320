@@ -2,7 +2,7 @@ package papers.hy_swave.ees_bad;
 import atom.e_2.SysAtomE2;
 import atom.energy.Energy;
 import atom.shell.*;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.Calc;
 import math.Mathx;
 import math.func.FuncVec;

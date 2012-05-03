@@ -1,8 +1,8 @@
 package atom.wf.slater;
 
 import atom.wf.coulomb.CoulombWFFactory;
-import atom.wf.log_cr.TransLcrToR;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.TransLcrToR;
+import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.log_r.TransLrToR;
 import math.func.Func;
 import math.func.FuncVec;

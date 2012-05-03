@@ -2,7 +2,7 @@ package atom;
 
 import atom.energy.slater.SlaterLcr;
 import atom.shell.Shell;
-import atom.wf.log_cr.RkLcr;
+import atom.wf.lcr.RkLcr;
 
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,29/11/2010,3:18:10 PM

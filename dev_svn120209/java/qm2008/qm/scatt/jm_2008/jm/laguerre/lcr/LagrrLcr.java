@@ -1,8 +1,8 @@
 package scatt.jm_2008.jm.laguerre.lcr;
 import javax.utilx.log.Log;
 
-import atom.wf.log_cr.WFQuadrLcr;
-import atom.wf.log_cr.FuncRToDivSqrtCR;
+import atom.wf.lcr.WFQuadrLcr;
+import atom.wf.lcr.FuncRToDivSqrtCR;
 import scatt.jm_2008.jm.laguerre.LgrrR;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 /**

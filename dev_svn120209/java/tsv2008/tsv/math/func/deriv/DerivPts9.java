@@ -44,24 +44,24 @@ public class DerivPts9 extends FuncVec {
   protected void calc_h(double h2, final FuncVec f) {
     int max_size = f.size();
     int k = 0;
-    set(k, h2 * deriv(k, 0, f));    k++;
-    set(k, h2 * deriv(k, 0, f));    k++;
-    set(k, h2 * deriv(k, 0, f));    k++;
-    set(k, h2 * deriv(k, 0, f));    k++;
+    set(k, h2 * calc(k, 0, f));    k++;
+    set(k, h2 * calc(k, 0, f));    k++;
+    set(k, h2 * calc(k, 0, f));    k++;
+    set(k, h2 * calc(k, 0, f));    k++;
     for (int i = 0; i < max_size - 2 * k; i++) {
-      set(i + k, h2 * deriv(k, i, f));
+      set(i + k, h2 * calc(k, i, f));
     }
     int i = max_size - 1 - SIZE_1;      k++;
-    set(i + k, h2 * deriv(k, i, f));    k++;
-    set(i + k, h2 * deriv(k, i, f));    k++;
-    set(i + k, h2 * deriv(k, i, f));    k++;
-    set(i + k, h2 * deriv(k, i, f));
+    set(i + k, h2 * calc(k, i, f));    k++;
+    set(i + k, h2 * calc(k, i, f));    k++;
+    set(i + k, h2 * calc(k, i, f));    k++;
+    set(i + k, h2 * calc(k, i, f));
   }
 
   //=============================
   //   First derivative error -> step^9
   //============================
-  private double deriv(int idx, int i, final FuncVec f) {
+  private double calc(int idx, int i, final FuncVec f) {
     int k = 0;
     double res = A.get(idx, k++) * f.get(i++); // 0
     res += A.get(idx, k++) * f.get(i++);  // 1

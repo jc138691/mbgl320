@@ -6,7 +6,7 @@ import atom.data.AtomHy;
 import atom.energy.ConfHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
-import atom.wf.log_cr.LcrFactory;
+import atom.wf.lcr.LcrFactory;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
 import math.mtrx.Mtrx;

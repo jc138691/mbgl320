@@ -2,7 +2,7 @@ package qm_station.jm;
 
 import atom.energy.part_wave.PotHLcr;
 import atom.wf.coulomb.CoulombWFFactory;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.simple.FuncPowInt;
 import math.vec.Vec;

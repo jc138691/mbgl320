@@ -5,7 +5,7 @@ import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.smodel.HeSWaveAtom;
 import atom.smodel.HeSWaveAtomNt50_LMBD4p0;
-import atom.wf.log_cr.WFQuadrLcr;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArrDbgView;
 import math.func.simple.FuncPowInt;
