@@ -13,8 +13,7 @@ import javax.utilx.log.Log;
 */
 public class FlowTest extends TestCase { //TestSuite suite= new TestSuite(MathTest.class);
 protected static Log log;
-protected static final double MAX_WF_DIFF_ERR_E7 = 1e-7;
-protected static final double MAX_WF_DIFF_ERR_E8 = 1e-8;
+protected static final double MAX_WF_DIFF_ERR = 1e-9;
 
 protected static final double MAX_INTGRL_ERR_E10 = 1e-10;
 protected static final double MAX_INTGRL_ERR_E11 = 1e-11;
@@ -24,10 +23,7 @@ protected static final double MAX_INTGRL_ERR_E13 = 1e-13;
 // THIS is bad!!! a static is needed since FlowTest() is called
 private static double maxErr = 1.e-8;
 private static boolean lockMaxErr = false;    // this is not good!!!
-
-//  private double maxErr = 1.e-8;
 protected Class theClass;
-//private boolean showDbg = true;
 
 public FlowTest() {
 }

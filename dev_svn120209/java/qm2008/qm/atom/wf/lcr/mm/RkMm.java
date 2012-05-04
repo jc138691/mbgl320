@@ -17,7 +17,7 @@ public class RkMm {
 public static Log log = Log.getLog(RkMm.class);
 public static double calc(WFQuadrLcr w, Vec a, Vec b, Vec a2, Vec b2, int K) {
 //  log.setDbg();
-  FuncVec yk = new YkMm(w.getLcrToR(), a, a2, K).calcYk();
+  FuncVec yk = new YkMm(w, a, a2, K).calcYk();
 //  log.dbg("yk=\n", new VecDbgView(yk));
   double res = 2. * w.calcPotDivR(b, b2, yk);  // NOTE!!!! *2.
   return res;

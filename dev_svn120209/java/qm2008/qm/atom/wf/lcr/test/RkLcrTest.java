@@ -26,7 +26,7 @@ public class RkLcrTest extends FlowTest {
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
     TransLcrToR xToR = new TransLcrToR(x);
     Vec r = xToR;
-//      QuadrStep5 w = new QuadrStep5(x);
+//      QuadrPts5 w = new QuadrPts5(x);
     WFQuadrLcr wCR = new WFQuadrLcr(x);
 
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
@@ -41,7 +41,7 @@ public class RkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(res - 4), 3e-12);
 
     FuncVec T = CoulombWFFactory.makeY_0_1s(r); // valid
-    FuncVec Y = new YkLcr(wCR.getLcrToR(), f, f, 0).calcYk();
+    FuncVec Y = new YkLcr(wCR, f, f, 0).calcYk();
 //    assertEquals(0, Math.abs(T.distSLOW(Y)), 2e-9);
     assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 2e-9);
     res = RkLcr.calc(wCR, f, f, f, f, 0);

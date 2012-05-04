@@ -6,8 +6,8 @@ import javax.utilx.log.Log;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 14:23:18
  */
-public class PolynomInterpol {
-  public static Log log = Log.getLog(PolynomInterpol.class);
+public class PolynIntrp {
+  public static Log log = Log.getLog(PolynIntrp.class);
 
   // CFuncPow      at small r,  f(r) = a * pow(r, b);
   public static double calcPowerSLOW(FuncVec func, int idx) {

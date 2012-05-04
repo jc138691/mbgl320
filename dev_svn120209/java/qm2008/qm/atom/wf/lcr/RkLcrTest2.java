@@ -33,7 +33,7 @@ public class RkLcrTest2 extends FlowTest {
 //    setShowDbg(log.getDbg());
     assertEquals("<1s|1s>", 0, Math.abs(res - 1));
     FuncVec T = CoulombWFFactory.makeY_0_1s(r); // valid
-    FuncVec Y = new YkLcr(quadr.getLcrToR(), f, f, 0).calcYk();
+    FuncVec Y = new YkLcr(quadr, f, f, 0).calcYk();
 //    assertEquals(0, Math.abs(T.distSLOW(Y)), 2e-9);
     assertEquals("Y_0_1s", 0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)));
     res = RkLcr.calc(quadr, f, f, f, f, 0);

@@ -1,10 +1,11 @@
 package atom.wf.lcr;
+import math.func.intrg.IntgPts7;
 import math.vec.Vec;
+import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
 import math.func.FuncVec;
 import math.Mathx;
-import math.interpol.PolynomInterpol;
-import sun.security.rsa.RSASignature;
+import math.interpol.PolynIntrp;
 
 import javax.utilx.log.Log;
 /**
@@ -55,28 +56,102 @@ private final int MX;
 private final double H;
 private final double H2;
 private final double H3;
+private final TransLcrToR xToR;
+private final WFQuadrLcr quadrLcr;
 
-public YkLcr(final TransLcrToR xToR, final Vec f, final Vec f2, final int K) {
+// NOTE! THIS IS optimization. Stop re-calculating the same values
+private static FuncVec last_zIntFunc;  // function inside int_0^r
+private static FuncVec last_rkOne;    // 1/r^k
+private static FuncVec last_f;
+private static FuncVec last_f2;
+private static Vec last_r;
+private static int last_K;
+private boolean useLast = false;
+
+//public YkLcr(final TransLcrToR xToR, final Vec f, final Vec f2, final int K) {
+//  this.K = K;
+//  this.f = f;
+//  this.f2 = f2;
+//  this.r = xToR;
+//  this.xToR = xToR;
+//  this.CR2 = xToR.getCR2();
+//  this.CR = xToR.getCR();
+//  this.divR = xToR.getDivR();
+//  this.yDivR = xToR.getCRDivR();
+//  if (!(xToR.getX() instanceof StepGrid)) {
+//    String mssg = "YkLogR can only work with StepGrid";
+//    throw new IllegalArgumentException(log.error(mssg));
+//  }
+//  this.H = ((StepGrid) xToR.getX()).getGridStep();
+//  this.H2 = H / 2.0;
+//  this.H3 = H / 3.0;
+//  this.MX = (Math.min(f.size(), f2.size()) / 2) * 2;//      MX = (MIN0(MAX(I),MAX(J))/2)*2                                    AATK4123
+//  // MX is used to trace simpson's rule errors
+//  //EH = DEXP(-H)   // from SUBROUTINE INIT
+//
+//  useLast = checkUseLast();
+//}
+public YkLcr(final WFQuadrLcr quadrLcr, final Vec f, final Vec f2, final int K) {
   this.K = K;
   this.f = f;
   this.f2 = f2;
-  r = xToR;
-  CR2 = xToR.getCR2();
-  CR = xToR.getCR();
-  divR = xToR.getDivR();
-  yDivR = xToR.getCRDivR();
+  this.quadrLcr = quadrLcr;
+  xToR = quadrLcr.getLcrToR();
+  this.r = xToR;
+  this.CR2 = xToR.getCR2();
+  this.CR = xToR.getCR();
+  this.divR = xToR.getDivR();
+  this.yDivR = xToR.getCRDivR();
   if (!(xToR.getX() instanceof StepGrid)) {
     String mssg = "YkLogR can only work with StepGrid";
     throw new IllegalArgumentException(log.error(mssg));
   }
-  H = ((StepGrid) xToR.getX()).getGridStep();
-  H2 = H / 2.0;
-  H3 = H / 3.0;
-  MX = (Math.min(f.size(), f2.size()) / 2) * 2;//      MX = (MIN0(MAX(I),MAX(J))/2)*2                                    AATK4123
+  this.H = ((StepGrid) xToR.getX()).getGridStep();
+  this.H2 = H / 2.0;
+  this.H3 = H / 3.0;
+  this.MX = (Math.min(f.size(), f2.size()) / 2) * 2;//      MX = (MIN0(MAX(I),MAX(J))/2)*2                                    AATK4123
   // MX is used to trace simpson's rule errors
   //EH = DEXP(-H)   // from SUBROUTINE INIT
+
+  useLast = checkUseLast();
 }
-public FuncVec calcZk() {
+private boolean checkUseLast() {
+  if (last_f == f  && last_f2 == f2  &&  last_K == K  &&  last_r  == r)
+    return true;
+  return false;
+}
+public FuncVec calcZk() {   log.setDbg();
+  loadZFuncs();
+
+  // IntgInftyPts7 is not good for ln(r)-type grid!!!!!!!!
+  // delta_r is much smaller for small r's than for large r's,
+  // so it is mor accurate to integrate from start
+//  FuncVec res = new IntgInftyPts7(last_zIntFunc);    log.info("IntgInftyPts7(last_zIntFunc)=", new VecDbgView(res));
+
+  //NOTE!!  HERE  IntgPts7 is much better than calcFuncIntOK
+  FuncVec res = new IntgPts7(last_zIntFunc);    log.info("IntgPts7(last_zIntFunc)=", new VecDbgView(res));
+//  FuncVec res = quadrLcr.calcFuncIntOK(last_zIntFunc);    log.info("IntgPts7(last_zIntFunc)=", new VecDbgView(res));
+
+  res.mult(last_rkOne);
+  return res;
+}
+private void loadZFuncs() {
+  last_zIntFunc = new FuncVec(xToR.getX());
+  double[] z = last_zIntFunc.getArr();
+  last_rkOne = new FuncVec(r);
+  double[] rk = last_rkOne.getArr();
+  z[0] = 0;
+  rk[0] = 0;
+  for (int i = 1; i < z.length; i++) {
+    z[i] = CR2.get(i) * f.get(i) * f2.get(i);
+    double rki = Mathx.pow(r.get(i), K);
+    z[i] *= rki;
+    rk[i] = 1. / rki;
+  }
+  log.info("last_zIntFunc=", new VecDbgView(last_zIntFunc));
+  log.info("last_rkOne=", new VecDbgView(last_rkOne));
+}
+public FuncVec calcZk_OLD() {
   FuncVec res = new FuncVec(r);
   double[] YK = res.getArr();
   //      DEN = L(I) + L(J) + 3+ K                                          AATK4107
@@ -100,13 +175,11 @@ public FuncVec calcZk() {
   //YK(1) = F1*(D1 + Z*R(1)*FACT)/DEN                                 AATK4120
   //YK(2) = F2*(D1 + Z*R(2)*FACT)/DEN                                 AATK4121
   //YK(3) = YK(1)*A2 + H3*(F3 + D4*A*F2 + A2*F1)                      AATK4122
-  res.set(0, 0);
-
-//    res.set(1, H / 3. * (0. + 2.* F2));
-//    res.set(2, H / 3. * (0.  + 4. * F2 + F3));
-
+  YK[0] = 0;
   YK[1] = approxFirstZ(1, F2, F3);
   YK[2] = approxFirstZ(2, F2, F3); // simpson does not work as good as this
+//  YK[1] = 0;
+//  YK[2] = 0;
 
   for (M = 5; M <= MX; M++) {//      DO 8 M = 5,MX                                                     AATK4124
     double F5 = CR2.get(M - 1) * f.get(M - 1) * f2.get(M - 1);//      F5 = (RR(M)*P(M,I))*P(M,J)                                        AATK4125
@@ -141,18 +214,18 @@ public FuncVec calcZk() {
     F4 = F5;//8     F4 = F5                                                           AATK4130
   }
   int M1 = MX - 1;//      M1 = MX - 1                                                       AATK4131
-  if (K == 0) {//      IF (IABS(I-J)  +  IABS(K) .NE. 0) GO TO 2                         AATK4132
-    //*  *****  FOR Y0(I,I) SET THE LIMIT TO 1 AND REMOVE OSCILLATIONS        AATK4134
-    //*  *****  INTRODUCED BY THE USE OF SIMPSON'S RULE                       AATK4135
-    int M2 = M1 - 1;//      M2 = M1 - 1                                                       AATK4137
-    double mid = 0.5 * (YK[M1 - 1] + YK[M2 - 1]);
-    double C1 = mid - YK[M1 - 1];//      C1 = D1 - YK(M1)                                                  AATK4138
-    double C2 = mid - YK[M2 - 1];//      C2 = D1 - YK(M2)                                                  AATK4139
-    for (M = 1; M <= M1; M += 2) {//      DO 3 M = 1,M1,2                                                   AATK4140
-      YK[M - 1] += C1;//      YK(M) = YK(M) + C1                                                AATK4141
-      YK[M] += C2;//3     YK(M+1) = YK(M+1) + C2                                            AATK4142
-    }
-  }
+//  if (K == 0) {//      IF (IABS(I-J)  +  IABS(K) .NE. 0) GO TO 2                         AATK4132
+//    //*  *****  FOR Y0(I,I) SET THE LIMIT TO 1 AND REMOVE OSCILLATIONS        AATK4134
+//    //*  *****  INTRODUCED BY THE USE OF SIMPSON'S RULE                       AATK4135
+//    int M2 = M1 - 1;//      M2 = M1 - 1                                                       AATK4137
+//    double mid = 0.5 * (YK[M1 - 1] + YK[M2 - 1]);
+//    double C1 = mid - YK[M1 - 1];//      C1 = D1 - YK(M1)                                                  AATK4138
+//    double C2 = mid - YK[M2 - 1];//      C2 = D1 - YK(M2)                                                  AATK4139
+//    for (M = 1; M <= M1; M += 2) {//      DO 3 M = 1,M1,2                                                   AATK4140
+//      YK[M - 1] += C1;//      YK(M) = YK(M) + C1                                                AATK4141
+//      YK[M] += C2;//3     YK(M+1) = YK(M+1) + C2                                            AATK4142
+//    }
+//  }
   int NO = r.size();
   for (M = M1 + 1; M <= NO; M++) {//2     DO 1 M = M1+1,NO                                                  AATK4143
     double A = Mathx.pow(r.get(M - 2) * divR.get(M - 1), K);//A = EH**K                                                         AATK4109
@@ -174,7 +247,7 @@ private double approxFirstZ(int idxDest, double F2, double F3) {
   A = Mathx.pow(r.get(M) / rDest, K);
   fx[M] = F3 * A / CR.get(M);
   tmp.set(M, fx[M]);
-  double b = PolynomInterpol.calcPowerSLOW(tmp, 0);
+  double b = PolynIntrp.calcPowerSLOW(tmp, 0);
   return rDest / (b + 1) * fx[idxDest];
 }
 public FuncVec calcYk() {

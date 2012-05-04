@@ -1,6 +1,8 @@
 package math;
 
 import math.func.FactLn;
+
+import java.math.BigDecimal;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 11/07/2008, Time: 09:44:18
  */
@@ -135,4 +137,61 @@ public class Mathx {
       return 0;
     return 1;
   }
+
+public static double expSLOW(double x) {
+  // exp(x) = 1. + x + x^2 / 2! +...
+  double res = 0;
+  double v = 1;
+  double t = 1;
+  for (int i = 1; v != res; i++) {
+    res = v;
+    t *= (x / i);
+    v += t;
+  }
+  return res;
+}
+public static BigDecimal expSLOW_todo(BigDecimal x) {
+  // exp(x) = 1. + x + x^2 / 2! +...
+  BigDecimal res = new BigDecimal(0);
+  BigDecimal v = new BigDecimal(1);
+  BigDecimal t = new BigDecimal(1);
+  for (int i = 1; v != res; i++) {
+    res = v;
+//    t *= (x / i);
+    t = t.multiply(x.divide(new BigDecimal(i)));
+//    v += t;
+    v = v.add(t);
+  }
+  return res;
+}
+public static BigDecimal expOneXSLOW_todo(BigDecimal x) {
+  // [exp(x)-1]/x
+  // exp(x) = 1. + x + x^2 / 2! +...
+  // [exp(x)-1]/x = 1 + x / 2! +...
+  BigDecimal res = new BigDecimal(0);
+  BigDecimal v = new BigDecimal(1);
+  BigDecimal t = new BigDecimal(1);
+  for (int i = 1; !v.equals(res); i++) {
+    res = v;
+//    t *= (x / (i+1));
+    t = t.multiply(x.divide(new BigDecimal(i+1)));
+//    v += t;
+    v = v.add(t);
+  }
+  return res;
+}
+public static double expOneXSLOW(double x) {
+  // [exp(x)-1]/x
+  // exp(x) = 1. + x + x^2 / 2! +...
+  // [exp(x)-1]/x = 1 + x / 2! +...
+  double res = 0;
+  double v = 1.;
+  double t = 1.;
+  for (int i = 1; v != res; i++) {
+    res = v;
+    t *= (x / (i+1));
+    v += t;
+  }
+  return res;
+}
 }
