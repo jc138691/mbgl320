@@ -4,8 +4,9 @@ import atom.wf.lcr.TransLcrToR;
 import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.lcr.YkLcr;
 import atom.wf.coulomb.CoulombWFFactory;
-import math.integral.QuadrStep5;
+import math.integral.QuadrPts5;
 import math.vec.Vec;
+import math.vec.VecDbgView;
 import math.vec.metric.DistMaxAbsErr;
 import math.vec.grid.StepGrid;
 import math.func.FuncVec;
@@ -25,7 +26,7 @@ public class YkLcrTest extends FlowTest {
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
     TransLcrToR xToR = new TransLcrToR(x);
     Vec r = xToR;
-    QuadrStep5 w = new QuadrStep5(x);
+    QuadrPts5 w = new QuadrPts5(x);
     WFQuadrLcr wCR = new WFQuadrLcr(x);
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(f), ".", "wf", "P1s_test.csv");
@@ -39,10 +40,19 @@ public class YkLcrTest extends FlowTest {
     res = wCR.getWithCR2().calc(f, f);
     assertEquals(0, Math.abs(res - 1), 5.5e-13);
     FuncVec T = CoulombWFFactory.makeZ_1_1s(r); // valid
-    FuncVec Z = new YkLcr(xToR, f, f, 1).calcZk();
+    FuncVec Z = new YkLcr(wCR, f, f, 1).calcZk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Z_1_1s_test.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Z), ".", "wf", "Z_1_1s.csv");
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Z)), 6e-9);
+
+    log.info("f_1s=", new VecDbgView(f));
+    log.info("r=", new VecDbgView(r));
+    log.info("x=", new VecDbgView(xToR.getX()));
+    log.info("T=", new VecDbgView(T));
+    log.info("Z=", new VecDbgView(Z));
+//    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Z)), 6e-9);  // with calcZk_OLD
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Z)), 2e-9);  // with new calcZk() via
+
+    int dbg = 1;
   }
   public void testZkLogCR() {
     log.setDbg();
@@ -52,15 +62,16 @@ public class YkLcrTest extends FlowTest {
     int NUM_STEPS = 220;
     double STEP = 1. / 16.;
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
+    WFQuadrLcr quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
     TransLcrToR xToR = new TransLcrToR(x);
     Vec r = xToR;
-    QuadrStep5 w = new QuadrStep5(x);
+    QuadrPts5 w = new QuadrPts5(x);
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
     double res = w.calc(f, f, xToR.getCR());
     assertEquals(0, Math.abs(res - 1), 6e-13);
     f.mult(xToR.getDivSqrtCR());
     FuncVec T = CoulombWFFactory.makeZ_0_1s(r); // valid
-    FuncVec Z = new YkLcr(xToR, f, f, 0).calcZk();
+    FuncVec Z = new YkLcr(quadr, f, f, 0).calcZk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(r), ".", "wf", "logCR.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Z_0_1s_test.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Z), ".", "wf", "Z_0_1s.csv");
@@ -72,9 +83,10 @@ public class YkLcrTest extends FlowTest {
     int NUM_STEPS = 220;
     double STEP = 1. / 16.;
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
+    WFQuadrLcr quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
     TransLcrToR xToR = new TransLcrToR(x);
     Vec r = xToR;
-    QuadrStep5 w = new QuadrStep5(x);
+    QuadrPts5 w = new QuadrPts5(x);
 
     // 1s
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
@@ -82,7 +94,7 @@ public class YkLcrTest extends FlowTest {
     double res = w.calc(f, f, xToR.getCR2());
     assertEquals(0, Math.abs(res - 1), 2e-10);
     FuncVec T = CoulombWFFactory.makeY_0_1s(r); // valid
-    FuncVec Y = new YkLcr(xToR, f, f, 0).calcYk();
+    FuncVec Y = new YkLcr(quadr, f, f, 0).calcYk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(r), ".", "wf", "logCR.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Y_0_1s_test.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Y), ".", "wf", "Y_0_1s.csv");
@@ -95,7 +107,7 @@ public class YkLcrTest extends FlowTest {
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(f2), ".", "wf", "P2s_sqrtCR.csv");
     res = w.calc(f, f2, xToR.getCR2());
     assertEquals(0, Math.abs(res), 2e-13);
-    Y = new YkLcr(xToR, f, f2, 0).calcYk();
+    Y = new YkLcr(quadr, f, f2, 0).calcYk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Y), ".", "wf", "Y_0_1s2s.csv");
 
     // 2s
@@ -105,7 +117,7 @@ public class YkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(res - 1), 2e-13);
     f.mult(xToR.getDivSqrtCR());
     T = CoulombWFFactory.makeY_0_2s(r); // valid
-    Y = new YkLcr(xToR, f, f, 0).calcYk();
+    Y = new YkLcr(quadr, f, f, 0).calcYk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Y_0_2s_test.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Y), ".", "wf", "Y_0_2s.csv");
     assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 2e-8);
@@ -116,7 +128,7 @@ public class YkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(res - 1), 7e-14);
     f.mult(xToR.getDivSqrtCR());
     T = CoulombWFFactory.makeY_0_2p(r); // valid
-    Y = new YkLcr(xToR, f, f, 0).calcYk();
+    Y = new YkLcr(quadr, f, f, 0).calcYk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Y_0_2p_test.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Y), ".", "wf", "Y_0_2p.csv");
     assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 6e-9);
@@ -126,9 +138,10 @@ public class YkLcrTest extends FlowTest {
     int NUM_STEPS = 220;
     double STEP = 1. / 16.;
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
+    WFQuadrLcr quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
     TransLcrToR xToR = new TransLcrToR(x);
     Vec r = xToR;
-    QuadrStep5 w = new QuadrStep5(x);
+    QuadrPts5 w = new QuadrPts5(x);
 
     // 2p
     FuncVec f = CoulombWFFactory.makeP2p(r, 1.);
@@ -136,7 +149,7 @@ public class YkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(res - 1), 7e-14);
     f.mult(xToR.getDivSqrtCR());
     FuncVec T = CoulombWFFactory.makeY_2_2p(r); // valid
-    FuncVec Y = new YkLcr(xToR, f, f, 2).calcYk();
+    FuncVec Y = new YkLcr(quadr, f, f, 2).calcYk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Y_2_2p_test.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Y), ".", "wf", "Y_2_2p.csv");
     assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 5e-8);

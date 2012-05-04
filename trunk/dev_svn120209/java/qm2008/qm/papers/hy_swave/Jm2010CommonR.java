@@ -1,7 +1,7 @@
 package papers.hy_swave;
 
 import atom.wf.WFQuadrR;
-import math.integral.test.QuadrStepTest;
+import math.integral.test.QuadrPts5Test;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
 import project.workflow.task.test.FlowTest;
@@ -35,7 +35,7 @@ public class Jm2010CommonR extends Jm2010Common {
     StepGridModel sg = calcOpt.getGrid();    log.dbg("r step grid model =", sg);
     quadr = new WFQuadrR(new StepGrid(sg));            log.dbg("r weights =", quadr);
     rVec = quadr.getR();                   log.dbg("r grid =", rVec);
-    if (!new QuadrStepTest().ok())         return;
+    if (!new QuadrPts5Test().ok())         return;
 
     basisOptN = calcOpt.getLgrrModel();          log.dbg("Laguerr model =", basisOptN);
     basis = new LgrrR(quadr, basisOptN);   log.dbg("LgrrR =\n", basis);

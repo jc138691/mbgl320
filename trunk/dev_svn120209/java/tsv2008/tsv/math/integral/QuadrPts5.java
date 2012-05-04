@@ -1,6 +1,6 @@
 package math.integral;
 import math.func.FuncVec;
-import math.func.deriv.DerivPts5;
+import math.func.intrg.IntgPts7;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
@@ -9,11 +9,11 @@ import javax.utilx.log.Log;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 10/07/2008, Time: 16:42:54
  */
-public class QuadrStep5 extends QuadrStep { // mistakenly known as Bode
+public class QuadrPts5 extends QuadrStep { // mistakenly known as Bode
 public static final int PTS_N = 5;
-public static Log log = Log.getLog(QuadrStep5.class);
+public static Log log = Log.getLog(QuadrPts5.class);
 private Mtrx mIntr;
-public QuadrStep5(StepGrid grid) {
+public QuadrPts5(StepGrid grid) {
   super(grid, 5);
   if (isValid(size())) {
     loadWeights(grid.getGridStep());
@@ -21,15 +21,15 @@ public QuadrStep5(StepGrid grid) {
     throw new IllegalArgumentException(log.error("invalid size=" + size()));
   }
 }
-public Vec makeQuadrFuncInt(double step) {
-  double a[] = makeQuadrArr(step);
-  return new Vec(a);
-}
-public static double[] makeQuadrArr(double step) {
-  double tmp = 2.0 * step / 45.0;
-  double a[] = {tmp * 7, tmp * 32, tmp * 12, tmp * 32, tmp * 7};
-  return a;
-}
+//public Vec makeQuadrFuncInt(double step) {
+//  double a[] = makeQuadrArr(step);
+//  return new Vec(a);
+//}
+//public static double[] makeQuadrArr(double step) {
+//  double tmp = 2.0 * step / 45.0;
+//  double a[] = {tmp * 7, tmp * 32, tmp * 12, tmp * 32, tmp * 7};
+//  return a;
+//}
 private void loadWeights(double step) {
   double tmp = 2.0 * step / 45.0;
   double a[] = {tmp * 14, tmp * 32, tmp * 12, tmp * 32};
@@ -48,7 +48,7 @@ public FuncVec calcFuncIntOK(Vec funcV) {
   double[] a32 = QuadrStep3.makeQuadrArr_2From3(step);
   double[] a3 = QuadrStep3.makeQuadrArr(step);
   double[] a4 = QuadrStep4.makeQuadrArr(step);
-  double[] a5 = QuadrStep5.makeQuadrArr(step);
+  double[] a5 = IntgPts7.makePts5(step);
   double currTot = 0;
   double curr = 0;
   int ptsPerStep = getNextN();

@@ -3,13 +3,14 @@ import atom.wf.lcr.TransLcrToR;
 import atom.wf.log_r.TransLrToR;
 import math.func.FuncVec;
 import math.func.Func;
-import math.integral.QuadrStep5;
+import math.integral.QuadrPts5;
 import math.vec.Vec;
 import math.Mathx;
 import math.vec.grid.StepGrid;
 import project.workflow.task.test.FlowTest;
 
 import javax.utilx.log.Log;
+import java.math.BigDecimal;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 11/07/2008, Time: 14:43:54
  */
@@ -94,7 +95,7 @@ public class CoulombWFFactory extends FlowTest {
     TransLcrToR logCR = new TransLcrToR(x);
     TransLrToR logR = new TransLrToR(x);
     Vec r = logR;
-    QuadrStep5 w = new QuadrStep5(x);
+    QuadrPts5 w = new QuadrPts5(x);
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);  // by log(r)
     double res = w.calc(f, f, r);
 //    double res = FastLoop.dot(f, f, w, r);
@@ -123,7 +124,7 @@ public class CoulombWFFactory extends FlowTest {
 //    LogCRToR logCR = new LogCRToR(x);
     TransLcrToR logCR = new TransLcrToR(x);
     Vec r = logCR;
-    QuadrStep5 w = new QuadrStep5(x);
+    QuadrPts5 w = new QuadrPts5(x);
     FuncVec f = CoulombWFFactory.makeP2s(r, 1.); // by log(c+r)
 //    double res = FastLoop.dot(f, f, w, logCR.getCR());
     double res = w.calc(f, f, logCR.getCR());
@@ -156,7 +157,7 @@ public class CoulombWFFactory extends FlowTest {
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
     TransLcrToR logCR = new TransLcrToR(x);
     Vec r = logCR;
-    QuadrStep5 w = new QuadrStep5(x);
+    QuadrPts5 w = new QuadrPts5(x);
     FuncVec f = CoulombWFFactory.makeP3s(r, 1.); // by log(c+r)
 //    double res = FastLoop.dot(f, f, w, logCR.getCR());
     double res = w.calc(f, f, logCR.getCR());
@@ -242,32 +243,62 @@ class FuncY_0_2p implements Func {
   }
 }
 class FuncY_2_2p implements Func {
-  private static double LOW_R = 0.0001;
-  public double calc(double r) {
-    if (r == 0)
-      return 0;
-    if (r > LOW_R) {
-      return 30. / r * ((1. - Math.exp(-r)) / r - Math.exp(-r) * (1. + 1. / 2. * r
-        + 1. / 6. * Mathx.pow(r, 2) + 1. / 24. * Mathx.pow(r, 3) + 1. / 144. * Mathx.pow(r, 4)));
-    }
-    double  x = Math.exp(-r);
-    double r2 = r * r;
-    double r3 = r2 * r;
-    double r4 = r3 * r;
-    double r5 = r4 * r;
-////    return 30. / r * (
-////      (1. - x) / r
-////        - x * (1. + 0.5 * r + 1. / 6. * r2 + 1. / 24. * r3 + 1. / 144. * r4) );
-////    return 30. / r * x * (
-////      (1./x - 1.) / r
-////        - (1. + 0.5 * r + 1. / 6. * r2 + 1. / 24. * r3 + 1. / 144. * r4) );
+public double calc(double r) {
+  if (r == 0.0)
+    return 0;
+  if (r <= 0.1) {
+    double er = Math.exp(r);
+    // exp(x) = 1 + x/1! + x^2/2!
+    // (exp(x)-1)/x
+    //  = 1/1! + x/2! + x^2/3! + x^3/4! + x^4/5!  + x^5/6!  + x^6/7! + x^7/8!
+    //  = 1    + x/2  + x^2/6  + x^3/24 + x^4/120 + x^5/720 + x^6/5040
 
-    // exp(r) = 1 + r + r^2 / 2 + r^3/6 + r^4/24 + r^5/120 + r^6/720
-    // (exp(r)-1)/r = 1 + r / 2 + r^2/6 + r^3/24 + r^4/120 + r^5/720
+    double r3 = r * r * r;
+    double c4 = 1./120 - 1./144.;
+    double c5 = r / 720.;
+    double c6 = c5 * r / 7;
+    double c7 = c6 * r / 8;
+    double c8 = c7 * r / 9;
+    double c9 = c8 * r / 10;
+    double c10 = c9 * r / 11;
+    double c11 = c10 * r / 12;
+    double c12 = c11 * r / 13;
 
-    return 30. / r * x * (r4 / 120. - r4 / 144. + r5 / 720.);
-
+    double b = r3 * (c4 + c5 + c6 + c7 + c8 + c9 + c10 + c11 + c12) / er;
+    double res = 30.* b;
+    return res;
   }
+
+  double er = Math.exp(r);
+  // exp(x) = 1 + x/1! + x^2/2!
+
+  double ex = (er - 1)/r; //
+  // (exp(x)-1)/x
+  //  = 1/1! + x/2! + x^2/3! + x^3/4! + x^4/5!  + x^5/6!  + x^6/7!
+  //  = 1    + x/2  + x^2/6  + x^3/24 + x^4/120 + x^5/720 + x^6/5040
+
+  double a = (1.
+  + (1. / 2.
+  + (1. / 6.
+  + (1. / 24.  + 1. / 144. * r  ) * r
+  ) * r
+  ) * r
+  );
+  double b = (ex - a) / er;
+  double res = 30.* (b / r);
+
+//  double ex = (Math.exp(-r) - 1.)/(-r); // (exp(-r) - 1)/(-r)
+//double a = (1.
+//+ (1. / 2.
+//+ (1. / 6.
+//+ (1. / 24.  + 1. / 144. * r  ) * r
+//) * r
+//) * r
+//);
+//double b = ex - Math.exp(-r) * a;
+//double res = 30.* (b / r);
+return res;
+}
 }
 class WFuncP1s implements Func {
   public static Log log = Log.getLog(WFuncP1s.class);

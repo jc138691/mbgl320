@@ -2,10 +2,10 @@ package math.func.polynom.laguerre;
 import junit.framework.TestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import math.integral.QuadrPts5;
 import math.vec.grid.StepGrid;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrTailSearch;
-import math.integral.QuadrStep5;
 import math.integral.OrthonFactory;
 
 import javax.utilx.log.Log;
@@ -28,7 +28,7 @@ public class LagrrOrthTest extends TestCase {
     double LAST = 60;
     int GRID_SIZE = 501;
     StepGrid r = new StepGrid(FIRST, LAST, GRID_SIZE);
-    QuadrStep5 w = new QuadrStep5(r);
+    QuadrPts5 w = new QuadrPts5(r);
 
     int L = 0;
     int N = 4;

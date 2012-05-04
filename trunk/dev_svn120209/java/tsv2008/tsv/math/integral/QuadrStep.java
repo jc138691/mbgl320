@@ -5,7 +5,6 @@ import math.vec.grid.StepGrid;
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 2/03/12, 3:49 PM
  */
 public class QuadrStep extends Quadr {
-private Vec quadrIntr;   // TODO: remove this 120303
 private StepGrid stepGrid;
 private final int ptsN; // number of points per ONE interval of integration
 private final int nextN; //running num of points;
@@ -21,12 +20,6 @@ public Vec calcFuncIntOK(Vec f) {
 }
 public Vec makeQuadrFuncInt() {
   throw new IllegalArgumentException(log.error("not implemented"));
-}
-public Vec getQuadrIntr() {
-  if (quadrIntr == null) {
-    quadrIntr = makeQuadrFuncInt();
-  }
-  return quadrIntr;
 }
 public StepGrid getStepGrid() {
   return stepGrid;
