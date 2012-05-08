@@ -95,10 +95,13 @@ public class YkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(res - 1), 2e-10);
     FuncVec T = CoulombWFFactory.makeY_0_1s(r); // valid
     FuncVec Y = new YkLcr(quadr, f, f, 0).calcYk();
+    log.info("T = CoulombWFFactory.makeY_0_1s(r)=", new VecDbgView(T));
+    log.info("Y=", new VecDbgView(Y));
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(r), ".", "wf", "logCR.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Y_0_1s_test.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Y), ".", "wf", "Y_0_1s.csv");
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 2e-9);
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 2e-9); // TODO: was 2e-9
+//    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 4e-8); // TODO: was 2e-9
 
     // 1s-2s
     FuncVec f2 = CoulombWFFactory.makeP2s(r, 1.);
