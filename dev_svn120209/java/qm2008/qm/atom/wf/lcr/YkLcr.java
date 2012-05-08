@@ -1,4 +1,5 @@
 package atom.wf.lcr;
+import math.func.intrg.IntgInftyPts7;
 import math.func.intrg.IntgPts7;
 import math.vec.Vec;
 import math.vec.VecDbgView;
@@ -131,8 +132,10 @@ public FuncVec calcYk() {
 public FuncVec calcYk_BAD(FuncVec zk) {   log.setDbg();
   loadYFuncs(zk);
 
-//  FuncVec res = new IntgInftyPts7(yF);    log.info("IntgInftyPts7(zF)=", new VecDbgView(res));
-  FuncVec res = new IntgPts7(yF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
+//  yF.add(-yF.getLast());
+
+  FuncVec res = new IntgInftyPts7(yF);    log.info("IntgInftyPts7(zF)=", new VecDbgView(res));
+//  FuncVec res = new IntgPts7(yF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
 
   // boundary Y_k(r-->oo) = Z_k(r)
   double corr = zk.getLast() / rK1.getLast();
@@ -148,6 +151,7 @@ public FuncVec calcZk() {   log.setDbg();
   // delta_r is much smaller for small r's than for large r's,
   // so it is mor accurate to integrate from start
 //  FuncVec res = new IntgInftyPts7(zF);    log.info("IntgInftyPts7(zF)=", new VecDbgView(res));
+//  res.add(-res.getFirst());
 
   //NOTE!!  HERE  IntgPts7 is much better than calcFuncIntOK
   FuncVec res = new IntgPts7(zF);    log.info("IntgPts7(zF)=", new VecDbgView(res));

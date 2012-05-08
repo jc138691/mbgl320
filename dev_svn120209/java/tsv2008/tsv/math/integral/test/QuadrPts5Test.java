@@ -212,6 +212,7 @@ public void testInfty() {
   assertEquals(0, 1. - w.calc(fi), 2e-7);
 
   fi = new IntgInftyPts7(func);    log.info("IntgInftyPts7(func)=", new VecDbgView(fi));
+//  fi = new IntgPts7(func);    log.info("IntgPts7(func)=", new VecDbgView(fi));
   fi.add(-1); // -exp(-r)
   fi.mult(-1); // exp(-r)
   log.info("fi.mult(-1)=", new VecDbgView(fi));
