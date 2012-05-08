@@ -684,7 +684,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/RkLcrTest.java" line="63" class="atom.wf.lcr.test.RkLcrTest" package="atom.wf.lcr.test">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/RkLcrTest.java" line="64" class="atom.wf.lcr.test.RkLcrTest" package="atom.wf.lcr.test">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -697,7 +697,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/RkLcrTest.java" line="90" class="atom.wf.lcr.test.RkLcrTest" package="atom.wf.lcr.test">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/RkLcrTest.java" line="85" class="atom.wf.lcr.test.RkLcrTest" package="atom.wf.lcr.test">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -710,20 +710,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/RkLcrTest.java" line="74" class="atom.wf.lcr.test.RkLcrTest" package="atom.wf.lcr.test">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/YkLcrTest.java" line="54" class="atom.wf.lcr.test.YkLcrTest" package="atom.wf.lcr.test">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/RkLcrTest.java" line="76" class="atom.wf.lcr.test.RkLcrTest" package="atom.wf.lcr.test">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -794,66 +781,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="YkLcrTest2.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcrTest2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="0" selection-start="2671" selection-end="2840" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="YkLcrTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/YkLcrTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="44" selection-start="1669" selection-end="1669" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="YkLcr.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="131" column="24" selection-start="4457" selection-end="4457" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuadrPts5.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrPts5.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="41" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuadrStep.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CoulombWFFactory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/coulomb/CoulombWFFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="24" selection-start="2583" selection-end="2583" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntgPts7.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts7.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="0" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0">
+            <state line="130" column="0" selection-start="4293" selection-end="4293" vertical-scroll-proportion="-9.5">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -864,16 +795,83 @@
       <file leaf-file-name="RkLcrTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/RkLcrTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="25" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.6155268">
+            <state line="76" column="0" selection-start="2680" selection-end="2680" vertical-scroll-proportion="0.33333334">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Jm2010CommonLcr.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010CommonLcr.java">
+      <file leaf-file-name="RkLcr.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/RkLcr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="0" selection-start="6148" selection-end="6148" vertical-scroll-proportion="0.0">
+            <state line="18" column="42" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RkMm.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/mm/RkMm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="41" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="YkMm.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/mm/YkMm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="19" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IntgInftyPts7.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgInftyPts7.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="0" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HySWaveJmBasisHy_SDCS.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/setup_SDCS/HySWaveJmBasisHy_SDCS.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="0" selection-start="625" selection-end="625" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuadrPts5Test.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrPts5Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="217" column="0" selection-start="8450" selection-end="8450" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="YkLcrTest2.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcrTest2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="80" column="38" selection-start="2993" selection-end="2993" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="YkLcrTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/YkLcrTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="0" selection-start="2270" selection-end="2270" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -898,22 +896,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/project/workflow/task/test/FlowTest.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/mm/YkMm.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/mm/RkMm.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/RkLcrTest2.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/RkLcr.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/RkLcrTest.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcrTest2.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/metric/DistMaxAbsErr.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/coulomb/CoulombWFFactory.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/interpol/test/PolynomInterpolTest.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcr.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrPts5.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/YkLcrTest.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgInftyPts7.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts7.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcrTest2.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/metric/DistMaxAbsErr.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/FuncVec.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/VecFactory.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrPts5Test.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgInftyPts7.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/RkLcrTest.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcr.java" />
       </list>
     </option>
   </component>
@@ -1609,7 +1607,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1848" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1848" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36993605" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1623,9 +1621,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24757281" sideWeight="0.5926748" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.65072304" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39946738" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18406285" sideWeight="0.6076759" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18406285" sideWeight="0.5298507" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3923241" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47014925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
@@ -1771,16 +1769,23 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/metric/DistMaxAbsErr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="34" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.0">
+        <state line="31" column="22" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/interpol/PolynIntrp.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/FuncVec.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="23" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0">
+        <state line="9" column="30" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="9" selection-start="534" selection-end="534" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1792,23 +1797,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EaMethodE1_G_db.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/VecFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="22" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.08995327">
+        <state line="20" column="29" selection-start="599" selection-end="599" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrPts5Test.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts7.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="213" column="19" selection-start="8264" selection-end="8264" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgInftyPts7.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="59" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
+        <state line="66" column="0" selection-start="1887" selection-end="1887" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1817,74 +1815,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/setup_SDCS/HySWaveJmBasisHy_SDCS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="12" selection-start="559" selection-end="559" vertical-scroll-proportion="0.33391917">
+        <state line="17" column="0" selection-start="625" selection-end="625" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcrTest2.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgInftyPts7.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="0" selection-start="2671" selection-end="2840" vertical-scroll-proportion="0.0">
+        <state line="28" column="0" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/mm/YkMm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="19" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/mm/RkMm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="41" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/test/QuadrPts5Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="217" column="0" selection-start="8450" selection-end="8450" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/YkLcrTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="44" selection-start="1669" selection-end="1669" vertical-scroll-proportion="0.0">
+        <state line="54" column="0" selection-start="2270" selection-end="2270" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/RkLcr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="42" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcrTest2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="38" selection-start="2993" selection-end="2993" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="24" selection-start="4457" selection-end="4457" vertical-scroll-proportion="0.0">
+        <state line="130" column="0" selection-start="4293" selection-end="4293" vertical-scroll-proportion="-9.5">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrPts5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="41" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/integral/QuadrStep.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/coulomb/CoulombWFFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="24" selection-start="2583" selection-end="2583" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/intrg/IntgPts7.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010CommonLcr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="0" selection-start="6148" selection-end="6148" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/RkLcrTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="25" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.6155268">
+        <state line="76" column="0" selection-start="2680" selection-end="2680" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>

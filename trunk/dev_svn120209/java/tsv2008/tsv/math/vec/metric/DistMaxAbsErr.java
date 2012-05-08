@@ -29,7 +29,7 @@ public static Log log = Log.getLog(DistMaxAbsErr.class);
 
         {log.dbg("MAX dist[i=" + i + "] = " + dist
           + " v=" + v.get(i) + " v2=" + v2.get(i));
-          dbgCount = 2;  // JUST FOR DEBUGGING
+          dbgCount = 1;  // JUST FOR DEBUGGING
         }
       } else if (dbgCount-- > 0) {
         log.dbg("NOT max dist[i=" + i + "] = ", dist);

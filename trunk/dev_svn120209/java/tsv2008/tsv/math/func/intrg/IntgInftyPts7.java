@@ -1,6 +1,7 @@
 package math.func.intrg;
 import math.Calc;
 import math.func.FuncVec;
+import math.vec.VecFactory;
 import math.vec.grid.StepGrid;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 3/05/12, 1:03 PM
@@ -12,6 +13,9 @@ public IntgInftyPts7(FuncVec f) {
   super(f);
 }
 protected void calc_h(final FuncVec fv) {
+//  FuncVec rfv = new FuncVec(fv.getX(), VecFactory.reverse(fv));
+//  super.calc_h(rfv);
+
   double[] res = getArr();
   double[] f = fv.getArr();
   StepGrid grid = (StepGrid) fv.getX();

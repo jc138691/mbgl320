@@ -31,7 +31,8 @@ public class RkLcrTest extends FlowTest {
 
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
     f.mult(xToR.getDivSqrtCR());
-    double res = wCR.getWithCR2().calc(f, f);
+    double res = 0, rMm = 0;
+    res = wCR.getWithCR2().calc(f, f);
     assertEquals(0, Math.abs(res - 1), 6e-13);
 
     FuncVec f2 = CoulombWFFactory.makeP1s(r, 1.);
@@ -60,35 +61,29 @@ public class RkLcrTest extends FlowTest {
     res = RkLcr.calc(wCR, f, f, f, f2, 0);  // note f2
     assertEquals(0, Math.abs(res - 2. * 5. / 8.), 9e-11);
 
-    double rMm = RkMm.calc(wCR, f, f, f, f, 0);
+    rMm = RkMm.calc(wCR, f, f, f, f, 0);
     assertEquals(0, Math.abs(rMm - 5. / 8.), 5e-11);
 
     FuncVec f2s = CoulombWFFactory.makeP2s(r, 1.);
     f2s.mult(xToR.getDivSqrtCR());
-//    res = FastLoop.dot(f2s, f2s, wCR.getWithCR2());
     res = wCR.getWithCR2().calc(f2s, f2s);
     assertEquals(0, Math.abs(res - 1), 2e-13);
 
     res = RkLcr.calc(wCR, f, f2s, f, f2s, 0);
     rMm = RkMm.calc(wCR, f, f2s, f, f2s, 0);
     assertEquals(0, Math.abs(res - 17. / 81), 4e-11);
-//    assertEquals(0, Math.abs(rMm - 17. / 81), 4e-11);
 
     res = RkLcr.calc(wCR, f2s, f, f2s, f, 0);
-    //job.addLine(F_2s1s_,   17./81,    "F_1s2s_",   0.3e-9); // 0.7
     assertEquals(0, Math.abs(res - 17. / 81), 4e-11);
     res = RkLcr.calc(wCR, f, f2s, f2s, f, 0);
-    //job.addLine( G_2s1s,  16./729,     "G_1s2s",   0.4e-9); // 0.136
     assertEquals(0, Math.abs(res - 16. / 729), 5e-11);
     res = RkLcr.calc(wCR, f2s, f, f, f2s, 0);
-    //job.addLine(G_2s1s_,  16./729,    "G_1s2s_",   0.4e-9); // 0.136
     assertEquals(0, Math.abs(res - 16. / 729), 5e-11);
 
     res = RkLcr.calc(wCR, f2s, f2s, f2s, f2s, 0);
     rMm = RkMm.calc(wCR, f2s, f2s, f2s, f2s, 0);
-    //job.addLine( F_2s2s,  77./512,     "F_2s2s",   0.4e-9); // 1.1
     assertEquals(0, Math.abs(res - 77. / 512), 4e-10);
-//    assertEquals(0, Math.abs(rMm - 77. / 512), 4e-10);
+    assertEquals(0, Math.abs(rMm - 77. / 512), 4e-10);
 
     FuncVec f2p = CoulombWFFactory.makeP2p(r, 1.);
     f2p.mult(xToR.getDivSqrtCR());
@@ -96,32 +91,18 @@ public class RkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(res - 1), 7e-14);
 
     res = RkLcr.calc(wCR, f2p, f, f2p, f, 0);
-    //CRkH  F_2p1s(new CRk(w, r, f_2p, f_1s, f_2p, f_1s, CL(0)));
-    //job.addLine( F_2p1s,   59./243,     "F_2p1s",    0.03e-9); // 0.277
     assertEquals(0, Math.abs(res - 59. / 243), 3e-11);
     res = RkLcr.calc(wCR, f, f2p, f, f2p, 0);
-    //CRkH F_2p1s_(new CRk(w, r, f_1s, f_2p, f_1s, f_2p, CL(0)));
-    //job.addLine(F_2p1s_,   59./243,    "F_2p1s_",    0.6e-9); // 0.277
     assertEquals(0, Math.abs(res - 59. / 243), 3e-11);
     res = RkLcr.calc(wCR, f2p, f, f, f2p, 1);
-    //CRkH  G_2p1s(new CRk(w, r, f_2p, f_1s, f_1s, f_2p, CL(1))); // NOTE: CL(1)
-    //job.addLine( G_2p1s, 112./2187,     "G_2p1s",    0.2e-9); // 0.28
     assertEquals(0, Math.abs(res - 112. / 2187), 2e-10);
     res = RkLcr.calc(wCR, f2s, f2p, f2s, f2p, 0);
-    //CRkH  F_2p2s(new CRk(w, r, f_2s, f_2p, f_2s, f_2p, CL(0)));
-    //job.addLine( F_2p2s,  83./512,     "F_2p2s",    0.2e-9); // 1.1
     assertEquals(0, Math.abs(res - 83. / 512), 2e-10);
     res = RkLcr.calc(wCR, f2p, f2s, f2p, f2s, 0);
-    //CRkH F_2p2s_(new CRk(w, r, f_2p, f_2s, f_2p, f_2s, CL(0)));
-    //job.addLine(F_2p2s_,  83./512,    "F_2p2s_",    0.2e-9); // 1.1
     assertEquals(0, Math.abs(res - 83. / 512), 2e-10);
     res = RkLcr.calc(wCR, f2s, f2p, f2p, f2s, 1);
-    //CRkH  G_2p2s(new CRk(w, r, f_2s, f_2p, f_2p, f_2s, CL(1))); // NOTE: CL(1)
-    //job.addLine( G_2p2s,  45./512,     "G_2p2s",    0.8e-9); // 0.17
     assertEquals(0, Math.abs(res - 45. / 512), 9e-10);
     res = RkLcr.calc(wCR, f2p, f2p, f2p, f2p, 0);
-    //CRkH  F_2p2p(new CRk(w, r, f_2p, f_2p, f_2p, f_2p, CL(0)));
-    //job.addLine( F_2p2p,  93./512,     "F_2p2p",   0.1e-9); // 0.65
     assertEquals(0, Math.abs(res - 93. / 512), 1e-10);
     res = RkLcr.calc(wCR, f2p, f2p, f2p, f2p, 1);
     assertEquals(0, Math.abs(res - 0.12044270784428178), 2e-20); // at x=-4, 1/16, 220

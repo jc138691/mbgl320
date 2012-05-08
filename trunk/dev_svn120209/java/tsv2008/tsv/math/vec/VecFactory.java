@@ -14,4 +14,14 @@ public class VecFactory {
     return res;
   }
 
+public static Vec reverse(Vec fromVec) { // reverse
+  Vec res = new Vec(fromVec.size());
+  double[] arr = res.getArr();
+  double[] from = fromVec.getArr();
+  for (int i = 0; i < arr.length; i++) {
+    arr[i] = from[arr.length - i - 1];
+  }
+  return res;
+}
+
 }

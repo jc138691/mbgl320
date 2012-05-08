@@ -103,7 +103,7 @@ public void testIntgl() throws Exception {    log.setDbg();
   f4 = new FuncVec(grid4, new FuncPolynom(c3));
   assertEquals(1. / 3, w4.calc(f4), Calc.EPS_16);
 }
-public void testWeights() {
+public void testWeights() {   log.setDbg();
   FuncVec func2;
   FuncVec func3;
   StepGrid grid = new StepGrid(0., Math.PI, 5);
