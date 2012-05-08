@@ -46,6 +46,8 @@ public class YkLcrTest2 extends FlowTest {
 
     T = CoulombWFFactory.makeY_0_1s(r); // valid
     FuncVec Y = new YkLcr(quadr, f, f, 0).calcYk();
+    log.info("T = CoulombWFFactory.makeY_0_1s(r)=\n", new VecDbgView(T));
+    log.info("Y=\n", new VecDbgView(Y));
     assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)));
 
     // 1s-2s

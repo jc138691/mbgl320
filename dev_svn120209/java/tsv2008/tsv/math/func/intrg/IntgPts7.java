@@ -30,33 +30,31 @@ protected void calc_h(final FuncVec fv) {  log.setDbg();
 
   int size = fv.size();
 
-  double h4 = h / 24.;
+  double h4_Wilf = h / 24.;
   res[0] = 0;                                      // i=0
   double d = 0;
 
   int i = 1;
-  res[i] = res[i - 1] + h4 * calcPts4(i, f); // 1
+  res[i] = res[i - 1] + h4_Wilf * calcPts4_Wilf(i, f); // i=1
 
   i++;
-  res[i] = res[i - 1] + h4 * calcPts4(i, f); // 2
+//  res[i] = res[i - 1] + h4_Wilf * calcPts4_Wilf(i, f); // i=2
+  double h3 = h / 3.;
+  res[i] = h3 * calcPts3(i, f); // i = 3
 
   i++;
-  res[i] = res[i - 1] + h4 * calcPts4(i, f); // 3
+//  res[i] = res[i - 1] + h4_Wilf * calcPts4_Wilf(i, f); // i=3
+  double h4 = 3. * h / 8.;
+  res[i] = h4 * calcPts4(i, f); // i = 3
 
   i++;
-  res[i] = res[i - 1] + h4 * calcPts4(i, f); // 4
-//  log.dbg("res[idx="+idx+"]=" + res[idx]);
-//  d += 0.5 * h * (f[idx-1] + f[idx]);
-//  log.dbg("d - res[idx]=" + (d - res[idx]));
-//  res[idx] = d;
-
+//  res[i] = res[i - 1] + h4_Wilf * calcPts4_Wilf(i, f); // i=4
+  double h5 = 2. * h / 45.;
+  res[i] = h5 * calcPts5(i, f); // i = 4
 
   i++;
-  res[i] = res[i - 1] + h4 * calcPts4(i, f); // 5
-//  log.dbg("res[idx="+idx+"]=" + res[idx]);
-//  d += 0.5 * h * (f[idx-1] + f[idx]);
-//  log.dbg("d - res[idx]=" + (d - res[idx]));
-//  res[idx] = d;
+  double h6 = 5. * h / 288.;
+  res[i] = h6 * calcPts6(i, f); // i = 5
 
 // NOT as good as 7pts  Newton-Cotes Formulas
 //  // Weddle's rule
@@ -94,12 +92,50 @@ protected double calcPts7(int idx, final double[] f) {
   res += f[idx]   * 41.;  // +0
   return res;
 }
-private double calcPts4(int idx, final double[] f) {
+private double calcPts4_Wilf(int idx, final double[] f) {
   double res = 0;
   res += f[idx - 1] * 9.;
   res += f[idx] * 19.;
   res += f[idx + 1] * (-5.);
   res += f[idx + 2];
+  return res;
+}
+private double calcPts3(int idx, final double[] f) {
+//Newton-Cotes Formulas
+  double res = 0;
+  res += f[idx--];  // +2
+  res += f[idx--] * 4.;  // +1
+  res += f[idx];  // +0
+  return res;
+}
+private double calcPts4(int idx, final double[] f) {
+//Newton-Cotes Formulas
+  double res = 0;
+  res += f[idx--];  // +3
+  res += f[idx--] * 3;  // +2
+  res += f[idx--] * 3.;  // +1
+  res += f[idx];  // +0
+  return res;
+}
+private double calcPts5(int idx, final double[] f) {
+//Newton-Cotes Formulas
+  double res = 0;
+  res += f[idx--] * 7.;  // +4
+  res += f[idx--] * 32.;  // +3
+  res += f[idx--] * 12;  // +2
+  res += f[idx--] * 32.;  // +1
+  res += f[idx]   * 7.;  // +0
+  return res;
+}
+private double calcPts6(int idx, final double[] f) {
+//Newton-Cotes Formulas
+  double res = 0;
+  res += f[idx--] * 19.;  // +5
+  res += f[idx--] * 75;  // +4
+  res += f[idx--] * 50.;  // +3
+  res += f[idx--] * 50;  // +2
+  res += f[idx--] * 75.;  // +1
+  res += f[idx]   * 19.;  // +0
   return res;
 }
 public static double[] makePts5(double step) {
