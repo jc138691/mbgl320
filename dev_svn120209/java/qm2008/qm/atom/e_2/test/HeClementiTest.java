@@ -28,15 +28,6 @@ public class HeClementiTest extends FlowTest {
   public HeClementiTest() {      // needed by FlowTest
     super(HeClementiTest.class);
   }
-//  public static Test suite() {
-//    return new TestSuite(HeClementiTest.class);
-//  }
-//  public static void main(String[] args) {
-//    junit.textui.TestRunner.run(suite());
-//  }
-//  public void setUp() {
-//    Log.addGlobal(System.out);
-//  }
   public void testClementiSingleZeta() throws Exception  {
     double FIRST = 0;
     int NUM_STEPS = 361;
