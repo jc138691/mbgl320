@@ -125,11 +125,25 @@ private boolean checkUseLast() {
     return true;
   return false;
 }
-public FuncVec calcYk() {
-  FuncVec zk = calcZk();
-  return calcYk(zk);
+public FuncVec calcZk() {
+//  return calcZk_NEW();
+  return calcZk_OLD();
 }
-public FuncVec calcYk_BAD(FuncVec zk) {   log.setDbg();
+public FuncVec calcYk() {
+//  return calcYk_NEW();
+  return calcYk_OLD();
+}
+public FuncVec calcYk_NEW() {
+  FuncVec zk = calcZk_NEW();
+//  FuncVec zk = calcZk_OLD();
+  return calcYk_NEW(zk);
+}
+public FuncVec calcYk_OLD() {
+  FuncVec zk = calcZk_OLD();
+//  FuncVec zk = calcZk_NEW();
+  return calcYk_OLD(zk);
+}
+public FuncVec calcYk_NEW(FuncVec zk) {   log.setDbg();
   loadYFuncs(zk);
 
 //  yF.add(-yF.getLast());
@@ -144,7 +158,7 @@ public FuncVec calcYk_BAD(FuncVec zk) {   log.setDbg();
   res.mult(rK1);
   return res;
 }
-public FuncVec calcZk() {   log.setDbg();
+public FuncVec calcZk_NEW() {   log.setDbg();
   loadZFuncs();
 
   // IntgInftyPts7 is not good for ln(r)-type grid!!!!!!!!
@@ -294,7 +308,7 @@ private double approxFirstZ(int idxDest, double F2, double F3) {
   double b = PolynIntrp.calcPowerSLOW(tmp, 0);
   return rDest / (b + 1) * fx[idxDest];
 }
-protected FuncVec calcYk(FuncVec res) {
+public FuncVec calcYk_OLD(FuncVec res) {
   double[] YK = res.getArr();
 //  FuncVec res = calcZk(); //CALL ZK(I,J,K)                                                    AATK4062
   //A =    EH**(K+1)                                                  AATK4063

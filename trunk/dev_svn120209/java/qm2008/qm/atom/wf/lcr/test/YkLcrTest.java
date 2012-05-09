@@ -41,6 +41,12 @@ public class YkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(res - 1), 5.5e-13);
     FuncVec T = CoulombWFFactory.makeZ_1_1s(r); // valid
     FuncVec Z = new YkLcr(wCR, f, f, 1).calcZk();
+
+//    FuncVec newZ = new YkLcr(wCR, f, f, 1).calcZk_NEW();
+//    FuncVec oldZ = new YkLcr(wCR, f, f, 1).calcZk_OLD();
+//    log.info("newZ=", new VecDbgView(newZ));
+//    log.info("oldZ=", new VecDbgView(oldZ));
+//    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(newZ, oldZ)), 1e-10);  // with new calcZk() via
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Z_1_1s_test.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Z), ".", "wf", "Z_1_1s.csv");
 
@@ -49,8 +55,7 @@ public class YkLcrTest extends FlowTest {
     log.info("x=", new VecDbgView(xToR.getX()));
     log.info("T=", new VecDbgView(T));
     log.info("Z=", new VecDbgView(Z));
-//    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Z)), 6e-9);  // with calcZk_OLD
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Z)), 2e-9);  // with new calcZk() via
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Z)), 6e-9);  // with calcZk_OLD
 
     int dbg = 1;
   }

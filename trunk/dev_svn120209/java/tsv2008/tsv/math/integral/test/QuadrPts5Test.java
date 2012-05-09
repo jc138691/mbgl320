@@ -11,6 +11,7 @@ import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
 import math.func.*;
 import math.Calc;
+import math.vec.metric.DistMaxAbsErr;
 import project.workflow.task.test.FlowTest;
 
 import javax.utilx.log.Log;
@@ -93,11 +94,18 @@ public void testIntgl() throws Exception {    log.setDbg();
   func = new FuncVec(grid, new FuncPolynom(c3));
   assertEquals(1. / 3, w.calc(func), Calc.EPS_16);
 
+  double[] c4 = {0, 0, 0, 1./3.};
+  FuncVec fiT = new FuncVec(grid, new FuncPolynom(c4));
   // fi(x) = Int_0^x r^2 = 1/3 r^3;
   fi = w.calcFuncIntOK(func);
   // Int_0^1 fi(x) = 1/3 1/4
   assertEquals(1. / (3 * 4), w.calc(fi), Calc.EPS_16);
   fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
+
+  log.info("fiT=", new VecDbgView(fiT));
+  log.info(" fi=", new VecDbgView(fi2));
+  assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(fiT, fi2)), 1e-16);  // with new calcZk() via
+
   assertEquals(1. / (3 * 4), w.calc(fi2), Calc.EPS_16);
 
   f4 = new FuncVec(grid4, new FuncPolynom(c3));
