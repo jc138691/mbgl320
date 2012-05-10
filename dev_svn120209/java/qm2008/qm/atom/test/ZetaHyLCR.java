@@ -1,5 +1,6 @@
 package atom.test;
 import atom.e_1.SysE1;
+import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.energy.slater.SlaterLr;
 import atom.shell.Conf;
@@ -78,12 +79,13 @@ public class ZetaHyLCR extends LCRTestCase {
     Conf fc = new Conf(sh);
     SlaterLcr slater = new SlaterLcr(w);
     SysE1 sys = new SysE1(-Z_EFF, slater);
-    double kin = sys.calcKin(fc, fc);
+    double kin = sys.calcH(fc, fc).kin;
     log.assertZero("Hy kin(LogCR)=", testKin - kin, 4e-11);
-    double pot = sys.calcPot(fc, fc);
-    log.assertZero("Hy pot(LogCR)=", testPot - pot, 5e-12);
-    log.assertZero("Hy kin/pot(LogCR)=", -2. - pot / kin, 2e-10);
-    res = sys.calcTot(fc, fc);
+    double pot = sys.calcH(fc, fc).pt;
+    log.assertZero("Hy pt(LogCR)=", testPot - pot, 5e-12);
+    log.assertZero("Hy kin/pt(LogCR)=", -2. - pot / kin, 2e-10);
+    Energy eng = sys.calcH(fc, fc);
+    res = eng.kin + eng.pt;
     log.assertZero("Hy tot(LogCR)=", test0 - res, 3e-11);
 
     // 18Jul08:  check B-Splines
@@ -115,12 +117,13 @@ public class ZetaHyLCR extends LCRTestCase {
     Conf fc = new Conf(sh);
     SlaterLcr slater = new SlaterLcr(w);
     SysE1 sys = new SysE1(-1., slater);
-    double kin = sys.calcKin(fc, fc);
+    double kin = sys.calcH(fc, fc).kin;
     log.assertZero("Hy kin(LogCR)=", testKin - kin, 4e-11);
-    double pot = sys.calcPot(fc, fc);
-    log.assertZero("Hy pot(LogCR)=", testPot - pot, 5e-12);
-    log.assertZero("Hy kin/pot(LogCR)=", -2. - pot / kin, 2e-10);
-    res = sys.calcTot(fc, fc);
+    double pot = sys.calcH(fc, fc).pt;
+    log.assertZero("Hy pt(LogCR)=", testPot - pot, 5e-12);
+    log.assertZero("Hy kin/pt(LogCR)=", -2. - pot / kin, 2e-10);
+    Energy eng = sys.calcH(fc, fc);
+    res = eng.kin + eng.pt;
     log.assertZero("Hy tot(LogCR)=", test0 - res, 3e-11);
   }
   public void test_Hy_1S_LogR() {
@@ -145,12 +148,13 @@ public class ZetaHyLCR extends LCRTestCase {
     Conf fc = new Conf(sh);
     SlaterLr slater = new SlaterLr(w);
     SysE1 sys = new SysE1(-Z, slater);
-    double kin = sys.calcKin(fc, fc);
+    double kin = sys.calcH(fc, fc).kin;
     log.assertZero("Hy kin(LogR)=", testKin - kin, 7e-4);
-    double pot = sys.calcPot(fc, fc);
-    log.assertZero("Hy pot(LogR)=", testPot - pot, 7e-4);
-    log.assertZero("Hy pot/kin(LogR)=", -2. - pot / kin, 2e-3);
-    res = sys.calcTot(fc, fc);
+    double pot = sys.calcH(fc, fc).pt;
+    log.assertZero("Hy pt(LogR)=", testPot - pot, 7e-4);
+    log.assertZero("Hy pt/kin(LogR)=", -2. - pot / kin, 2e-3);
+    Energy eng = sys.calcH(fc, fc);
+    res = eng.kin + eng.pt;
     log.assertZero("Hy tot(LogR)=", test0 - res, 4e-6);
 
     // With small R correction
@@ -161,12 +165,13 @@ public class ZetaHyLCR extends LCRTestCase {
     WFQuadrR wR = new WFQuadrR(smallR);
     SlaterR slaterR = new SlaterR(wR);
     sys = new SysE1(-Z, slaterR);
-    kin += sys.calcKin(fc, fc);
+    kin += sys.calcH(fc, fc).kin;
     log.assertZero("Hy kin(LogR+smallR)=", testKin - kin, 4e-11);
-    pot += sys.calcPot(fc, fc);
-    log.assertZero("Hy pot(LogR+smallR)=", testPot - pot, 5e-12);
-    log.assertZero("Hy pot/kin(LogR+smallR)=", -2. - pot / kin, 2e-10);
-    res += sys.calcTot(fc, fc);
+    pot += sys.calcH(fc, fc).pt;
+    log.assertZero("Hy pt(LogR+smallR)=", testPot - pot, 5e-12);
+    log.assertZero("Hy pt/kin(LogR+smallR)=", -2. - pot / kin, 2e-10);
+    eng = sys.calcH(fc, fc);
+    res += (eng.kin + eng.pt);
     log.assertZero("Hy tot(LogR+smallR)=", test0 - res, 4e-11);
   }
 }

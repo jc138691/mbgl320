@@ -5,7 +5,7 @@ import atom.wf.lcr.TransLcrToR;
 import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.lcr.YkLcr;
 import atom.wf.coulomb.CoulombWFFactory;
-import atom.wf.lcr.mm.RkMm;
+import atom.wf.mm.RkMm;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import math.vec.metric.DistMaxAbsErr;

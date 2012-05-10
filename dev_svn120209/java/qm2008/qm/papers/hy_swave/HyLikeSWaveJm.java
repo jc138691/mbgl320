@@ -2,7 +2,7 @@ package papers.hy_swave;
 import atom.AtomUtil;
 import atom.angular.Spin;
 import atom.e_1.SysE1;
-import atom.e_2.SysAtomE2;
+import atom.e_2.SysE2;
 import atom.energy.ConfHMtrx;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.ConfArr;
@@ -31,7 +31,7 @@ public void calc(int newN, int newNt) {
   Nt = newNt;
   initProject();
   potScattTestOk();     // out: basisN, orthonNt, biorthN
-  hydrScattTestOk(TARGET_Z);      // out: pot (for TARGET_Z), orthonNt
+  hydrScattTestOk(TARGET_Z);      // out: pt (for TARGET_Z), orthonNt
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
   trgtStatesNt = orthonNt;
@@ -93,7 +93,7 @@ private ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
 }
 
 private ConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
-  SysAtomE2 sys = new SysAtomE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
+  SysE2 sys = new SysE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
   ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthonNt, orthonN);   log.dbg("sysArr=", sConfArr);
   ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;

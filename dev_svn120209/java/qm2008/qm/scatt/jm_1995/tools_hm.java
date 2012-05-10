@@ -478,9 +478,9 @@ public class tools_hm {
 //        end
 //  c
 //  c
-//        real*8 function c1_hm (ii, j1, j2, Qnl, dir, exc, idp, eps, n, l)
+//        real*8 function c1_hm (ii, j1, j2, Qnl, di, ex, idp, eps, n, l)
 //        include 'par.jm.f'
-//        real*8 dir, exc, eps
+//        real*8 di, ex, eps
 //        integer i1, i2, i3, i4, idp, j1, j2, Qnl(j_par, Nshells_par),
 //       >   ii(4), n(4), l(4), itmp1, itmp2
 //        i1 = ii(1)
@@ -492,12 +492,12 @@ public class tools_hm {
 //        itmp2 = 0
 //        if (n(3) .eq. n(4) .and. l(3) .eq. l(4))  itmp2 = 1
 //  c
-//        if (abs(dir) + abs(exc) .gt. eps) then
+//        if (abs(di) + abs(ex) .gt. eps) then
 //           c1_hm = (-1d0)**idp * 0.5d0 *
 //       >      sqrt(dble(Qnl(j1, i1) * (Qnl(j1, i2) - itmp1) *
 //       >      Qnl(j2, i3) * (Qnl(j2, i4) - itmp2) ) )
-//       >      * ( dble(1 + (1 - itmp1) * (1 - itmp2)) * dir
-//       >      - dble(2 - itmp1 - itmp2) * exc )
+//       >      * ( dble(1 + (1 - itmp1) * (1 - itmp2)) * di
+//       >      - dble(2 - itmp1 - itmp2) * ex )
 //        else
 //           c1_hm = 0d0
 //        end if
@@ -562,16 +562,16 @@ public class tools_hm {
 //       >   LL, HL0, n, l, ip, ipp, pp, eps, clkl,
 //       >   nwf, nr, nel, rn, wn, h, Zatom,
 //  c     OUT:
-//       >   dir, exc)
+//       >   di, ex)
 //        include 'par.jm.f'
 //        integer kk, ip(4), n(4), l(4),
 //       >   ipp(nwf_par, 2), nwf, nr, LL, nel, i1, i2
 //        real*8 pp(nr_par, nwf_par), HL0(nwf_par, nwf_par), rn(nr), wn(nr),
 //       >   h, Zatom, YK2(nr_par), clkl(0:Lmax_par, 0:k_par, 0:Lmax_par)
-//        real*8 tmp1, tmp2, eps, dir, exc, sc_k, c2_hm
+//        real*8 tmp1, tmp2, eps, di, ex, sc_k, c2_hm
 //  c
 //  c     direct
-//        dir = 0d0
+//        di = 0d0
 //        do kk = max0(abs(l(1) - l(3)), abs(l(2) - l(4))),
 //       >   min0(abs(l(1) + l(3)), abs(l(2) + l(4)), k_par), 2
 //           tmp1 = sc_k (l(1), l(2), l(3), l(4), kk, LL, clkl, eps)
@@ -587,12 +587,12 @@ public class tools_hm {
 //       >         yk2, 1, nr, tmp2, wn, nr)
 //              tmp1 = tmp1 * tmp2
 //           end if
-//           dir = dir + tmp1
+//           di = di + tmp1
 //        end do
-//        dir = dir + c2_hm (l, n, HL0(ip(2), ip(4)), HL0(ip(1), ip(3)), 1, nel)
+//        di = di + c2_hm (l, n, HL0(ip(2), ip(4)), HL0(ip(1), ip(3)), 1, nel)
 //  c
 //  c     Exchange  3<-->4
-//        exc = 0d0
+//        ex = 0d0
 //        do kk = max0(abs(l(1) - l(4)), abs(l(2) - l(3))),
 //       >   min0(abs(l(1) + l(4)), abs(l(2) + l(3)), k_par), 2
 //           tmp1 = sc_k (l(1), l(2), l(4), l(3), kk, LL, clkl, eps)
@@ -609,9 +609,9 @@ public class tools_hm {
 //       >         yk2, 1, nr, tmp2, wn, nr)
 //              tmp1 = tmp1 * tmp2
 //           end if
-//           exc = exc + tmp1
+//           ex = ex + tmp1
 //        end do
-//        exc = exc + c2_hm (l, n, HL0(ip(2), ip(3)), HL0(ip(1), ip(4)), 0, nel)
+//        ex = ex + c2_hm (l, n, HL0(ip(2), ip(3)), HL0(ip(1), ip(4)), 0, nel)
 //  c
 //        return
 //        end
@@ -1102,9 +1102,9 @@ c
       end
 c
 c
-      real*8 function c1_hm (ii, j1, j2, Qnl, dir, exc, idp, eps, n, l)
+      real*8 function c1_hm (ii, j1, j2, Qnl, di, ex, idp, eps, n, l)
       include 'par.jm.f'
-      real*8 dir, exc, eps
+      real*8 di, ex, eps
       integer i1, i2, i3, i4, idp, j1, j2, Qnl(j_par, Nshells_par),
      >   ii(4), n(4), l(4), itmp1, itmp2
       i1 = ii(1)
@@ -1116,12 +1116,12 @@ c
       itmp2 = 0
       if (n(3) .eq. n(4) .and. l(3) .eq. l(4))  itmp2 = 1
 c
-      if (abs(dir) + abs(exc) .gt. eps) then
+      if (abs(di) + abs(ex) .gt. eps) then
          c1_hm = (-1d0)**idp * 0.5d0 *
      >      sqrt(dble(Qnl(j1, i1) * (Qnl(j1, i2) - itmp1) *
      >      Qnl(j2, i3) * (Qnl(j2, i4) - itmp2) ) )
-     >      * ( dble(1 + (1 - itmp1) * (1 - itmp2)) * dir
-     >      - dble(2 - itmp1 - itmp2) * exc )
+     >      * ( dble(1 + (1 - itmp1) * (1 - itmp2)) * di
+     >      - dble(2 - itmp1 - itmp2) * ex )
       else
          c1_hm = 0d0
       end if
@@ -1186,16 +1186,16 @@ c     IN:
      >   LL, HL0, n, l, ip, ipp, pp, eps, clkl,
      >   nwf, nr, nel, rn, wn, h, Zatom,
 c     OUT:
-     >   dir, exc)
+     >   di, ex)
       include 'par.jm.f'
       integer kk, ip(4), n(4), l(4),
      >   ipp(nwf_par, 2), nwf, nr, LL, nel, i1, i2
       real*8 pp(nr_par, nwf_par), HL0(nwf_par, nwf_par), rn(nr), wn(nr),
      >   h, Zatom, YK2(nr_par), clkl(0:Lmax_par, 0:k_par, 0:Lmax_par)
-      real*8 tmp1, tmp2, eps, dir, exc, sc_k, c2_hm
+      real*8 tmp1, tmp2, eps, di, ex, sc_k, c2_hm
 c
 c     direct
-      dir = 0d0
+      di = 0d0
       do kk = max0(abs(l(1) - l(3)), abs(l(2) - l(4))),
      >   min0(abs(l(1) + l(3)), abs(l(2) + l(4)), k_par), 2
          tmp1 = sc_k (l(1), l(2), l(3), l(4), kk, LL, clkl, eps)
@@ -1211,12 +1211,12 @@ c     direct
      >         yk2, 1, nr, tmp2, wn, nr)
             tmp1 = tmp1 * tmp2
          end if
-         dir = dir + tmp1
+         di = di + tmp1
       end do
-      dir = dir + c2_hm (l, n, HL0(ip(2), ip(4)), HL0(ip(1), ip(3)), 1, nel)
+      di = di + c2_hm (l, n, HL0(ip(2), ip(4)), HL0(ip(1), ip(3)), 1, nel)
 c
 c     Exchange  3<-->4
-      exc = 0d0
+      ex = 0d0
       do kk = max0(abs(l(1) - l(4)), abs(l(2) - l(3))),
      >   min0(abs(l(1) + l(4)), abs(l(2) + l(3)), k_par), 2
          tmp1 = sc_k (l(1), l(2), l(4), l(3), kk, LL, clkl, eps)
@@ -1233,9 +1233,9 @@ c     Exchange  3<-->4
      >         yk2, 1, nr, tmp2, wn, nr)
             tmp1 = tmp1 * tmp2
          end if
-         exc = exc + tmp1
+         ex = ex + tmp1
       end do
-      exc = exc + c2_hm (l, n, HL0(ip(2), ip(3)), HL0(ip(1), ip(4)), 0, nel)
+      ex = ex + c2_hm (l, n, HL0(ip(2), ip(3)), HL0(ip(1), ip(4)), 0, nel)
 c
       return
       end

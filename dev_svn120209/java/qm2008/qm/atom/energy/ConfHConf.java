@@ -34,7 +34,7 @@ public class ConfHConf extends Mtrx {
       for (int c = 0; c < basisR.size(); c++) {
         // Atomic system should know how to calculate itself
         Energy res = atom.calcH(basisL.get(r), basisR.get(c));
-        set(r, c, res.kin + res.pot);
+        set(r, c, res.kin + res.pt);
       }
     }
   }

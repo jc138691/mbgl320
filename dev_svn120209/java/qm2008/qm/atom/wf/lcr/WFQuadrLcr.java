@@ -33,8 +33,8 @@ public double calcPotDivR(Vec wf, Vec wf2, Vec wf3) {
 }
 
 //@Override
-//public double calcPot(Vec pot, Vec wf, Vec wf2) {
-//  return getWithCR2().calc(pot, wf, wf2);
+//public double calcPot(Vec pt, Vec wf, Vec wf2) {
+//  return getWithCR2().calc(pt, wf, wf2);
 //}
 
 @Override

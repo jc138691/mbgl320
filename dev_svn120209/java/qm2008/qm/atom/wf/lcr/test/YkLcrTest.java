@@ -105,7 +105,7 @@ public class YkLcrTest extends FlowTest {
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(r), ".", "wf", "logCR.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Y_0_1s_test.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Y), ".", "wf", "Y_0_1s.csv");
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 2e-9); // TODO: was 2e-9
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 2e-9);
 //    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 4e-8); // TODO: was 2e-9
 
     // 1s-2s

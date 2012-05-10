@@ -44,11 +44,11 @@ protected Mtrx calcX() {
         if (j1 == t) {
           dir = C[j][i] * D[j2];   // NOTE!!! [j, i]
           sum += dir;                                     //log.dbg("sum = ", sum);
-        }                                           //log.dbg("dir = ", dir);
+        }                                           //log.dbg("di = ", di);
         if (j2 == t) {
           dir = C[j][i] * D[j1];   // NOTE!!! [j, i]
           sum += dir;                                     //log.dbg("sum = ", sum);
-        }                                           //log.dbg("dir = ", dir);
+        }                                           //log.dbg("di = ", di);
       }
       res.set(t, i, sum);                           //log.dbg("X[" + t + ", " + i +"]=", sum);
     }

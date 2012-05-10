@@ -11,9 +11,9 @@ import javax.utilx.log.Log;
  *
  * THIS uses equations from the 1965 Fano's paper
  */
-public class SysE2_OLD extends AtomE2 {
-  public static Log log = Log.getLog(SysE2_OLD.class);
-  public SysE2_OLD(double z, SlaterLcr si) {
+public class SysE2OldOk extends AtomE2 {
+  public static Log log = Log.getLog(SysE2OldOk.class);
+  public SysE2OldOk(double z, SlaterLcr si) {
     super(z, si);
   }
   @Override
@@ -34,14 +34,14 @@ public class SysE2_OLD extends AtomE2 {
     else
       exc = calcShPairEng(fc.getTotLS().getL(), a, b, b2, a2);
     int prty = 0; // see (21); no spectator electrons for He
-    //exc *= MathX.pow(-1, (int)((CL)fc.s() + sp2.a()->nl().L() + sp2.b()->nl().L() + CL(1)) - (int)fc.L() );
+    //ex *= MathX.pow(-1, (int)((CL)fc.s() + sp2.a()->nl().L() + sp2.b()->nl().L() + CL(1)) - (int)fc.L() );
     double excMult = Mathx.pow(-1, (fc.getTotLS().getS() + a2.getWfL() + b2.getWfL() + 1) - fc.getTotLS().getL());
-    exc.kin *= excMult;
-    exc.pot *= excMult;
+    exc.timesSelf(excMult);
     DiEx norm = normQ(a, b, a2, b2, prty);
-    Energy res = new Energy(norm.di * dir.kin + norm.ex * exc.kin
-      , norm.di * dir.pot + norm.ex * exc.pot);
-    return res;
+    dir.timesSelf(norm.di);
+    exc.timesSelf(norm.ex);
+    dir.add(exc); // result
+    return dir;
   }
 
   public double calcOverlap(Conf fc, Conf fc2) {
@@ -61,7 +61,7 @@ public class SysE2_OLD extends AtomE2 {
     else
       exc = calcOverlap(a, b, b2, a2);
     int prty = 0; // see (21); no spectator electrons for He
-    //exc *= MathX.pow(-1, (int)((CL)fc.s() + sp2.a()->nl().L() + sp2.b()->nl().L() + CL(1)) - (int)fc.L() );
+    //ex *= MathX.pow(-1, (int)((CL)fc.s() + sp2.a()->nl().L() + sp2.b()->nl().L() + CL(1)) - (int)fc.L() );
     double excMult = Mathx.pow(-1, (fc.getTotLS().getS() + a2.getWfL() + b2.getWfL() + 1) - fc.getTotLS().getL());
     exc *= excMult;
     DiEx norm = normQ(a, b, a2, b2, prty);

@@ -2,8 +2,9 @@ package atom.e_2.test;
 
 import atom.angular.Spin;
 import atom.data.clementi.AtomHeClementi;
-import atom.e_2.SysAtomE2;
+import atom.e_2.SysE2;
 import atom.e_2.SysHe;
+import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
 import atom.wf.coulomb.CoulombWFFactory;
@@ -41,18 +42,19 @@ public class HeClementiZetaTest extends FlowTest {
     Shell sh = new Shell(1, f, 2, LS.getL(), LS);
     ShPair fc = new ShPair(sh);
     SlaterLcr slater = new SlaterLcr(quadr);
-    SysAtomE2 sys = new SysHe(slater);  // NOTE: Dec2010, switching from old SysE2_OLD to SysAtomE2
-    double kin = sys.calcKin(fc, fc);
+    SysE2 sys = new SysHe(slater);  // NOTE: Dec2010, switching from old SysE2OldOk to SysE2
+    double kin = sys.calcH(fc, fc).kin;
 //    assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_KIN - kin), 2e-11);
     assertEqualsRel("AtomHeClementi.E_ZETA_KIN", AtomHeClementi.E_ZETA_KIN, kin, true);
 
-    double pot = sys.calcPot(fc, fc);
-//    assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_POT - pot), 2e-11);
+    double pot = sys.calcH(fc, fc).pt;
+//    assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_POT - pt), 2e-11);
     assertEqualsRel("AtomHeClementi.E_ZETA_POT", AtomHeClementi.E_ZETA_POT, pot, true);
-//    assertEquals(0, Math.abs(-2. - pot / kin), 2e-11);
-    assertEqualsRel("pot / kin=2=", -2, pot / kin, true);
+//    assertEquals(0, Math.abs(-2. - pt / kin), 2e-11);
+    assertEqualsRel("pt / kin=2=", -2, pot / kin, true);
 
-    res = sys.calcTot(fc, fc);
+    Energy eng = sys.calcH(fc, fc);
+    res = eng.kin + eng.pt;
 //    assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_TOT - res), 3e-11);
     assertEqualsRel("AtomHeClementi.E_ZETA_TOT", AtomHeClementi.E_ZETA_TOT, res, true);
   }

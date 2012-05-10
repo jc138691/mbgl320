@@ -2,7 +2,7 @@ package papers.hy_swave.ees_bad;
 import atom.angular.Spin;
 import atom.data.AtomHy;
 import atom.e_1.SysE1;
-import atom.e_2.SysAtomE2;
+import atom.e_2.SysE2;
 import atom.energy.ConfHMtrx;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.ConfArr;
@@ -41,7 +41,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   TARGET_Z = AtomHy.Z;
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
   MODEL_NAME = "HySWaveEes";    MODEL_DIR = MODEL_NAME;
-  CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about times 2.5
+  CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about timesSelf 2.5
   LAMBDA = 1.5; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 
   USE_CLOSED_CHANNELS = true;
@@ -77,7 +77,7 @@ public void calc(int newN) {
   Nt = newN;  // this is just to keep functions like hydrScattTestOk() working
   initProject();
   potScattTestOk();     // out: basisN, orthonNt, biorthN
-  hydrScattTestOk(TARGET_Z);      // out: pot (for TARGET_Z), orthonNt
+  hydrScattTestOk(TARGET_Z);      // out: pt (for TARGET_Z), orthonNt
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
   trgtBasisN = orthonN;
@@ -126,7 +126,7 @@ protected ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
 }
 
 protected ConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
-  SysAtomE2 sys = new SysAtomE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
+  SysE2 sys = new SysE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
   ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtStatesNt, trgtStatesNt);   //log.dbg("sysArr=", sConfArr);
   ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  //log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;

@@ -1,5 +1,5 @@
 package papers.hy_swave.ees_bad;
-import atom.e_2.SysAtomE2;
+import atom.e_2.SysE2;
 import atom.energy.ConfHMtrx;
 import atom.energy.Energy;
 import atom.shell.*;
@@ -79,7 +79,7 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = sysConfH.getBasis();     // sBasis
-  SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
+  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
 
   // getting relevant trgtEigVec
   int CH_IDX = 0; // this is temp for testing
@@ -107,10 +107,10 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
       ShPair confC = new ShPair(tSh, shC, sLs);
 
       eng = sysE2.calcH(sysConf, confS);         log.dbg("eng=", eng);
-      double s = eng.kin + eng.pot;              log.dbg("s=", s);
+      double s = eng.kin + eng.pt;              log.dbg("s=", s);
 
       eng = sysE2.calcH(sysConf, confC);         log.dbg("eng=", eng);
-      double c = eng.kin + eng.pot;              log.dbg("c=", c);
+      double c = eng.kin + eng.pt;              log.dbg("c=", c);
 
       res.a += ( term * s );
       res.b += ( term * c );

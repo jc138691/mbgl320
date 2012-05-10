@@ -1,7 +1,7 @@
 package papers.hy_swave.v3_bi;
 
 import atom.data.AtomHy;
-import atom.e_2.SysE2_OLD;
+import atom.e_2.SysE2OldOk;
 import atom.energy.ConfHMtrx;
 import atom.energy.ConfOverlap;
 import atom.energy.part_wave.PotHMtrxLcr;
@@ -57,7 +57,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
       , biorthN.size(), biorthN.getLast());   log.dbg("chiArr=", chiArr);
 
     SlaterLcr slater = new SlaterLcr(quadrLcr);
-    SysE2_OLD sys = new SysE2_OLD(-AtomHy.Z, slater);// NOTE -1 for Hydrogen
+    SysE2OldOk sys = new SysE2OldOk(-AtomHy.Z, slater);// NOTE -1 for Hydrogen
     ConfOverlap chiOv = new ConfOverlap(sConfArr, sys, chiArr);     log.dbg("chiOv=\n", new MtrxDbgView(chiOv));
     ConfHMtrx sysH = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
 

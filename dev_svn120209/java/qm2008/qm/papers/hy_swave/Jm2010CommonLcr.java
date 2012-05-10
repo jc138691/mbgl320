@@ -62,15 +62,15 @@ protected static int SDCS_ENG_N = 10;  // how many extra Ns to use
 
 
 public StepGridModel makeStepGridModel() {
-  StepGridModel modelR = new StepGridModel(R_FIRST, R_LAST, R_N); // R_N not used!!!
-  StepGridModel res = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, modelR);
-  return res;
+  StepGridModel gridR = new StepGridModel(R_FIRST, R_LAST, R_N); // R_N not used!!!
+  StepGridModel gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);
+  return gridLcr;
 }
 
 public CalcOptLcr makeJmPotOptLcr() {
   CalcOptLcr res = new CalcOptLcr();
   res.setGrid(makeStepGridModel());
-  res.setLgrrModel(makeJmLagrr());
+  res.setLgrrModel(makeLgrrModel());
   res.setTestModel(makeJmTest());
   res.setGridEng(makeGridEng());
   return res;

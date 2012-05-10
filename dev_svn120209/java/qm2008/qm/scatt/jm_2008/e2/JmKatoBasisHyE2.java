@@ -1,5 +1,5 @@
 package scatt.jm_2008.e2;
-import atom.e_2.SysAtomE2;
+import atom.e_2.SysE2;
 import atom.energy.Energy;
 import atom.shell.*;
 import atom.wf.lcr.WFQuadrLcr;
@@ -337,15 +337,15 @@ protected Cmplx calcSumCK(Conf leftConf) {
   return res;
 }
 protected double calcHE(Conf leftConf, Conf conf) {
-  SysAtomE2 sysE2 = (SysAtomE2)mthd.sysConfH.getAtom();
+  SysE2 sysE2 = (SysE2)mthd.sysConfH.getAtom();
   Energy res = sysE2.calcH(leftConf, conf);   //log.dbg("calcHE res=", res);
 
 //  if (DEBUG_JM1) {
-//    SysE2_OLD sys = new SysE2_OLD(sysE2.getZ(), sysE2.getSlaterLcr());
+//    SysE2OldOk sys = new SysE2OldOk(sysE2.getZ(), sysE2.getSlaterLcr());
 //    double x = sys.calcOverlap(leftConf, conf);
 //    double sysTotE = mthd.getSysTotE();
-//    double he = res.kin + res.pot - sysTotE * x;
+//    double he = res.kin + res.pt - sysTotE * x;
 //  }
-  return res.pot2;
+  return res.p2;
 }
 }

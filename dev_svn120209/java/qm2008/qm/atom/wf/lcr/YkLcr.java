@@ -72,29 +72,6 @@ private static Vec last_r;
 private static int last_K;
 private boolean useLast = false;
 
-//public YkLcr(final TransLcrToR xToR, final Vec f, final Vec f2, final int K) {
-//  this.K = K;
-//  this.f = f;
-//  this.f2 = f2;
-//  this.r = xToR;
-//  this.xToR = xToR;
-//  this.CR2 = xToR.getCR2();
-//  this.CR = xToR.getCR();
-//  this.divR = xToR.getDivR();
-//  this.yDivR = xToR.getCRDivR();
-//  if (!(xToR.getX() instanceof StepGrid)) {
-//    String mssg = "YkLogR can only work with StepGrid";
-//    throw new IllegalArgumentException(log.error(mssg));
-//  }
-//  this.H = ((StepGrid) xToR.getX()).getGridStep();
-//  this.H2 = H / 2.0;
-//  this.H3 = H / 3.0;
-//  this.MX = (Math.min(f.size(), f2.size()) / 2) * 2;//      MX = (MIN0(MAX(I),MAX(J))/2)*2                                    AATK4123
-//  // MX is used to trace simpson's rule errors
-//  //EH = DEXP(-H)   // from SUBROUTINE INIT
-//
-//  useLast = checkUseLast();
-//}
 public YkLcr(final WFQuadrLcr quadrLcr, final Vec f, final Vec f2, final int K) {
   this.K = K;
   this.f = f;
@@ -145,11 +122,8 @@ public FuncVec calcYk_OLD() {
 }
 public FuncVec calcYk_NEW(FuncVec zk) {   log.setDbg();
   loadYFuncs(zk);
-
-//  yF.add(-yF.getLast());
-
+  // integrate backwards
   FuncVec res = new IntgInftyPts7(yF);    log.info("IntgInftyPts7(zF)=", new VecDbgView(res));
-//  FuncVec res = new IntgPts7(yF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
 
   // boundary Y_k(r-->oo) = Z_k(r)
   double corr = zk.getLast() / rK1.getLast();

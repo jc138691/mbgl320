@@ -78,7 +78,7 @@ public void calc(int newN) {
 //  EaMethodE1_G_db method = new EaMethodE1_G_db(calcOpt);
   EesMethodE1 method = new EesMethodE1(calcOpt);
 //  EaMethodE1_FBorn_db method = new EaMethodE1_FBorn_db(calcOpt);
-//  method.setPot(pot);
+//  method.setPot(pt);
   method.setSysEngs(sysEngs);
   method.setPotH(sysH);
   method.setOrthonN(orthonN);

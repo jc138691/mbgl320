@@ -37,7 +37,7 @@ public class H_matrix {
 //       >   Ncore, Lc(Ncore), Nc(Ncore)
 //  c
 //  c     Temporary: tmp-variables, tmpv-vectors, tmpa-arrays
-//        real*8 dir, exc
+//        real*8 di, ex
 //        integer idp
 //  c
 //        integer j1, j2, nsh, nsht, ns
@@ -117,10 +117,10 @@ public class H_matrix {
 //  c$$$         if (ip(3) .gt. ip(4)) idp = idp + 1
 //  c
 //           call d_e_hm (LL, HL0, n, l, ip, ipp, pp,
-//       >      eps, clkl, nwf, nr, nel, rn, wn, h, Zatom, dir, exc)
+//       >      eps, clkl, nwf, nr, nel, rn, wn, h, Zatom, di, ex)
 //  c
-//           exc = - exc * dble((-1)**((LS-1)/2))
-//           res = c1_hm (ii, j1, j2, Qnl, dir, exc, idp, eps, n, l)
+//           ex = - ex * dble((-1)**((LS-1)/2))
+//           res = c1_hm (ii, j1, j2, Qnl, di, ex, idp, eps, n, l)
 //  c
 //           return
 //        end if
@@ -166,8 +166,8 @@ public class H_matrix {
 //  c
 //                          L_L = LL
 //                          idp = 2
-//                          dir = 0d0
-//                          exc = 0d0
+//                          di = 0d0
+//                          ex = 0d0
 //                          res_bar = 0d0
 //  c
 //  c     Only proceed if spectator electrons have the same parity
@@ -177,13 +177,13 @@ public class H_matrix {
 //  c     case: ii(i) .ne. closed shell, Hydrogen like matris elements
 //                             if(i_H .eq. 1) then
 //  c$$$                              write(20, *) 'i_H = ', i_H
-//                                dir = 1.0
-//                                exc = - dble((-1)**((LS-1)/2))
+//                                di = 1.0
+//                                ex = - dble((-1)**((LS-1)/2))
 //  c
 //  c     case: \rho = \sigma and \rho' = \sigma', Hydrogen like matris elements
 //                             else if(i1 .eq. i2 .and. i3 .eq. i4) then
-//                                dir = ddl(s1(i1), s2(i3))
-//                                exc = 0d0
+//                                di = ddl(s1(i1), s2(i3))
+//                                ex = 0d0
 //                                L_L = LLnl(j1, i1)
 //  c
 //  c     case: \rho = \rho'= closed shells, and  \rho's.ne.\sigma's
@@ -198,11 +198,11 @@ public class H_matrix {
 //  c$$$                              write(20, *) 'idp = ', idp
 //                                tmp1 = - dble((-1)**((LS-1)/2))
 //                                L_L = Lnl(j1, i2)
-//                                dir = 1d0
-//                                exc = 0.5d0
+//                                di = 1d0
+//                                ex = 0.5d0
 //                                if ((-1)**idp .ne. 1)  then
-//                                   dir = dir * tmp1
-//                                   exc = exc * tmp1
+//                                   di = di * tmp1
+//                                   ex = ex * tmp1
 //                                end if
 //                             else
 //                                print*, j1, j2, ' -not ready !'
@@ -211,9 +211,9 @@ public class H_matrix {
 //  c
 //                             call d_e_hm (L_L, HL0, n, l, ip, ipp, pp, eps,
 //       >                        clkl, nwf, nr, nel, rn, wn, h, Zatom, tmp1, tmp2)
-//                             dir = dir * tmp1
-//                             exc = exc * tmp2
-//                             res_bar = c1_hm (ii, j1, j2,qnl,dir,exc,idp,eps,n,l)
+//                             di = di * tmp1
+//                             ex = ex * tmp2
+//                             res_bar = c1_hm (ii, j1, j2,qnl,di,ex,idp,eps,n,l)
 //                             res = res + res_bar
 //  c
 //  c     This is the end of parity check
@@ -271,8 +271,8 @@ public class H_matrix {
 //                    idp = 2
 //  c$$$  if (ip(1) .gt. ip(2)) idp = idp + 1
 //  c$$$  if (ip(3) .gt. ip(4)) idp = idp + 1
-//                    dir = 0d0
-//                    exc = 0d0
+//                    di = 0d0
+//                    ex = 0d0
 //                    res_bar = 0d0
 //  c     default
 //                    s_12 = s1(1)
@@ -462,16 +462,16 @@ public class H_matrix {
 //                          write(20, 80) ' -not ready !'
 //                       end if
 //  c
-//                       dir = u_6j(d_type, s_12, s_23, 2, 2, 2, ls, eps, 2)
-//                       exc = u_6j(e_type, s_12, s_23, 2, 2, 2, ls, eps, 2)
+//                       di = u_6j(d_type, s_12, s_23, 2, 2, 2, ls, eps, 2)
+//                       ex = u_6j(e_type, s_12, s_23, 2, 2, 2, ls, eps, 2)
 //  c
 //                       if (Lnl(j1, ib) .eq. 0)  L_L = LL
 //                       if (Lnl(j1, ib) .ne. 0)  L_L = max0(l(1), l(2))
 //                       call d_e_hm (L_L, HL0, n, l, ip, ipp, pp,
 //       >                  eps, clkl, nwf, nr, nel, rn, wn, h, Zatom, tmp1, tmp2)
-//                       dir = dir * tmp1
-//                       exc = exc * tmp2
-//                       res_bar = c1_hm (ii, j1, j2, qnl, dir, exc, idp, eps, n,l)
+//                       di = di * tmp1
+//                       ex = ex * tmp2
+//                       res_bar = c1_hm (ii, j1, j2, qnl, di, ex, idp, eps, n,l)
 //                       res = res + res_bar
 //  c
 //  c     This is the end of parity check
@@ -546,7 +546,7 @@ c
      >   Ncore, Lc(Ncore), Nc(Ncore)
 c
 c     Temporary: tmp-variables, tmpv-vectors, tmpa-arrays
-      real*8 dir, exc
+      real*8 di, ex
       integer idp
 c
       integer j1, j2, nsh, nsht, ns
@@ -626,10 +626,10 @@ c$$$         if (ip(1) .gt. ip(2)) idp = idp + 1
 c$$$         if (ip(3) .gt. ip(4)) idp = idp + 1
 c
          call d_e_hm (LL, HL0, n, l, ip, ipp, pp,
-     >      eps, clkl, nwf, nr, nel, rn, wn, h, Zatom, dir, exc)
+     >      eps, clkl, nwf, nr, nel, rn, wn, h, Zatom, di, ex)
 c
-         exc = - exc * dble((-1)**((LS-1)/2))
-         res = c1_hm (ii, j1, j2, Qnl, dir, exc, idp, eps, n, l)
+         ex = - ex * dble((-1)**((LS-1)/2))
+         res = c1_hm (ii, j1, j2, Qnl, di, ex, idp, eps, n, l)
 c
          return
       end if
@@ -675,8 +675,8 @@ c
 c
                         L_L = LL
                         idp = 2
-                        dir = 0d0
-                        exc = 0d0
+                        di = 0d0
+                        ex = 0d0
                         res_bar = 0d0
 c
 c     Only proceed if spectator electrons have the same parity
@@ -686,13 +686,13 @@ c
 c     case: ii(i) .ne. closed shell, Hydrogen like matris elements
                            if(i_H .eq. 1) then
 c$$$                              write(20, *) 'i_H = ', i_H
-                              dir = 1.0
-                              exc = - dble((-1)**((LS-1)/2))
+                              di = 1.0
+                              ex = - dble((-1)**((LS-1)/2))
 c
 c     case: \rho = \sigma and \rho' = \sigma', Hydrogen like matris elements
                            else if(i1 .eq. i2 .and. i3 .eq. i4) then
-                              dir = ddl(s1(i1), s2(i3))
-                              exc = 0d0
+                              di = ddl(s1(i1), s2(i3))
+                              ex = 0d0
                               L_L = LLnl(j1, i1)
 c
 c     case: \rho = \rho'= closed shells, and  \rho's.ne.\sigma's
@@ -707,11 +707,11 @@ c     case: \rho = \rho'= closed shells, and  \rho's.ne.\sigma's
 c$$$                              write(20, *) 'idp = ', idp
                               tmp1 = - dble((-1)**((LS-1)/2))
                               L_L = Lnl(j1, i2)
-                              dir = 1d0
-                              exc = 0.5d0
+                              di = 1d0
+                              ex = 0.5d0
                               if ((-1)**idp .ne. 1)  then
-                                 dir = dir * tmp1
-                                 exc = exc * tmp1
+                                 di = di * tmp1
+                                 ex = ex * tmp1
                               end if
                            else
                               print*, j1, j2, ' -not ready !'
@@ -720,9 +720,9 @@ c$$$                              write(20, *) 'idp = ', idp
 c
                            call d_e_hm (L_L, HL0, n, l, ip, ipp, pp, eps,
      >                        clkl, nwf, nr, nel, rn, wn, h, Zatom, tmp1, tmp2)
-                           dir = dir * tmp1
-                           exc = exc * tmp2
-                           res_bar = c1_hm (ii, j1, j2,qnl,dir,exc,idp,eps,n,l)
+                           di = di * tmp1
+                           ex = ex * tmp2
+                           res_bar = c1_hm (ii, j1, j2,qnl,di,ex,idp,eps,n,l)
                            res = res + res_bar
 c
 c     This is the end of parity check
@@ -780,8 +780,8 @@ c
                   idp = 2
 c$$$  if (ip(1) .gt. ip(2)) idp = idp + 1
 c$$$  if (ip(3) .gt. ip(4)) idp = idp + 1
-                  dir = 0d0
-                  exc = 0d0
+                  di = 0d0
+                  ex = 0d0
                   res_bar = 0d0
 c     default
                   s_12 = s1(1)
@@ -971,16 +971,16 @@ c     case: ( nl, n1l1, n2l2 | H | n3l3^2, nl )
                         write(20, 80) ' -not ready !'
                      end if
 c
-                     dir = u_6j(d_type, s_12, s_23, 2, 2, 2, ls, eps, 2)
-                     exc = u_6j(e_type, s_12, s_23, 2, 2, 2, ls, eps, 2)
+                     di = u_6j(d_type, s_12, s_23, 2, 2, 2, ls, eps, 2)
+                     ex = u_6j(e_type, s_12, s_23, 2, 2, 2, ls, eps, 2)
 c
                      if (Lnl(j1, ib) .eq. 0)  L_L = LL
                      if (Lnl(j1, ib) .ne. 0)  L_L = max0(l(1), l(2))
                      call d_e_hm (L_L, HL0, n, l, ip, ipp, pp,
      >                  eps, clkl, nwf, nr, nel, rn, wn, h, Zatom, tmp1, tmp2)
-                     dir = dir * tmp1
-                     exc = exc * tmp2
-                     res_bar = c1_hm (ii, j1, j2, qnl, dir, exc, idp, eps, n,l)
+                     di = di * tmp1
+                     ex = ex * tmp2
+                     res_bar = c1_hm (ii, j1, j2, qnl, di, ex, idp, eps, n,l)
                      res = res + res_bar
 c
 c     This is the end of parity check

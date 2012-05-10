@@ -10,15 +10,11 @@ import atom.shell.ShInfo;
 import math.func.FuncVec;
 
 import javax.utilx.log.Log;
-
-import static math.Mathx.dlt;
-
-
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 02/06/2010, 2:57:06 PM
  */
-public class SysAtomE3 extends AtomE3 {   //
-  public static Log log = Log.getLog(SysAtomE3.class);
+public class SysE3 extends AtomE3 {   //
+  public static Log log = Log.getLog(SysE3.class);
 
   // the following vars are here for them to be highlighted nicely in the editor
   private Conf conf;
@@ -27,7 +23,7 @@ public class SysAtomE3 extends AtomE3 {   //
   private FanoTermE3 t2;
   private Ls ls;
 
-  public SysAtomE3(double z, SlaterLcr si) {
+  public SysE3(double z, SlaterLcr si) {
     super(z, si);
   }
 
@@ -90,16 +86,16 @@ public class SysAtomE3 extends AtomE3 {   //
 //    ShInfo s = t.s;
 //    ShInfo r2 = t2.r;
 //    ShInfo s2 = t2.s;
-//    Energy dir = calcShPairEng(ls.getL(), r.sh, s.sh, r2.sh, s2.sh);
-//    Energy exc = new Energy();
+//    Energy di = calcShPairEng(ls.getL(), r.sh, s.sh, r2.sh, s2.sh);
+//    Energy ex = new Energy();
 //    if (t.hasExc(t2)) {
-//      exc = calcShPairEng(ls.getL(), r.sh, s.sh, s2.sh, r2.sh);
-//      log.dbg("exc=", exc);
+//      ex = calcShPairEng(ls.getL(), r.sh, s.sh, s2.sh, r2.sh);
+//      log.dbg("ex=", ex);
 //    }
 //
 //    log.dbg("spinTerm=", spinTerm);
-//    dir.times(spinTerm.di);
-//    exc.times(spinTerm.ex);
+//    di.timesSelf(spinTerm.di);
+//    ex.timesSelf(spinTerm.ex);
 //    double norm2 = 1. + dlt(r.idx, s.idx) * dlt(r2.idx, s2.idx);
 //    log.dbg("norm2=", norm2);
 //    double norm = t.norm * t2.norm;
@@ -124,12 +120,12 @@ public class SysAtomE3 extends AtomE3 {   //
 //    double normTot = norm * sign / norm2;
 //    log.dbg("normTot=", normTot);
 //
-//    Energy res = new Energy(dir);
-//    exc.times(-1); // since it is (dir - exc)
-//    res.add(exc);
-//    res.times(normTot);
+//    Energy res = new Energy(di);
+//    ex.timesSelf(-1); // since it is (di - ex)
+//    res.add(ex);
+//    res.timesSelf(normTot);
 //    log.dbg("res=", res);
-////    if (res.kin + res.pot < -7.4) {
+////    if (res.kin + res.pt < -7.4) {
 ////      int dbg = 1;
 ////    }
 //    return res;

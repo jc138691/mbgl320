@@ -13,7 +13,7 @@ public abstract class WFQuadr extends QuadrPts5 {
   }
   public abstract double calcPotDivR2(Vec wf, Vec wf2);
   public abstract double calcPotDivR(Vec wf, Vec wf2, Vec wf3);
-//  public abstract double calcPot(Vec pot, Vec wf, Vec wf2);
+//  public abstract double calcPot(Vec pt, Vec wf, Vec wf2);
   public Vec getR() {return getX();}
 
 }

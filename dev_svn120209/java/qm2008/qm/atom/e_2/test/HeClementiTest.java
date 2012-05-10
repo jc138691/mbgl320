@@ -4,10 +4,11 @@ import Jama.EigenvalueDecomposition;
 import atom.AtomUtil;
 import atom.angular.Spin;
 import atom.data.clementi.AtomHeClementi;
-import atom.e_2.SysAtomE2;
-import atom.e_2.SysE2_OLD;
+import atom.e_2.SysE2;
+import atom.e_2.SysE2OldOk;
 import atom.e_2.SysHe;
 import atom.energy.ConfHMtrx;
+import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
 import atom.wf.coulomb.CoulombWFFactory;
@@ -49,22 +50,23 @@ public class HeClementiTest extends FlowTest {
     ShPair fc = new ShPair(sh);
     SlaterLcr slater = new SlaterLcr(w);
 
-    SysE2_OLD sys = new SysE2_OLD(-2., slater);
-    double kin = sys.calcKin(fc, fc);
+    SysE2OldOk sys = new SysE2OldOk(-2., slater);
+    double kin = sys.calcH(fc, fc).kin;
     assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_KIN  - kin), 2e-11);
 
-    SysAtomE2 sys2 = new SysHe(slater);
-    double kin2 = sys2.calcKin(fc, fc);
+    SysE2 sys2 = new SysHe(slater);
+    double kin2 = sys2.calcH(fc, fc).kin;
     assertEquals(kin, kin2, 1e-11);
 
-    double pot = sys.calcPot(fc, fc);
+    double pot = sys.calcH(fc, fc).pt;
     assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_POT - pot), 2e-11);
     assertEquals(0, Math.abs(-2. - pot / kin), 2e-11);
 
-    double pot2 = sys2.calcPot(fc, fc);
+    double pot2 = sys2.calcH(fc, fc).pt;
     assertEquals(pot, pot2, 1e-11);
 
-    res = sys.calcTot(fc, fc);
+    Energy eng = sys.calcH(fc, fc);
+    res = eng.kin + eng.pt;
     assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_TOT - res), 3e-11);
   }
   public void testClementiLimitOneConfig() throws Exception  {
@@ -92,7 +94,7 @@ public class HeClementiTest extends FlowTest {
     assertEquals(0, res, 2e-8);
     SlaterLcr slater = new SlaterLcr(w);
     Ls LS = new Ls(0, Spin.SINGLET);
-    SysE2_OLD sys = new SysE2_OLD(-2., slater);
+    SysE2OldOk sys = new SysE2OldOk(-2., slater);
 
     // One config hartree-fock limit
     double kin = 2.8617128;// from Clementi, p185
@@ -104,8 +106,8 @@ public class HeClementiTest extends FlowTest {
     EigenvalueDecomposition eig = H.eig();
 //    LOG.report(this, "H=" + Vec.toCsv(eig.getRealEigenvalues()));
     double e0 = eig.getRealEigenvalues()[0];
-//    LOG.report(this, "\nkin+pot="
-//      + (kin + pot) + "\n   e[0]=" + e0);
+//    LOG.report(this, "\nkin+pt="
+//      + (kin + pt) + "\n   e[0]=" + e0);
     assertEquals(0, Math.abs(-2.8615628084911 - e0), 3e-6); //
     assertEquals(0, e0 - tot, 2e-4);
 //    FuncVec conf = H.calcDensity(eig, 0);

@@ -30,7 +30,7 @@ public class HySWaveJm extends HyLikeSWaveJm {
     TARGET_Z = AtomHy.Z;
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
     MODEL_NAME = "HySWaveJm";    MODEL_DIR = MODEL_NAME;
-    CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about times 2.5
+    CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about timesSelf 2.5
     LAMBDA = 1.5; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 
     // Note: run one at a time as only one set of result files is produced
