@@ -52,7 +52,7 @@ public Vec getSysEngs() {
   return sysEngs;
 }
 public int getChNum() { // number of target channels
-  return 1; // only one for pot-scattering
+  return 1; // only one for pt-scattering
 }
 //public ScttRes calcWithMidSysEngs() {
 //  Vec scttEngs = EngGridFactory.makeWithMidPoints(sysEngs);

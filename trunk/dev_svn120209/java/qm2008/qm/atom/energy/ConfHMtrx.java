@@ -38,8 +38,8 @@ public class ConfHMtrx extends HMtrx {
       for (int c = r; c < basis.size(); c++) { // NOTE c=r
         // Atomic system should know how to calculate itself
         Energy res = atom.calcH(basis.get(r), basis.get(c));
-        set(r, c, res.kin + res.pot);
-        set(c, r, res.kin + res.pot);
+        set(r, c, res.kin + res.pt);
+        set(c, r, res.kin + res.pt);
       }
     }
   }

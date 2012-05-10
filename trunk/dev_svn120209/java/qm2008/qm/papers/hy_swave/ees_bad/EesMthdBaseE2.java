@@ -1,5 +1,5 @@
 package papers.hy_swave.ees_bad;
-import atom.e_2.SysAtomE2;
+import atom.e_2.SysE2;
 import atom.energy.Energy;
 import atom.shell.*;
 import atom.wf.lcr.WFQuadrLcr;
@@ -146,7 +146,7 @@ protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = sysConfH.getBasis();     // sBasis
-  SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
+  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
   Energy eng;
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
     Conf sysConf = sB.get(sbi);
@@ -155,13 +155,13 @@ protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
       continue;
 
     eng = sysE2.calcH(sysConf, confS);         //log.dbg("eng=", eng);
-    double a = eng.kin + eng.pot;              //log.dbg("s=", s);
+    double a = eng.kin + eng.pt;              //log.dbg("s=", s);
 
     eng = sysE2.calcH(sysConf, confC);         //log.dbg("eng=", eng);
-    double b = eng.kin + eng.pot;              //log.dbg("c=", c);
+    double b = eng.kin + eng.pt;              //log.dbg("c=", c);
 
     eng = sysE2.calcH(sysConf, pXi);         //log.dbg("eng=", eng);
-    double c = eng.kin + eng.pot;              //log.dbg("c=", c);
+    double c = eng.kin + eng.pt;              //log.dbg("c=", c);
 
     res.a += ( term * a );
     res.b += ( term * b );
@@ -171,7 +171,7 @@ protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
 }
 protected double calcXiM(int g, int g2, FuncVec pw2, double sysTotE, Ls ls) {
   int L = 0;
-  SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
+  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
   FuncArr trgtWfs = getTrgtBasisN();
 
   FuncVec tWf = trgtWfs.get(g);
@@ -189,7 +189,7 @@ protected double calcXiM(int g, int g2, FuncVec pw2, double sysTotE, Ls ls) {
     double xi = sysE2.calcOverlap(shXi, shF2);    log.dbg("xi=", xi);
     Energy he = sysE2.calcOneH(shXi, shF2);       log.dbg("he=", he);
     double tE = trgtE2.getEngs().get(g);          log.dbg("tE=", tE);
-    d1 = (tE - sysTotE) * xi + he.kin + he.pot;   log.dbg("d1=", d1);
+    d1 = (tE - sysTotE) * xi + he.kin + he.pt;   log.dbg("d1=", d1);
   }
   double di = sysE2.calcTwoPot(L, shB, shXi, shB2, shF2);     log.dbg("di=", di);
   double ex = sysE2.calcTwoPot(L, shB, shXi, shF2, shB2);     log.dbg("ex=", ex);

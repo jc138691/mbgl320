@@ -5,6 +5,7 @@ import atom.data.AtomLiSlaterJoy3;
 import atom.e_3.AtomShModelE3;
 import atom.e_3.SysLi;
 import atom.energy.ConfHMtrx;
+import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
 import atom.wf.lcr.WFQuadrLcr;
@@ -42,7 +43,8 @@ public class LiSlaterTest extends FlowTest {
     Conf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
-    res = sys.calcTot(cf, cf);
+    Energy eng = sys.calcH(cf, cf);
+    res = eng.kin + eng.pt;
     assertEqualsRel("AtomLiSlaterJoy.E_ZETA_TOT = -7.4184820;", atomLi.getEngTot(), res, true);
   }
   public void testAtomLiSlaterJoyRaw() throws Exception {
@@ -61,11 +63,12 @@ public class LiSlaterTest extends FlowTest {
     Conf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
-    double pot = sys.calcPot(cf, cf);
-    log.info("pot=", pot);
-    double kin = sys.calcKin(cf, cf);
+    double pot = sys.calcH(cf, cf).pt;
+    log.info("pt=", pot);
+    double kin = sys.calcH(cf, cf).kin;
     log.info("kin=", kin);
-    res = sys.calcTot(cf, cf);
+    Energy eng = sys.calcH(cf, cf);
+    res = eng.kin + eng.pt;
     // 8Dec2010     correct value E_ZETA_TOT = -7.4184820
     // the difference is due to using RAW 1s and 2s wave functions, see testAtomLiSlaterJoyNorm
     //    assertEqualsRel("AtomLiSlaterJoy.E_ZETA_TOT", AtomLiSlaterJoy.E_ZETA_TOT, res, true);
@@ -87,7 +90,8 @@ public class LiSlaterTest extends FlowTest {
     Conf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
-    res = sys.calcTot(cf, cf);
+    Energy eng = sys.calcH(cf, cf);
+    res = eng.kin + eng.pt;
     assertEqualsRel("AtomLiSlaterJoy3.E_ZETA_TOT = -7.4322894", -7.4319043, res, true);   // // not E_ZETA_TOT = -7.4322894; due to the raw funcs
   }
   public void testAtomLiSlaterJoyNorm3() throws Exception {
@@ -101,7 +105,8 @@ public class LiSlaterTest extends FlowTest {
     Conf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
-    res = sys.calcTot(cf, cf);
+    Energy eng = sys.calcH(cf, cf);
+    res = eng.kin + eng.pt;
     assertEqualsRel("AtomLiSlaterJoy3.E_ZETA_TOT = -7.4322894", atomLi.getEngTot(), res, true);
   }
   public void testAtomLiSlaterConfArr() throws Exception {

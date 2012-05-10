@@ -1,6 +1,5 @@
-package atom.wf.lcr.mm;
+package atom.wf.mm;
 import atom.wf.lcr.WFQuadrLcr;
-import atom.wf.lcr.YkLcr;
 import math.func.FuncVec;
 import math.vec.Vec;
 

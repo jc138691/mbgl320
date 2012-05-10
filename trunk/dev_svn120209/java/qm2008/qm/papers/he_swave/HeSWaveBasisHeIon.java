@@ -100,12 +100,12 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     Nt = newNt;
     initProject();
     potScattTestOk();     // out: basisN, orthonNt, biorthN
-    hydrScattTestOk(AtomHy.Z);      // out: pot (for Hy), orthonNt
-    hydrScattTestOk(AtomHe.Z);      // out: pot (for Hy), orthonNt
-    jmHeTestOk();      // out: re-loading pot (for He)
+    hydrScattTestOk(AtomHy.Z);      // out: pt (for Hy), orthonNt
+    hydrScattTestOk(AtomHe.Z);      // out: pt (for Hy), orthonNt
+    jmHeTestOk();      // out: re-loading pt (for He)
     initLiJm();
     SlaterLcr slater = new SlaterLcr(quadrLcr);
-    calcHe(slater);    //verified: SysHe_OLD and SysHe yield exactly the same results.
+    calcHe(slater);    //verified: SysHeOldOk and SysHe yield exactly the same results.
     calcLi(slater);
 
     // Making He+ eigen-states

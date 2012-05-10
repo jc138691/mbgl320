@@ -28,7 +28,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
 
   // Note: run one at a time as only one set of result files is produced
   setupEngSDCS();
-  CALC_TRUE_CONTINUUM = true; // if TRUE, increase LCR_N by about times 2.5
+  CALC_TRUE_CONTINUUM = true; // if TRUE, increase LCR_N by about timesSelf 2.5
 
   CALC_SDCS = true;
   KATO_N = 1; //

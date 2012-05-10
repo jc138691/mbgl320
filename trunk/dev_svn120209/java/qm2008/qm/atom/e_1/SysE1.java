@@ -20,7 +20,7 @@ public class SysE1 extends AtomFano1965 {
     assertLS(fc, fc2);
     Energy res = new Energy();
     res.kin = calcOneKin(fc.getSh(0), fc2.getSh(0));
-    res.pot = calcOnePotZ(fc.getSh(0), fc2.getSh(0)); // potential only
+    res.pt = calcOnePotZ(fc.getSh(0), fc2.getSh(0)); // potential only
     return res;
   }
   public double calcOverlap(Conf fc, Conf fc2) {

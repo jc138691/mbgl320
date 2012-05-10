@@ -21,7 +21,7 @@ public class SlaterLcr extends SlaterLr {
   public final TransLcrToR getLogCRToR() {
     return logCRToR;
   }
-  public final WFQuadrLcr getQuadrLCR() {
+  public final WFQuadrLcr getQaudrLcr() {
     return wLogCR;
   }
   /**

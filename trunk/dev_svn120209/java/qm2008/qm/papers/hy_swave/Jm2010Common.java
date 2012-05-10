@@ -72,7 +72,7 @@ protected static String makeLabelBasisOptN() {
 public CalcOptR makeJmPotOptR() {
   CalcOptR res = new CalcOptR();
   res.setGrid(makeStepGridModelR());
-  res.setLgrrModel(makeJmLagrr());
+  res.setLgrrModel(makeLgrrModel());
   res.setTestModel(makeJmTest());
   res.setGridEng(makeGridEng());
   return res;
@@ -89,7 +89,7 @@ public EngModel makeGridEng() {
   res.setNumPoints(ENG_N);
   return res;
 }
-public LgrrModel makeJmLagrr() {
+public LgrrModel makeLgrrModel() {
   LgrrModel res = new LgrrModel();
   res.setL(0);
   res.setLambda(LAMBDA);

@@ -2,7 +2,7 @@ package papers.hy_swave;
 
 import atom.AtomUtil;
 import atom.data.AtomHy;
-import atom.e_2.SysAtomE2;
+import atom.e_2.SysE2;
 import atom.energy.ConfHMtrx;
 import atom.energy.part_wave.PotHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
@@ -46,7 +46,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   TARGET_Z = AtomHy.Z;
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
   MODEL_NAME = "HySWaveBasisHy";    MODEL_DIR = MODEL_NAME;
-  CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about times 2.5
+  CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about timesSelf 2.5
   LAMBDA = 2; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 //    LAMBDA = 1.7;
 
@@ -77,7 +77,7 @@ public void calc(int newN, int newNt) {
   Nt = newNt;
   initProject();
   potScattTestOk();  // basisN, biorthN, orthonNt, quadrLcr
-  hydrScattTestOk(TARGET_Z);  // pot, orthonNt
+  hydrScattTestOk(TARGET_Z);  // pt, orthonNt
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
 
   trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
@@ -122,8 +122,8 @@ public void calc(int newN, int newNt) {
   D = new JmD(biorthN, trgtBasisN);   log.dbg("D_{n,N-1}=", D);
 
   SlaterLcr slater = new SlaterLcr(quadrLcr);
-//    SysE2_OLD sys = new SysE2_OLD(-1., slater);// NOTE -1 for Hydrogen
-  SysAtomE2 sys = new SysAtomE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
+//    SysE2OldOk sys = new SysE2OldOk(-1., slater);// NOTE -1 for Hydrogen
+  SysE2 sys = new SysE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
   ConfHMtrx sysH = new ConfHMtrx(sysArr, sys);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 //    double e0 = sysEngs.get(0);

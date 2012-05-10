@@ -17,14 +17,14 @@ import static math.Mathx.dlt;
 
  THIS uses equations from the 2011 e-He paper
  */
-public class SysAtomE2 extends AtomE2 {
+public class SysE2 extends AtomE2 {
   private Conf conf;
   private Conf conf2;
   private FanoTermE2 t; // a single combination of lambda, rho, sigma
   private FanoTermE2 t2;
   private Ls ls;
 
-  public SysAtomE2(double z, SlaterLcr si) {
+  public SysE2(double z, SlaterLcr si) {
     super(z, si);
   }
 
@@ -81,7 +81,7 @@ public class SysAtomE2 extends AtomE2 {
     return calcFanoE2(spinTerm, ls, t, t2);
   }
 
-  // Based on  calcH, see also   SysE2_OLD.calcConfigDensity
+  // Based on  calcH, see also   SysE2OldOk.calcConfigDensity
   private FuncVec calcDensity() {
     DiEx spinTerm = SpinTermE2.calc(t, t2);                           log.dbg("spinTerm=", spinTerm);
     if (spinTerm.isZero())  {

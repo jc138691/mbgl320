@@ -15,7 +15,7 @@ public class DiEx {
     ex = 0;
   }
   public String toString() {
-    return "dir="+ (float)di + ", exc=" + (float)ex;
+    return "di="+ (float)di + ", ex=" + (float)ex;
   }
   public boolean isZero() {
     return Calc.isZero(di)  &&  Calc.isZero(ex);

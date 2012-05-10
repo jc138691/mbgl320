@@ -1,5 +1,5 @@
 package atom.test;
-import atom.e_2.SysE2_OLD;
+import atom.e_2.SysE2OldOk;
 import atom.energy.ConfHMtrx;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.ConfArr;
@@ -49,7 +49,7 @@ public class ScattHyTest extends BSplLogCRBasisTest {
     assertEquals(0, normErr, 3.e-15);
     SlaterLcr slater = new SlaterLcr(w);
     Ls S1 = new Ls(0, Spin.SINGLET);
-    SysE2_OLD sys = new SysE2_OLD(-2., slater);
+    SysE2OldOk sys = new SysE2OldOk(-2., slater);
 
     // Multi-Config Hartree-Fock with 1s2+...+4s2
     double tot = -2.878990; // from p.164 of Froese-Fischer

@@ -60,8 +60,8 @@ public class ZetaHyR extends TestCase {
     double kin = slater.calcOneKin(sh, sh);
     log.assertZero("Hy kin(R)=", testKin - kin, 2e-6);
     double pot = slater.calcOneZPot(-Z, sh, sh);
-    log.assertZero("Hy pot(R)=", testPot - pot, 7e-7);
-    log.assertZero("Hy pot/kin(R)=", -2. - pot / kin, 8e-6);
+    log.assertZero("Hy pt(R)=", testPot - pot, 7e-7);
+    log.assertZero("Hy pt/kin(R)=", -2. - pot / kin, 8e-6);
     res = kin + pot;
     log.assertZero("Hy tot(R)=", test0 - res, 3e-6);
   }
@@ -87,15 +87,15 @@ public class ZetaHyR extends TestCase {
     double kin = slater.calcKin(L, f, f);
     log.assertZero("Hy kin(R)=", testKin - kin, 2e-6);
     double pot = slater.calcZPot(-Z, f, f);
-    log.assertZero("Hy pot(R)=", testPot - pot, 7e-7);
+    log.assertZero("Hy pt(R)=", testPot - pot, 7e-7);
 
     Vec zPot = slater.getDivR();
     zPot.mult(-Z);                        log.dbg("zPot=", zPot);
     pot = slater.calcPot(zPot, f, f);
-    log.assertZero("Hy pot(R)=", testPot - pot, 7e-7);
+    log.assertZero("Hy pt(R)=", testPot - pot, 7e-7);
 
-//    log.assertZero("Hy pot/kin(R)=", -2. - pot / kin, 8e-6);
-//    res = kin + pot;
+//    log.assertZero("Hy pt/kin(R)=", -2. - pt / kin, 8e-6);
+//    res = kin + pt;
 //    log.assertZero("Hy tot(R)=", test0 - res, 3e-6);
   }
 }

@@ -163,7 +163,7 @@ public static Cmplx sc_n(int n, int L, Cmplx q, double lambda, double eps) { log
 //      th = y.div(b.add(-0.25).add(a.multSelf(Cmplx.i))); log.dbg("th=", th);//     th = y / ((b - 0.25d0) + onei * a)
 //      y  = y.div(a);           log.dbg("y=", y);      //     y  = y / a
 //      c4 = th.pow(2);       log.dbg("c4=", c4);    //     c4 = th**2
-//      th1 = (y.times(0.5)).pow(L); log.dbg("th1=", th1);//     th1 = (1d0, 0d0) /
+//      th1 = (y.timesSelf(0.5)).pow(L); log.dbg("th1=", th1);//     th1 = (1d0, 0d0) /
 //      // >      (2d0**L  * exp(- dacos(-1d0) * 0.5d0 * t) ) * y**L
 //      th2 = th.pow(n+1);    log.dbg("th2=", th2);  //     th2 = th**(n+1)
     }//  end if

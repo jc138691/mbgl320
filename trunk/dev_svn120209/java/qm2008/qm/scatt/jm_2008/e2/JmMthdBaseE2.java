@@ -277,7 +277,7 @@ protected Mtrx calcR_v1_ok(CmplxMtrx WCJC, Mtrx WSJS) {
   int n3 = WCJC.getNumCols();
   int openN = WSJS.getNumCols();
   CmplxMtrx invWC = WCJC.inverse();                   log.dbg("WCJC^{-1}=\n", new CmplxMtrxDbgView(invWC));
-//  Mtrx R = invWC.times(WSJS);                    log.dbg("R=\n", new CmplxMtrxDbgView(R));
+//  Mtrx R = invWC.timesSelf(WSJS);                    log.dbg("R=\n", new CmplxMtrxDbgView(R));
   Mtrx R = new Mtrx(openN, openN);
   for (int t = 0; t < openN; t++) {
     for (int t2 = 0; t2 < openN; t2++) {
@@ -304,7 +304,7 @@ protected Mtrx calcR(Mtrx WCJC, Mtrx WSJS) {
 //  int calcN = WCJC.getNumCols();
 //  int openN = WSJS.getNumCols();
   Mtrx invWC = WCJC.inverse();     log.dbg("WCJC^{-1}=\n", new MtrxDbgView(invWC));
-  Mtrx R = invWC.times(WSJS);      log.dbg("R = invWC.times(WSJS)=\n", new MtrxDbgView(R));
+  Mtrx R = invWC.times(WSJS);      log.dbg("R = invWC.timesSelf(WSJS)=\n", new MtrxDbgView(R));
 
 // DEBUGGING
 //  Mtrx R = new Mtrx(openN, openN);
@@ -437,10 +437,10 @@ protected Mtrx calcWSysIdx_bad(int calcNum, int sysIdx) {
 //  Mtrx invX = Xt.inverse();
 //  log.dbg("invX=\n", new MtrxDbgView(invX));
 //
-//  Mtrx xx = invX.times(Xt);
+//  Mtrx xx = invX.timesSelf(Xt);
 //  log.dbg("xx=\n", new MtrxDbgView(xx));
 //
-//  Mtrx xx2 = Xt.times(invX);
+//  Mtrx xx2 = Xt.timesSelf(invX);
 //  log.dbg("xx2=\n", new MtrxDbgView(xx2));
 
   double[][] X = jmX.getArray();

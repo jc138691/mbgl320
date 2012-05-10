@@ -1,5 +1,5 @@
 package papers.hy_swave.ees_bad;
-import atom.e_2.SysAtomE2;
+import atom.e_2.SysE2;
 import atom.energy.Energy;
 import atom.shell.*;
 import math.Calc;
@@ -88,7 +88,7 @@ private double calcB(Shell tSh, Shell freeSh, int sysIdx) {
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = sysConfH.getBasis();     // sBasis
-  SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
+  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
   double res = 0;
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
     Conf sysConf = sB.get(sbi);
@@ -97,7 +97,8 @@ private double calcB(Shell tSh, Shell freeSh, int sysIdx) {
       continue;
 
     //Vbf - bound-free; could also be Vff - free-free for ionization
-    double v = sysE2.calcVbabb_OLD(tSh, freeSh, sysConf);         //log.dbg("v=", v);
+//    double v = sysE2.calcVbabb_OLD(tSh, freeSh, sysConf);         //log.dbg("v=", v);
+    double v = 0;         //log.dbg("v=", v);
     res += ( term * v );
   }
   return res;
@@ -107,7 +108,7 @@ private Dble2 calcSC(ShPair confS, ShPair confC, int sysIdx) {
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
   ConfArr sB = sysConfH.getBasis();     // sBasis
-  SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
+  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
   Energy eng;
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
     Conf sysConf = sB.get(sbi);
@@ -116,10 +117,10 @@ private Dble2 calcSC(ShPair confS, ShPair confC, int sysIdx) {
       continue;
 
     eng = sysE2.calcH(sysConf, confS);         //log.dbg("eng=", eng);
-    double s = eng.kin + eng.pot;              //log.dbg("s=", s);
+    double s = eng.kin + eng.pt;              //log.dbg("s=", s);
 
     eng = sysE2.calcH(sysConf, confC);         //log.dbg("eng=", eng);
-    double c = eng.kin + eng.pot;              //log.dbg("c=", c);
+    double c = eng.kin + eng.pt;              //log.dbg("c=", c);
 
     res.a += ( term * s );
     res.b += ( term * c );
@@ -135,7 +136,7 @@ protected void calcAllVecs(int sysIdx, int chNum) {
   int ID_C = idx++;   // id for c-like
 
   Ls LS = sysConfH.getBasis().getLs();
-  SysAtomE2 sysE2 = (SysAtomE2)sysConfH.getAtom();
+  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
 
   int L = 0;
   vS = new Vec(chNum);
@@ -187,12 +188,14 @@ protected void calcAllVecs(int sysIdx, int chNum) {
 
       // channel S-like
       ShPair pSh2 = ShPairFactory.makePair(tSh2, phiS.get(t2), ID_S, L, LS);
-      double x = sysE2.calcVbabb_OLD(tSh, freeSh, pSh2);         //log.dbg("x=", x);
+//      double x = sysE2.calcVbabb_OLD(tSh, freeSh, pSh2);         //log.dbg("x=", x);
+      double x = 0;
       mX.set(g, t2, x);
 
       // channel C-like
       pSh2 = ShPairFactory.makePair(tSh2, phiC.get(t2), ID_C, L, LS);
-      double y = sysE2.calcVbabb_OLD(tSh, freeSh, pSh2);         //log.dbg("y=", y);
+//      double y = sysE2.calcVbabb_OLD(tSh, freeSh, pSh2);         //log.dbg("y=", y);
+      double y = 0;
       mY.set(g, t2, y);
     }
   }
