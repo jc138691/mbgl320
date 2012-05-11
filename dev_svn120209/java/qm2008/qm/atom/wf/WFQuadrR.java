@@ -37,21 +37,21 @@ public double calcPotDivR(Vec wf, Vec wf2, Vec wf3) {
 public WFQuadrR getWithDivR() {
   if (wDivR == null) {
     wDivR = new WFQuadrR(getStepGrid());
-    wDivR.mult(new FuncVec(getX(), new FuncPowInt(1., -1)));
+    wDivR.multSelf(new FuncVec(getX(), new FuncPowInt(1., -1)));
   }
   return wDivR;
 }
 public WFQuadrR getWithDivR2() {
   if (wDivR2 == null) {
     wDivR2 = new WFQuadrR(getStepGrid());
-    wDivR2.mult(new FuncVec(getX(), new FuncPowInt(1., -2)));
+    wDivR2.multSelf(new FuncVec(getX(), new FuncPowInt(1., -2)));
   }
   return wDivR2;
 }
 //  private Vec getDivR() {
 //    if (wDivR == null) {
 //      wDivR = new WFQuadrR(getStepGrid());
-//      wDivR.multSelf(new FuncVec(getX(), new FuncPowInt(1., -1)));
+//      wDivR.multFirst(new FuncVec(getX(), new FuncPowInt(1., -1)));
 //    }
 //    return wDivR;
 //  }

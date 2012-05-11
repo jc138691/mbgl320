@@ -30,13 +30,13 @@ public class RkLcrTest extends FlowTest {
     WFQuadrLcr wCR = new WFQuadrLcr(x);
 
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
-    f.mult(xToR.getDivSqrtCR());
+    f.multSelf(xToR.getDivSqrtCR());
     double res = 0, rMm = 0;
     res = wCR.getWithCR2().calc(f, f);
     assertEquals(0, Math.abs(res - 1), 6e-13);
 
     FuncVec f2 = CoulombWFFactory.makeP1s(r, 1.);
-    f2.mult(xToR.getDivSqrtCR());
+    f2.multSelf(xToR.getDivSqrtCR());
     f2.mult(2.); // NOTE! Checking diff norm
     res = wCR.getWithCR2().calc(f2, f2);
     assertEquals(0, Math.abs(res - 4), 3e-12);
@@ -65,7 +65,7 @@ public class RkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(rMm - 5. / 8.), 5e-10); // todo: was 5e-11???????
 
     FuncVec f2s = CoulombWFFactory.makeP2s(r, 1.);
-    f2s.mult(xToR.getDivSqrtCR());
+    f2s.multSelf(xToR.getDivSqrtCR());
     res = wCR.getWithCR2().calc(f2s, f2s);
     assertEquals(0, Math.abs(res - 1), 2e-13);
 
@@ -86,7 +86,7 @@ public class RkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(rMm - 77. / 512), 2e-9);   // todo: was 4e-10
 
     FuncVec f2p = CoulombWFFactory.makeP2p(r, 1.);
-    f2p.mult(xToR.getDivSqrtCR());
+    f2p.multSelf(xToR.getDivSqrtCR());
     res = wCR.getWithCR2().calc(f2p, f2p);
     assertEquals(0, Math.abs(res - 1), 7e-14);
 

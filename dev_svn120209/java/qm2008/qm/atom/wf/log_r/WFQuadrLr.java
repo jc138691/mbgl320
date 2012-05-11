@@ -21,7 +21,7 @@ public class WFQuadrLr extends WFQuadrR {
 public WFQuadrLr getWithR2() {
   if (wR2 == null) {
     wR2 = new WFQuadrLr(getStepGrid());
-    wR2.mult(new Vec(lrToR.getR2()));
+    wR2.multSelf(new Vec(lrToR.getR2()));
   }
   return wR2;
 }

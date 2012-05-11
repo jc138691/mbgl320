@@ -28,7 +28,7 @@ public class YkLcrTest2 extends FlowTest {
     Vec r = quadr.getR();
     TransLcrToR xToR = quadr.getLcrToR();
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     double res = quadr.calcInt(f, f);
     assertEquals(0, Math.abs(res - 1), MAX_INTGRL_ERR_E10);
     String help = "< P1s | P1s > = ";
@@ -52,7 +52,7 @@ public class YkLcrTest2 extends FlowTest {
 
     // 1s-2s
     FuncVec f2 = CoulombWFFactory.makeP2s(r, 1.);
-    f2.mult(xToR.getDivSqrtCR());
+    f2.multSelf(xToR.getDivSqrtCR());
     res = quadr.calcInt(f, f2);
     assertEquals(0, Math.abs(res), MAX_INTGRL_ERR_E10);
     res = quadr.calcInt(f2, f2);
@@ -65,7 +65,7 @@ public class YkLcrTest2 extends FlowTest {
     // 2p
     f = CoulombWFFactory.makeP2p(r, 1.);
     log.info("f_2p=", new VecDbgView(f));
-    f.mult(xToR.getDivSqrtCR());
+    f.multSelf(xToR.getDivSqrtCR());
     res = quadr.calcInt(f, f);
     assertEquals(0, Math.abs(res - 1), MAX_INTGRL_ERR_E10);
     T = CoulombWFFactory.makeY_0_2p(r); // valid

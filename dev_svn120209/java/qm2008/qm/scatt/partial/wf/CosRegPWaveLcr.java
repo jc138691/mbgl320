@@ -21,7 +21,7 @@ public CosRegPWaveLcr(WFQuadrLcr w, final double p, final int L
   FuncVec expF = new FuncVec(w.getR(), new FuncExp(-lambda*0.5));
 
   addMultSafe(-1, expF);
-  mult(w.getDivSqrtCR());                          // NOTE!!!  /qsrt(c+r)
+  multSelf(w.getDivSqrtCR());                          // NOTE!!!  /qsrt(c+r)
   setX(w.getX());             // NOTE!!! but stores LCR as x
 }
 }

@@ -51,12 +51,12 @@ public class LiSlaterTest extends FlowTest {
     AtomLiSlaterJoy atomLi = new AtomLiSlaterJoy();
     Vec r = quadr.getR();
     FuncVec f = atomLi.makeRawP1s(r);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     f.setX(quadr.getX()); // MUST change grid for derivatives
     double res = quadr.calcInt(f, f);
     assertEqualsRel("norm=<1s|1s>=", 1.0000076, res, true);    //1.0000076 error is in the original expression
     FuncVec f2 = atomLi.makeRawP2s(r);
-    f2.mult(quadr.getDivSqrtCR());
+    f2.multSelf(quadr.getDivSqrtCR());
     f2.setX(quadr.getX()); // MUST change grid for derivatives
     res = quadr.calcInt(f2, f2);
     assertEqualsRel("norm=<2s|2s>=", 1.0000079, res, true); //1.0000079 error is in the original expression
@@ -78,12 +78,12 @@ public class LiSlaterTest extends FlowTest {
     AtomLiSlaterJoy3 atomLi = new AtomLiSlaterJoy3();
     Vec r = quadr.getR();
     FuncVec f = atomLi.makeRawP1s(r);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     f.setX(quadr.getX()); // MUST change grid for derivatives
     double res = quadr.calcInt(f, f);
     assertEqualsRel("norm=<1s|1s>=", 0.9999728, res, true);  // error due to the raw funcs
     FuncVec f2 = atomLi.makeRawP2s(r);
-    f2.mult(quadr.getDivSqrtCR());
+    f2.multSelf(quadr.getDivSqrtCR());
     f2.setX(quadr.getX()); // MUST change grid for derivatives
     res = quadr.calcInt(f2, f2);
     assertEqualsRel("norm=<2s|2s>=", 0.9999683, res, true);  // error due to the raw funcs
@@ -133,10 +133,10 @@ public class LiSlaterTest extends FlowTest {
     // TEST 2: must yield the same results
     Vec r = quadr.getR();
     f = SlaterWFFactory.makeP1s(r, atomLi.getZeta("1s"));
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     f.setX(quadr.getX()); // MUST change grid for derivatives
     f2 = SlaterWFFactory.makeP2s(r, atomLi.getZeta("2s"));
-    f2.mult(quadr.getDivSqrtCR());
+    f2.multSelf(quadr.getDivSqrtCR());
     f2.setX(quadr.getX()); // MUST change grid for derivatives
     // make orthonorm
     FuncArr basis = new FuncArr(f.getX(), 2);

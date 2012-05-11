@@ -46,8 +46,8 @@ public class SlaterLcr extends SlaterLr {
       return null;
 //    FuncVec res = new FuncVec(sh.getWf());      // BUG!!! shallow y-copy
     FuncVec res = sh.getWf().copyY();
-    res.mult(SH2.getWf());
-//    res.multSelf(logCRToR.getCR2());
+    res.multSelf(SH2.getWf());
+//    res.multFirst(logCRToR.getCR2());
     return res;
   }
   public double calcOneZPot(double z, Shell sh, Shell SH2) {

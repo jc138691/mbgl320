@@ -36,7 +36,7 @@ public class SlaterWFFactory extends FlowTest {
   public static FuncVec makeLcrP1s(WFQuadrLcr lcr, double zeta) {
     Vec r = lcr.getR();
     FuncVec res = SlaterWFFactory.makeP1s(r, zeta);
-    res.mult(lcr.getDivSqrtCR());
+    res.multSelf(lcr.getDivSqrtCR());
     res.setX(lcr.getX()); // MUST change grid for derivatives
     return res;
   }
@@ -44,7 +44,7 @@ public class SlaterWFFactory extends FlowTest {
   public static FuncVec makeLcrP2s(WFQuadrLcr lcr, double zeta) {
     Vec r = lcr.getR();
     FuncVec res = SlaterWFFactory.makeP2s(r, zeta);
-    res.mult(lcr.getDivSqrtCR());
+    res.multSelf(lcr.getDivSqrtCR());
     res.setX(lcr.getX()); // MUST change grid for derivatives
     return res;
   }
@@ -60,17 +60,17 @@ public class SlaterWFFactory extends FlowTest {
     Vec r = quadr.getR();
 
     FuncVec f = SlaterWFFactory.makeP2s(r, 1.);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     double res = quadr.calcInt(f, f);
     assertEqualsRel("SlaterWFFactory.makeRawP2s(zeta=1) norm=", 1, res, true);
 
     f = SlaterWFFactory.makeP2s(r, 2.);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     res = quadr.calcInt(f, f);
     assertEqualsRel("SlaterWFFactory.makeRawP2s(zeta=2) norm=", 1, res, true);
 
     f = SlaterWFFactory.makeP2s(r, 3.);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     res = quadr.calcInt(f, f);
     assertEqualsRel("SlaterWFFactory.makeRawP2s(zeta=3) norm=", 1, res, true);
   }

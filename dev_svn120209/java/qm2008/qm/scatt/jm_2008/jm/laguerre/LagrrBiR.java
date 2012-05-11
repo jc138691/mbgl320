@@ -11,12 +11,12 @@ public class LagrrBiR extends LgrrR {
     + "see LgrrR.HELP for R";
   public LagrrBiR(WFQuadrR w, LgrrModel model) {
     super(w, model);
-//    multSelf(new ThisNormFunc()); // THIS IS called in super
+//    multFirst(new ThisNormFunc()); // THIS IS called in super
     calcBioNorm();
   }
   public LagrrBiR(Vec r, LgrrModel model) {
     super(r, model);
-//    multSelf(new ThisNormFunc()); // THIS IS called in super
+//    multFirst(new ThisNormFunc()); // THIS IS called in super
     calcBioNorm();
   }
 

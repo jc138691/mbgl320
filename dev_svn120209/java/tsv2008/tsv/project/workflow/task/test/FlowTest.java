@@ -32,6 +32,9 @@ public FlowTest(Class theClass) {
   super();
   this.theClass = theClass;
 }
+public void setUp() {
+  Log.addGlobal(System.out);
+}
 
 public static double getMaxErr() {
   return maxErr;

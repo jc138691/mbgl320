@@ -32,7 +32,7 @@ public class YkLcrTest extends FlowTest {
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(f), ".", "wf", "P1s_test.csv");
     double res = w.calc(f, f, xToR.getCR());
     assertEquals(0, Math.abs(res - 1), 6e-13);
-    f.mult(xToR.getDivSqrtCR());
+    f.multSelf(xToR.getDivSqrtCR());
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(f), ".", "wf", "P1s_sqrtCR.csv");
     res = w.calc(f, f, xToR.getCR2());
     assertEquals(0, Math.abs(res - 1), 5.5e-13);
@@ -74,7 +74,7 @@ public class YkLcrTest extends FlowTest {
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
     double res = w.calc(f, f, xToR.getCR());
     assertEquals(0, Math.abs(res - 1), 6e-13);
-    f.mult(xToR.getDivSqrtCR());
+    f.multSelf(xToR.getDivSqrtCR());
     FuncVec T = CoulombWFFactory.makeZ_0_1s(r); // valid
     FuncVec Z = new YkLcr(quadr, f, f, 0).calcZk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(r), ".", "wf", "logCR.csv");
@@ -95,7 +95,7 @@ public class YkLcrTest extends FlowTest {
 
     // 1s
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
-    f.mult(xToR.getDivSqrtCR());
+    f.multSelf(xToR.getDivSqrtCR());
     double res = w.calc(f, f, xToR.getCR2());
     assertEquals(0, Math.abs(res - 1), 2e-10);
     FuncVec T = CoulombWFFactory.makeY_0_1s(r); // valid
@@ -111,7 +111,7 @@ public class YkLcrTest extends FlowTest {
     // 1s-2s
     FuncVec f2 = CoulombWFFactory.makeP2s(r, 1.);
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(f2), ".", "wf", "P2s_test.csv");
-    f2.mult(xToR.getDivSqrtCR());
+    f2.multSelf(xToR.getDivSqrtCR());
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(f2), ".", "wf", "P2s_sqrtCR.csv");
     res = w.calc(f, f2, xToR.getCR2());
     assertEquals(0, Math.abs(res), 2e-13);
@@ -123,7 +123,7 @@ public class YkLcrTest extends FlowTest {
 //    res = FastLoop.dot(f, f, w, xToR.getCR());
     res = w.calc(f, f, xToR.getCR());
     assertEquals(0, Math.abs(res - 1), 2e-13);
-    f.mult(xToR.getDivSqrtCR());
+    f.multSelf(xToR.getDivSqrtCR());
     T = CoulombWFFactory.makeY_0_2s(r); // valid
     Y = new YkLcr(quadr, f, f, 0).calcYk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Y_0_2s_test.csv");
@@ -134,7 +134,7 @@ public class YkLcrTest extends FlowTest {
     f = CoulombWFFactory.makeP2p(r, 1.);
     res = w.calc(f, f, xToR.getCR());
     assertEquals(0, Math.abs(res - 1), 7e-14);
-    f.mult(xToR.getDivSqrtCR());
+    f.multSelf(xToR.getDivSqrtCR());
     T = CoulombWFFactory.makeY_0_2p(r); // valid
     Y = new YkLcr(quadr, f, f, 0).calcYk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Y_0_2p_test.csv");
@@ -155,7 +155,7 @@ public class YkLcrTest extends FlowTest {
     FuncVec f = CoulombWFFactory.makeP2p(r, 1.);
     double res = w.calc(f, f, xToR.getCR());
     assertEquals(0, Math.abs(res - 1), 7e-14);
-    f.mult(xToR.getDivSqrtCR());
+    f.multSelf(xToR.getDivSqrtCR());
     FuncVec T = CoulombWFFactory.makeY_2_2p(r); // valid
     FuncVec Y = new YkLcr(quadr, f, f, 2).calcYk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Y_2_2p_test.csv");

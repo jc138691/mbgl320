@@ -5,10 +5,10 @@ package math.func;
 public class FuncMult extends FuncVec {
 public FuncMult(final FuncVec f, final FuncVec f2) {
   super(f.copyY());
-  mult(f2);
+  multSelf(f2);
 }
 public FuncMult(final FuncVec f, final FuncVec f2, final FuncVec f3) {
   this(f, f2);
-  mult(f3);
+  multSelf(f3);
 }
 }
