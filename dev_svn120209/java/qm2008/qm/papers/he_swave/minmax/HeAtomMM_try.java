@@ -14,6 +14,7 @@ import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.mm.HkMm;
 import atom.wf.mm.SysHeMm;
 import math.func.FuncVec;
+import math.func.deriv.test.DerivPts9Test;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
@@ -41,13 +42,14 @@ public HeAtomMM_try() {
 
 public void testHeMm() throws Exception {  log.setDbg();
   if (!new FastLoopTest().ok()) return;
+  if (!new DerivPts9Test().ok()) return;
 
   int LCR_FIRST = -5;
-  int LCR_N = 701;
+  int LCR_N = 1001;
   int R_FIRST = 0;
-  int R_LAST = 200;
+  int R_LAST = 100;
   N = 2;
-  int LAMBDA = 2;
+  double LAMBDA = 4;
 
   LgrrModel lgrrModel = new LgrrModel();
   lgrrModel.setL(0);
@@ -88,24 +90,24 @@ public void testHeMm() throws Exception {  log.setDbg();
   log.dbg("mmEngs=\n", new VecDbgView(mmEngs));
   log.dbg("HeSWaveAtom.E_1S=\n" + new VecDbgView(HeSWaveAtom.E_1S));
 
-  Conf cf = confs.get(0);
-  Conf cf2 = confs.get(1);
-  Energy e = sysE2.calcH(cf, cf2);  log.dbg("sysE2.calcH(cf, cf2)=\n" + e);
-  Energy mme = mmE2.calcH(cf, cf2);  log.dbg("mmE2.calcH(cf, cf2)=\n" + mme);
-
-  ShPair sp = (ShPair)cf;
   FuncVec a = orthonN.get(0);
   FuncVec b = orthonN.get(1);
   HkMm hkmm = new HkMm(quadr, a, a, a, a, K);
   double norm = hkmm.calcNorm();  log.dbg("HkMm(quadr, a, a, a, a, K).calcNorm()=\n" + norm);
   assertEquals(0, norm - 1, 2e-14);  // GOOD TEST!!!
+  double kin = hkmm.calcKin();  log.dbg("calcKin()=" + kin);
+  double pot = hkmm.calcPot();  log.dbg("calcPot()=" + pot);
+  double tot = hkmm.calcTotE();  log.dbg("calcTotE()=" + tot);
 
-  hkmm = new HkMm(quadr, a, a, b, b, K);
-  norm = hkmm.calcNorm();  log.dbg("HkMm(quadr, a, a, b, b, K).calcNorm()=\n" + norm);
-  assertEquals(0, norm, 2e-14); // GOOD TEST!!!
+  Conf cf = confs.get(0);
+  Conf cf1 = confs.get(1);
+  Energy e = sysE2.calcH(cf, cf);  log.dbg("sysE2.calcH(cf, cf2)=\n" + e);
 
-  hkmm = new HkMm(quadr, a, a, a, b, K);
-  norm = hkmm.calcNorm();  log.dbg("HkMm(quadr, a, a, a, b, K.calcNorm()=\n" + norm);
-//  assertEquals(0, norm, 2e-14);
+//  hkmm = new HkMm(quadr, a, a, b, b, K);
+//  norm = hkmm.calcNorm();  log.dbg("HkMm(quadr, a, a, b, b, K).calcNorm()=\n" + norm);
+//  assertEquals(0, norm, 2e-14); // GOOD TEST!!!
+//
+//  hkmm = new HkMm(quadr, a, a, a, b, K);
+//  norm = hkmm.calcNorm();  log.dbg("HkMm(quadr, a, a, a, b, K.calcNorm()=\n" + norm);
 }
 }

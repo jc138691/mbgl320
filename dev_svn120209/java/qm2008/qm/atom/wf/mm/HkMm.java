@@ -14,24 +14,33 @@ public class HkMm {
 public static Log log = Log.getLog(HkMm.class);
 // INPUT
 private final WFQuadrLcr quadr;
-private final Vec a;
-private final Vec b;
-private final Vec a2;
-private final Vec b2;
+private final FuncVec a;
+private final FuncVec b;
+private final FuncVec a2;
+private final FuncVec b2;
 private final int K;
 // derived from INPUT
 private final Vec vcr2;
+private final Vec vcr2r;
 private final Vec vx;
 //
 private FuncVec zFk;  // z-function inside int_0^r
-private FuncVec zF0;  // z-function inside int_0^r
-private FuncVec z0;  // result of int_0^r
+private FuncVec zaa;   // result of int_0^r
+private FuncVec zaa2;  // result of int_0^r
+private FuncVec zaar;  // result of int_0^r
 private FuncVec rK;    // 1/r^k
 private FuncVec yF;  // y-function inside int_0^r
 private FuncVec rK1;    // r^(k+1)
+// RESULTS
+private boolean hasNorm = false;
+private double norm;
+private boolean hasKin = false;
+private double kin;
+private boolean hasPot = false;
+private double pot;
 
 public HkMm(final WFQuadrLcr quadr
-            , Vec a, Vec b, Vec a2, Vec b2, int K) {
+            , FuncVec a, FuncVec b, FuncVec a2, FuncVec b2, int K) {
   this.quadr = quadr;
   this.K = K;
   this.a = a;
@@ -40,22 +49,88 @@ public HkMm(final WFQuadrLcr quadr
   this.b2 = b2;
 
   vcr2 = quadr.getLcrToR().getCR2();
+  vcr2r = quadr.getLcrToR().getCR2DivR();
   vx = quadr.getX();
 }
 public double calcNorm() {
-  if (z0 == null)
-    z0 = calcZ0(a, a2);
-  double res = 2. * quadr.calcInt(b, b2, z0);  // NOTE!!!! *2.
+  if (hasNorm)
+    return norm;
+  calcZAA();  // \int_0^{r'} dr a(r) a2(r)
+  double res = 2. * quadr.calcInt(b, b2, zaa);  // NOTE!!!! *2.
+  hasNorm = true;
+  norm = res;
+  return res;
+}
+public double calcTotE() {
+  double ke = calcKin();
+  double pe = calcPot();
+  return ke + pe;
+}
+public double calcKin() {
+  if (hasKin)
+    return kin;
+/*
+\int_0^\infty dr_1 \int_0^\infty dr_2 \Phi_{ab}(r_1, r_2)
+[\frac{1}{2}\frac{\partial^2}{\partial r_1^2} + \frac{1}{2} \frac{\partial^2}{\partial r_2^2}]\Phi_{a'b'}(r_1, r_2)
+=\\
+=\int_0^\infty dr_1  \int_0^{r_1} dr_2 P_a(r_2) P_b(r_1)
+[\frac{\partial^2}{\partial r_1^2} + \frac{\partial^2}{\partial r_2^2} ]
+P_{a'}(r_2) P_{b'}(r_1)=\\
+=\int_0^\infty dr_1  P_b(r_1) P_{b'}(r_1) \int_0^{r_1} dr_2 P_a(r_2) P''_{a'}(r_2)
++\int_0^\infty dr_1  P_b(r_1) P''_{b'}(r_1) \int_0^{r_1} dr_2 P_a(r_2) P_{a'}(r_2)
+ */
+  calcZAA();  // \int_0^{r'} dr a(r) a2(r)
+  calcZAA2();  // \int_0^{r'} dr a(r) a2''(r)
+
+  // (-1/2)d^2/dr^2 P(r) = (-1/2) d^2/dx^2 P(r(x)) + (1/2)1/4 P(r(x))
+  double aa2 = quadr.calcInt(b, b2, zaa2);
+  // calc zaa2 without cr2
+
+  double bb2 = quadr.calc(b, b2.getDrv2(), zaa);// NOT  calcInt
+  double bb = quadr.calc(b, b2, zaa);
+
+  double res = -(aa2 + bb2) + (bb );
+  hasKin = true;
+  kin = res;
+  return res;
+}
+public double calcPot() {
+  if (hasPot)
+    return pot;
+  calcZAAR();  // \int_0^{r'} dr a(r) a2(r) 1/r
+  double res = -2. * quadr.calcInt(b, b2, zaar);    // NOTE!!!! *2.
+  hasPot = true;
+  pot = res;
   return res;
 }
 
-public FuncVec calcZ0(Vec vf, Vec vf2) {   log.setDbg();
-  if (zF0 == null) {
-    Vec v = vf.copy();
-    v.multSelf(vcr2, vf2);
-    zF0 = new FuncVec(vx, v);
-  }
-  FuncVec res = new IntgPts7(zF0);    log.info("IntgPts7(zF)=", new VecDbgView(res));
+private void calcZAAR() {
+  if (zaar != null)
+    return;
+  zaar = calcZ1(a, a2);  log.info("zaar=", new VecDbgView(zaar));
+}
+private void calcZAA() {
+  if (zaa != null)
+    return;
+  zaa = calcZ0(a, a2);  log.info("zaa=", new VecDbgView(zaa));
+}
+private void calcZAA2() {  // with second deriv of a2
+  if (zaa2 != null)
+    return;
+  zaa2 = calcZ0(a, a2.getDrv2());  log.info("zaa2=", new VecDbgView(zaa2));
+}
+private FuncVec calcZ0(Vec vf, Vec vf2) {   log.setDbg();
+  Vec v = vf.copy();
+  v.multSelf(vcr2, vf2);
+  FuncVec z = new FuncVec(vx, v);
+  FuncVec res = new IntgPts7(z);
+  return res;
+}
+private FuncVec calcZ1(Vec vf, Vec vf2) {
+  Vec v = vf.copy();
+  v.multSelf(vcr2r, vf2);
+  FuncVec z = new FuncVec(vx, v);
+  FuncVec res = new IntgPts7(z);
   return res;
 }
 //private void loadZFuncs(Vec vf, Vec vf2) {

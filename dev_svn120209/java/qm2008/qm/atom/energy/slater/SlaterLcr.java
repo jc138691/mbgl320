@@ -30,24 +30,21 @@ public class SlaterLcr extends SlaterLr {
    * HF = -1/2F" +1/2*{1/4 + L(L+1)*(y/r)^2}*F + y^2U(r)*F
    * //  INTL dx Fn'(x) H Fn(x) = delta_n'n
    */
-  protected double calcKinL(Shell sh, Shell SH2 /* make it stand out*/) {
-    int L = sh.getWfL();
-    if (L != SH2.getWfL())
-      return 0.;
-    return calcKinL(L, sh.getWf(), SH2.getWf());
-  }
+//  protected double calcKinL(Shell sh, Shell SH2) {
+//    int L = sh.getWfL();
+//    if (L != SH2.getWfL())
+//      return 0.;
+//    return calcKinL(L, sh.getWf(), SH2.getWf());
+//  }
   public double calcKin(int L, FuncVec wf, FuncVec wf2) {
     return partH.calcKin(L, wf, wf2);
-//    return calcKinDrv(wf, wf2) + calcKinL(L, wf, wf2);
   }
-  public FuncVec calcOneDensity(Shell sh, Shell SH2 /* make it stand out*/) {
+  public FuncVec calcOneDensity(Shell sh, Shell SH2) {
     int L = sh.getWfL();
     if (L != SH2.getWfL())
       return null;
-//    FuncVec res = new FuncVec(sh.getWf());      // BUG!!! shallow y-copy
     FuncVec res = sh.getWf().copyY();
     res.multSelf(SH2.getWf());
-//    res.multFirst(logCRToR.getCR2());
     return res;
   }
   public double calcOneZPot(double z, Shell sh, Shell SH2) {

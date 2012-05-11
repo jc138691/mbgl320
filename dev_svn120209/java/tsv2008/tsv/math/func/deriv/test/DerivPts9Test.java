@@ -14,12 +14,12 @@ import project.workflow.task.test.FlowTest;
 import javax.utilx.log.Log;
 
 public class DerivPts9Test extends FlowTest {
+public static Log log = Log.getLog(DerivPts9Test.class);
 public DerivPts9Test() {
 super(DerivPts9Test.class);  // NOTE!!! this is needed for FlowTest
 }
 
 public void testDerivPts9() throws Exception {
-  Log log = Log.getLog(DerivPts9.class); // note:  DerivPts3
   //log.setDbg();
   int idx = 0;
   double first = 0;
