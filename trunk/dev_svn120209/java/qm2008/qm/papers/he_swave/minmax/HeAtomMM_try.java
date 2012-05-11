@@ -7,19 +7,19 @@ import atom.e_2.SysHeOldOk;
 import atom.energy.ConfHMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
-import atom.shell.Conf;
-import atom.shell.ConfArr;
-import atom.shell.ConfArrFactoryE2;
-import atom.shell.Ls;
+import atom.shell.*;
 import atom.smodel.HeSWaveAtom;
 import atom.wf.lcr.LcrFactory;
 import atom.wf.lcr.WFQuadrLcr;
+import atom.wf.mm.HkMm;
 import atom.wf.mm.SysHeMm;
+import math.func.FuncVec;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
+import math.vec.test.FastLoopTest;
 import project.workflow.task.test.FlowTest;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
@@ -32,13 +32,16 @@ public class HeAtomMM_try extends FlowTest {
 public static Log log = Log.getLog(HeAtomMM_try.class);
 private static WFQuadrLcr quadr;
 private int N = 5;
+private int K = 0;
 private LgrrOrthLcr orthonN;
 private SlaterLcr slater;
 public HeAtomMM_try() {
   super(HeAtomMM_try.class);
 }
 
-public void testHeMm() {  log.setDbg();
+public void testHeMm() throws Exception {  log.setDbg();
+  if (!new FastLoopTest().ok()) return;
+
   int LCR_FIRST = -5;
   int LCR_N = 701;
   int R_FIRST = 0;
@@ -89,5 +92,20 @@ public void testHeMm() {  log.setDbg();
   Conf cf2 = confs.get(1);
   Energy e = sysE2.calcH(cf, cf2);  log.dbg("sysE2.calcH(cf, cf2)=\n" + e);
   Energy mme = mmE2.calcH(cf, cf2);  log.dbg("mmE2.calcH(cf, cf2)=\n" + mme);
+
+  ShPair sp = (ShPair)cf;
+  FuncVec a = orthonN.get(0);
+  FuncVec b = orthonN.get(1);
+  HkMm hkmm = new HkMm(quadr, a, a, a, a, K);
+  double norm = hkmm.calcNorm();  log.dbg("HkMm(quadr, a, a, a, a, K).calcNorm()=\n" + norm);
+  assertEquals(0, norm - 1, 2e-14);  // GOOD TEST!!!
+
+  hkmm = new HkMm(quadr, a, a, b, b, K);
+  norm = hkmm.calcNorm();  log.dbg("HkMm(quadr, a, a, b, b, K).calcNorm()=\n" + norm);
+  assertEquals(0, norm, 2e-14); // GOOD TEST!!!
+
+  hkmm = new HkMm(quadr, a, a, a, b, K);
+  norm = hkmm.calcNorm();  log.dbg("HkMm(quadr, a, a, a, b, K.calcNorm()=\n" + norm);
+//  assertEquals(0, norm, 2e-14);
 }
 }

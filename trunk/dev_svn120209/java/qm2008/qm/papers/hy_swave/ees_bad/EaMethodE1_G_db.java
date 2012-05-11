@@ -28,17 +28,17 @@ protected FuncArr calcPsi(double scattE, int engIdx) {  log.setDbg();
   FuncVec psi1 = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", psi1);
 
   FuncVec gr = psi1.copyY();
-  gr.mult(potH.getPot());
+  gr.multSelf(potH.getPot());
 //  FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
 //  FuncVec sysPsi = sysWFuncs.get(engIdx);            log.dbg("sysPsi=", sysPsi);
-//  gr.mult(sysPsi);
-  gr.mult(psi1);
-  gr.mult(quadr.getLcrToR().getCR2());
+//  gr.multFirst(sysPsi);
+  gr.multSelf(psi1);
+  gr.multSelf(quadr.getLcrToR().getCR2());
   gr = quadr.calcFuncIntOK(gr); log.dbg("gr=int_0^r=", gr); // int_0^r
   gr.mult(1. / gr.getLast()); log.dbg("gr[0:1]=", gr); // normalize [0:1]
 
   FuncVec gPsi2 = new CosPWaveLcr(quadr, momP, L);   log.dbg("cosL=", gPsi2);
-  gPsi2.mult(gr);   log.dbg("cosL=", gPsi2); // g(r)cos(kr)
+  gPsi2.multSelf(gr);   log.dbg("cosL=", gPsi2); // g(r)cos(kr)
 
   res.add(psi1.copyY());     // IDX_REG
   res.add(psi1.copyY());     // IDX_P_REG

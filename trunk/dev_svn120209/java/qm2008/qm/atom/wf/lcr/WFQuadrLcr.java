@@ -53,14 +53,14 @@ public Vec getDivSqrtCR() {
 private WFQuadrLcr getWithCR2DivR() {
   if (wCR2DivR == null) {
     wCR2DivR = new WFQuadrLcr(getStepGrid());
-    wCR2DivR.mult(new Vec(lcrToR.getCR2DivR()));
+    wCR2DivR.multSelf(new Vec(lcrToR.getCR2DivR()));
   }
   return wCR2DivR;
 }
 private WFQuadrLcr getWithCR2DivR2() {
   if (wCR2DivR2 == null) {
     wCR2DivR2 = new WFQuadrLcr(getStepGrid());
-    wCR2DivR2.mult(new Vec(lcrToR.getCR2DivR2()));
+    wCR2DivR2.multSelf(new Vec(lcrToR.getCR2DivR2()));
   }
   return wCR2DivR2;
 }
@@ -72,14 +72,14 @@ public TransLcrToR getLcrToR() {
 public WFQuadrLcr getWithCR2() {
   if (wCR2 == null) {
     wCR2 = new WFQuadrLcr(getStepGrid());    log.dbg("w=", wCR2);
-    wCR2.mult(new Vec(lcrToR.getCR2()));     log.dbg("w*CR2=", wCR2);
+    wCR2.multSelf(new Vec(lcrToR.getCR2()));     log.dbg("w*CR2=", wCR2);
   }
   return wCR2;
 }
 public WFQuadrLcr getWithCR() {
   if (wCR == null) {
     wCR = new WFQuadrLcr(getStepGrid());    log.dbg("w=", wCR);
-    wCR.mult(new Vec(lcrToR.getCR()));      log.dbg("w*CR=", wCR);
+    wCR.multSelf(new Vec(lcrToR.getCR()));      log.dbg("w*CR=", wCR);
   }
   return wCR;
 }
@@ -88,7 +88,7 @@ public Vec getR() {
   return lcrToR;
 }
 public void transRToLCR(FuncVec f) {
-  f.mult(getDivSqrtCR());
+  f.multSelf(getDivSqrtCR());
   f.setX(getX());
 }
 

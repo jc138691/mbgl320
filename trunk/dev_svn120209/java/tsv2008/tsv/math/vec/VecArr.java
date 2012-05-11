@@ -34,7 +34,7 @@ public class VecArr {
   }
   public void mult(final Vec v) {
     for (int n = 0; n < size(); n++) {
-      get(n).mult(v);
+      get(n).multSelf(v);
     }
   }
 

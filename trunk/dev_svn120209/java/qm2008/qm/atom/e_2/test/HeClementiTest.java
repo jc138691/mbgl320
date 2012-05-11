@@ -42,7 +42,7 @@ public class HeClementiTest extends FlowTest {
     double Zeff = AtomHeClementi.ZETA;// from p445 of Clementi Roetti, Atomic Data 14, 177 (1974)
     FuncVec f = CoulombWFFactory.makeP1s(r, Zeff);
     f.setX(w.getX()); // MUST change grid for derivatives
-    f.mult(xToR.getDivSqrtCR());
+    f.multSelf(xToR.getDivSqrtCR());
     double res = w.calcInt(f, f);
     assertEquals(0, Math.abs(res - 1), 3e-11);
     Ls LS = new Ls(0, Spin.SINGLET);

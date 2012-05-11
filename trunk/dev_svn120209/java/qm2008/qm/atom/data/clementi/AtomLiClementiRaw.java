@@ -57,12 +57,12 @@ public class AtomLiClementiRaw extends FlowTest {
     Vec r = quadr.getR();
 
     FuncVec f = makeRawP1s(r);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     double res = quadr.calcInt(f, f);
     assertEquals("IT DOES NOT WORKS! See AtomLiSlaterJoy.'norm'-functions AtomLiClementi.makeRawP1s norm=", 0, res-1, 0.00001);
 
     FuncVec f2 = makeRawP2s(r);
-    f2.mult(quadr.getDivSqrtCR());
+    f2.multSelf(quadr.getDivSqrtCR());
     res = quadr.calcInt(f2, f2);
     assertEquals("AtomLiClementi.makeRawP2s norm=", 0, res-1, 0.00001);
 

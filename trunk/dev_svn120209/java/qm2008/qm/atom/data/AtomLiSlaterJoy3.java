@@ -75,12 +75,12 @@ public class AtomLiSlaterJoy3 extends AtomLiSlaterJoy {
     Vec r = quadr.getR();
 
     FuncVec f = makeRawP1s(r);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     double res = quadr.calcInt(f, f);
     assertEquals("AtomLiSlaterJoy.makeRawP1s norm=", 0, res - 1, 3.e-5);//was 1e-5
 
     FuncVec f2 = makeRawP2s(r);
-    f2.mult(quadr.getDivSqrtCR());
+    f2.multSelf(quadr.getDivSqrtCR());
     res = quadr.calcInt(f2, f2);
     assertEquals("AtomLiSlaterJoy.makeRawP2s norm=", 0, res - 1, 4.e-5);//was 1e-5
 

@@ -27,7 +27,7 @@ public class RkLcrTest2 extends FlowTest {
   public void testCalcRkLcr() throws Exception {
     Vec r = quadr.getR();
     FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     double res = quadr.calcInt(f, f);
     setMaxErr(MAX_INTGRL_ERR);
 //    setShowDbg(log.getDbg());
@@ -42,7 +42,7 @@ public class RkLcrTest2 extends FlowTest {
     //job.addLine( F_1s1s,     5./8,     "F_1s1s",     3e-9); // Fischer's 0.5??
     assertEquals("R_1s", 0, Math.abs(res - 5. / 8));
     FuncVec f2s = CoulombWFFactory.makeP2s(r, 1.);
-    f2s.mult(quadr.getDivSqrtCR());
+    f2s.multSelf(quadr.getDivSqrtCR());
 //    res = FastLoop.dot(f2s, f2s, quadrLcr.getWithCR2());
     res = quadr.calcInt(f2s, f2s);
     assertEquals("2s", 0, Math.abs(res - 1));
@@ -73,7 +73,7 @@ public class RkLcrTest2 extends FlowTest {
     assertEqualsRel("F_2s2s =", 77. / 512, res, true);
 
     FuncVec f2p = CoulombWFFactory.makeP2p(r, 1.);
-    f2p.mult(quadr.getDivSqrtCR());
+    f2p.multSelf(quadr.getDivSqrtCR());
     res = quadr.calcInt(f2p, f2p);
     int count = 0;
     assertEquals(""+count++, 0, Math.abs(res - 1), 7e-14);

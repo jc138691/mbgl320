@@ -17,8 +17,8 @@ public SinRegPWaveLcr(WFQuadrLcr w, final double p, final int L) {
   FuncVec expF = new FuncVec(w.getR(), new FuncExp2(-p)); // NOTE! Exp2
   expF.mult(-1);
   expF.add(1);// (1-exp(-p r^2))
-  mult(expF);
-  mult(w.getDivSqrtCR());                          // NOTE!!!  /qsrt(c+r)
+  multSelf(expF);
+  multSelf(w.getDivSqrtCR());                          // NOTE!!!  /qsrt(c+r)
   setX(w.getX());             // NOTE!!! but stores LCR as x
 }
 }

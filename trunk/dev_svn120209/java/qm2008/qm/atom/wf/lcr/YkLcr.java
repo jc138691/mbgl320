@@ -129,7 +129,7 @@ public FuncVec calcYk_NEW(FuncVec zk) {   log.setDbg();
   double corr = zk.getLast() / rK1.getLast();
   res.add(corr - res.getLast());
 
-  res.mult(rK1);
+  res.multSelf(rK1);
   return res;
 }
 public FuncVec calcZk_NEW() {   log.setDbg();
@@ -145,7 +145,7 @@ public FuncVec calcZk_NEW() {   log.setDbg();
   FuncVec res = new IntgPts7(zF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
 //  FuncVec res = quadrLcr.calcFuncIntOK(zF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
 
-  res.mult(rK);
+  res.multSelf(rK);
   return res;
 }
 private void loadZFuncs() {

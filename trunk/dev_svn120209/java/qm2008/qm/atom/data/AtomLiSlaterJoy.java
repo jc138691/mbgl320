@@ -80,7 +80,7 @@ public class AtomLiSlaterJoy extends FlowTest {
     if (normP1s == null || normP1s.getX() != r) {
       FuncArr arr = new FuncArr(r, 1);
       FuncVec f = makeRawP1s(r);
-      f.mult(quadr.getDivSqrtCR());
+      f.multSelf(quadr.getDivSqrtCR());
       arr.set(0, f);
       OrthonFactory.norm(arr, quadr);
       normP1s = arr.get(0);
@@ -95,9 +95,9 @@ public class AtomLiSlaterJoy extends FlowTest {
     if (normP2s == null || normP2s.getX() != r) {
       FuncArr arr = new FuncArr(r, 2);
       FuncVec f = makeRawP1s(r);
-      f.mult(quadr.getDivSqrtCR());
+      f.multSelf(quadr.getDivSqrtCR());
       FuncVec f2 = makeRawP2s(r);
-      f2.mult(quadr.getDivSqrtCR());
+      f2.multSelf(quadr.getDivSqrtCR());
       arr.set(0, f);
       arr.set(1, f2);
       OrthonFactory.makeOrthon(arr, quadr);
@@ -115,7 +115,7 @@ public class AtomLiSlaterJoy extends FlowTest {
     Vec r = quadr.getR();
 
     FuncVec f = makeRawP1s(r);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     double res = quadr.calcInt(f, f);
     assertEquals("AtomLiSlaterJoy.makeRawP1s norm=", 0, res - 1, 1e-5);
 
@@ -124,7 +124,7 @@ public class AtomLiSlaterJoy extends FlowTest {
     assertEquals("AtomLiSlaterJoy.makeNormP1s norm=", 0, norm - 1, 1e-15);
 
     FuncVec f2 = makeRawP2s(r);
-    f2.mult(quadr.getDivSqrtCR());
+    f2.multSelf(quadr.getDivSqrtCR());
     res = quadr.calcInt(f2, f2);
     assertEquals("AtomLiSlaterJoy.makeRawP2s norm=", 0, res - 1, 1e-5);
 

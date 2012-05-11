@@ -29,12 +29,12 @@ public class CoulombNmrvLcr extends FlowTest {
     Vec cr2 = lcrToR.getCR2();
     Vec sqrtCr = lcrToR.getSqrtCR();
     FuncVec V = CoulombNmrvR.makeV(L, Z, eng, r);   log.dbg("V =", V);
-    V.mult(cr2);
+    V.multSelf(cr2);
     FuncVec V4 = new FuncVec(r, new FuncConst(-0.25)); log.dbg("-1/4 = ", V4);
     V.addMultSafe(1, V4);
     V.setX(x);
     FuncVec res = new NmrvAlgR(V).calc();             log.dbg("res =", res);
-    res.mult(sqrtCr);
+    res.multSelf(sqrtCr);
     res.setX(r);
 
     double anal = CoulombNmrvR.calcNormAnalytic(L, Z, eng, res);   log.dbg("anal =", anal);

@@ -65,7 +65,7 @@ public class ZetaHyLCR extends LCRTestCase {
     Vec r = logCRToR;
     FuncVec f = CoulombWFFactory.makeP1s(r, Z_EFF);   log.dbg("P_1s(r)=", f);
     f.setX(logCR); log.dbg("P_1s(x)=", f); // MUST change grid for derivatives
-    f.mult(logCRToR.getDivSqrtCR());  log.dbg("F_1s=", f);// convert to F(x)=P(r)/sqrt(c+r)
+    f.multSelf(logCRToR.getDivSqrtCR());  log.dbg("F_1s=", f);// convert to F(x)=P(r)/sqrt(c+r)
     double res = w.getWithCR2().calc(f, f);
 //    assertAndView("Hy norm(LogCR)=", res - 1, 3e-11);  // FIRST=-2, LAST=3
     log.assertZero("Hy norm(LogCR)=", res - 1, 6e-7);    // FIRST=-4, LAST=10
@@ -105,7 +105,7 @@ public class ZetaHyLCR extends LCRTestCase {
     int L = 0;
     FuncVec f = CoulombWFFactory.makeP1s(r, Zeff);
     f.setX(w.getX()); // MUST change grid for derivatives
-    f.mult(logCRToR.getDivSqrtCR());
+    f.multSelf(logCRToR.getDivSqrtCR());
     double res = w.getWithCR2().calc(f, f);
 
     log.assertZero("Hy norm(LogCR)=", res - 1, 6e-13);
@@ -136,7 +136,7 @@ public class ZetaHyLCR extends LCRTestCase {
     int L = 0;
     FuncVec f = CoulombWFFactory.makeP1s(r, Z);
     f.setX(w.getX()); // MUST change grid for derivatives
-    f.mult(logRToR.getDivSqrtR());
+    f.multSelf(logRToR.getDivSqrtR());
     double res = w.getWithR2().calc(f, f);
 
     log.assertZero("Hy norm(LogR)=", res - 1, 8e-6);

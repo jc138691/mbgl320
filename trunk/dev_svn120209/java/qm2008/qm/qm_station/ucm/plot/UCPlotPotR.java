@@ -19,8 +19,8 @@ public class UCPlotPotR extends UCPlotFuncVec {
   public FuncVec makeFuncVec() {
     StepGrid r = JmPotFactoryR.makeGrid();
     FuncVec pot = CoulombWFFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", pot);
-    pot.mult(r);  log.dbg("r * V_1s(r)=", pot);
-    pot.mult(r);  log.dbg("r^2 * V_1s(r)=", pot);
+    pot.multSelf(r);  log.dbg("r * V_1s(r)=", pot);
+    pot.multSelf(r);  log.dbg("r^2 * V_1s(r)=", pot);
     return pot;
   }
 }

@@ -23,7 +23,7 @@ public class tools_hm {
 //  c  grid  - r-grid, nr - number of points in this grid
 //  C  expcut- the smollest value of exp-functions in "IPMDHF.F"
 //  C  Z0    - Coulomb potential removed from the potential V.
-//  C          V(r) = Vatom(r)  -  Z0 / r     multSelf-ed by r if  Z.NE.Z0
+//  C          V(r) = Vatom(r)  -  Z0 / r     multFirst-ed by r if  Z.NE.Z0
 //  c
 //  c OUTPUT:
 //  c ------
@@ -647,7 +647,7 @@ c  Z     - charge of the atom
 c  grid  - r-grid, nr - number of points in this grid
 C  expcut- the smollest value of exp-functions in "IPMDHF.F"
 C  Z0    - Coulomb potential removed from the potential V.
-C          V(r) = Vatom(r)  -  Z0 / r     multSelf-ed by r if  Z.NE.Z0
+C          V(r) = Vatom(r)  -  Z0 / r     multFirst-ed by r if  Z.NE.Z0
 c
 c OUTPUT:
 c ------

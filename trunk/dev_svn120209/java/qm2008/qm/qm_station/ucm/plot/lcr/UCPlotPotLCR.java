@@ -26,8 +26,8 @@ public class UCPlotPotLCR extends UCPlotFuncArr {
     FuncArr res = new FuncArr(x, 1);  // just ONE function
     FuncVec pot = CoulombWFFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", pot);
     pot.setX(x);
-    pot.mult(r);  log.dbg("r * V_1s(r)=", pot);
-    pot.mult(r);  log.dbg("r^2 * V_1s(r)=", pot);
+    pot.multSelf(r);  log.dbg("r * V_1s(r)=", pot);
+    pot.multSelf(r);  log.dbg("r^2 * V_1s(r)=", pot);
     res.set(0, pot);
     return res;
   }

@@ -13,7 +13,7 @@ public SinPWaveLcr(WFQuadrLcr w, final double p, final int L) {
   if (L > 0) {
     throw new IllegalArgumentException(log.error("todo L>0"));
   }
-  mult(w.getDivSqrtCR());                          // NOTE!!!  /qsrt(c+r)
+  multSelf(w.getDivSqrtCR());                          // NOTE!!!  /qsrt(c+r)
   setX(w.getX());             // NOTE!!! but stores LCR as x
 }
 }

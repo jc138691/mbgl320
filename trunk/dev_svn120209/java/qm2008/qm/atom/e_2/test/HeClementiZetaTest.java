@@ -32,7 +32,7 @@ public class HeClementiZetaTest extends FlowTest {
     Vec r = quadr.getR();
     double effZ = AtomHeClementi.ZETA;// from p445 of Clementi Roetti, Atomic Data 14, 177 (1974)
     FuncVec f = CoulombWFFactory.makeP1s(r, effZ);
-    f.mult(quadr.getDivSqrtCR());
+    f.multSelf(quadr.getDivSqrtCR());
     f.setX(quadr.getX()); // MUST change grid for derivatives
     double res = quadr.calcInt(f, f);
     assertEqualsRel("norm=<1s|1s>=", 1, res, true);
