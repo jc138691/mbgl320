@@ -1,0 +1,202 @@
+%%\documentclass[aip,jcp]{revtex4-1}
+\documentclass[aip
+, pra
+, showpacs
+, aps
+%, twocolumn
+, onecolumn
+, groupedaddress
+, floatfix
+%, preprint
+]{revtex4}
+%]{revtex4-1}
+\usepackage{graphicx, amsbsy, bm, dcolumn, amsmath}
+\usepackage{currfile}
+\usepackage{datetime}
+
+\newcommand{\etal}{{\em et~al.\/}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\JM}{\mbox{\tiny{JM}}}
+\newcommand{\Kato}{\mbox{\tiny{Kato}}}
+\newcommand{\vare}{\varepsilon}
+\newcommand{\phiH}{\phi^{\mbox{\tiny{H}}}}
+\newcommand{\vecCT}{ {\bf c} \cdot }
+%\newcommand{\vecCT}{ {\bf c}^{\mbox{\tiny{T}} }}
+
+
+
+\newcommand{\isum}%
+{\mathop{\hbox{$\displaystyle\sum\kern-13.2pt\int\kern1.5pt$}}}
+
+\begin{document}
+
+\fontsize{12}{15}
+
+\title {$J$-matrix Min Max}
+
+\author{Dmitry A. Konovalov}
+\affiliation{ARC Centre for Antimatter-Matter Studies}
+\affiliation{Discipline of Information Technology, School of Business,
+James Cook University, Townsville, Queensland 4811, Australia}
+
+\date{\today, \currenttime}
+
+\begin{abstract}
+TODO
+
+\end{abstract}
+
+\pacs{34.80.Dp} %34.80.Dp	Atomic excitation and ionization
+\maketitle
+The current file is: \currfilename.
+
+\section{INTRODUCTION}
+
+\section{THEORY}
+\beq
+x \equiv r_< = \min(r_1, r_2), \ \ y \equiv r_> = \max(r_1, r_2),
+\eeq
+\beq
+H = k_1 + k_2 + v_1 + v_2 + v_{12},
+\eeq
+\beq
+k_i = -1/2 d^2/dr^2_i, \ \ v_i = - Z/r_i, \ \ v_{12} = 1/r_>,
+\eeq
+For symmetric case
+\beq
+\Phi_{ab}(r_1, r_2) = P_a(x) P_b(y), \ \ \Phi_{ab}(r_1, r_2) = \Phi_{ab}(r_2, r_1),
+\eeq
+\beq
+\Phi_{aa}(r_1, r_2) \equiv P_a(r_1) P_a(r_2),
+\eeq
+For anti-symmetric case, $a \neq b$,
+\beq
+??? \ \  \Phi_{ab}(r_1, r_2) = P_a(r_<) P_b(r_>) - P_b(r_<) P_a(r_>),
+\eeq
+Normalization
+\beq \barr{l}
+\int_0^\infty dr_1 \int_0^\infty dr_2 \Phi_{ab}(r_1, r_2) \Phi_{a'b'}(r_1, r_2)
+=\int_0^\infty dr_1 \int_0^\infty dr_2 P_a(x) P_b(y) P_{a'}(x)  P_{b'}(y)=\\
+= \int_0^\infty dr_1  \int_0^{r_1} dr_2 P_a(r_2) P_b(r_1) P_{a'}(r_2) P_{b'}(r_1)
++\int_0^\infty dr_1  \int_{r_1}^\infty dr_2 P_a(r_1) P_b(r_2) P_{a'}(r_1) P_{b'}(r_2)  =\\
+= 2 \int_0^\infty dr_1  P_b(r_1) P_{b'}(r_1) \int_0^{r_1} dr_2 P_a(r_2) P_{a'}(r_2)
+\earr \eeq
+\beq
+\int_0^\infty dr_1  \int_{r_1}^\infty dr_2 f(r_1, r_2) \equiv \int_0^\infty dr_2  \int_0^{r_2} dr_1 f(r_1, r_2)
+= \int_0^\infty dr_1  \int_0^{r_1} dr_2 f(r_1 \rightleftharpoons r_2)
+\eeq
+\beq \barr{l}
+\int_0^\infty dr_1  \int_{r_1}^\infty dr_2 P_a(r_1) P_b(r_2) P_{a'}(r_1) P_{b'}(r_2)
+\equiv \int_0^\infty dr_2  \int_0^{r_2} dr_1 [...] =\\
+= [r_1 \rightleftharpoons r_2]
+=\int_0^\infty dr_1  \int_0^{r_1} dr_2 P_a(r_2) P_b(r_1) P_{a'}(r_2) P_{b'}(r_1)
+\earr \eeq
+
+\subsection{Kinetic energy}
+\beq
+\partial x / \partial r_1 = \theta(r_2 - r_1), \ \
+\partial x / \partial r_2 = \theta(r_1 - r_2),
+\eeq
+\beq
+\partial y / \partial r_1 = \theta(r_1 - r_2), \ \
+\partial y / \partial r_2 = \theta(r_2 - r_1),
+\eeq
+\beq
+d \theta(z) / d z = \delta(z), \ \ \delta(\alpha z) = \delta(z)/ |\alpha|
+\eeq
+\beq
+\theta(r_2-r_1) + \theta(r_1-r_2)\equiv 1, 
+ \ \ \ \theta(r_2-r_1) \theta(r_1-r_2)\equiv 0
+\eeq
+\beq
+\theta(r_2-r_1)= 1 -\theta(r_1-r_2), \ \
+\frac{\partial}{\partial r_1} \theta(r_2-r_1) = -\frac{\partial}{\partial r_1} \theta(r_1-r_2) ,
+\eeq
+\beq \barr{l}
+\frac{\partial^2}{\partial r_1^2} P_a(x) P_b(y) 
+=\frac{\partial}{\partial r_1} [ \frac{\partial P_a(x)}{\partial r_1} P_b(y)
++ P_a(x) \frac{\partial P_b(y)}{\partial r_1} ] =\\
+=\frac{\partial}{\partial r_1} [ \theta(r_2-r_1) P'_a(x) P_b(y)
+ + \theta(r_1-r_2) P_a(x) P'_b(y)]=\\
+=\theta(r_2-r_1) P''_a(x) P_b(y) + \theta(r_1-r_2) P_a(x) P''_b(y) 
++\delta(r_1-r_2) [P_a(r) P'_b(r) - P'_a(r) P_b(r)]
+\earr \eeq
+
+\beq \barr{l}
+\frac{\partial^2}{\partial r_2^2} P_a(x) P_b(y)
+=\frac{\partial}{\partial r_1} [ \frac{\partial P_a(x)}{\partial r_1} P_b(y)
++ P_a(x) \frac{\partial P_b(y)}{\partial r_1} ] =\\
+=\theta(r_1-r_2) P''_a(x) P_b(y) + \theta(r_2-r_1) P_a(x) P''_b(y)
++\delta(r_1-r_2) [P_a(r) P'_b(r) - P'_a(r) P_b(r)]
+\earr \eeq
+
+\beq
+[\frac{\partial^2}{\partial r_1^2} + \frac{\partial^2}{\partial r_2^2}] P_a(x) P_b(y)
+= P''_a(x) P_b(y) + P_a(x) P''_b(y)
++ 2 \delta(r_1-r_2) [P_a(r) P'_b(r) - P'_a(r) P_b(r)]
+\eeq
+
+
+\beq \barr{l}
+\int_0^\infty dr_1 \int_0^\infty dr_2 \Phi_{ab}(r_1, r_2) [\frac{\partial^2}{\partial r_1^2} \Phi_{a'b'}(r_1, r_2)]
+=\\
+= \int_0^\infty dr_1  \int_0^{r_1} dr_2 P_a(r_2) P_b(r_1) [\frac{\partial^2}{\partial r_1^2} P_{a'}(r_2) P_{b'}(r_1)] +\\
+\ \ \ +\int_0^\infty dr_1  \int_{r_1}^\infty dr_2 P_a(r_1) P_b(r_2) [\frac{\partial^2}{\partial r_1^2} P_{a'}(r_1) P_{b'}(r_2)]=\\
+= \int_0^\infty dr_1  \int_0^{r_1} dr_2 P_a(r_2) P_b(r_1)
+[\frac{\partial^2}{\partial r_1^2} + \frac{\partial^2}{\partial r_2^2} ]
+P_{a'}(r_2) P_{b'}(r_1)
+\earr \eeq
+the second term was converted via
+\beq \barr{l}
+\int_0^\infty dr_1  \int_{r_1}^\infty dr_2 P_a(r_1) P_b(r_2) [\frac{\partial^2}{\partial r_1^2} P_{a'}(r_1) P_{b'}(r_2)]
+= \int_0^\infty dr_2  \int_0^{r_1} dr_1 [...] =\\
+= [r_1 \rightleftharpoons r_2]
+=\int_0^\infty dr_1  \int_0^{r_1} dr_2 P_a(r_2) P_b(r_1) [\frac{\partial^2}{\partial r_2^2} P_{a'}(r_2) P_{b'}(r_1)]
+\earr \eeq
+
+\beq \barr{l}
+\int_0^\infty dr_1 \int_0^\infty dr_2 \Phi_{ab}(r_1, r_2)
+[\frac{1}{2}\frac{\partial^2}{\partial r_1^2} + \frac{1}{2} \frac{\partial^2}{\partial r_2^2}]\Phi_{a'b'}(r_1, r_2)
+=\\
+=\int_0^\infty dr_1  \int_0^{r_1} dr_2 P_a(r_2) P_b(r_1)
+[\frac{\partial^2}{\partial r_1^2} + \frac{\partial^2}{\partial r_2^2} ]
+P_{a'}(r_2) P_{b'}(r_1)=\\
+=\int_0^\infty dr_1  P_b(r_1) P_{b'}(r_1) \int_0^{r_1} dr_2 P_a(r_2) P''_{a'}(r_2)
++\int_0^\infty dr_1  P_b(r_1) P''_{b'}(r_1) \int_0^{r_1} dr_2 P_a(r_2) P_{a'}(r_2)
+\earr \eeq
+
+\subsection{Potential Energy}
+Potential energy for $v_{12}=1/y$
+\beq \barr{l}
+\int_0^\infty dr_1 \int_0^\infty dr_2 \Phi_{ab}(r_1, r_2) \frac{1}{y} \Phi_{a'b'}(r_1, r_2)
+= 2 \int_0^\infty dr_1  P_b(r_1) P_{b'}(r_1) \frac{1}{r_1} \int_0^{r_1} dr_2 P_a(r_2) P_{a'}(r_2)
+\earr \eeq
+Potential energy for $v_{1}$
+\beq \barr{l}
+\int_0^\infty dr_1 \int_0^\infty dr_2 \Phi_{ab}(r_1, r_2) \frac{1}{r_1} \Phi_{a'b'}(r_1, r_2)
+=\int_0^\infty dr_1 \int_0^\infty dr_2 P_a(x) P_b(y) \frac{1}{r_1} P_{a'}(x) P_{b'}(y)=\\
+= \int_0^\infty dr_1  \int_0^{r_1} dr_2 P_a(r_2) P_b(r_1) \frac{1}{r_1} P_{a'}(r_2) P_{b'}(r_1)
++\int_0^\infty dr_1  \int_{r_1}^\infty dr_2 P_a(r_1) P_b(r_2) \frac{1}{r_1} P_{a'}(r_1) P_{b'}(r_2)  =\\
+= \int_0^\infty dr_1  P_b(r_1) \frac{1}{r_1} P_{b'}(r_1) \int_0^{r_1} dr_2 P_a(r_2) P_{a'}(r_2)
++ \int_0^\infty dr_1  P_b(r_1) P_{b'}(r_1) \int_0^{r_1} dr_2 P_a(r_2) \frac{1}{r_2} P_{a'}(r_2)
+\earr \eeq
+
+
+\section{RESULTS}
+TODO
+\section{CONCLUSIONS}
+TODO
+
+
+\begin{acknowledgments}
+\end{acknowledgments}
+
+
+
+\bibliographystyle{apsrev}
+\bibliography{..//bibtex//qm_references}
+%\bibliography{qm_references}
+\end{document}

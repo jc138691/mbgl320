@@ -3,7 +3,8 @@ reset
 JS2002 = 'JS2002_TABLE_SDCS_Singlet.dat'
 
 JM_Nt30 = 'hy_poet_SDCS_S1_L0_LMBD1.0_N31_Nt30.dat'
-JM_Nt = '../../output/HySWaveBasisHySDCS/HySWaveBasisHySDCS_SDCS_S1_L0_LMBD1.0_N31_Nt30.dat'
+JM_Nt  = '../../output/HySWaveBasisHySDCS/HySWaveBasisHySDCS_SDCS_S1_L0_LMBD1.0_N31_Nt30.dat'
+JM_Nt2 = '../../output/HySWaveBasisHySDCS/HySWaveBasisHySDCS_SDCS_S1_L0_LMBD1.0_N32_Nt31.dat'
 JM_Nt40 = 'hy_poet_SDCS_S1_L0_LMBD1.0_N41_Nt40.dat'
 JM_Nt50 = 'hy_poet_SDCS_S1_L0_LMBD1.0_N51_Nt50.dat'
 JM_Nt60 = 'hy_poet_SDCS_S1_L0_LMBD1.0_N61_Nt60.dat'
@@ -45,7 +46,8 @@ set key right Left title 'E_0=27.2eV'
 set ylabel "cross section x 0.1" 
 p [0:maxE] [0:1.3] JS2002 u 1:($3*scaleJS2002*s10) t ' JS2002' w l ls 11,\
                  JM_Nt30 u ($1*scaleX):($2*scaleS*s10) t ' N_t=30old' w p ls 1, \
-                 JM_Nt u ($1*scaleX):($2*scaleS*s10) t ' N_t=30' w p ls 3, \
+                 JM_Nt   u ($1*scaleX):($2*scaleS*s10) t ' N_t=30' w p ls 3, \
+                 JM_Nt2  u ($1*scaleX):($2*scaleS*s10) t ' N_t=31' w p ls 4, \
                  JM_Nt90 u ($1*scaleX):($2*scaleS*s10) t ' N_t=90' w lp ls 2
 
 
@@ -54,7 +56,9 @@ set ytics 1;
 set key right Left title 'E_0=40.8eV'
 set ylabel "cross section x 0.01" 
 p [0:maxE] [0:6] JS2002 u 1:($4*scaleJS2002*s100) t ' JS2002' w l ls 11,\
-                 JM_Nt30 u ($1*scaleX):($3*scaleS*s100) t ' N_t=30' w p ls 1, \
+                 JM_Nt30 u ($1*scaleX):($3*scaleS*s100) t ' N_t=30old' w p ls 1, \
+                 JM_Nt   u ($1*scaleX):($3*scaleS*s100) t ' N_t=30' w p ls 3, \
+                 JM_Nt2  u ($1*scaleX):($3*scaleS*s100) t ' N_t=31' w p ls 4, \
                  JM_Nt90 u ($1*scaleX):($3*scaleS*s100) t ' N_t=90' w lp ls 2
 
 
@@ -64,7 +68,9 @@ set key right Left title 'E_0=54.4eV'
 set ylabel "cross section x 0.01" 
 set xlabel "Energy Fraction (e_{/Symbol b}/E)" 
 p [0:maxE] [0:3.5] JS2002 u 1:($5*scaleJS2002*s100) t ' JS2002' w l ls 11,\
-                 JM_Nt30 u ($1*scaleX):($4*scaleS*s100) t ' N_t=30' w p ls 1, \
+                 JM_Nt30 u ($1*scaleX):($4*scaleS*s100) t ' N_t=30old' w p ls 1, \
+                 JM_Nt   u ($1*scaleX):($4*scaleS*s100) t ' N_t=30' w p ls 3, \
+                 JM_Nt2  u ($1*scaleX):($4*scaleS*s100) t ' N_t=31' w p ls 4, \
                  JM_Nt90 u ($1*scaleX):($4*scaleS*s100) t ' N_t=90' w lp ls 2
 
 
