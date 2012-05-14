@@ -13,7 +13,7 @@ public WFQuadrR(StepGrid x) {
   super(x);
 }
 //@Override
-//public double calcPot(Vec pt, Vec wf, Vec wf2) {
+//public double calcPot2(Vec pt, Vec wf, Vec wf2) {
 //  return calc(pt, wf, wf2);
 //}
 @Override

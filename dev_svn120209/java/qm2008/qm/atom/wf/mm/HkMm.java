@@ -1,6 +1,5 @@
 package atom.wf.mm;
 import atom.wf.lcr.WFQuadrLcr;
-import math.Mathx;
 import math.func.FuncVec;
 import math.func.intrg.IntgPts7;
 import math.vec.Vec;
@@ -36,8 +35,10 @@ private boolean hasNorm = false;
 private double norm;
 private boolean hasKin = false;
 private double kin;
-private boolean hasPot = false;
-private double pot;
+private boolean hasPot1 = false;
+private double pot1;
+private boolean hasPot2 = false;
+private double pot2;
 
 public HkMm(final WFQuadrLcr quadr
             , FuncVec a, FuncVec b, FuncVec a2, FuncVec b2, int K) {
@@ -61,10 +62,11 @@ public double calcNorm() {
   norm = res;
   return res;
 }
-public double calcTotE() {
+public double calcTotE(double atomZ) {
   double ke = calcKin();
-  double pe = calcPot();
-  return ke + pe;
+  double p1 = calcPot1(atomZ);
+  double p2 = calcPot2();
+  return ke + p1 + p2;
 }
 public double calcKin() {
   if (hasKin)
@@ -80,27 +82,41 @@ P_{a'}(r_2) P_{b'}(r_1)=\\
 +\int_0^\infty dr_1  P_b(r_1) P''_{b'}(r_1) \int_0^{r_1} dr_2 P_a(r_2) P_{a'}(r_2)
  */
   calcZAA();  // \int_0^{r'} dr a(r) a2(r)
+
+  // calc zaa2 without cr2
   calcZAA2();  // \int_0^{r'} dr a(r) a2''(r)
 
   // (-1/2)d^2/dr^2 P(r) = (-1/2) d^2/dx^2 P(r(x)) + (1/2)1/4 P(r(x))
   double aa2 = quadr.calcInt(b, b2, zaa2);
-  // calc zaa2 without cr2
 
-  double bb2 = quadr.calc(b, b2.getDrv2(), zaa);// NOT  calcInt
-  double bb = quadr.calc(b, b2, zaa);
+  double bb2 = quadr.calc(b, b2.getDrv2(), zaa);// NOT  calcInt!!!
+  double bb = quadr.calc(b, b2, zaa);// NOT  calcInt!!!
+  bb2 -= (0.25 * bb);
 
-  double res = -(aa2 + bb2) + (bb );
+  double res = -aa2 - bb2;
   hasKin = true;
   kin = res;
   return res;
 }
-public double calcPot() {
-  if (hasPot)
-    return pot;
+public double calcPot1(double atomZ) { // atomZ=+1 for Hydrogen
+  if (hasPot1)
+    return atomZ * pot1;
+  calcZAA();  // \int_0^{r'} dr a(r) a2(r)
   calcZAAR();  // \int_0^{r'} dr a(r) a2(r) 1/r
-  double res = -2. * quadr.calcInt(b, b2, zaar);    // NOTE!!!! *2.
-  hasPot = true;
-  pot = res;
+  double ar = -2. * quadr.calcInt(b, b2, zaar);    // NOTE!!!! *2.
+  double br = -2. * quadr.getWithCR2DivR().calc(b, b2, zaa);    // NOTE!!!! *2.
+  double res = ar + br;
+  hasPot1 = true;
+  pot1 = res;
+  return atomZ * res;
+}
+public double calcPot2() {
+  if (hasPot2)
+    return pot2;
+  calcZAA();  // \int_0^{r'} dr a(r) a2(r)
+  double res = 2. * quadr.getWithCR2DivR().calc(b, b2, zaa);    // NOTE!!!! *2.
+  hasPot2 = true;
+  pot2 = res;
   return res;
 }
 
@@ -117,7 +133,18 @@ private void calcZAA() {
 private void calcZAA2() {  // with second deriv of a2
   if (zaa2 != null)
     return;
-  zaa2 = calcZ0(a, a2.getDrv2());  log.info("zaa2=", new VecDbgView(zaa2));
+  // converting to d^2/dx^2
+  // \int dr a(r) d^2/dr^2 b(r) = \int dx Fa(x)[ d^2/dx^2 -1/4 ]Fb(x)
+  // NOTE: \int dx DOE NOT have CR2!!!!!!
+  zaa2 = calcZDrv2(a, a2);  log.info("zaa2=", new VecDbgView(zaa2));
+}
+private FuncVec calcZDrv2(Vec fa, FuncVec fb) {   log.setDbg();
+  Vec v = fb.getDrv2().copy();      //[ d^2/dx^2 Fb(x)]
+  v.addMultSafe(-0.25, fb);  // [ d^2/dx^2 -1/4 ]Fb(x)]
+  v.multSelf(fa);            // Fa(x) [ d^2/dx^2 -1/4 ]Fb(x)]
+  FuncVec z = new FuncVec(vx, v);
+  FuncVec res = new IntgPts7(z);
+  return res;
 }
 private FuncVec calcZ0(Vec vf, Vec vf2) {   log.setDbg();
   Vec v = vf.copy();

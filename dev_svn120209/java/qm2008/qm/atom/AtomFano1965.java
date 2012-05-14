@@ -1,5 +1,6 @@
 package atom;
 import atom.energy.Energy;
+import atom.energy.ISysH;
 import atom.energy.slater.Slater;
 import atom.fano.FanoTermE2;
 import atom.shell.*;
@@ -15,7 +16,7 @@ import static math.Mathx.dlt;
 * Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 11:51:44
 */
 // this uses equations from Fano 1965 PhysRev 140, pA65
-abstract public class AtomFano1965 {
+abstract public class AtomFano1965 implements ISysH {
 public static Log log = Log.getLog(AtomFano1965.class);
 final public double Z;
 final protected Slater si;
@@ -27,7 +28,7 @@ public double getZ() {
 return Z;
 }
 abstract public int getNumElec();
-abstract public Energy calcH(Conf fc, Conf fc2);
+//abstract public Energy calcH(Conf fc, Conf fc2);
 public FuncVec calcDensity(Conf fc, Conf fc2) {
   return null;
 }

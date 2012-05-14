@@ -32,11 +32,6 @@ public double calcPotDivR(Vec wf, Vec wf2, Vec wf3) {
   return getWithCR2DivR().calc(wf, wf2, wf3);
 }
 
-//@Override
-//public double calcPot(Vec pt, Vec wf, Vec wf2) {
-//  return getWithCR2().calc(pt, wf, wf2);
-//}
-
 @Override
 public double calcInt(Vec wf, Vec wf2) {
   return getWithCR2().calc(wf, wf2);
@@ -50,14 +45,14 @@ public Vec getDivSqrtCR() {
   return lcrToR.getDivSqrtCR();
 }
 
-private WFQuadrLcr getWithCR2DivR() {
+public WFQuadrLcr getWithCR2DivR() {
   if (wCR2DivR == null) {
     wCR2DivR = new WFQuadrLcr(getStepGrid());
     wCR2DivR.multSelf(new Vec(lcrToR.getCR2DivR()));
   }
   return wCR2DivR;
 }
-private WFQuadrLcr getWithCR2DivR2() {
+public WFQuadrLcr getWithCR2DivR2() {
   if (wCR2DivR2 == null) {
     wCR2DivR2 = new WFQuadrLcr(getStepGrid());
     wCR2DivR2.multSelf(new Vec(lcrToR.getCR2DivR2()));

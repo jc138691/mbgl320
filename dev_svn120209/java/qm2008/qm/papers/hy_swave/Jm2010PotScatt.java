@@ -39,8 +39,8 @@ public class Jm2010PotScatt extends Jm2010CommonR {
     ENG_LAST = 0.5f;
     ENG_N = 50;
 
-//    calcPot(24);
-//    calcPot(22);
+//    calcPot2(24);
+//    calcPot2(22);
     calcPot(20);
     calcPot(18);
     calcPot(16);
