@@ -32,7 +32,7 @@ public class Slater extends Quadr {
     throw new IllegalArgumentException(log.error("must implement calcZPot(WFunc"));
   }
   public double calcPot(Vec potFunc, Vec wf, Vec wf2) {
-    double res = calc(wf, wf2, potFunc);  log.dbg("calcPot=", res);
+    double res = calc(wf, wf2, potFunc);  log.dbg("calcPot2=", res);
     return res;
   }
 }

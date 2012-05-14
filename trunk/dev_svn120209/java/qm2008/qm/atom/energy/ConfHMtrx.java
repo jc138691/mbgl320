@@ -14,10 +14,10 @@ import javax.utilx.log.Log;
  */
 public class ConfHMtrx extends HMtrx {
   public static Log log = Log.getLog(ConfHMtrx.class);
-  private final AtomFano1965 atom;
+  private final ISysH atom;
   private final ConfArr basis;
   private FuncArr density;
-  public ConfHMtrx(ConfArr basis, final AtomFano1965 atom) {
+  public ConfHMtrx(ConfArr basis, final ISysH atom) {
     super(basis.size(), basis.size());
     this.atom = atom;
     this.basis = basis;
@@ -27,7 +27,7 @@ public class ConfHMtrx extends HMtrx {
   public ConfArr getBasis() {
     return basis;
   }
-  public AtomFano1965 getAtom() {
+  public ISysH getAtom() {
     return atom;
   }
   private void load() {
