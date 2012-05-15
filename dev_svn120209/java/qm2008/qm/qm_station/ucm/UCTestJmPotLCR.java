@@ -59,8 +59,8 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
     TestModel testOpt = potOpt.getTestModel();
     FlowTest.setMaxErr(testOpt.getMaxIntgrlErr());
     FlowTest.setLog(log);
-    if (!new PartHMtrxLCRTest(w).ok())
-      return false;
+//    if (!new PartHMtrxLCRTest(w).ok())
+//      return false;
 
     if (!new LagrrLcrTest(basis).ok())
         return false;
@@ -80,13 +80,6 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
     EngModel eng = potOpt.getGridEng();
     if (!new JmJnnLCRTest(basis, eng).ok())
       return false;
-
-    Vec pot = CoulombWFFactory.makePotHy_1s(r);  log.dbg("V_1s(r)=", pot);
-
-//    QMSMainUI ui = QMSMainUI.getInstance();
-//    MenuScattUI scattUI = ui.getScattUI(); // NOTE: it makes it as well
-//    JmPotOptView optView = new JmPotOptView();
-//    DefaultTaskUI unit = new DefaultTaskUI(optView);
 
     log.info("finished UCTestJmPotLCR");
     return true;

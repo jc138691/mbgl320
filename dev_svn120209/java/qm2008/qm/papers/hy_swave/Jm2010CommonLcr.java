@@ -10,6 +10,7 @@ import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.lcr.YkLcrTest2;
 import atom.wf.lcr.test.RkLcrTest;
 import atom.wf.lcr.test.YkLcrTest;
+import atom.wf.slater.SlaterWFFactory;
 import calc.interpol.InterpolCubeTest;
 import math.complex.Cmplx1F1;
 import math.complex.Cmplx2F1;
@@ -100,6 +101,7 @@ protected void potScattTestOk() {
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
     if (!new CoulombWFFactory().ok()) return;
+    if (!new SlaterWFFactory(quadrLcr).ok()) return;
     if (!new CmplxGamma().ok()) return;
     if (!new Cmplx1F1().ok()) return;
     if (!new Cmplx2F1().ok()) return;
