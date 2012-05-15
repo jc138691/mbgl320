@@ -19,6 +19,7 @@ public class H_Hy_P1s_LcrTest extends FlowTest {
     this.w = w;
   }
   public H_Hy_P1s_LcrTest() {
+    super(H_Hy_P1s_LcrTest.class);
   }
   public void test_Hy_P_1s() {
     log.dbg("Testing numerics on the Hydrogen-like Hamiltonian");

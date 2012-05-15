@@ -5,6 +5,7 @@ import atom.wf.lcr.TransLcrToR;
 import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.lcr.YkLcr;
 import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.mm.HkMm;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import math.vec.metric.DistMaxAbsErr;
@@ -60,8 +61,9 @@ public class RkLcrTest extends FlowTest {
     res = RkLcr.calc(wCR, f, f, f, f2, 0);  // note f2
     assertEquals(0, Math.abs(res - 2. * 5. / 8.), 9e-11);
 
-    rMm = RkMm.calc(wCR, f, f, f, f, 0);
-    assertEquals(0, Math.abs(rMm - 5. / 8.), 5e-10); // todo: was 5e-11???????
+    HkMm hkMm  = new HkMm(wCR, f, f, f, f, 0);
+    rMm = hkMm.calcPot2();
+    assertEquals(0, Math.abs(rMm - 5. / 8.), 2e-10); // todo: was 5e-11???????
 
     FuncVec f2s = CoulombWFFactory.makeP2s(r, 1.);
     f2s.multSelf(xToR.getDivSqrtCR());
@@ -69,7 +71,6 @@ public class RkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(res - 1), 2e-13);
 
     res = RkLcr.calc(wCR, f, f2s, f, f2s, 0);
-    rMm = RkMm.calc(wCR, f, f2s, f, f2s, 0);
     assertEquals(0, Math.abs(res - 17. / 81), 4e-11);
 
     res = RkLcr.calc(wCR, f2s, f, f2s, f, 0);
@@ -80,9 +81,10 @@ public class RkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(res - 16. / 729), 5e-11);
 
     res = RkLcr.calc(wCR, f2s, f2s, f2s, f2s, 0);
-    rMm = RkMm.calc(wCR, f2s, f2s, f2s, f2s, 0);
+    hkMm  = new HkMm(wCR, f2s, f2s, f2s, f2s, 0);
+    rMm = hkMm.calcPot2();
     assertEquals(0, Math.abs(res - 77. / 512), 4e-10);
-    assertEquals(0, Math.abs(rMm - 77. / 512), 2e-9);   // todo: was 4e-10
+    assertEquals(0, Math.abs(rMm - 77. / 512), 3e-10);
 
     FuncVec f2p = CoulombWFFactory.makeP2p(r, 1.);
     f2p.multSelf(xToR.getDivSqrtCR());

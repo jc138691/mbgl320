@@ -13,7 +13,7 @@ import math.func.FuncVec;
 public class SysMmE2  implements ISysH {
 private final SlaterLcr si;
 private final double atomZ;
-private HkMm hk
+private HkMm hk;
 public SysMmE2(double z, SlaterLcr si) {
   atomZ = z;
   this.si = si;
@@ -27,6 +27,7 @@ public Energy calcH(Conf fc, Conf fc2) {
   int K = 0;
   hk = new HkMm(w, sa.getWf(), sb.getWf(), sa2.getWf(), sb2.getWf(), K);
   hk.calcTotE(atomZ);
+  return null;
 }
 public int getNumElec() {
   return 0;
