@@ -1,6 +1,7 @@
 package papers.hy_swave;
 
 import atom.data.AtomHy;
+import atom.e_1.test.HyOvTest;
 import atom.wf.coulomb.CoulombNmrvLcr;
 import atom.wf.coulomb.CoulombNmrvR;
 import atom.wf.coulomb.CoulombWFFactory;
@@ -109,6 +110,7 @@ protected void potScattTestOk() {
     if (!new InterpolCubeTest().ok()) return;
     if (!new DerivPts5Test().ok()) return;
     if (!new DerivPts9Test().ok()) return;
+    if (!new HyOvTest().ok()) return;
 
     StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);

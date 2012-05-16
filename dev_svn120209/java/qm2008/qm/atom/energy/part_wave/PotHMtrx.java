@@ -57,7 +57,7 @@ public void loadEigVec() {
   Vec x = basis.getX();
   eigVec = new FuncArr(x, basis.size());
 
-  // f_i = SUM_j C_ij * basisN(j)
+  // f_i = SUM_j C_ji * basisN(j)
   EigenSymm thisEig = eig();
   Mtrx v = thisEig.getV();
   double[][] C = v.getArray();

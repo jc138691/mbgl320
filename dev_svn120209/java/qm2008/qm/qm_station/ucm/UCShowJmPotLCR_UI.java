@@ -89,15 +89,24 @@ public class UCShowJmPotLCR_UI extends UCShowJmPotUI {
 
   // Eigvec
   protected UCRunTask<QMS> makePotEigFuncPlot(DefaultTaskUI<QMS> unitUI) {
-    return new UCMonitorTaskProgress<QMS>(new UCPlotPotEigFuncLCR(unitUI));  }
-  protected UCRunTask<QMS> makePotEigFuncSave(DefaultTaskUI<QMS> unitUI) {
-    return new UCSaveFuncArrPotR(new UCPlotPotEigFuncLCR(unitUI));   }
+//    return new UCMonitorTaskProgress<QMS>(new UCPlotPotEigFuncLCR(unitUI));
+    return  null;
+  }
+
+protected UCRunTask<QMS> makePotEigFuncSave(DefaultTaskUI<QMS> unitUI) {
+//    return new UCSaveFuncArrPotR(new UCPlotPotEigFuncLCR(unitUI));
+  return  null;
+}
 
   // EigenValues
   protected UCRunTask<QMS> makePotEigValPlot(DefaultTaskUI<QMS> unitUI) {
-    return new UCMonitorTaskProgress<QMS>(new UCPlotPotEigValLCR(unitUI));  }
+//    return new UCMonitorTaskProgress<QMS>(new UCPlotPotEigValLCR(unitUI));
+    return  null;
+  }
   protected UCRunTask<QMS> makePotEigValSave(DefaultTaskUI<QMS> unitUI) {
-    return new UCSaveFuncArrPotR(new UCPlotPotEigValLCR(unitUI)); }
+//    return new UCSaveFuncArrPotR(new UCPlotPotEigValLCR(unitUI));
+    return  null;
+  }
 
   protected void setPotUI(MenuScattUI scattUI, DefaultTaskUI<QMS> unitUI) {
     scattUI.setPotLCR(unitUI);

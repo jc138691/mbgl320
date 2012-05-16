@@ -2,12 +2,10 @@ package papers.he_swave.minmax;
 import atom.angular.Spin;
 import atom.data.AtomHe;
 import atom.data.AtomHy;
-import atom.e_1.SysHy;
 import atom.e_2.*;
 import atom.energy.ConfHMtrx;
+import atom.energy.ConfHOvMtrx;
 import atom.energy.Energy;
-import atom.energy.part_wave.PotHAMtrxLcr;
-import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
 import atom.smodel.HeSWaveAtom;
@@ -16,11 +14,8 @@ import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.mm.HkMm;
 import atom.wf.mm.SysHeMm;
 import atom.wf.mm.SysHyMmE2;
-import atom.wf.slater.SlaterWFFactory;
 import math.func.FuncVec;
-import math.func.arr.FuncArr;
 import math.func.deriv.test.DerivPts9Test;
-import math.func.simple.FuncPowInt;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
@@ -47,43 +42,6 @@ private static final double HY_1S = 1;
 private static final double HY_2S = 0.5;
 public HeAtomMM_try() {
   super(HeAtomMM_try.class);
-}
-public void testHAMtrx() throws Exception {  log.setDbg();
-  if (!new FastLoopTest().ok()) return;
-  if (!new DerivPts9Test().ok()) return;
-
-  int LCR_FIRST = -5;
-  int LCR_N = 1001;
-  int R_FIRST = 0;
-  int R_LAST = 100;
-  N = 2;
-  double LAMBDA = 2;
-
-  StepGridModel gridR = new StepGridModel(R_FIRST, R_LAST, LCR_N); // R_N not used!!!
-  StepGridModel gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);   log.dbg("gridLcr =\n", gridLcr);
-  StepGrid x = new StepGrid(gridLcr);                 log.dbg("StepGrid x = new StepGrid(gridLcr) =\n", x);
-  quadr = new WFQuadrLcr(x);                          log.dbg("quadr = new WFQuadrLcr(x)=\n", quadr);
-
-  Vec r = quadr.getR();
-  FuncVec pot = new FuncVec(r, new FuncPowInt(-1, -1)); // -1/r
-  FuncArr basis = new FuncArr(x);
-
-  FuncVec wf = SlaterWFFactory.makeLcrP1s(quadr, HY_1S);
-  basis.add(wf);  log.dbg("makeLcrP1s(quadr, HY_1S)=\n", wf);
-  double norm =  quadr.calcInt(wf, wf);   log.info("norm=" + norm);
-  assertEquals(0, 1 - norm, 1e-32);
-
-  wf = SlaterWFFactory.makeLcrP1s(quadr, HY_2S);
-  basis.add(wf);  log.dbg("makeLcrP1s(quadr, HY_2S)=\n", wf);
-  norm = quadr.calcInt(wf, wf);           log.info("norm=" + norm);
-  assertEquals(0, 1 - norm, 5e-16);
-
-  wf = SlaterWFFactory.makeLcrP2s(quadr, HY_2S);
-  basis.add(wf);  log.dbg("makeLcrP2s(quadr, HY_2S)=\n", wf);
-  norm = quadr.calcInt(wf, wf);        log.info("norm=" + norm);
-  assertEquals(0, 1 - norm, 1e-32);
-
-  PotHAMtrxLcr potH = new PotHAMtrxLcr(L, basis, pot, quadr);
 }
 
 public void testHyMm() throws Exception {  log.setDbg();
@@ -143,7 +101,7 @@ public void testHyMm() throws Exception {  log.setDbg();
   log.info("TEST AA AA");
   HkMm hkmm = new HkMm(quadr, a, a, a, a, K);
   log.dbg("HkMm(quadr, a, a, a, a, K)");
-  norm = hkmm.calcNorm();  log.dbg("calcNorm()=" + norm);
+  norm = hkmm.calcOv();  log.dbg("calcOv()=" + norm);
   assertEquals(0, norm - 1, 2e-14);  // GOOD TEST!!!
   kin = hkmm.calcKin();  log.dbg("calcKin()=" + kin);
   pot1 = hkmm.calcPot1(AtomHy.Z);  log.dbg("calcPot1()=" + pot1);
@@ -161,7 +119,7 @@ public void testHyMm() throws Exception {  log.setDbg();
   log.info("TEST BB BB");
   hkmm = new HkMm(quadr, b, b, b, b, K);
   log.dbg("HkMm(quadr, B, B, B, B, K)");
-  norm = hkmm.calcNorm();  log.dbg("calcNorm()=" + norm);
+  norm = hkmm.calcOv();  log.dbg("calcOv()=" + norm);
   assertEquals(0, norm - 1, 1e-13);  // GOOD TEST!!!
   kin = hkmm.calcKin();  log.dbg("calcKin()=" + kin);
   pot1 = hkmm.calcPot1(AtomHy.Z);  log.dbg("calcPot1()=" + pot1);
@@ -179,7 +137,7 @@ public void testHyMm() throws Exception {  log.setDbg();
   log.info("TEST AA BB");
   hkmm = new HkMm(quadr, a, a, b, b, K);
   log.dbg("HkMm(quadr, a, a, B, B, K)");
-  norm = hkmm.calcNorm();  log.dbg("calcNorm()=" + norm);
+  norm = hkmm.calcOv();  log.dbg("calcOv()=" + norm);
   assertEquals(0, norm, 2e-14); // GOOD TEST!!!
   kin = hkmm.calcKin();  log.dbg("calcKin()=" + kin);
   pot1 = hkmm.calcPot1(AtomHy.Z);  log.dbg("calcPot1()=" + pot1);
@@ -217,16 +175,16 @@ public void testHeMm() throws Exception {  log.setDbg();
   orthonN = new LgrrOrthLcr(quadr, lgrrModel);         log.dbg("orthonN = new LgrrOrthLcr(quadr, lgrrModel)=\n", orthonN);
   slater = new SlaterLcr(quadr);
 
-  SysE2 sysE2 = new SysHe(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
-  SysE2OldOk oldE2 = new SysHeOldOk(slater);// NOTE -2 for Helium // F-for Fano
-  SysHeMm mmE2 = new SysHeMm(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
+  SysE2 sysE2 = new SysHe(slater);
+  SysE2OldOk oldE2 = new SysHeOldOk(slater);
+  SysHeMm mmE2 = new SysHeMm(slater);
 
   Ls sysLs = new Ls(0, Spin.SINGLET);  // t - for target
   ConfArr confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthonN, orthonN);
   log.dbg("confs=", confs);
   ConfHMtrx sysH = new ConfHMtrx(confs, sysE2); log.dbg("sysH=\n", new MtrxDbgView(sysH));
   ConfHMtrx oldH = new ConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
-  ConfHMtrx mmH = new ConfHMtrx(confs, mmE2); log.dbg("mmH=\n", new MtrxDbgView(mmH));
+//  ConfHOvMtrx mmH = new ConfHOvMtrx(confs, mmE2); log.dbg("mmH=\n", new MtrxDbgView(mmH));
 
   Vec sysEngs = sysH.getEigVal();
   log.dbg("sysEngs=\n", new VecDbgView(sysEngs));
@@ -250,7 +208,7 @@ public void testHeMm() throws Exception {  log.setDbg();
   log.info("TEST AA AA");
   HkMm hkmm = new HkMm(quadr, a, a, a, a, K);
   log.dbg("HkMm(quadr, a, a, a, a, K)");
-  norm = hkmm.calcNorm();  log.dbg("calcNorm()=" + norm);
+  norm = hkmm.calcOv();  log.dbg("calcOv()=" + norm);
   assertEquals(0, norm - 1, 2e-14);  // GOOD TEST!!!
   kin = hkmm.calcKin();  log.dbg("calcKin()=" + kin);
   pot1 = hkmm.calcPot1(AtomHe.Z);  log.dbg("calcPot1()=" + pot1);
@@ -268,7 +226,7 @@ public void testHeMm() throws Exception {  log.setDbg();
   log.info("TEST BB BB");
   hkmm = new HkMm(quadr, b, b, b, b, K);
   log.dbg("HkMm(quadr, B, B, B, B, K)");
-  norm = hkmm.calcNorm();  log.dbg("calcNorm()=" + norm);
+  norm = hkmm.calcOv();  log.dbg("calcOv()=" + norm);
   assertEquals(0, norm - 1, 1e-13);  // GOOD TEST!!!
   kin = hkmm.calcKin();  log.dbg("calcKin()=" + kin);
   pot1 = hkmm.calcPot1(AtomHe.Z);  log.dbg("calcPot1()=" + pot1);
@@ -286,7 +244,7 @@ public void testHeMm() throws Exception {  log.setDbg();
   log.info("TEST AA BB");
   hkmm = new HkMm(quadr, a, a, b, b, K);
   log.dbg("HkMm(quadr, a, a, B, B, K)");
-  norm = hkmm.calcNorm();  log.dbg("calcNorm()=" + norm);
+  norm = hkmm.calcOv();  log.dbg("calcOv()=" + norm);
   assertEquals(0, norm, 2e-14); // GOOD TEST!!!
   kin = hkmm.calcKin();  log.dbg("calcKin()=" + kin);
   pot1 = hkmm.calcPot1(AtomHe.Z);  log.dbg("calcPot1()=" + pot1);
@@ -299,23 +257,6 @@ public void testHeMm() throws Exception {  log.setDbg();
   assertEquals(0, engE2.kin - kin, 2e-12);  // GOOD TEST!!!
   assertEquals(0, engE2.pt+engE2.kin - tot, 1e-12);  // GOOD TEST!!!
 
-//  // TEST AA AB
-//  log.info("TEST AA BB");
-//  hkmm = new HkMm(quadr, a, a, a, b, K);
-//  log.dbg("HkMm(quadr, a, a, A, B, K)");
-//  norm = hkmm.calcNorm();  log.dbg("calcNorm()=" + norm);
-//  kin = hkmm.calcKin();  log.dbg("calcKin()=" + kin);
-//  pot1 = hkmm.calcPot1();  log.dbg("calcPot1()=" + pot1);
-//  pot2 = hkmm.calcPot2();  log.dbg("calcPot2()=" + pot2);
-//  pot2 /= norm;            log.dbg("pot2 /= norm=" + pot2);
-//  tot = hkmm.calcTotE();  log.dbg("calcTotE()=" + tot);
-//
-//  Conf cfAB = confs.get(2);
-//  engE2 = sysE2.calcH(cfAA, cfAB);  log.dbg("sysE2.calcH(cf, cf2)=\n" + engE2);
-//  assertEquals(0, engE2.p2 - pot2, 1e-13);  // GOOD TEST!!!
 
-//
-//  hkmm = new HkMm(quadr, a, a, a, b, K);
-//  norm = hkmm.calcNorm();  log.dbg("HkMm(quadr, a, a, a, b, K.calcNorm()=\n" + norm);
 }
 }

@@ -28,7 +28,6 @@ public class SysE2 extends AtomE2 {
     super(z, si);
   }
 
-  @Override
   public Energy calcH(Conf cf, Conf cf2) {
     ls = cf.getTotLS();
     this.conf = cf;
@@ -90,7 +89,6 @@ public class SysE2 extends AtomE2 {
     return calcDensity(spinTerm, ls, t, t2);
   }
 
-  @Override
   public double calcOverlap(Conf fc, Conf fc2) {
     throw new IllegalArgumentException(log.error("use calcInt(Conf sa, Conf sa2)"));
   }

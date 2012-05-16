@@ -8,11 +8,11 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 15/05/12, 2:26 PM
  */
-public class OverHMtrx extends Mtrx {
-public static Log log = Log.getLog(OverHMtrx.class);
+public class OvMtrx extends Mtrx {
+public static Log log = Log.getLog(OvMtrx.class);
 private final IFuncArr basis;
 private final WFQuadr quadr;
-public OverHMtrx(IFuncArr basis, WFQuadr quadr) {
+public OvMtrx(IFuncArr basis, WFQuadr quadr) {
   super(basis.size(), basis.size());
   this.basis = basis;
   this.quadr = quadr;
