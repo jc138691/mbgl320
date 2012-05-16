@@ -1,4 +1,5 @@
 package atom.wf.mm;
+import atom.energy.Energy;
 import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.intrg.IntgPts7;
@@ -31,8 +32,8 @@ private FuncVec rK;    // 1/r^k
 private FuncVec yF;  // y-function inside int_0^r
 private FuncVec rK1;    // r^(k+1)
 // RESULTS
-private boolean hasNorm = false;
-private double norm;
+private boolean hasOv = false;
+private double ov;
 private boolean hasKin = false;
 private double kin;
 private boolean hasPot1 = false;
@@ -53,15 +54,24 @@ public HkMm(final WFQuadrLcr quadr
   vcr2r = quadr.getLcrToR().getCR2DivR();
   vx = quadr.getX();
 }
-public double calcNorm() {
-  if (hasNorm)
-    return norm;
+public double calcOv() {   // overlap
+  if (hasOv)
+    return ov;
   calcZAA();  // \int_0^{r'} dr a(r) a2(r)
   double res = 2. * quadr.calcInt(b, b2, zaa);  // NOTE!!!! *2.
-  hasNorm = true;
-  norm = res;
+  hasOv = true;
+  ov = res;
   return res;
 }
+public Energy calcH(double atomZ) {
+  Energy res = new Energy();
+  res.kin = calcKin();
+  res.p1 = calcPot1(atomZ);
+  res.p2 = calcPot2();
+  res.pt = res.p1 + res.p2;
+  return res;
+}
+
 public double calcTotE(double atomZ) {
   double ke = calcKin();
   double p1 = calcPot1(atomZ);

@@ -27,12 +27,9 @@ public AtomFano1965(double z, Slater si) {
 public double getZ() {
 return Z;
 }
-abstract public int getNumElec();
-//abstract public Energy calcH(Conf fc, Conf fc2);
 public FuncVec calcDensity(Conf fc, Conf fc2) {
   return null;
 }
-abstract public double calcOverlap(Conf fc, Conf fc2);
 
 public static void assertLS(Conf fc, Conf fc2) {
   if (!fc.getTotLS().equals(fc2.getTotLS())) {// this is not possible, and must be a bug

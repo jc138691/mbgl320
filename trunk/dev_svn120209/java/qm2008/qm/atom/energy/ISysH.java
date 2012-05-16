@@ -8,4 +8,5 @@ public interface ISysH {
   Energy calcH(Conf fc, Conf fc2);
   int getNumElec();
   FuncVec calcDensity(Conf fc, Conf fc2);
+  double calcOverlap(Conf fc, Conf fc2);
 }

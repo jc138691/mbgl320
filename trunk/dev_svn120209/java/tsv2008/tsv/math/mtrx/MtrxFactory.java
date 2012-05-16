@@ -33,13 +33,12 @@ public static void makeSymmByAvr(Mtrx m, int openN) {
     }
   }
 }
-public static void makeSqrt(Mtrx m) {
+public static void makeDiagOneSqrt(Mtrx m) {
   double[][] arr = m.getArray();
-  for (int r = 0; r < m.getNumRows(); r++) {
-    for (int c = 0; c < m.getNumCols(); c++) {
-      double sqrtVal = Math.sqrt(arr[r][c]);
-      arr[r][c] = sqrtVal;
-    }
+  int len = Math.max(m.getNumRows(), m.getNumCols());
+  for (int r = 0; r < len; r++) {
+    double diag = Math.sqrt(arr[r][r]);
+    arr[r][r] = 1./diag;
   }
 }
 }

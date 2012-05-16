@@ -44,11 +44,9 @@ public class PotEigVecLcrTest extends FlowTest {
 
     log.dbg("testing diagonalisation of H=K-Z/r; Z=" + Z);
     Vec r = funcArr.getR();
-    FuncVec pot = new FuncVec(r, new FuncPowInt(-Z, -1));
-    log.dbg("-Z/r=", new VecDbgView(pot));
+    FuncVec pot = new FuncVec(r, new FuncPowInt(-Z, -1));      log.dbg("-Z/r=", new VecDbgView(pot));
     PotHMtrx H = new PotHMtrxLcr(L, funcArr, pot);
-    Vec eigEng = H.getEigVal();
-    log.dbg("eigVal=", new VecDbgView(eigEng));
+    Vec eigEng = H.getEigVal();             log.dbg("eigVal=", new VecDbgView(eigEng));
     if (relErr) {
       assertEqualsRel("EigenE(1s) =", -Z * Z / 2., eigEng.get(0), true);
       assertEqualsRel("EigenE(2s) =", -Z * Z / 8., eigEng.get(1), true);
@@ -58,21 +56,16 @@ public class PotEigVecLcrTest extends FlowTest {
     }
 
     log.dbg("in LCR: testing H=K+V_1s");
-    pot = CoulombWFFactory.makePotHy_1s_e(r);
-    log.dbg("V_1s(r)=", new VecDbgView(pot));
+    pot = CoulombWFFactory.makePotHy_1s_e(r);       log.dbg("V_1s(r)=", new VecDbgView(pot));
     H = new PotHMtrxLcr(L, funcArr, pot);
     PotH partH = H.makePotH();
-    eigEng = H.getEigVal();
-    log.dbg("eigVal=", new VecDbgView(eigEng));
-    FuncArr eigVec = H.getEigFuncArr();
-    log.dbg("eigVec=", new FuncArrDbgView(eigVec));
+    eigEng = H.getEigVal();                log.dbg("eigVal=", new VecDbgView(eigEng));
+    FuncArr eigVec = H.getEigFuncArr();        log.dbg("eigVec=", new FuncArrDbgView(eigVec));
 
     for (int i = 0; i < eigEng.size(); i++) {
       FuncVec wf = eigVec.getFunc(i);
-      double kinE = partH.calcKin(L, wf, wf);
-      log.dbg("kinE=", kinE);
-      double potE = partH.calcPot(pot, wf, wf);
-      log.dbg("potE=", potE);
+      double kinE = partH.calcKin(L, wf, wf);         log.dbg("kinE=", kinE);
+      double potE = partH.calcPot(pot, wf, wf);             log.dbg("potE=", potE);
 
       double Ei = eigEng.get(i);
       log.dbg("EigVal[" + i + "] = " + Ei);

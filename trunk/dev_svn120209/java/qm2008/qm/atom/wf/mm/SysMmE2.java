@@ -26,13 +26,26 @@ public Energy calcH(Conf fc, Conf fc2) {
   WFQuadrLcr w = si.getQaudrLcr();
   int K = 0;
   hk = new HkMm(w, sa.getWf(), sb.getWf(), sa2.getWf(), sb2.getWf(), K);
-  hk.calcTotE(atomZ);
-  return null;
+//  hk.calcTotE(atomZ);
+  Energy res = hk.calcH(atomZ);
+  return res;
 }
 public int getNumElec() {
   return 0;
 }
 public FuncVec calcDensity(Conf fc, Conf fc2) {
   return null;
+}
+public double calcOverlap(Conf fc, Conf fc2) {
+  Shell sa = ((ShPair)fc).a;
+  Shell sb = ((ShPair)fc).b;
+  Shell sa2 = ((ShPair)fc2).a;
+  Shell sb2 = ((ShPair)fc2).b;
+  WFQuadrLcr w = si.getQaudrLcr();
+  int K = 0;
+  hk = new HkMm(w, sa.getWf(), sb.getWf(), sa2.getWf(), sb2.getWf(), K);
+//  hk.calcTotE(atomZ);
+  double res = hk.calcOv();
+  return res;
 }
 }
