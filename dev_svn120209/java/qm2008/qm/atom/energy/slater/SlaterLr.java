@@ -15,7 +15,7 @@ import javax.utilx.log.Log;
 // and r = exp(x);   dr = r dx
 //                        2              2
 //                     1 d        (L+1/2)
-// r^2 * Hamiltonian = - - --   + -------- + r*Z = r^2 * H(X)
+// r^2 * Hamiltonian = - - --   + -------- + r*atomZ = r^2 * H(X)
 //                     2 dx^2        2
 //  oo  2
 //  |  r dx Fn'(exp(x)) H Fn(exp(x)) = delta_n'n
@@ -34,7 +34,7 @@ public SlaterLr(WFQuadrLr w) {
 /**
  * THIS FUNCTION IS BASIS DEPENDANT !!!!!!!!!!!
  * //                 1 d^2    (L+1/2)^2
- * // Hamiltonian = - - --   + -------- + r*Z = H(X)
+ * // Hamiltonian = - - --   + -------- + r*atomZ = H(X)
  * //                 2 dx^2      2
  * //  oo
  * //  |  dx Fn'(exp(x)) H Fn(exp(x)) = delta_n'n
@@ -89,7 +89,7 @@ public double calcOneZPot(double z, Shell sh, Shell sh2) {
     throw new IllegalArgumentException(log.error("xToR == null"));
   }
   //  oo
-  //  |  r**2 dx Fn'(r) Z * 1/r Fn(r) =
+  //  |  r**2 dx Fn'(r) atomZ * 1/r Fn(r) =
   // -oo
   double int_z = calc(sh.getWf(), sh2.getWf(), xToR);
   double res = z * int_z;

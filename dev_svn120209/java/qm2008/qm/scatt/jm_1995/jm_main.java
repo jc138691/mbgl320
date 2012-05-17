@@ -38,7 +38,7 @@ public class jm_main {
 //       >   Egrnd, i_test, i_printout, i_stop
 //  Ci
 //  Ci    Inputs:
-//  Ci    Zatom - Z of the target
+//  Ci    Zatom - atomZ of the target
 //  Ci    Zion  - used to create a better start for
 //  Ci            the ground states orbitals of the target
 //  Ci    nr - # of points in r-grid
@@ -295,7 +295,7 @@ c
      >   Egrnd, i_test, i_printout, i_stop
 Ci
 Ci    Inputs:
-Ci    Zatom - Z of the target
+Ci    Zatom - atomZ of the target
 Ci    Zion  - used to create a better start for
 Ci            the ground states orbitals of the target
 Ci    nr - # of points in r-grid

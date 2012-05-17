@@ -19,7 +19,7 @@ public class CoulombReg extends FlowTest {
   public CoulombReg() {
     super(CoulombReg.class);
   }
-  // Z=1 for e-Hydrogen
+  // atomZ=1 for e-Hydrogen
   public static Cmplx calc(int L, double Z, double k, double r) {
     return calc(L, Z, k, r, Calc.EPS_18);
   }
@@ -74,10 +74,10 @@ public class CoulombReg extends FlowTest {
     answ = new Cmplx(0.41924);   //rho=4, eta=0.5
     assertEquals(0, res.minus(answ).abs(), eps);
 
-//    eta = 10; // (-Z/k)
-//    Z = -1;
-//    k = -Z / eta;
-//    res = CoulombReg.calc(L, Z, k, r);
+//    eta = 10; // (-atomZ/k)
+//    atomZ = -1;
+//    k = -atomZ / eta;
+//    res = CoulombReg.calc(L, atomZ, k, r);
 //    answ = new Cmplx(0.41924);   //rho=4, eta=0.5
 //    assertEquals(0, res.minus(answ).abs(), eps);
   }

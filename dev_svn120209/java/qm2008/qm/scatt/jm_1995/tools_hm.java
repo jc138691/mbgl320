@@ -11,7 +11,7 @@ public class tools_hm {
 //  C             -----------------------------------
 //  C
 //  C=====By D.A.Konovalov======================MADE IN AUSTRALIA===============
-//        subroutine ipmhf (Z, Z0, v, grid, nr, expcut)
+//        subroutine ipmhf (atomZ, Z0, v, grid, nr, expcut)
 //        integer i, jump, nr, NZ, natom, n
 //        parameter (natom = 19)
 //        implicit real*8 (a-h, o-z)
@@ -19,35 +19,35 @@ public class tools_hm {
 //  c
 //  c INPUT:
 //  c -----
-//  c  Z     - charge of the atom
+//  c  atomZ     - charge of the atom
 //  c  grid  - r-grid, nr - number of points in this grid
 //  C  expcut- the smollest value of exp-functions in "IPMDHF.F"
 //  C  Z0    - Coulomb potential removed from the potential V.
-//  C          V(r) = Vatom(r)  -  Z0 / r     multFirst-ed by r if  Z.NE.Z0
+//  C          V(r) = Vatom(r)  -  Z0 / r     multFirst-ed by r if  atomZ.NE.Z0
 //  c
 //  c OUTPUT:
 //  c ------
-//  c  V - Array of the values of the potential multiplyed by r  if  Z.NE.Z0
+//  c  V - Array of the values of the potential multiplyed by r  if  atomZ.NE.Z0
 //  c
 //        dimension dn(natom)
 //        data (dn(n), n = 1, natom) /1.0d-30, 0.215d0, 0.563d0, 0.858d0
 //       >,0.979d0, 0.880d0, 0.776d0, 0.708d0, 0.575d0, 0.500d0, 0.561d0
 //       >,0.621d0, 0.729d0, 0.817d0, 0.868d0, 0.885d0, 0.881d0, 0.862d0
 //       >,1.006d0/
-//        NZ = nint(Z)
+//        NZ = nint(atomZ)
 //  c
 //  c     Do same check
 //  c
 //        if ((NZ .lt. 1) .or. (NZ .gt. Natom)) then
-//           print*, 'This Z is not available yet,  Z=', Z
-//           print*, ' Max Z=', Natom
+//           print*, 'This atomZ is not available yet,  atomZ=', atomZ
+//           print*, ' Max atomZ=', Natom
 //           stop    'Stop in "ipmdhf.f"'
 //        end if
 //  c
 //  c     Some constants
 //  c
 //        dd = dn(NZ)
-//        hh = dd * (Z - 1d0)**0.4d0
+//        hh = dd * (atomZ - 1d0)**0.4d0
 //  c
 //  c     Loop by r-grid
 //  c
@@ -62,14 +62,14 @@ public class tools_hm {
 //                 jump = i
 //              else
 //                 teta = dexpr / (hh * (1d0 - dexpr) + dexpr)
-//                 v(i) = - ((Z - 1d0)* teta + 1d0) + Z0
+//                 v(i) = - ((atomZ - 1d0)* teta + 1d0) + Z0
 //              end if
 //           end if
 //        end do
 //  c
-//  c     Put back 1/r if Z.EQ.Z0
+//  c     Put back 1/r if atomZ.EQ.Z0
 //  c
-//        if (nint(Z) .eq. nint(Z0))  then
+//        if (nint(atomZ) .eq. nint(Z0))  then
 //           do i = 1, nr
 //              v(i) = v(i) / grid(i)
 //           end do
@@ -281,14 +281,14 @@ public class tools_hm {
 //       >   i1, i2, p1, p2, l1, l2, K, nr, rn, h, Zatom,
 //  c     Out
 //       >   y)
-//        IMPLICIT REAL*8(A-H,O-Z)
+//        IMPLICIT REAL*8(A-H,O-atomZ)
 //        real*8 p1(nr), p2(nr), rn(nr), y(nr)
 //        integer L1, L2, nr, k, m, m1, m2, mm, i1, i2
 //  c
 //        EH = exp(-H)
 //        h3 = h / 3d0
 //  c
-//  C     Calculates and stores Z^k (p1, p2; r) in the array Y(r)
+//  C     Calculates and stores atomZ^k (p1, p2; r) in the array Y(r)
 //  c
 //        DEN = dble(L1 + L2 + 3 + K)
 //        FACT = (1d0 / dble(L1 + 1) + 1d0 / dble(L2 + 1)) / (DEN + 1d0)
@@ -635,7 +635,7 @@ C            -Z0/r is removed from this potential!
 C             -----------------------------------
 C
 C=====By D.A.Konovalov======================MADE IN AUSTRALIA===============
-      subroutine ipmhf (Z, Z0, v, grid, nr, expcut)
+      subroutine ipmhf (atomZ, Z0, v, grid, nr, expcut)
       integer i, jump, nr, NZ, natom, n
       parameter (natom = 19)
       implicit real*8 (a-h, o-z)
@@ -643,35 +643,35 @@ C=====By D.A.Konovalov======================MADE IN AUSTRALIA===============
 c
 c INPUT:
 c -----
-c  Z     - charge of the atom
+c  atomZ     - charge of the atom
 c  grid  - r-grid, nr - number of points in this grid
 C  expcut- the smollest value of exp-functions in "IPMDHF.F"
 C  Z0    - Coulomb potential removed from the potential V.
-C          V(r) = Vatom(r)  -  Z0 / r     multFirst-ed by r if  Z.NE.Z0
+C          V(r) = Vatom(r)  -  Z0 / r     multFirst-ed by r if  atomZ.NE.Z0
 c
 c OUTPUT:
 c ------
-c  V - Array of the values of the potential multiplyed by r  if  Z.NE.Z0
+c  V - Array of the values of the potential multiplyed by r  if  atomZ.NE.Z0
 c
       dimension dn(natom)
       data (dn(n), n = 1, natom) /1.0d-30, 0.215d0, 0.563d0, 0.858d0
      >,0.979d0, 0.880d0, 0.776d0, 0.708d0, 0.575d0, 0.500d0, 0.561d0
      >,0.621d0, 0.729d0, 0.817d0, 0.868d0, 0.885d0, 0.881d0, 0.862d0
      >,1.006d0/
-      NZ = nint(Z)
+      NZ = nint(atomZ)
 c
 c     Do same check
 c
       if ((NZ .lt. 1) .or. (NZ .gt. Natom)) then
-         print*, 'This Z is not available yet,  Z=', Z
-         print*, ' Max Z=', Natom
+         print*, 'This atomZ is not available yet,  atomZ=', atomZ
+         print*, ' Max atomZ=', Natom
          stop    'Stop in "ipmdhf.f"'
       end if
 c
 c     Some constants
 c
       dd = dn(NZ)
-      hh = dd * (Z - 1d0)**0.4d0
+      hh = dd * (atomZ - 1d0)**0.4d0
 c
 c     Loop by r-grid
 c
@@ -686,14 +686,14 @@ c
                jump = i
             else
                teta = dexpr / (hh * (1d0 - dexpr) + dexpr)
-               v(i) = - ((Z - 1d0)* teta + 1d0) + Z0
+               v(i) = - ((atomZ - 1d0)* teta + 1d0) + Z0
             end if
          end if
       end do
 c
-c     Put back 1/r if Z.EQ.Z0
+c     Put back 1/r if atomZ.EQ.Z0
 c
-      if (nint(Z) .eq. nint(Z0))  then
+      if (nint(atomZ) .eq. nint(Z0))  then
          do i = 1, nr
             v(i) = v(i) / grid(i)
          end do
@@ -905,14 +905,14 @@ c     In
      >   i1, i2, p1, p2, l1, l2, K, nr, rn, h, Zatom,
 c     Out
      >   y)
-      IMPLICIT REAL*8(A-H,O-Z)
+      IMPLICIT REAL*8(A-H,O-atomZ)
       real*8 p1(nr), p2(nr), rn(nr), y(nr)
       integer L1, L2, nr, k, m, m1, m2, mm, i1, i2
 c
       EH = exp(-H)
       h3 = h / 3d0
 c
-C     Calculates and stores Z^k (p1, p2; r) in the array Y(r)
+C     Calculates and stores atomZ^k (p1, p2; r) in the array Y(r)
 c
       DEN = dble(L1 + L2 + 3 + K)
       FACT = (1d0 / dble(L1 + 1) + 1d0 / dble(L2 + 1)) / (DEN + 1d0)

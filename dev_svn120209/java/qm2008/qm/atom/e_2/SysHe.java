@@ -8,6 +8,6 @@ import atom.energy.slater.SlaterLcr;
  */
 public class SysHe extends SysE2 {
   public SysHe(SlaterLcr si) {
-    super(-AtomHe.Z, si);
+    super(AtomHe.Z, si);
   }
 }

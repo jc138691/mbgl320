@@ -18,15 +18,15 @@ import static math.Mathx.dlt;
 // this uses equations from Fano 1965 PhysRev 140, pA65
 abstract public class AtomFano1965 implements ISysH {
 public static Log log = Log.getLog(AtomFano1965.class);
-final public double Z;
+final public double atomZ;
 final protected Slater si;
-public AtomFano1965(double z, Slater si) {
-  Z = z;
+public AtomFano1965(double az, Slater si) {
+  atomZ = az;
   this.si = si;
 }
-public double getZ() {
-return Z;
-}
+//public double getAtomZ() {
+//  return atomZ;
+//}
 public FuncVec calcDensity(Conf fc, Conf fc2) {
   return null;
 }
@@ -182,7 +182,7 @@ public Energy calcOneH(Shell sh, Shell sh2) {
   Energy res = new Energy();
   if (sh.getWfL() != sh2.getWfL())
     return res;
-  res.p1 = si.calcOneZPot(Z, sh, sh2);
+  res.p1 = si.calcOneZPot(-atomZ, sh, sh2);
   res.pt = res.p1;
   res.kin = si.calcOneKin(sh, sh2);
   return res;
@@ -195,7 +195,7 @@ public FuncVec calcOneDensity(Shell sh, Shell sh2) {
 public double calcOnePotZ(Shell sh, Shell sh2) {
   if (sh.getWfL() != sh2.getWfL())
     return 0.;
-  return si.calcOneZPot(Z, sh, sh2);
+  return si.calcOneZPot(-atomZ, sh, sh2);
 }
 public double calcOverlap(Shell sh, Shell sh2) {
   if (sh.getWfL() != sh2.getWfL())

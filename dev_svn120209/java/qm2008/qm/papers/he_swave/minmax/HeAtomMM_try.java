@@ -71,7 +71,7 @@ public void testHyMm() throws Exception {  log.setDbg();
 
   // HYDROGEN
   SysE2 sysE2 = new SysHyE2(slater);
-  SysE2OldOk oldE2 = new SysE2OldOk(-AtomHy.Z, slater);
+  SysE2OldOk oldE2 = new SysE2OldOk(AtomHy.Z, slater);
   SysHyMmE2 mmE2 = new SysHyMmE2(slater);
 
   Ls sysLs = new Ls(0, Spin.SINGLET);  // t - for target
@@ -182,24 +182,8 @@ public void testHeMm() throws Exception {  log.setDbg();
   Ls sysLs = new Ls(0, Spin.SINGLET);  // t - for target
   ConfArr confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthonN, orthonN);
   log.dbg("confs=", confs);
-  ConfHMtrx sysH = new ConfHMtrx(confs, sysE2); log.dbg("sysH=\n", new MtrxDbgView(sysH));
-  ConfHMtrx oldH = new ConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
-//  ConfHOvMtrx mmH = new ConfHOvMtrx(confs, mmE2); log.dbg("mmH=\n", new MtrxDbgView(mmH));
 
-  Vec sysEngs = sysH.getEigVal();
-  log.dbg("sysEngs=\n", new VecDbgView(sysEngs));
-
-  Vec oldEngs = oldH.getEigVal();
-  log.dbg("oldEngs=\n", new VecDbgView(oldEngs));
-
-  assertEquals(0, Math.abs(sysEngs.getFirst() - oldEngs.getFirst()), 1e-14);
-//  assertFloorRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, oldEngs.get(0), 2e-4);
-//  assertFloorRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, oldEngs.get(1), 3e-5);
-
-  Vec mmEngs = mmH.getEigVal();
-  log.dbg("mmEngs=\n", new VecDbgView(mmEngs));
-  log.dbg("HeSWaveAtom.E_1S=\n" + new VecDbgView(HeSWaveAtom.E_1S));
-
+  // ================
   double norm, kin, pot1, pot2, tot;
   FuncVec a = orthonN.get(0);
   FuncVec b = orthonN.get(1);
@@ -257,6 +241,24 @@ public void testHeMm() throws Exception {  log.setDbg();
   assertEquals(0, engE2.kin - kin, 2e-12);  // GOOD TEST!!!
   assertEquals(0, engE2.pt+engE2.kin - tot, 1e-12);  // GOOD TEST!!!
 
+  //
+  ConfHMtrx sysH = new ConfHMtrx(confs, sysE2); log.dbg("sysH=\n", new MtrxDbgView(sysH));
+  ConfHMtrx oldH = new ConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
+  ConfHOvMtrx mmH = new ConfHOvMtrx(confs, mmE2); log.dbg("mmH=\n", new MtrxDbgView(mmH));
+
+  Vec sysEngs = sysH.getEigVal();
+  log.dbg("sysEngs=\n", new VecDbgView(sysEngs));
+
+  Vec oldEngs = oldH.getEigVal();
+  log.dbg("oldEngs=\n", new VecDbgView(oldEngs));
+
+  assertEquals(0, Math.abs(sysEngs.getFirst() - oldEngs.getFirst()), 1e-14);
+//  assertFloorRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, oldEngs.get(0), 2e-4);
+//  assertFloorRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, oldEngs.get(1), 3e-5);
+
+  Vec mmEngs = mmH.getEigVal();
+  log.dbg("mmEngs=\n", new VecDbgView(mmEngs));
+  log.dbg("HeSWaveAtom.E_1S=\n" + new VecDbgView(HeSWaveAtom.E_1S));
 
 }
 }

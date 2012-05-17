@@ -19,24 +19,24 @@ public class JmTools {
 
 /*
 c-------------------------------------------------------------------------
-      subroutine sc_n (s_n, c_n, n, Z, L, q, alp, eps, fl, nfl)
+      subroutine sc_n (s_n, c_n, n, atomZ, L, q, alp, eps, fl, nfl)
 c
 c     C_n, S_n -coefficients, J.Phys.B9, 1491 (1976)     (I.2.13)
 c
       complex*16 onei, Wgamma, gm, c1, c2, c3, c4, c5, q, t, a, b,
      >   x, y, th, th1, th2
       integer n, L, L2, nfl
-      real*8 alp, Z, eps, c_n, s_n, fl(0:nfl), pi
+      real*8 alp, atomZ, eps, c_n, s_n, fl(0:nfl), pi
 c
 c     z.ne.0 case needs debugging,
-      if(abs(z) .gt. eps) stop ' Z=0 isnot implemented in sc_n(tools.jm)'
+      if(abs(z) .gt. eps) stop ' atomZ=0 isnot implemented in sc_n(tools.jm)'
 c
       L2 = 2 * (L + 1)
       onei = dcmplx(0d0, 1d0)
       pi = dacos(-1d0)
       a = q / alp
       b = a**2
-      t = Z / q
+      t = atomZ / q
 c
       y = b + 0.25d0
       if (abs(y) .gt. eps) then
@@ -121,17 +121,17 @@ public static Cmplx sc_n(int n, int L, Cmplx q, double lambda, double eps) { log
   return c5;//  return
 }//  end
 
-//  subroutine sc_n (s_n, c_n, n, Z, L, q, alp, eps, fl, nfl)
+//  subroutine sc_n (s_n, c_n, n, atomZ, L, q, alp, eps, fl, nfl)
 //c     C_n, S_n -coefficients, J.Phys.B9, 1491 (1976)     (I.2.13)
 //  complex*16 onei, Wgamma, gm, c1, c2, c3, c4, c5, q, t, a, b,
 // >   x, y, th, th1, th2
 //  integer n, L, L2, nfl
-//  real*8 alp, Z, eps, c_n, s_n, fl(0:nfl), pi
+//  real*8 alp, atomZ, eps, c_n, s_n, fl(0:nfl), pi
   public static Cmplx sc_n(int n, int L, Cmplx q, double lambda, int jmZ, double eps) { log.dbg("calc(n=", n);
     if (jmZ == 0) {
       return sc_n(n, L, q, lambda, eps);
     }
-    Cmplx t = new Cmplx(jmZ).div(q);     log.dbg("t=Z/q=", t); //t = Z / q
+    Cmplx t = new Cmplx(jmZ).div(q);     log.dbg("t=atomZ/q=", t); //t = atomZ / q
     Cmplx mit = (t.times(Cmplx.i)).times(-1); // -i*t
     Cmplx gm, c1, c2, c3, c4, c5; //  complex*16 onei, Wgamma, gm, c1, c2, c3, c4, c5, q, t, a, b,
     Cmplx th, th1, th2; // >   x, y, th, th1, th2
@@ -189,10 +189,10 @@ public static Cmplx sc_n(int n, int L, Cmplx q, double lambda, double eps) { log
 
 /*
 c-----------------------------------------------------------------------------
-     subroutine jmtrx (r1, r2, n, m, Z, L, q, alp, fl, nfl)
+     subroutine jmtrx (r1, r2, n, m, atomZ, L, q, alp, fl, nfl)
 c     J-matrix, J.Phys.B9, 1491 (1976)
      integer n, m, L, nfl
-     real*8 alp, Z, ddl, r1, r2, fl(0:nfl)
+     real*8 alp, atomZ, ddl, r1, r2, fl(0:nfl)
      complex*16 q, a, b, c, y, yx
 c
      a = q / alp
@@ -204,7 +204,7 @@ c     where sin(theta) = a / (b + 0.25)
      yx = (b - 0.25d0) * alp * 0.5d0
 c
      c = dcmplx(dexp(fl(n + 2 * L + 1) - fl(n)), 0d0) * (
-    >   dcmplx(Z * ddl(n, m), 0d0) -
+    >   dcmplx(atomZ * ddl(n, m), 0d0) -
     >   (yx * dcmplx(2d0 * dble(n + L + 1) * ddl(n, m), 0d0) -
     >   y * dcmplx(dble(n) * ddl(m, n-1) + dble(n + 2 * L + 2)
     >   * ddl(m, n+1),0d0)))
@@ -213,10 +213,10 @@ c
      return
      end
 */
-//  subroutine jmtrx (r1, r2, n, m, Z, L, q, alp, fl, nfl)
+//  subroutine jmtrx (r1, r2, n, m, atomZ, L, q, alp, fl, nfl)
 //c     J-matrix, J.Phys.B9, 1491 (1976)
 //  integer n, m, L, nfl
-//  real*8 alp, Z, ddl, r1, r2, fl(0:nfl)
+//  real*8 alp, atomZ, ddl, r1, r2, fl(0:nfl)
 //  complex*16 q, a, b, c, y, yx
   public static Cmplx jmtrx(int n, int m, int L, Cmplx q, double lambda, int jmZ) {
     Cmplx a = q.div(lambda); // a = q / alp
@@ -228,7 +228,7 @@ c
     Cmplx yx = b.add(-0.25).times(lambda * 0.5); //yx = (b - 0.25d0) * alp * 0.5d0
 //c
     double d2 = Math.exp(fLog.calc(n + 2 * L + 1) - fLog.calc(n)); //c = dcmplx(dexp(fl(n + 2 * L + 1) - fl(n)), 0d0) * (
-    //   >   dcmplx(Z * ddl(n, m), 0d0) -
+    //   >   dcmplx(atomZ * ddl(n, m), 0d0) -
     double d3 = -2. * (n + L + 1) * Mathx.dlt(n, m);//>   (yx * dcmplx(2d0 * dble(n + L + 1) * ddl(n, m), 0d0) -
     double d4 = (double)n * Mathx.dlt(m, n-1) + (n + 2 * L + 2) * Mathx.dlt(m, n+1);//   >   y * dcmplx(dble(n) * ddl(m, n-1) + dble(n + 2 * L + 2)
     //   >   * ddl(m, n+1),0d0)))

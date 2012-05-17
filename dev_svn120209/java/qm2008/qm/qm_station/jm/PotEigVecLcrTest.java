@@ -42,9 +42,9 @@ public class PotEigVecLcrTest extends FlowTest {
 //    TaskProgressMonitor monitor = ProjectProgressMonitor.getInstance();
     int L = 0;
 
-    log.dbg("testing diagonalisation of H=K-Z/r; Z=" + Z);
+    log.dbg("testing diagonalisation of H=K-atomZ/r; atomZ=" + Z);
     Vec r = funcArr.getR();
-    FuncVec pot = new FuncVec(r, new FuncPowInt(-Z, -1));      log.dbg("-Z/r=", new VecDbgView(pot));
+    FuncVec pot = new FuncVec(r, new FuncPowInt(-Z, -1));      log.dbg("-atomZ/r=", new VecDbgView(pot));
     PotHMtrx H = new PotHMtrxLcr(L, funcArr, pot);
     Vec eigEng = H.getEigVal();             log.dbg("eigVal=", new VecDbgView(eigEng));
     if (relErr) {

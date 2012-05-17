@@ -18,7 +18,6 @@ public AtomE2(double z, SlaterLcr si) {
   super(z, si);
 }
 
-@Override
 final public int getNumElec() {
   return TWO_ELEC;
 }
@@ -68,7 +67,7 @@ final public int getNumElec() {
 //  return oneV + pt;
 //}
 //
-//// < bound(x)  free(y)  |  Z/y |  bound(x)  bound(y)  >
+//// < bound(x)  free(y)  |  atomZ/y |  bound(x)  bound(y)  >
 //// NOTE: 1/y   - second variable
 //// baba --- bound-any-bound-any
 //// "bound" means that < bX | bX2 > = delta_{bX.id, bX2.id}
@@ -82,7 +81,7 @@ final public int getNumElec() {
 //  if (bX.getWfL() != bX2.getWfL() || aY.getWfL() != aY2.getWfL())
 //    return res;
 //  if (bX.sameId(bX2))  // <ab||ab'>    // NOTE: THIS IS WHERE the same basis is used
-//    res = si.calcOneZPot(Z, aY, aY2);
+//    res = si.calcOneZPot(atomZ, aY, aY2);
 //  return res;
 //}
 }

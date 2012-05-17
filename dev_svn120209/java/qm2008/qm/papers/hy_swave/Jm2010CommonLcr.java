@@ -102,7 +102,6 @@ protected void potScattTestOk() {
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
     if (!new CoulombWFFactory().ok()) return;
-    if (!new SlaterWFFactory(quadrLcr).ok()) return;
     if (!new CmplxGamma().ok()) return;
     if (!new Cmplx1F1().ok()) return;
     if (!new Cmplx2F1().ok()) return;
@@ -121,6 +120,7 @@ protected void potScattTestOk() {
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
 
+  if (!new SlaterWFFactory(quadrLcr).ok()) return;
   if (!new YkLcrTest2(quadrLcr).ok()) return;
 
   basisOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", basisOptN);
@@ -156,12 +156,12 @@ protected void hydrScattTestOk(int trgtZ) {
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
     if (!new LgrrOrthLcrTest(orthonNt).ok()) return;
-//      if (!new PotEigVecLcrTest(AtomHy.Z, orthonNt).ok()) return;
+//      if (!new PotEigVecLcrTest(AtomHy.atomZ, orthonNt).ok()) return;
     if (!new PotEigVecLcrTest(trgtZ, orthonNt).ok()) return;
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
 
-//    potFunc = new FuncPowInt(-AtomHy.Z, -1);  // f(r)=-1./r
+//    potFunc = new FuncPowInt(-AtomHy.atomZ, -1);  // f(r)=-1./r
   potFunc = new FuncPowInt(-trgtZ, -1);  // f(r)=-1./r
   pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 

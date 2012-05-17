@@ -341,7 +341,7 @@ protected double calcHE(Conf leftConf, Conf conf) {
   Energy res = sysE2.calcH(leftConf, conf);   //log.dbg("calcHE res=", res);
 
 //  if (DEBUG_JM1) {
-//    SysE2OldOk sys = new SysE2OldOk(sysE2.getZ(), sysE2.getSlaterLcr());
+//    SysE2OldOk sys = new SysE2OldOk(sysE2.getAtomZ(), sysE2.getSlaterLcr());
 //    double x = sys.calcOverlap(leftConf, conf);
 //    double sysTotE = mthd.getSysTotE();
 //    double he = res.kin + res.pt - sysTotE * x;

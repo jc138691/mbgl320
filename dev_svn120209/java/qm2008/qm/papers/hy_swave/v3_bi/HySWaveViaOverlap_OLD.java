@@ -57,7 +57,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
       , biorthN.size(), biorthN.getLast());   log.dbg("chiArr=", chiArr);
 
     SlaterLcr slater = new SlaterLcr(quadrLcr);
-    SysE2OldOk sys = new SysE2OldOk(-AtomHy.Z, slater);// NOTE -1 for Hydrogen
+    SysE2OldOk sys = new SysE2OldOk(AtomHy.Z, slater);// NOTE -1 for Hydrogen
     ConfOvMtrx chiOv = new ConfOvMtrx(sConfArr, sys, chiArr);     log.dbg("chiOv=\n", new MtrxDbgView(chiOv));
     ConfHMtrx sysH = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
 

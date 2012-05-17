@@ -12,9 +12,6 @@ private EigenSymm eig;
 public HMtrx(int m, int n) {
   super(m, n);
 }
-public HMtrx() {
-  super(0, 0);
-}
 public HMtrx(Mtrx mh) {
   super(mh.getArray());
 }
