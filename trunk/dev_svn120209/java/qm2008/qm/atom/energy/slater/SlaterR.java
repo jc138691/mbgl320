@@ -22,7 +22,7 @@ public class SlaterR extends Slater {
   }
 //   * THIS FUNCTION IS BASIS DEPENDANT !!!!!!!!!!!
 //   * // After r*Rn(r) = Un(r)
-//   * //                 1 d^2    L(L+1)   Z
+//   * //                 1 d^2    L(L+1)   atomZ
 //   * // Hamiltonian = - - --   + ------ + - = H(U)
 //   * //                 2 dr^2    2r^2    r
 //   * // oo
@@ -81,7 +81,7 @@ public class SlaterR extends Slater {
   }
   public double calcZPot(double z, Vec wf, Vec wf2) {
     //  oo                                    oo
-    //  | r^2 dr Rn(r) Rn'(r) Z * 1/r Fn(r) = I dr Rn(r) Rn'(r) Z * r;
+    //  | r^2 dr Rn(r) Rn'(r) atomZ * 1/r Fn(r) = I dr Rn(r) Rn'(r) atomZ * r;
     //  o                                     o
     double int_z = calc(wf, wf2, getDivR());
     double res = z * int_z;

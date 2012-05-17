@@ -8,6 +8,6 @@ import atom.shell.Shell;
  */
 public class SysHeMm extends SysMmE2 {
 public SysHeMm(SlaterLcr si) {
-  super(-AtomHe.Z, si);
+  super(AtomHe.Z, si);
 }
 }

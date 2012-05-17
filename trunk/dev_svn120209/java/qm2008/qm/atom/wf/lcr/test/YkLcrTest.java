@@ -18,7 +18,7 @@ public class YkLcrTest extends FlowTest {
   public YkLcrTest() {
     super(YkLcrTest.class);  // NOTE!!! this is needed for FlowTest
   }
-  public void testZ_1() throws Exception { // Z = 1
+  public void testZ_1() throws Exception { // atomZ = 1
     log.setDbg();
     double FIRST = -4;
     int NUM_STEPS = 220;
@@ -48,13 +48,13 @@ public class YkLcrTest extends FlowTest {
 //    log.info("oldZ=", new VecDbgView(oldZ));
 //    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(newZ, oldZ)), 1e-10);  // with new calcZk() via
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Z_1_1s_test.csv");
-//    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Z), ".", "wf", "Z_1_1s.csv");
+//    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(atomZ), ".", "wf", "Z_1_1s.csv");
 
     log.info("f_1s=", new VecDbgView(f));
     log.info("r=", new VecDbgView(r));
     log.info("x=", new VecDbgView(xToR.getX()));
     log.info("T=", new VecDbgView(T));
-    log.info("Z=", new VecDbgView(Z));
+    log.info("atomZ=", new VecDbgView(Z));
     assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Z)), 6e-9);  // with calcZk_OLD
 
     int dbg = 1;
@@ -79,7 +79,7 @@ public class YkLcrTest extends FlowTest {
     FuncVec Z = new YkLcr(quadr, f, f, 0).calcZk();
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(r), ".", "wf", "logCR.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Z_0_1s_test.csv");
-//    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Z), ".", "wf", "Z_0_1s.csv");
+//    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(atomZ), ".", "wf", "Z_0_1s.csv");
     assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Z)), 6e-9);
   }
   public void testYkLogCR() {

@@ -164,7 +164,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
 protected ConfHMtrx makeSysBasisN(SlaterLcr slater) {
   log.info("-->makeSysBasisN(SlaterLcr slater)");
   SYS_LS = new Ls(0, Spin.ELECTRON);     // s - for system
-  SysE3 sysE3 = new SysE3(-AtomHe.Z, slater);    // NOTE!!! Helium (AtomHe.Z), not Li (AtomLi.Z)
+  SysE3 sysE3 = new SysE3(AtomHe.Z, slater);    // NOTE!!! Helium (AtomHe.atomZ), not Li (AtomLi.atomZ)
   AtomShModelE3 modelE3 = new AtomShModelE3(Nc, Nt, N, SYS_LS);
   ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, trgtBasisN);    log.dbg("sConfArr=", sConfArr);
   ConfHMtrx res = new ConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
@@ -173,7 +173,7 @@ protected ConfHMtrx makeSysBasisN(SlaterLcr slater) {
 }
 //  private ConfHMtrx makeSysH_OLD(SlaterLcr slater) {
 //    Ls sLs = new Ls(0, Spin.ELECTRON);     // s - for system
-//    SysE3 sysE3 = new SysE3(-AtomHe.Z, slater);    // NOTE!!! Helium (AtomHe.Z), not Li (AtomLi.Z)
+//    SysE3 sysE3 = new SysE3(-AtomHe.atomZ, slater);    // NOTE!!! Helium (AtomHe.atomZ), not Li (AtomLi.atomZ)
 //    AtomShModelE3 modelE3 = new AtomShModelE3(Nt, Nt, N, sLs);
 //    ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, orthonNt);    log.dbg("sConfArr=", sConfArr);
 //    ConfHMtrx res = new ConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
@@ -304,9 +304,9 @@ protected void jmHeTestOk() {
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
 
-  potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-Z/r
+  potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-atomZ/r
   pot = new FuncVec(rVec, potFunc);
-  log.dbg("-Z/r=", new VecDbgView(pot));
+  log.dbg("-atomZ/r=", new VecDbgView(pot));
 
   if (!new ConfArrFactoryE3().ok()) return;
 }

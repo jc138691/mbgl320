@@ -216,11 +216,11 @@ protected void calcK(int chNum) {
 
   Mtrx mWX = mW.times(mX);           log.dbg("WX=\n", new MtrxDbgView(mWX));
   Mtrx mWXt = mWX.transpose();       log.dbg("WXt=\n", new MtrxDbgView(mWXt));
-  Vec vZ = mWXt.times(vC);           log.dbg("Z=WXt * vC=", new VecDbgView(vZ));
+  Vec vZ = mWXt.times(vC);           log.dbg("atomZ=WXt * vC=", new VecDbgView(vZ));
 
   Vec vA = vS.copy();
-  vA.addMultSafe(-1., vZ);           log.dbg("A=S-Z=", new VecDbgView(vA));
-  vA.mult(oneBeta);                 log.dbg("A=(S-Z)/beta=", new VecDbgView(vA));
+  vA.addMultSafe(-1., vZ);           log.dbg("A=S-atomZ=", new VecDbgView(vA));
+  vA.mult(oneBeta);                 log.dbg("A=(S-atomZ)/beta=", new VecDbgView(vA));
 
   Mtrx mAB = MtrxFactory.makeFromTwoVecs(vB, vA);  log.dbg("AB=\n", new MtrxDbgView(mAB));
   mAB.plusEquals(mX);                              log.dbg("AB=AB+X\n", new MtrxDbgView(mAB));

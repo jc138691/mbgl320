@@ -10,7 +10,7 @@ public class CoulombRegAsymptFunc implements Func {
   private final double Z;
   private final double k;
 
-  // Z=1 for e-H
+  // atomZ=1 for e-H
   public CoulombRegAsymptFunc(int L, double Z, double k) {
     this.L = L;
     this.Z = Z;

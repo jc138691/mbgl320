@@ -44,7 +44,7 @@ public class Wign3j {
     345.3794070622669, 0., 349.9541180407702, 0., 354.5390855194408, 0.,
     359.1342053695754, 0., 363.7393755555635, 0., 368.3544960724047};
   public static double calc(float A1, float B1, float C1, float X1, float Y1, float Z1) {//FUNCTION calcConfigEnergy(A1,B1,C1,X1,Y1,Z1)
-    //IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+    //IMPLICIT DOUBLE PRECISION (A-H,O-atomZ)
     //LOGICAL LCG,LJN,LRC
     //LCG=.FALSE.
     return calc(false, A1, B1, C1, X1, Y1, Z1);
@@ -155,7 +155,7 @@ public class Wign3j {
     //            C=C1
     //            X=X1
     //            Y=Y1
-    //            Z=Z1
+    //            atomZ=Z1
     //            GO TO 9
     //      #if defined(CERNLIB_DOUBLE)
     //            ENTRY DRACAW(A1,B1,C1,X1,Y1,Z1)
@@ -179,7 +179,7 @@ public class Wign3j {
     //            C=Y1
     //            X=X1
     //            Y=C1
-    //            Z=Z1
+    //            atomZ=Z1
     double H = 0;//          9 H=0
     //            IA=NINT(2*A)
     //            IB=NINT(2*B)
@@ -188,7 +188,7 @@ public class Wign3j {
     if (IA < 0 || IB < 0 || IC < 0) return H;
     //            IX=NINT(2*X)
     //            IY=NINT(2*Y)
-    //            IZ=NINT(2*Z)
+    //            IZ=NINT(2*atomZ)
     //            IF(IX .LT. 0 .OR. IY .LT. 0 .OR. IZ .LT. 0) GO TO 99
     if (IX < 0 || IY < 0 || IZ < 0) return H;
     int IABC = IA + IB + IC;//            IABC=IA+IB+IC
@@ -276,7 +276,7 @@ public class Wign3j {
 #include "gen/pilot.h"
 #if defined(CERNLIB_DOUBLE)
       FUNCTION calcConfigEnergy(A1,B1,C1,X1,Y1,Z1)
-      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      IMPLICIT DOUBLE PRECISION (A-H,O-atomZ)
 #endif
 #if !defined(CERNLIB_DOUBLE)
       FUNCTION RWIG3J(A1,B1,C1,X1,Y1,Z1)
@@ -413,7 +413,7 @@ public class Wign3j {
       C=C1
       X=X1
       Y=Y1
-      Z=Z1
+      atomZ=Z1
       GO TO 9
 
 #if defined(CERNLIB_DOUBLE)
@@ -441,7 +441,7 @@ public class Wign3j {
       C=Y1
       X=X1
       Y=C1
-      Z=Z1
+      atomZ=Z1
 
     9 H=0
       IA=NINT(2*A)
@@ -450,7 +450,7 @@ public class Wign3j {
       IF(IA .LT. 0 .OR. IB .LT. 0 .OR. IC .LT. 0) GO TO 99
       IX=NINT(2*X)
       IY=NINT(2*Y)
-      IZ=NINT(2*Z)
+      IZ=NINT(2*atomZ)
       IF(IX .LT. 0 .OR. IY .LT. 0 .OR. IZ .LT. 0) GO TO 99
       IABC=IA+IB+IC
       IAYZ=IA+IY+IZ

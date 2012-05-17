@@ -16,7 +16,7 @@ public class CoulombRegAsympt extends FlowTest {
   public static Log log = Log.getLog(CoulombRegAsympt.class);
   public CoulombRegAsympt() { super(CoulombRegAsympt.class);  }
 
-  // Z=1 for e-Hydrogen
+  // atomZ=1 for e-Hydrogen
   public static double calcEng(int L, double Z, double E, double r) {
     if (E <= 0   ||  Calc.isZero(E)) {
       throw new IllegalArgumentException("E <= 0   ||  Calc.isZero(E); E=" + E);
@@ -24,7 +24,7 @@ public class CoulombRegAsympt extends FlowTest {
     double k = Scatt.calcMomFromE(E);
     return calc(L, Z, k, r);
   }
-  // Z=1 for e-Hydrogen
+  // atomZ=1 for e-Hydrogen
   public static double calc(int L, double Z, double k, double r) {
     if (k <= 0   ||  Calc.isZero(k)) {
       throw new IllegalArgumentException("k <= 0   ||  Calc.isZero(k); k=" + k);
@@ -85,7 +85,7 @@ public class CoulombRegAsympt extends FlowTest {
     k = 0.5;
     Z = -2.5;
     res = CoulombRegAsympt.calc(L, Z, k, r);
-    assertEquals(0, Math.abs(res + 0.229352), eps); //rho=20, eta=(-Z)/k=5
+    assertEquals(0, Math.abs(res + 0.229352), eps); //rho=20, eta=(-atomZ)/k=5
 
     r = 30;
     k = 1./3.;

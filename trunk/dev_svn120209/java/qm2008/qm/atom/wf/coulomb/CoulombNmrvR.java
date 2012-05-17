@@ -24,7 +24,7 @@ public class CoulombNmrvR extends FlowTest {
   public static Log log = Log.getLog(CoulombNmrvR.class);
   public CoulombNmrvR() {      super(CoulombNmrvR.class);   }
 
-  // Z = 1 for e-Hydrogen
+  // atomZ = 1 for e-Hydrogen
   public static FuncVec calc(int L, double Z, double eng, StepGrid rVec) {
     FuncVec V = makeV(L, Z, eng, rVec);
     FuncVec res = new NmrvAlgR(V).calc();
@@ -66,7 +66,7 @@ public class CoulombNmrvR extends FlowTest {
         break;
     }
     double corr = CoulombReg.calcEng(L, Z, E, r).getRe();
-//    double corr = CoulombRegAsympt.calcEng(L, Z, E, r);
+//    double corr = CoulombRegAsympt.calcEng(L, atomZ, E, r);
     return corr / f;
   }
 
@@ -106,7 +106,7 @@ public class CoulombNmrvR extends FlowTest {
 //      , "CoulombNmrvR.dat");
 
     double k = Scatt.calcMomFromE(E);
-//    FuncVec testF = new FuncVec(rVec, new CoulombRegAsymptFunc(L, Z, k));
+//    FuncVec testF = new FuncVec(rVec, new CoulombRegAsymptFunc(L, atomZ, k));
 //    FileX.writeToFile(testF.toTab(), HOME_DIR, "wf"
 //      , "CoulombRegAsymptFunc.dat");
 

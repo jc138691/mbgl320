@@ -26,24 +26,24 @@ c$$$      const_1 = (dcmplx(pi05, 0d0) * q)**(-0.5d0)
       end
 c
 c-------------------------------------------------------------------------
-      subroutine sc_n (s_n, c_n, n, Z, L, q, alp, eps, fl, nfl)
+      subroutine sc_n (s_n, c_n, n, atomZ, L, q, alp, eps, fl, nfl)
 c
 c     C_n, S_n -coefficients, J.Phys.B9, 1491 (1976)     (I.2.13)
 c
       complex*16 onei, Wgamma, gm, c1, c2, c3, c4, c5, q, t, a, b,
      >   x, y, th, th1, th2
       integer n, L, L2, nfl
-      real*8 alp, Z, eps, c_n, s_n, fl(0:nfl), pi
+      real*8 alp, atomZ, eps, c_n, s_n, fl(0:nfl), pi
 c
 c     z.ne.0 case needs debugging,
-      if(abs(z) .gt. eps) stop ' Z=0 isnot implemented in sc_n(tools.jm)'
+      if(abs(z) .gt. eps) stop ' atomZ=0 isnot implemented in sc_n(tools.jm)'
 c
       L2 = 2 * (L + 1)
       onei = dcmplx(0d0, 1d0)
       pi = dacos(-1d0)
       a = q / alp
       b = a**2
-      t = Z / q
+      t = atomZ / q
 c
       y = b + 0.25d0
       if (abs(y) .gt. eps) then
@@ -86,10 +86,10 @@ c
       end
 
 c-----------------------------------------------------------------------------
-      subroutine jmtrx (r1, r2, n, m, Z, L, q, alp, fl, nfl)
+      subroutine jmtrx (r1, r2, n, m, atomZ, L, q, alp, fl, nfl)
 c     J-matrix, J.Phys.B9, 1491 (1976)
       integer n, m, L, nfl
-      real*8 alp, Z, ddl, r1, r2, fl(0:nfl)
+      real*8 alp, atomZ, ddl, r1, r2, fl(0:nfl)
       complex*16 q, a, b, c, y, yx
 c
       a = q / alp
@@ -101,7 +101,7 @@ c     where sin(theta) = a / (b + 0.25)
       yx = (b - 0.25d0) * alp * 0.5d0
 c
       c = dcmplx(dexp(fl(n + 2 * L + 1) - fl(n)), 0d0) * (
-     >   dcmplx(Z * ddl(n, m), 0d0) -
+     >   dcmplx(atomZ * ddl(n, m), 0d0) -
      >   (yx * dcmplx(2d0 * dble(n + L + 1) * ddl(n, m), 0d0) -
      >   y * dcmplx(dble(n) * ddl(m, n-1) + dble(n + 2 * L + 2)
      >   * ddl(m, n+1),0d0)))

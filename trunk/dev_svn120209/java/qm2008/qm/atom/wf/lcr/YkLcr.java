@@ -22,12 +22,12 @@ import javax.utilx.log.Log;
 // Zk(0)=0; YkLogR(r->oo)->Zk(r)
 // dZ/dr=dZ/dx 1/y; since x=ln(y)
 //
-// dZ/dx = -ky/r Z + PPy^2
-// dY/dx = (k+1)y/r Y - (2k+1)y/r Z
+// dZ/dx = -ky/r atomZ + PPy^2
+// dY/dx = (k+1)y/r Y - (2k+1)y/r atomZ
 //
-// integrating factor: r^k    for Z
-// d(r^k Z)/dx = k r^(k-1) dr/dx Z + r^k dZ/dx;  since dr/dx=y
-// d(r^k Z)/dx = FF y^2 r^k
+// integrating factor: r^k    for atomZ
+// d(r^k atomZ)/dx = k r^(k-1) dr/dx atomZ + r^k dZ/dx;  since dr/dx=y
+// d(r^k atomZ)/dx = FF y^2 r^k
 //
 // Zim = (ri/rim)^k Zi + I^im_i FF y^2 * (r/rim)^k dx;  where ri=r_i, rim=r_(i+m)
 // the same as in Froese-Fischer but replacing
@@ -35,10 +35,10 @@ import javax.utilx.log.Log;
 //  r*exp(k(x-xim)) with  y^2*(r/rim)^k
 //
 // integrating factor: r^-(k+1)    for Y
-// d(r^-(k+1) Y)/dx = -(k+1) r^(k+1) y/r Z + r^-(k+1) dZ/dx;  since dr/dx=y
-// d(r^-(k+1) Y)/dx = -(2k+1)y/r r^-(k+1) Z
+// d(r^-(k+1) Y)/dx = -(k+1) r^(k+1) y/r atomZ + r^-(k+1) dZ/dx;  since dr/dx=y
+// d(r^-(k+1) Y)/dx = -(2k+1)y/r r^-(k+1) atomZ
 //
-// Yim = (rim/ri)^(k+1) Yi + I^im_i Z y/r (rim/r)^(k+1) dx;  where ri=r_i, rim=r_(i+m)
+// Yim = (rim/ri)^(k+1) Yi + I^im_i atomZ y/r (rim/r)^(k+1) dx;  where ri=r_i, rim=r_(i+m)
 // the same as in Froese-Fischer but replacing
 //  exp(-mh(k+1)) with (ri/rim)^(k+1);   and
 //  exp(-(k+1)*(x-xi)) with  y/r*(r/rim)^(k+1)
@@ -204,8 +204,8 @@ public FuncVec calcZk_OLD() {
   M++;//      F3 = RR(3)*P(3,I)*P(3,J)                                          AATK4118
   double F4 = CR2[M] * f.get(M) * f2.get(M);
   M++;//      F4 = RR(4)*P(4,I)*P(4,J)                                          AATK4119
-  //YK(1) = F1*(D1 + Z*R(1)*FACT)/DEN                                 AATK4120
-  //YK(2) = F2*(D1 + Z*R(2)*FACT)/DEN                                 AATK4121
+  //YK(1) = F1*(D1 + atomZ*R(1)*FACT)/DEN                                 AATK4120
+  //YK(2) = F2*(D1 + atomZ*R(2)*FACT)/DEN                                 AATK4121
   //YK(3) = YK(1)*A2 + H3*(F3 + D4*A*F2 + A2*F1)                      AATK4122
   YK[0] = 0;
   YK[1] = approxFirstZ(1, F2, F3);
@@ -304,7 +304,7 @@ public FuncVec calcYk_OLD(FuncVec res) {
   M--;//      F3 = YK(MX-1)                                                     AATK4074
   double F4 = yDivR[M] * res.get(M);
   M--;//      F4 = YK(MX-2)                                                     AATK4075
-  // NOTE!!! MX-1, MX-2, and MX-3; the last three must be set to Z, otherwise the algorithm does not work?!
+  // NOTE!!! MX-1, MX-2, and MX-3; the last three must be set to atomZ, otherwise the algorithm does not work?!
   for (M = MX - 3; M >= 2; M--) {//      DO 9 M = MX-2,2,-1                                                AATK4076
     double F5 = yDivR[M - 2] * res.get(M - 2);//      F5 = YK(M-1)                                                      AATK4077
     double rM1 = r[M - 1]; // NOTE K1 not K below
@@ -350,7 +350,7 @@ public FuncVec calcYk_OLD(FuncVec res) {
 *           X is called an exchange function, and                       AATK0020
 *           T includes contributions from off-diagonal energy parameter AATK0021
 *                                                                       AATK0022
-*     The program uses LOG(Z*R) as independent variable and             AATK0023
+*     The program uses LOG(atomZ*R) as independent variable and             AATK0023
 *                      P/SQRT(R) as dependent variable.                 AATK0024
 *     As a result all equations must be transformed as described in     AATK0025
 *     Sec. 6-2 and 6-4 of the book - ``The Hartree-Fock Method for      AATK0026
@@ -375,9 +375,9 @@ public FuncVec calcYk_OLD(FuncVec res) {
 *                                                                       AATK4052
 *                                                                       AATK4053
 SUBROUTINE YKF(I,J,K,REL)                                         AATK4054
-IMPLICIT DOUBLE PRECISION(A-H,O-Z)                                AATK4055
+IMPLICIT DOUBLE PRECISION(A-H,O-atomZ)                                AATK4055
 PARAMETER (NOD=220,NWFD=20)                                       AATK4056
-COMMON /PARAM/H,H1,H3,CH,EH,RHO,Z,TOL,NO,ND,NWF,NP,NCFG,IB,IC,ID  AATK4057
+COMMON /PARAM/H,H1,H3,CH,EH,RHO,atomZ,TOL,NO,ND,NWF,NP,NCFG,IB,IC,ID  AATK4057
 :   ,D0,D1,D2,D3,D4,D5,D6,D8,D10,D12,D16,D30,FINE,NSCF,NCLOSD      AATK4058
 COMMON /RADIAL/R(NOD),RR(NOD),R2(NOD),P(NOD,NWFD),YK(NOD),        AATK4059
 :   YR(NOD),X(NOD),AZ(NWFD),L(NWFD),MAX(NWFD),N(NWFD)              AATK4060
@@ -436,7 +436,7 @@ END                                                               AATK4090
 *           X is called an exchange function, and                       AATK0020
 *           T includes contributions from off-diagonal energy parameter AATK0021
 *                                                                       AATK0022
-*     The program uses LOG(Z*R) as independent variable and             AATK0023
+*     The program uses LOG(atomZ*R) as independent variable and             AATK0023
 *                      P/SQRT(R) as dependent variable.                 AATK0024
 *     As a result all equations must be transformed as described in     AATK0025
 *     Sec. 6-2 and 6-4 of the book - ``The Hartree-Fock Method for      AATK0026
@@ -452,17 +452,17 @@ END                                                               AATK4090
 *                                                                       AATK0036
 *                                                                       AATK0037
 *     ------------------------------------------------------------------AATK4092
-*                 Z K                                                   AATK4093
+*                 atomZ K                                                   AATK4093
 *     ------------------------------------------------------------------AATK4094
 *                                                                       AATK4095
 *               k                                                       AATK4096
-*       Stores Z (i, j; r) in the array YK.                             AATK4097
+*       Stores atomZ (i, j; r) in the array YK.                             AATK4097
 *                                                                       AATK4098
 *                                                                       AATK4099
 SUBROUTINE ZK(I,J,K)                                              AATK4100
 PARAMETER (NOD=220,NWFD=20)                                       AATK4101
-IMPLICIT DOUBLE PRECISION(A-H,O-Z)                                AATK4102
-COMMON /PARAM/H,H1,H3,CH,EH,RHO,Z,TOL,NO,ND,NWF,NP,NCFG,IB,IC,ID  AATK4103
+IMPLICIT DOUBLE PRECISION(A-H,O-atomZ)                                AATK4102
+COMMON /PARAM/H,H1,H3,CH,EH,RHO,atomZ,TOL,NO,ND,NWF,NP,NCFG,IB,IC,ID  AATK4103
 :   ,D0,D1,D2,D3,D4,D5,D6,D8,D10,D12,D16,D30,FINE,NSCF,NCLOSD      AATK4104
 COMMON /RADIAL/R(NOD),RR(NOD),R2(NOD),P(NOD,NWFD),YK(NOD),        AATK4105
 :   YR(NOD),X(NOD),AZ(NWFD),L(NWFD),MAX(NWFD),N(NWFD)              AATK4106
@@ -479,8 +479,8 @@ F1 = RR(1)*P(1,I)*P(1,J)                                          AATK4116
 F2 = RR(2)*P(2,I)*P(2,J)                                          AATK4117
 F3 = RR(3)*P(3,I)*P(3,J)                                          AATK4118
 F4 = RR(4)*P(4,I)*P(4,J)                                          AATK4119
-YK(1) = F1*(D1 + Z*R(1)*FACT)/DEN                                 AATK4120
-YK(2) = F2*(D1 + Z*R(2)*FACT)/DEN                                 AATK4121
+YK(1) = F1*(D1 + atomZ*R(1)*FACT)/DEN                                 AATK4120
+YK(2) = F2*(D1 + atomZ*R(2)*FACT)/DEN                                 AATK4121
 YK(3) = YK(1)*A2 + H3*(F3 + D4*A*F2 + A2*F1)                      AATK4122
 MX = (MIN0(MAX(I),MAX(J))/2)*2                                    AATK4123
 DO 8 M = 5,MX                                                     AATK4124

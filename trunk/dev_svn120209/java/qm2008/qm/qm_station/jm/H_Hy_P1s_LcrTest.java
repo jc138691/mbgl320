@@ -25,7 +25,7 @@ public class H_Hy_P1s_LcrTest extends FlowTest {
     log.dbg("Testing numerics on the Hydrogen-like Hamiltonian");
 
     Vec r = w.getR();   log.dbg("r-grid = ", new VecDbgView(r));
-    double Z = 1;       log.dbg("nuclear charge Z = ", Z);
+    double Z = 1;       log.dbg("nuclear charge atomZ = ", Z);
     int L = 0;
     FuncVec f = CoulombWFFactory.makeP1s(r, Z); log.dbg("ground state P(r) = ", new VecDbgView(f));
     f.setX(w.getX()); // MUST change grid for derivatives
@@ -43,7 +43,7 @@ public class H_Hy_P1s_LcrTest extends FlowTest {
     FuncVec pot = new FuncVec(r, new FuncPowInt(1., -1));
     pot.mult(-Z);
     double potF = partH.calcPot(f, f, pot);
-    assertEqualsRel("Potential eng <P|-Z/r|P> = ", potEng, potF, true);
+    assertEqualsRel("Potential eng <P|-atomZ/r|P> = ", potEng, potF, true);
 
   }
 }

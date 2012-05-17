@@ -8,6 +8,6 @@ import atom.energy.slater.SlaterLcr;
  */
 public class SysHeOldOk extends SysE2OldOk {
   public SysHeOldOk(SlaterLcr si) {
-    super(-AtomHe.Z, si);
+    super(AtomHe.Z, si);
   }
 }

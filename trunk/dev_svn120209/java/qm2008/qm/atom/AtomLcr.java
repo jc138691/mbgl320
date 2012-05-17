@@ -17,7 +17,7 @@ public AtomLcr(double z, SlaterLcr si) {
   slaterLcr = si;
 }
 public AtomLcr(AtomLcr from) {
-  super(from.Z, from.slaterLcr);
+  super(from.atomZ, from.slaterLcr);
   this.slaterLcr = from.slaterLcr;
 }
 @Override

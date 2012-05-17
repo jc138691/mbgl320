@@ -77,7 +77,7 @@ public class CoulombWFFactory extends FlowTest {
   public static FuncVec makeY_2_2p(Vec r) {
     return new FuncVec(r, new FuncY_2_2p());
   }
-  // Z(r, K) = INTL_0^r (s/r)^K * f(s)*f(s) ds
+  // atomZ(r, K) = INTL_0^r (s/r)^K * f(s)*f(s) ds
   public static FuncVec makeZ_0_1s(Vec r) {
     return new FuncVec(r, new Z_0_1s());
   }

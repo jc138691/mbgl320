@@ -97,7 +97,7 @@ public class QMSMainUI extends JPanel {
   }
 //  public void showLoadTrainTableFirst() {
 //    JOptionPane.showMessageDialog(this
-//      , "First you need to import a TRAINING Z data set via MENU | FILE | IMPORT Z ...");
+//      , "First you need to import a TRAINING atomZ data set via MENU | FILE | IMPORT atomZ ...");
 //  }
 
   public void showNotImplemented() {

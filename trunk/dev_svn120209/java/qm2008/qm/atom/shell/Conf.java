@@ -15,6 +15,7 @@ public static Log log = Log.getLog(Conf.class);
 private ArrayList<Shell> arr;
 private ArrayList<Ls> lsArr;
 private String keyStr;         // for any sort of mapping
+private double norm;
 protected Conf(final Conf from) {
   this.arr = from.arr;
   this.lsArr = from.lsArr;
@@ -33,6 +34,12 @@ public Conf(final Shell sh) {
 public Conf(final Shell sh, final Shell sh2, Ls totLs) {
   this(sh);
   add(sh2, totLs);
+}
+public double getNorm() {
+  return norm;
+}
+public void setNorm(double norm) {
+  this.norm = norm;
 }
 private void init() {
   arr = new ArrayList<Shell>();
