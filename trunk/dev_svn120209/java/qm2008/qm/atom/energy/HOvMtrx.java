@@ -31,8 +31,8 @@ public void setOv(Mtrx ov) {
   this.ov = ov;
 }
 private void calc() {     log.setDbg();
-  log.dbg("ovH=\n", new MtrxDbgView(this));
-  log.dbg("ovC=\n", new MtrxDbgView(ov));
+  log.dbg("\n \n ovH=\n", new MtrxDbgView(this));
+  log.dbg("\n \n ov=\n", new MtrxDbgView(ov));
 // S=mOv - overlap matrix
 // S_ij = <b_i|b_j>, after diag S = V * D * V',  C = V * 1/sqrt(D)
 // New basis becomes:  B_i = \sum_j C_ji b_j  [in columns!!!]

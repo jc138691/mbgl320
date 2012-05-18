@@ -41,6 +41,10 @@ import javax.utilx.log.Log;
 //    check r->oo; R=P(r)/sqrt(r); x=ln(r)
 //
 // w are for 'x' integral
+//
+// d/dr R(r) = d/dr [sqrt(y) F] = 1/2 1/sqrt(y) F + sqrt(y) dx/dr F'(x) =***
+// dx/dr = 1/y
+// ***=  1/sqrt(y) [F/2 + F']
 public class PotHLcr extends PotH {
   public static Log log = Log.getLog(PotHLcr.class);
   public PotHLcr(WFQuadr quadr) {

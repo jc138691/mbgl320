@@ -1,9 +1,12 @@
 package math.mtrx;
 import math.vec.Vec;
+
+import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 20/03/12, 3:31 PM
  */
 public class MtrxFactory {
+public static Log log = Log.getLog(MtrxFactory.class);
 public static Mtrx makeOneDiag(int size) {
   Mtrx res = new Mtrx(size, size);
   for (int i = 0; i < size; i++) {
@@ -37,8 +40,13 @@ public static void makeDiagOneSqrt(Mtrx m) {
   double[][] arr = m.getArray();
   int len = Math.max(m.getNumRows(), m.getNumCols());
   for (int r = 0; r < len; r++) {
-    double diag = Math.sqrt(arr[r][r]);
-    arr[r][r] = 1./diag;
+    double diag = arr[r][r];
+    if (diag <= 0) {     log.setDbg();
+      log.dbg("makeDiagOneSqrt(m=\n", new MtrxDbgView(m));
+      String mssg = "diag <= 0";
+      throw new IllegalArgumentException(log.error(mssg));
+    }
+    arr[r][r] = 1./Math.sqrt(diag);
   }
 }
 }

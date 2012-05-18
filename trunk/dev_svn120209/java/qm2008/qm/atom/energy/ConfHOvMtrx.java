@@ -28,7 +28,8 @@ private void loadNormAndDiag() {     log.setDbg();
   int len = basis.size();
   for (int i = 0; i < len; i++) {
     Conf ci = basis.get(i);
-    double ovDiag = atom.calcOverlap(ci, ci);  log.dbg("ovDiag = " + ovDiag);
+    double ovDiag = atom.calcOverlap(ci, ci);  log.dbg("\n \n ovDiag[i="+i+"] = " + ovDiag);
+//    mOv.set(i, i, ovDiag); // DEBUG
     mOv.set(i, i, 1.);
 
     double ni = 1. / Math.sqrt(ovDiag);   log.dbg("ni = " + ni);
@@ -48,17 +49,21 @@ private void loadNonDiag() {
       log.info("ConfHOvMtrx row=" + i + ", " + (int)(100.* i / len) + "%");
     }
     for (int j = i+1; j < basis.size(); j++) { // NOTE c=r+1
+//    for (int j = 0; j < basis.size(); j++) { // DEBUG
+      if (j == i)
+        continue;
       Conf cj = basis.get(j);
       double nj = cj.getNorm();
 
-      double ov = atom.calcOverlap(basis.get(i), basis.get(i));
-      ov *= (ni * nj);
+      double ov = atom.calcOverlap(ci, cj);  log.dbg("\n \n ov[i="+i+", j="+j+"] = " + ov);
+      ov *= (ni * nj);                       log.dbg("\n ni * nj * ov = " + ov);
+//      ov = 0; // DEBUG
       mOv.set(i, j, ov);
       mOv.set(j, i, ov);
 
       Energy res = atom.calcH(ci, cj);
-      double hij = res.kin + res.pt;
-      hij *= (ni * nj);
+      double hij = res.kin + res.pt;      log.dbg("\n \n hij[i="+i+", j="+j+"] = " + hij);
+      hij *= (ni * nj);                   log.dbg("\n ni * nj * hij = " + hij);
       set(i, j, hij);
       set(j, i, hij);
     }
