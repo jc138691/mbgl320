@@ -108,7 +108,7 @@ Normalization
 d \theta(z) / d z = \delta(z), \ \ \delta(\alpha z) = \delta(z)/ |\alpha|
 \eeq
 \beq
-\theta(r_2-r_1) + \theta(r_1-r_2)\equiv 1, 
+\theta(r_2-r_1) + \theta(r_1-r_2)\equiv 1,
  \ \ \ \theta(r_2-r_1) \theta(r_1-r_2)\equiv 0
 \eeq
 \beq
@@ -116,12 +116,12 @@ d \theta(z) / d z = \delta(z), \ \ \delta(\alpha z) = \delta(z)/ |\alpha|
 \frac{\partial}{\partial r_1} \theta(r_2-r_1) = -\frac{\partial}{\partial r_1} \theta(r_1-r_2) ,
 \eeq
 \beq \barr{l}
-\frac{\partial^2}{\partial r_1^2} P_a(x) P_b(y) 
+\frac{\partial^2}{\partial r_1^2} P_a(x) P_b(y)
 =\frac{\partial}{\partial r_1} [ \frac{\partial P_a(x)}{\partial r_1} P_b(y)
 + P_a(x) \frac{\partial P_b(y)}{\partial r_1} ] =\\
 =\frac{\partial}{\partial r_1} [ \theta(r_2-r_1) P'_a(x) P_b(y)
  + \theta(r_1-r_2) P_a(x) P'_b(y)]=\\
-=\theta(r_2-r_1) P''_a(x) P_b(y) + \theta(r_1-r_2) P_a(x) P''_b(y) 
+=\theta(r_2-r_1) P''_a(x) P_b(y) + \theta(r_1-r_2) P_a(x) P''_b(y)
 +\delta(r_1-r_2) [P_a(r) P'_b(r) - P'_a(r) P_b(r)]
 \earr \eeq
 
@@ -137,6 +137,14 @@ d \theta(z) / d z = \delta(z), \ \ \delta(\alpha z) = \delta(z)/ |\alpha|
 [\frac{\partial^2}{\partial r_1^2} + \frac{\partial^2}{\partial r_2^2}] P_a(x) P_b(y)
 = P''_a(x) P_b(y) + P_a(x) P''_b(y)
 + 2 \delta(r_1-r_2) [P_a(r) P'_b(r) - P'_a(r) P_b(r)]
+\eeq
+For $x=\ln(y)$, $y=c+r$, $dx/dr=1/y$
+\beq
+d/dr P(r) = d/dr [\sqrt{y} F(x)] = \frac{1}{2} y^{-1/2} F(x) + y^{1/2} \frac{dx}{dr} F'(x) =
+y^{-1/2} [\frac{1}{2} F(x) + F'(x)]
+\eeq
+\beq
+[P_a(r) P'_b(r) - P'_a(r) P_b(r)] = [F_a(x) F'_b(x) - F'_a(x) F_b(x)]
 \eeq
 
 
