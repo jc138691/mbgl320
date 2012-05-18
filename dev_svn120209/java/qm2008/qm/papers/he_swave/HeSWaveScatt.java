@@ -102,7 +102,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
   SysE2 tgrtE2 = new SysHe(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
 
   Ls tLs = new Ls(0, Spin.SINGLET);  // t - for target
-  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE2(tLs, basisNt, Nc);    log.dbg("tConfArr=", tConfArr);
+  ConfArr tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, basisNt, Nc);    log.dbg("tConfArr=", tConfArr);
   ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                          log.dbg("tH=\n", new MtrxDbgView(tH));
   Mtrx tVecs = tH.getEigVec();                                             log.dbg("tH.getEigVec=", new MtrxDbgView(tVecs));
   if (SAVE_TRGT_ENGS)  {
@@ -115,7 +115,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
   }
 
   tLs = new Ls(0, Spin.TRIPLET);  // t - for target
-  tConfArr = ConfArrFactoryE2.makePoetConfE2(tLs, basisNt, Nc);            log.dbg("tConfArr=", tConfArr);
+  tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, basisNt, Nc);            log.dbg("tConfArr=", tConfArr);
   ConfHMtrx tH2 = new ConfHMtrx(tConfArr, tgrtE2);                         log.dbg("tH=\n", new MtrxDbgView(tH2));
   if (SAVE_TRGT_ENGS)  {
     FileX.writeToFile(tH2.getEigVal().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME+"_trgEngs_S3_" + makeLabelNc());

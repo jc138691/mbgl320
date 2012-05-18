@@ -77,7 +77,7 @@ public void calc(int newN, int newNt) {
   Nt = newNt;
   initProject();
   potScattTestOk();  // basisN, biorthN, orthonNt, quadrLcr
-  hydrScattTestOk(TARGET_Z);  // pt, orthonNt
+  hydrScattTestOk(TARGET_Z);  // pot, orthonNt
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
 
   trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);

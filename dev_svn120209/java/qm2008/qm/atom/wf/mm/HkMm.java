@@ -103,7 +103,18 @@ P_{a'}(r_2) P_{b'}(r_1)=\\
   double bb = quadr.calc(b, b2, zaa);// NOT  calcInt!!!
   bb2 -= (0.25 * bb);
 
-  double res = -aa2 - bb2;
+  double abab2 = 0;
+  if (a2 != b2) {
+    Vec ab2 = a2.copy();
+    ab2.multSelf(b2.getDrv());
+    Vec ba2 = b2.copy();
+    ba2.multSelf(a2.getDrv());
+
+    ab2.addMultSafe(-1, ba2);
+    abab2 = quadr.calcInt(a, b, ab2);
+  }
+  double res = -aa2 - bb2 - abab2;
+//  double res = -aa2 - bb2; // DEBUG
   hasKin = true;
   kin = res;
   return res;
