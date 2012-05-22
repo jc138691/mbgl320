@@ -172,36 +172,42 @@ public static ConfArr makePoetConfMmE2(Ls LS, FuncArr minA, int minN, FuncArr ma
     throw new IllegalArgumentException(log.error("arr2.size() < arr.size()!!!!!!!!"));
   }
   Shell sh, sh2;
+  int n2;
+  Conf fc;
   for (int n = 0; n < minN; n++) { // n=0,...,(N-1)
-    sh = new ShellQ2(n, minA.get(n), L, LS); log.dbg("q=2 at sh=", sh);
-    if (sh.isValid()) {
-      Conf fc = new ShPair(sh);                  log.dbg("fc(n=n2)=", fc);
-      res.add(fc);
-    }
+//    sh = new ShellQ2(n, minA.get(n), L, LS); log.dbg("q=2 at sh=", sh);
+//    if (sh.isValid()) {
+//      Conf fc = new ShPair(sh);                  log.dbg("fc(n=n2)=", fc);
+//      res.add(fc);
+//    }
+
     sh = new Shell(n, minA.get(n), L);
     log.dbg("sh=", sh);
-//    for (int n2 = n+1; n2 < minN; n2++) { // FOR MM-model
-      for (int n2 = 0; n2 < minN; n2++) { // FOR MM-model
+//    n2 = n;
+    for (n2 = n; n2 < minN; n2++) { // FOR MM-model
+//    for (n2 = 0; n2 < minN; n2++) { // FOR MM-model
 //    for (int n2 = 0; n2 < n; n2++) { // FOR MM-model
-      if (n2 == n)
-        continue;
-      if (n2 < n) {
-        sh2 = new Shell(n2, minA.get(n2), L);
-      } else {
+//      if (n2 == n)
+//        continue;
+//      if (n2 < n) {
+//        sh2 = new Shell(n2, minA.get(n2), L);
+//      } else {
         sh2 = new Shell(n2, maxA.get(n2), L);
-      }
+//      }
 
       log.dbg("sh2=", sh2);
-      Conf fc = new ShPair(sh, sh2, LS);
+//      Conf fc = new ShPair(sh, sh2, LS);
+      fc = new ShPair(sh2, sh, LS);
       log.dbg("fc=", fc);
       res.add(fc);
+
     }
 
     // PLUS extra with (n>=N-1)
-    for (int n2 = minN; n2 < maxN; n2++) {
+    for (n2 = minN; n2 < maxN; n2++) {
       sh2 = new Shell(n2, maxA.get(n2), L);
       log.dbg("sh2=", sh2);
-      Conf fc = new ShPair(sh, sh2, LS);
+      fc = new ShPair(sh, sh2, LS);
       log.dbg("fc=", fc);
 //        Conf fc = new ShPair(sh).addShell(sh2, LS);   log.dbg("fc=", fc);
       res.add(fc);

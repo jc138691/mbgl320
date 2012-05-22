@@ -70,9 +70,9 @@ public Vec getEngEv(int fromIdx) {
 //  return res;
 }
 public Mtrx getEigVec(boolean overwrite) {
-  return null;
-//  EigenSymm thisEig = eig(overwrite);
-//  return thisEig.getV();
+  if (corrH == null)
+    calc();
+  return corrH.getEigVec(overwrite);
 }
 public double[][] getEigArr() {
   return null;
