@@ -36,7 +36,7 @@ private void loadNormAndDiag() {     log.setDbg();
     basis.get(i).setNorm(ni);
     Energy res = atom.calcH(ci, ci);
     double hii = res.kin + res.pt;      log.dbg("hii = " + hii);
-    hii *= (ni * ni);
+    hii *= (ni * ni);                   log.dbg("ni*ni*hii = " + hii);
     set(i, i, hii);
   }
 }
