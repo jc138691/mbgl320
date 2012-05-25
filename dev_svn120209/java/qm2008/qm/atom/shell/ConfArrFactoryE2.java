@@ -184,8 +184,8 @@ public static ConfArr makePoetConfMmE2(Ls LS, FuncArr minA, int minN, FuncArr ma
     sh = new Shell(n, minA.get(n), L);
     log.dbg("sh=", sh);
 //    n2 = n;
-    for (n2 = n; n2 < minN; n2++) { // FOR MM-model
-//    for (n2 = 0; n2 < minN; n2++) { // FOR MM-model
+//    for (n2 = n; n2 < minN; n2++) { // FOR MM-model
+    for (n2 = 0; n2 < minN; n2++) { // FOR MM-model
 //    for (int n2 = 0; n2 < n; n2++) { // FOR MM-model
 //      if (n2 == n)
 //        continue;
