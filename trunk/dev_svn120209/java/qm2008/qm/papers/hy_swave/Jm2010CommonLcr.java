@@ -46,7 +46,6 @@ public class Jm2010CommonLcr extends Jm2010Common {
 public static Log log = Log.getLog(Jm2010CommonLcr.class);
 protected static int LCR_N = 301;
 protected static int LCR_FIRST = -4;// -1 for Hydrogen
-//  protected static final int HY_Z = 1;
 
 protected static FuncArr trgtBasisN;
 protected static LagrrLcr basisN;

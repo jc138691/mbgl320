@@ -8,7 +8,7 @@ import math.func.arr.FuncArrDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
-import scatt.jm_2008.e1.JmMethodE1;
+import scatt.jm_2008.e1.JmMthdE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.theory.JmD;
 
@@ -25,7 +25,7 @@ public class Jm2010PotScatt extends Jm2010CommonR {
 
 //    log = Log.getRootLog();
     log.info("log.info(Jm2010PotScatt)");
-//    JmMethodE1.log.setDbg();
+//    JmMthdE1.log.setDbg();
     log.setDbg();
   }
 
@@ -64,7 +64,7 @@ public class Jm2010PotScatt extends Jm2010CommonR {
 
     Vec D = new JmD(bi, eigVec);                log.dbg("D_{n,N-1}=", D);
 
-    JmMethodE1 method = new JmMethodE1(calcOpt);
+    JmMthdE1 method = new JmMthdE1(calcOpt);
     method.setOverD(D);
     method.setSysEngs(eigEng);
     ScttRes res = method.calcForScatEngModel();                  log.dbg("res=", res);

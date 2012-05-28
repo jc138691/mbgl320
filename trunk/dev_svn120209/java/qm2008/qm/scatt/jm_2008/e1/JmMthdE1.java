@@ -12,9 +12,9 @@ import javax.utilx.log.Log;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/08/2008, Time: 16:59:55
  */
-public class JmMethodE1 extends ScttMthdBaseE1 {   // E1 - one electron
-public static Log log = Log.getLog(JmMethodE1.class);
-public JmMethodE1(CalcOptE1 calcOpt) {
+public class JmMthdE1 extends ScttMthdBaseE1 {   // E1 - one electron
+public static Log log = Log.getLog(JmMthdE1.class);
+public JmMthdE1(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScttRes calc(Vec engs) {

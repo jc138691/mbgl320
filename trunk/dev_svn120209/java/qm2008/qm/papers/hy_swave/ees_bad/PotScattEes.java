@@ -40,7 +40,7 @@ public void setUp() {
   super.setUp();
 //    log = Log.getRootLog();
   log.info("log.info(PotScattEes)");
-//    JmMethodE1.log.setDbg();
+//    JmMthdE1.log.setDbg();
   PBornDirScattTest.log.setDbg();
   EaMethodE1_all_engs_wrong.log.setDbg();
   log.setDbg();
@@ -76,6 +76,7 @@ public void calc(int newN) {
   PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
   Vec sysEngs = sysH.getEigVal();            log.dbg("eigVal=", new VecDbgView(sysEngs));
 //  EaMethodE1_G_db method = new EaMethodE1_G_db(calcOpt);
+
   EesMethodE1 method = new EesMethodE1(calcOpt);
 //  EaMethodE1_FBorn_db method = new EaMethodE1_FBorn_db(calcOpt);
 //  method.setPot(pt);
@@ -84,6 +85,7 @@ public void calc(int newN) {
   method.setOrthonN(orthonN);
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
+
   setupScattRes(res, method);
   res.setCalcLabel(makeLabel(method));
   res.writeToFiles();
