@@ -65,19 +65,19 @@ private Dble2 calcW(FuncArr psi, double scattE) {
   res.b = calcHE(xiN, potH, psiC, scattE);  log.dbg("res=", res);
   return res;
 }
-private double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {
-  int L = 0;
-  FuncVec pot = potH.getPot();
-  WFQuadr quadr = potH.getQuadr();
-  double res = quadr.calcInt(wf, pot, wf2);
-  PotH calcH = potH.makePotH();
-
-  double kin = calcH.calcKin(L, wf, wf2);      log.dbg("kin=", kin);
-  double engInt = quadr.calcInt(wf, wf2);      log.dbg("engInt=", engInt); // energy integral
-  double HE = kin - scattE * engInt;           log.dbg("HE=", HE);
-  res += HE;
-  return res;
-}
+//protected double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {
+//  int L = 0;
+//  FuncVec pot = potH.getPot();
+//  WFQuadr quadr = potH.getQuadr();
+//  double res = quadr.calcInt(wf, pot, wf2);
+//  PotH calcH = potH.makePotH();
+//
+//  double kin = calcH.calcKin(L, wf, wf2);      log.dbg("kin=", kin);
+//  double engInt = quadr.calcInt(wf, wf2);      log.dbg("engInt=", engInt); // energy integral
+//  double HE = kin - scattE * engInt;           log.dbg("HE=", HE);
+//  res += HE;
+//  return res;
+//}
 private void loadSC(Mtrx mSC, FuncArr psi, double scattE) {
   FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psiS = psi.get(IDX_S);          log.dbg("resS=", psiS);

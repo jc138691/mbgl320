@@ -62,19 +62,19 @@ public ScttRes calcSysEngs() {
 public ScttRes calc(Vec engs) {
   throw new IllegalArgumentException(log.error("use calcSysEngs()"));
 }
-protected double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {
-  int L = 0;
-  FuncVec pot = potH.getPot();
-  WFQuadr quadr = potH.getQuadr();
-  double res = quadr.calcInt(wf, pot, wf2);
-  PotH calcH = potH.makePotH();
-
-  double kin = calcH.calcKin(L, wf, wf2);      log.dbg("kin=", kin);
-  double engInt = quadr.calcInt(wf, wf2);      log.dbg("engInt=", engInt); // energy integral
-  double HE = kin - scattE * engInt;           log.dbg("HE=", HE);
-  res += HE;
-  return res;
-}
+//protected double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {
+//  int L = 0;
+//  FuncVec pot = potH.getPot();
+//  WFQuadr quadr = potH.getQuadr();
+//  double res = quadr.calcInt(wf, pot, wf2);
+//  PotH calcH = potH.makePotH();
+//
+//  double kin = calcH.calcKin(L, wf, wf2);      log.dbg("kin=", kin);
+//  double engInt = quadr.calcInt(wf, wf2);      log.dbg("engInt=", engInt); // energy integral
+//  double HE = kin - scattE * engInt;           log.dbg("HE=", HE);
+//  res += HE;
+//  return res;
+//}
 protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   Dble2 res = new Dble2();
   FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
@@ -204,12 +204,6 @@ protected double calcRFromPsiE(FuncArr psi, double scattE, int engIdx, double sy
 //  double norm =  -2. / momP;       // WHY -2, not 2?
   double norm =  -1;       // Each of of the sinPsi and cosPsi are normalized to sqrt(2./momP)
   res *= norm;
-  return res;
-}
-protected double calcV(FuncVec wf, FuncVec wf2) {
-  FuncVec pot = potH.getPot();
-  WFQuadr quadr = potH.getQuadr();
-  double res = quadr.calcInt(wf, pot, wf2);
   return res;
 }
 }
