@@ -22,12 +22,10 @@ import javax.utilx.log.Log;
 public class ScttMthdBaseE2 extends ScttMthdBaseE1 {
 public static Log log = Log.getLog(ScttMthdBaseE2.class);
 protected static final int IDX_IONIZ = 1;
-protected ScttTrgtE2 trgtE2;
+public ScttTrgtE2 trgtE2;
 protected ConfHMtrx sysConfH;
 protected LgrrOrthLcr orthonNt;
 protected FuncArr trgtBasisN;
-protected JmCh[] chArr;
-protected Mtrx jmR;     // NOTE!!! Only open part is corrected by / cn1.getRe();
 protected CmplxMtrx jmS;
 protected int calcChN;
 protected int openChN;
@@ -37,12 +35,6 @@ public int getCalcChN() {
 }
 public int getOpenChN() {
   return openChN;
-}
-public JmCh[] getChArr() {
-  return chArr;
-}
-public Mtrx getJmR() {
-  return jmR;
 }
 public LgrrOrthLcr getOrthonNt() {
   return orthonNt;
@@ -78,7 +70,7 @@ public void setTrgtBasisN(FuncArr trgtBasisN) {
 public FuncArr getTrgtBasisN() {
   return trgtBasisN;
 }
-protected void calcCrossSecs(int i, ScttRes res, CmplxMtrx mS, int openNum) {
+protected void saveCrossSecs(int i, ScttRes res, CmplxMtrx mS, int openNum) {
   Mtrx mCrss = res.getCrossSecs();
   Mtrx mTics = res.getTics();
   double ionSum = 0;
@@ -100,12 +92,19 @@ protected void calcCrossSecs(int i, ScttRes res, CmplxMtrx mS, int openNum) {
   }
   mTics.set(i, IDX_IONIZ, ionSum);
 }
+protected void saveRs(int i, ScttRes res, Mtrx fromR, int openNum) {
+  Mtrx mRs = res.getRs();
+  int initChIdx = trgtE2.getInitTrgtIdx();
+  for (int to = 0; to < openNum; to++) {    log.dbg("to = ", to);  // Target channels
+    double r = fromR.get(to, initChIdx);
+    mRs.set(i, to + 1, r);  // NOTE +1; first column has incident energies
+  }
+}
 protected JmCh[] loadChArr(double sysEng) {
   LgrrModel jmModel = calcOpt.getLgrrModel();
   Vec tEngs = trgtE2.getEngs();
   JmCh[] res = new JmCh[tEngs.size()];
-  for (int i = 0; i < tEngs.size(); i++) {
-    log.dbg("i = ", i);
+  for (int i = 0; i < tEngs.size(); i++) {    log.dbg("i = ", i);
     // NOTE!!! minus in "-trgtE2.getScreenZ()"
     res[i] = new JmCh(sysEng, tEngs.get(i), jmModel, -trgtE2.getScreenZ());
     log.dbg("res[i]=", res[i]);

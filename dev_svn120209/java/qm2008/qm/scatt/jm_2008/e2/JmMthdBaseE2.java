@@ -1,6 +1,5 @@
 package scatt.jm_2008.e2;
 import flanagan.complex.Cmplx;
-import math.Calc;
 import math.Mathx;
 import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
@@ -26,9 +25,8 @@ public static final int SDCS_ENG_OFFSET = 1;
 public static final int SDCS_CH_OFFSET = 1;
 protected static final int CS_CH_OFFSET = 1;
 private int exclSysIdx = -1;
-protected Mtrx jmX;
+public Mtrx jmX;
 
-private static final double MIN_SYS_ENG_DELTA = Calc.EPS_10;
 public JmMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
@@ -39,7 +37,9 @@ public Vec calcSysScatEngs() {
   return scttEngs;
 }
 private boolean isValidD(Vec overD, int nt) {
-  if (overD.size() <= 2 || nt <= 2)   // something is wrong!
+//  if (overD.size() <= 2 || nt <= 2)   // something is wrong!
+//    return false;
+  if (overD.size() <= 2) //[120529] nt=0; Using in JmMthdE1 with empty target
     return false;
   if (overD.size() <= nt)   // something is wrong!
     return false;
@@ -70,23 +70,25 @@ public void setOverD(Vec overD) {
 public ScttRes calc(Vec scttEngs) {          //JmMethodJmBasisE3.log.setDbg();
   return calcV3_best(scttEngs);
 }
-private ScttRes calcV3_best(Vec scttEngs) { log.setDbg();
+private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
+  int eN = scttEngs.size();
   EngModel engModel = calcOpt.getGridEng();
   ScttRes res = new ScttRes();
   int prntNum = calcPrntChNum();
-//  int chNum = getChNum();
-  int eN = scttEngs.size();
   jmX = calcX();                              log.dbg("X=", new MtrxDbgView(jmX));
+
   new JmResonE2(this).calc(res, jmX);
   Mtrx mCs = new Mtrx(eN, prntNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
+  Mtrx mRs = new Mtrx(eN, prntNum + 1);
   Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
   res.setSdcs(new Mtrx(prntNum + 1, eN + 1));
+  res.setRs(mRs);
   res.setCrossSecs(mCs);
   res.setTics(mTics);
-  JmKatoBasisHyE2 kato = new JmKatoBasisHyE2(this);
-  for (int scttIdx = 0; scttIdx < eN; scttIdx++) {
-    log.info("i = ", scttIdx);
+
+  for (int scttIdx = 0; scttIdx < eN; scttIdx++) {     log.info("i = ", scttIdx);
     scttE = scttEngs.get(scttIdx);             log.info("scttE = ", scttE);
+    mRs.set(scttIdx, IDX_ENRGY, scttE);
     mCs.set(scttIdx, IDX_ENRGY, scttE);
     mTics.set(scttIdx, IDX_ENRGY, scttE);                 // first column is for the energies
     if (scttE <= 0  ||  engModel.getFirst() > scttE ||  scttE > engModel.getLast()) {
@@ -101,22 +103,28 @@ private ScttRes calcV3_best(Vec scttEngs) { log.setDbg();
     int sysIdx = matchSysTotE();
     if (sysIdx == -1) {
       jmR = calcR(calcChN, openChN);
-//      jmR = kato.calcKatoR_todo(jmR);     log.dbg("kato.calc(jmR)=\n", new MtrxDbgView(jmR));
 //      jmR = calcR_v1_ok(calcN, openN);
     }
     else {
 //      jmR = calcRSysIdx_bad(calcN, openN, sysIdx);
       continue; // ignore
     }
+    jmR = calcCorrR(); // calc any corrections to the R-matrix
     jmS = Scatt.calcSFromK(jmR, openChN);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(jmS));
-    calcCrossSecs(scttIdx, res, jmS, openChN);
+    saveCrossSecs(scttIdx, res, jmS, openChN);
+    saveRs(scttIdx, res, jmR, openChN);
     if (calcOpt.getCalcSdcs()) {
       calcSdcs(scttIdx, res, prntNum);
     }
   }
   return res;
 }
-private Mtrx calcR(int calcN, int openN) {
+protected Mtrx calcCorrR() {
+  return jmR;
+//  JmKatoBasisHyE2 kato = new JmKatoBasisHyE2(this);
+//      jmR = kato.calcKatoR_todo(jmR);     log.dbg("kato.calc(jmR)=\n", new MtrxDbgView(jmR));
+}
+protected Mtrx calcR(int calcN, int openN) {
   Mtrx W = null;
   if (calcOpt.getUseClosed()) {
     W = calcW(calcN);
@@ -464,30 +472,7 @@ protected Mtrx calcWSysIdx_bad(int calcNum, int sysIdx) {
   return res;
 }
 
-protected int matchSysTotE() {
-  double[] sysE = getSysEngs().getArr();
-  for (int i = 0; i < sysE.length; i++) {
-    double ei = sysE[i];
-    if (Math.abs(ei - sysTotE) < MIN_SYS_ENG_DELTA) {
-      log.dbg("sysE[i="+i+"]=sysTotE=", sysTotE);
-      return i;
-    }
-  }
-  return -1;
-}
-//protected double calcZeroG(int i, double[] sysE) {
-//  int sN = sysE.length;
-//  double eps = 0;
-//  if (i < sN - 1 && i > 0) {
-//    eps = (sysE[i + 1] - sysE[i - 1]) / MAGIC_EPS_N;
-//  } else if (i == 0) {
-//    eps = (sysE[1] - sysE[0]) / MAGIC_EPS_N;
-//  } else if (i == sN - 1) {
-//    eps = (sysE[sN - 1] - sysE[sN - 2]) / MAGIC_EPS_N;
-//  }
-//  eps = Math.min(eps, MAGIC_MAX_EPS);
-//  return eps;
-//}
+
 public int getExclSysIdx() {
   return exclSysIdx;
 }

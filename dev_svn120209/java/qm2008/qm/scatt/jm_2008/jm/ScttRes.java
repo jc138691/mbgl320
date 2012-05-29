@@ -21,20 +21,14 @@ private String homeDir;
 private String modelDir;
 private String calcLabel;
 private String modelName;
-//private JmMthdBaseE2 methodE2;
 private ScttMthdBaseE1 method;
+private Mtrx rs;        // R-matrix
 public Mtrx getResInfo() {
   return resInfo;
 }
 public void setResInfo(Mtrx resInfo) {
   this.resInfo = resInfo;
 }
-//public void setCross(FuncVec cross) {
-//  this.cross = cross;
-//}
-//public FuncVec getCross() {
-//  return cross;
-//}
 public void setShift(FuncVec shift) {
   this.shift = shift;
 }
@@ -84,6 +78,9 @@ public void writeToFiles() {
   if (getCrossSecs() != null) {
     FileX.writeToFile(getCrossSecs().toTab(), homeDir, modelDir, modelName + "_TCS_" + calcLabel);  // total cross sections
   }
+  if (getRs() != null) {
+    FileX.writeToFile(getRs().toTab(), homeDir, modelDir, modelName + "_R_" + calcLabel);  // R-matrix
+  }
   if (getTics() != null) {
     FileX.writeToFile(getTics().toTab(), homeDir, modelDir, modelName + "_TICS_" + calcLabel);
   }
@@ -106,5 +103,11 @@ public void setMethod
 (ScttMthdBaseE1
    method) {
   this.method = method;
+}
+public void setRs(Mtrx r) {
+  this.rs = r;
+}
+public Mtrx getRs() {
+  return rs;
 }
 }

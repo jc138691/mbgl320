@@ -40,7 +40,7 @@ public void setUp() {
   super.setUp();
 //    log = Log.getRootLog();
   log.info("log.info(PotScattEes)");
-//    JmMthdE1.log.setDbg();
+//    JmMthdE1_OLD.log.setDbg();
   PBornDirScattTest.log.setDbg();
   EaMethodE1_all_engs_wrong.log.setDbg();
   log.setDbg();

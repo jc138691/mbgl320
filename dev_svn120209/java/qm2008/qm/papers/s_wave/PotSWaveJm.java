@@ -10,9 +10,12 @@ import math.vec.VecDbgView;
 import papers.hy_swave.Jm2010Common;
 import papers.hy_swave.Jm2010CommonLcr;
 import qm_station.QMSProject;
+import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.JmMthdE1;
+import scatt.jm_2008.e1.JmMthdE1_OLD;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.target.ScttTrgtFactory;
 import scatt.jm_2008.jm.theory.JmD;
 
 import javax.utilx.log.Log;
@@ -33,7 +36,6 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
   MODEL_NAME = "PotSWaveJm";
   MODEL_DIR = MODEL_NAME;
-  LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   // Note: run one at a time as only one set of result files is produced
   runJob();
 }
@@ -41,7 +43,7 @@ public void setUp() {
   super.setUp();
 //    log = Log.getRootLog();
   log.info("log.info(PotSWaveJm)");
-//    JmMthdE1.log.setDbg();
+//    JmMthdE1_OLD.log.setDbg();
   log.setDbg();
 }
 public void runJob() {
@@ -73,18 +75,25 @@ public void calc(int newN) {
   Vec sysEngs = sysH.getEigVal();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
   FuncArr sysWFuncs = sysH.getEigFuncArr();         log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   Vec D = new JmD(biorthN, sysWFuncs);              log.dbg("D_{n,N-1}=", D);
-  JmMthdE1 method = new JmMthdE1(calcOpt);
-  method.setOverD(D);
-  method.setSysEngs(sysEngs);
-  ScttRes res = method.calcForScatEngModel();
+
+//  JmMthdE1_OLD method = new JmMthdE1_OLD(calcOpt); // OLD
+  JmMthdE1 mthd = makeMthd(calcOpt);
+  mthd.setTrgtE2(ScttTrgtFactory.makeEmptyE2());  //EMPTY target!!!
+  mthd.setOverD(D);
+  mthd.setSysEngs(sysEngs);
+  mthd.setQuadrLcr(quadrLcr);
+  ScttRes res = mthd.calcForScatEngModel();
   log.dbg("res=", res);
 //    ScttRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
 //
-  setupScattRes(res, method);
-  res.setCalcLabel(makeLabel(method));
+  setupScattRes(res, mthd);
+  res.setCalcLabel(makeLabel(mthd));
   res.writeToFiles();
 }
 protected static String makeLabel(ScttMthdBaseE1 method) {
   return Jm2010Common.makeLabelBasisOptN();
+}
+protected JmMthdE1 makeMthd(CalcOptE1 calcOpt) {
+  return new JmMthdE1(calcOpt);
 }
 }

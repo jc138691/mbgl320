@@ -73,10 +73,9 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   return res;
 }
 
-public static FuncVec calcChPsiReg(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
+public static FuncVec calcChPsiReg(double chScattE, WFQuadrLcr quadr) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
-  WFQuadrLcr quadr = orthN.getQuadr();
   FuncVec res = new SinPWaveLcr(quadr, momP, L);   //log.dbg("sinL=", sinL);
   return res;
 }
@@ -90,7 +89,7 @@ public static FuncVec calcPWaveS(double chScattE, LgrrOrthLcr orthN) {  // chann
   return res;
 }
 public static FuncVec calcPWavePnS(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
-  FuncVec res = calcChPsiReg(chScattE, orthN);
+  FuncVec res = calcChPsiReg(chScattE, orthN.getQuadr());
   FuncVec phiS = calcPWaveS(chScattE, orthN);
   res.addMultSafe(-1, phiS);
   return res;
