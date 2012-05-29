@@ -42,7 +42,7 @@ protected void loadFreeS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
     if (tScattE <= 0) {
       break;
     }
-    FuncVec tPsi = EesMethodE1.calcChPsiReg(tScattE, orthN);
+    FuncVec tPsi = EesMethodE1.calcChPsiReg(tScattE, orthN.getQuadr());
     freeS.add(tPsi);
   }
 }

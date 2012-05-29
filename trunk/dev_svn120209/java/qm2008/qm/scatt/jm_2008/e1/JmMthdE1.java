@@ -1,68 +1,36 @@
 package scatt.jm_2008.e1;
-import flanagan.complex.Cmplx;
-import math.func.FuncVec;
 import math.mtrx.Mtrx;
-import math.vec.Vec;
-import scatt.Scatt;
+import scatt.jm_2008.e2.JmMthdBaseE2;
+import scatt.jm_2008.e2.JmSdcsBasisHyE2;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.theory.JmTheory;
 
 import javax.utilx.log.Log;
 /**
- * Copyright dmitry.konovalov@jcu.edu.au Date: 28/08/2008, Time: 16:59:55
+ * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 29/05/12, 1:53 PM
  */
-public class JmMthdE1 extends ScttMthdBaseE1 {   // E1 - one electron
+// [120529] converted JmMthdE1 to use JmMthdBaseE2: nice!
+public class JmMthdE1 extends JmMthdBaseE2 {
 public static Log log = Log.getLog(JmMthdE1.class);
 public JmMthdE1(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-public ScttRes calc(Vec engs) {
-  ScttRes res = new ScttRes();
-  int chNum = getChNum();
-  int eN = engs.size();
-  LgrrModel model = calcOpt.getLgrrModel();
-  int N = model.getN();
-  double lambda = model.getLambda();
-  FuncVec arrShift = new FuncVec(engs);
-  Mtrx mCs = new Mtrx(eN, chNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
-  res.setCrossSecs(mCs);
-  for (int i = 0; i < engs.size(); i++) {
-    log.dbg("i = ", i);
-    double scattE = engs.get(i);
-    log.dbg("E = ", scattE);
-    mCs.set(i, IDX_ENRGY, scattE);
-    double Jnn = JmTheory.calcJnnL0byE(N, scattE, lambda);           log.dbg("Jnn = ", Jnn);
-    Cmplx sc = JmTheory.calcSCnL0byE(N, scattE, lambda);                 log.dbg("sc_N = ", sc);
-    Cmplx sc1 = JmTheory.calcSCnL0byE(N - 1, scattE, lambda);             log.dbg("sc_{N-1} = ", sc1);
-    double G = calcG(scattE);                                            log.dbg("G = ", G);
-    double g = Jnn * G;                                                 log.dbg("g = ", g);
-    double sN1 = sc1.getIm();
-    double cN1 = sc1.getRe();
-    double sN = sc.getIm();
-    double cN = sc.getRe();
-    double R = -(sN1 + g * sN) / (cN1 + g * cN);                        log.dbg("R = ", R);
-    double shift = Math.atan(R);
-    Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
-//    double sigma = Scatt.calcSigmaPiFromS(S, scttE);
-    double sigma = R;
-    log.dbg("sigma = ", sigma).eol();
-    mCs.set(i, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
-    arrShift.set(i, shift);
+
+@Override
+protected Mtrx calcX() {   // very nice!! E1,E2,E3 are now all the same
+  double[] D = getOverD().getArr();  log.dbg("D_j2=", getOverD());
+  int sN = getSysBasisSize();
+  int cN = 1;  // ONLY ONE CHANNEL
+  Mtrx res = new Mtrx(cN, sN);
+  for (int t = 0; t < cN; t++) {  // target channel/state
+    for (int i = 0; i < sN; i++) {  // system states
+      // X is just D for pot-scattering
+      res.set(t, i, D[i]);  //log.dbg("X[" + t + ", " + i +"]=", sum);
+    }
   }
-  res.setShift(arrShift);
   return res;
 }
-private double calcG(double E) {
-  double res = 0;
-  Vec d = getOverD();
-  for (int i = 0; i < sysEngs.size(); i++) {
-    double ei = sysEngs.get(i);
-    double d2 = d.get(i) * d.get(i);
-    if (Float.compare((float) ei, (float) E) == 0)
-      throw new IllegalArgumentException(log.error("E=e_i=" + (float) E));
-    res += (d2 / (ei - E));
-  }
-  return res;
+
+protected void calcSdcs(int i, ScttRes res, int prntN) {
+  // nothing to do; target does not have an electron
 }
 }

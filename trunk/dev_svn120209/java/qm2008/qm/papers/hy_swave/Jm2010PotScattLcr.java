@@ -8,8 +8,8 @@ import math.func.arr.FuncArrDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
+import scatt.jm_2008.e1.JmMthdE1_OLD;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
-import scatt.jm_2008.e1.JmMthdE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.theory.JmD;
 
@@ -39,7 +39,7 @@ public void setUp() {
   super.setUp();
 //    log = Log.getRootLog();
   log.info("log.info(Jm2010PotScattLcr)");
-//    JmMthdE1.log.setDbg();
+//    JmMthdE1_OLD.log.setDbg();
   log.setDbg();
 }
 public void runJob() {
@@ -68,7 +68,7 @@ public void calc(int newN) {
   Vec sysEngs = sysH.getEigVal();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
   FuncArr sysWFuncs = sysH.getEigFuncArr();         log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   Vec D = new JmD(biorthN, sysWFuncs);              log.dbg("D_{n,N-1}=", D);
-  JmMthdE1 method = new JmMthdE1(calcOpt);
+  JmMthdE1_OLD method = new JmMthdE1_OLD(calcOpt);
   method.setOverD(D);
   method.setSysEngs(sysEngs);
   ScttRes res = method.calcForScatEngModel();

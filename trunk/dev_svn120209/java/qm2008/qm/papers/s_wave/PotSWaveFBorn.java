@@ -3,15 +3,11 @@ import atom.data.AtomHy;
 import atom.energy.part_wave.PotHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
 import atom.wf.coulomb.CoulombWFFactory;
-import math.func.arr.FuncArr;
-import math.func.arr.FuncArrDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
 import scatt.jm_2008.e1.FbMthdE1;
-import scatt.jm_2008.e1.JmMthdE1;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.theory.JmD;
 
 import javax.utilx.log.Log;
 /**

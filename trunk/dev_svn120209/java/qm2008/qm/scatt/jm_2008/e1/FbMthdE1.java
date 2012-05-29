@@ -2,14 +2,11 @@ package scatt.jm_2008.e1;
 import atom.wf.lcr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.func.FuncVec;
-import math.func.arr.FuncArr;
-import math.func.arr.IFuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.theory.JmTheory;
 import scatt.partial.wf.SinPWaveLcr;
 
 import javax.utilx.log.Log;
@@ -18,7 +15,7 @@ import javax.utilx.log.Log;
  */
 // First Born
 public class FbMthdE1 extends ScttMthdBaseE1 {   // E1 - one electron
-public static Log log = Log.getLog(JmMthdE1.class);
+public static Log log = Log.getLog(JmMthdE1_OLD.class);
 public FbMthdE1(CalcOptE1 calcOpt) {
   super(calcOpt);
 }

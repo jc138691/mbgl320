@@ -3,13 +3,19 @@ import atom.energy.part_wave.PotH;
 import atom.energy.part_wave.PotHMtrx;
 import atom.wf.WFQuadr;
 import atom.wf.lcr.WFQuadrLcr;
+import math.Calc;
 import math.func.FuncVec;
+import math.mtrx.Mtrx;
+import math.mtrx.MtrxDbgView;
+import math.mtrx.MtrxFactory;
 import math.vec.Vec;
 import project.workflow.task.test.FlowTest;
 import scatt.eng.EngGrid;
 import scatt.eng.EngModel;
 import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
+import scatt.jm_2008.jm.target.JmCh;
 
 import javax.utilx.log.Log;
 /**
@@ -17,8 +23,11 @@ import javax.utilx.log.Log;
  */
 public abstract class ScttMthdBaseE1 extends FlowTest {
 public static Log log = Log.getLog(ScttMthdBaseE1.class);
+private static final double MIN_SYS_ENG_DELTA = Calc.EPS_10;
 protected static final int IDX_ENRGY = 0;
-private Vec overD;      // overlap coefficients D
+
+public Mtrx jmR;     // NOTE!!! Only open part is corrected by / cn1.getRe();
+public JmCh[] chArr;
 protected Vec sysEngs;
 protected WFQuadrLcr quadrLcr;
 protected PotHMtrx potH;
@@ -27,6 +36,14 @@ protected final CalcOptE1 calcOpt;
 protected double scttE;
 protected double sysTotE;
 protected int L = 0;
+private Vec overD;      // overlap coefficients D
+
+//public JmCh[] getChArr() {
+//  return chArr;
+//}
+//public Mtrx getJmR() {
+//  return jmR;
+//}
 public double getSysTotE() {
   return sysTotE;
 }
@@ -58,8 +75,11 @@ public int getSysBasisSize() {
 public Vec getSysEngs() {
   return sysEngs;
 }
+protected int calcOpenChNum(double scattE) {
+  return 1; // only one for pot-scattering
+}
 public int getChNum() { // number of target channels
-  return 1; // only one for pt-scattering
+  return 1; // only one for pot-scattering
 }
 //public ScttRes calcWithMidSysEngs() {
 //  Vec scttEngs = EngGridFactory.makeWithMidPoints(sysEngs);
@@ -116,5 +136,28 @@ protected double calcV(FuncVec wf, FuncVec wf2) {
   WFQuadr quadr = potH.getQuadr();
   double res = quadr.calcInt(wf, pot, wf2);
   return res;
+}
+
+protected int matchSysTotE() {
+  double[] sysE = getSysEngs().getArr();
+  for (int i = 0; i < sysE.length; i++) {
+    double ei = sysE[i];
+    if (Math.abs(ei - sysTotE) < MIN_SYS_ENG_DELTA) {
+      log.dbg("sysE[i="+i+"]=sysTotE=", sysTotE);
+      return i;
+    }
+  }
+  return -1;
+}
+protected JmCh[] loadChArr(double sysEng) {
+  LgrrModel jmModel = calcOpt.getLgrrModel();
+  JmCh[] res = new JmCh[1];
+    // NOTE!!! minus in "-trgtE2.getScreenZ()"
+  res[0] = new JmCh(sysEng, 0, jmModel, 0);
+  log.dbg("res[i]=", res[0]);
+  return res;
+}
+protected Mtrx calcR(int calcN, int openN) {
+  return null;
 }
 }
