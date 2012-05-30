@@ -36,27 +36,27 @@ public ScttRes calcSysEngs() {
   res.setCrossSecs(mCrss);
   EesMethodE1 methodE1 = new EesMethodE1(calcOpt);
   for (int sysIdx = 0; sysIdx < sEngs.size(); sysIdx++) {                log.dbg("i = ", sysIdx);
-    double sysE = sEngs.get(sysIdx);                           log.dbg("sysE = ", sysE);
-    double scattE = sysE - trgtE2.getInitTrgtEng();      log.dbg("scttE = ", scattE);
-    mCrss.set(sysIdx, IDX_ENRGY, scattE);
-    int openNum = calcOpenChNum(scattE);
+    sysTotE = sEngs.get(sysIdx);                           log.dbg("sysTotE = ", sysTotE);
+    scttE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scttE = ", scttE);
+    mCrss.set(sysIdx, IDX_ENRGY, scttE);
+    int openNum = calcOpenChNum(scttE);
 
     double sigma = 0;
-    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scttE=" + (float)scattE);
-    if (scattE <= 0
-      ||  engModel.getFirst() > scattE
-      ||  scattE > engModel.getLast()
+    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scttE=" + (float)scttE);
+    if (scttE <= 0
+      ||  engModel.getFirst() > scttE
+      ||  scttE > engModel.getLast()
       ) {
       continue;
     }
-    loadTrialWfs(sysIdx, orthonNt, openNum);
+    loadTrialWfs(sysTotE, orthonNt, openNum);
 
-    FuncArr psi = methodE1.calcPsi(scattE, orthonNt);
-    Dble2 sc = calcSC(psi, scattE, sysIdx);
+    FuncArr psi = methodE1.calcPsi(scttE, orthonNt);
+    Dble2 sc = calcSC(psi, scttE, sysIdx);
     double R = -sc.a / sc.b;                               log.dbg("R = ", R);
 
     Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
-    sigma = Scatt.calcSigmaPiFromS(S, scattE);
+    sigma = Scatt.calcSigmaPiFromS(S, scttE);
 //    double sigma = R;
 //    double sigma = newR;
     log.dbg("sigma = ", sigma).eol();

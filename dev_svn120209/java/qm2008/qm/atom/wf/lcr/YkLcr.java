@@ -143,7 +143,7 @@ public FuncVec calcZk_NEW() {   log.setDbg();
 
   //NOTE!!  HERE  IntgPts7 is much better than calcFuncIntOK
   FuncVec res = new IntgPts7(zF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
-//  FuncVec res = quadrLcr.calcFuncIntOK(zF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
+//  FuncVec res = quadr.calcFuncIntOK(zF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
 
   res.multSelf(rK);
   return res;

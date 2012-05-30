@@ -35,7 +35,7 @@ public ScttRes calc(Vec engs) {
     double momP = Scatt.calcMomFromE(scattE);
     WFQuadrLcr quadr = orthonN.getQuadr();
     FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
-    double v = calcV(sinL, sinL);
+    double v = calcPotInt(sinL, sinL);
     double R = -2. * v / momP;                        log.dbg("R = ", R);
     double shift = Math.atan(R);
     Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);

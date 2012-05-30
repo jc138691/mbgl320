@@ -43,7 +43,7 @@ public class RkLcrTest2 extends FlowTest {
     assertEquals("R_1s", 0, Math.abs(res - 5. / 8));
     FuncVec f2s = CoulombWFFactory.makeP2s(r, 1.);
     f2s.multSelf(quadr.getDivSqrtCR());
-//    res = FastLoop.dot(f2s, f2s, quadrLcr.getWithCR2());
+//    res = FastLoop.dot(f2s, f2s, quadr.getWithCR2());
     res = quadr.calcInt(f2s, f2s);
     assertEquals("2s", 0, Math.abs(res - 1));
     res = RkLcr.calc(quadr, f, f2s, f, f2s, 0);
@@ -112,9 +112,9 @@ public class RkLcrTest2 extends FlowTest {
     //CRkH  F_2p2p(new CRk(w, r, f_2p, f_2p, f_2p, f_2p, CL(0)));
     //job.addLine( F_2p2p,  93./512,     "F_2p2p",   0.1e-9); // 0.65
     assertEquals(""+count++, 0, Math.abs(res - 93. / 512));
-//    res = RkLcr.calc(quadrLcr, f2p, f2p, f2p, f2p, 1);
+//    res = RkLcr.calc(quadr, f2p, f2p, f2p, f2p, 1);
 //    assertEquals(0, Math.abs(res - 0.12044270784428178), MAX_INTGRL_ERR); // at x=-4, 1/16, 220
-//    res = RkLcr.calc(quadrLcr, f2p, f2p, f2p, f2p, 2);
+//    res = RkLcr.calc(quadr, f2p, f2p, f2p, f2p, 2);
 //    assertEquals(0, Math.abs(res - 0.08789062488574255), MAX_INTGRL_ERR); // at x=-4, 1/16, 220
   }
 }

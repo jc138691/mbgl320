@@ -64,10 +64,10 @@ private double calcF(double a, FuncArr psi, double scattE, int engIdx) {
   FuncVec psiS = psi.get(IDX_P_REG);          log.dbg("resS=", psiS);
   FuncVec sysPsi = sysWFuncs.get(engIdx);            log.dbg("sysPsi=", sysPsi);
 
-  double sysA = calcV(psiReg, sysPsi);    log.dbg("sysA=", sysA);
+  double sysA = calcPotInt(psiReg, sysPsi);    log.dbg("sysA=", sysA);
   sysA *= a;                                    log.dbg("sysA * a=", sysA);
 
-  double sysB = calcV(psiReg, psiS);    log.dbg("sysB=", sysB);
+  double sysB = calcPotInt(psiReg, psiS);    log.dbg("sysB=", sysB);
   double res = - (sysA + sysB) / scattE;    log.dbg("res=", res);
   return res;
 }
@@ -75,7 +75,7 @@ private double calcBornR(FuncArr psi, double scattE) {
   double momP = Scatt.calcMomFromE(scattE);
   FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psi1 = psi.get(IDX_REG);          log.dbg("resS=", psi1);
-  double sysA = calcV(psi1, psi1);    log.dbg("sysA=", sysA);
+  double sysA = calcPotInt(psi1, psi1);    log.dbg("sysA=", sysA);
 //  double res = - sysA / (scttE * 4.0 * Math.PI);    log.dbg("res=", res);
   double res = -2 * sysA / momP;    log.dbg("res=", res);
   return res;

@@ -79,7 +79,7 @@ public void calc(int newNt) {      log.setDbg();
   method.setSysConfH(sysH);
   method.setOrthonNt(orthonNt);
   method.setOrthonN(orthonN);
-  method.setTrgtBasisN(trgtStatesNt);
+  method.setBasisN(trgtStatesNt);
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);

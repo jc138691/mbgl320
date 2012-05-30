@@ -174,7 +174,7 @@ private Mtrx calcRSysIdx_bad(int sysIdx, Mtrx mW, double dlt, Vec vA) {
       R.set(t, t2, res);             log.dbg("R[t="+t+"][t2="+t2+"]=", R.get(t, t2));
     }
   }
-  loadConstsSqrt(R);                           log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
+  loadCorrSqrt(R);                           log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
   MtrxFactory.makeSymmByAvr(R, openN);                log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(R));
   return R;
 }
@@ -303,8 +303,8 @@ protected Mtrx calcR_v1_ok(CmplxMtrx WCJC, Mtrx WSJS) {
     }
   }
   R.timesEquals(-1.);                          log.dbg("R.timesEquals(-1.)=\n", new MtrxDbgView(R));
-  loadConstsSqrt(R);                               log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
-  loadConstsCn1(R);                               log.dbg("loadConstsCn1(R)=\n", new MtrxDbgView(R));
+  loadCorrSqrt(R);                               log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
+  loadCorrCn1(R);                               log.dbg("loadCorrCn1(R)=\n", new MtrxDbgView(R));
   MtrxFactory.makeSymmByAvr(R, openN);           log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(R));
   return R;
 }
@@ -332,11 +332,11 @@ protected Mtrx calcR(Mtrx WCJC, Mtrx WSJS) {
 //  }
 
   R.timesEquals(-1.);                    log.dbg("R.timesEquals(-1.)=\n", new MtrxDbgView(R));
-  loadConstsSqrt(R);                     log.dbg("loadConstsSqrt(R)=\n", new MtrxDbgView(R));
-  loadConstsCn1(R);                      log.dbg("loadConstsCn1(R)=\n", new MtrxDbgView(R));
+  loadCorrSqrt(R);                     log.dbg("loadCorrSqrt(R)=\n", new MtrxDbgView(R));
+  loadCorrCn1(R);                      log.dbg("loadCorrCn1(R)=\n", new MtrxDbgView(R));
   return R;
 }
-protected void loadConstsSqrt(Mtrx mK) {
+protected void loadCorrSqrt(Mtrx mK) {
   for (int r = 0; r < mK.getNumRows(); r++) {
     JmCh ch = chArr[r];
     double kg = ch.getSqrtAbsMom(); // k_gamma
@@ -349,7 +349,7 @@ protected void loadConstsSqrt(Mtrx mK) {
     }
   }
 }
-protected void loadConstsCn1(Mtrx mK) {
+protected void loadCorrCn1(Mtrx mK) {
   // NOTE!!! Only open is corrected by / cn1.getRe();
   int openN = mK.getNumCols();
   for (int r = 0; r < openN; r++) {

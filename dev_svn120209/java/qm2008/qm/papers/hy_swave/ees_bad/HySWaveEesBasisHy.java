@@ -53,7 +53,7 @@ public void calc(int newN) {      log.setDbg();
 
   trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
   Vec targetEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));
-  trgtStatesNt = trgtPotH.getEigFuncArr();      log.dbg("trgtBasisN=", new FuncArrDbgView(trgtBasisN));
+  trgtStatesNt = trgtPotH.getEigFuncArr();      log.dbg("basisN=", new FuncArrDbgView(trgtBasisN));
 //  AtomUtil.trimTailSLOW(trgtStatesNt);     // todo: check if needed
   trgtBasisN = null;
   orthonN = null;
@@ -77,7 +77,7 @@ public void calc(int newN) {      log.setDbg();
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
   method.setOrthonNt(orthonNt);
-  method.setTrgtBasisN(trgtStatesNt);
+  method.setBasisN(trgtStatesNt);
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);

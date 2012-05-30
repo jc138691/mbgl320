@@ -24,7 +24,7 @@ public JmAlgKatoE2(JmMthdBaseE2 mthd) {      log.setDbg();
 protected void loadKatoLgrr() {
   if (katoLgrr != null)
     return;
-  WFQuadrLcr quadr = mthd.getQuadrLcr();
+  WFQuadrLcr quadr = mthd.getQuadr();
 
   CalcOptE1 calcOpt = mthd.getCalcOpt();
   int katoN = calcOpt.getKatoN();
@@ -41,17 +41,20 @@ protected double[][][] calcFFromR() {
   int rN = mthd.jmR.getNumRows();
   int cN = mthd.jmR.getNumCols();
   int katoN = calcOpt.getKatoN();
-//  int initChIdx = mthd.trgtE2.getInitTrgtIdx();
+
   LgrrModel jmModel = calcOpt.getLgrrModel();
   int N = jmModel.getN();
   LgrrModel xiModel = new LgrrModel(jmModel);
   Vec tEngs = mthd.trgtE2.getEngs();
+
   double[][][] res = new double[katoN][rN][cN];
   for (int r = 0; r < rN; r++) {
     for (int xiIdx = 0; xiIdx < katoN; xiIdx++) {
       xiModel.setN(N + xiIdx);                //log.dbg("N + xiIdx=", N + xiIdx);
+
       JmCh ch = new JmCh(mthd.getSysTotE(), tEngs.get(r), xiModel
         , -mthd.trgtE2.getScreenZ());
+
       for (int c = 0; c < cN; c++) {
         double sg = Mathx.dlt(r, c) * ch.getSn();  //log.dbg("sg=", sg);
         double cg = 0;
@@ -75,17 +78,17 @@ protected double[][] calcVecA() {
   int cN = mthd.jmR.getNumCols();
   int sN = mthd.getSysBasisSize();
   double[][] res = new double[cN][sN] ;
-  double[] sysE = mthd.getSysEngs().getArr();
-  for (int sysIdx = 0; sysIdx < sN; sysIdx++) {
-    double ei = sysE[sysIdx];
-    for (int c = 0; c < cN; c++) {
-      double ai = calcAi(sysIdx, c);
+  double[] sEngs = mthd.getSysEngs().getArr();
+  for (int s = 0; s < sN; s++) {
+    double ei = sEngs[s];
+    for (int c = 0; c < cN; c++) { // target channels
+      double ai = calcAi(s, c);
       if (Double.compare(ei, mthd.getSysTotE()) == 0) {
         throw new IllegalArgumentException(log.error("E=e_i=" + (float)mthd.getSysTotE()));
       } else {
         ai /= (ei - mthd.getSysTotE());      //log.dbg("ai=", ai);
       }
-      res[c][sysIdx] = ai;
+      res[c][s] = ai;
     }
   }
   return res;

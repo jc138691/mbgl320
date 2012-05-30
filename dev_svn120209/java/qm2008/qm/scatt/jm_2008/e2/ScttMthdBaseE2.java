@@ -3,9 +3,11 @@ import atom.energy.ConfHMtrx;
 import flanagan.complex.Cmplx;
 import math.Mathx;
 import math.complex.CmplxMtrx;
+import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
+import papers.hy_swave.ees_bad.EesMethodE1;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
@@ -25,7 +27,7 @@ protected static final int IDX_IONIZ = 1;
 public ScttTrgtE2 trgtE2;
 protected ConfHMtrx sysConfH;
 protected LgrrOrthLcr orthonNt;
-protected FuncArr trgtBasisN;
+protected FuncArr basisN;
 protected CmplxMtrx jmS;
 protected int calcChN;
 protected int openChN;
@@ -64,11 +66,11 @@ public void setSysConfH(ConfHMtrx sysConfH) {
 public int getChNum() { // number of target channels
   return trgtE2.getEngs().size();
 }
-public void setTrgtBasisN(FuncArr trgtBasisN) {
-  this.trgtBasisN = trgtBasisN;
+public void setBasisN(FuncArr basisN) {
+  this.basisN = basisN;
 }
-public FuncArr getTrgtBasisN() {
-  return trgtBasisN;
+public FuncArr getBasisN() {
+  return basisN;
 }
 protected void saveCrossSecs(int i, ScttRes res, CmplxMtrx mS, int openNum) {
   Mtrx mCrss = res.getCrossSecs();
@@ -151,5 +153,22 @@ protected int calcCalcChNum(double scattE) {
   int res = openN + calcOpt.getUseClosedNum();
   int tN = getChNum();
   return Math.min(tN, res);
+}
+
+public FuncArr makeFreeS(double sTotE, int chNum) {
+  Vec x = quadr.getX();
+  FuncArr res = new FuncArr(x);
+
+  Vec tEngs = trgtE2.getEngs();
+  for (int t = 0; t < chNum; t++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(t);     // target state eng
+    double tScattE = sTotE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec tPsi = EesMethodE1.calcChPsiReg(tScattE, quadr);
+    res.add(tPsi);
+  }
+  return res;
 }
 }

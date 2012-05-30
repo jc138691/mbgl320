@@ -52,17 +52,17 @@ public ScttRes calcSysEngs() {    log.setDbg();
 
   EesMethodE1 methodE1 = new EesMethodE1(calcOpt);
   for (int sysIdx = 0; sysIdx < eN; sysIdx++) {                log.dbg("i = ", sysIdx);
-    double sysTotE = sEngs.get(sysIdx);                           log.dbg("sysE = ", sysTotE);
+    sysTotE = sEngs.get(sysIdx);                           log.dbg("sysE = ", sysTotE);
     chArr = loadChArr(sysTotE);    // used to calc cross_sections
-    double scattE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scttE = ", scattE);
-    mCrss.set(sysIdx, IDX_ENRGY, scattE);
-    int openNum = calcOpenChNum(scattE);
+    scttE = sysTotE - trgtE2.getInitTrgtEng();      log.dbg("scttE = ", scttE);
+    mCrss.set(sysIdx, IDX_ENRGY, scttE);
+    int openNum = calcOpenChNum(scttE);
 
     double sigma = 0;
-    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scttE=" + (float)scattE);
-    if (scattE <= 0
-      ||  engModel.getFirst() > scattE
-      ||  scattE > engModel.getLast()
+    log.dbg("E_MIN=" + (float)engModel.getFirst() + ", E_MAX=" + (float)engModel.getLast() + ", scttE=" + (float)scttE);
+    if (scttE <= 0
+      ||  engModel.getFirst() > scttE
+      ||  scttE > engModel.getLast()
       ) {
       continue;
     }
@@ -77,9 +77,9 @@ public ScttRes calcSysEngs() {    log.setDbg();
     if (openNum == 2) {
       log.dbg("if (openNum == 2)");
     }
-    loadPWaveS_OLD(sysIdx, orthonNt, openNum);
+    loadPWaveS(sysTotE, orthonNt, openNum);
     loadPnS(sysIdx, orthonNt, openNum);
-    loadPWaveC_OLD(sysIdx, orthonNt, openNum);
+    loadPWaveC(sysTotE, orthonNt, openNum);
 
     calcAllVecs(sysIdx, openNum);
     calcK(openNum);
@@ -130,7 +130,7 @@ protected void calcAllVecs(int sysIdx, int chNum) {
   m00 = new Mtrx(chNum, chNum);
   m01 = new Mtrx(chNum, chNum);
   Vec tEngs = trgtE2.getEngs();
-  FuncArr trgtWfs = getTrgtBasisN();
+  FuncArr trgtWfs = getBasisN();
   Vec sEngs = getSysEngs();
   double sysTotE = sEngs.get(sysIdx);  // system total eng
   for (int g = 0; g < chNum; g++) {     log.dbg("g = ", g); // g-gamma; Target channels
@@ -180,7 +180,7 @@ protected void calcAllVecs(int sysIdx, int chNum) {
 private double calcHE(int g, int g2, FuncVec pw2, Ls ls) {
   int L = 0;
   SysE2 sysE2 = (SysE2)sysConfH.getAtom();
-  FuncArr trgtWfs = getTrgtBasisN();
+  FuncArr trgtWfs = getBasisN();
 
   FuncVec tWf = trgtWfs.get(g);
   Shell shB = new Shell(g, tWf, L);    // bound #1

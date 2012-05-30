@@ -1,7 +1,4 @@
 package papers.hy_swave.ees_bad;
-import atom.energy.part_wave.PotH;
-import atom.energy.part_wave.PotHMtrx;
-import atom.wf.WFQuadr;
 import atom.wf.lcr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.func.FuncVec;
@@ -175,16 +172,16 @@ protected double calcRFromPsiE(FuncArr psi, double scattE, int engIdx, double sy
   FuncVec psiPC = psi.get(IDX_P_IRR);          //log.dbg("psiPC=", psiPC);
 
 // NOTE!!! Using psiPS is WRONG!!!
-//  double b = calcV(psiPS, sysPsi);
+//  double b = calcPotInt(psiPS, sysPsi);
 //  b *= sysA;
-//  double s = calcV(psiPS, psiPS);
-//  double c = calcV(psiPS, psiPC);
+//  double s = calcPotInt(psiPS, psiPS);
+//  double c = calcPotInt(psiPS, psiPC);
 
   // THIS IS CORRECT; use psiS
-  double b = calcV(psiS, sysPsi);
+  double b = calcPotInt(psiS, sysPsi);
   b *= sysA;
-  double s = calcV(psiS, psiPS);
-  double c = calcV(psiS, psiPC);
+  double s = calcPotInt(psiS, psiPS);
+  double c = calcPotInt(psiS, psiPC);
 
   double res = b + s + R * c;
 //  double norm =  -2. / momP;       // WHY -2, not 2?
