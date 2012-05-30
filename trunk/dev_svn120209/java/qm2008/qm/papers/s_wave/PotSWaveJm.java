@@ -12,7 +12,6 @@ import papers.hy_swave.Jm2010CommonLcr;
 import qm_station.QMSProject;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.JmMthdE1;
-import scatt.jm_2008.e1.JmMthdE1_OLD;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.target.ScttTrgtFactory;
@@ -70,18 +69,20 @@ public void calc(int newN) {
   initProject();
   potScattTestOk();
   pot = CoulombWFFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
-  PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
+  PotHMtrx potH = new PotHMtrxLcr(L, orthonN, pot);
 ////    PotH partH = sysConfH.makePotH();
-  Vec sysEngs = sysH.getEigVal();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
-  FuncArr sysWFuncs = sysH.getEigFuncArr();         log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
-  Vec D = new JmD(biorthN, sysWFuncs);              log.dbg("D_{n,N-1}=", D);
+  Vec sysEngs = potH.getEigVal();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
+  FuncArr sysBasisN = potH.getEigFuncArr();         log.dbg("sysBasisN=", new FuncArrDbgView(sysBasisN));
+  Vec D = new JmD(biorthN, sysBasisN);              log.dbg("D_{n,N-1}=", D);
 
 //  JmMthdE1_OLD method = new JmMthdE1_OLD(calcOpt); // OLD
   JmMthdE1 mthd = makeMthd(calcOpt);
+  mthd.setPotH(potH);
   mthd.setTrgtE2(ScttTrgtFactory.makeEmptyE2());  //EMPTY target!!!
   mthd.setOverD(D);
   mthd.setSysEngs(sysEngs);
-  mthd.setQuadrLcr(quadrLcr);
+  mthd.setBasisN(sysBasisN); // NOTE! using trgtBasis to pass the E1-sys-basis
+  mthd.setQuadr(quadrLcr);
   ScttRes res = mthd.calcForScatEngModel();
   log.dbg("res=", res);
 //    ScttRes res = method.calcMidSysEngs();                  log.dbg("res=", res);

@@ -6,8 +6,6 @@ import atom.wf.lcr.WFQuadrLcr;
 import math.Calc;
 import math.func.FuncVec;
 import math.mtrx.Mtrx;
-import math.mtrx.MtrxDbgView;
-import math.mtrx.MtrxFactory;
 import math.vec.Vec;
 import project.workflow.task.test.FlowTest;
 import scatt.eng.EngGrid;
@@ -29,7 +27,7 @@ protected static final int IDX_ENRGY = 0;
 public Mtrx jmR;     // NOTE!!! Only open part is corrected by / cn1.getRe();
 public JmCh[] chArr;
 protected Vec sysEngs;
-protected WFQuadrLcr quadrLcr;
+protected WFQuadrLcr quadr;
 protected PotHMtrx potH;
 protected LgrrOrthLcr orthonN;
 protected final CalcOptE1 calcOpt;
@@ -65,10 +63,6 @@ public EngGrid calcScattEngs() {
   EngGrid engs = new EngGrid(eng);
   return engs;
 }
-//public ScttRes calcSysEngs() {
-//  throw new IllegalArgumentException(log.error("call relevant implementation of calcSysEngs"));
-////  return calc(sysEngs);
-//}
 public int getSysBasisSize() {
   return sysEngs.size();
 }
@@ -107,11 +101,11 @@ public LgrrOrthLcr getOrthonN() {
 public void setOrthonN(LgrrOrthLcr orthonN) {
   this.orthonN = orthonN;
 }
-public WFQuadrLcr getQuadrLcr() {
-  return quadrLcr;
+public WFQuadrLcr getQuadr() {
+  return quadr;
 }
-public void setQuadrLcr(WFQuadrLcr quadrLcr) {
-  this.quadrLcr = quadrLcr;
+public void setQuadr(WFQuadrLcr quadr) {
+  this.quadr = quadr;
 }
 public int getN() {
   return calcOpt.getLgrrModel().getN();
@@ -131,7 +125,7 @@ protected double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {
   return res;
 }
 
-protected double calcV(FuncVec wf, FuncVec wf2) {
+protected double calcPotInt(Vec wf, Vec wf2) {
   FuncVec pot = potH.getPot();
   WFQuadr quadr = potH.getQuadr();
   double res = quadr.calcInt(wf, pot, wf2);

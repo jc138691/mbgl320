@@ -84,7 +84,7 @@ public void calc(int newN) {
   trgtStatesNt = null;
   orthonNt = null;
 
-//  AtomUtil.trimTailSLOW(trgtBasisN);     // todo: check if needed
+//  AtomUtil.trimTailSLOW(basisN);     // todo: check if needed
   ScttTrgtE3 trgt = makeTrgtE3(slater);
   trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE electron
   trgt.setInitTrgtIdx(FROM_CH);
@@ -101,7 +101,7 @@ public void calc(int newN) {
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
   method.setOrthonNt(orthonN);
-  method.setTrgtBasisN(trgtBasisN);   // is just orthonNt, but different in _BasisHy
+  method.setBasisN(trgtBasisN);   // is just orthonNt, but different in _BasisHy
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);

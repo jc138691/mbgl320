@@ -76,7 +76,7 @@ public void calc(int newN, int newNt) {
   N = newN;
   Nt = newNt;
   initProject();
-  potScattTestOk();  // basisN, biorthN, orthonNt, quadrLcr
+  potScattTestOk();  // basisN, biorthN, orthonNt, quadr
   hydrScattTestOk(TARGET_Z);  // pot, orthonNt
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
 
@@ -133,7 +133,7 @@ public void calc(int newN, int newNt) {
   mthd.setOverD(D);
   mthd.setSysEngs(sEngs);
   mthd.setSysConfH(sysH);
-  mthd.setQuadrLcr(quadrLcr);
+  mthd.setQuadr(quadrLcr);
 
   if (CALC_DENSITY) {
     FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);

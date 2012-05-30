@@ -27,45 +27,7 @@ protected FuncArr phiC;
 public EesMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
 }
-protected void loadFreeS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
-  IFuncArr basis = orthN;
-  WFQuadrLcr quadr = orthN.getQuadr();
-  Vec x = quadr.getX();
-  freeS = new FuncArr(x);
-
-  Vec tEngs = trgtE2.getEngs();
-  Vec sEngs = getSysEngs();
-  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
-    double tE = tEngs.get(tIdx);     // target state eng
-    double sE = sEngs.get(sysIdx);  // system total eng
-    double tScattE = sE - tE;
-    if (tScattE <= 0) {
-      break;
-    }
-    FuncVec tPsi = EesMethodE1.calcChPsiReg(tScattE, orthN.getQuadr());
-    freeS.add(tPsi);
-  }
-}
-protected void loadPWaveS_OLD(int sysIdx, LgrrOrthLcr orthN, int chNum) {
-  IFuncArr basis = orthN;
-  WFQuadrLcr quadr = orthN.getQuadr();
-  Vec x = quadr.getX();
-  phiS = new FuncArr(x);
-
-  Vec tEngs = trgtE2.getEngs();
-  Vec sEngs = getSysEngs();
-  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
-    double tE = tEngs.get(tIdx);     // target state eng
-    double sE = sEngs.get(sysIdx);  // system total eng
-    double tScattE = sE - tE;
-    if (tScattE <= 0) {
-      break;
-    }
-    FuncVec tPhiS = EesMethodE1.calcPWaveS(tScattE, orthN);
-    phiS.add(tPhiS);
-  }
-}
-protected void loadPWaveS(double sysTotE, LgrrOrthLcr orthN, int chNum) {
+protected void loadPWaveS(double sTotE, LgrrOrthLcr orthN, int chNum) {
   WFQuadrLcr quadr = orthN.getQuadr();
   Vec x = quadr.getX();
   phiS = new FuncArr(x);
@@ -73,7 +35,7 @@ protected void loadPWaveS(double sysTotE, LgrrOrthLcr orthN, int chNum) {
   Vec tEngs = trgtE2.getEngs();
   for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
     double tE = tEngs.get(tIdx);     // target state eng
-    double tScattE = sysTotE - tE;
+    double tScattE = sTotE - tE;
     if (tScattE <= 0) {
       break;
     }
@@ -100,7 +62,7 @@ protected void loadPnS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
     pnS.add(tPhiS);
   }
 }
-protected void loadPWaveC(double sysTotE, LgrrOrthLcr orthN, int chNum) {
+protected void loadPWaveC(double sTotE, LgrrOrthLcr orthN, int chNum) {
   WFQuadrLcr quadr = orthN.getQuadr();
   Vec x = quadr.getX();
   phiC = new FuncArr(x);
@@ -109,7 +71,7 @@ protected void loadPWaveC(double sysTotE, LgrrOrthLcr orthN, int chNum) {
   Vec sEngs = getSysEngs();
   for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
     double tE = tEngs.get(tIdx);     // target state eng
-    double tScattE = sysTotE - tE;
+    double tScattE = sTotE - tE;
     if (tScattE <= 0) {
       break;
     }
@@ -117,29 +79,10 @@ protected void loadPWaveC(double sysTotE, LgrrOrthLcr orthN, int chNum) {
     phiC.add(tPhiC);
   }
 }
-protected void loadPWaveC_OLD(int sysIdx, LgrrOrthLcr orthN, int chNum) {
-  IFuncArr basis = orthN;
-  WFQuadrLcr quadr = orthN.getQuadr();
-  Vec x = quadr.getX();
-  phiC = new FuncArr(x);
-
-  Vec tEngs = trgtE2.getEngs();
-  Vec sEngs = getSysEngs();
-  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
-    double tE = tEngs.get(tIdx);     // target state eng
-    double sE = sEngs.get(sysIdx);  // system total eng
-    double tScattE = sE - tE;
-    if (tScattE <= 0) {
-      break;
-    }
-    FuncVec tPhiC = EesMethodE1.calcPWaveC(tScattE, orthN);
-    phiC.add(tPhiC);
-  }
-}
-protected void loadTrialWfs(int sysIdx, LgrrOrthLcr orthN, int chNum) {
-  loadFreeS(sysIdx, orthN, chNum);
-  loadPWaveS_OLD(sysIdx, orthN, chNum);
-  loadPWaveC_OLD(sysIdx, orthN, chNum);
+protected void loadTrialWfs(double sTotE, LgrrOrthLcr orthN, int chNum) {
+  freeS = makeFreeS(sTotE, chNum);
+  loadPWaveS(sTotE, orthN, chNum);
+  loadPWaveC(sTotE, orthN, chNum);
 }
 protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
   Dble3 res = new Dble3();
@@ -172,7 +115,7 @@ protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
 protected double calcXiM(int g, int g2, FuncVec pw2, double sysTotE, Ls ls) {
   int L = 0;
   SysE2 sysE2 = (SysE2)sysConfH.getAtom();
-  FuncArr trgtWfs = getTrgtBasisN();
+  FuncArr trgtWfs = getBasisN();
 
   FuncVec tWf = trgtWfs.get(g);
   Shell shB = new Shell(g, tWf, L);    // bound #1
