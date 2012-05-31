@@ -1,10 +1,10 @@
 package atom.wf.lcr.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 16/07/2008, Time: 09:31:25 */
+import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.RkLcr;
 import atom.wf.lcr.TransLcrToR;
 import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.lcr.YkLcr;
-import atom.wf.coulomb.CoulombWFFactory;
 import atom.wf.mm.HkMm;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
@@ -29,19 +29,19 @@ public class RkLcrTest extends FlowTest {
 //      QuadrPts5 w = new QuadrPts5(x);
     WFQuadrLcr wCR = new WFQuadrLcr(x);
 
-    FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
+    FuncVec f = WfFactory.makeP1s(r, 1.);
     f.multSelf(xToR.getDivSqrtCR());
     double res = 0, rMm = 0;
     res = wCR.getWithCR2().calc(f, f);
     assertEquals(0, Math.abs(res - 1), 6e-13);
 
-    FuncVec f2 = CoulombWFFactory.makeP1s(r, 1.);
+    FuncVec f2 = WfFactory.makeP1s(r, 1.);
     f2.multSelf(xToR.getDivSqrtCR());
     f2.mult(2.); // NOTE! Checking diff norm
     res = wCR.getWithCR2().calc(f2, f2);
     assertEquals(0, Math.abs(res - 4), 3e-12);
 
-    FuncVec T = CoulombWFFactory.makeY_0_1s(r); // valid
+    FuncVec T = WfFactory.makeY_0_1s(r); // valid
     FuncVec Y = new YkLcr(wCR, f, f, 0).calcYk();
 //    assertEquals(0, Math.abs(T.distSLOW(Y)), 2e-9);
     assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 2e-9);
@@ -65,7 +65,7 @@ public class RkLcrTest extends FlowTest {
     rMm = hkMm.calcPot2();
     assertEquals(0, Math.abs(rMm - 5. / 8.), 2e-10); // todo: was 5e-11???????
 
-    FuncVec f2s = CoulombWFFactory.makeP2s(r, 1.);
+    FuncVec f2s = WfFactory.makeP2s(r, 1.);
     f2s.multSelf(xToR.getDivSqrtCR());
     res = wCR.getWithCR2().calc(f2s, f2s);
     assertEquals(0, Math.abs(res - 1), 2e-13);
@@ -86,7 +86,7 @@ public class RkLcrTest extends FlowTest {
     assertEquals(0, Math.abs(res - 77. / 512), 4e-10);
     assertEquals(0, Math.abs(rMm - 77. / 512), 3e-10);
 
-    FuncVec f2p = CoulombWFFactory.makeP2p(r, 1.);
+    FuncVec f2p = WfFactory.makeP2p(r, 1.);
     f2p.multSelf(xToR.getDivSqrtCR());
     res = wCR.getWithCR2().calc(f2p, f2p);
     assertEquals(0, Math.abs(res - 1), 7e-14);

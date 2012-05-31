@@ -11,7 +11,7 @@ import atom.energy.ConfHMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.TransLcrToR;
 import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
@@ -40,7 +40,7 @@ public class HeClementiTest extends FlowTest {
 
     // from p445 of Clementi Roetti, Atomic Data 14, 177 (1974)
     double Zeff = AtomHeClementi.ZETA;// from p445 of Clementi Roetti, Atomic Data 14, 177 (1974)
-    FuncVec f = CoulombWFFactory.makeP1s(r, Zeff);
+    FuncVec f = WfFactory.makeP1s(r, Zeff);
     f.setX(w.getX()); // MUST change grid for derivatives
     f.multSelf(xToR.getDivSqrtCR());
 

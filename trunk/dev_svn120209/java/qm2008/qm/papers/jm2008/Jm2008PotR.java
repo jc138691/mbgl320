@@ -13,7 +13,7 @@ import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import math.func.FuncVec;
 import atom.wf.WFQuadrR;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import scatt.jm_2008.jm.laguerre.*;
 import scatt.jm_2008.jm.TestModel;
 import project.workflow.task.test.FlowTest;
@@ -69,7 +69,7 @@ public class Jm2008PotR extends Jm2008Common {
     return res;
   }
   public FuncVec makePot(Vec r) {
-    FuncVec pot = CoulombWFFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", pot);
+    FuncVec pot = WfFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", pot);
     return pot;
   }
   public void tearDown() {

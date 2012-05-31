@@ -50,7 +50,7 @@ public ScttRes calc(Vec engs) {
   throw new IllegalArgumentException(log.error("use calcSysEngs()"));
 }
 private double calcA(FuncArr psi, double scattE, int engIdx) {
-  FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
+  FuncArr sysWFuncs = potH.getEigWfs();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psiS = psi.get(IDX_P_REG);          log.dbg("resS=", psiS);
   FuncVec sysPsi = sysWFuncs.get(engIdx);            log.dbg("sysPsi=", sysPsi);
   double a11 = calcHE(psiS, potH, psiS, scattE);    log.dbg("a11=", a11);
@@ -59,7 +59,7 @@ private double calcA(FuncArr psi, double scattE, int engIdx) {
   return res;
 }
 private double calcF(double a, FuncArr psi, double scattE, int engIdx) {
-  FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
+  FuncArr sysWFuncs = potH.getEigWfs();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psiReg = psi.get(IDX_REG);          log.dbg("resS=", psiReg);
   FuncVec psiS = psi.get(IDX_P_REG);          log.dbg("resS=", psiS);
   FuncVec sysPsi = sysWFuncs.get(engIdx);            log.dbg("sysPsi=", sysPsi);
@@ -73,7 +73,7 @@ private double calcF(double a, FuncArr psi, double scattE, int engIdx) {
 }
 private double calcBornR(FuncArr psi, double scattE) {
   double momP = Scatt.calcMomFromE(scattE);
-  FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
+  FuncArr sysWFuncs = potH.getEigWfs();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psi1 = psi.get(IDX_REG);          log.dbg("resS=", psi1);
   double sysA = calcPotInt(psi1, psi1);    log.dbg("sysA=", sysA);
 //  double res = - sysA / (scttE * 4.0 * Math.PI);    log.dbg("res=", res);

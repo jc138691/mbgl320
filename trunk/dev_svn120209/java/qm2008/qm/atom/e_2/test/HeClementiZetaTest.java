@@ -7,7 +7,7 @@ import atom.e_2.SysHe;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.vec.Vec;
@@ -31,7 +31,7 @@ public class HeClementiZetaTest extends FlowTest {
   public void testClementiSingleZeta() throws Exception  {
     Vec r = quadr.getR();
     double effZ = AtomHeClementi.ZETA;// from p445 of Clementi Roetti, Atomic Data 14, 177 (1974)
-    FuncVec f = CoulombWFFactory.makeP1s(r, effZ);
+    FuncVec f = WfFactory.makeP1s(r, effZ);
     f.multSelf(quadr.getDivSqrtCR());
     f.setX(quadr.getX()); // MUST change grid for derivatives
     double res = quadr.calcInt(f, f);

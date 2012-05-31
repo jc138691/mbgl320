@@ -24,13 +24,13 @@ public class ScttTrgtE3 extends ScttTrgtE2 {
   public void makeReady() {
     int arrSize = 0;
     for (ConfHMtrx h : arrH) {    // count required size
-      arrSize += h.getEigVal().size();
+      arrSize += h.getEigEngs().size();
     }                                        log.dbg("arrSize=", arrSize);
     // get all channels
     confArr = new ChConf[arrSize];
     int idx = 0;
     for (ConfHMtrx h : arrH) {
-      Vec engs = h.getEigVal();              log.dbg("engs=\n", engs);
+      Vec engs = h.getEigEngs();              log.dbg("engs=\n", engs);
       for (int i = 0; i < engs.size(); i++) {
         ChConf conf = new ChConf(i, engs.get(i), h);
         confArr[idx++] = conf;

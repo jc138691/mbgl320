@@ -21,7 +21,6 @@ import math.vec.VecDbgView;
 import math.func.arr.FuncArrDbgView;
 import scatt.jm_2008.jm.laguerre.lcr.*;
 import scatt.jm_2008.jm.TestModel;
-import atom.wf.coulomb.CoulombWFFactory;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 22/10/2008, Time: 13:04:14
  */

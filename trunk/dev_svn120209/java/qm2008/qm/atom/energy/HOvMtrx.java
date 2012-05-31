@@ -61,7 +61,7 @@ public Vec getEigVal(boolean overwrite) {
 }
 public Vec getEngEv(int fromIdx) {
   return null;
-//  double[] engs = getEigVal().getArr();
+//  double[] engs = getEigEngs().getArr();
 //  Vec res = new Vec(engs.length);
 //  for (int i = 0; i < res.size(); i++) {
 //    double e = AtomUnits.toEV(engs[i] - engs[fromIdx]);

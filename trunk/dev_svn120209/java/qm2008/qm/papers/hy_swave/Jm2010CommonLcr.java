@@ -4,7 +4,7 @@ import atom.data.AtomHy;
 import atom.e_1.test.HyOvTest;
 import atom.wf.coulomb.CoulombNmrvLcr;
 import atom.wf.coulomb.CoulombNmrvR;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.LcrFactory;
 import atom.wf.lcr.RkLcrTest2;
 import atom.wf.lcr.WFQuadrLcr;
@@ -100,7 +100,7 @@ protected void potScattTestOk() {
   FlowTest.setLog(log);
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
-    if (!new CoulombWFFactory().ok()) return;
+    if (!new WfFactory().ok()) return;
     if (!new CmplxGamma().ok()) return;
     if (!new Cmplx1F1().ok()) return;
     if (!new Cmplx2F1().ok()) return;

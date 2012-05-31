@@ -1,6 +1,6 @@
 package atom.wf.lcr;
 
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import math.func.FuncVec;
 import math.vec.Vec;
 import math.vec.metric.DistMaxAbsErr;
@@ -26,13 +26,13 @@ public class RkLcrTest2 extends FlowTest {
   }
   public void testCalcRkLcr() throws Exception {
     Vec r = quadr.getR();
-    FuncVec f = CoulombWFFactory.makeP1s(r, 1.);
+    FuncVec f = WfFactory.makeP1s(r, 1.);
     f.multSelf(quadr.getDivSqrtCR());
     double res = quadr.calcInt(f, f);
     setMaxErr(MAX_INTGRL_ERR);
 //    setShowDbg(log.getDbg());
     assertEquals("<1s|1s>", 0, Math.abs(res - 1));
-    FuncVec T = CoulombWFFactory.makeY_0_1s(r); // valid
+    FuncVec T = WfFactory.makeY_0_1s(r); // valid
     FuncVec Y = new YkLcr(quadr, f, f, 0).calcYk();
 //    assertEquals(0, Math.abs(T.distSLOW(Y)), 2e-9);
     assertEquals("Y_0_1s", 0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)));
@@ -41,7 +41,7 @@ public class RkLcrTest2 extends FlowTest {
     //CRkH  F_1s1s(new CRk(w, r, f_1s, f_1s, f_1s, f_1s, CL(0)));
     //job.addLine( F_1s1s,     5./8,     "F_1s1s",     3e-9); // Fischer's 0.5??
     assertEquals("R_1s", 0, Math.abs(res - 5. / 8));
-    FuncVec f2s = CoulombWFFactory.makeP2s(r, 1.);
+    FuncVec f2s = WfFactory.makeP2s(r, 1.);
     f2s.multSelf(quadr.getDivSqrtCR());
 //    res = FastLoop.dot(f2s, f2s, quadr.getWithCR2());
     res = quadr.calcInt(f2s, f2s);
@@ -72,7 +72,7 @@ public class RkLcrTest2 extends FlowTest {
 //    assertEquals(0, Math.abs(res - 77. / 512), MAX_INTGRL_ERR);
     assertEqualsRel("F_2s2s =", 77. / 512, res, true);
 
-    FuncVec f2p = CoulombWFFactory.makeP2p(r, 1.);
+    FuncVec f2p = WfFactory.makeP2p(r, 1.);
     f2p.multSelf(quadr.getDivSqrtCR());
     res = quadr.calcInt(f2p, f2p);
     int count = 0;

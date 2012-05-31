@@ -20,7 +20,7 @@ import atom.shell.ConfArr;
 import atom.shell.ConfArrFactoryE2;
 import atom.shell.ConfArrFactoryE3;
 import atom.shell.Ls;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.LcrFactory;
 import atom.wf.slater.SlaterWFFactory;
 import math.func.FuncVec;
@@ -72,14 +72,14 @@ public void setUp() {
 protected void saveTrgtInfo(ScttTrgtE3 jmTrgt) {
   double ionGrnd = jmTrgt.getIonGrndEng();
   int S1 = 0;
-  Vec ionEngs = jmTrgt.getArrH().get(S1).getEigVal().copy();
+  Vec ionEngs = jmTrgt.getArrH().get(S1).getEigEngs().copy();
   ionEngs.add(-ionGrnd);
   ionEngs.calc(AtomUnits.funcToEV);
   FileX.writeToFile(ionEngs.toCSV(), HOME_DIR, MODEL_DIR
     , MODEL_NAME+"_thisTrgEngs_S1_ion_eV_" + makeLabelNc());  // THIS target energies, not the true S-wave energies
 
   int S3 = 1;
-  ionEngs = jmTrgt.getArrH().get(S3).getEigVal().copy();
+  ionEngs = jmTrgt.getArrH().get(S3).getEigEngs().copy();
   ionEngs.add(-ionGrnd);
   ionEngs.calc(AtomUnits.funcToEV);
   FileX.writeToFile(ionEngs.toCSV(), HOME_DIR, MODEL_DIR
@@ -106,7 +106,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
   ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                          log.dbg("tH=\n", new MtrxDbgView(tH));
   Mtrx tVecs = tH.getEigVec();                                             log.dbg("tH.getEigVec=", new MtrxDbgView(tVecs));
   if (SAVE_TRGT_ENGS)  {
-    FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME+"_trgEngs_S1_" + makeLabelNc());
+    FileX.writeToFile(tH.getEigEngs().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME+"_trgEngs_S1_" + makeLabelNc());
   }
   if (CALC_DENSITY) {
     FuncArr sysDens = tH.getDensity(CALC_DENSITY_MAX_NUM);
@@ -118,7 +118,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
   tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, basisNt, Nc);            log.dbg("tConfArr=", tConfArr);
   ConfHMtrx tH2 = new ConfHMtrx(tConfArr, tgrtE2);                         log.dbg("tH=\n", new MtrxDbgView(tH2));
   if (SAVE_TRGT_ENGS)  {
-    FileX.writeToFile(tH2.getEigVal().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME+"_trgEngs_S3_" + makeLabelNc());
+    FileX.writeToFile(tH2.getEigEngs().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME+"_trgEngs_S3_" + makeLabelNc());
   }
   if (CALC_DENSITY) {
     FuncArr sysDens = tH2.getDensity(CALC_DENSITY_MAX_NUM);
@@ -140,9 +140,9 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
 //    Ls tLs = new Ls(0, Spin.SINGLET);  // t - for target
 //    ConfArr tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, orthonNt, orthonNt);     log.dbg("tConfArr=", tConfArr);
 //    ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                                   log.dbg("tH=\n", new MtrxDbgView(tH));
-////    Vec tEngs = tH.getEigVal();                                                 log.dbg("tEngs=", new VecDbgView(tEngs));
+////    Vec tEngs = tH.getEigEngs();                                                 log.dbg("tEngs=", new VecDbgView(tEngs));
 //
-//    FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, "He"
+//    FileX.writeToFile(tH.getEigEngs().toCSV(), HOME_DIR, "He"
 //      , "He_SModel_trgEngs_SING_" + basisOptN.makeLabel() + ".dat");
 //
 //
@@ -150,7 +150,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
 //    tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, orthonNt, orthonNt);               log.dbg("tConfArr=", tConfArr);
 //    ConfHMtrx tH2 = new ConfHMtrx(tConfArr, tgrtE2);                                   log.dbg("tH=\n", new MtrxDbgView(tH));
 //
-//    FileX.writeToFile(tH2.getEigVal().toCSV(), HOME_DIR, "He"
+//    FileX.writeToFile(tH2.getEigEngs().toCSV(), HOME_DIR, "He"
 //          , "He_SModel_trgEngs_TRIP_" + basisOptN.makeLabel() + ".dat");
 //
 //    ScttTrgtE3 res = new ScttTrgtE3();
@@ -177,7 +177,7 @@ protected ConfHMtrx makeSysBasisN(SlaterLcr slater) {
 //    AtomShModelE3 modelE3 = new AtomShModelE3(Nt, Nt, N, sLs);
 //    ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, orthonNt);    log.dbg("sConfArr=", sConfArr);
 //    ConfHMtrx res = new ConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
-////    Vec sEngs = sH.getEigVal();                                        log.dbg("sEngs=", new VecDbgView(sEngs));
+////    Vec sEngs = sH.getEigEngs();                                        log.dbg("sEngs=", new VecDbgView(sEngs));
 //    return res;
 //  }
 
@@ -293,7 +293,7 @@ protected void jmHeTestOk() {
   FlowTest.setLog(log);
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
-    if (!new CoulombWFFactory().ok()) return;
+    if (!new WfFactory().ok()) return;
     if (!new SlaterWFFactory(quadrLcr).ok()) return;
 
     if (!new PotEigVecLcrTest(AtomHe.Z, orthonNt).ok()) return;
@@ -373,7 +373,7 @@ protected void calcLi(SlaterLcr slater) { // NOTE!!! Local set up just to test t
   log.dbg("sysArr=", sysArr);
   sysH = new ConfHMtrx(sysArr, tgrtE3);
   log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
-  sysE = sysH.getEigVal();
+  sysE = sysH.getEigEngs();
   log.dbg("sysE=", new VecDbgView(sysE));
 
   // Test with all closed shells
@@ -381,13 +381,13 @@ protected void calcLi(SlaterLcr slater) { // NOTE!!! Local set up just to test t
   log.dbg("sysArr=", sysArr);
   sysH = new ConfHMtrx(sysArr, tgrtE3);
   log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
-  sysE = sysH.getEigVal();
+  sysE = sysH.getEigEngs();
   log.dbg("sysE=", new VecDbgView(sysE));
 
   // Test with all possible shells
   sysArr = ConfArrFactoryE3.makeSModel(modelE3, orthonLiNt);    log.dbg("sysArr=", sysArr);
   sysH = new ConfHMtrx(sysArr, tgrtE3);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
-  sysE = sysH.getEigVal();    log.dbg("sysE=", new VecDbgView(sysE));
+  sysE = sysH.getEigEngs();    log.dbg("sysE=", new VecDbgView(sysE));
   assertFloorRel("E_1s2_2s_2S_CI", AtomLi.E_1s2_2s_2S_CI, sysE.get(0), 0.005);
 
   assertCeilRel("Nt=", -7.446433, sysE.get(0), 0.005);     // this is for  // 15Dec2010; E(Nt=9,lambda=2.3) = -7.4464335
@@ -408,13 +408,13 @@ protected void calcHe(SlaterLcr slater) {    // HELIUM TEST
   log.dbg("htFS1=\n", new MtrxDbgView(oldH));
   log.dbg("htS1=\n", new MtrxDbgView(sysH));
 
-  Vec oldEngs = oldH.getEigVal();
+  Vec oldEngs = oldH.getEigEngs();
   log.dbg("oldEngs=", new VecDbgView(oldEngs));
     assertFloorRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, oldEngs.get(0), 2e-4);
     assertFloorRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, oldEngs.get(1), 3e-5);
 //    assertFloorRel("E_1s3s_1S", HeSWaveAtom.E_1s3s_1S, etFS1.get(2), 4e-4);
 
-  Vec sysEngs = sysH.getEigVal();
+  Vec sysEngs = sysH.getEigEngs();
   log.dbg("sysEngs=", new VecDbgView(sysEngs));
 //    assertFloorRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, etS1.get(0), 2e-4);
 //    assertFloorRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, etS1.get(1), 3e-5);
@@ -425,7 +425,7 @@ protected void calcHe(SlaterLcr slater) {    // HELIUM TEST
   log.dbg("trgtArr=", arrS3);
   ConfHMtrx htS3 = new ConfHMtrx(arrS3, oldE2);
   log.dbg("sysConfH=\n", new MtrxDbgView(htS3));
-  Vec etS3 = htS3.getEigVal();
+  Vec etS3 = htS3.getEigEngs();
   log.dbg("eigVal=", new VecDbgView(etS3));
   if (!IGNORE_BUG_PoetHeAtom) {
     assertFloorRel("E_1s1s_3S", HeSWaveAtom.E_1s2s_3S, etS3.get(0), 7e-6);

@@ -24,7 +24,7 @@ private EigenSymm eig(boolean overwrite) {
   }
   return eig;
 }
-final public Vec getEigVal() {
+final public Vec getEigEngs() {
   return getEigVal(false);
 }
 public Vec getEigVal(boolean overwrite) {
@@ -33,7 +33,7 @@ public Vec getEigVal(boolean overwrite) {
   return new Vec(res);
 }
 public Vec getEngEv(int fromIdx) {
-  double[] engs = getEigVal().getArr();
+  double[] engs = getEigEngs().getArr();
   Vec res = new Vec(engs.length);
   for (int i = 0; i < res.size(); i++) {
     double e = AtomUnits.toEV(engs[i] - engs[fromIdx]);

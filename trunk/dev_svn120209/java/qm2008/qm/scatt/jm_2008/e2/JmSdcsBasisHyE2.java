@@ -103,9 +103,9 @@ protected void loadClmbPsi() {
   WFQuadrLcr quadr = mthd.getQuadr();
   clmbPsi = new JmClmbLcr(L, AtomHy.Z, sdcsEngs, sysTotE, quadr);    log.dbg("clmbPsi=\n", new FuncArrDbgView(clmbPsi));
   clmbPsi2 = new JmClmbLcr(L, AtomHy.Z, sdcsEngs2, sysTotE, quadr);  log.dbg("clmbPsi2=\n", new FuncArrDbgView(clmbPsi2));
-  if (!new ClmbHyBoundTest(clmbPsi, mthd.trgtE2.getStatesE1()).ok())
+  if (!new ClmbHyBoundTest(clmbPsi, mthd.trgtE2.getWfsE1()).ok())
     return;
-  if (!new ClmbHyBoundTest(clmbPsi2, mthd.trgtE2.getStatesE1()).ok())
+  if (!new ClmbHyBoundTest(clmbPsi2, mthd.trgtE2.getWfsE1()).ok())
     return;
 }
 private void makeScdsEngGrid(Mtrx resSdcs) {

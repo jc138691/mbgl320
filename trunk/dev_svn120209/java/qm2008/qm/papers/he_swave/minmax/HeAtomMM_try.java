@@ -25,7 +25,6 @@ import math.vec.grid.StepGridModel;
 import math.vec.test.FastLoopTest;
 import project.workflow.task.test.FlowTest;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.utilx.log.Log;
@@ -91,8 +90,8 @@ public void testHeMm2() throws Exception {  log.setDbg();
 //  Func potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-atomZ/r
 //  FuncVec pot = new FuncVec(quadr.getR(), potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 //  PotHMtrx trgtPotH = new PotHMtrxLcr(L, orthN, pot, quadr);    log.dbg("trgtPotH=", trgtPotH);
-//  Vec heEngs = trgtPotH.getEigVal();            log.dbg("heEngs=", new VecDbgView(heEngs));
-//  orthN = trgtPotH.getEigFuncArr();      log.dbg("trgtStatesNt=", new FuncArrDbgView(orthN));
+//  Vec heEngs = trgtPotH.getEigEngs();            log.dbg("heEngs=", new VecDbgView(heEngs));
+//  orthN = trgtPotH.getEigWfs();      log.dbg("trgtWfsNt=", new FuncArrDbgView(orthN));
 
   LgrrOrthLcr orthMi = new LgrrOrthLcr(quadr, lgrrMi);  log.dbg("orthMa=\n", orthMi);
   LgrrOrthLcr orthMa = new LgrrOrthLcr(quadr, lgrrMa);  log.dbg("orthMa=\n", orthMa);
@@ -143,13 +142,13 @@ public void testHeMm2() throws Exception {  log.setDbg();
   log.dbg("\n mmH=\n", new MtrxDbgView(mmH));
   log.dbg("\n sysH=\n", new MtrxDbgView(sysH));
 
-  Vec sysEngs = sysH.getEigVal();
+  Vec sysEngs = sysH.getEigEngs();
   log.dbg("\n sysEngs=\n", new VecDbgView(sysEngs));
 
-  Vec oldEngs = oldH.getEigVal();
+  Vec oldEngs = oldH.getEigEngs();
   log.dbg("oldEngs=\n", new VecDbgView(oldEngs));
 
-  Vec mmEngs = mmH.getEigVal();
+  Vec mmEngs = mmH.getEigEngs();
   log.dbg("\n mmEngs=\n", new VecDbgView(mmEngs));
   log.dbg("\n sysEngs=\n", new VecDbgView(sysEngs));
   log.dbg("HeSWaveAtom.E_1S=\n" + new VecDbgView(HeSWaveAtom.E_1S));
@@ -191,15 +190,15 @@ public void testHyMm() throws Exception {  log.setDbg();
   ConfHMtrx oldH = new ConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
   ConfHMtrx mmH = new ConfHMtrx(confs, mmE2); log.dbg("mmH=\n", new MtrxDbgView(mmH));
 
-  Vec sysEngs = sysH.getEigVal();
+  Vec sysEngs = sysH.getEigEngs();
   log.dbg("sysEngs=\n", new VecDbgView(sysEngs));
 
-  Vec oldEngs = oldH.getEigVal();
+  Vec oldEngs = oldH.getEigEngs();
   log.dbg("oldEngs=\n", new VecDbgView(oldEngs));
 
   assertEquals(0, Math.abs(sysEngs.getFirst() - oldEngs.getFirst()), 1e-14);
 
-  Vec mmEngs = mmH.getEigVal();
+  Vec mmEngs = mmH.getEigEngs();
   log.dbg("mmEngs=\n", new VecDbgView(mmEngs));
   log.dbg("HeSWaveAtom.E_1S=\n" + new VecDbgView(HeSWaveAtom.E_1S));
 
@@ -354,17 +353,17 @@ public void testHeMm() throws Exception {  log.setDbg();
   log.dbg("\n mmH=\n", new MtrxDbgView(mmH));
   log.dbg("\n sysH=\n", new MtrxDbgView(sysH));
 
-  Vec sysEngs = sysH.getEigVal();
+  Vec sysEngs = sysH.getEigEngs();
   log.dbg("\n sysEngs=\n", new VecDbgView(sysEngs));
 
-  Vec oldEngs = oldH.getEigVal();
+  Vec oldEngs = oldH.getEigEngs();
   log.dbg("oldEngs=\n", new VecDbgView(oldEngs));
 
   assertEquals(0, Math.abs(sysEngs.getFirst() - oldEngs.getFirst()), 1e-14);
 //  assertFloorRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, oldEngs.get(0), 2e-4);
 //  assertFloorRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, oldEngs.get(1), 3e-5);
 
-  Vec mmEngs = mmH.getEigVal();
+  Vec mmEngs = mmH.getEigEngs();
   log.dbg("\n mmEngs=\n", new VecDbgView(mmEngs));
   log.dbg("\n sysEngs=\n", new VecDbgView(sysEngs));
   log.dbg("HeSWaveAtom.E_1S=\n" + new VecDbgView(HeSWaveAtom.E_1S));

@@ -262,21 +262,22 @@ protected CmplxMtrx calcWCJC_v1_ok(Mtrx mW) {
 }
 protected Mtrx calcWcjc(Mtrx mW) {
   double[][] W = mW.getArray();
-  int tN = mW.getNumRows();
-  Mtrx res = new Mtrx(tN, tN);
-  for (int t = 0; t < tN; t++) {
-    for (int t2 = 0; t2 < tN; t2++) {
-      JmCh ch2 = chArr[t2];
-      double wcj = ch2.getJnn().getRe() * W[t][t2] * ch2.getCnn1().getRe();
-      double wcjc = wcj + Mathx.dlt(t, t2);
-//      log.dbg("W[t="+t+"][t2="+t2+"]", W[t][t2]);
-//      log.dbg("ch2.getJnn()=", ch2.getJnn());
-//      log.dbg("ch2.getCn()=", ch2.getCn());
-//      log.dbg("ch2.getCn1()=", ch2.getCn1());
-//      log.dbg("ch2.getCnn1()=", ch2.getCnn1());
+  int n = mW.getNumRows();
+  Mtrx res = new Mtrx(n, n);
+  for (int r = 0; r < n; r++) {
+    for (int c = 0; c < n; c++) {
+      JmCh cCh = chArr[c];
+      // NOTE! using *c_N / c_{N-1}; i.e. 1/c_{N-1} needs to be corrected when calculating R
+      double wcj = cCh.getJnn().getRe() * W[r][c] * cCh.getCnn1().getRe();
+      double wcjc = wcj + Mathx.dlt(r, c);
+//      log.dbg("W[r="+r+"][c="+c+"]", W[r][c]);
+//      log.dbg("cCh.getJnn()=", cCh.getJnn());
+//      log.dbg("cCh.getCn()=", cCh.getCn());
+//      log.dbg("cCh.getCn1()=", cCh.getCn1());
+//      log.dbg("cCh.getCnn1()=", cCh.getCnn1());
 //      log.dbg("wcj=", wcj);
-//      log.dbg("wcjc[t=" + t + "][t2=" + t2 + "]=", wcjc);
-      res.set(t, t2, wcjc);
+//      log.dbg("wcjc[r=" + r + "][c=" + c + "]=", wcjc);
+      res.set(r, c, wcjc);
     }
   }
   return res;
@@ -338,29 +339,27 @@ protected Mtrx calcR(Mtrx WCJC, Mtrx WSJS) {
 }
 protected void loadCorrSqrt(Mtrx mK) {
   for (int r = 0; r < mK.getNumRows(); r++) {
-    JmCh ch = chArr[r];
-    double kg = ch.getSqrtAbsMom(); // k_gamma
+    double rK = chArr[r].getSqrtAbsMom(); // k_gamma
     for (int c = 0; c < mK.getNumCols(); c++) {
-      JmCh ch2 = chArr[c];
-      double kg2 = ch2.getSqrtAbsMom(); // k_{gamma_0}
+      double cK = chArr[c].getSqrtAbsMom(); // k_{gamma_0}
       double oldR = mK.get(r, c);
-      double newR = oldR * (kg / kg2);
+      double newR = oldR * (rK / cK);
       mK.set(r, c, newR);
     }
   }
 }
 protected void loadCorrCn1(Mtrx mK) {
-  // NOTE!!! Only open is corrected by / cn1.getRe();
+  // NOTE!!! Closed channels stored as * cn1.getRe();
   int openN = mK.getNumCols();
   for (int r = 0; r < openN; r++) {
-    JmCh ch = chArr[r];
-    Cmplx cn1 = ch.getCn1();
-    if (!ch.isOpen()) {
+    JmCh rCh = chArr[r];
+    Cmplx rCn1 = rCh.getCn1();
+    if (!rCh.isOpen()) {
       throw new IllegalArgumentException(log.error("!ch2.isOpen()"));
     }
     for (int c = 0; c < openN; c++) {
       double oldR = mK.get(r, c);
-      double newR = oldR / cn1.getRe();
+      double newR = oldR / rCn1.getRe();
       mK.set(r, c, newR);
     }
   }

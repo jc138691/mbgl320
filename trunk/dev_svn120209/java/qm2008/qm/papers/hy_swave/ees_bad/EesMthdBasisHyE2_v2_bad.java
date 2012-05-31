@@ -130,7 +130,7 @@ protected void calcAllVecs(int sysIdx, int chNum) {
   m00 = new Mtrx(chNum, chNum);
   m01 = new Mtrx(chNum, chNum);
   Vec tEngs = trgtE2.getEngs();
-  FuncArr trgtWfs = getBasisN();
+  FuncArr trgtWfs = getWfsE1();
   Vec sEngs = getSysEngs();
   double sysTotE = sEngs.get(sysIdx);  // system total eng
   for (int g = 0; g < chNum; g++) {     log.dbg("g = ", g); // g-gamma; Target channels
@@ -180,7 +180,7 @@ protected void calcAllVecs(int sysIdx, int chNum) {
 private double calcHE(int g, int g2, FuncVec pw2, Ls ls) {
   int L = 0;
   SysE2 sysE2 = (SysE2)sysConfH.getAtom();
-  FuncArr trgtWfs = getBasisN();
+  FuncArr trgtWfs = getWfsE1();
 
   FuncVec tWf = trgtWfs.get(g);
   Shell shB = new Shell(g, tWf, L);    // bound #1

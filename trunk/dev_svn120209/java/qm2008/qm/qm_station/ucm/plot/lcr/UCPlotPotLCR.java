@@ -10,7 +10,7 @@ import project.workflow.task.DefaultTaskUI;
 import math.func.arr.FuncArr;
 import math.func.FuncVec;
 import math.vec.Vec;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 18/11/2008, Time: 13:49:06
  */
@@ -24,7 +24,7 @@ public class UCPlotPotLCR extends UCPlotFuncArr {
     Vec x = w.getX();
     Vec r = w.getR();
     FuncArr res = new FuncArr(x, 1);  // just ONE function
-    FuncVec pot = CoulombWFFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", pot);
+    FuncVec pot = WfFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", pot);
     pot.setX(x);
     pot.multSelf(r);  log.dbg("r * V_1s(r)=", pot);
     pot.multSelf(r);  log.dbg("r^2 * V_1s(r)=", pot);

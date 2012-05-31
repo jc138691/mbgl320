@@ -81,7 +81,7 @@ public void calc(int newN) {
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
   trgtBasisN = orthonN;
-  trgtStatesNt = null;
+  trgtWfsNt = null;
   orthonNt = null;
 
 //  AtomUtil.trimTailSLOW(basisN);     // todo: check if needed
@@ -101,7 +101,7 @@ public void calc(int newN) {
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
   method.setOrthonNt(orthonN);
-  method.setBasisN(trgtBasisN);   // is just orthonNt, but different in _BasisHy
+  method.setWfsE1(trgtBasisN);   // is just orthonNt, but different in _BasisHy
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);
@@ -113,10 +113,10 @@ protected ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
   SysE1 tgrtE2 = new SysE1(-TARGET_Z, slater);
   Ls tLs = new Ls(0, Spin.ELECTRON);  // t - for target
 
-  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtStatesNt);     log.dbg("tConfArr=", tConfArr);
+  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtWfsNt);     log.dbg("tConfArr=", tConfArr);
 
   ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                  log.dbg("tH=\n", new MtrxDbgView(tH));
-  FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
+  FileX.writeToFile(tH.getEigEngs().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
   FileX.writeToFile(tH.getEngEv(0).toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_eV_" + makeLabelBasisOptN());
 
   ScttTrgtE3 res = new ScttTrgtE3();
@@ -127,7 +127,7 @@ protected ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
 
 protected ConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
   SysE2 sys = new SysE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
-  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtStatesNt, trgtStatesNt);   //log.dbg("sysArr=", sConfArr);
+  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtWfsNt, trgtWfsNt);   //log.dbg("sysArr=", sConfArr);
   ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  //log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;
 }

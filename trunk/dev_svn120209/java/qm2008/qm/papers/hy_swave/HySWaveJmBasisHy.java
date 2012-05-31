@@ -81,44 +81,44 @@ public void calc(int newN, int newNt) {
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
 
   trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
-  Vec trgtEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(trgtEngs));
-  trgtStatesNt = trgtPotH.getEigFuncArr();      log.dbg("trgtStatesNt=", new FuncArrDbgView(trgtStatesNt));
-//    FileX.writeToFile(trgtStatesNt.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtLcr_" + makeLabelTrgtS2());
+  Vec trgtEngs = trgtPotH.getEigEngs();            log.dbg("eigVal=", new VecDbgView(trgtEngs));
+  trgtWfsNt = trgtPotH.getEigWfs();      log.dbg("trgtWfsNt=", new FuncArrDbgView(trgtWfsNt));
+//    FileX.writeToFile(trgtWfsNt.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtLcr_" + makeLabelTrgtS2());
 
-  FuncArr basisR = LcrFactory.wfLcrToR(trgtStatesNt, quadrLcr);
+  FuncArr basisR = LcrFactory.wfLcrToR(trgtWfsNt, quadrLcr);
   AtomUtil.trimTailSLOW(basisR);
 //    FileX.writeToFile(basisR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtR_" + makeLabelTrgtS2());
 
-  AtomUtil.trimTailSLOW(trgtStatesNt);
+  AtomUtil.trimTailSLOW(trgtWfsNt);
 
   ScttTrgtE2 trgt = new ScttTrgtE2();
   trgt.setNt(orthonNt.size());
-  trgt.setStatesE1(trgtStatesNt);
+  trgt.setWfsE1(trgtWfsNt);
   trgt.setEngs(trgtEngs);
   trgt.loadSdcsW();                log.dbg("trgt.getSdcsW()=", new VecDbgView(trgt.getSdcsW()));
   if (CALC_TRUE_CONTINUUM) {      // TARGET CONTINUUM
     double maxSysEng = calcOpt.getGridEng().getLast() + trgtEngs.get(0); // ASSUMED FROM H(1s)
     JmClmbLcr clmbNt = new JmClmbLcr(L, AtomHy.Z, trgtEngs, maxSysEng, quadrLcr);      log.dbg("JmClmbLcr =\n", clmbNt);
     clmbNt.normToE();
-//      AtomUtil.setTailFrom(clmbNt, trgtStatesNt);
+//      AtomUtil.setTailFrom(clmbNt, trgtWfsNt);
 //      FileX.writeToFile(clmbNt.toTab(), HOME_DIR, "wf", "clmbNt.dat");
-    if (!new ClmbHyContTest(clmbNt, trgtStatesNt).ok())
+    if (!new ClmbHyContTest(clmbNt, trgtWfsNt).ok())
       return;
     trgt.setContE1(clmbNt);
     trgt.loadSdcsContW();   log.dbg("trgt.getSdcsW()=", new VecDbgView(trgt.getSdcsW()));
 //      FileX.writeToFile(trgt.toTab(), HOME_DIR, "wf", "target_" + basisOptN.makeLabel() + ".dat");
   }
 
-  PotHMtrx targetHTest = new PotHMtrxLcr(L, trgtStatesNt, pot, orthonNt.getQuadr());  log.dbg("targetHTest=", targetHTest); // only for debugging
-  Vec D = new JmD(biorthN, trgtStatesNt);      log.dbg("D_{n,m>=Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
+  PotHMtrx targetHTest = new PotHMtrxLcr(L, trgtWfsNt, pot, orthonNt.getQuadr());  log.dbg("targetHTest=", targetHTest); // only for debugging
+  Vec D = new JmD(biorthN, trgtWfsNt);      log.dbg("D_{n,m>=Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
 
   SYS_LS = new Ls(0, SPIN);
-  ConfArr sysArr = ConfArrFactoryE2.makeSModelE2(SYS_LS, trgtStatesNt, orthonN);    log.dbg("sysArr=", sysArr);
+  ConfArr sysArr = ConfArrFactoryE2.makeSModelE2(SYS_LS, trgtWfsNt, orthonN);    log.dbg("sysArr=", sysArr);
 
   // one electron basis
   trgtBasisN = orthonN;    // only the last wfs were used from  orthonNt, so now we can reuse it
   orthonN = null; // making sure nobody uses old ref
-  trgtBasisN.copyFrom(trgtStatesNt, 0, trgtStatesNt.size());
+  trgtBasisN.copyFrom(trgtWfsNt, 0, trgtWfsNt.size());
   D = new JmD(biorthN, trgtBasisN);   log.dbg("D_{n,N-1}=", D);
 
   SlaterLcr slater = new SlaterLcr(quadrLcr);

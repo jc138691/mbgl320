@@ -29,7 +29,7 @@ protected FuncArr calcPsi(double scattE, int engIdx) {  log.setDbg();
 
   FuncVec gr = psi1.copyY();
   gr.multSelf(potH.getPot());
-//  FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
+//  FuncArr sysWFuncs = potH.getEigWfs();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
 //  FuncVec sysPsi = sysWFuncs.get(engIdx);            log.dbg("sysPsi=", sysPsi);
 //  gr.multFirst(sysPsi);
   gr.multSelf(psi1);

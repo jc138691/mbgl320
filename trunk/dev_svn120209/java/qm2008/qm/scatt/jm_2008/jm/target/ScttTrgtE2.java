@@ -16,7 +16,7 @@ public class ScttTrgtE2 {   // target properties
   public static Log log = Log.getLog(ScttTrgtE2.class);
   private Vec engs;
   private JmClmbLcr contE1;
-  private FuncArr statesE1;
+  private FuncArr wfsE1;  // E1(one electron)-wave-functions of some sort
   private Vec sdcsContW;
   private Vec sdcsW;
   private int nt; // Nt - number of target orthonorm basis functions
@@ -43,11 +43,11 @@ public class ScttTrgtE2 {   // target properties
     this.contE1 = continmE1;
   }
 
-  public void setStatesE1(FuncArr statesE1) {
-    this.statesE1 = statesE1;
+  public void setWfsE1(FuncArr wfsE1) {
+    this.wfsE1 = wfsE1;
   }
-public FuncArr getStatesE1() {
-  return statesE1;
+public FuncArr getWfsE1() {
+  return wfsE1;
 }
 // via continuum overlap
   public void loadSdcsContW() {
@@ -55,7 +55,7 @@ public FuncArr getStatesE1() {
     WFQuadrLcr quadr = contE1.getQuadrLcr();
     for (int i = 0; i < engs.size(); i++) {              log.dbg("i = ", i);
       FuncVec cont = contE1.get(i);
-      FuncVec wf = statesE1.get(i);
+      FuncVec wf = wfsE1.get(i);
       double e = engs.get(i);
       double w = 0;
       if (e > 0) {

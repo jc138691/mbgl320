@@ -110,27 +110,27 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
 
     // Making He+ eigen-states
     trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);       log.dbg("trgtPotH=", trgtPotH);
-    Vec basisEngs = trgtPotH.getEigVal();                log.dbg("eigVal=", new VecDbgView(basisEngs));
+    Vec basisEngs = trgtPotH.getEigEngs();                log.dbg("eigVal=", new VecDbgView(basisEngs));
     Mtrx basisVecs = trgtPotH.getEigVec();               log.dbg("eigVec=", new MtrxDbgView(basisVecs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_basisEngs_" + makeLabelNc());
-    trgtStatesNt = trgtPotH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtStatesNt));
+    trgtWfsNt = trgtPotH.getEigWfs();              log.dbg("targetNt=", new FuncArrDbgView(trgtWfsNt));
 
-    FuncArr basisR = LcrFactory.wfLcrToR(trgtStatesNt, quadrLcr);
+    FuncArr basisR = LcrFactory.wfLcrToR(trgtWfsNt, quadrLcr);
     AtomUtil.trimTailSLOW(basisR);
     FileX.writeToFile(basisR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtR_" + makeLabelNc());
 
 // TODO: check how Vec.size() is used
-//    AtomUtil.trimTailSLOW(trgtStatesNt);
+//    AtomUtil.trimTailSLOW(trgtWfsNt);
 
     trgtBasisN = orthonN;    // only the last wfs were used from  orthonNt, so now we can reuse it
     orthonN = null; // making sure nobody uses old ref
-    trgtBasisN.copyFrom(trgtStatesNt, 0, trgtStatesNt.size());
+    trgtBasisN.copyFrom(trgtWfsNt, 0, trgtWfsNt.size());
 
-    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtStatesNt);
+    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtWfsNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
-    jmTrgt.setNt(trgtStatesNt.size());
+    jmTrgt.setNt(trgtWfsNt.size());
     jmTrgt.loadSdcsW();
     saveTrgtInfo(jmTrgt);
 

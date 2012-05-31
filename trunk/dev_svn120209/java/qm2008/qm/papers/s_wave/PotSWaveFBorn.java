@@ -2,7 +2,7 @@ package papers.s_wave;
 import atom.data.AtomHy;
 import atom.energy.part_wave.PotHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
@@ -35,9 +35,10 @@ public void calc(int newN) {
   N = newN;
   initProject();
   potScattTestOk();
-  pot = CoulombWFFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+//  pot = WfFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+  pot = WfFactory.makePotFBornTest(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
-  Vec sysEngs = sysH.getEigVal();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
+  Vec sysEngs = sysH.getEigEngs();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
 
   FbMthdE1 method = new FbMthdE1(calcOpt);
   method.setSysEngs(sysEngs);
