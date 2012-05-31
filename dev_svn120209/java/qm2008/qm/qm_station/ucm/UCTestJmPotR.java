@@ -1,7 +1,7 @@
 package qm_station.ucm;
 
 import atom.wf.WFQuadrR;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import math.func.arr.FuncArrDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
@@ -63,7 +63,7 @@ public class UCTestJmPotR extends UCRunDefaultTask<QMS> {
     log.dbg("integration weights=", w);
     LgrrR jm = new LgrrR(w, potOpt.getLgrrModel());
     log.dbg("LgrrR = ", new FuncArrDbgView(jm));
-    Vec pot = CoulombWFFactory.makePotHy_1s_e(r);
+    Vec pot = WfFactory.makePotHy_1s_e(r);
     log.dbg("V_1s(r)=", pot);
 
     // RUN ALL TESTS

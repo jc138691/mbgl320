@@ -19,7 +19,8 @@ public static void main(String[] args) {
   runMe.testRun();
 }
 public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-  MODEL_NAME = "PotSWaveJmCorr";
+  MODEL_NAME = "PotSWaveJm";
+//  MODEL_NAME = "PotSWaveJmCorr";
   MODEL_DIR = MODEL_NAME;
   project = QMSProject.makeInstance(MODEL_NAME, "120528");
   TARGET_Z = AtomHy.Z;

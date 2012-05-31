@@ -30,5 +30,14 @@ public static boolean isZero(double v) {
 public static int prty(int x) { // parity: (-1)^x
   return (x%2 == 0) ? 1: -1;
 }
-
+public static double cosFromTan(double tanX) {
+  double a = 1. + tanX * tanX;
+  double res = Math.sqrt(1. / a);
+  return res;
+}
+public static double sinFromCos(double cosX) {
+  double a = 1. - cosX * cosX;
+  double res = Math.sqrt(a);
+  return res;
+}
 }

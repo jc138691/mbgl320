@@ -2,7 +2,6 @@ package scatt.jm_2008.e2;
 import atom.e_2.SysE2;
 import atom.energy.Energy;
 import atom.shell.*;
-import atom.wf.lcr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.Calc;
 import math.Mathx;
@@ -14,7 +13,6 @@ import math.vec.Vec;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.JmAlgKatoE2;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
 import scatt.jm_2008.jm.target.JmCh;
 
 import javax.utilx.log.Log;
@@ -206,7 +204,7 @@ protected double calcSumK(Conf leftConf) {
   int katoN = calcOpt.getKatoN();
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   int N = mthd.getN();
-  FuncArr trgtStates = mthd.trgtE2.getStatesE1();
+  FuncArr trgtStates = mthd.trgtE2.getWfsE1();
   int ID_E2_XI = ID_XI_OFFSET + N;
 
   double res = 0;  // amplitude
@@ -214,9 +212,9 @@ protected double calcSumK(Conf leftConf) {
     FuncVec tWf = trgtStates.get(r);
     Shell tSh = new Shell(r, tWf, L);
 
-    for (int xiIdx = 0; xiIdx < katoN; xiIdx++) {
-      double f = jmF[xiIdx][r][initChIdx];        //log.dbg("f=", f);
-      FuncVec xi = katoLgrr.get(N + xiIdx);
+    for (int j = 0; j < katoN; j++) {
+      double f = jmF[j][r][initChIdx];        //log.dbg("f=", f);
+      FuncVec xi = katoLgrr.get(N + j);
       ShPair xiConf = ShPairFactory.makePair(tSh, xi, ID_E2_XI, L, LS);
       double v2 = calcHE(leftConf, xiConf); //log.dbg("v2=", v2);
       res += (f * v2);       //log.dbg("res=", res);
@@ -233,7 +231,7 @@ protected Cmplx calcSumCK(Conf leftConf) {
   int katoN = calcOpt.getKatoN();
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   int N = mthd.getN();
-  FuncArr trgtStates = mthd.trgtE2.getStatesE1();
+  FuncArr trgtStates = mthd.trgtE2.getWfsE1();
   int ID_E2_XI = ID_XI_OFFSET + N;
 
   Cmplx res = new Cmplx();  // amplitude
@@ -241,9 +239,9 @@ protected Cmplx calcSumCK(Conf leftConf) {
     FuncVec tWf = trgtStates.get(r);
     Shell tSh = new Shell(r, tWf, L);
 
-    for (int xiIdx = 0; xiIdx < katoN; xiIdx++) {
-      Cmplx f = jmCF[xiIdx][r][initChIdx];        //log.dbg("f=", f);
-      FuncVec xi = katoLgrr.get(N + xiIdx);
+    for (int j = 0; j < katoN; j++) {
+      Cmplx f = jmCF[j][r][initChIdx];        //log.dbg("f=", f);
+      FuncVec xi = katoLgrr.get(N + j);
       ShPair xiConf = ShPairFactory.makePair(tSh, xi, ID_E2_XI, L, LS);
       double v2 = calcHE(leftConf, xiConf); //log.dbg("v2=", v2);
 //      res += (f * v2);

@@ -1,6 +1,7 @@
 package qm_station.ucm;
 import javax.utilx.log.Log;
 
+import atom.wf.coulomb.WfFactory;
 import qm_station.ui.scatt.CalcOptR;
 import qm_station.QMS;
 import qm_station.QMSProject;
@@ -8,7 +9,6 @@ import math.vec.grid.StepGridModel;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import atom.wf.WFQuadrR;
-import atom.wf.coulomb.CoulombWFFactory;
 import project.workflow.task.DefaultTaskUI;
 import project.workflow.task.UCRunDefaultTask;
 
@@ -38,7 +38,7 @@ public class UCRunJmPotR extends UCRunDefaultTask<QMS> {
     StepGridModel sg = model.getGrid();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
     WFQuadrR w = new WFQuadrR(r);     log.dbg("integration weights=", w);
-    Vec pot = CoulombWFFactory.makePotHy_1s(r);  log.dbg("V_1s(r)=", pot);
+    Vec pot = WfFactory.makePotHy_1s(r);  log.dbg("V_1s(r)=", pot);
 
 
 //    QMSMainUI ui = QMSMainUI.getInstance();

@@ -3,7 +3,7 @@ package qm_station.jm;
 import atom.energy.part_wave.PotH;
 import atom.energy.part_wave.PotHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
@@ -46,7 +46,7 @@ public class PotEigVecLcrTest extends FlowTest {
     Vec r = funcArr.getR();
     FuncVec pot = new FuncVec(r, new FuncPowInt(-Z, -1));      log.dbg("-atomZ/r=", new VecDbgView(pot));
     PotHMtrx H = new PotHMtrxLcr(L, funcArr, pot);
-    Vec eigEng = H.getEigVal();             log.dbg("eigVal=", new VecDbgView(eigEng));
+    Vec eigEng = H.getEigEngs();             log.dbg("eigVal=", new VecDbgView(eigEng));
     if (relErr) {
       assertEqualsRel("EigenE(1s) =", -Z * Z / 2., eigEng.get(0), true);
       assertEqualsRel("EigenE(2s) =", -Z * Z / 8., eigEng.get(1), true);
@@ -56,11 +56,11 @@ public class PotEigVecLcrTest extends FlowTest {
     }
 
     log.dbg("in LCR: testing H=K+V_1s");
-    pot = CoulombWFFactory.makePotHy_1s_e(r);       log.dbg("V_1s(r)=", new VecDbgView(pot));
+    pot = WfFactory.makePotHy_1s_e(r);       log.dbg("V_1s(r)=", new VecDbgView(pot));
     H = new PotHMtrxLcr(L, funcArr, pot);
     PotH partH = H.makePotH();
-    eigEng = H.getEigVal();                log.dbg("eigVal=", new VecDbgView(eigEng));
-    FuncArr eigVec = H.getEigFuncArr();        log.dbg("eigVec=", new FuncArrDbgView(eigVec));
+    eigEng = H.getEigEngs();                log.dbg("eigVal=", new VecDbgView(eigEng));
+    FuncArr eigVec = H.getEigWfs();        log.dbg("eigVec=", new FuncArrDbgView(eigVec));
 
     for (int i = 0; i < eigEng.size(); i++) {
       FuncVec wf = eigVec.getFunc(i);

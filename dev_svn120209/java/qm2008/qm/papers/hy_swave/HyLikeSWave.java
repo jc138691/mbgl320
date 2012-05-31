@@ -14,7 +14,7 @@ import javax.utilx.log.Log;
 */
 public abstract class HyLikeSWave extends Jm2010CommonLcr {
 public static Log log = Log.getLog(HyLikeSWave.class);
-protected static FuncArr trgtStatesNt;
+protected static FuncArr trgtWfsNt;
 protected static int FROM_CH = 0;  // initial scattering channel
 protected static Spin SPIN;
 protected static Ls SYS_LS;

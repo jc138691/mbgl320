@@ -145,7 +145,7 @@ protected void calcAllVecs(int sysIdx, int chNum) {
   mX = new Mtrx(chNum, chNum);
   mY = new Mtrx(chNum, chNum);
   Vec tEngs = trgtE2.getEngs();
-  FuncArr trgtWfs = getBasisN();
+  FuncArr trgtWfs = getWfsE1();
   Vec sEngs = getSysEngs();
   double sE = sEngs.get(sysIdx);  // system total eng
   for (int g = 0; g < chNum; g++) {     // g-gamma //log.dbg("t = ", t);  // Target channels

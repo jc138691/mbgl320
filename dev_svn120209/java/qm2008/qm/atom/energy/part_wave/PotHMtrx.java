@@ -47,7 +47,7 @@ public void calc() {
   }
 }
 
-public FuncArr getEigFuncArr() {
+public FuncArr getEigWfs() {
   if (eigVec == null) {
     loadEigVec();
   }

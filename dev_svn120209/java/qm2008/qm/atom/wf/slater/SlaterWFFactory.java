@@ -1,6 +1,6 @@
 package atom.wf.slater;
 
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.TransLcrToR;
 import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.log_r.TransLrToR;
@@ -30,7 +30,7 @@ public class SlaterWFFactory extends FlowTest {
   }
 
   public static FuncVec makeP1s(Vec r, double zeta) {
-    return CoulombWFFactory.makeP1s(r, zeta);
+    return WfFactory.makeP1s(r, zeta);
   }
 
   public static FuncVec makeLcrP1s(WFQuadrLcr lcr, double zeta) {

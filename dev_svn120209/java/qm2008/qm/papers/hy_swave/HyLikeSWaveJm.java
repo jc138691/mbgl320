@@ -34,9 +34,9 @@ public void calc(int newN, int newNt) {
   hydrScattTestOk(TARGET_Z);      // out: pt (for TARGET_Z), orthonNt
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
-  trgtStatesNt = orthonNt;
+  trgtWfsNt = orthonNt;
   trgtBasisN = orthonN;
-  AtomUtil.trimTailSLOW(trgtStatesNt);
+  AtomUtil.trimTailSLOW(trgtWfsNt);
   AtomUtil.trimTailSLOW(trgtBasisN);
   ScttTrgtE3 trgt = makeTrgtE3(slater);
   trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE elelctron
@@ -83,7 +83,7 @@ private ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
   ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(orthonNt);     log.dbg("tConfArr=", tConfArr);
 
   ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                                   log.dbg("tH=\n", new MtrxDbgView(tH));
-  FileX.writeToFile(tH.getEigVal().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
+  FileX.writeToFile(tH.getEigEngs().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
   FileX.writeToFile(tH.getEngEv(0).toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_eV_" + makeLabelBasisOptN());
 
   ScttTrgtE3 res = new ScttTrgtE3();

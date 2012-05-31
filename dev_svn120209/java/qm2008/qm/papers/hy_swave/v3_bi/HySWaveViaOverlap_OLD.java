@@ -41,7 +41,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
     hydrScattTestOk(AtomHy.Z);
 
     trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);   log.dbg("trgtPotH=", trgtPotH);
-    Vec trgtEngs = trgtPotH.getEigVal();                     log.dbg("eigVal=", new VecDbgView(trgtEngs));
+    Vec trgtEngs = trgtPotH.getEigEngs();                     log.dbg("eigVal=", new VecDbgView(trgtEngs));
 
     ScttTrgtE2 trgtUtils = new ScttTrgtE2();
     trgtUtils.setEngs(trgtEngs);

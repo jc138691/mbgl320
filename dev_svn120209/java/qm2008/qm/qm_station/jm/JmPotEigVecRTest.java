@@ -14,7 +14,7 @@ import math.func.arr.FuncArr;
 import math.func.FuncVec;
 import math.func.simple.FuncPowInt;
 import junit.framework.TestCase;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 21/11/2008, Time: 15:42:20
  */
@@ -34,16 +34,16 @@ public class JmPotEigVecRTest extends FlowTest {
     StepGrid r = (StepGrid)funcArr.getX();
     FuncVec pot = new FuncVec(r, new FuncPowInt(-1., -1)); log.dbg("-1/r=", new VecDbgView(pot));
     PotHMtrx H = new PotHMtrxR(L, funcArr, pot);
-    Vec eigEng = H.getEigVal();                     log.dbg("eigVal=", new VecDbgView(eigEng));
+    Vec eigEng = H.getEigEngs();                     log.dbg("eigVal=", new VecDbgView(eigEng));
     assertEqualsRel("EigenE(1s) =", -1./2., eigEng.get(0), true);
     assertEqualsRel("EigenE(2s) =", -1./8., eigEng.get(1), true);
 
     log.dbg("testing diagonalisation of H=K+V_1s, where V_1s(r) is felt by an electron");
-    pot = CoulombWFFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", new VecDbgView(pot));
+    pot = WfFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", new VecDbgView(pot));
     H = new PotHMtrxR(L, funcArr, pot);
     PotH partH = H.makePotH();
-    eigEng = H.getEigVal();                     log.dbg("eigVal=", new VecDbgView(eigEng));
-    FuncArr eigVec = H.getEigFuncArr();                 log.dbg("eigVec=", new FuncArrDbgView(eigVec));
+    eigEng = H.getEigEngs();                     log.dbg("eigVal=", new VecDbgView(eigEng));
+    FuncArr eigVec = H.getEigWfs();                 log.dbg("eigVec=", new FuncArrDbgView(eigVec));
 
     for (int i = 0; i < eigEng.size(); i++) {
       if (monitor != null && monitor.isCanceled(i, 0, eigEng.size())) {

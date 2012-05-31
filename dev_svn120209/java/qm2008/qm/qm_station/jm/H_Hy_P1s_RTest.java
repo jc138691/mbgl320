@@ -5,7 +5,7 @@ import math.vec.VecDbgView;
 import math.vec.Vec;
 import math.func.FuncVec;
 import math.func.simple.FuncPowInt;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.WFQuadrR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 21/11/2008, Time: 16:31:01
@@ -25,7 +25,7 @@ public class H_Hy_P1s_RTest extends FlowTest {
     Vec r = w.getX();   log.dbg("r-grid = ", new VecDbgView(r));
     double Z = 1;       log.dbg("nuclear charge atomZ = ", Z);
     int L = 0;
-    FuncVec f = CoulombWFFactory.makeP1s(r, Z); log.dbg("ground state P(r) = ", new VecDbgView(f));
+    FuncVec f = WfFactory.makeP1s(r, Z); log.dbg("ground state P(r) = ", new VecDbgView(f));
     double normF = w.calc(f, f);
     assertEqualsRel("<P|P> = ", 1., normF, true);
 

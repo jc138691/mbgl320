@@ -24,7 +24,7 @@ public static Log log = Log.getLog(ScttMthdBaseE1.class);
 private static final double MIN_SYS_ENG_DELTA = Calc.EPS_10;
 protected static final int IDX_ENRGY = 0;
 
-public Mtrx jmR;     // NOTE!!! Only open part is corrected by / cn1.getRe();
+public Mtrx jmR;    // NOTE!!! Closed channels stored as * cn1.getRe();
 public JmCh[] chArr;
 protected Vec sysEngs;
 protected WFQuadrLcr quadr;
@@ -36,12 +36,6 @@ protected double sysTotE;
 protected int L = 0;
 private Vec overD;      // overlap coefficients D
 
-//public JmCh[] getChArr() {
-//  return chArr;
-//}
-//public Mtrx getJmR() {
-//  return jmR;
-//}
 public double getSysTotE() {
   return sysTotE;
 }

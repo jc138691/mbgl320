@@ -1,7 +1,7 @@
 package scatt.jm_2008.e1;
 import atom.wf.lcr.WFQuadrLcr;
+import math.Calc;
 import math.Mathx;
-import math.vec.Vec;
 import scatt.jm_2008.e2.JmMthdBaseE2;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
@@ -42,33 +42,39 @@ protected double[][][] calcFFromR() {
   int cN = mthd.jmR.getNumCols();
   int katoN = calcOpt.getKatoN();
 
-  LgrrModel jmModel = calcOpt.getLgrrModel();
-  int N = jmModel.getN();
-  LgrrModel xiModel = new LgrrModel(jmModel);
-  Vec tEngs = mthd.trgtE2.getEngs();
+  LgrrModel lgrr = calcOpt.getLgrrModel();
+  int N = lgrr.getN();
+  LgrrModel tail = new LgrrModel(lgrr);
+  double[] chE = mthd.trgtE2.getEngs().getArr(); // channel energies
 
   double[][][] res = new double[katoN][rN][cN];
   for (int r = 0; r < rN; r++) {
-    for (int xiIdx = 0; xiIdx < katoN; xiIdx++) {
-      xiModel.setN(N + xiIdx);                //log.dbg("N + xiIdx=", N + xiIdx);
-
-      JmCh ch = new JmCh(mthd.getSysTotE(), tEngs.get(r), xiModel
+    JmCh rCh = mthd.chArr[r];
+    for (int j = 0; j < katoN; j++) {  // JM-tail
+      tail.setN(N + j);                //log.dbg("N + j=", N + j);
+      JmCh jCh = new JmCh(mthd.getSysTotE(), chE[r], tail
         , -mthd.trgtE2.getScreenZ());
 
       for (int c = 0; c < cN; c++) {
-        double sg = Mathx.dlt(r, c) * ch.getSn();  //log.dbg("sg=", sg);
-        double cg = 0;
-        if (ch.isOpen()) {
-          cg = ch.getCn().getRe();
+        JmCh cCh = mthd.chArr[c];
+        double rSj = Mathx.dlt(r, c) * jCh.getSn();  //log.dbg("rSn=", rSn);
+        double rCj = 0;
+        if (jCh.isOpen()) {
+          rCj = jCh.getCn().getRe();
         } else {
           // "closed" is stored as c_{N-1} R_{\gamma \gamma_0}
-          cg = ch.getCnn1().getRe();
-          //log.dbg("ch.getCn()=", ch.getCn()); log.dbg("cg=", cg);
-  //        JmCh dbg = new JmCh(mthd.getSysTotE(), tEngs.get(r), xiModel
+          rCj = jCh.getCnn1().getRe();
+          //log.dbg("jCh.getCn()=", jCh.getCn()); log.dbg("rCj=", rCj);
+  //        JmCh dbg = new JmCh(mthd.getSysTotE(), tEngs.get(r), tail
   //          , -mthd.trgtE2.getScreenZ());
         }
-        double scR = sg + cg * mthd.jmR.get(r, c); //log.dbg("scR=", scR);
-        res[xiIdx][r][c] = scR;
+        double tanX = mthd.jmR.get(r, c);
+        double cosX = Calc.cosFromTan(tanX);
+        double sinX = Calc.sinFromCos(cosX);
+//        double f = rSj + rCj * tanX; //log.dbg("f=", f);
+        double f = rSj * cosX + rCj * sinX; //log.dbg("f=", f);
+        double rSq = rCh.getSqrtAbsMom();
+        res[j][r][c] = f / rSq;
       }
     }
   }
@@ -78,33 +84,33 @@ protected double[][] calcVecA() {
   int cN = mthd.jmR.getNumCols();
   int sN = mthd.getSysBasisSize();
   double[][] res = new double[cN][sN] ;
-  double[] sEngs = mthd.getSysEngs().getArr();
+  double[] sE = mthd.getSysEngs().getArr();
   for (int s = 0; s < sN; s++) {
-    double ei = sEngs[s];
+    double es = sE[s];
     for (int c = 0; c < cN; c++) { // target channels
-      double ai = calcAi(s, c);
-      if (Double.compare(ei, mthd.getSysTotE()) == 0) {
+      double scA = calcAsc(s, c);
+      if (Float.compare((float)es, (float)mthd.sysTotE) == 0) {
         throw new IllegalArgumentException(log.error("E=e_i=" + (float)mthd.getSysTotE()));
       } else {
-        ai /= (ei - mthd.getSysTotE());      //log.dbg("ai=", ai);
+        scA /= (es - mthd.sysTotE);      //log.dbg("scA=", scA);
       }
-      res[c][s] = ai;
+      res[c][s] = scA;
     }
   }
   return res;
 }
-private double calcAi(int sysIdx, int c) {
+private double calcAsc(int s, int c) {
   double[][] X = mthd.jmX.getArray();
   int rN = mthd.jmR.getNumRows();
-  double res = 0;
+  double sum = 0;
   int IDX_N = 0; // N'th value is stored in the first column
-  for (int r = 0; r < rN; r++) {     //log.dbg("t = ", t);  // Target channels
-    JmCh ch = mthd.chArr[r];
-    double xx = X[r][sysIdx];
+  for (int r = 0; r < rN; r++) {     //log.dbg("r = ", r);
+    JmCh rCh = mthd.chArr[r];
+    double xx = X[r][s];             //log.dbg("xx = ", xx);
     double f = jmF[IDX_N][r][c];
-    double xjf = -xx * ch.getJnn().getRe() * f;
-    res += xjf;       //if (t == tN-1) { log.dbg("xjf=", xjf); log.dbg("res=", res);}
-  }
-  return res;
+    double xjf = -xx * rCh.getJnn().getRe() * f;  //log.dbg("xjf = ", xjf);
+    sum += xjf;       //log.dbg("sum=", sum);
+  } //log.dbg("res sum=", sum);
+  return sum;
 }
 }

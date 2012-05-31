@@ -1,6 +1,5 @@
 package atom.e_1.test;
 import atom.energy.part_wave.PotHOvMLcr;
-import atom.energy.slater.SlaterLcr;
 import atom.wf.lcr.LcrFactory;
 import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.slater.SlaterWFFactory;
@@ -14,7 +13,6 @@ import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
 import math.vec.test.FastLoopTest;
 import project.workflow.task.test.FlowTest;
-import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.utilx.log.Log;
 /**
@@ -67,7 +65,7 @@ public void testHOvMtrx() throws Exception {  log.setDbg();
 
   log.dbg("TESTING NON-ORTHOG BASIS");
   PotHOvMLcr potH = new PotHOvMLcr(L, basis, pot, quadr);
-  Vec engs = potH.getEigVal();                log.dbg("engs=", new VecDbgView(engs));
+  Vec engs = potH.getEigEngs();                log.dbg("engs=", new VecDbgView(engs));
   assertEquals("Hy(1s) =", 0, -0.5 - engs.get(0)); // testing against maxErr
   assertEquals("Hy(1s) =", 0, -0.5 - engs.get(0), 2e-15);
 

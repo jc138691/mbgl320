@@ -1,7 +1,6 @@
 package atom.test;
 import atom.shell.Ls;
 import atom.shell.Shell;
-import atom.shell.deepcopy.ShWf;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.framework.TestCase;
@@ -12,7 +11,7 @@ import math.vec.grid.StepGrid;
 import math.vec.grid.test.StepGridTest;
 import math.vec.Vec;
 import math.func.FuncVec;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.WFQuadrR;
 import atom.angular.Spin;
 import atom.energy.slater.SlaterR;
@@ -45,7 +44,7 @@ public class ZetaHyR extends TestCase {
     // WF
     double Z = 1;
     int L = 0;
-    FuncVec f = CoulombWFFactory.makeP1s(r, Z); log.dbg("P_1s=", f);
+    FuncVec f = WfFactory.makeP1s(r, Z); log.dbg("P_1s=", f);
     double res = w.calc(f, f);
 
     log.assertZero("Hy norm(R)=", res - 1, 2e-6);
@@ -75,7 +74,7 @@ public class ZetaHyR extends TestCase {
     // WF
     double Z = 1;
     int L = 0;
-    FuncVec f = CoulombWFFactory.makeP1s(r, Z); log.dbg("P_1s=", f);
+    FuncVec f = WfFactory.makeP1s(r, Z); log.dbg("P_1s=", f);
     double res = w.calc(f, f);
 
     log.assertZero("Hy norm(R)=", res - 1, 2e-6);

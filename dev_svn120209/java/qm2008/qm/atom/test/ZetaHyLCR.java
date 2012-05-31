@@ -6,11 +6,11 @@ import atom.energy.slater.SlaterLr;
 import atom.shell.Conf;
 import atom.shell.Ls;
 import atom.shell.Shell;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.lcr.TransLcrToR;
 import atom.wf.log_r.TransLrToR;
 import atom.wf.log_r.WFQuadrLr;
-import atom.wf.coulomb.CoulombWFFactory;
 import atom.wf.WFQuadrR;
 import atom.angular.Spin;
 import atom.energy.slater.SlaterR;
@@ -63,7 +63,7 @@ public class ZetaHyLCR extends LCRTestCase {
     int L = 0;
     TransLcrToR logCRToR = w.getLcrToR();
     Vec r = logCRToR;
-    FuncVec f = CoulombWFFactory.makeP1s(r, Z_EFF);   log.dbg("P_1s(r)=", f);
+    FuncVec f = WfFactory.makeP1s(r, Z_EFF);   log.dbg("P_1s(r)=", f);
     f.setX(logCR); log.dbg("P_1s(x)=", f); // MUST change grid for derivatives
     f.multSelf(logCRToR.getDivSqrtCR());  log.dbg("F_1s=", f);// convert to F(x)=P(r)/sqrt(c+r)
     double res = w.getWithCR2().calc(f, f);
@@ -103,7 +103,7 @@ public class ZetaHyLCR extends LCRTestCase {
     // WF
     double Zeff = 1;
     int L = 0;
-    FuncVec f = CoulombWFFactory.makeP1s(r, Zeff);
+    FuncVec f = WfFactory.makeP1s(r, Zeff);
     f.setX(w.getX()); // MUST change grid for derivatives
     f.multSelf(logCRToR.getDivSqrtCR());
     double res = w.getWithCR2().calc(f, f);
@@ -134,7 +134,7 @@ public class ZetaHyLCR extends LCRTestCase {
     // WF
     double Z = 1;
     int L = 0;
-    FuncVec f = CoulombWFFactory.makeP1s(r, Z);
+    FuncVec f = WfFactory.makeP1s(r, Z);
     f.setX(w.getX()); // MUST change grid for derivatives
     f.multSelf(logRToR.getDivSqrtR());
     double res = w.getWithR2().calc(f, f);
@@ -159,7 +159,7 @@ public class ZetaHyLCR extends LCRTestCase {
 
     // With small R correction
     StepGrid smallR = new StepGrid(0, r.get(0), 9);
-    f = CoulombWFFactory.makeP1s(smallR, Z);
+    f = WfFactory.makeP1s(smallR, Z);
     sh = new Shell(0, f, L);
     fc = new Conf(sh);
     WFQuadrR wR = new WFQuadrR(smallR);

@@ -11,7 +11,7 @@ import math.func.FuncVec;
 import math.vec.grid.StepGridModel;
 import math.vec.grid.StepGrid;
 import scatt.partial.wf.numerov.NmrvPotR;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 18/11/2008, Time: 13:09:16
  */
@@ -31,7 +31,7 @@ public class UCPlotPotNmrvR extends UCPlotFuncArr {
     CalcOptE1 model = project.getJmPotOptR();    // R
     StepGridModel sg = model.getGrid();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
-    FuncVec pot = CoulombWFFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", pot);
+    FuncVec pot = WfFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", pot);
     return new NmrvPotR(pot, model.getGridEng(), model.getLgrrModel().getL() ); //
   }
 }

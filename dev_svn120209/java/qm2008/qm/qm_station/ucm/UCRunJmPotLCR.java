@@ -9,7 +9,7 @@ import javax.utilx.log.Log;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridModel;
 import math.vec.Vec;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import project.workflow.task.DefaultTaskUI;
 import project.workflow.task.UCRunDefaultTask;
 
@@ -39,7 +39,7 @@ public class UCRunJmPotLCR extends UCRunDefaultTask<QMS> {
     StepGrid x = new StepGrid(sg);    log.dbg("LogCR grid = x =", x);
     WFQuadrLcr w = new WFQuadrLcr(x);     log.dbg("integration weights=", w);
     Vec r = w.getR();
-    Vec pot = CoulombWFFactory.makePotHy_1s(r);  log.dbg("V_1s(r)=", pot);
+    Vec pot = WfFactory.makePotHy_1s(r);  log.dbg("V_1s(r)=", pot);
 
 
 //    QMSMainUI ui = QMSMainUI.getInstance();

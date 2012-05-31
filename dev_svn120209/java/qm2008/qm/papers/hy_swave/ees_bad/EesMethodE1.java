@@ -61,7 +61,7 @@ public ScttRes calc(Vec engs) {
 }
 protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   Dble2 res = new Dble2();
-  FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
+  FuncArr sysWFuncs = potH.getEigWfs();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psiS = psi.get(IDX_P_REG);          log.dbg("resS=", psiS);
   FuncVec psiC = psi.get(IDX_P_IRR);          log.dbg("resC=", psiC);
   FuncVec sysPsi = sysWFuncs.get(sysIdx);            log.dbg("sysPsi=", sysPsi);
@@ -147,7 +147,7 @@ protected double calcSysA(FuncArr psi, double scattE, int engIdx, double R) {
   WFQuadrLcr quadr = (WFQuadrLcr)potH.getQuadr();    // CASTING!!! NOT GOOD
   IFuncArr basis = potH.getBasis();
 
-  FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
+  FuncArr sysWFuncs = potH.getEigWfs();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec sysPsi = sysWFuncs.get(engIdx);            log.dbg("sysPsi=", sysPsi);
   FuncVec psiS = psi.get(IDX_REG);          log.dbg("resS=", psiS);
   FuncVec psiC = psi.get(IDX_IRR);          log.dbg("resC=", psiC);
@@ -165,7 +165,7 @@ protected double calcRFromPsiE(FuncArr psi, double scattE, int engIdx, double sy
   WFQuadrLcr quadr = (WFQuadrLcr)potH.getQuadr();    // CASTING!!! NOT GOOD
   IFuncArr basis = potH.getBasis();
 
-  FuncArr sysWFuncs = potH.getEigFuncArr();  //log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
+  FuncArr sysWFuncs = potH.getEigWfs();  //log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec sysPsi = sysWFuncs.get(engIdx);            //log.dbg("sysPsi=", sysPsi);
   FuncVec psiS = psi.get(IDX_REG);          //log.dbg("psiS=", psiS);
   FuncVec psiPS = psi.get(IDX_P_REG);          //log.dbg("psiPS=", psiPS);

@@ -52,9 +52,9 @@ public void calc(int newN) {      log.setDbg();
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
   trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
-  Vec targetEngs = trgtPotH.getEigVal();            log.dbg("eigVal=", new VecDbgView(targetEngs));
-  trgtStatesNt = trgtPotH.getEigFuncArr();      log.dbg("basisN=", new FuncArrDbgView(trgtBasisN));
-//  AtomUtil.trimTailSLOW(trgtStatesNt);     // todo: check if needed
+  Vec targetEngs = trgtPotH.getEigEngs();            log.dbg("eigVal=", new VecDbgView(targetEngs));
+  trgtWfsNt = trgtPotH.getEigWfs();      log.dbg("basisN=", new FuncArrDbgView(trgtBasisN));
+//  AtomUtil.trimTailSLOW(trgtWfsNt);     // todo: check if needed
   trgtBasisN = null;
   orthonN = null;
 
@@ -77,7 +77,7 @@ public void calc(int newN) {      log.setDbg();
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
   method.setOrthonNt(orthonNt);
-  method.setBasisN(trgtStatesNt);
+  method.setWfsE1(trgtWfsNt);
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);

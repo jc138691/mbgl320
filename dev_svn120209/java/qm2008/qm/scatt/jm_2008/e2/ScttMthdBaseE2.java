@@ -27,7 +27,7 @@ protected static final int IDX_IONIZ = 1;
 public ScttTrgtE2 trgtE2;
 protected ConfHMtrx sysConfH;
 protected LgrrOrthLcr orthonNt;
-protected FuncArr basisN;
+//protected FuncArr basisN;  // use trgtE2.statesE1
 protected CmplxMtrx jmS;
 protected int calcChN;
 protected int openChN;
@@ -61,16 +61,16 @@ public void setTrgtE2(ScttTrgtE2 trgtE2) {
 public void setSysConfH(ConfHMtrx sysConfH) {
   this.sysConfH = sysConfH;
 //  setPotH(sysConfH);
-//    setSysEngs(sysConfH.getEigVal(H_OVERWRITE));
+//    setSysEngs(sysConfH.getEigEngs(H_OVERWRITE));
 }
 public int getChNum() { // number of target channels
   return trgtE2.getEngs().size();
 }
-public void setBasisN(FuncArr basisN) {
-  this.basisN = basisN;
+public void setWfsE1(FuncArr basisN) {
+  trgtE2.setWfsE1(basisN);
 }
-public FuncArr getBasisN() {
-  return basisN;
+public FuncArr getWfsE1() {
+  return trgtE2.getWfsE1();
 }
 protected void saveCrossSecs(int i, ScttRes res, CmplxMtrx mS, int openNum) {
   Mtrx mCrss = res.getCrossSecs();

@@ -2,7 +2,7 @@ package papers.s_wave;
 import atom.data.AtomHy;
 import atom.energy.part_wave.PotHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
 import math.vec.Vec;
@@ -55,10 +55,10 @@ public void runJob() {
   ENG_FIRST = 0.001f;
   ENG_LAST = 4.01f;
   ENG_N = 4001;
+  calc(40);
   calc(10);
 //  calc(12);
   calc(20);
-  calc(40);
 //  calc(16);
 //  calc(18);
 //  calc(20);
@@ -68,12 +68,12 @@ public void calc(int newN) {
   N = newN;
   initProject();
   potScattTestOk();
-  pot = CoulombWFFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+//  pot = WfFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+  pot = WfFactory.makePotFBornTest(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx potH = new PotHMtrxLcr(L, orthonN, pot);
-////    PotH partH = sysConfH.makePotH();
-  Vec sysEngs = potH.getEigVal();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
-  FuncArr sysBasisN = potH.getEigFuncArr();         log.dbg("sysBasisN=", new FuncArrDbgView(sysBasisN));
-  Vec D = new JmD(biorthN, sysBasisN);              log.dbg("D_{n,N-1}=", D);
+  Vec sysEngs = potH.getEigEngs();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
+  FuncArr sysWfsN = potH.getEigWfs();         log.dbg("sysWfsN=", new FuncArrDbgView(sysWfsN));
+  Vec D = new JmD(biorthN, sysWfsN);              log.dbg("D_{n,N-1}=", D);
 
 //  JmMthdE1_OLD method = new JmMthdE1_OLD(calcOpt); // OLD
   JmMthdE1 mthd = makeMthd(calcOpt);
@@ -81,7 +81,7 @@ public void calc(int newN) {
   mthd.setTrgtE2(ScttTrgtFactory.makeEmptyE2());  //EMPTY target!!!
   mthd.setOverD(D);
   mthd.setSysEngs(sysEngs);
-  mthd.setBasisN(sysBasisN); // NOTE! using trgtBasis to pass the E1-sys-basis
+  mthd.setWfsE1(sysWfsN); // NOTE! using trgtBasis to pass the E1-sys-basis
   mthd.setQuadr(quadrLcr);
   ScttRes res = mthd.calcForScatEngModel();
   log.dbg("res=", res);

@@ -102,7 +102,7 @@ protected void calcAllVecs(double sysTotE, int gNum) {
   mM1 = new Mtrx(gNum, gNum);
   Vec tEngs = trgtE2.getEngs();
   double[] sEngs = getSysEngs().getArr();
-  FuncArr trgtWfs = getBasisN();
+  FuncArr trgtWfs = getWfsE1();
   for (int g = 0; g < gNum; g++) {     log.dbg("g = ", g); // g-gamma; Target channels
     double tE = tEngs.get(g);     // target state eng
     double tScattE = sysTotE - tE;

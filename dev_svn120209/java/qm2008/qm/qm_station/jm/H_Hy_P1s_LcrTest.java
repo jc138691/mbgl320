@@ -1,7 +1,7 @@
 package qm_station.jm;
 
 import atom.energy.part_wave.PotHLcr;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.simple.FuncPowInt;
@@ -27,7 +27,7 @@ public class H_Hy_P1s_LcrTest extends FlowTest {
     Vec r = w.getR();   log.dbg("r-grid = ", new VecDbgView(r));
     double Z = 1;       log.dbg("nuclear charge atomZ = ", Z);
     int L = 0;
-    FuncVec f = CoulombWFFactory.makeP1s(r, Z); log.dbg("ground state P(r) = ", new VecDbgView(f));
+    FuncVec f = WfFactory.makeP1s(r, Z); log.dbg("ground state P(r) = ", new VecDbgView(f));
     f.setX(w.getX()); // MUST change grid for derivatives
     f.multSelf(w.getDivSqrtCR());
     double normF = w.calcInt(f, f);

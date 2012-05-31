@@ -1,5 +1,5 @@
 package scatt.partial.born;
-import atom.wf.coulomb.CoulombWFFactory;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.vec.Vec;
@@ -29,14 +29,14 @@ public PBornDirScattTest(WFQuadrLcr quadr_, EngModel gridEng_) {
 public void testFirstBornOk() throws Exception {
   log.info("-->testFirstBornOk()");
   Vec r = quadr.getR();
-  Vec V_1s = CoulombWFFactory.makePotHy_1s(r);  log.dbg("V_1s=", V_1s);
+  Vec V_1s = WfFactory.makePotHy_1s(r);  log.dbg("V_1s=", V_1s);
 
   double pF = Scatt.calcMomFromE(gridEng.getFirst());
   double pL = Scatt.calcMomFromE(gridEng.getLast());
   int N_TESTS = 10;
   StepGrid incP = new StepGrid(pF, pL, N_TESTS);  log.dbg("incP=", incP);
   int L = 0;
-  FuncVec arrB = CoulombWFFactory.calcBornDirHy_1s(incP);  log.dbg("arrB=", arrB);
+  FuncVec arrB = WfFactory.calcBornDirHy_1s(incP);  log.dbg("arrB=", arrB);
   for (int i = 0; i < incP.size(); i++) {
     double corr = arrB.get(i);                log.dbg("corr=", corr);
     double p = arrB.getX().get(i);             log.info("p=", p);

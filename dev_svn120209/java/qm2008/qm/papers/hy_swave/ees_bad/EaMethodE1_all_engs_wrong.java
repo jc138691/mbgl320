@@ -1,7 +1,5 @@
 package papers.hy_swave.ees_bad;
-import atom.energy.part_wave.PotH;
 import atom.energy.part_wave.PotHMtrx;
-import atom.wf.WFQuadr;
 import atom.wf.lcr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.func.FuncVec;
@@ -79,7 +77,7 @@ private Dble2 calcW(FuncArr psi, double scattE) {
 //  return res;
 //}
 private void loadSC(Mtrx mSC, FuncArr psi, double scattE) {
-  FuncArr sysWFuncs = potH.getEigFuncArr();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
+  FuncArr sysWFuncs = potH.getEigWfs();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psiS = psi.get(IDX_S);          log.dbg("resS=", psiS);
   FuncVec psiC = psi.get(IDX_C);          log.dbg("resC=", psiC);
   FuncVec xiN = orthonN.getLast();

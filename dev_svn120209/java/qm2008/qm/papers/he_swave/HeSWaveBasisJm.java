@@ -108,16 +108,16 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     lgrrOptNc.setN(Nc);                                    log.dbg("Laguerr model (N_c)=", lgrrOptNc);
     orthonNc = new LgrrOrthLcr(quadrLcr, lgrrOptNc);     log.dbg("LgrrOrthLcr(N_c) = ", orthonNc);
     trgtPotH = new PotHMtrxLcr(L, orthonNc, pot);        log.dbg("trgtPotH=", trgtPotH);
-    Vec basisEngs = trgtPotH.getEigVal();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
+    Vec basisEngs = trgtPotH.getEigEngs();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_NcEngs_" + makeLabelNc());
 
-    trgtStatesNt = orthonNt;
+    trgtWfsNt = orthonNt;
     trgtBasisN = orthonN;
-    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtStatesNt);
+    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtWfsNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
-    jmTrgt.setNt(trgtStatesNt.size());
+    jmTrgt.setNt(trgtWfsNt.size());
 //    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED, );   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
 //    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
     jmTrgt.loadSdcsW();

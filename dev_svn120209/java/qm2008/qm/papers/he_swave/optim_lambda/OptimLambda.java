@@ -297,10 +297,10 @@ public class OptimLambda extends HeSWaveScatt {
 
     // Making He+ eigen-states
     trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);       //log.dbg("trgtPotH=", trgtPotH);
-    Vec basisEngs = trgtPotH.getEigVal();                log.dbg("basisEngs=", new VecDbgView(basisEngs));
-    trgtStatesNt = trgtPotH.getEigFuncArr();              log.dbg("targetNt=", new FuncArrDbgView(trgtStatesNt));
+    Vec basisEngs = trgtPotH.getEigEngs();                log.dbg("basisEngs=", new VecDbgView(basisEngs));
+    trgtWfsNt = trgtPotH.getEigWfs();              log.dbg("targetNt=", new FuncArrDbgView(trgtWfsNt));
     SlaterLcr slater = new SlaterLcr(quadrLcr);
-    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtStatesNt);
+    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtWfsNt);
 
     Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);
     log.info("E_SORTED=", new Vec(HeSWaveAtom.E_SORTED));
@@ -326,9 +326,9 @@ public class OptimLambda extends HeSWaveScatt {
     pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
     // making target  JM basis
-    trgtStatesNt = orthonNt;
+    trgtWfsNt = orthonNt;
     SlaterLcr slater = new SlaterLcr(quadrLcr);
-    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtStatesNt);
+    ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtWfsNt);
 
     Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);
     log.info("E_SORTED=", new Vec(HeSWaveAtom.E_SORTED));

@@ -115,7 +115,7 @@ protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
 protected double calcXiM(int g, int g2, FuncVec pw2, double sysTotE, Ls ls) {
   int L = 0;
   SysE2 sysE2 = (SysE2)sysConfH.getAtom();
-  FuncArr trgtWfs = getBasisN();
+  FuncArr trgtWfs = getWfsE1();
 
   FuncVec tWf = trgtWfs.get(g);
   Shell shB = new Shell(g, tWf, L);    // bound #1
