@@ -30,20 +30,18 @@ public Mtrx calcNewR() {
   int chNum = mthd.getChNum();  // it is ONE but preparing for E2
   sinWfs = mthd.makeSinWfs(mthd.sysTotE, chNum);
 
-  // TODO: WRONG wfs!!!! need to use biorth removed
-  FuncArr sWfs = mthd.getWfsE1();
-
+//  FuncArr sWfs = mthd.getWfsE1();
 //  sinDelN = mthd.makeSinDOrth(mthd.sysTotE, chNum);
 //  cosDelN = mthd.makeCosDOrth(mthd.sysTotE, chNum);
-  sinDelN = mthd.makeSinDLgrr(mthd.sysTotE, chNum);
-  cosDelN = mthd.makeCosDLgrr(mthd.sysTotE, chNum);
+//  sinDelN = mthd.makeSinDLgrr(mthd.sysTotE, chNum);
+//  cosDelN = mthd.makeCosDLgrr(mthd.sysTotE, chNum);
 
   log.dbg("\n oldR=\n", new MtrxDbgView(mthd.jmR));
   newR = calcSumA();
   log.dbg("\n newR=calcSumA()=\n", new MtrxDbgView(newR));
 
-//  addSumJmTail(newR);
-  addSumJmAll(newR);
+  addSumJmTail(newR);
+//  addSumJmAll_BAD(newR);
   log.dbg("\n newR=addSumJmTail()=\n", new MtrxDbgView(newR));
 
   loadNorms(newR);
@@ -53,11 +51,10 @@ public Mtrx calcNewR() {
 }
 
 private void addSumJmTail(Mtrx mR) {
-  CalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmR.getNumRows();
   int cN = mthd.jmR.getNumCols();
   int jN = jmF.length;
-  int N = calcOpt.getN();
+  int N = mthd.getN();
 
   double[][] res = mR.getArray();
   for (int r = 0; r < rN; r++) {
@@ -76,7 +73,7 @@ private void addSumJmTail(Mtrx mR) {
     }
   }
 }
-private void addSumJmAll(Mtrx mR) {
+private void addSumJmAll_BAD(Mtrx mR) {
   int rN = mthd.jmR.getNumRows();
   int cN = mthd.jmR.getNumCols();
   double[][] res = mR.getArray();

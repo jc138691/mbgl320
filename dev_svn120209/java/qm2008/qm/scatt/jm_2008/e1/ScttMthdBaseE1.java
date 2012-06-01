@@ -205,7 +205,7 @@ public static FuncVec delBi(FuncVec wf, WFQuadr quadr, IFuncArr basis, IFuncArr 
   FuncVec res = wf.copyY();
   for (int i = 0; i < basis.size(); i++) {
     FuncVec bi = basisBi.getFunc(i);         //log.dbg("fi=", fi);
-    FuncVec fi = basisBi.getFunc(i);         //log.dbg("fi=", fi);
+    FuncVec fi = basis.getFunc(i);         //log.dbg("fi=", fi);
     double dS = quadr.calcInt(wf, bi);     //log.dbg("d=", dS);
     res.addMultSafe(-dS, fi);              //log.dbg("res=", res);
   }

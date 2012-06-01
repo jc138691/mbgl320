@@ -61,6 +61,8 @@ protected double[][][] calcFFromR() {
         double rCj = 0;
         if (jCh.isOpen()) {
           rCj = jCh.getCn().getRe();
+//          rCj = jCh.getSn(); // DEBUG
+//          rCj = jCh.getCn1().getRe();  // DEBUG
         } else {
           // "closed" is stored as c_{N-1} R_{\gamma \gamma_0}
           rCj = jCh.getCnn1().getRe();
@@ -71,8 +73,8 @@ protected double[][][] calcFFromR() {
         double tanX = mthd.jmR.get(r, c);
         double cosX = Calc.cosFromTan(tanX);
         double sinX = Calc.sinFromCos(cosX);
-//        double f = rSj + rCj * tanX; //log.dbg("f=", f);
-        double f = rSj * cosX + rCj * sinX; //log.dbg("f=", f);
+        double f = rSj + rCj * tanX; //log.dbg("f=", f);
+//        double f = rSj * cosX + rCj * sinX; //log.dbg("f=", f);    // WRONG!!!
         double rSq = rCh.getSqrtAbsMom();
         res[j][r][c] = f / rSq;
       }
