@@ -75,7 +75,7 @@ public ScttRes calcSysEngs() {    log.setDbg();
     if (openNum == 2) {
       log.dbg("if (openNum == 2)");
     }
-    loadTrialWfs(sysIdx, orthonNt, openNum);
+    loadTrialWfs(sysIdx, orthNt, openNum);
     calcAllVecs(sysIdx, openNum);
     calcK(openNum);
     cmS = Scatt.calcSFromK(mK, openChN);                        log.info("(1-iR)=\n", new CmplxMtrxDbgView(cmS));
@@ -158,16 +158,16 @@ protected void calcAllVecs(int sysIdx, int chNum) {
     FuncVec tWf = trgtWfs.get(g);
     Shell tSh = new Shell(g, tWf, L);
 
-    FuncVec freePsi = freeS.get(g);
+    FuncVec freePsi = sinWfs.get(g);
     Shell freeSh = new Shell(ID_FREE_S, freePsi, L);
     double b = calcB(tSh, freeSh, sysIdx);
     vB.set(g, b);
 
-    FuncVec tPhiS = phiS.get(g);
+    FuncVec tPhiS = sinDelN.get(g);
     Shell shS = new Shell(ID_S, tPhiS, L);
     ShPair pS = new ShPair(tSh, shS, LS);
 
-    FuncVec tPhiC = phiC.get(g);
+    FuncVec tPhiC = cosDelN.get(g);
     Shell shC = new Shell(ID_C, tPhiC, L);
     ShPair pC = new ShPair(tSh, shC, LS);
 
@@ -187,13 +187,13 @@ protected void calcAllVecs(int sysIdx, int chNum) {
       Shell tSh2 = new Shell(t2, tWf2, L);
 
       // channel S-like
-      ShPair pSh2 = ShPairFactory.makePair(tSh2, phiS.get(t2), ID_S, L, LS);
+      ShPair pSh2 = ShPairFactory.makePair(tSh2, sinDelN.get(t2), ID_S, L, LS);
 //      double x = sysE2.calcVbabb_OLD(tSh, freeSh, pSh2);         //log.dbg("x=", x);
       double x = 0;
       mX.set(g, t2, x);
 
       // channel C-like
-      pSh2 = ShPairFactory.makePair(tSh2, phiC.get(t2), ID_C, L, LS);
+      pSh2 = ShPairFactory.makePair(tSh2, cosDelN.get(t2), ID_C, L, LS);
 //      double y = sysE2.calcVbabb_OLD(tSh, freeSh, pSh2);         //log.dbg("y=", y);
       double y = 0;
       mY.set(g, t2, y);

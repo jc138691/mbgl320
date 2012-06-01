@@ -11,7 +11,7 @@ import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.e1.JmAlgKatoE2;
+import scatt.jm_2008.e1.JmTailE2;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.target.JmCh;
 
@@ -19,7 +19,7 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 18/04/12, 9:40 AM
  */
-public class JmKatoBasisHyE2 extends JmAlgKatoE2 {
+public class JmKatoBasisHyE2 extends JmTailE2 {
 public static Log log = Log.getLog(JmKatoBasisHyE2.class);
 //protected static final boolean DEBUG_JM1 = false;
 protected int ID_XI_OFFSET = 3;
@@ -88,7 +88,7 @@ protected Cmplx[][][] calcCFFromR() {
   CalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmS.getNumRows();
   int cN = mthd.jmS.getNumCols();
-  int katoN = calcOpt.getKatoN();
+  int katoN = calcOpt.getJmTailN();
 //  int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   LgrrModel jmModel = calcOpt.getLgrrModel();
   int N = jmModel.getN();
@@ -201,7 +201,7 @@ protected double calcSumK(Conf leftConf) {
 
   CalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmR.getNumRows();
-  int katoN = calcOpt.getKatoN();
+  int katoN = calcOpt.getJmTailN();
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   int N = mthd.getN();
   FuncArr trgtStates = mthd.trgtE2.getWfsE1();
@@ -214,7 +214,7 @@ protected double calcSumK(Conf leftConf) {
 
     for (int j = 0; j < katoN; j++) {
       double f = jmF[j][r][initChIdx];        //log.dbg("f=", f);
-      FuncVec xi = katoLgrr.get(N + j);
+      FuncVec xi = tailLgrr.get(N + j);
       ShPair xiConf = ShPairFactory.makePair(tSh, xi, ID_E2_XI, L, LS);
       double v2 = calcHE(leftConf, xiConf); //log.dbg("v2=", v2);
       res += (f * v2);       //log.dbg("res=", res);
@@ -228,7 +228,7 @@ protected Cmplx calcSumCK(Conf leftConf) {
 
   CalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmS.getNumRows();
-  int katoN = calcOpt.getKatoN();
+  int katoN = calcOpt.getJmTailN();
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   int N = mthd.getN();
   FuncArr trgtStates = mthd.trgtE2.getWfsE1();
@@ -241,7 +241,7 @@ protected Cmplx calcSumCK(Conf leftConf) {
 
     for (int j = 0; j < katoN; j++) {
       Cmplx f = jmCF[j][r][initChIdx];        //log.dbg("f=", f);
-      FuncVec xi = katoLgrr.get(N + j);
+      FuncVec xi = tailLgrr.get(N + j);
       ShPair xiConf = ShPairFactory.makePair(tSh, xi, ID_E2_XI, L, LS);
       double v2 = calcHE(leftConf, xiConf); //log.dbg("v2=", v2);
 //      res += (f * v2);

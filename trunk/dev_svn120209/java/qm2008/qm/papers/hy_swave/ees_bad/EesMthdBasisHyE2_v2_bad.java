@@ -77,9 +77,9 @@ public ScttRes calcSysEngs() {    log.setDbg();
     if (openNum == 2) {
       log.dbg("if (openNum == 2)");
     }
-    loadPWaveS(sysTotE, orthonNt, openNum);
-    loadPnS(sysIdx, orthonNt, openNum);
-    loadPWaveC(sysTotE, orthonNt, openNum);
+    makeSinDelN(sysTotE, orthNt, openNum);
+    loadPnS(sysIdx, orthNt, openNum);
+    makeCosDelN(sysTotE, orthNt, openNum);
 
     calcAllVecs(sysIdx, openNum);
     calcK(openNum);
@@ -144,12 +144,12 @@ protected void calcAllVecs(int sysIdx, int chNum) {
     FuncVec tWf = trgtWfs.get(g);
     Shell tSh = new Shell(g, tWf, L);
 
-    FuncVec tPhiS = phiS.get(g);
+    FuncVec tPhiS = sinDelN.get(g);
     FuncVec tPnS = pnS.get(g);
     Shell shS = new Shell(ID_S, tPhiS, L);
     ShPair pS = new ShPair(tSh, shS, LS);
 
-    FuncVec tPhiC = phiC.get(g);
+    FuncVec tPhiC = cosDelN.get(g);
     Shell shC = new Shell(ID_C, tPhiC, L);
     ShPair pC = new ShPair(tSh, shC, LS);
 
@@ -165,10 +165,10 @@ protected void calcAllVecs(int sysIdx, int chNum) {
         m01.set(g, g2, 0);
         continue;
       }
-      double ms = calcHE(g, g2, phiS.get(g2), LS);         log.dbg("ms=", ms);
+      double ms = calcHE(g, g2, sinDelN.get(g2), LS);         log.dbg("ms=", ms);
       m00.set(g, g2, ms);
 
-      double mc = calcHE(g, g2, phiC.get(g2), LS);         log.dbg("mc=", mc);
+      double mc = calcHE(g, g2, cosDelN.get(g2), LS);         log.dbg("mc=", mc);
       m01.set(g, g2, mc);
     }
   }
@@ -185,7 +185,7 @@ private double calcHE(int g, int g2, FuncVec pw2, Ls ls) {
   FuncVec tWf = trgtWfs.get(g);
   Shell shB = new Shell(g, tWf, L);    // bound #1
 
-  FuncVec pwS = phiS.get(g);   // plain-wave
+  FuncVec pwS = sinDelN.get(g);   // plain-wave
   Shell shF = new Shell(-1, pwS, L);
 
   FuncVec tWf2 = trgtWfs.get(g2);

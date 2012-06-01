@@ -79,16 +79,16 @@ private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
 
   new JmResonE2(this).calc(res, jmX);
   Mtrx mCs = new Mtrx(eN, prntNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
-  Mtrx mRs = new Mtrx(eN, prntNum + 1);
+  Mtrx mR = new Mtrx(eN, prntNum + 1);
   Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
   res.setSdcs(new Mtrx(prntNum + 1, eN + 1));
-  res.setRs(mRs);
+  res.setMtrxR(mR);
   res.setCrossSecs(mCs);
   res.setTics(mTics);
 
   for (int scttIdx = 0; scttIdx < eN; scttIdx++) {     log.info("i = ", scttIdx);
     scttE = scttEngs.get(scttIdx);             log.info("scttE = ", scttE);
-    mRs.set(scttIdx, IDX_ENRGY, scttE);
+    mR.set(scttIdx, IDX_ENRGY, scttE);
     mCs.set(scttIdx, IDX_ENRGY, scttE);
     mTics.set(scttIdx, IDX_ENRGY, scttE);                 // first column is for the energies
     if (scttE <= 0  ||  engModel.getFirst() > scttE ||  scttE > engModel.getLast()) {
@@ -112,7 +112,7 @@ private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
     jmR = calcCorrR(); // calc any corrections to the R-matrix
     jmS = Scatt.calcSFromK(jmR, openChN);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(jmS));
     saveCrossSecs(scttIdx, res, jmS, openChN);
-    saveRs(scttIdx, res, jmR, openChN);
+    saveMtrxR(scttIdx, res, jmR, openChN);
     if (calcOpt.getCalcSdcs()) {
       calcSdcs(scttIdx, res, prntNum);
     }

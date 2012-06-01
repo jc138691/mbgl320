@@ -31,7 +31,7 @@ public ScttRes calcSysEngs() {
     double scattE = engs.get(i);                           log.dbg("E = ", scattE);
     double momP = Scatt.calcMomFromE(scattE);
     mCrss.set(i, IDX_ENRGY, scattE);
-    FuncArr psi = methodE1.calcPsi(scattE, orthonN);
+    FuncArr psi = methodE1.calcPsi(scattE, orthN);
     double a = calcA(psi, scattE, i);
 //    double f = calcF(a, psi, scttE, i);
 //    double f = calcBornF(psi, scttE);

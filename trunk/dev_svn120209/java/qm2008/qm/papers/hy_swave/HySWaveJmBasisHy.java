@@ -76,8 +76,8 @@ public void calc(int newN, int newNt) {
   N = newN;
   Nt = newNt;
   initProject();
-  potScattTestOk();  // basisN, biorthN, orthonNt, quadr
-  hydrScattTestOk(TARGET_Z);  // pot, orthonNt
+  potScattTestOk();  // basisN, biorthN, orthNt, quadr
+  hydrScattTestOk(TARGET_Z);  // pot, orthNt
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
 
   trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
@@ -116,7 +116,7 @@ public void calc(int newN, int newNt) {
   ConfArr sysArr = ConfArrFactoryE2.makeSModelE2(SYS_LS, trgtWfsNt, orthonN);    log.dbg("sysArr=", sysArr);
 
   // one electron basis
-  trgtBasisN = orthonN;    // only the last wfs were used from  orthonNt, so now we can reuse it
+  trgtBasisN = orthonN;    // only the last wfs were used from  orthNt, so now we can reuse it
   orthonN = null; // making sure nobody uses old ref
   trgtBasisN.copyFrom(trgtWfsNt, 0, trgtWfsNt.size());
   D = new JmD(biorthN, trgtBasisN);   log.dbg("D_{n,N-1}=", D);

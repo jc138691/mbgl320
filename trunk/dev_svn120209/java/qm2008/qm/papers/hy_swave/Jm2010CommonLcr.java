@@ -89,7 +89,7 @@ protected void initProject() {
   calcOpt.setUseClosed(USE_CLOSED_CHANNELS);
   calcOpt.setUseClosedNum(KEEP_CLOSED_N);
   calcOpt.setCalcSdcs(CALC_SDCS);
-  calcOpt.setKatoN(KATO_N);
+  calcOpt.setJmTailN(KATO_N);
   calcOpt.setSdcsEngN(SDCS_ENG_N);
 
   log.info("<--initProject()");
@@ -155,7 +155,7 @@ protected void hydrScattTestOk(int trgtZ) {
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
     if (!new LgrrOrthLcrTest(orthonNt).ok()) return;
-//      if (!new PotEigVecLcrTest(AtomHy.atomZ, orthonNt).ok()) return;
+//      if (!new PotEigVecLcrTest(AtomHy.atomZ, orthNt).ok()) return;
     if (!new PotEigVecLcrTest(trgtZ, orthonNt).ok()) return;
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR

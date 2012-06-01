@@ -1,5 +1,6 @@
 package scatt.jm_2008.e2;
 import atom.energy.ConfHMtrx;
+import atom.wf.lcr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.Mathx;
 import math.complex.CmplxMtrx;
@@ -26,7 +27,7 @@ public static Log log = Log.getLog(ScttMthdBaseE2.class);
 protected static final int IDX_IONIZ = 1;
 public ScttTrgtE2 trgtE2;
 protected ConfHMtrx sysConfH;
-protected LgrrOrthLcr orthonNt;
+protected LgrrOrthLcr orthNt;
 //protected FuncArr basisN;  // use trgtE2.statesE1
 protected CmplxMtrx jmS;
 protected int calcChN;
@@ -38,11 +39,11 @@ public int getCalcChN() {
 public int getOpenChN() {
   return openChN;
 }
-public LgrrOrthLcr getOrthonNt() {
-  return orthonNt;
+public LgrrOrthLcr getOrthNt() {
+  return orthNt;
 }
-public void setOrthonNt(LgrrOrthLcr orthonNt) {
-  this.orthonNt = orthonNt;
+public void setOrthNt(LgrrOrthLcr orthNt) {
+  this.orthNt = orthNt;
 }
 
 public ScttMthdBaseE2(CalcOptE1 calcOpt) {
@@ -94,12 +95,24 @@ protected void saveCrossSecs(int i, ScttRes res, CmplxMtrx mS, int openNum) {
   }
   mTics.set(i, IDX_IONIZ, ionSum);
 }
-protected void saveRs(int i, ScttRes res, Mtrx fromR, int openNum) {
-  Mtrx mRs = res.getRs();
+protected void saveMtrxR(int i, ScttRes res, Mtrx fromR, int openNum) {
+  // THIS also makes & loads mRk
+  Mtrx mR = res.getMtrxR();
+  Mtrx mRk = res.getMtrxRk();
+  if (mRk == null) {
+    mRk = mR.copy();
+    res.setMtrxRk(mRk);
+  }
   int initChIdx = trgtE2.getInitTrgtIdx();
   for (int to = 0; to < openNum; to++) {    log.dbg("to = ", to);  // Target channels
+    double k0 = chArr[initChIdx].getAbsMom();
     double r = fromR.get(to, initChIdx);
-    mRs.set(i, to + 1, r);  // NOTE +1; first column has incident energies
+    double rk = r / k0;
+    mR.set(i, to + 1, r);  // NOTE +1; first column has incident energies
+    mRk.set(i, to + 1, rk);
+
+    double ei = mR.get(i, IDX_ENRGY);
+    mRk.set(i, IDX_ENRGY, ei);
   }
 }
 protected JmCh[] loadChArr(double sysEng) {
@@ -155,7 +168,7 @@ protected int calcCalcChNum(double scattE) {
   return Math.min(tN, res);
 }
 
-public FuncArr makeFreeS(double sTotE, int chNum) {
+public FuncArr makeSinWfs(double sTotE, int chNum) {
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
 
@@ -166,8 +179,43 @@ public FuncArr makeFreeS(double sTotE, int chNum) {
     if (tScattE <= 0) {
       break;
     }
-    FuncVec tPsi = EesMethodE1.calcChPsiReg(tScattE, quadr);
+    FuncVec tPsi = EesMethodE1.calcChSinWf(tScattE, quadr);
     res.add(tPsi);
+  }
+  return res;
+}
+public FuncArr makeSinDelN(double sTotE, LgrrOrthLcr orthN, int chNum) {
+  WFQuadrLcr quadr = orthN.getQuadr();
+  Vec x = quadr.getX();
+  FuncArr res = new FuncArr(x);
+
+  Vec tEngs = trgtE2.getEngs();
+  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(tIdx);     // target state eng
+    double tScattE = sTotE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec tPhiS = EesMethodE1.calcSinDelN(tScattE, orthN);
+    res.add(tPhiS);
+  }
+  return res;
+}
+public FuncArr makeCosDelN(double sTotE, LgrrOrthLcr orthN, int chNum) {
+  WFQuadrLcr quadr = orthN.getQuadr();
+  Vec x = quadr.getX();
+  FuncArr res = new FuncArr(x);
+
+  Vec tEngs = trgtE2.getEngs();
+  Vec sEngs = getSysEngs();
+  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(tIdx);     // target state eng
+    double tScattE = sTotE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec tPhiC = EesMethodE1.calcCosDelN(tScattE, orthN);
+    res.add(tPhiC);
   }
   return res;
 }

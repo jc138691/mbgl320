@@ -94,9 +94,9 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     N = newN;
     Nt = newNt;
     initProject();
-    potScattTestOk();     // out: basisN, orthonNt, biorthN
-    hydrScattTestOk(AtomHy.Z);      // out: pt (for Hy), orthonNt
-    hydrScattTestOk(AtomHe.Z);      // out: pt (for He), orthonNt
+    potScattTestOk();     // out: basisN, orthNt, biorthN
+    hydrScattTestOk(AtomHy.Z);      // out: pt (for Hy), orthNt
+    hydrScattTestOk(AtomHe.Z);      // out: pt (for He), orthNt
     jmHeTestOk();      // out: re-loading pt (for He)
     initLiJm();
     SlaterLcr slater = new SlaterLcr(quadrLcr);

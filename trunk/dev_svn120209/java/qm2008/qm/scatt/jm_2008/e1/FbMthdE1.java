@@ -33,14 +33,15 @@ public ScttRes calc(Vec engs) {
     double scattE = engs.get(i);             log.dbg("E = ", scattE);
     mCs.set(i, IDX_ENRGY, scattE);
     double momP = Scatt.calcMomFromE(scattE);
-    WFQuadrLcr quadr = orthonN.getQuadr();
+    WFQuadrLcr quadr = orthN.getQuadr();
     FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
     double v = calcPotInt(sinL, sinL);
     double R = -2. * v / momP;                        log.dbg("R = ", R);
     double shift = Math.atan(R);
     Cmplx S = Scatt.calcSFromK(R);                                          log.dbg("S = ", S);
 //    double sigma = Scatt.calcSigmaPiFromS(S, scttE);
-    double sigma = R;
+//    double sigma = R / momP;  // DEBUG
+    double sigma = R; // DEBUG
     log.dbg("sigma = ", sigma).eol();
     mCs.set(i, IDX_ENRGY + 1, sigma);     // NOTE +1; first column has incident energies
     arrShift.set(i, shift);

@@ -99,9 +99,9 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     N = newN;
     Nt = newNt;
     initProject();
-    potScattTestOk();     // out: basisN, orthonNt, biorthN
-    hydrScattTestOk(AtomHy.Z);      // out: pt (for Hy), orthonNt
-    hydrScattTestOk(AtomHe.Z);      // out: pt (for Hy), orthonNt
+    potScattTestOk();     // out: basisN, orthNt, biorthN
+    hydrScattTestOk(AtomHy.Z);      // out: pt (for Hy), orthNt
+    hydrScattTestOk(AtomHe.Z);      // out: pt (for Hy), orthNt
     jmHeTestOk();      // out: re-loading pt (for He)
     initLiJm();
     SlaterLcr slater = new SlaterLcr(quadrLcr);
@@ -122,7 +122,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
 // TODO: check how Vec.size() is used
 //    AtomUtil.trimTailSLOW(trgtWfsNt);
 
-    trgtBasisN = orthonN;    // only the last wfs were used from  orthonNt, so now we can reuse it
+    trgtBasisN = orthonN;    // only the last wfs were used from  orthNt, so now we can reuse it
     orthonN = null; // making sure nobody uses old ref
     trgtBasisN.copyFrom(trgtWfsNt, 0, trgtWfsNt.size());
 

@@ -49,9 +49,9 @@ public ScttRes calcSysEngs() {
       ) {
       continue;
     }
-    loadTrialWfs(sysTotE, orthonNt, openNum);
+    loadTrialWfs(sysTotE, orthNt, openNum);
 
-    FuncArr psi = methodE1.calcPsi(scttE, orthonNt);
+    FuncArr psi = methodE1.calcPsi(scttE, orthNt);
     Dble2 sc = calcSC(psi, scttE, sysIdx);
     double R = -sc.a / sc.b;                               log.dbg("R = ", R);
 

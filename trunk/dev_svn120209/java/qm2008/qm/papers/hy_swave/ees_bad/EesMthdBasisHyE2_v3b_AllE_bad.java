@@ -72,8 +72,8 @@ public ScttRes calcSysEngs() {    log.setDbg();
     if (openNum == 2) {
       log.dbg("if (openNum == 2)");
     }
-    loadPWaveS(sysTotE, orthonNt, openNum);
-    loadPWaveC(sysTotE, orthonNt, openNum);
+    makeSinDelN(sysTotE, orthNt, openNum);
+    makeCosDelN(sysTotE, orthNt, openNum);
 
     calcAllVecs(sysTotE, openNum);
     calcK(openNum);
@@ -112,9 +112,9 @@ protected void calcAllVecs(double sysTotE, int gNum) {
     FuncVec tWf = trgtWfs.get(g);
     Shell tSh = new Shell(g, tWf, L);
 
-    ShPair pS = ShPairFactory.makePair(tSh, phiS.get(g), ID_S, L, LS);
-    ShPair pC = ShPairFactory.makePair(tSh, phiC.get(g), ID_C, L, LS);
-    ShPair pXi = ShPairFactory.makePair(tSh, orthonN.getLast(), ID_XI, L, LS);
+    ShPair pS = ShPairFactory.makePair(tSh, sinDelN.get(g), ID_S, L, LS);
+    ShPair pC = ShPairFactory.makePair(tSh, cosDelN.get(g), ID_C, L, LS);
+    ShPair pXi = ShPairFactory.makePair(tSh, orthN.getLast(), ID_XI, L, LS);
 
     for (int sysIdx = 0; sysIdx < sysNum; sysIdx++) {     //log.dbg("sysIdx = ", sysIdx);  // Target channels
       Dble3 sc = calcSC(pS, pC, pXi, sysIdx);
@@ -130,10 +130,10 @@ protected void calcAllVecs(double sysTotE, int gNum) {
       if (tScattE2 <= 0) {
         continue;
       }
-      double ms = calcXiM(g, g2, phiS.get(g2), sysTotE, LS);         log.dbg("ms=", ms);
+      double ms = calcXiM(g, g2, sinDelN.get(g2), sysTotE, LS);         log.dbg("ms=", ms);
       mM0.set(g, g2, ms);
 
-      double mc = calcXiM(g, g2, phiC.get(g2), sysTotE, LS);         log.dbg("mc=", mc);
+      double mc = calcXiM(g, g2, cosDelN.get(g2), sysTotE, LS);         log.dbg("mc=", mc);
       mM1.set(g, g2, mc);
     }
   }

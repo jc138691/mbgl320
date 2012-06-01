@@ -20,28 +20,12 @@ import javax.utilx.log.Log;
  */
 public class EesMthdBaseE2 extends ScttMthdBaseE2 {
 public static Log log = Log.getLog(EesMthdBaseE2.class);
-protected FuncArr freeS;
-protected FuncArr phiS;
+protected FuncArr sinWfs;
+protected FuncArr sinDelN;
 protected FuncArr pnS;    // pnS = \oveline{\psi} =  \hat{P}_N \psi = \psi - \phi
-protected FuncArr phiC;
+protected FuncArr cosDelN;
 public EesMthdBaseE2(CalcOptE1 calcOpt) {
   super(calcOpt);
-}
-protected void loadPWaveS(double sTotE, LgrrOrthLcr orthN, int chNum) {
-  WFQuadrLcr quadr = orthN.getQuadr();
-  Vec x = quadr.getX();
-  phiS = new FuncArr(x);
-
-  Vec tEngs = trgtE2.getEngs();
-  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
-    double tE = tEngs.get(tIdx);     // target state eng
-    double tScattE = sTotE - tE;
-    if (tScattE <= 0) {
-      break;
-    }
-    FuncVec tPhiS = EesMethodE1.calcPWaveS(tScattE, orthN);
-    phiS.add(tPhiS);
-  }
 }
 protected void loadPnS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
   IFuncArr basis = orthN;
@@ -62,27 +46,10 @@ protected void loadPnS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
     pnS.add(tPhiS);
   }
 }
-protected void loadPWaveC(double sTotE, LgrrOrthLcr orthN, int chNum) {
-  WFQuadrLcr quadr = orthN.getQuadr();
-  Vec x = quadr.getX();
-  phiC = new FuncArr(x);
-
-  Vec tEngs = trgtE2.getEngs();
-  Vec sEngs = getSysEngs();
-  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
-    double tE = tEngs.get(tIdx);     // target state eng
-    double tScattE = sTotE - tE;
-    if (tScattE <= 0) {
-      break;
-    }
-    FuncVec tPhiC = EesMethodE1.calcPWaveC(tScattE, orthN);
-    phiC.add(tPhiC);
-  }
-}
 protected void loadTrialWfs(double sTotE, LgrrOrthLcr orthN, int chNum) {
-  freeS = makeFreeS(sTotE, chNum);
-  loadPWaveS(sTotE, orthN, chNum);
-  loadPWaveC(sTotE, orthN, chNum);
+  sinWfs = makeSinWfs(sTotE, chNum);
+  sinDelN = makeSinDelN(sTotE, orthN, chNum);
+  cosDelN = makeCosDelN(sTotE, orthN, chNum);
 }
 protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
   Dble3 res = new Dble3();
@@ -120,7 +87,7 @@ protected double calcXiM(int g, int g2, FuncVec pw2, double sysTotE, Ls ls) {
   FuncVec tWf = trgtWfs.get(g);
   Shell shB = new Shell(g, tWf, L);    // bound #1
 
-  FuncVec pwXi = orthonN.getLast();
+  FuncVec pwXi = orthN.getLast();
   Shell shXi = new Shell(-1, pwXi, L);
 
   FuncVec tWf2 = trgtWfs.get(g2);

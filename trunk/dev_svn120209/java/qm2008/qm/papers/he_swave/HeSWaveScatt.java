@@ -138,7 +138,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
 //    SysE2 tgrtE2 = new SysHe(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
 //
 //    Ls tLs = new Ls(0, Spin.SINGLET);  // t - for target
-//    ConfArr tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, orthonNt, orthonNt);     log.dbg("tConfArr=", tConfArr);
+//    ConfArr tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, orthNt, orthNt);     log.dbg("tConfArr=", tConfArr);
 //    ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                                   log.dbg("tH=\n", new MtrxDbgView(tH));
 ////    Vec tEngs = tH.getEigEngs();                                                 log.dbg("tEngs=", new VecDbgView(tEngs));
 //
@@ -147,7 +147,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
 //
 //
 //    tLs = new Ls(0, Spin.TRIPLET);  // t - for target
-//    tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, orthonNt, orthonNt);               log.dbg("tConfArr=", tConfArr);
+//    tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, orthNt, orthNt);               log.dbg("tConfArr=", tConfArr);
 //    ConfHMtrx tH2 = new ConfHMtrx(tConfArr, tgrtE2);                                   log.dbg("tH=\n", new MtrxDbgView(tH));
 //
 //    FileX.writeToFile(tH2.getEigEngs().toCSV(), HOME_DIR, "He"
@@ -175,7 +175,7 @@ protected ConfHMtrx makeSysBasisN(SlaterLcr slater) {
 //    Ls sLs = new Ls(0, Spin.ELECTRON);     // s - for system
 //    SysE3 sysE3 = new SysE3(-AtomHe.atomZ, slater);    // NOTE!!! Helium (AtomHe.atomZ), not Li (AtomLi.atomZ)
 //    AtomShModelE3 modelE3 = new AtomShModelE3(Nt, Nt, N, sLs);
-//    ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, orthonNt);    log.dbg("sConfArr=", sConfArr);
+//    ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, orthNt);    log.dbg("sConfArr=", sConfArr);
 //    ConfHMtrx res = new ConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
 ////    Vec sEngs = sH.getEigEngs();                                        log.dbg("sEngs=", new VecDbgView(sEngs));
 //    return res;
