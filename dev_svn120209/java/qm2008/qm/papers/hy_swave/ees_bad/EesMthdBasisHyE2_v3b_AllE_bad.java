@@ -72,8 +72,8 @@ public ScttRes calcSysEngs() {    log.setDbg();
     if (openNum == 2) {
       log.dbg("if (openNum == 2)");
     }
-    makeSinDelN(sysTotE, orthNt, openNum);
-    makeCosDelN(sysTotE, orthNt, openNum);
+    makeSinDOrth(sysTotE, openNum);
+    makeCosDOrth(sysTotE, openNum);
 
     calcAllVecs(sysTotE, openNum);
     calcK(openNum);
@@ -114,7 +114,7 @@ protected void calcAllVecs(double sysTotE, int gNum) {
 
     ShPair pS = ShPairFactory.makePair(tSh, sinDelN.get(g), ID_S, L, LS);
     ShPair pC = ShPairFactory.makePair(tSh, cosDelN.get(g), ID_C, L, LS);
-    ShPair pXi = ShPairFactory.makePair(tSh, orthN.getLast(), ID_XI, L, LS);
+    ShPair pXi = ShPairFactory.makePair(tSh, orth.getLast(), ID_XI, L, LS);
 
     for (int sysIdx = 0; sysIdx < sysNum; sysIdx++) {     //log.dbg("sysIdx = ", sysIdx);  // Target channels
       Dble3 sc = calcSC(pS, pC, pXi, sysIdx);

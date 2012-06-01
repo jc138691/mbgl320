@@ -99,32 +99,32 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     N = newN;
     Nt = newNt;
     initProject();
-    potScattTestOk();     // out: basisN, orthNt, biorthN
+    potScattTestOk();     // out: lgrrN, orthNt, lgrrBi
     hydrScattTestOk(AtomHy.Z);      // out: pt (for Hy), orthNt
     hydrScattTestOk(AtomHe.Z);      // out: pt (for Hy), orthNt
     jmHeTestOk();      // out: re-loading pt (for He)
     initLiJm();
-    SlaterLcr slater = new SlaterLcr(quadrLcr);
+    SlaterLcr slater = new SlaterLcr(quadr);
     calcHe(slater);    //verified: SysHeOldOk and SysHe yield exactly the same results.
     calcLi(slater);
 
     // Making He+ eigen-states
-    trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);       log.dbg("trgtPotH=", trgtPotH);
+    trgtPotH = new PotHMtrxLcr(L, orthNt, pot);       log.dbg("trgtPotH=", trgtPotH);
     Vec basisEngs = trgtPotH.getEigEngs();                log.dbg("eigVal=", new VecDbgView(basisEngs));
     Mtrx basisVecs = trgtPotH.getEigVec();               log.dbg("eigVec=", new MtrxDbgView(basisVecs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_basisEngs_" + makeLabelNc());
     trgtWfsNt = trgtPotH.getEigWfs();              log.dbg("targetNt=", new FuncArrDbgView(trgtWfsNt));
 
-    FuncArr basisR = LcrFactory.wfLcrToR(trgtWfsNt, quadrLcr);
+    FuncArr basisR = LcrFactory.wfLcrToR(trgtWfsNt, quadr);
     AtomUtil.trimTailSLOW(basisR);
     FileX.writeToFile(basisR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtR_" + makeLabelNc());
 
 // TODO: check how Vec.size() is used
 //    AtomUtil.trimTailSLOW(trgtWfsNt);
 
-    trgtBasisN = orthonN;    // only the last wfs were used from  orthNt, so now we can reuse it
-    orthonN = null; // making sure nobody uses old ref
-    trgtBasisN.copyFrom(trgtWfsNt, 0, trgtWfsNt.size());
+    wfN = orthN;    // only the last wfs were used from  orthNt, so now we can reuse it
+    orthN = null; // making sure nobody uses old ref
+    wfN.copyFrom(trgtWfsNt, 0, trgtWfsNt.size());
 
     ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtWfsNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
@@ -141,12 +141,12 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
     method.setSysEngs(sEngs);
     method.setSysConfH(sysH);
-    Vec D = new JmD(biorthN, trgtBasisN);             log.dbg("D_{n,N-1}=", D);
+    Vec D = new JmD(lgrrBiN, wfN);             log.dbg("D_{n,N-1}=", D);
     method.setOverD(D);
 
     if (CALC_DENSITY) {          log.info("if (CALC_DENSITY) {");
       FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);
-      FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
+      FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadr);  // NOTE!! convering density to R (not wf)
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelNc(method));
     }
 

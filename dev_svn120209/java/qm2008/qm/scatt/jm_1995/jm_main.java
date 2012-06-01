@@ -49,8 +49,8 @@ public class jm_main {
 //  Ci    nc(k), lc(k) - n,l's of the core shells
 //  Ci    Nnlexc, Lnlexc - n,l's of the shell to be excited
 //  Ci
-//  Ci    LWF - max L of the basisN size
-//  Ci    NWFL - basisN size for each L above the core states
+//  Ci    LWF - max L of the lgrrN size
+//  Ci    NWFL - lgrrN size for each L above the core states
 //  Ci    ns_exc - maximum number of core excitations for l- electrons
 //  Ci    njml - maximum n in j-matrix calculation for each L, reserved for
 //  Ci           future use
@@ -306,8 +306,8 @@ Ci    Ncore - number of core shells
 Ci    nc(k), lc(k) - n,l's of the core shells
 Ci    Nnlexc, Lnlexc - n,l's of the shell to be excited
 Ci
-Ci    LWF - max L of the basisN size
-Ci    NWFL - basisN size for each L above the core states
+Ci    LWF - max L of the lgrrN size
+Ci    NWFL - lgrrN size for each L above the core states
 Ci    ns_exc - maximum number of core excitations for l- electrons
 Ci    njml - maximum n in j-matrix calculation for each L, reserved for
 Ci           future use

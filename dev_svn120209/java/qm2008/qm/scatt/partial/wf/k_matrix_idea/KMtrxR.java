@@ -3,8 +3,8 @@ import math.func.FuncVec;
 import math.func.Func;
 import math.vec.Vec;
 import scatt.Scatt;
-import scatt.partial.wf.CosPWaveFunc;
-import scatt.partial.wf.SinPWaveFunc;
+import scatt.partial.wf.CosLFunc;
+import scatt.partial.wf.SinLFunc;
 
 import javax.utilx.log.Log;
 /**
@@ -22,11 +22,11 @@ public class KMtrxR {
 
     double p = Scatt.calcMomFromE(E);       log.dbg("p = ", p);
 
-    Func sinF = new SinPWaveFunc(p, 0);  // L=0
+    Func sinF = new SinLFunc(p, 0);  // L=0
     double S = sinF.calc(x);                log.dbg("S =", S);
     double S2 = sinF.calc(x2);              log.dbg("S2 =", S2);
 
-    Func cosF = new CosPWaveFunc(p, 0);  // L=0
+    Func cosF = new CosLFunc(p, 0);  // L=0
     double C = cosF.calc(x);                log.dbg("C =", C);
     double C2 = cosF.calc(x2);              log.dbg("C2 =", C2);
 

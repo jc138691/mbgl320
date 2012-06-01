@@ -12,7 +12,7 @@ import atom.wf.WFQuadrR;
  * Copyright dmitry.konovalov@jcu.edu.au Date: 16/09/2008, Time: 10:31:43
  */
 public class LgrrR extends LgrrArr implements IWFuncArr {
-  public static String HELP = "JM-matrix Laguerre basisN:\n"
+  public static String HELP = "JM-matrix Laguerre lgrrN:\n"
   + "R(n, a, lambda, r) = exp(-x/2) x^((a+1)/2) L^a_n(x),\n"
   + "where x = lambda * r;  a = alpha=2*L+1, L - angular momentum; L^a_n - the associated Laguerre polynomials.";
   public static Log log = Log.getLog(LgrrR.class);

@@ -47,15 +47,15 @@ public void calc(int newNt) {      log.setDbg();
   N = newNt+1;
   Nt = newNt;
   initProject();
-  potScattTestOk();     // out: basisN, orthNt, biorthN
+  potScattTestOk();     // out: lgrrN, orthNt, lgrrBi
   hydrScattTestOk(TARGET_Z);      // out: pt (for TARGET_Z), orthNt
-  SlaterLcr slater = new SlaterLcr(quadrLcr);
+  SlaterLcr slater = new SlaterLcr(quadr);
 
-  trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
+  trgtPotH = new PotHMtrxLcr(L, orthNt, pot);    log.dbg("trgtPotH=", trgtPotH);
   Vec targetEngs = trgtPotH.getEigEngs();            log.dbg("eigVal=", new VecDbgView(targetEngs));
   trgtWfsNt = trgtPotH.getEigWfs();      log.dbg("trgtWfsNt=", new FuncArrDbgView(trgtWfsNt));
 //  AtomUtil.trimTailSLOW(trgtWfsNt);     // todo: check if needed
-  trgtBasisN = null;
+  wfN = null;
 
   ScttTrgtE3 trgt = makeTrgtE3(slater);
   trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE electron
@@ -77,8 +77,8 @@ public void calc(int newNt) {      log.setDbg();
   method.setTrgtE2(trgt);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
-  method.setOrthNt(orthonNt);
-  method.setOrthN(orthonN);
+  method.setOrthNt(orthNt);
+  method.setOrth(orthN);
   method.setWfsE1(trgtWfsNt);
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);

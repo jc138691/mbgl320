@@ -5,15 +5,21 @@ import atom.wf.WFQuadr;
 import atom.wf.lcr.WFQuadrLcr;
 import math.Calc;
 import math.func.FuncVec;
+import math.func.arr.IFuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
 import project.workflow.task.test.FlowTest;
+import scatt.Scatt;
 import scatt.eng.EngGrid;
 import scatt.eng.EngModel;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.lcr.LagrrBiLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmCh;
+import scatt.partial.wf.CosRegWfLcr;
+import scatt.partial.wf.SinWfLcr;
 
 import javax.utilx.log.Log;
 /**
@@ -29,7 +35,9 @@ public JmCh[] chArr;
 protected Vec sysEngs;
 protected WFQuadrLcr quadr;
 protected PotHMtrx potH;
-protected LgrrOrthLcr orthN;
+protected LgrrOrthLcr orth;
+protected LagrrLcr lgrr;
+protected LagrrBiLcr lgrrBi;
 protected final CalcOptE1 calcOpt;
 protected double scttE;
 protected double sysTotE;
@@ -89,11 +97,11 @@ public PotHMtrx getPotH() {
 public void setPotH(PotHMtrx potH) {
   this.potH = potH;
 }
-public LgrrOrthLcr getOrthN() {
-  return orthN;
+public LgrrOrthLcr getOrth() {
+  return orth;
 }
-public void setOrthN(LgrrOrthLcr orthN) {
-  this.orthN = orthN;
+public void setOrth(LgrrOrthLcr orth) {
+  this.orth = orth;
 }
 public WFQuadrLcr getQuadr() {
   return quadr;
@@ -147,5 +155,82 @@ protected JmCh[] loadChArr(double sysEng) {
 }
 protected Mtrx calcR(int calcN, int openN) {
   return null;
+}
+public void setLgrrBi(LagrrBiLcr lgrrBi) {
+  this.lgrrBi = lgrrBi;
+}
+public void setLgrr(LagrrLcr lgrr) {
+  this.lgrr = lgrr;
+}
+public LagrrLcr getLgrr() {
+  return lgrr;
+}
+public LagrrBiLcr getLgrrBi() {
+  return lgrrBi;
+}
+public static FuncVec calcCosDelN(double chScattE
+  , WFQuadr quadr, IFuncArr basis, double regLambda) {  // channel scattering eng
+  int L = 0;
+  double momP = Scatt.calcMomFromE(chScattE);
+  FuncVec wf = new CosRegWfLcr((WFQuadrLcr)quadr, momP, L, regLambda);   //log.dbg("sinL=", sinL);
+  FuncVec res = delN(wf, quadr, basis);          //log.dbg("resS=", resS);
+  return res;
+}
+public static FuncVec calcCosDelBi(double chScattE
+  , WFQuadr quadr, IFuncArr basis, IFuncArr basisBi, double regLambda) {  // channel scattering eng
+  int L = 0;
+  double momP = Scatt.calcMomFromE(chScattE);
+  FuncVec wf = new CosRegWfLcr((WFQuadrLcr)quadr, momP, L, regLambda);   //log.dbg("sinL=", sinL);
+  FuncVec res = delBi(wf, quadr, basis, basisBi);          //log.dbg("resS=", resS);
+  return res;
+}
+public static FuncVec delN(FuncVec wf, WFQuadr quadr, IFuncArr basis) {
+  Vec x = quadr.getX();
+  FuncVec res = wf.copyY();
+  for (int i = 0; i < basis.size(); i++) {
+    FuncVec fi = basis.getFunc(i);         //log.dbg("fi=", fi);
+    double dS = quadr.calcInt(wf, fi);     //log.dbg("d=", dS);
+    res.addMultSafe(-dS, fi);              //log.dbg("res=", res);
+  }
+  for (int i = 0; i < basis.size(); i++) {
+    FuncVec fi = basis.getFunc(i);           //log.dbg("fi=", fi);
+    double testInt = quadr.calcInt(res, fi);   //log.dbg("testS=", testS);
+    assertEquals("testInt_" + i, testInt, 0d);
+    assertEquals(0, testInt, MAX_INTGRL_ERR_E11);
+  }
+  return res;
+}
+public static FuncVec delBi(FuncVec wf, WFQuadr quadr, IFuncArr basis, IFuncArr basisBi) {
+  Vec x = quadr.getX();
+  FuncVec res = wf.copyY();
+  for (int i = 0; i < basis.size(); i++) {
+    FuncVec bi = basisBi.getFunc(i);         //log.dbg("fi=", fi);
+    FuncVec fi = basisBi.getFunc(i);         //log.dbg("fi=", fi);
+    double dS = quadr.calcInt(wf, bi);     //log.dbg("d=", dS);
+    res.addMultSafe(-dS, fi);              //log.dbg("res=", res);
+  }
+  for (int i = 0; i < basis.size(); i++) {
+    FuncVec bi = basisBi.getFunc(i);           //log.dbg("fi=", fi);
+    double testInt = quadr.calcInt(res, bi);   //log.dbg("testS=", testS);
+    assertEquals("testInt_" + i, testInt, 0d);
+    assertEquals(0, testInt, MAX_INTGRL_ERR_E11);
+  }
+  return res;
+}
+public static FuncVec calcSinDelN(double chScattE
+  , WFQuadr quadr, IFuncArr basis) {  // channel scattering eng
+  int L = 0;
+  double momP = Scatt.calcMomFromE(chScattE);
+  FuncVec wf = new SinWfLcr((WFQuadrLcr)quadr, momP, L);   //log.dbg("wf=", wf);
+  FuncVec res = delN(wf, quadr, basis);          //log.dbg("resS=", resS);
+  return res;
+}
+public static FuncVec calcSinDelBi(double chScattE
+  , WFQuadr quadr, IFuncArr basis, IFuncArr basisBi) {  // channel scattering eng
+  int L = 0;
+  double momP = Scatt.calcMomFromE(chScattE);
+  FuncVec wf = new SinWfLcr((WFQuadrLcr)quadr, momP, L);   //log.dbg("wf=", wf);
+  FuncVec res = delBi(wf, quadr, basis, basisBi);          //log.dbg("resS=", resS);
+  return res;
 }
 }

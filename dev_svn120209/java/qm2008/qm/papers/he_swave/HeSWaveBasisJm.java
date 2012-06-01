@@ -94,25 +94,25 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     N = newN;
     Nt = newNt;
     initProject();
-    potScattTestOk();     // out: basisN, orthNt, biorthN
+    potScattTestOk();     // out: lgrrN, orthNt, lgrrBi
     hydrScattTestOk(AtomHy.Z);      // out: pt (for Hy), orthNt
     hydrScattTestOk(AtomHe.Z);      // out: pt (for He), orthNt
     jmHeTestOk();      // out: re-loading pt (for He)
     initLiJm();
-    SlaterLcr slater = new SlaterLcr(quadrLcr);
+    SlaterLcr slater = new SlaterLcr(quadr);
     calcHe(slater);    //verified: SysHeOldOk and SysHe yield exactly the same results.
     calcLi(slater);
 
     // Making He+ eigen-states from Nc (core N).   this is only to calc ionization threshold
-    LgrrModel lgrrOptNc = new LgrrModel(basisOptN); // for the target N, i.e. N_t
+    LgrrModel lgrrOptNc = new LgrrModel(lgrrOptN); // for the target N, i.e. N_t
     lgrrOptNc.setN(Nc);                                    log.dbg("Laguerr model (N_c)=", lgrrOptNc);
-    orthonNc = new LgrrOrthLcr(quadrLcr, lgrrOptNc);     log.dbg("LgrrOrthLcr(N_c) = ", orthonNc);
+    orthonNc = new LgrrOrthLcr(quadr, lgrrOptNc);     log.dbg("LgrrOrthLcr(N_c) = ", orthonNc);
     trgtPotH = new PotHMtrxLcr(L, orthonNc, pot);        log.dbg("trgtPotH=", trgtPotH);
     Vec basisEngs = trgtPotH.getEigEngs();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_NcEngs_" + makeLabelNc());
 
-    trgtWfsNt = orthonNt;
-    trgtBasisN = orthonN;
+    trgtWfsNt = orthNt;
+    wfN = orthN;
     ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtWfsNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
@@ -130,12 +130,12 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
     method.setSysEngs(sEngs);
     method.setSysConfH(sysH);
-    Vec D = new JmDe3(biorthN, orthonN, method.getCalcOpt().getTestModel());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
+    Vec D = new JmDe3(lgrrBiN, orthN, method.getCalcOpt().getTestModel());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
     method.setOverD(D);
 
     if (CALC_DENSITY) {          log.info("if (CALC_DENSITY) {");
       FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);
-      FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
+      FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadr);  // NOTE!! convering density to R (not wf)
       FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelNc(method));
     }
 

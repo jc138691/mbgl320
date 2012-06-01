@@ -20,7 +20,7 @@ public class JnnEng extends FuncVec {
   }
   protected void load(LgrrModel model) {
     double lambda = model.getLambda();
-    int N = model.getN();                  log.dbg("N = " + N);// remember JM's basisN is n=0,...,N-1
+    int N = model.getN();                  log.dbg("N = " + N);// remember JM's lgrrN is n=0,...,N-1
     Vec eng = getX();
     for (int i = 0; i < eng.size(); i++) {
       double E = eng.get(i);                    log.dbg("E = ", E);

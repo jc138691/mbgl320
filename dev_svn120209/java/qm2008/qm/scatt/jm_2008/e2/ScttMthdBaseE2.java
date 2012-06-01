@@ -1,11 +1,12 @@
 package scatt.jm_2008.e2;
 import atom.energy.ConfHMtrx;
-import atom.wf.lcr.WFQuadrLcr;
+import atom.wf.WFQuadr;
 import flanagan.complex.Cmplx;
 import math.Mathx;
 import math.complex.CmplxMtrx;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
+import math.func.arr.IFuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
 import papers.hy_swave.ees_bad.EesMethodE1;
@@ -13,6 +14,7 @@ import scatt.eng.EngModel;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.laguerre.IWFuncArr;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmCh;
@@ -28,7 +30,7 @@ protected static final int IDX_IONIZ = 1;
 public ScttTrgtE2 trgtE2;
 protected ConfHMtrx sysConfH;
 protected LgrrOrthLcr orthNt;
-//protected FuncArr basisN;  // use trgtE2.statesE1
+//protected FuncArr lgrrN;  // use trgtE2.statesE1
 protected CmplxMtrx jmS;
 protected int calcChN;
 protected int openChN;
@@ -171,7 +173,6 @@ protected int calcCalcChNum(double scattE) {
 public FuncArr makeSinWfs(double sTotE, int chNum) {
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
-
   Vec tEngs = trgtE2.getEngs();
   for (int t = 0; t < chNum; t++) {     //log.dbg("t = ", t);  // Target channels
     double tE = tEngs.get(t);     // target state eng
@@ -179,43 +180,70 @@ public FuncArr makeSinWfs(double sTotE, int chNum) {
     if (tScattE <= 0) {
       break;
     }
-    FuncVec tPsi = EesMethodE1.calcChSinWf(tScattE, quadr);
-    res.add(tPsi);
+    FuncVec wf = EesMethodE1.calcChSinWf(tScattE, quadr);
+    res.add(wf);
   }
   return res;
 }
-public FuncArr makeSinDelN(double sTotE, LgrrOrthLcr orthN, int chNum) {
-  WFQuadrLcr quadr = orthN.getQuadr();
+// Delete orthonormal from given
+public FuncArr makeSinDOrth(double sTotE, int chNum) {
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
-
   Vec tEngs = trgtE2.getEngs();
-  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
-    double tE = tEngs.get(tIdx);     // target state eng
+  for (int t = 0; t < chNum; t++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(t);     // target state eng
     double tScattE = sTotE - tE;
     if (tScattE <= 0) {
       break;
     }
-    FuncVec tPhiS = EesMethodE1.calcSinDelN(tScattE, orthN);
-    res.add(tPhiS);
+    FuncVec wf = EesMethodE1.calcSinDelN(tScattE, quadr, orth);
+    res.add(wf);
   }
   return res;
 }
-public FuncArr makeCosDelN(double sTotE, LgrrOrthLcr orthN, int chNum) {
-  WFQuadrLcr quadr = orthN.getQuadr();
+// Delete Lgrr from given
+public FuncArr makeSinDLgrr(double sTotE, int chNum) {
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
-
   Vec tEngs = trgtE2.getEngs();
-  Vec sEngs = getSysEngs();
-  for (int tIdx = 0; tIdx < chNum; tIdx++) {     //log.dbg("t = ", t);  // Target channels
-    double tE = tEngs.get(tIdx);     // target state eng
+  for (int t = 0; t < chNum; t++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(t);     // target state eng
     double tScattE = sTotE - tE;
     if (tScattE <= 0) {
       break;
     }
-    FuncVec tPhiC = EesMethodE1.calcCosDelN(tScattE, orthN);
-    res.add(tPhiC);
+    FuncVec wf = EesMethodE1.calcSinDelBi(tScattE, quadr, lgrr, lgrrBi);
+    res.add(wf);
+  }
+  return res;
+}
+public FuncArr makeCosDOrth(double sTotE, int chNum) {
+  Vec x = quadr.getX();
+  FuncArr res = new FuncArr(x);
+  Vec tEngs = trgtE2.getEngs();
+  for (int t = 0; t < chNum; t++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(t);     // target state eng
+    double tScattE = sTotE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec wf = EesMethodE1.calcCosDelN(tScattE, quadr, orth, orth.getLambda());
+    res.add(wf);
+  }
+  return res;
+}
+public FuncArr makeCosDLgrr(double sTotE, int chNum) {
+  Vec x = quadr.getX();
+  FuncArr res = new FuncArr(x);
+  Vec tEngs = trgtE2.getEngs();
+  for (int t = 0; t < chNum; t++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(t);     // target state eng
+    double tScattE = sTotE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec wf = EesMethodE1.calcCosDelBi(tScattE, quadr, lgrr, lgrrBi, orth.getLambda());
+    res.add(wf);
   }
   return res;
 }

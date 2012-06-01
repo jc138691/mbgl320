@@ -9,7 +9,7 @@ import javax.utilx.log.Log;
 public class SinPWaveR extends FuncVec {
   public static Log log = Log.getLog(SinPWaveR.class);
   public SinPWaveR(final Vec x, final double p, final int L) {
-    super(x, new SinPWaveFunc(p, L));
+    super(x, new SinLFunc(p, L));
     if (L > 0) {
       throw new IllegalArgumentException(log.error("todo L>0"));
     }

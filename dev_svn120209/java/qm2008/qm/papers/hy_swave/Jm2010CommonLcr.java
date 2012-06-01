@@ -47,12 +47,12 @@ public static Log log = Log.getLog(Jm2010CommonLcr.class);
 protected static int LCR_N = 301;
 protected static int LCR_FIRST = -4;// -1 for Hydrogen
 
-protected static FuncArr trgtBasisN;
-protected static LagrrLcr basisN;
-protected static LgrrOrthLcr orthonN;
-protected static LgrrOrthLcr orthonNt;  // for N_t
-protected static LagrrBiLcr biorthN;
-protected static WFQuadrLcr quadrLcr;
+protected static FuncArr wfN;
+protected static LagrrLcr lgrrN;
+protected static LgrrOrthLcr orthN;
+protected static LgrrOrthLcr orthNt;  // for N_t
+protected static LagrrBiLcr lgrrBiN;
+protected static WFQuadrLcr quadr;
 protected static Func potFunc;
 protected static int Nt = 20;
 protected static boolean USE_CLOSED_CHANNELS = true;
@@ -112,34 +112,34 @@ protected void potScattTestOk() {
 
     StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
-    quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);
-    rVec = quadrLcr.getR();                        log.dbg("r grid =", rVec);
+    quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
+    rVec = quadr.getR();                        log.dbg("r grid =", rVec);
     if (!new QuadrPts5Test().ok()) return;
     if (!new PolynomInterpolTest().ok()) return;
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
 
-  if (!new SlaterWFFactory(quadrLcr).ok()) return;
-  if (!new YkLcrTest2(quadrLcr).ok()) return;
+  if (!new SlaterWFFactory(quadr).ok()) return;
+  if (!new YkLcrTest2(quadr).ok()) return;
 
-  basisOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", basisOptN);
-  basisN = new LagrrLcr(quadrLcr, basisOptN);    log.dbg("LagrrLcr =\n", basisN);
+  lgrrOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", lgrrOptN);
+  lgrrN = new LagrrLcr(quadr, lgrrOptN);    log.dbg("LagrrLcr =\n", lgrrN);
 
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());       // LOCK MAX ERR
   {
-    // JM-basisN
-    if (!new LagrrLcrTest(basisN).ok()) return;
-    biorthN = new LagrrBiLcr(quadrLcr, basisOptN);           log.dbg("LagrrBiLcr =\n", biorthN);
-    if (!new JmLagrrBiLcrTest(basisN, biorthN).ok()) return;
-    orthonN = new LgrrOrthLcr(quadrLcr, basisOptN);         log.dbg("LgrrOrthLcr = ", orthonN);
-    if (!new LgrrOrthLcrTest(orthonN).ok()) return;
+    // JM-lgrrN
+    if (!new LagrrLcrTest(lgrrN).ok()) return;
+    lgrrBiN = new LagrrBiLcr(quadr, lgrrOptN);           log.dbg("LagrrBiLcr =\n", lgrrBiN);
+    if (!new LagrrBiLcrTest(lgrrN, lgrrBiN).ok()) return;
+    orthN = new LgrrOrthLcr(quadr, lgrrOptN);         log.dbg("LgrrOrthLcr = ", orthN);
+    if (!new LgrrOrthLcrTest(orthN).ok()) return;
 
 //    // H-integration
-    if (!new H_Hy_P1s_LcrTest(quadrLcr).ok()) return;
-    // Making inner-basisN
+    if (!new H_Hy_P1s_LcrTest(quadr).ok()) return;
+    // Making inner-lgrrN
 
-    if (!new PotEigVecLcrTest(AtomHy.Z, orthonN).ok()) return;
-    if (!new PBornDirScattTest(quadrLcr, calcOpt.getGridEng()).ok()) return;
+    if (!new PotEigVecLcrTest(AtomHy.Z, orthN).ok()) return;
+    if (!new PBornDirScattTest(quadr, calcOpt.getGridEng()).ok()) return;
   }
   FlowTest.unlockMaxErr();         // FREE MAX ERR
   log.info("<--potScattTestOk()");
@@ -147,16 +147,16 @@ protected void potScattTestOk() {
 protected void hydrScattTestOk(int trgtZ) {
   FlowTest.setLog(log);
 
-  basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
-  LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
+  lgrrOptN = new JmLgrrLabelMaker(lgrrOptN, Nt);    log.dbg("lgrrOptN =", lgrrOptN); // this is just for the file name label
+  LgrrModel lgrrOptNt = new LgrrModel(lgrrOptN); // for the target N, i.e. N_t
   lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
 
-  orthonNt = new LgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthonNt);
+  orthNt = new LgrrOrthLcr(quadr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthNt);
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
-    if (!new LgrrOrthLcrTest(orthonNt).ok()) return;
+    if (!new LgrrOrthLcrTest(orthNt).ok()) return;
 //      if (!new PotEigVecLcrTest(AtomHy.atomZ, orthNt).ok()) return;
-    if (!new PotEigVecLcrTest(trgtZ, orthonNt).ok()) return;
+    if (!new PotEigVecLcrTest(trgtZ, orthNt).ok()) return;
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
 
@@ -165,10 +165,10 @@ protected void hydrScattTestOk(int trgtZ) {
   pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
   if (!new YkLcrTest().ok()) return;
-  if (!new YkLcrTest2(quadrLcr).ok()) return;
+  if (!new YkLcrTest2(quadr).ok()) return;
 
   if (!new RkLcrTest().ok()) return;
-  if (!new RkLcrTest2(quadrLcr).ok()) return;
+  if (!new RkLcrTest2(quadr).ok()) return;
 
   if (!new CoulombNmrvR().ok()) return;
   if (!new CoulombNmrvLcr().ok()) return;

@@ -7,15 +7,15 @@ import math.Mathx;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 10:28:06
  */
-public class JmLagrrBiLcrTest extends FlowTest {
+public class LagrrBiLcrTest extends FlowTest {
   private static LagrrLcr arr;
   private static LagrrBiLcr bio;
-  public JmLagrrBiLcrTest(LagrrLcr basis, LagrrBiLcr bio) {
-    super(JmLagrrBiLcrTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
+  public LagrrBiLcrTest(LagrrLcr basis, LagrrBiLcr bio) {
+    super(LagrrBiLcrTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
     arr = basis;
     this.bio = bio;
   }
-  public JmLagrrBiLcrTest() {
+  public LagrrBiLcrTest() {
   }
   public void testNorm() {
 //    TaskProgressMonitor monitor = ProjectProgressMonitor.getInstance();

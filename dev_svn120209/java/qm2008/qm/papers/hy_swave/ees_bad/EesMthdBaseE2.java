@@ -42,14 +42,14 @@ protected void loadPnS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
     if (tScattE <= 0) {
       break;
     }
-    FuncVec tPhiS = EesMethodE1.calcPWavePnS(tScattE, orthN);
+    FuncVec tPhiS = EesMethodE1.calcPWavePnS(tScattE, orthN.getQuadr(), orthN);
     pnS.add(tPhiS);
   }
 }
-protected void loadTrialWfs(double sTotE, LgrrOrthLcr orthN, int chNum) {
+protected void loadTrialWfs(double sTotE, int chNum) {
   sinWfs = makeSinWfs(sTotE, chNum);
-  sinDelN = makeSinDelN(sTotE, orthN, chNum);
-  cosDelN = makeCosDelN(sTotE, orthN, chNum);
+  sinDelN = makeSinDOrth(sTotE, chNum);
+  cosDelN = makeCosDOrth(sTotE, chNum);
 }
 protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
   Dble3 res = new Dble3();
@@ -87,7 +87,7 @@ protected double calcXiM(int g, int g2, FuncVec pw2, double sysTotE, Ls ls) {
   FuncVec tWf = trgtWfs.get(g);
   Shell shB = new Shell(g, tWf, L);    // bound #1
 
-  FuncVec pwXi = orthN.getLast();
+  FuncVec pwXi = orth.getLast();
   Shell shXi = new Shell(-1, pwXi, L);
 
   FuncVec tWf2 = trgtWfs.get(g2);

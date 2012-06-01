@@ -283,23 +283,23 @@ public class OptimLambda extends HeSWaveScatt {
     // from potScattTestOk
     StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
-    quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);
-    rVec = quadrLcr.getR();                        log.dbg("r grid =", rVec);
-    basisOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", basisOptN);
+    quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
+    rVec = quadr.getR();                        log.dbg("r grid =", rVec);
+    lgrrOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", lgrrOptN);
 
     // from hydrScattTestOk
-    basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
-    LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
+    lgrrOptN = new JmLgrrLabelMaker(lgrrOptN, Nt);    log.dbg("lgrrOptN =", lgrrOptN); // this is just for the file name label
+    LgrrModel lgrrOptNt = new LgrrModel(lgrrOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
-    orthonNt = new LgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthonNt);
+    orthNt = new LgrrOrthLcr(quadr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthNt);
     potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-1./r
     pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
     // Making He+ eigen-states
-    trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);       //log.dbg("trgtPotH=", trgtPotH);
+    trgtPotH = new PotHMtrxLcr(L, orthNt, pot);       //log.dbg("trgtPotH=", trgtPotH);
     Vec basisEngs = trgtPotH.getEigEngs();                log.dbg("basisEngs=", new VecDbgView(basisEngs));
     trgtWfsNt = trgtPotH.getEigWfs();              log.dbg("targetNt=", new FuncArrDbgView(trgtWfsNt));
-    SlaterLcr slater = new SlaterLcr(quadrLcr);
+    SlaterLcr slater = new SlaterLcr(quadr);
     ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtWfsNt);
 
     Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);
@@ -313,21 +313,21 @@ public class OptimLambda extends HeSWaveScatt {
     // from potScattTestOk
     StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
-    quadrLcr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadrLcr);
-    rVec = quadrLcr.getR();                        log.dbg("r grid =", rVec);
-    basisOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", basisOptN);
+    quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
+    rVec = quadr.getR();                        log.dbg("r grid =", rVec);
+    lgrrOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", lgrrOptN);
 
     // Nt-part
-    basisOptN = new JmLgrrLabelMaker(basisOptN, Nt);    log.dbg("basisOptN =", basisOptN); // this is just for the file name label
-    LgrrModel lgrrOptNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
+    lgrrOptN = new JmLgrrLabelMaker(lgrrOptN, Nt);    log.dbg("lgrrOptN =", lgrrOptN); // this is just for the file name label
+    LgrrModel lgrrOptNt = new LgrrModel(lgrrOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
-    orthonNt = new LgrrOrthLcr(quadrLcr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthonNt);
+    orthNt = new LgrrOrthLcr(quadr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthNt);
     potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-1./r
     pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
     // making target  JM basis
-    trgtWfsNt = orthonNt;
-    SlaterLcr slater = new SlaterLcr(quadrLcr);
+    trgtWfsNt = orthNt;
+    SlaterLcr slater = new SlaterLcr(quadr);
     ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtWfsNt);
 
     Vec trgtEngs = jmTrgt.getEngs();                        log.info("trgtEngs=", trgtEngs);

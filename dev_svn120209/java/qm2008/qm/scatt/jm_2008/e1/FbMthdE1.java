@@ -7,7 +7,7 @@ import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.partial.wf.SinPWaveLcr;
+import scatt.partial.wf.SinWfLcr;
 
 import javax.utilx.log.Log;
 /**
@@ -33,8 +33,8 @@ public ScttRes calc(Vec engs) {
     double scattE = engs.get(i);             log.dbg("E = ", scattE);
     mCs.set(i, IDX_ENRGY, scattE);
     double momP = Scatt.calcMomFromE(scattE);
-    WFQuadrLcr quadr = orthN.getQuadr();
-    FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
+    WFQuadrLcr quadr = orth.getQuadr();
+    FuncVec sinL = new SinWfLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
     double v = calcPotInt(sinL, sinL);
     double R = -2. * v / momP;                        log.dbg("R = ", R);
     double shift = Math.atan(R);

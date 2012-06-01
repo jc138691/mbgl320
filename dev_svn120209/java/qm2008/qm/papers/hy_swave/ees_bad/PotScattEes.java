@@ -70,10 +70,10 @@ public void runJob() {
 public void calc(int newN) {
   N = newN;
   initProject();
-  potScattTestOk();   // basisN, biorthN, orthNt, quadr
+  potScattTestOk();   // lgrrN, lgrrBi, orthNt, quadr
 
   pot = WfFactory.makePotHy_1s_e(rVec);             log.dbg("V_1s(r)=", new VecDbgView(pot));
-  PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
+  PotHMtrx sysH = new PotHMtrxLcr(L, orthN, pot);
   Vec sysEngs = sysH.getEigEngs();            log.dbg("eigVal=", new VecDbgView(sysEngs));
 //  EaMethodE1_G_db method = new EaMethodE1_G_db(calcOpt);
 
@@ -82,7 +82,7 @@ public void calc(int newN) {
 //  method.setPot(pt);
   method.setSysEngs(sysEngs);
   method.setPotH(sysH);
-  method.setOrthN(orthonN);
+  method.setOrth(orthN);
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
 

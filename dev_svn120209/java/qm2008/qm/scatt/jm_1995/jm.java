@@ -115,7 +115,7 @@ c
       pi05 = pi * 0.5d0
       pi_4 = 1d0 / dsqrt(pi4)
 c
-c     ALAGL - \lambda/2- parameter of the basisN for each L
+c     ALAGL - \lambda/2- parameter of the lgrrN for each L
 c     nexc - total number of excited states
       nexc = 0
       do L = 0, lwf
@@ -201,7 +201,7 @@ c
          stop    ' increase nwf_par'
       end if
 c
-c     Define NWF, total basisN size
+c     Define NWF, total lgrrN size
       nwf = 0
       do L = 0, Lwf
          do i = 1, njml(L)
@@ -221,7 +221,7 @@ c           PN is a normalization constant
             PN(i+mm) = dsqrt(2d0 * alagl(L)) * dexp(0.5d0 *
      >         (FL(i - 1)  -  FL(2 * L + 1 + i)))
 c
-c           Define initial basisN
+c           Define initial lgrrN
             ipp(i+mm, 1) = 1
             ipp(i+mm, 2) = nr
             do j = 1, nr
@@ -239,7 +239,7 @@ c
 c     Test orthonornality of PP(i,j) w.f.'s
       if (i_test .gt. 0) then
          print*, 'i_test>0: jm'
-         print*, '        : Orthogonality test for initial basisN set, done'
+         print*, '        : Orthogonality test for initial lgrrN set, done'
          do i1 = 1, nwf
             do i2 = i1, nwf
                if (Lp(i1) .eq. Lp(i2)) then
@@ -335,7 +335,7 @@ c     Recalculate Target functions (Eq.3.1),  VEC = PP * VECT
          call dc_axb (pp(1,1+mm), vect, vec, 0, nr_par, igm_par, i_par,
      >      nr, n1, n1)
 c
-c     Redefine P(j,i)-basisN functions , P = VEC
+c     Redefine P(j,i)-lgrrN functions , P = VEC
          call da_bxv (pp(1,1+mm), vec, 1d0, 0, nr_par,i_par,nr,n1,n1)
       end do
 c
