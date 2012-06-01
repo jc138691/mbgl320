@@ -29,7 +29,7 @@ public JmCh[] chArr;
 protected Vec sysEngs;
 protected WFQuadrLcr quadr;
 protected PotHMtrx potH;
-protected LgrrOrthLcr orthonN;
+protected LgrrOrthLcr orthN;
 protected final CalcOptE1 calcOpt;
 protected double scttE;
 protected double sysTotE;
@@ -89,11 +89,11 @@ public PotHMtrx getPotH() {
 public void setPotH(PotHMtrx potH) {
   this.potH = potH;
 }
-public LgrrOrthLcr getOrthonN() {
-  return orthonN;
+public LgrrOrthLcr getOrthN() {
+  return orthN;
 }
-public void setOrthonN(LgrrOrthLcr orthonN) {
-  this.orthonN = orthonN;
+public void setOrthN(LgrrOrthLcr orthN) {
+  this.orthN = orthN;
 }
 public WFQuadrLcr getQuadr() {
   return quadr;

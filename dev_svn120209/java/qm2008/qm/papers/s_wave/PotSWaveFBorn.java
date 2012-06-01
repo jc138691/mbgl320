@@ -43,7 +43,7 @@ public void calc(int newN) {
   FbMthdE1 method = new FbMthdE1(calcOpt);
   method.setSysEngs(sysEngs);
   method.setPotH(sysH);
-  method.setOrthonN(orthonN);
+  method.setOrthN(orthonN);
 
   ScttRes res = method.calcForScatEngModel();      log.dbg("res=", res);
 

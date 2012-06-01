@@ -11,48 +11,48 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 29/05/12, 10:58 AM
  */
-public class JmAlgKatoE2 {
-public static Log log = Log.getLog(JmAlgKatoE2.class);
+public class JmTailE2 {
+public static Log log = Log.getLog(JmTailE2.class);
 protected double[][][] jmF;  // katoIdx, K-rows, K-cols(open-only)
 protected double[][] jmA;    // K-cols (open-only), sysIdx
-protected LagrrLcr katoLgrr;
+protected LagrrLcr tailLgrr;
 protected JmMthdBaseE2 mthd;
 
-public JmAlgKatoE2(JmMthdBaseE2 mthd) {      log.setDbg();
+public JmTailE2(JmMthdBaseE2 mthd) {      log.setDbg();
   this.mthd = mthd;
 }
 protected void loadKatoLgrr() {
-  if (katoLgrr != null)
+  if (tailLgrr != null)
     return;
   WFQuadrLcr quadr = mthd.getQuadr();
 
   CalcOptE1 calcOpt = mthd.getCalcOpt();
-  int katoN = calcOpt.getKatoN();
+  int tailN = calcOpt.getJmTailN();
 
-  LgrrModel jmModel = calcOpt.getLgrrModel();
-  int N = jmModel.getN();
-  LgrrModel katoModel = new LgrrModel(jmModel);
-  katoModel.setN(N + katoN);     log.dbg("Kato Lgrr model =", katoModel);
-  katoLgrr = new LagrrLcr(quadr, katoModel);    log.dbg("katoLgrr =\n", katoLgrr);
+  LgrrModel lgrrN = calcOpt.getLgrrModel();
+  int N = lgrrN.getN();
+  LgrrModel lgrrTail = new LgrrModel(lgrrN);
+  lgrrTail.setN(N + tailN);     log.dbg("Kato Lgrr model =", lgrrTail);
+  tailLgrr = new LagrrLcr(quadr, lgrrTail);    log.dbg("tailLgrr =\n", tailLgrr);
 }
 
 protected double[][][] calcFFromR() {
   CalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmR.getNumRows();
   int cN = mthd.jmR.getNumCols();
-  int katoN = calcOpt.getKatoN();
+  int jN = calcOpt.getJmTailN();
 
-  LgrrModel lgrr = calcOpt.getLgrrModel();
-  int N = lgrr.getN();
-  LgrrModel tail = new LgrrModel(lgrr);
+  LgrrModel lgrrN = calcOpt.getLgrrModel();
+  int N = lgrrN.getN();
+  LgrrModel lgrrTail = new LgrrModel(lgrrN);
   double[] chE = mthd.trgtE2.getEngs().getArr(); // channel energies
 
-  double[][][] res = new double[katoN][rN][cN];
+  double[][][] res = new double[jN][rN][cN];
   for (int r = 0; r < rN; r++) {
     JmCh rCh = mthd.chArr[r];
-    for (int j = 0; j < katoN; j++) {  // JM-tail
-      tail.setN(N + j);                //log.dbg("N + j=", N + j);
-      JmCh jCh = new JmCh(mthd.getSysTotE(), chE[r], tail
+    for (int j = 0; j < jN; j++) {  // JM-lgrrTail
+      lgrrTail.setN(N + j);                //log.dbg("N + j=", N + j);
+      JmCh jCh = new JmCh(mthd.getSysTotE(), chE[r], lgrrTail
         , -mthd.trgtE2.getScreenZ());
 
       for (int c = 0; c < cN; c++) {
@@ -65,7 +65,7 @@ protected double[][][] calcFFromR() {
           // "closed" is stored as c_{N-1} R_{\gamma \gamma_0}
           rCj = jCh.getCnn1().getRe();
           //log.dbg("jCh.getCn()=", jCh.getCn()); log.dbg("rCj=", rCj);
-  //        JmCh dbg = new JmCh(mthd.getSysTotE(), tEngs.get(r), tail
+  //        JmCh dbg = new JmCh(mthd.getSysTotE(), tEngs.get(r), lgrrTail
   //          , -mthd.trgtE2.getScreenZ());
         }
         double tanX = mthd.jmR.get(r, c);

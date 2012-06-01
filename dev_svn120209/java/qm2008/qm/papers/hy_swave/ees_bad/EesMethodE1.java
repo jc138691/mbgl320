@@ -41,7 +41,7 @@ public ScttRes calcSysEngs() {
   for (int i = 0; i < engs.size(); i++) {              log.dbg("i = ", i);
     double scattE = engs.get(i);                           log.dbg("E = ", scattE);
     mCrss.set(i, IDX_ENRGY, scattE);
-    FuncArr psi = calcPsi(scattE, orthonN);
+    FuncArr psi = calcPsi(scattE, orthN);
     Dble2 sc = calcSC(psi, scattE, i);
     double R = -sc.a / sc.b;                               log.dbg("R = ", R);
     double sysA = calcSysA(psi, scattE, i, R);
@@ -70,34 +70,34 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   return res;
 }
 
-public static FuncVec calcChPsiReg(double chScattE, WFQuadrLcr quadr) {  // channel scattering eng
+public static FuncVec calcChSinWf(double chScattE, WFQuadrLcr quadr) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   FuncVec res = new SinPWaveLcr(quadr, momP, L);   //log.dbg("sinL=", sinL);
   return res;
 }
 
-public static FuncVec calcPWaveS(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
+public static FuncVec calcSinDelN(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   WFQuadrLcr quadr = orthN.getQuadr();
   FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   //log.dbg("sinL=", sinL);
-  FuncVec res = removePN(sinL, orthN);          //log.dbg("resS=", resS);
+  FuncVec res = delPn(sinL, orthN);          //log.dbg("resS=", resS);
   return res;
 }
 public static FuncVec calcPWavePnS(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
-  FuncVec res = calcChPsiReg(chScattE, orthN.getQuadr());
-  FuncVec phiS = calcPWaveS(chScattE, orthN);
+  FuncVec res = calcChSinWf(chScattE, orthN.getQuadr());
+  FuncVec phiS = calcSinDelN(chScattE, orthN);
   res.addMultSafe(-1, phiS);
   return res;
 }
 
-public static FuncVec calcPWaveC(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
+public static FuncVec calcCosDelN(double chScattE, LgrrOrthLcr orthN) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   WFQuadrLcr quadr = orthN.getQuadr();
   FuncVec cosL = new CosRegPWaveLcr(quadr, momP, L, orthN.getLambda());   //log.dbg("sinL=", sinL);
-  FuncVec res = removePN(cosL, orthN);          //log.dbg("resS=", resS);
+  FuncVec res = delPn(cosL, orthN);          //log.dbg("resS=", resS);
   return res;
 }
 
@@ -114,9 +114,9 @@ public FuncArr calcPsi(double scattE, LgrrOrthLcr orthN) {
 
   res.add(sinL.copyY());     // IDX_REG
   res.add(cosL.copyY());     // IDX_IRR
-  FuncVec resS = removePN(sinL, orthN);          log.dbg("resS=", resS);
+  FuncVec resS = delPn(sinL, orthN);          log.dbg("resS=", resS);
   res.add(resS);
-  FuncVec resC = removePN(cosL, orthN);          log.dbg("resC=", resC);
+  FuncVec resC = delPn(cosL, orthN);          log.dbg("resC=", resC);
   res.add(resC);
 //  FileX.writeToFile(sinL.toTab(), calcOpt.getHomeDir(), "wf", "sin_" + idxCount + ".txt");
 //  FileX.writeToFile(cosL.toTab(), calcOpt.getHomeDir(), "wf", "cos_" + idxCount + ".txt");
@@ -125,7 +125,7 @@ public FuncArr calcPsi(double scattE, LgrrOrthLcr orthN) {
   return res;
 }
 
-public static FuncVec removePN(FuncVec wf, LgrrOrthLcr orthN) {
+public static FuncVec delPn(FuncVec wf, LgrrOrthLcr orthN) {
   IFuncArr basis = orthN;
   WFQuadrLcr quadr = orthN.getQuadr();
   Vec x = quadr.getX();

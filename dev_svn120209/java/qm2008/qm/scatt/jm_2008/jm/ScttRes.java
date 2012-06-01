@@ -22,7 +22,8 @@ private String modelDir;
 private String calcLabel;
 private String modelName;
 private ScttMthdBaseE1 method;
-private Mtrx rs;        // R-matrix
+private Mtrx mtrxR;        // R-matrix
+private Mtrx mtrxRk;        // R-matrix / init momentum k
 public Mtrx getResInfo() {
   return resInfo;
 }
@@ -78,8 +79,11 @@ public void writeToFiles() {
   if (getCrossSecs() != null) {
     FileX.writeToFile(getCrossSecs().toTab(), homeDir, modelDir, modelName + "_TCS_" + calcLabel);  // total cross sections
   }
-  if (getRs() != null) {
-    FileX.writeToFile(getRs().toTab(), homeDir, modelDir, modelName + "_R_" + calcLabel);  // R-matrix
+  if (getMtrxR() != null) {
+    FileX.writeToFile(getMtrxR().toTab(), homeDir, modelDir, modelName + "_R_" + calcLabel);  // R-matrix
+  }
+  if (getMtrxRk() != null) {
+    FileX.writeToFile(getMtrxRk().toTab(), homeDir, modelDir, modelName + "_Rk_" + calcLabel);  // R-matrix
   }
   if (getTics() != null) {
     FileX.writeToFile(getTics().toTab(), homeDir, modelDir, modelName + "_TICS_" + calcLabel);
@@ -104,10 +108,16 @@ public void setMethod
    method) {
   this.method = method;
 }
-public void setRs(Mtrx r) {
-  this.rs = r;
+public void setMtrxR(Mtrx r) {
+  this.mtrxR = r;
 }
-public Mtrx getRs() {
-  return rs;
+public Mtrx getMtrxR() {
+  return mtrxR;
+}
+public Mtrx getMtrxRk() {
+  return mtrxRk;
+}
+public void setMtrxRk(Mtrx mtrxRk) {
+  this.mtrxRk = mtrxRk;
 }
 }

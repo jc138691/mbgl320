@@ -76,8 +76,8 @@ public void calc(int newN) {
   N = newN;
   Nt = newN;  // this is just to keep functions like hydrScattTestOk() working
   initProject();
-  potScattTestOk();     // out: basisN, orthonNt, biorthN
-  hydrScattTestOk(TARGET_Z);      // out: pt (for TARGET_Z), orthonNt
+  potScattTestOk();     // out: basisN, orthNt, biorthN
+  hydrScattTestOk(TARGET_Z);      // out: pt (for TARGET_Z), orthNt
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
   trgtBasisN = orthonN;
@@ -100,8 +100,8 @@ public void calc(int newN) {
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
-  method.setOrthonNt(orthonN);
-  method.setWfsE1(trgtBasisN);   // is just orthonNt, but different in _BasisHy
+  method.setOrthNt(orthonN);
+  method.setWfsE1(trgtBasisN);   // is just orthNt, but different in _BasisHy
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);

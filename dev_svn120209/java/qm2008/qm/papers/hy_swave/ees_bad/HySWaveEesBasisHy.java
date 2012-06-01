@@ -47,8 +47,8 @@ public void calc(int newN) {      log.setDbg();
   N = newN;
   Nt = newN;
   initProject();
-  potScattTestOk();     // out: basisN, orthonNt, biorthN
-  hydrScattTestOk(TARGET_Z);      // out: pt (for TARGET_Z), orthonNt
+  potScattTestOk();     // out: basisN, orthNt, biorthN
+  hydrScattTestOk(TARGET_Z);      // out: pt (for TARGET_Z), orthNt
   SlaterLcr slater = new SlaterLcr(quadrLcr);
 
   trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
@@ -76,7 +76,7 @@ public void calc(int newN) {      log.setDbg();
   method.setTrgtE2(trgt);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
-  method.setOrthonNt(orthonNt);
+  method.setOrthNt(orthonNt);
   method.setWfsE1(trgtWfsNt);
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);

@@ -52,9 +52,10 @@ public void runJob() {
 //  R_LAST = 150;
   LCR_N = 2001;
   R_LAST = 200;
-  ENG_FIRST = 0.001f;
-  ENG_LAST = 4.01f;
-  ENG_N = 4001;
+//  ENG_FIRST = 0.01f;
+  ENG_FIRST = 0.1f;
+  ENG_LAST = 100.f;
+  ENG_N = (int)(ENG_LAST / ENG_FIRST);
   calc(40);
   calc(10);
 //  calc(12);

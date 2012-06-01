@@ -22,7 +22,7 @@ private String homeDir;
 
 private boolean calcSdcs;
 private int sdcsEngN;
-private int katoN;
+private int jmTailN;
 
 public CalcOptE1() {
   init();
@@ -42,11 +42,11 @@ public void setSdcsEngN(int sdcsEngN) {
 public int getSdcsEngN() {
   return sdcsEngN;
 }
-public int getKatoN() {
-  return katoN;
+public int getJmTailN() {
+  return jmTailN;
 }
-public void setKatoN(int katoN) {
-  this.katoN = katoN;
+public void setJmTailN(int jmTailN) {
+  this.jmTailN = jmTailN;
 }
 public EngModel getGridEng() {
   return gridEng;

@@ -58,7 +58,7 @@ private Dble2 calcW(FuncArr psi, double scattE) {
   Dble2 res = new Dble2();
   FuncVec psiS = psi.get(IDX_S);          log.dbg("resS=", psiS);
   FuncVec psiC = psi.get(IDX_C);          log.dbg("resC=", psiC);
-  FuncVec xiN = orthonN.getLast();
+  FuncVec xiN = orthN.getLast();
   res.a = calcHE(xiN, potH, psiS, scattE);
   res.b = calcHE(xiN, potH, psiC, scattE);  log.dbg("res=", res);
   return res;
@@ -80,7 +80,7 @@ private void loadSC(Mtrx mSC, FuncArr psi, double scattE) {
   FuncArr sysWFuncs = potH.getEigWfs();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psiS = psi.get(IDX_S);          log.dbg("resS=", psiS);
   FuncVec psiC = psi.get(IDX_C);          log.dbg("resC=", psiC);
-  FuncVec xiN = orthonN.getLast();
+  FuncVec xiN = orthN.getLast();
   for (int i = 0; i < sysWFuncs.size(); i++) {
     FuncVec sysPsi = sysWFuncs.get(i);            log.dbg("sysPsi=", sysPsi);
     double S_i = calcHE(sysPsi, potH, psiS, scattE);    log.dbg("S_i=", S_i);

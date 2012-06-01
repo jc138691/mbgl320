@@ -73,8 +73,8 @@ public ScttRes calcSysEngs() {    log.setDbg();
     if (openNum == 2) {
       log.dbg("if (openNum == 2)");
     }
-    loadPWaveS(sysTotE, orthonNt, openNum);
-    loadPWaveC(sysTotE, orthonNt, openNum);
+    makeSinDelN(sysTotE, orthNt, openNum);
+    makeCosDelN(sysTotE, orthNt, openNum);
 
     calcAllVecs(sysTotE, sysIdx, openNum);
     calcK(openNum);
@@ -110,9 +110,9 @@ protected void calcAllVecs(double sysTotE, int sysIdx, int gNum) {
     FuncVec tWf = trgtWfs.get(g);
     Shell tSh = new Shell(g, tWf, L);
 
-    ShPair pS = ShPairFactory.makePair(tSh, phiS.get(g), ID_S, L, LS);
-    ShPair pC = ShPairFactory.makePair(tSh, phiC.get(g), ID_C, L, LS);
-    ShPair pXi = ShPairFactory.makePair(tSh, orthonN.getLast(), ID_XI, L, LS);
+    ShPair pS = ShPairFactory.makePair(tSh, sinDelN.get(g), ID_S, L, LS);
+    ShPair pC = ShPairFactory.makePair(tSh, cosDelN.get(g), ID_C, L, LS);
+    ShPair pXi = ShPairFactory.makePair(tSh, orthN.getLast(), ID_XI, L, LS);
 
     Dble3 sc = calcSC(pS, pC, pXi, sysIdx);
     vB0.set(g, sc.a);                                      //log.dbg("sc.a=", sc.a);
