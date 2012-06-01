@@ -110,7 +110,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
   }
   if (CALC_DENSITY) {
     FuncArr sysDens = tH.getDensity(CALC_DENSITY_MAX_NUM);
-    FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
+    FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadr);  // NOTE!! convering density to R (not wf)
     FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtDensityR_S1_" + makeLabelNc());
   }
 
@@ -122,7 +122,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
   }
   if (CALC_DENSITY) {
     FuncArr sysDens = tH2.getDensity(CALC_DENSITY_MAX_NUM);
-    FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
+    FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadr);  // NOTE!! convering density to R (not wf)
     FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtDensityR_S3_" + makeLabelNc());
   }
 
@@ -143,7 +143,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
 ////    Vec tEngs = tH.getEigEngs();                                                 log.dbg("tEngs=", new VecDbgView(tEngs));
 //
 //    FileX.writeToFile(tH.getEigEngs().toCSV(), HOME_DIR, "He"
-//      , "He_SModel_trgEngs_SING_" + basisOptN.makeLabel() + ".dat");
+//      , "He_SModel_trgEngs_SING_" + lgrrOptN.makeLabel() + ".dat");
 //
 //
 //    tLs = new Ls(0, Spin.TRIPLET);  // t - for target
@@ -151,7 +151,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
 //    ConfHMtrx tH2 = new ConfHMtrx(tConfArr, tgrtE2);                                   log.dbg("tH=\n", new MtrxDbgView(tH));
 //
 //    FileX.writeToFile(tH2.getEigEngs().toCSV(), HOME_DIR, "He"
-//          , "He_SModel_trgEngs_TRIP_" + basisOptN.makeLabel() + ".dat");
+//          , "He_SModel_trgEngs_TRIP_" + lgrrOptN.makeLabel() + ".dat");
 //
 //    ScttTrgtE3 res = new ScttTrgtE3();
 //    res.add(tH);
@@ -166,7 +166,7 @@ protected ConfHMtrx makeSysBasisN(SlaterLcr slater) {
   SYS_LS = new Ls(0, Spin.ELECTRON);     // s - for system
   SysE3 sysE3 = new SysE3(AtomHe.Z, slater);    // NOTE!!! Helium (AtomHe.atomZ), not Li (AtomLi.atomZ)
   AtomShModelE3 modelE3 = new AtomShModelE3(Nc, Nt, N, SYS_LS);
-  ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, trgtBasisN);    log.dbg("sConfArr=", sConfArr);
+  ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, wfN);    log.dbg("sConfArr=", sConfArr);
   ConfHMtrx res = new ConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
   log.info("<--makeSysBasisN");
   return res;
@@ -294,13 +294,13 @@ protected void jmHeTestOk() {
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
     if (!new WfFactory().ok()) return;
-    if (!new SlaterWFFactory(quadrLcr).ok()) return;
+    if (!new SlaterWFFactory(quadr).ok()) return;
 
-    if (!new PotEigVecLcrTest(AtomHe.Z, orthonNt).ok()) return;
+    if (!new PotEigVecLcrTest(AtomHe.Z, orthNt).ok()) return;
     if (!new Wign3jTest().ok()) return;
     if (!new Wign6jTest().ok()) return;
     if (!new HeClementiTest().ok()) return;
-    if (!new HeClementiZetaTest(quadrLcr).ok()) return;
+    if (!new HeClementiZetaTest(quadr).ok()) return;
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
 
@@ -315,9 +315,9 @@ protected void initLiJm() {
   FlowTest.setLog(log);
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
-    if (!new AtomLiSlaterJoy(quadrLcr).ok()) return;
-    if (!new AtomLiSlaterJoy3(quadrLcr).ok()) return;
-    if (!new LiSlaterTest(quadrLcr).ok()) return;
+    if (!new AtomLiSlaterJoy(quadr).ok()) return;
+    if (!new AtomLiSlaterJoy3(quadr).ok()) return;
+    if (!new LiSlaterTest(quadr).ok()) return;
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
 }
@@ -339,10 +339,10 @@ protected void calcLi(SlaterLcr slater) { // NOTE!!! Local set up just to test t
   // E(Nt=11,lambda=2.6) = -7.4483075
   // E(Nt=11,lambda=2.7) = -7.448364
   // E(Nt=11,lambda=2.8) = -7.4484067
-  LgrrModel optLiNt = new LgrrModel(basisOptN); // for the target N, i.e. N_t
+  LgrrModel optLiNt = new LgrrModel(lgrrOptN); // for the target N, i.e. N_t
   optLiNt.setN(LI_Nt);
   optLiNt.setLambda(lambdaLi);          log.dbg("Laguerr model (N_t, lambda)=", optLiNt);
-  LgrrOrthLcr orthonLiNt = new LgrrOrthLcr(quadrLcr, optLiNt);        log.dbg("LgrrOrthLcr(N_t) = ", orthonLiNt);
+  LgrrOrthLcr orthonLiNt = new LgrrOrthLcr(quadr, optLiNt);        log.dbg("LgrrOrthLcr(N_t) = ", orthonLiNt);
 
   FlowTest.lockMaxErr(ABS_LI_ENG_ERR);      // LOCK MAX ERR
   {
@@ -401,7 +401,7 @@ protected void calcHe(SlaterLcr slater) {    // HELIUM TEST
   SysE2 sysE2 = new SysHe(slater);// NOTE -2 for Helium
 
   Ls S1 = new Ls(0, Spin.SINGLET);
-  ConfArr confs = ConfArrFactoryE2.makeSModelE2(S1, orthonNt, orthonNt);
+  ConfArr confs = ConfArrFactoryE2.makeSModelE2(S1, orthNt, orthNt);
   log.dbg("trgtArr=", confs);
   ConfHMtrx sysH = new ConfHMtrx(confs, sysE2);
   ConfHMtrx oldH = new ConfHMtrx(confs, oldE2);
@@ -421,7 +421,7 @@ protected void calcHe(SlaterLcr slater) {    // HELIUM TEST
 //    assertFloorRel("E_1s3s_1S", HeSWaveAtom.E_1s3s_1S, etS1.get(2), 4e-4);
 
   Ls S3 = new Ls(0, Spin.TRIPLET);
-  ConfArr arrS3 = ConfArrFactoryE2.makeSModelE2(S3, orthonNt, orthonNt);
+  ConfArr arrS3 = ConfArrFactoryE2.makeSModelE2(S3, orthNt, orthNt);
   log.dbg("trgtArr=", arrS3);
   ConfHMtrx htS3 = new ConfHMtrx(arrS3, oldE2);
   log.dbg("sysConfH=\n", new MtrxDbgView(htS3));

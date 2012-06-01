@@ -40,7 +40,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
     potScattTestOk();
     hydrScattTestOk(AtomHy.Z);
 
-    trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);   log.dbg("trgtPotH=", trgtPotH);
+    trgtPotH = new PotHMtrxLcr(L, orthNt, pot);   log.dbg("trgtPotH=", trgtPotH);
     Vec trgtEngs = trgtPotH.getEigEngs();                     log.dbg("eigVal=", new VecDbgView(trgtEngs));
 
     ScttTrgtE2 trgtUtils = new ScttTrgtE2();
@@ -51,12 +51,12 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
 
     // NOTE [dak 24Mar2011] Use (Nt, N). (N,N) is not allowed, see 2011 e-He paper
 //    ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthNt, orthNt);   log.dbg("sConfArr=", sConfArr);
-    ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthonNt, orthonN);   log.dbg("sConfArr=", sConfArr);
+    ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthNt, orthN);   log.dbg("sConfArr=", sConfArr);
 
-    ConfArr chiArr = ConfArrFactoryE2.makeTwoElec_forJmV2(sLs, L, orthonNt
-      , biorthN.size(), biorthN.getLast());   log.dbg("chiArr=", chiArr);
+    ConfArr chiArr = ConfArrFactoryE2.makeTwoElec_forJmV2(sLs, L, orthNt
+      , lgrrBiN.size(), lgrrBiN.getLast());   log.dbg("chiArr=", chiArr);
 
-    SlaterLcr slater = new SlaterLcr(quadrLcr);
+    SlaterLcr slater = new SlaterLcr(quadr);
     SysE2OldOk sys = new SysE2OldOk(AtomHy.Z, slater);// NOTE -1 for Hydrogen
     ConfOvMtrx chiOv = new ConfOvMtrx(sConfArr, sys, chiArr);     log.dbg("chiOv=\n", new MtrxDbgView(chiOv));
     ConfHMtrx sysH = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
@@ -72,14 +72,14 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
     ScttRes res = method.calcForScatEngModel();                  log.dbg("res=", res);
 
     FileX.writeToFile(sEngs.toCSV(), HOME_DIR, "hy"
-      , "hy_poet_sysEngs_S" + sLs.getS21() + "_" + basisOptN.makeLabel()+"_v3.dat");
+      , "hy_poet_sysEngs_S" + sLs.getS21() + "_" + lgrrOptN.makeLabel()+"_v3.dat");
     FileX.writeToFile(res.getCrossSecs().toTab(), HOME_DIR, "hy"
-      , "hy_poet_cross_S" + sLs.getS21() + "_" + basisOptN.makeLabel()+"_v3.dat");
+      , "hy_poet_cross_S" + sLs.getS21() + "_" + lgrrOptN.makeLabel()+"_v3.dat");
     FileX.writeToFile(res.getTics().toTab(), HOME_DIR, "hy"
-      , "hy_poet_TICS_S" + sLs.getS21() + "_" + basisOptN.makeLabel()+"_v3.dat");
+      , "hy_poet_TICS_S" + sLs.getS21() + "_" + lgrrOptN.makeLabel()+"_v3.dat");
 
     FileX.writeToFile(res.getSdcs().toTab(), HOME_DIR, "hy"
-      , "hy_poet_SDCS_S" + sLs.getS21() + "_" + basisOptN.makeLabel()+"_v3.dat");
+      , "hy_poet_SDCS_S" + sLs.getS21() + "_" + lgrrOptN.makeLabel()+"_v3.dat");
   }
 
 

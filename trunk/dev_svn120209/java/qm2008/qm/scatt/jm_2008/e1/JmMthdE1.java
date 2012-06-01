@@ -3,6 +3,9 @@ import math.mtrx.Mtrx;
 import scatt.jm_2008.e2.JmMthdBaseE2;
 import scatt.jm_2008.e2.JmSdcsBasisHyE2;
 import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.laguerre.lcr.LagrrBiLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.utilx.log.Log;
 /**

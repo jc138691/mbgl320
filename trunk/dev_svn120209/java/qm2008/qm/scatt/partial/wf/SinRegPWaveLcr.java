@@ -10,7 +10,7 @@ import javax.utilx.log.Log;
 public class SinRegPWaveLcr  extends FuncVec {
 public static Log log = Log.getLog(CosPWaveLcr.class);
 public SinRegPWaveLcr(WFQuadrLcr w, final double p, final int L) {
-  super(w.getR(), new SinPWaveFunc(p, L));
+  super(w.getR(), new SinLFunc(p, L));
   if (L > 0) {
     throw new IllegalArgumentException(log.error("todo L>0"));
   }

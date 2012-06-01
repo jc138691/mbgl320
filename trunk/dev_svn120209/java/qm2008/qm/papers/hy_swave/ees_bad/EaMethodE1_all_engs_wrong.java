@@ -12,8 +12,8 @@ import scatt.Scatt;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.partial.wf.CosRegPWaveLcr;
-import scatt.partial.wf.SinPWaveLcr;
+import scatt.partial.wf.CosRegWfLcr;
+import scatt.partial.wf.SinWfLcr;
 
 import javax.utilx.log.Log;
 import javax.utilx.pair.Dble2;
@@ -58,7 +58,7 @@ private Dble2 calcW(FuncArr psi, double scattE) {
   Dble2 res = new Dble2();
   FuncVec psiS = psi.get(IDX_S);          log.dbg("resS=", psiS);
   FuncVec psiC = psi.get(IDX_C);          log.dbg("resC=", psiC);
-  FuncVec xiN = orthN.getLast();
+  FuncVec xiN = orth.getLast();
   res.a = calcHE(xiN, potH, psiS, scattE);
   res.b = calcHE(xiN, potH, psiC, scattE);  log.dbg("res=", res);
   return res;
@@ -80,7 +80,7 @@ private void loadSC(Mtrx mSC, FuncArr psi, double scattE) {
   FuncArr sysWFuncs = potH.getEigWfs();  log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
   FuncVec psiS = psi.get(IDX_S);          log.dbg("resS=", psiS);
   FuncVec psiC = psi.get(IDX_C);          log.dbg("resC=", psiC);
-  FuncVec xiN = orthN.getLast();
+  FuncVec xiN = orth.getLast();
   for (int i = 0; i < sysWFuncs.size(); i++) {
     FuncVec sysPsi = sysWFuncs.get(i);            log.dbg("sysPsi=", sysPsi);
     double S_i = calcHE(sysPsi, potH, psiS, scattE);    log.dbg("S_i=", S_i);
@@ -98,8 +98,8 @@ private FuncArr calcPsi(double scattE, PotHMtrx potH, int idxCount) {
   IFuncArr basis = potH.getBasis();
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
-  FuncVec sinL = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
-  FuncVec cosL = new CosRegPWaveLcr(quadr, momP, L, momP);   log.dbg("cosL=", cosL);
+  FuncVec sinL = new SinWfLcr(quadr, momP, L);   log.dbg("sinL=", sinL);
+  FuncVec cosL = new CosRegWfLcr(quadr, momP, L, momP);   log.dbg("cosL=", cosL);
 
   res.add(sinL.copyY());
   res.add(cosL.copyY());

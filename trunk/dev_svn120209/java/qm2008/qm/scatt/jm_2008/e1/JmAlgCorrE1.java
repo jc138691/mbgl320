@@ -1,4 +1,5 @@
 package scatt.jm_2008.e1;
+import math.Calc;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;
@@ -14,7 +15,7 @@ import javax.utilx.log.Log;
 public class JmAlgCorrE1 extends JmTailE2 {
 public static Log log = Log.getLog(JmAlgCorrE1.class);
 protected FuncArr sinWfs;
-protected FuncArr sinDelP;
+protected FuncArr sinDelN;
 protected FuncArr cosDelN;
 public Mtrx newR;
 public JmAlgCorrE1(JmMthdBaseE2 mthd) {
@@ -24,18 +25,25 @@ public Mtrx calcNewR() {
   log.setDbg();
   jmF = calcFFromR();  log.dbg("jmF[0]=\n", new MtrxDbgView(new Mtrx(jmF[0])));
   jmA = calcVecA();    log.dbg("jmA=", new MtrxDbgView(new Mtrx(jmA)));
-  loadKatoLgrr();
+  loadKatoLgrr();  // todo: del once sinDelN is working
 
   int chNum = mthd.getChNum();  // it is ONE but preparing for E2
   sinWfs = mthd.makeSinWfs(mthd.sysTotE, chNum);
-  sinDelP = mthd.makeSinDelN(mthd.sysTotE, mthd.orthN, chNum);
-  cosDelN = mthd.makeCosDelN(mthd.sysTotE, mthd.orthN, chNum);
+
+  // TODO: WRONG wfs!!!! need to use biorth removed
+  FuncArr sWfs = mthd.getWfsE1();
+
+//  sinDelN = mthd.makeSinDOrth(mthd.sysTotE, chNum);
+//  cosDelN = mthd.makeCosDOrth(mthd.sysTotE, chNum);
+  sinDelN = mthd.makeSinDLgrr(mthd.sysTotE, chNum);
+  cosDelN = mthd.makeCosDLgrr(mthd.sysTotE, chNum);
 
   log.dbg("\n oldR=\n", new MtrxDbgView(mthd.jmR));
   newR = calcSumA();
   log.dbg("\n newR=calcSumA()=\n", new MtrxDbgView(newR));
 
-  addSumJmTail(newR);
+//  addSumJmTail(newR);
+  addSumJmAll(newR);
   log.dbg("\n newR=addSumJmTail()=\n", new MtrxDbgView(newR));
 
   loadNorms(newR);
@@ -44,32 +52,56 @@ public Mtrx calcNewR() {
   return newR;
 }
 
-private Mtrx addSumJmTail(Mtrx mR) {
+private void addSumJmTail(Mtrx mR) {
   CalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmR.getNumRows();
   int cN = mthd.jmR.getNumCols();
   int jN = jmF.length;
   int N = calcOpt.getN();
 
-  Vec tEngs = mthd.trgtE2.getEngs();
   double[][] res = mR.getArray();
   for (int r = 0; r < rN; r++) {
     Vec psiR = sinWfs.get(r);
     for (int c = 0; c < cN; c++) {
-
-    double sum = 0;
-    for (int R2 = 0; R2 < rN; R2++) {
-      for (int j = 0; j < jN; j++) {
-        double f = jmF[j][R2][c];        //log.dbg("f=", f);
-        FuncVec tailF = tailLgrr.get(N + j);  // NOTE! (N+j+1) is wrong
-        double v = mthd.calcPotInt(psiR, tailF);
-        sum += (f * v);
+      double sum = 0;
+      for (int R2 = 0; R2 < rN; R2++) {
+        for (int j = 0; j < jN; j++) {
+          double f = jmF[j][R2][c];        //log.dbg("f=", f);
+          FuncVec tailF = tailLgrr.get(N + j);  // NOTE! (N+j+1) is wrong
+          double v = mthd.calcPotInt(psiR, tailF);
+          sum += (f * v);
+        }
       }
-    }
-    res[r][c] += sum;
+      res[r][c] += sum;
     }
   }
-  return new Mtrx(res);
+}
+private void addSumJmAll(Mtrx mR) {
+  int rN = mthd.jmR.getNumRows();
+  int cN = mthd.jmR.getNumCols();
+  double[][] res = mR.getArray();
+  for (int r = 0; r < rN; r++) {
+    Vec psiR = sinWfs.get(r);
+    for (int c = 0; c < cN; c++) {
+      double sum = 0;
+      for (int R2 = 0; R2 < rN; R2++) {
+        Vec sinWf = sinDelN.get(R2);
+//        Vec cosWf = cosDelN.get(R2);
+//        double fb = mthd.calcPotInt(psiR, psiR);
+        double sinV = mthd.calcPotInt(psiR, sinWf);
+//        double sinV = mthd.calcPotInt(psiR, psiR);
+//        double cosV = mthd.calcPotInt(psiR, cosWf);
+
+        double tanX = mthd.jmR.get(R2, c);
+        double cosX = Calc.cosFromTan(tanX);
+        double sinX = Calc.sinFromCos(cosX);
+        double f = sinV * cosX;
+//        double f = sinV * cosX + cosV * sinX;
+        sum += f;
+      }
+      res[r][c] += sum;
+    }
+  }
 }
 private Mtrx calcSumA() {
   FuncArr sWfs = mthd.getWfsE1();

@@ -6,7 +6,7 @@ import atom.wf.WFQuadrR;
  * Copyright dmitry.konovalov@jcu.edu.au Date: 22/10/2008, Time: 16:41:56
  */
 public class LagrrBiR extends LgrrR {
-  public static String HELP = "Bio-diagonal JM-matrix Laguerre basisN:\n"
+  public static String HELP = "Bio-diagonal JM-matrix Laguerre lgrrN:\n"
     + "BioR(n, a, lambda, r) = [n! / (n + a)!] * R(n, a, lambda, r) / r,\n"
     + "see LgrrR.HELP for R";
   public LagrrBiR(WFQuadrR w, LgrrModel model) {

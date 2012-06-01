@@ -6,7 +6,7 @@ import atom.wf.WFQuadrR;
  */
 public class LgrrOrthR extends LgrrOrth implements IWFuncArr {
   private WFQuadrR quadr;
-  public static String HELP = "Orthonormal Laguerre basisN:\n"
+  public static String HELP = "Orthonormal Laguerre lgrrN:\n"
   + "R(n, a, lambda, r) = C_n * exp(-x/2) x^(a/2) L^a_n(x),\n"
   + "where x = lambda * r,  a = alpha = 2*l+2, l - angular momentum, L^a_n - the associated Laguerre polynomials.";
 

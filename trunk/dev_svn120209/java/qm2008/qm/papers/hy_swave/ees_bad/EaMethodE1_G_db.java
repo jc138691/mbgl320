@@ -7,7 +7,7 @@ import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.partial.wf.CosPWaveLcr;
-import scatt.partial.wf.SinPWaveLcr;
+import scatt.partial.wf.SinWfLcr;
 
 import javax.utilx.log.Log;
 /**
@@ -25,7 +25,7 @@ protected FuncArr calcPsi(double scattE, int engIdx) {  log.setDbg();
   IFuncArr basis = potH.getBasis();
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
-  FuncVec psi1 = new SinPWaveLcr(quadr, momP, L);   log.dbg("sinL=", psi1);
+  FuncVec psi1 = new SinWfLcr(quadr, momP, L);   log.dbg("sinL=", psi1);
 
   FuncVec gr = psi1.copyY();
   gr.multSelf(potH.getPot());

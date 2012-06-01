@@ -92,7 +92,7 @@ public class Jm2008PotR extends Jm2008Common {
     // H-integration
     if (!new H_Hy_P1s_RTest(w).ok())           return;
 
-    // JM-basisN
+    // JM-lgrrN
     if (!new JmLagrrRTest(basis).ok())         return;
     LagrrBiR bi = new LagrrBiR(w, lgrrOpt );  log.dbg("LagrrBiR =\n", bi);
     if (!new JmLagrrBiRTest(basis, bi).ok())   return;

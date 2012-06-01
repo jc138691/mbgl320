@@ -37,20 +37,20 @@ public class Jm2010CommonR extends Jm2010Common {
     rVec = quadr.getR();                   log.dbg("r grid =", rVec);
     if (!new QuadrPts5Test().ok())         return;
 
-    basisOptN = calcOpt.getLgrrModel();          log.dbg("Laguerr model =", basisOptN);
-    basis = new LgrrR(quadr, basisOptN);   log.dbg("LgrrR =\n", basis);
+    lgrrOptN = calcOpt.getLgrrModel();          log.dbg("Laguerr model =", lgrrOptN);
+    basis = new LgrrR(quadr, lgrrOptN);   log.dbg("LgrrR =\n", basis);
 
-    // JM-basisN
+    // JM-lgrrN
     if (!new JmLagrrRTest(basis).ok())         return;
-    bi = new LagrrBiR(quadr, basisOptN);      log.dbg("LagrrBiR =\n", bi);
+    bi = new LagrrBiR(quadr, lgrrOptN);      log.dbg("LagrrBiR =\n", bi);
     if (!new JmLagrrBiRTest(basis, bi).ok())   return;
-    orth = new LgrrOrthR(quadr, basisOptN);  log.dbg("LgrrOrthR = ", orth);
+    orth = new LgrrOrthR(quadr, lgrrOptN);  log.dbg("LgrrOrthR = ", orth);
     if (!new JmLagrrOrthRTest(orth).ok())      return;
 
     // H-integration
     if (!new H_Hy_P1s_RTest(quadr).ok())           return;
 
-    // Making inner-basisN
+    // Making inner-lgrrN
     if (!new JmPotEigVecRTest(orth).ok())      return;    
   }
 

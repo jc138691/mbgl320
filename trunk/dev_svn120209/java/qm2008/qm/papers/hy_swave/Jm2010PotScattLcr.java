@@ -63,11 +63,11 @@ public void calc(int newN) {
   initProject();
   potScattTestOk();
   pot = WfFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
-  PotHMtrx sysH = new PotHMtrxLcr(L, orthonN, pot);
+  PotHMtrx sysH = new PotHMtrxLcr(L, orthN, pot);
 ////    PotH partH = sysConfH.makePotH();
   Vec sysEngs = sysH.getEigEngs();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
   FuncArr sysWFuncs = sysH.getEigWfs();         log.dbg("sysWFuncs=", new FuncArrDbgView(sysWFuncs));
-  Vec D = new JmD(biorthN, sysWFuncs);              log.dbg("D_{n,N-1}=", D);
+  Vec D = new JmD(lgrrBiN, sysWFuncs);              log.dbg("D_{n,N-1}=", D);
   JmMthdE1_OLD method = new JmMthdE1_OLD(calcOpt);
   method.setOverD(D);
   method.setSysEngs(sysEngs);

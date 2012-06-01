@@ -9,7 +9,7 @@ import javax.utilx.log.Log;
 public class CosPWaveLcr extends FuncVec {
 public static Log log = Log.getLog(CosPWaveLcr.class);
 public CosPWaveLcr(WFQuadrLcr w, final double p, final int L) {
-  super(w.getR(), new CosPWaveFunc(p, L));
+  super(w.getR(), new CosLFunc(p, L));
   if (L > 0) {
     throw new IllegalArgumentException(log.error("todo L>0"));
   }

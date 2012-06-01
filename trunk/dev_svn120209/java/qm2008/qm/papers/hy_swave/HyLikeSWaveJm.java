@@ -30,19 +30,19 @@ public void calc(int newN, int newNt) {
   N = newN;
   Nt = newNt;
   initProject();
-  potScattTestOk();     // out: basisN, orthNt, biorthN
+  potScattTestOk();     // out: lgrrN, orthNt, lgrrBi
   hydrScattTestOk(TARGET_Z);      // out: pt (for TARGET_Z), orthNt
-  SlaterLcr slater = new SlaterLcr(quadrLcr);
+  SlaterLcr slater = new SlaterLcr(quadr);
 
-  trgtWfsNt = orthonNt;
-  trgtBasisN = orthonN;
+  trgtWfsNt = orthNt;
+  wfN = orthN;
   AtomUtil.trimTailSLOW(trgtWfsNt);
-  AtomUtil.trimTailSLOW(trgtBasisN);
+  AtomUtil.trimTailSLOW(wfN);
   ScttTrgtE3 trgt = makeTrgtE3(slater);
   trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE elelctron
   trgt.setInitTrgtIdx(FROM_CH);
   trgt.setIonGrndEng(0);
-  trgt.setNt(orthonNt.size());
+  trgt.setNt(orthNt.size());
   trgt.loadSdcsW();
   trgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
 
@@ -54,12 +54,12 @@ public void calc(int newN, int newNt) {
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
-  Vec D = new JmDe3(biorthN, orthonN, method.getCalcOpt().getTestModel());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
+  Vec D = new JmDe3(lgrrBiN, orthN, method.getCalcOpt().getTestModel());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
   method.setOverD(D);
 
   if (CALC_DENSITY) {
     FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);
-    FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);     // NOTE!! convering density to R (not wf)
+    FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadr);     // NOTE!! convering density to R (not wf)
     FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelTrgtS2(method));
   }
 
@@ -80,7 +80,7 @@ private ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
   SysE1 tgrtE2 = new SysE1(-TARGET_Z, slater);
   Ls tLs = new Ls(0, Spin.ELECTRON);  // t - for target
 
-  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(orthonNt);     log.dbg("tConfArr=", tConfArr);
+  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(orthNt);     log.dbg("tConfArr=", tConfArr);
 
   ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                                   log.dbg("tH=\n", new MtrxDbgView(tH));
   FileX.writeToFile(tH.getEigEngs().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
@@ -94,7 +94,7 @@ private ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
 
 private ConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
   SysE2 sys = new SysE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
-  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthonNt, orthonN);   log.dbg("sysArr=", sConfArr);
+  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthNt, orthN);   log.dbg("sysArr=", sConfArr);
   ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;
 }

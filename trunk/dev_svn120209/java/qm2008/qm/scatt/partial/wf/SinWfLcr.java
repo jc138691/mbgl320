@@ -6,10 +6,10 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 23/02/12, 1:55 PM
  */
-public class SinPWaveLcr extends FuncVec {
-public static Log log = Log.getLog(SinPWaveLcr.class);
-public SinPWaveLcr(WFQuadrLcr w, final double p, final int L) {
-  super(w.getR(), new SinPWaveFunc(p, L));
+public class SinWfLcr extends FuncVec {
+public static Log log = Log.getLog(SinWfLcr.class);
+public SinWfLcr(WFQuadrLcr w, final double p, final int L) {
+  super(w.getR(), new SinLFunc(p, L));
   if (L > 0) {
     throw new IllegalArgumentException(log.error("todo L>0"));
   }

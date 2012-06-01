@@ -24,7 +24,7 @@ protected static String MODEL_DIR = "MODEL_DIR";
 protected static QMS project;
 protected static CalcOptE1 calcOpt;
 protected static TestModel testOpt;
-protected static LgrrModel basisOptN;
+protected static LgrrModel lgrrOptN;
 protected static Vec rVec;
 protected static FuncVec pot;
 protected static PotHMtrx trgtPotH;
@@ -61,13 +61,13 @@ public void setupScattRes(ScttRes res, ScttMthdBaseE1 method) {
 }
 protected static String makeLabelBasisOptOpen(ScttMthdBaseE1 method) {
   if (method.getCalcOpt().getUseClosed()) {
-    return basisOptN.makeLabel() + ".dat";
+    return lgrrOptN.makeLabel() + ".dat";
   } else {
-    return basisOptN.makeLabel() + "_OPEN.dat";
+    return lgrrOptN.makeLabel() + "_OPEN.dat";
   }
 }
 protected static String makeLabelBasisOptN() {
-  return basisOptN.makeLabel() + ".dat";
+  return lgrrOptN.makeLabel() + ".dat";
 }
 public CalcOptR makeJmPotOptR() {
   CalcOptR res = new CalcOptR();

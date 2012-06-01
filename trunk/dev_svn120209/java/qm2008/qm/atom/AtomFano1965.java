@@ -136,7 +136,7 @@ public double calcTwoPot(int LL, Shell a, Shell b, Shell a2, Shell b2) {
     double ang = calcTwoElecCoupling(a, b, a2, b2, kk, LL);
     if (AtomUtil.isZero(ang))
       continue;
-//         res += ang * TRk<FUNC>(basisN().w(), basisN().r()
+//         res += ang * TRk<FUNC>(lgrrN().w(), lgrrN().r()
 //            , *sp.a(), *sp.b(), *sp2.a(), *sp2.b(), kk);
     res += ang * calcRk(a, b, a2, b2, kk);
   }

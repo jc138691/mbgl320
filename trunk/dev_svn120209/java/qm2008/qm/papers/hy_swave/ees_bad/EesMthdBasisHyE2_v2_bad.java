@@ -77,9 +77,9 @@ public ScttRes calcSysEngs() {    log.setDbg();
     if (openNum == 2) {
       log.dbg("if (openNum == 2)");
     }
-    makeSinDelN(sysTotE, orthNt, openNum);
+    makeSinDOrth(sysTotE, openNum);
     loadPnS(sysIdx, orthNt, openNum);
-    makeCosDelN(sysTotE, orthNt, openNum);
+    makeCosDOrth(sysTotE, openNum);
 
     calcAllVecs(sysIdx, openNum);
     calcK(openNum);

@@ -86,12 +86,12 @@ public void testHeMm2() throws Exception {  log.setDbg();
   log.dbg("quadr.getR()=\n", quadr.getR());
 
   // BUILD
-  orthN = new LgrrOrthLcr(quadr, lgrrN);         log.dbg("orthN = new LgrrOrthLcr(quadr, lgrrModel)=\n", orthN);
+  orthN = new LgrrOrthLcr(quadr, lgrrN);         log.dbg("orth = new LgrrOrthLcr(quadr, lgrrModel)=\n", orthN);
 //  Func potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-atomZ/r
 //  FuncVec pot = new FuncVec(quadr.getR(), potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
-//  PotHMtrx trgtPotH = new PotHMtrxLcr(L, orthN, pot, quadr);    log.dbg("trgtPotH=", trgtPotH);
+//  PotHMtrx trgtPotH = new PotHMtrxLcr(L, orth, pot, quadr);    log.dbg("trgtPotH=", trgtPotH);
 //  Vec heEngs = trgtPotH.getEigEngs();            log.dbg("heEngs=", new VecDbgView(heEngs));
-//  orthN = trgtPotH.getEigWfs();      log.dbg("trgtWfsNt=", new FuncArrDbgView(orthN));
+//  orth = trgtPotH.getEigWfs();      log.dbg("trgtWfsNt=", new FuncArrDbgView(orth));
 
   LgrrOrthLcr orthMi = new LgrrOrthLcr(quadr, lgrrMi);  log.dbg("orthMa=\n", orthMi);
   LgrrOrthLcr orthMa = new LgrrOrthLcr(quadr, lgrrMa);  log.dbg("orthMa=\n", orthMa);
@@ -106,8 +106,8 @@ public void testHeMm2() throws Exception {  log.setDbg();
   Ls sysLs = new Ls(0, Spin.SINGLET);  // t - for target
   ConfArr confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, N);
   log.dbg("confs=", confs);
-//  ConfArr confsMm = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, N_MI);
-//  ConfArr confsMm = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, orthMa);
+//  ConfArr confsMm = ConfArrFactoryE2.makeSModelE2(sysLs, orth, N_MI);
+//  ConfArr confsMm = ConfArrFactoryE2.makeSModelE2(sysLs, orth, orthMa);
   ConfArr confsMm = ConfArrFactoryE2.makeSModelMmE2(sysLs, orthMi, orthMa);
 //  ConfArr confsMm = ConfArrFactoryE2.makeSModelMmE2(sysLs, orthMi, N_MI);
   log.dbg("confsMm=", confsMm);
@@ -175,7 +175,7 @@ public void testHyMm() throws Exception {  log.setDbg();
   quadr = new WFQuadrLcr(x);                          log.dbg("quadr = new WFQuadrLcr(x)=\n", quadr);
   log.dbg("quadr.getR()=\n", quadr.getR());
 
-  orthN = new LgrrOrthLcr(quadr, lgrrN);         log.dbg("orthN = new LgrrOrthLcr(quadr, lgrrModel)=\n", orthN);
+  orthN = new LgrrOrthLcr(quadr, lgrrN);         log.dbg("orth = new LgrrOrthLcr(quadr, lgrrModel)=\n", orthN);
   slater = new SlaterLcr(quadr);
 
   // HYDROGEN
@@ -277,7 +277,7 @@ public void testHeMm() throws Exception {  log.setDbg();
   quadr = new WFQuadrLcr(x);                          log.dbg("quadr = new WFQuadrLcr(x)=\n", quadr);
   log.dbg("quadr.getR()=\n", quadr.getR());
 
-  orthN = new LgrrOrthLcr(quadr, lgrrN);         log.dbg("orthN = new LgrrOrthLcr(quadr, lgrrModel)=\n", orthN);
+  orthN = new LgrrOrthLcr(quadr, lgrrN);         log.dbg("orth = new LgrrOrthLcr(quadr, lgrrModel)=\n", orthN);
   slater = new SlaterLcr(quadr);
 
   SysE2 sysE2 = new SysHe(slater);

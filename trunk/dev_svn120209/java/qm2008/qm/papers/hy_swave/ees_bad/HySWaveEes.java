@@ -76,15 +76,15 @@ public void calc(int newN) {
   N = newN;
   Nt = newN;  // this is just to keep functions like hydrScattTestOk() working
   initProject();
-  potScattTestOk();     // out: basisN, orthNt, biorthN
+  potScattTestOk();     // out: lgrrN, orthNt, lgrrBi
   hydrScattTestOk(TARGET_Z);      // out: pt (for TARGET_Z), orthNt
-  SlaterLcr slater = new SlaterLcr(quadrLcr);
+  SlaterLcr slater = new SlaterLcr(quadr);
 
-  trgtBasisN = orthonN;
+  wfN = orthN;
   trgtWfsNt = null;
-  orthonNt = null;
+  orthNt = null;
 
-//  AtomUtil.trimTailSLOW(basisN);     // todo: check if needed
+//  AtomUtil.trimTailSLOW(lgrrN);     // todo: check if needed
   ScttTrgtE3 trgt = makeTrgtE3(slater);
   trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE electron
   trgt.setInitTrgtIdx(FROM_CH);
@@ -100,8 +100,8 @@ public void calc(int newN) {
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
-  method.setOrthNt(orthonN);
-  method.setWfsE1(trgtBasisN);   // is just orthNt, but different in _BasisHy
+  method.setOrthNt(orthN);
+  method.setWfsE1(wfN);   // is just orthNt, but different in _BasisHy
 
   ScttRes res = method.calcSysEngs();                  log.dbg("res=", res);
   setupScattRes(res, method);

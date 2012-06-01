@@ -15,7 +15,7 @@ import static java.lang.Math.log;
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 18/04/12, 2:39 PM
  */
 public class GaussR_todo extends LgrrArr implements IWFuncArr {
-  public static String HELP = "JM-matrix Gaussian basisN:\n"
+  public static String HELP = "JM-matrix Gaussian lgrrN:\n"
   + "R(n, a, lambda, r) = exp(-x/2) x^((a+1)/2) L^a_n(x),\n"
   + "where x = lambda * r;  a = alpha=L+1/2, L - angular momentum; L^a_n - the associated Laguerre polynomials.";
   public static Log log = Log.getLog(GaussR_todo.class);

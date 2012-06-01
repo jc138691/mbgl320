@@ -76,29 +76,29 @@ public void calc(int newN, int newNt) {
   N = newN;
   Nt = newNt;
   initProject();
-  potScattTestOk();  // basisN, biorthN, orthNt, quadr
+  potScattTestOk();  // lgrrN, lgrrBi, quadr
   hydrScattTestOk(TARGET_Z);  // pot, orthNt
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
 
-  trgtPotH = new PotHMtrxLcr(L, orthonNt, pot);    log.dbg("trgtPotH=", trgtPotH);
+  trgtPotH = new PotHMtrxLcr(L, orthNt, pot);    log.dbg("trgtPotH=", trgtPotH);
   Vec trgtEngs = trgtPotH.getEigEngs();            log.dbg("eigVal=", new VecDbgView(trgtEngs));
   trgtWfsNt = trgtPotH.getEigWfs();      log.dbg("trgtWfsNt=", new FuncArrDbgView(trgtWfsNt));
 //    FileX.writeToFile(trgtWfsNt.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtLcr_" + makeLabelTrgtS2());
 
-  FuncArr basisR = LcrFactory.wfLcrToR(trgtWfsNt, quadrLcr);
+  FuncArr basisR = LcrFactory.wfLcrToR(trgtWfsNt, quadr);
   AtomUtil.trimTailSLOW(basisR);
 //    FileX.writeToFile(basisR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtR_" + makeLabelTrgtS2());
 
   AtomUtil.trimTailSLOW(trgtWfsNt);
 
   ScttTrgtE2 trgt = new ScttTrgtE2();
-  trgt.setNt(orthonNt.size());
+  trgt.setNt(orthNt.size());
   trgt.setWfsE1(trgtWfsNt);
   trgt.setEngs(trgtEngs);
   trgt.loadSdcsW();                log.dbg("trgt.getSdcsW()=", new VecDbgView(trgt.getSdcsW()));
   if (CALC_TRUE_CONTINUUM) {      // TARGET CONTINUUM
     double maxSysEng = calcOpt.getGridEng().getLast() + trgtEngs.get(0); // ASSUMED FROM H(1s)
-    JmClmbLcr clmbNt = new JmClmbLcr(L, AtomHy.Z, trgtEngs, maxSysEng, quadrLcr);      log.dbg("JmClmbLcr =\n", clmbNt);
+    JmClmbLcr clmbNt = new JmClmbLcr(L, AtomHy.Z, trgtEngs, maxSysEng, quadr);      log.dbg("JmClmbLcr =\n", clmbNt);
     clmbNt.normToE();
 //      AtomUtil.setTailFrom(clmbNt, trgtWfsNt);
 //      FileX.writeToFile(clmbNt.toTab(), HOME_DIR, "wf", "clmbNt.dat");
@@ -106,22 +106,22 @@ public void calc(int newN, int newNt) {
       return;
     trgt.setContE1(clmbNt);
     trgt.loadSdcsContW();   log.dbg("trgt.getSdcsW()=", new VecDbgView(trgt.getSdcsW()));
-//      FileX.writeToFile(trgt.toTab(), HOME_DIR, "wf", "target_" + basisOptN.makeLabel() + ".dat");
+//      FileX.writeToFile(trgt.toTab(), HOME_DIR, "wf", "target_" + lgrrOptN.makeLabel() + ".dat");
   }
 
-  PotHMtrx targetHTest = new PotHMtrxLcr(L, trgtWfsNt, pot, orthonNt.getQuadr());  log.dbg("targetHTest=", targetHTest); // only for debugging
-  Vec D = new JmD(biorthN, trgtWfsNt);      log.dbg("D_{n,m>=Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
+  PotHMtrx targetHTest = new PotHMtrxLcr(L, trgtWfsNt, pot, orthNt.getQuadr());  log.dbg("targetHTest=", targetHTest); // only for debugging
+  Vec D = new JmD(lgrrBiN, trgtWfsNt);      log.dbg("D_{n,m>=Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
 
   SYS_LS = new Ls(0, SPIN);
-  ConfArr sysArr = ConfArrFactoryE2.makeSModelE2(SYS_LS, trgtWfsNt, orthonN);    log.dbg("sysArr=", sysArr);
+  ConfArr sysArr = ConfArrFactoryE2.makeSModelE2(SYS_LS, trgtWfsNt, orthN);    log.dbg("sysArr=", sysArr);
 
   // one electron basis
-  trgtBasisN = orthonN;    // only the last wfs were used from  orthNt, so now we can reuse it
-  orthonN = null; // making sure nobody uses old ref
-  trgtBasisN.copyFrom(trgtWfsNt, 0, trgtWfsNt.size());
-  D = new JmD(biorthN, trgtBasisN);   log.dbg("D_{n,N-1}=", D);
+  wfN = orthN;    // only the last wfs were used from  orthNt, so now we can reuse it
+  orthN = null; // making sure nobody uses old ref
+  wfN.copyFrom(trgtWfsNt, 0, trgtWfsNt.size());
+  D = new JmD(lgrrBiN, wfN);   log.dbg("D_{n,N-1}=", D);
 
-  SlaterLcr slater = new SlaterLcr(quadrLcr);
+  SlaterLcr slater = new SlaterLcr(quadr);
 //    SysE2OldOk sys = new SysE2OldOk(-1., slater);// NOTE -1 for Hydrogen
   SysE2 sys = new SysE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
   ConfHMtrx sysH = new ConfHMtrx(sysArr, sys);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
@@ -133,11 +133,11 @@ public void calc(int newN, int newNt) {
   mthd.setOverD(D);
   mthd.setSysEngs(sEngs);
   mthd.setSysConfH(sysH);
-  mthd.setQuadr(quadrLcr);
+  mthd.setQuadr(quadr);
 
   if (CALC_DENSITY) {
     FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);
-    FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadrLcr);  // NOTE!! convering density to R (not wf)
+    FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadr);  // NOTE!! convering density to R (not wf)
     FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelTrgtS2(mthd));
   }
 

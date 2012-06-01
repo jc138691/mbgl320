@@ -65,7 +65,7 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
         return false;
 
     LagrrBiLcr bi = new LagrrBiLcr(w, potOpt.getLgrrModel() );  log.dbg("LagrrBiLcr = ", new FuncArrDbgView(bi));
-    if (!new JmLagrrBiLcrTest(basis, bi).ok())
+    if (!new LagrrBiLcrTest(basis, bi).ok())
       return false;
 
     LgrrOrthLcr orth = new LgrrOrthLcr(w, potOpt.getLgrrModel() );  log.dbg("LgrrOrthLcr = ", new FuncArrDbgView(bi));

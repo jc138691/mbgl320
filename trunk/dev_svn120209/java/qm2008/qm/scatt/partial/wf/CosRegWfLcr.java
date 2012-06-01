@@ -7,11 +7,11 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 24/02/12, 12:02 PM
  */
-public class CosRegPWaveLcr extends FuncVec {
+public class CosRegWfLcr extends FuncVec {
 public static Log log = Log.getLog(CosPWaveLcr.class);
-public CosRegPWaveLcr(WFQuadrLcr w, final double p, final int L
+public CosRegWfLcr(WFQuadrLcr w, final double p, final int L
   , final double lambda) {
-  super(w.getR(), new CosPWaveFunc(p, L));
+  super(w.getR(), new CosLFunc(p, L));
   if (L > 0) {
     throw new IllegalArgumentException(log.error("todo L>0"));
   }
