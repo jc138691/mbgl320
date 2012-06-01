@@ -50,11 +50,11 @@ public void runJob() {
   LCR_FIRST = -5;
 //  LCR_N = 1501;
 //  R_LAST = 150;
-  LCR_N = 4001;
-  R_LAST = 400;
+  LCR_N = 3001;
+  R_LAST = 300;
 //  ENG_FIRST = 0.01f;
-  ENG_FIRST = 1f;
-  ENG_LAST = 100.f;
+  ENG_FIRST = 0.001f;
+  ENG_LAST = 1.f;
   ENG_N = (int)(ENG_LAST / ENG_FIRST);
   calc(10);
 //  calc(12);
@@ -69,8 +69,8 @@ public void calc(int newN) {
   N = newN;
   initProject();
   potScattTestOk();   // lgrrN, orth, lgrrBi, quadr
-//  pot = WfFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
-  pot = WfFactory.makePotFBornTest(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+  pot = WfFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+//  pot = WfFactory.makePotFBornTest(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx potH = new PotHMtrxLcr(L, orthN, pot);
   Vec sysEngs = potH.getEigEngs();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
   FuncArr sysWfsN = potH.getEigWfs();         log.dbg("sysWfsN=", new FuncArrDbgView(sysWfsN));
@@ -85,8 +85,8 @@ public void calc(int newN) {
   mthd.setWfsE1(sysWfsN); // NOTE! using trgtBasis to pass the E1-sys-basis
   mthd.setQuadr(quadr);
   mthd.setOrth(orthN);
-  mthd.setLgrrBi(lgrrBiN);
-  mthd.setLgrr(lgrrN);
+//  mthd.setLgrrBi(lgrrBiN);
+//  mthd.setLgrr(lgrrN);
   ScttRes res = mthd.calcForScatEngModel();
   log.dbg("res=", res);
 //    ScttRes res = method.calcMidSysEngs();                  log.dbg("res=", res);

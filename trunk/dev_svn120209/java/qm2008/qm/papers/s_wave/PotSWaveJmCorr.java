@@ -19,7 +19,7 @@ public static void main(String[] args) {
   runMe.testRun();
 }
 public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-  MODEL_NAME = "PotSWaveJm";
+  MODEL_NAME = "PotSWaveJmCorr";
 //  MODEL_NAME = "PotSWaveJmCorr";
   MODEL_DIR = MODEL_NAME;
   project = QMSProject.makeInstance(MODEL_NAME, "120528");
@@ -27,7 +27,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
   // Note: run one at a time as only one set of result files is produced
 
-  KATO_N = 1;
+  KATO_N = 10;
   runJob();
 }
 protected JmMthdE1 makeMthd(CalcOptE1 calcOpt) {
