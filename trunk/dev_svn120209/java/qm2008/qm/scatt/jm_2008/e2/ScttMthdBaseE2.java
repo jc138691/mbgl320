@@ -180,13 +180,13 @@ public FuncArr makeSinWfs(double sTotE, int chNum) {
     if (tScattE <= 0) {
       break;
     }
-    FuncVec wf = EesMethodE1.calcChSinWf(tScattE, quadr);
+    FuncVec wf = calcChSinWf(tScattE, quadr);
     res.add(wf);
   }
   return res;
 }
 // Delete orthonormal from given
-public FuncArr makeSinDOrth(double sTotE, int chNum) {
+public FuncArr makeSinDelN(double sTotE, int chNum) {
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
   Vec tEngs = trgtE2.getEngs();
@@ -196,7 +196,22 @@ public FuncArr makeSinDOrth(double sTotE, int chNum) {
     if (tScattE <= 0) {
       break;
     }
-    FuncVec wf = EesMethodE1.calcSinDelN(tScattE, quadr, orth);
+    FuncVec wf = calcSinDelN(tScattE, quadr, orth);
+    res.add(wf);
+  }
+  return res;
+}
+public FuncArr makeSinKeepN(double sTotE, int chNum) {
+  Vec x = quadr.getX();
+  FuncArr res = new FuncArr(x);
+  Vec tEngs = trgtE2.getEngs();
+  for (int t = 0; t < chNum; t++) {     //log.dbg("t = ", t);  // Target channels
+    double tE = tEngs.get(t);     // target state eng
+    double tScattE = sTotE - tE;
+    if (tScattE <= 0) {
+      break;
+    }
+    FuncVec wf = calcSinKeepN(tScattE, quadr, orth);
     res.add(wf);
   }
   return res;
@@ -212,12 +227,12 @@ public FuncArr makeSinDLgrr(double sTotE, int chNum) {
     if (tScattE <= 0) {
       break;
     }
-    FuncVec wf = EesMethodE1.calcSinDelBi(tScattE, quadr, lgrr, lgrrBi);
+    FuncVec wf = calcSinDelBi(tScattE, quadr, lgrr, lgrrBi);
     res.add(wf);
   }
   return res;
 }
-public FuncArr makeCosDOrth(double sTotE, int chNum) {
+public FuncArr makeCosDelN(double sTotE, int chNum) {
   Vec x = quadr.getX();
   FuncArr res = new FuncArr(x);
   Vec tEngs = trgtE2.getEngs();
@@ -227,7 +242,7 @@ public FuncArr makeCosDOrth(double sTotE, int chNum) {
     if (tScattE <= 0) {
       break;
     }
-    FuncVec wf = EesMethodE1.calcCosDelN(tScattE, quadr, orth, orth.getLambda());
+    FuncVec wf = calcCosDelN(tScattE, quadr, orth, orth.getLambda());
     res.add(wf);
   }
   return res;
@@ -242,7 +257,7 @@ public FuncArr makeCosDLgrr(double sTotE, int chNum) {
     if (tScattE <= 0) {
       break;
     }
-    FuncVec wf = EesMethodE1.calcCosDelBi(tScattE, quadr, lgrr, lgrrBi, orth.getLambda());
+    FuncVec wf = calcCosDelBi(tScattE, quadr, lgrr, lgrrBi, orth.getLambda());
     res.add(wf);
   }
   return res;

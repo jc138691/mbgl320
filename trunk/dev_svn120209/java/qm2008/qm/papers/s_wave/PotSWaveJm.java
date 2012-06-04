@@ -46,7 +46,7 @@ public void setUp() {
   log.setDbg();
 }
 public void runJob() {
-  LAMBDA = 1.2;
+  LAMBDA = 1.0;
   LCR_FIRST = -5;
 //  LCR_N = 1501;
 //  R_LAST = 150;

@@ -29,10 +29,12 @@ public Mtrx calcNewR() {
 
   int chNum = mthd.getChNum();  // it is ONE but preparing for E2
   sinWfs = mthd.makeSinWfs(mthd.sysTotE, chNum);
+//  sinWfs = mthd.makeSinKeepN(mthd.sysTotE, chNum);//DEBUG
+//  sinWfs = mthd.makeSinDelN(mthd.sysTotE, chNum);//DEBUG
 
 //  FuncArr sWfs = mthd.getWfsE1();
-//  sinDelN = mthd.makeSinDOrth(mthd.sysTotE, chNum);
-//  cosDelN = mthd.makeCosDOrth(mthd.sysTotE, chNum);
+//  sinDelN = mthd.makeSinDelN(mthd.sysTotE, chNum);
+//  cosDelN = mthd.makeCosDelN(mthd.sysTotE, chNum);
 //  sinDelN = mthd.makeSinDLgrr(mthd.sysTotE, chNum);
 //  cosDelN = mthd.makeCosDLgrr(mthd.sysTotE, chNum);
 
