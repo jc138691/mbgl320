@@ -200,6 +200,22 @@ public static FuncVec delN(FuncVec wf, WFQuadr quadr, IFuncArr basis) {
   }
   return res;
 }
+public static FuncVec keepN(FuncVec wf, WFQuadr quadr, IFuncArr basis) {
+  Vec x = quadr.getX();
+  FuncVec res = new FuncVec(x);
+  for (int i = 0; i < basis.size(); i++) {
+    FuncVec fi = basis.getFunc(i);         //log.dbg("fi=", fi);
+    double dS = quadr.calcInt(wf, fi);     //log.dbg("d=", dS);
+    res.addMultSafe(dS, fi);              //log.dbg("res=", res);
+  }
+//  for (int i = 0; i < basis.size(); i++) {
+//    FuncVec fi = basis.getFunc(i);           //log.dbg("fi=", fi);
+//    double testInt = quadr.calcInt(res, fi);   //log.dbg("testS=", testS);
+//    assertEquals("testInt_" + i, testInt, 0d);
+//    assertEquals(0, testInt, MAX_INTGRL_ERR_E11);
+//  }
+  return res;
+}
 public static FuncVec delBi(FuncVec wf, WFQuadr quadr, IFuncArr basis, IFuncArr basisBi) {
   Vec x = quadr.getX();
   FuncVec res = wf.copyY();
@@ -217,12 +233,26 @@ public static FuncVec delBi(FuncVec wf, WFQuadr quadr, IFuncArr basis, IFuncArr 
   }
   return res;
 }
+public static FuncVec calcChSinWf(double chScattE, WFQuadrLcr quadr) {  // channel scattering eng
+  int L = 0;
+  double momP = Scatt.calcMomFromE(chScattE);
+  FuncVec res = new SinWfLcr(quadr, momP, L);   //log.dbg("sinL=", sinL);
+  return res;
+}
 public static FuncVec calcSinDelN(double chScattE
   , WFQuadr quadr, IFuncArr basis) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   FuncVec wf = new SinWfLcr((WFQuadrLcr)quadr, momP, L);   //log.dbg("wf=", wf);
   FuncVec res = delN(wf, quadr, basis);          //log.dbg("resS=", resS);
+  return res;
+}
+public static FuncVec calcSinKeepN(double chScattE
+  , WFQuadr quadr, IFuncArr basis) {  // channel scattering eng
+  int L = 0;
+  double momP = Scatt.calcMomFromE(chScattE);
+  FuncVec wf = new SinWfLcr((WFQuadrLcr)quadr, momP, L);   //log.dbg("wf=", wf);
+  FuncVec res = keepN(wf, quadr, basis);          //log.dbg("resS=", resS);
   return res;
 }
 public static FuncVec calcSinDelBi(double chScattE

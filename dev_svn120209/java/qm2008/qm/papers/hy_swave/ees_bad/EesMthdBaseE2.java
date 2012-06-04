@@ -48,8 +48,8 @@ protected void loadPnS(int sysIdx, LgrrOrthLcr orthN, int chNum) {
 }
 protected void loadTrialWfs(double sTotE, int chNum) {
   sinWfs = makeSinWfs(sTotE, chNum);
-  sinDelN = makeSinDOrth(sTotE, chNum);
-  cosDelN = makeCosDOrth(sTotE, chNum);
+  sinDelN = makeSinDelN(sTotE, chNum);
+  cosDelN = makeCosDelN(sTotE, chNum);
 }
 protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
   Dble3 res = new Dble3();

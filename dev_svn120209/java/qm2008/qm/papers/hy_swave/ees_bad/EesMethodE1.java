@@ -70,12 +70,6 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   return res;
 }
 
-public static FuncVec calcChSinWf(double chScattE, WFQuadrLcr quadr) {  // channel scattering eng
-  int L = 0;
-  double momP = Scatt.calcMomFromE(chScattE);
-  FuncVec res = new SinWfLcr(quadr, momP, L);   //log.dbg("sinL=", sinL);
-  return res;
-}
 
 public static FuncVec calcPWavePnS(double chScattE
   , WFQuadrLcr quadr, IFuncArr basis) {  // channel scattering eng

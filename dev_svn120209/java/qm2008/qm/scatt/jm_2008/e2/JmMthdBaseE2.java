@@ -111,9 +111,9 @@ private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
     }
     jmR = calcCorrR(); // calc any corrections to the R-matrix
 
-    if (calcOpt.getJmTailN() > 1) { // DEBUG
-      jmR = calcCorrR(); // DEBUG
-    }
+//    if (calcOpt.getJmTailN() > 1) { // DEBUG
+//      jmR = calcCorrR(); // DEBUG
+//    }
 
     jmS = Scatt.calcSFromK(jmR, openChN);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(jmS));
     saveCrossSecs(scttIdx, res, jmS, openChN);
