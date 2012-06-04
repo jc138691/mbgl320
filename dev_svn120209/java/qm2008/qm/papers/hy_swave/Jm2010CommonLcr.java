@@ -58,7 +58,7 @@ protected static int Nt = 20;
 protected static boolean USE_CLOSED_CHANNELS = true;
 protected static int KEEP_CLOSED_N = 10;  // number of closed channels to keep
 protected static boolean CALC_SDCS = false;
-protected static int KATO_N = 10;  // how many extra Ns to use
+protected static int JM_TAIL_N = 10;  // how many extra Ns to use
 protected static int SDCS_ENG_N = 10;  // how many extra Ns to use
 
 
@@ -89,7 +89,7 @@ protected void initProject() {
   calcOpt.setUseClosed(USE_CLOSED_CHANNELS);
   calcOpt.setUseClosedNum(KEEP_CLOSED_N);
   calcOpt.setCalcSdcs(CALC_SDCS);
-  calcOpt.setJmTailN(KATO_N);
+  calcOpt.setJmTailN(JM_TAIL_N);
   calcOpt.setSdcsEngN(SDCS_ENG_N);
 
   log.info("<--initProject()");

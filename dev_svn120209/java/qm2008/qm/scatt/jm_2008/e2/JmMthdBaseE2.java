@@ -110,6 +110,11 @@ private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
       continue; // ignore
     }
     jmR = calcCorrR(); // calc any corrections to the R-matrix
+
+    if (calcOpt.getJmTailN() > 1) { // DEBUG
+      jmR = calcCorrR(); // DEBUG
+    }
+
     jmS = Scatt.calcSFromK(jmR, openChN);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(jmS));
     saveCrossSecs(scttIdx, res, jmS, openChN);
     saveMtrxR(scttIdx, res, jmR, openChN);
@@ -128,8 +133,10 @@ protected Mtrx calcR(int calcN, int openN) {
   Mtrx W = null;
   if (calcOpt.getUseClosed()) {
     W = calcW(calcN);
+//    W = calcW_DBG(calcN);
   } else {
     W = calcW(openN);
+//    W = calcW_DBG(openN);
   }                                                log.dbg("W=\n", new MtrxDbgView(W));
   Mtrx WSJS = calcWsjs(W, openN);                  log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
   Mtrx WCJC = calcWcjc(W);                         log.dbg("WCJC=\n", new MtrxDbgView(WCJC));
@@ -431,6 +438,36 @@ protected Mtrx calcW(int calcNum) {
           G += (xx / (ei - sysTotE));       //log.dbg("G=", G);
         }
       }
+      res.set(t, t2, G);
+      res.set(t2, t, G);
+    }
+  }
+  return res;
+}
+protected Mtrx calcW_DBG(int calcNum) {
+  double[][] X = jmX.getArray();
+  int sN = getSysBasisSize();
+  int tN = calcNum;
+  Mtrx res = new Mtrx(tN, tN);
+  double[] sysE = getSysEngs().getArr();        //log.dbg("sysConfH=", getSysEngs());
+  for (int t = 0; t < tN; t++) {     //log.dbg("t = ", t);  // Target channels
+    for (int t2 = t; t2 < tN; t2++) {
+      double G = 0;
+      for (int i = 0; i < sN; i++) {
+//        if (exclSysIdx == i) { // DEBUG
+//          continue;
+//        }
+        double ei = sysE[i];
+        double xx = X[t][i] * X[t2][i];     //log.dbg("xx=", xx);
+        if (Double.compare(ei, sysTotE) == 0) {
+//          double eps = calcZeroG(i, sysE);
+          throw new IllegalArgumentException(log.error("sysE[i="+i+"]=sysTotE=" + sysTotE));
+//          G += (xx / eps);
+        } else {
+          G += ((ei - sysTotE) / xx);       //log.dbg("G=", G);
+        }
+      }
+      G = 1. / G;
       res.set(t, t2, G);
       res.set(t2, t, G);
     }
