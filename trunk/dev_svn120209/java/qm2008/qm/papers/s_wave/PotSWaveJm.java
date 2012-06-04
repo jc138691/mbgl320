@@ -52,14 +52,18 @@ public void runJob() {
 //  R_LAST = 150;
   LCR_N = 3001;
   R_LAST = 300;
-//  ENG_FIRST = 0.01f;
-  ENG_FIRST = 0.001f;
-  ENG_LAST = 1.f;
+
+//  ENG_FIRST = 0.84f;
+//  ENG_LAST = 0.86;
+//  ENG_N = 1001;
+  ENG_FIRST = 0.01f;
+  ENG_LAST = 10.f;
   ENG_N = (int)(ENG_LAST / ENG_FIRST);
+
   calc(10);
 //  calc(12);
   calc(20);
-  calc(40);
+//  calc(40);
 //  calc(16);
 //  calc(18);
 //  calc(20);
@@ -95,7 +99,7 @@ public void calc(int newN) {
   res.setCalcLabel(makeLabel(mthd));
   res.writeToFiles();
 }
-protected static String makeLabel(ScttMthdBaseE1 method) {
+protected String makeLabel(ScttMthdBaseE1 method) {
   return Jm2010Common.makeLabelBasisOptN();
 }
 protected JmMthdE1 makeMthd(CalcOptE1 calcOpt) {

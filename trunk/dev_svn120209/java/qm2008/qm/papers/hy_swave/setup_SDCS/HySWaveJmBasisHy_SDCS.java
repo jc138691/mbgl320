@@ -31,7 +31,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   CALC_TRUE_CONTINUUM = true; // if TRUE, increase LCR_N by about timesSelf 2.5
 
   CALC_SDCS = true;
-  KATO_N = 1; //
+  JM_TAIL_N = 1; //
   SDCS_ENG_N = 50;
 
   USE_CLOSED_CHANNELS = true;

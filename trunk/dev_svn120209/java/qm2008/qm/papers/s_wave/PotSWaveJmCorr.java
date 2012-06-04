@@ -1,10 +1,11 @@
 package papers.s_wave;
 import atom.data.AtomHy;
+import papers.hy_swave.Jm2010Common;
 import qm_station.QMSProject;
 import scatt.jm_2008.e1.CalcOptE1;
 import scatt.jm_2008.e1.JmMthdCorrE1;
 import scatt.jm_2008.e1.JmMthdE1;
-import scatt.jm_2008.e1.JmMthdE1_OLD;
+import scatt.jm_2008.e1.ScttMthdBaseE1;
 
 import javax.utilx.log.Log;
 /**
@@ -27,10 +28,13 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
   // Note: run one at a time as only one set of result files is produced
 
-  KATO_N = 10;
+  JM_TAIL_N = 2;
   runJob();
 }
 protected JmMthdE1 makeMthd(CalcOptE1 calcOpt) {
   return new JmMthdCorrE1(calcOpt);
+}
+protected String makeLabel(ScttMthdBaseE1 method) {
+  return lgrrOptN.makeLabel() + "_TAIL"+JM_TAIL_N + ".dat";
 }
 }
