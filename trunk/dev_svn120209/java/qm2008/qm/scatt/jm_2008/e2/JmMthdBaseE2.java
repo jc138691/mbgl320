@@ -515,17 +515,11 @@ public int getExclSysIdx() {
 public void setExclSysIdx(int exclSysIdx) {
   this.exclSysIdx = exclSysIdx;
 }
-public ScttRes calcMidSysEngs() {
-  throw new IllegalArgumentException(log.error("[19Sep2011] This idea does not work. The convergence is slow in Nt, not in N!!!"));
-//    Vec scttEngs = EngGridFactory.makeMidPoints(sysEngs);
-//    double initTrgtE = trgtE2.getInitTrgtEng();
-//    scttEngs.add(-initTrgtE);
-//    return calc(scttEngs);
-}
-public ScttRes calcWithMidSysEngs() {
-  Vec scttEngs = EngGridFactory.makeWithMidPoints(sysEngs);
-  double initTrgtE = trgtE2.getInitTrgtEng();
-  scttEngs.add(-initTrgtE);
+public ScttRes calcForMidSysEngs() {  log.setDbg();
+  Vec scttEngs = EngGridFactory.makeMidPoints(sysEngs);  log.dbg("sysEngs=", new VecDbgView(sysEngs));
+                                                         log.dbg("scttEngs=", new VecDbgView(scttEngs));
+  double initTrgtE = trgtE2.getInitTrgtEng();            log.dbg("initTrgtE=", initTrgtE);
+  scttEngs.add(-initTrgtE);                              log.dbg("scttEngs-initTrgtE=", new VecDbgView(scttEngs));
   return calc(scttEngs);
 }
 }

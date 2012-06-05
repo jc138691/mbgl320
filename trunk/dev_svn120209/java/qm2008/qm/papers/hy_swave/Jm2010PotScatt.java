@@ -67,8 +67,8 @@ public class Jm2010PotScatt extends Jm2010CommonR {
     JmMthdE1_OLD method = new JmMthdE1_OLD(calcOpt);
     method.setOverD(D);
     method.setSysEngs(eigEng);
-    ScttRes res = method.calcForScatEngModel();                  log.dbg("res=", res);
-//    ScttRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
+    ScttRes res = method.calcForScttEngModel();                  log.dbg("res=", res);
+//    ScttRes res = method.calcForMidSysEngs();                  log.dbg("res=", res);
 
 //    FuncVec func = new FuncVecToString(res.getCross());
 //    FileX.writeToFile(func.toString(), HOME_DIR, "cross", "cross_"+ lgrrOptN.makeLabel()+".csv");

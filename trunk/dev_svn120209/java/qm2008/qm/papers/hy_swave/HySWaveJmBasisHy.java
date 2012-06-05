@@ -47,14 +47,18 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
   MODEL_NAME = "HySWaveBasisHy";    MODEL_DIR = MODEL_NAME;
   CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about timesSelf 2.5
-  LAMBDA = 2; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
+  LAMBDA = 1; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 //    LAMBDA = 1.7;
 
   // Note: run one at a time as only one set of result files is produced
+  ENG_FIRST = 0.01;
+  ENG_LAST = 10;
+  ENG_N = 101;
+
 //    setupEngExcite();
 //    setupResonances_n2_n3_S1();
 //    setupResonances_n2_S1();
-  setupResonances_n2_S1_TestClosed();
+//  setupResonances_n2_S1_TestClosed();
 //    setupEngExcite();
 //    setupEngTICS();
 //    setupEngSDCS();
@@ -142,7 +146,6 @@ public void calc(int newN, int newNt) {
   }
 
   ScttRes res;
-//    res = method.calcMidSysEngs();                  log.dbg("res=", res);
   if (scttEngs == null) {
     scttEngs = mthd.calcScattEngs();
 //      Vec sysScatEngs = method.calcSysScatEngs();
@@ -155,7 +158,9 @@ public void calc(int newN, int newNt) {
 //      scttEngs = vE.append(vE2);
 //      scttEngs.sort();
   }
-  res = mthd.calc(scttEngs);                  log.dbg("res=", res);
+//  res = mthd.calc(scttEngs);                  log.dbg("res=", res);
+  res = mthd.calcForMidSysEngs();                  log.dbg("res=", res);
+
   setupScattRes(res, mthd);                        log.dbg("res=", res);
   res.writeToFiles();
 }

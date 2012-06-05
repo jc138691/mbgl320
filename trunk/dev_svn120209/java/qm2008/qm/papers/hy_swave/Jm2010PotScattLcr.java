@@ -71,9 +71,9 @@ public void calc(int newN) {
   JmMthdE1_OLD method = new JmMthdE1_OLD(calcOpt);
   method.setOverD(D);
   method.setSysEngs(sysEngs);
-  ScttRes res = method.calcForScatEngModel();
+  ScttRes res = method.calcForScttEngModel();
   log.dbg("res=", res);
-//    ScttRes res = method.calcMidSysEngs();                  log.dbg("res=", res);
+//    ScttRes res = method.calcForMidSysEngs();                  log.dbg("res=", res);
 //
   setupScattRes(res, method);
   res.setCalcLabel(makeLabel(method));

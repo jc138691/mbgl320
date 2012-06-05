@@ -35,8 +35,8 @@ public void calc(int newN) {
   N = newN;
   initProject();
   potScattTestOk();
-  pot = WfFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
-//  pot = WfFactory.makePotFBornTest(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+//  pot = WfFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+  pot = WfFactory.makePotFBornTest(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx sysH = new PotHMtrxLcr(L, orthN, pot);
   Vec sysEngs = sysH.getEigEngs();                   log.dbg("eigVal=", new VecDbgView(sysEngs));
 
@@ -45,7 +45,7 @@ public void calc(int newN) {
   method.setPotH(sysH);
   method.setOrth(orthN);
 
-  ScttRes res = method.calcForScatEngModel();      log.dbg("res=", res);
+  ScttRes res = method.calcForScttEngModel();      log.dbg("res=", res);
 
   setupScattRes(res, method);
   res.setCalcLabel(makeLabel(method));

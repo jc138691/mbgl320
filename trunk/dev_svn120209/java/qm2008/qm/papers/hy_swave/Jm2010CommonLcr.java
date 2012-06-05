@@ -98,6 +98,7 @@ protected void initProject() {
 protected void potScattTestOk() {
   log.info("-->potScattTestOk()");
   FlowTest.setLog(log);
+  FlowTest.unlockMaxErr();
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
     if (!new WfFactory().ok()) return;
