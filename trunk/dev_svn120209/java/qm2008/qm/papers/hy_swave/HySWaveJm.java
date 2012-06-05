@@ -54,10 +54,10 @@ public class HySWaveJm extends HyLikeSWaveJm {
   public void runJob() {
       // upto N=40
     int currNt = 20;
-    int currN = 21;
+    int currN = 41;
     LCR_FIRST = -5;
     LCR_N = 1501;
-    R_LAST = 150;
+    R_LAST = 200;
 
 //      // upto N=40
 //    int currNt = 40;
@@ -79,56 +79,6 @@ public class HySWaveJm extends HyLikeSWaveJm {
 //    R_LAST = 300;
 
 //    KEEP_CLOSED_N = 10;
-
-    SPIN = Spin.SINGLET;
-    calc(currN, currNt);
-
-    SPIN = Spin.TRIPLET;
-    calc(currN, currNt);
-  }
-  public void runJob_OLD() {
-    // upto N=40
-    LCR_FIRST = -5;
-    LCR_N = 701;
-    R_LAST = 200;
-
-//    // Nt= 90
-//    int currN = 91;
-//    LCR_FIRST = -5;
-//    LCR_N = 1601;
-//    R_LAST = 500;
-
-//    // Nt= 80
-//    int currN = 81;
-//    LCR_FIRST = -5;
-//    LCR_N = 1401;
-//    R_LAST = 400;
-
-//    // Nt= 70
-//    int currN = 71;
-//    LCR_FIRST = -5;
-//    LCR_N = 1201;
-//    R_LAST = 330;
-
-//    // Nt= 60
-//    int currN = 61;
-//    LCR_FIRST = -5;
-//    LCR_N = 1101;
-//    R_LAST = 300;
-
-//    // Nt= 50
-//    int currN = 31;
-//    LCR_FIRST = -5;  //-5
-//    LCR_N = 901;  //901
-//    R_LAST = 250;
-
-    // Nt= 9
-    int currN = 21;
-//    int currNt = 10;
-    int currNt = currN - 1;
-    LCR_FIRST = -5;  //-5
-    LCR_N = 901;  //901
-    R_LAST = 250;
 
     SPIN = Spin.SINGLET;
     calc(currN, currNt);
