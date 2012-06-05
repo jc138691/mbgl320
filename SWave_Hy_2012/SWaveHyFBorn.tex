@@ -1,0 +1,520 @@
+\documentclass[aip,pra,showpacs,aps,twocolumn,groupedaddress,floatfix]{revtex4}
+%\documentclass[showpacs,aps,twocolumn,groupedaddress,floatfix]{revtex4}
+%\documentclass[aip,jcp]{revtex4-1}
+\usepackage{graphicx,amsbsy,bm}
+\usepackage{dcolumn}
+\usepackage{amsmath}
+
+\usepackage{currfile}
+\usepackage{datetime}
+
+\newcommand{\etal}{{\em et~al.\/}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\vecr}{{\bf r}}
+\newcommand{\dd}{\mbox{d}}
+\newcommand{\dr}{\mbox{d} r}
+\newcommand{\vare}{\varepsilon}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+
+
+\newcommand{\isum}%
+{\mathop{\hbox{$\displaystyle\sum\kern-13.2pt\int\kern1.5pt$}}}
+
+\begin{document}
+
+\title {Accelerated J-matrix method}
+
+\author{D. A. Konovalov}
+\affiliation{Discipline of Information Technology, School of Business, James Cook University, Townsville, QLD 4811, Australia}
+
+\author{I. Bray}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University of Technology, GPO Box U1987, Perth, WA 6845, Australia}
+
+
+
+\date{\today}
+\date{\today, \currenttime}
+
+\begin{abstract}
+todo
+
+
+\end{abstract}
+
+\pacs{34.80.Dp} %34.80.Dp	Atomic excitation and ionization
+\maketitle
+This file is: \currfilename.
+
+
+\section{INTRODUCTION}
+
+todo
+
+\section{THEORY}
+
+\subsection{Laguerre basis sets}
+Three closely related basis sets will be required.
+First is the set of non-orthogonal Laguerre functions $\{ \xi_n(r)\}_{n=0}^\infty$ \cite{BR76p1491, YF75} and it will be referred to as {\em the JM functions},
+\beq
+\xi_n(r) = x^{l+1} \mbox{e}^{-x /2}
+L_n^{2l+1}(x),
+\label{Ln_JM}\eeq
+where $x=\lambda r$, $l=0$ in this $S$-wave model, and $L_n^{\alpha}(x)$ are the associated Laguerre polynomials \cite{abramowitz}, e.g. $L_0^{\alpha}(x)=1$ and $L_1^{\alpha}(x)=-x+\alpha+1$.
+
+The second set $\{ P_n(r)\}_{n=0}^\infty$, labeled as {\em the Laguerre basis}, is given by
+\beq
+P_n(r) = C_n^{-\frac{1}{2}} x^{l+1} \mbox{e}^{-x /2}
+L_n^{2l+2}(x),
+\label{Ln_orthog}\eeq
+\beq
+\langle P_n | P_{n'} \rangle = \int_0^{\infty} \mbox{d}r \ P_n(r) P_{n'}(r)=\delta_{nn'},
+\label{R_n_norm}\eeq
+where $C_n=(n+2l+2)!/(\lambda n!)$. Note that for any $N$, the subsets $\{ \xi_n(r)\}_{n=0}^{N-1}$ and $\{ P_n(r)\}_{n=0}^{N-1}$ define identical functional $L^2$ subspace \cite{KB10p022708}.
+
+The third set $\{ \overline{ \xi}_n(r)\}_{n=0}^\infty$ is made from functions
+bi-orthogonal to the JM functions \cite{BR76p1491, YF75},
+\beq
+\overline{\xi}_n(r) = \frac{n!}{(n+2l+1)!} \frac{\xi_n(r)}{r},
+\ \ \ \langle \xi_n | \overline{\xi}_{n'} \rangle = \delta_{nn'}.
+\eeq
+
+\subsection{TODO Harris one channel solution}
+
+\subsection{Potential Scattering}
+Let $\psi_{1}$ and $\psi_{2}$ be regular and irregular solutions of
+\beq
+(E-H_0)  \psi_{\alpha} (r) =0, \ \ \ \alpha=\{1,2\},
+\label{H_0_E_psi}\eeq
+\beq
+\psi_{1}(r=0) = 0, \ \ \ \psi_{2}(r=0) \neq 0,
+\label{psi_1_2}\eeq
+Within the $S$-wave model, $H_0 = -\frac{1}{2} d^2/dr^2$ and
+\beq
+\psi_{1}(r) = \sin(kr) ,\ \ \
+\psi_{2}(r) = \cos(kr).
+\eeq
+Todo: cite regularization
+\beq
+\widetilde{\psi}_{1}(r) \equiv \psi_{1}(r),
+\ \ \ \widetilde{\psi}_{2}(r) = \psi_{2}(r) - e^{-\lambda r /2}.
+\eeq
+\beq
+\widetilde{\psi}_{\alpha} = \sum_{n=0}^\infty C_{\alpha n} \xi_n,
+\ \ \ C_{\alpha n} = \langle \widetilde{\psi}_{\alpha} | \overline{\xi}_n \rangle,
+\eeq
+
+\beq
+(E-H_0-V) \Psi (r) =0, \ \ \ E=k^2/2,
+\eeq
+\beq
+\Psi(r \rightarrow \infty) \sim \sin(kr+\delta), \ \ \ \Psi(0)=0,
+\eeq
+\beq
+\Psi^N(r) = \sum_{n=0}^{N-1} A_n \xi_n(r) + \sum_{m=N}^{\infty} C_m \xi_m(r),
+\eeq
+\beq
+C_m = C_{1m} + R C_{2m}, \ \ \ R=\tan \delta.
+\eeq
+
+\subsection{First Born approximation}
+\beq
+(E-H_0) \Psi_B (r) = V \psi_{1}(r),
+\eeq
+\beq
+(z-H_0) G_0(r,r', z) = \delta(r-r'),
+\eeq
+From the general theory of the second-order linear differential equations
+\beq
+G_0(r,r', z) = g \psi_{1}(r_<) \psi_{2}(r_>),
+\eeq
+\beq
+H_0 y(r) = (p(r) y')' - q(r) y,\ \ \ p = -1/2, \ \ q = 0,
+\eeq
+\beq
+W = \psi_{1}(r) \psi_{2}'(r) - \psi_{2}(r) \psi_{1}'(r) = -k,
+\eeq
+\beq
+g = (pW)^{-1}= 2/k,
+\eeq
+\beq \barr{l}
+| \Psi_B \rangle = | \psi_1 \rangle + G_0 V |\psi_1 \rangle,\\
+\Psi_B(r) = \psi_1(r) +  \int_0^\infty dr'\ G_0(r,r') V(r') \psi_1(r'),
+\earr \eeq
+\beq \barr{l}
+\Psi_B(r) = \psi_1(r) +  G_2(r) \psi_1(r) + G_1(r) \psi_2(r),\\
+G_1(r) = g \int_0^r dr'\ \psi_1(r') V(r') \psi_1(r'), \\
+G_2(r) = g \int_r^\infty dr'\ \psi_2(r') V(r') \psi_1(r'),
+\earr \eeq
+
+Calculate first Born
+\beq
+R_{B} = (-2/k) \int_0^\infty dr\ \psi_1(r) V(r) \psi_1(r), \\
+\eeq
+
+\beq
+C_m = C_{1m} + R C_{2m}.
+\eeq
+\beq
+\Psi^N(r) = \sum_{n=0}^{N-1} A_n \xi_n(r) + \sum_{m=N}^{\infty} C_m \xi_m(r),
+\eeq
+\beq
+\Psi_B(r) = \sum_{n=0}^{N-1} B_n \xi_n(r) + \sum_{m=N}^{\infty} B_m \xi_m(r),
+\eeq
+\beq
+\lim_{n \rightarrow \infty} A_n = B_n,
+\eeq
+
+
+\subsection{JM First Born correction}
+\beq
+(E-H_0) \Psi (r) = V \Psi(r),
+\eeq
+Exact $R = (-2/k) \int_0^\infty dr\ \psi_1(r) V(r) \Psi(r)$
+\beq
+R_{JM} = (-2/k) \int_0^\infty dr\ \psi_1(r) V(r) \Psi^N(r),
+\eeq
+
+\subsection{First Born}
+
+
+\subsection{OLD}
+where $\delta$ is the phase shift and $E=k^2/2$ is the total energy of the system.
+
+The JM formalism   \cite{HY74p1201, YF75} requires a set of real $L^2$  tridiagonal (or diagonal) basis functions, $\{|\phi_n\rangle\}_{n=0}^\infty$ , such that   $\phi_n(0)=0$ and $(K-E)$'s matrix is tridiagonal,
+\beq
+J_{nm}=\langle\phi_n|K-E|\phi_m\rangle=0 , \ \ \  |n-m|>1, \label{Jnm}
+\eeq
+\beq
+\langle\phi_n|\phi_m\rangle=0 , \ \ \  |n-m|>1.
+\eeq
+To achieve a uniform treatment of both potential and multichannel scattering, an additional basis of $N$ orthonormal functions $\{|\chi_n\rangle\}_{n=0}^{N-1}$  is defined as linear combinations of the first $N$  JM basis functions,
+\beq
+\chi_n(r)=\sum_{m=0}^{N-1} D_{nm} \phi_m(r). \label{chi_n}
+\eeq
+For the potential scattering, such orthonormal basis could be constructed from the diagonalization of the system's Hamiltonian,
+\beq
+\langle\chi_n|H|\chi_m\rangle=e_n\delta_{nm} , \ \ \ \langle\chi_n|\chi_m\rangle=\delta_{nm}. \label{chi_H}
+\eeq
+
+Closely following \citet{BR76p1491} except for the use of the orthonormal basis, $\Psi(r)$  is approximated by $\Psi^N(r)$,
+\beq
+\Psi(r) \approx \Psi^N(r)=\sum_{m=0}^{N-1} \chi_m(r) a_m  + \sum_{p=N}^{\infty} \phi_p(r) f_p, \label{Psi_N}
+\eeq
+\beq
+f_p=s_p+Rc_p, \label{f_p}
+\eeq
+where $a_m$ are the {\em inner}-space expansion coefficients describing  the electron's interaction with  $V(r)$, and
+$R=\tan\delta$ is the $s$-term of the reactance matrix (also known as the $K$ matrix \cite{Taylor72}).
+The second sum in (\ref{Psi_N}) is the {\em outer}-space part describing a free moving electron in terms of the regular or sine-like ($s_p$ -coefficients) and irregular or cosine-like ($c_p$ -coefficients) solutions of
+\beq
+\sum_{p=0}^{\infty} J_{np}s_p=0, \ \ \
+\sum_{p=0}^{\infty} J_{np}c_p=w\delta_{n,0}, \label{JnmSCm}
+\eeq
+with a uniquely defined constant $w$.
+The unknown $a_m$ and $R$ are found by simultaneously solving
+\beq
+\langle\chi_n|H-E|\Psi^N\rangle=0 , \ \ \ n<N, \label{chi_H_E_Psi}
+\eeq
+\beq
+\langle\phi_n|H-E|\Psi^N\rangle=0 , \ \ \ n \geq N. \label{phi_H_E_Psi}
+\eeq
+Note that the equations (\ref{JnmSCm}) are central to the JM formalism as they could be solved analytically for some types of the basis functions \cite{YAA01p042703}. To take advantage of the analytical solutions for $s_n$  and  $c_n$, the representation of $V(r)$  in the chosen basis is truncated to an $N\times N$  matrix by retaining only the inner functional-space contributions,
+\beq
+V_{nm} \approx V_{nm}^N = \left\{
+\begin{array}{ll}
+\langle\phi_n|V|\phi_m\rangle & \mbox{if $n,m < N$} \\
+0 & \mbox{otherwise,}   \end{array}  \right.
+\label{V_N}
+\eeq
+obtaining
+\beq
+\langle\chi_n|H-E|\phi_p\rangle \approx \langle\chi_n|K-E|\phi_p\rangle, \ \ \ n<N, \ p\geq N,
+\label{chi_H_E_phi_p}
+\eeq
+\beq
+\langle\phi_p|H-E|\phi_{p'}\rangle \approx J_{pp'}, \ \ \ p,p'\geq N.
+\label{phi_H_E_phi_p}
+\eeq
+ By this neglecting $V_{nm}$ in the outer functional space, Eqs. (\ref{chi_H_E_Psi}) and (\ref{phi_H_E_Psi}) are reduced to the following three cases
+\beq
+(e_n-E)a_n=-D_{n,N-1}J_{N-1,N}f_N, \ \ \ n<N,
+\label{n_N_1}
+\eeq
+\beq
+\sum_{m=0}^{N-1}  D_{m,N-1}a_m=f_{N-1}, \ \ \ n=N,
+\label{n_N}
+\eeq
+\beq
+\sum_{p=N}^{\infty}  J_{np}f_p=0, \ \ \ n>N,
+\label{n_GT_N}
+\eeq
+where (\ref{n_GT_N}) is automatically satisfied via (\ref{JnmSCm}) and
+\beq
+J_{NN}f_N+J_{N,N+1}f_{N+1}=-J_{N,N-1}f_{N-1}
+\eeq
+was used in (\ref{n_N}).
+
+Note that while the original JM formulation used $\phi_m(r)$ instead of $\chi_m(r)$ in (\ref{Psi_N}), the final expression for $R$ remains the same completing the JM treatment of the potential scattering,
+\beq
+R= - (WCJC)^{-1} (WSJS),
+\label{R}
+\eeq
+where the $s$-wave partial $S$-matrix and elastic cross section are given by
+\beq
+S_{00}=(1+\mbox{i}R)(1-\mbox{i}R)^{-1},
+\eeq
+\beq
+\sigma_{00}=\frac{\pi}{k^2} |S_{00}-1|^2,
+\eeq
+respectively, and where
+\beq
+(WSJS) = W s_N J_{N,N-1} + s_{N-1},
+\eeq
+\beq
+(WCJC) = W c_N J_{N,N-1} + c_{N-1},
+\eeq
+\beq
+W= \sum_{m=0}^{N-1} \frac{D_{m,N-1}^2}{e_m-E}.
+\label{g}
+\eeq
+
+
+\subsection{Multichannel Scattering}
+The focus of this study is the Temkin-Poet model \cite{P78, T62} of electron-atomic-hydrogen non-relativistic collision with zero total angular momentum for two electrons
+\beq
+(H-E)\Psi(r_1,r_2)=0, \label{H_E_Psi}
+\eeq
+\beq
+H=H_t+K_2+V(r_1,r_2),
+\label{H_HyMinus}
+\eeq
+\beq
+H_t=K_1-\frac{1}{r_1}, \ \ \ V(r_1,r_2)= -\frac{1}{r_2} + \frac{1}{\max (r_1, r_2)},
+\label{V_12}
+\eeq
+where $\Psi(r_1, r_2)=(-1)^S\Psi(r_2, r_1)$ is symmetric for the singlet (total spin $S=0$) and antisymmetric for triplet $S=1$ scattering.
+
+While the use of the system's eigenvectors in the JM expansion of $\Psi(r)$ (\ref{Psi_N}) yields, arguably, a simpler set of equations for $a_m$ and $R$, the main advantage of this approach lies in it being naturally extendable to the multichannel scattering as shown below.
+
+An interesting clarification is now required before JM is generalized to the multichannel case. The purpose of the JM method is to solve a scattering problem rather than the electronic structure of the target or the target-electron systems. Therefore the target states must be orthogonal to the outer JM basis functions, $\{|\phi_n\rangle\}_{n=N}^\infty$, to avoid interfering with the JM scattering equations. Keeping this in mind and following the approach outlined in the potential scattering, an orthonormal basis is created from the first $N$ JM basis functions (\ref{chi_n}) via the following two-step procedure.
+
+The first step ensures that any target state is orthogonal to the outer JM functions, $\{|\phi_n\rangle\}_{n=N}^\infty$. This is always true if the first $N_t<N$ orthonormal functions, $\{|\chi_{\alpha}\rangle\}_{\alpha=0}^{N_t-1}$, are created by diagonalizing the target Hamiltonian on the subset of only the first $N_t$ JM basis functions,
+\beq
+\langle\chi_{\alpha}|H_t|\chi_{\beta}\rangle=e_{\alpha}\delta_{\alpha \beta}, \ \ \
+\langle\chi_{\alpha}|\chi_{\beta}\rangle=\delta_{\alpha \beta}, \label{chi_Ht}
+\eeq
+\beq
+\chi_{\alpha}(r)=\sum_{m=0}^{N_t-1} d_{\alpha m} \phi_m(r). \label{chi_alpha}
+\eeq
+Hereafter the Greek indices will be assumed to vary between zero and $N_t-1$, e.g. $0\leq \alpha, \beta < N_t$.
+
+In the second step, the remaining $N-N_t$ orthonormal basis function is constructed from all first $N$ JM functions, e.g.
+\beq
+\chi_{N-1}(r)=\sum_{m=0}^{N-1} d_{N-1,m} \phi_m(r) \label{chi_alpha_N}
+\eeq
+such that $\langle\chi_{n}|\chi_{m}\rangle=\delta_{n, m}$, $0\leq n, m < N$. Equations (\ref{chi_alpha}) and (\ref{chi_alpha_N}) could be combined into a single expression (\ref{chi_n}), where
+\beq
+D_{nm} = \left\{
+\begin{array}{ll}
+0 & \mbox{if $n < N_t$ and $m \geq N_t$} \\
+d_{nm} & \mbox{otherwise.}   \end{array}  \right.
+\label{D_nm}
+\eeq
+
+If the lowest energy target eigenvector $\chi_0(r)$  describes the ground target state exactly or with sufficient accuracy and considering only the case with the target Hydrogen atom being in its ground state before the collision, the total energy of the system is given by
+\beq
+E=e_0+E_0, \ \ \ E_0 = k_0^2/2.\label{sys_E}
+\eeq
+
+Using $\{|\chi_{n}\rangle\}_{n=0}^{N-1}$  as one-electron basis, the two-electron basis could be constructed for the inner JM functional space via
+\beq
+\Phi_{\beta m}(r_1, r_2) = \hat{A}_{\beta m} \chi_{\beta}(r_1) \chi_{m}(r_2) \label{Phi_beta}
+\eeq
+where $0 \leq \beta < N_t$  and $0 \leq m < N$ such that $\beta \leq m$ for $S=0$ and $\beta < m$ for $S=1$, and where $\hat{A}$ is the symmetrization operator defined from the coordinate space exchange operator $\hat{P}_r$ via
+\beq
+\hat{A}_{nm} |\chi_{n} \chi_{m} \rangle =
+b_{nm} (1 + (-1)^S \hat{P}_r) |\chi_{n} \chi_{m} \rangle,
+\label{A_symm}
+\eeq
+with the normalization constant $b_{nm}=\frac{1}{2}$ for $n=m$ and $b_{nm}=\frac{1}{\sqrt{2}}$ for $n \not= m$.
+The system's eigenvectors are then obtained by diagonalizing $H$ using all available two electron configurations
+\beq
+\langle\xi_i|H|\xi_j\rangle=E_i\delta_{ij} , \ \ \ \langle\xi_i|\xi_j\rangle=\delta_{ij}, \label{xi_H_xi}
+\eeq
+\beq
+\xi_i(r_1, r_2) = \sum_{\beta' =0}^{N_t-1} \sum_{m = \beta'}^{N-1} C_{i, \beta' m} \Phi_{\beta' m}(r_1, r_2). \label{C_ij}
+\eeq
+
+Extending the above JM approach from the potential scattering to the multichannel scattering and following \citet{BR76p1491} whenever possible, $\Psi(r_1, r_2)$ is approximated by $\Psi^N(r_1, r_2)$ for the given total energy $E$
+\beq
+\Psi^N=\sum_{j} \xi_j a_j
++ \sum_{\alpha = 0}^{N_t-1} \sum_{p=N}^{\infty} \hat{A}_{\alpha p} \chi_{\alpha}(r_1) \phi_p(r_2) f_p^{\alpha \beta}, \label{Psi_N_12}
+\eeq
+\beq
+f_p^{\alpha \beta} = \left( s_p^{\alpha} \delta_{\alpha \beta}
++ c_p^{\alpha} R_{\alpha \beta} \right) / \sqrt{k_{\alpha}}, \label{f_alpha_beta}
+\eeq
+where $k_{\alpha}=\sqrt{2|E-e_{\alpha}|}$. The {\em open} channels are defined by $(E-e_{\alpha})>0$ while
+for the {\em closed} channels, $(E-e_{\alpha}) \leq 0$, $s_p^{\alpha}=0$ and
+$c_p^{\alpha}$ is replaced by $(s_p^{\alpha} + \mbox{i} c_p^{\alpha})$ evaluated at $q_{\alpha}=\mbox{i}k_{\alpha}$.
+The index of the incident channel $\beta$ is defined only for the open channels in the (\ref{Psi_N_12}) and (\ref{f_alpha_beta}), $0 \leq \beta < N_E$, where $N_E$ is the number of open channels, $1 \leq N_E \leq N_t$.
+
+Similar to (\ref{chi_H_E_Psi}) and (\ref{phi_H_E_Psi}), the $a_j$ and $R_{\alpha \beta}$ coefficients are found by
+simultaneously solving the following equations for the inner and outer functional space, respectively,
+\beq
+\langle\xi_i|H-E|\Psi^N\rangle=0,  \label{xi_H_E_Psi}
+\eeq
+\beq
+\langle \hat{A} \chi_{\alpha'}(r_1) \phi_{p'}(r_2)|H-E|\Psi^N\rangle=0 , \ \ \ p' \geq N. \label{chi_phi_H_E_Psi}
+\eeq
+As before, the target-projectile interaction matrix elements involving outer JM functions are ignored, i.e.
+$\langle \phi_n \phi_{p} |V|\phi_{m} \phi_{p'} \rangle=0$ when $p \geq N$ or $p' \geq N$,
+obtaining
+\beq
+\langle \chi_{\alpha} \chi_{m}|H-E|\chi_{\beta} \phi_p \rangle \approx
+\delta_{\alpha \beta} \delta_{pN} J_{N-1, N}^{\beta} D_{m, N-1},
+ \label{chi_chi_H_E_chi_phi}
+\eeq
+\beq
+\langle \chi_{m} \chi_{\alpha} |H-E|\chi_{\beta} \phi_p \rangle \approx 0,
+\eeq
+where $J_{nm}^{\beta} = \langle \phi_n |K-(E-e_\beta)|\phi_m \rangle.$
+
+
+After some algebra, the final set of JM multichannel equations becomes
+\beq
+(E_i - E) a_i = -\sum_{\alpha=0}^{N-1} X_i^{\alpha} J_{N-1,N}^{\alpha} f_N^{\alpha \beta},
+\label{a_i}
+\eeq
+\beq
+\sum_{j} X_j^{\alpha'} a_j = f_{N-1}^{\alpha' \beta},
+\label{a_j}
+\eeq
+\beq
+X_i^{\alpha} = \sum_{m=N_t}^{N-1}  C_{i,\alpha m} D_{m,N-1},
+\eeq
+and after elimination of $a_i$
+\beq
+ \sum_{\alpha=0}^{N_t-1}W_{\alpha' \alpha} J_{N-1,N}^{\alpha} f^{\alpha \beta}_N=-f_{N-1}^{\alpha' \beta},
+\label{Eq_for_f_alpha}
+\eeq
+\beq
+W_{\alpha' \alpha}= \sum_j \frac{X_j^{\alpha'}X_j^{\alpha}}{E_j-E}.
+\label{W_alpha}
+\eeq
+Solving (\ref{Eq_for_f_alpha}) for the reactance matrix yields
+\beq
+R_{\alpha \beta} = - \sum_{\alpha'=0}^{N_t-1} (WCJC)_{\alpha \alpha'}^{-1} (WSJS)_{\alpha' \beta},
+\label{R_alpha}
+\eeq
+where $0 \leq \beta < N_E$,
+\beq
+(WSJS)_{\alpha' \beta}= \left( W_{\alpha' \beta} J_{N,N-1}^{\beta} s_N^{\beta} + \delta_{\alpha' \beta}s_{N-1}^{\beta} \right) / \sqrt{k_{\beta}},
+\label{S_alpha}
+\eeq
+\beq
+(WCJC)_{\alpha' \alpha}= \left( W_{\alpha' \alpha} J_{N,N-1}^{\alpha} c_N^{\alpha} + \delta_{\alpha' \alpha}c_{N-1}^{\alpha} \right) / \sqrt{k_{\alpha}}.
+\label{C_alpha}
+\eeq
+Using only the open-channel portion of $R$, the scattering matrix $S$ and cross sections are given by
+\beq
+S_{\beta' \beta} = \sum_{\beta''=0}^{N_E-1} (1+\mbox{i}R)_{\beta' \beta''} (1-\mbox{i}R)_{\beta'' \beta}^{-1},
+\eeq
+\beq
+\sigma_{\beta' \beta} = \frac{\pi}{k_{\beta}^2}\frac{(2S+1)}{4}|S_{\beta' \beta} - \delta_{\beta' \beta}|^2.
+\eeq
+
+
+
+
+\subsection{Laguerre Basis}
+
+The remaining $N-N_t$ basis functions are conveniently given by
+\beq
+\chi_n(r) = R_n(r) / \sqrt{C_n}, \ \ \ N_t \le n < N.
+\eeq
+
+The final expressions for the reactance matrix require  $J_{n,n-1}^{\alpha}$, $s_n^{\alpha}$ and $c_n^{\alpha}$ which are known exactly for this basis:
+\beq
+J_{n,n-1}^{\alpha}=\frac{n(n+1) q_{\alpha}}{2 \sin\theta},
+\eeq
+\beq
+c_n^{\alpha}+\mbox{i}s_n^{\alpha}
+= -\frac{\mbox{e}^{-\mbox{i}(n+1)\theta}}{(n+1) },
+\eeq
+where only $l=0$ is shown, $\cos\theta=(\eta^2-\frac{1}{4})/(\eta^2+\frac{1}{4})$, $\sin\theta=\eta/(\eta^2+\frac{1}{4})$, $\eta=q_{\alpha}/\lambda$, and $q_{\alpha}=\sqrt{2(E-e_{\alpha})}$ becomes complex for the closed channels.
+
+
+\subsection{Ionization}
+Bray and Stelbovics \cite{BS93l} demonstrated that correct total ionization cross section (TICS) could be calculated using only the $L^2$ description of atomic hydrogen. The TICS could be extracted from the channel cross sections by simply summing up the positive-energy target-state cross sections, i.e.
+\beq
+\sigma_{ion} \approx \sum_{\beta : e_\beta > 0} \sigma_{\beta, 0}, \label{TICS}
+\eeq
+where an atom is assumed to be in its ground state $\chi_0$ before the collision with electron. Note that Eq. (\ref{TICS}) could be corrected by considering projection to the functional space of the exact bound target states \cite{BS93l}, which speeds up the rate of convergence as a function of $N_t$.
+However the correction is not applied to demonstrate that the JM method potentially could applied to other scattering problems where the exact target states may not be known.
+
+Similar to the TICS, the single-differential ionization cross sections (SDCS) could be approximately extracted from the $L^2$ coupled-channel (CC) calculations without requiring the exact continuum target states \cite{KBM94pL413}.  The coupled-channel SDCS
+$\dd \sigma_{\mbox{{\tiny CC}}}/\dd \vare$
+is calculated at the channel energy values via
+\beq
+\int_0^{E} \dd \vare \frac{\dd \sigma_{ion}(\vare)}{\dd \vare} \approx
+\sum_{\beta : e_\beta > 0} w_\beta \frac{\dd \sigma_{\mbox{{\tiny CC}}}(e_\beta)}{\dd \vare},
+\label{SDCS_def}
+\eeq
+\beq
+\dd \sigma_{\mbox{{\tiny CC}}}(e_\beta) / \dd \vare= \sigma_{\beta, 0} / w_\beta,  \ \ \
+e_{\beta} > 0,
+\label{SDCS_from_w}
+\eeq
+where the energy integration weights are given by
+\beq
+\begin{array}{rl}
+& 0 < e_{\beta_c} < e_{\beta_c+1} < ... <  e_{\beta_E-1} < e_{\beta_E} \le E,  \\
+& w_{\beta_c}  = \frac{1}{2}(e_{\beta_c} + e_{\beta_c + 1} ), \\
+& w_{\beta} = \frac{1}{2} (e_{\beta+1}  - e_{\beta-1}), \ \ \
+\beta_c < \beta < \beta_E \\
+& w_{\beta_E}  = E - \frac{1}{2}(e_{\beta_E-1} + e_{\beta_E} ), \\
+& \sum_{\beta=\beta_c}^{\beta_E} w_{\beta} = E,
+\end{array}
+\label{w_ion}
+\eeq
+and where $\chi_{\beta_c}$ and $\chi_{\beta_E}$ are the {\em open} "continuum" target states with the lowest and largest positive energies, respectively.
+
+The above SDCS integration weights can also be related to
+the close-coupling definition of the ionization amplitude \cite{B02l}
+obtaining, in terms of Eq.~(\ref{SDCS_def}),
+\beq
+\bar{w}_\beta= |\langle \psi_{e_\beta} | \chi_{\beta} \rangle|^{-2}  ,
+\eeq
+where $\psi_{\vare}$ is the radial continuum Coulomb wave function satisfying
+\beq
+(H_t - \vare ) | \psi_{\vare} \rangle = 0, \ \ \ \langle \psi_{\vare} | \psi_{\vare'} \rangle = \delta(\vare-\vare').
+\eeq
+
+
+
+
+
+
+
+
+\section{RESULTS}
+todo
+
+\section{CONCLUSIONS}
+
+
+
+\begin{acknowledgments}
+todo
+\end{acknowledgments}
+
+
+\bibliographystyle{apsrev}
+\bibliography{..//bibtex//qm_references}
+%\bibliography{qm_references}
+
+\end{document}

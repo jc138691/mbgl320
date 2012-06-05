@@ -1,0 +1,112 @@
+%%\documentclass[aip,jcp]{revtex4-1}
+\documentclass[aip
+, pra
+, showpacs
+, aps
+, twocolumn
+%, onecolumn
+, groupedaddress
+, floatfix
+%, preprint
+]{revtex4}
+%]{revtex4-1}
+\usepackage{graphicx, amsbsy, bm, dcolumn, amsmath}
+
+\usepackage{currfile}
+\usepackage{datetime}
+
+\newcommand{\etal}{{\em et~al.\/}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\bfr}{{\bf r}}
+\newcommand{\bfk}{{\bf k}}
+\newcommand{\dd}{\mbox{d}}
+\newcommand{\dr}{\mbox{d} r}
+\newcommand{\vare}{\varepsilon}
+\newcommand{\calN}{{\cal N}}
+\newcommand{\di}{_{\mbox{\tiny{di}}}}
+\newcommand{\ex}{_{\mbox{\tiny{ex}}}}
+
+
+
+\newcommand{\isum}%
+{\mathop{\hbox{$\displaystyle\sum\kern-13.2pt\int\kern1.5pt$}}}
+
+\begin{document}
+
+\title {The ionization SDCS coupled-channels paradox or reality?}
+
+\author{D. A. Konovalov}
+\affiliation{Discipline of Information Technology, School of Business, James Cook University, Townsville, Queensland 4811, Australia}
+
+\author{I. Bray}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
+
+
+
+\date{\today}
+\date{\today, \currenttime}
+
+\begin{abstract}
+todo
+\end{abstract}
+
+\pacs{34.80.Dp} %34.80.Dp	Atomic excitation and ionization
+\maketitle
+This file is: \currfilename.
+
+
+
+\section{INTRODUCTION}
+Initial state $\Psi_i$, $q=(\bfr, \nu)$, $a$-atom, $b$-beam.
+Before the collision, the target and scatting electrons are in the spin states $| \chi_{\mu_a} \rangle$ and $| \chi_{\mu_b} \rangle$, respectively.
+After the collision, each of the two electron are detected with $| \chi_{\mu_\alpha} \rangle$ and momentum $\bfk_\alpha$, $\alpha=\{1,2\}$.
+\beq
+\Psi_i(q_1, q_2) = \chi_{\mu_a}(\nu_1) \chi_{\mu_b}(\nu_1) \phi_0(\bfr_1) \psi_{\bfk_0}(\bfr_2) 
+\eeq
+\beq
+\Psi_f(q_1, q_2) = \chi_{\mu_1}(\nu_1) \chi_{\mu_2}(\nu_1) \psi_{\bfk_1}(\bfr_1) \psi_{\bfk_2}(\bfr_2)
+\eeq
+\beq
+\chi_{\mu}(\nu) =\delta_{\mu \nu}
+\eeq
+
+The SDCS ionization amplitude is given
+\beq
+f_{fi} = \delta_{\mu_a \mu_1} \delta_{\mu_b \mu_2} V(\bfk_1,\bfk_2; \bfk_0),
+\eeq
+\beq
+V(\bfk_1,\bfk_2; \bfk_0) = \int \psi_{\bfk_1}(\bfr_1) \psi_{\bfk_2}(\bfr_2) V(\bfr_1, \bfr_2) \phi_0(\bfr_1) \psi_{\bfk_0}(\bfr_2),
+\eeq
+
+CC-version
+\beq
+\Psi_S(q_1, q_2) = \langle \nu_1 \nu_2 | S \rangle \phi_0(\bfr_1) \psi_{\bfk_0}(\bfr_2)
+\eeq
+
+\section{THEORY}
+
+
+
+
+\section{CONCLUSIONS}
+
+
+
+\begin{acknowledgments}
+This work was supported by the Australian Research Council. IB
+acknowledges the Australian National Computational Infrastructure
+Facility and its Western Australian node iVEC.
+\end{acknowledgments}
+
+
+
+\bibliographystyle{apsrev}
+\bibliography{../bibtex/qm_references}
+
+
+
+\end{document}

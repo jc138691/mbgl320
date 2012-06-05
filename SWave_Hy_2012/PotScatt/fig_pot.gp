@@ -1,7 +1,9 @@
 reset # http://www.gnuplot.info/
 # dmitry.konovalov@jcu.edu.au 2012
 
-JM_1    = '../../output/PotScattJM/PotScattJM_TCS_L0_LMBD1.0_N20.dat'
+JM_OLD  = '../../output/PotSWaveJm/PotSWaveJm_R_L0_LMBD1.2_N20.dat'
+JM_1    = '../../output/PotSWaveJmCorr/PotSWaveJmCorr_R_L0_LMBD1.2_N20.dat'
+#JM_1    = '../../output/PotScattJM/PotScattJM_TCS_L0_LMBD1.0_N20.dat'
 
 
 set term postscript eps enhanced lw 1 size 18cm,25cm solid color 18 "fixed"; set out 'fig_plot.ps'
@@ -23,7 +25,9 @@ set logscale x
 #set logscale y
 set xrange [0.001:5.01]
 
-p JM_1 u ($1):($2) t 'JM' w l ls 11, \
+p \
+  JM_OLD u ($1):($2) t 'OLD' w l ls 11, \
+  JM_1   u ($1):($2) t 'N20' w l ls 11, \
   '../../output/PotScattEA/PotScattEA_TCS_L0_LMBD1.0_N20.dat' u ($1):($2) t '' w p ls 12, \
   '../../output/PotScattEA/PotScattEA_TCS_L0_LMBD1.01_N20.dat' u ($1):($2) t '' w p ls 12, \
   '../../output/PotScattEA/PotScattEA_TCS_L0_LMBD1.02_N20.dat' u ($1):($2) t '' w p ls 12, \
