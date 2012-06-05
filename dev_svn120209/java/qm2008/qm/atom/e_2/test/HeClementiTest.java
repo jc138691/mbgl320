@@ -90,7 +90,7 @@ public class HeClementiTest extends FlowTest {
     AtomUtil.trimTailSLOW(arr);
     
     OrthonFactory.log.setDbg();
-    double res = OrthonFactory.calcMaxOrthonErr(arr, w.getWithCR2());
+    double res = OrthonFactory.calcMaxOrthErr(arr, w.getWithCR2());
 
     assertEquals(0, res, 2e-8);
     SlaterLcr slater = new SlaterLcr(w);

@@ -47,7 +47,7 @@ public class LagrrOrthLCRTest_tmp extends TestCase {
     search.findLastGE(eps);
     log.info("search=", search);
 
-    double err = OrthonFactory.calcMaxOrthonErr(arr, w);
+    double err = OrthonFactory.calcMaxOrthErr(arr, w);
     log.assertZero("orthonorm error on r=", err, 4e-6) ;
 
     // THE SAME in LogCR grid
@@ -57,7 +57,7 @@ public class LagrrOrthLCRTest_tmp extends TestCase {
     WFQuadrLcr wx = new WFQuadrLcr(x);
     Vec rx = wx.getR();
     arr = new LgrrOrth(rx, N, alpha, lambda);
-    err = OrthonFactory.calcMaxOrthonErr(arr, wx.getWithCR());
+    err = OrthonFactory.calcMaxOrthErr(arr, wx.getWithCR());
     log.assertZero("orthonorm error on logCR=", err, 1e-20) ;
   }
 }

@@ -21,7 +21,6 @@ public class LagrrOrthTest extends TestCase {
     junit.textui.TestRunner.run(suite());
   }
   public void testLagrrOrthon() {
-//    Log.setup();
     FuncArrTailSearch.log.setDbg();
 
     double FIRST = 0;
@@ -40,12 +39,8 @@ public class LagrrOrthTest extends TestCase {
     search.findLastGE(eps);
     log.info("search=", search);
 
-    double err = OrthonFactory.calcMaxOrthonErr(arr, w);
+    double err = OrthonFactory.calcMaxOrthErr(arr, w);
     log.assertZero("orthonorm error=", err, 1e-20) ;
-
-
-//    FuncRToLogCR
-//    StepGrid x = new StepGrid(FIRST, LAST, GRID_SIZE);
 
   }
 

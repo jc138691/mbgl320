@@ -132,7 +132,7 @@ protected void potScattTestOk() {
     lgrrBiN = new LagrrBiLcr(quadr, lgrrOptN);           log.dbg("LagrrBiLcr =\n", lgrrBiN);
     if (!new LagrrBiLcrTest(lgrrN, lgrrBiN).ok()) return;
     orthN = new LgrrOrthLcr(quadr, lgrrOptN);         log.dbg("LgrrOrthLcr = ", orthN);
-    if (!new LgrrOrthLcrTest(orthN).ok()) return;
+    if (!new AnyOrthTest(orthN).ok()) return;
 
 //    // H-integration
     if (!new H_Hy_P1s_LcrTest(quadr).ok()) return;
@@ -154,7 +154,7 @@ protected void hydrScattTestOk(int trgtZ) {
   orthNt = new LgrrOrthLcr(quadr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthNt);
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
-    if (!new LgrrOrthLcrTest(orthNt).ok()) return;
+    if (!new AnyOrthTest(orthNt).ok()) return;
 //      if (!new PotEigVecLcrTest(AtomHy.atomZ, orthNt).ok()) return;
     if (!new PotEigVecLcrTest(trgtZ, orthNt).ok()) return;
   }

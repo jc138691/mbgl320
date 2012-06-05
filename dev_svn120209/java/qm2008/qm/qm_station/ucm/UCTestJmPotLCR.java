@@ -69,7 +69,7 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
       return false;
 
     LgrrOrthLcr orth = new LgrrOrthLcr(w, potOpt.getLgrrModel() );  log.dbg("LgrrOrthLcr = ", new FuncArrDbgView(bi));
-    if (!new LgrrOrthLcrTest(orth).ok())
+    if (!new AnyOrthTest(orth).ok())
       return false;
 
     double Z = 1; // for hydrogen 

@@ -12,9 +12,9 @@ import javax.utilx.log.Log;
 public class OrthonFactory {
   public static Log log = Log.getLog(OrthonFactory.class);
   public static double calcMaxOrthonErr(NormFuncArr arr) {
-    return calcMaxOrthonErr(arr, arr.getNormQuadr());
+    return calcMaxOrthErr(arr, arr.getNormQuadr());
   }
-  public static double calcMaxOrthonErr(FuncArr arr, Quadr w) {
+  public static double calcMaxOrthErr(FuncArr arr, Quadr w) {
     double res = 0;
     for (int n = 0; n < arr.size(); n++) {
       for (int n2 = 0; n2 <= n; n2++) {
