@@ -3,6 +3,7 @@ package papers.hy_swave;
 import atom.AtomUtil;
 import atom.data.AtomHy;
 import atom.e_2.SysE2;
+import atom.e_2.SysE2OldOk;
 import atom.energy.ConfHMtrx;
 import atom.energy.part_wave.PotHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
@@ -126,8 +127,8 @@ public void calc(int newN, int newNt) {
   D = new JmD(lgrrBiN, wfN);   log.dbg("D_{n,N-1}=", D);
 
   SlaterLcr slater = new SlaterLcr(quadr);
-//    SysE2OldOk sys = new SysE2OldOk(-1., slater);// NOTE -1 for Hydrogen
-  SysE2 sys = new SysE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
+//    SysE2OldOk sys = new SysE2OldOk(TARGET_Z, slater);
+  SysE2 sys = new SysE2(TARGET_Z, slater);
   ConfHMtrx sysH = new ConfHMtrx(sysArr, sys);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 //    double e0 = sysEngs.get(0);

@@ -156,35 +156,6 @@ private Mtrx calcR_v1_ok(int calcN, int openN) {
   Mtrx res = calcR_v1_ok(WCJC, WSJS);               log.dbg("R=\n", new MtrxDbgView(res));
   return res;
 }
-private Mtrx calcRSysIdx_bad(int calcN, int openN, int sysIdx) {
-  Mtrx mW = null;
-  if (calcOpt.getUseClosed()) {
-    mW = calcWSysIdx_bad(calcN, sysIdx);
-  } else {
-    mW = calcWSysIdx_bad(openN, sysIdx);
-  }                                                       log.dbg("W=\n", new MtrxDbgView(mW));
-  double dlt = calcDeltaSysIdx_bad(mW);                   log.dbg("dlt_i=", dlt);
-  Vec A = calcAVecSysIdx_bad(sysIdx, openN);              log.dbg("A=\n", new VecDbgView(A));
-  Mtrx res = calcRSysIdx_bad(sysIdx, mW, dlt, A);         log.dbg("R=\n", new MtrxDbgView(res));
-  return res;
-}
-private Mtrx calcRSysIdx_bad(int sysIdx, Mtrx mW, double dlt, Vec vA) {
-  double[][] X = jmX.getArray();
-  int openN = vA.size();
-  Mtrx R = new Mtrx(openN, openN);
-  for (int t = 0; t < openN; t++) {
-    JmCh ch = chArr[t];
-    for (int t2 = 0; t2 < openN; t2++) {
-      double a = -Mathx.dlt(t, t2) * ch.getQn1();
-      double b = X[t][sysIdx] * vA.get(t2) / dlt;
-      double res = a + b;
-      R.set(t, t2, res);             log.dbg("R[t="+t+"][t2="+t2+"]=", R.get(t, t2));
-    }
-  }
-  loadCorrSqrt(R);                           log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
-  MtrxFactory.makeSymmByAvr(R, openN);                log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(R));
-  return R;
-}
 protected void calcSdcs(int scttIdx, ScttRes res, int prntN) {
   loadSdcsW(chArr);
   //    loadSdcsW_Simpson(chArr);
@@ -468,39 +439,6 @@ protected Mtrx calcW_DBG(int calcNum) {
         }
       }
       G = 1. / G;
-      res.set(t, t2, G);
-      res.set(t2, t, G);
-    }
-  }
-  return res;
-}
-protected Mtrx calcWSysIdx_bad(int calcNum, int sysIdx) {
-//  log.dbg("jmX=\n", new MtrxDbgView(jmX));
-//  Mtrx Xt = jmX.transpose();
-//  log.dbg("Xt=\n", new MtrxDbgView(Xt));
-//  Mtrx invX = Xt.inverse();
-//  log.dbg("invX=\n", new MtrxDbgView(invX));
-//
-//  Mtrx xx = invX.timesSelf(Xt);
-//  log.dbg("xx=\n", new MtrxDbgView(xx));
-//
-//  Mtrx xx2 = Xt.timesSelf(invX);
-//  log.dbg("xx2=\n", new MtrxDbgView(xx2));
-
-  double[][] X = jmX.getArray();
-  int tN = calcNum;
-  Mtrx res = new Mtrx(tN, tN);
-  for (int t = 0; t < tN; t++) {     //log.dbg("t = ", t);  // Target channels
-    for (int t2 = t; t2 < tN; t2++) {
-//      log.dbg("X[t][sysIdx-1]=", X[t][sysIdx-1]);
-//      log.dbg("X[t][sysIdx]=", X[t][sysIdx]);
-//      log.dbg("X[t][sysIdx+1]=", X[t][sysIdx+1]);
-
-//      log.dbg("X[t2][sysIdx-1]=", X[t2][sysIdx-1]);
-//      log.dbg("X[t2][sysIdx]=", X[t2][sysIdx]);
-//      log.dbg("X[t2][sysIdx+1]=", X[t2][sysIdx+1]);
-
-      double G = X[t][sysIdx] * X[t2][sysIdx];
       res.set(t, t2, G);
       res.set(t2, t, G);
     }

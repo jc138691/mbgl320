@@ -39,7 +39,7 @@ public void calc(int newN, int newNt) {
   AtomUtil.trimTailSLOW(trgtWfsNt);
   AtomUtil.trimTailSLOW(wfN);
   ScttTrgtE3 trgt = makeTrgtE3(slater);
-  trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE elelctron
+  trgt.setScreenZ(TARGET_Z - 1);       // Hydrogen-like target has ONE electron
   trgt.setInitTrgtIdx(FROM_CH);
   trgt.setIonGrndEng(0);
   trgt.setNt(orthNt.size());
@@ -94,7 +94,7 @@ private ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
 }
 
 private ConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
-  SysE2 sys = new SysE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
+  SysE2 sys = new SysE2(TARGET_Z, slater);// NOTE 1 for Hydrogen
   ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthNt, orthN);   log.dbg("sysArr=", sConfArr);
   ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;

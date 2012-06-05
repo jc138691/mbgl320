@@ -16,7 +16,6 @@ public class SysE2OldOk extends AtomE2 {
   public SysE2OldOk(double z, SlaterLcr si) {
     super(z, si);
   }
-  @Override
   public Energy calcH(Conf fc, Conf fc2) {
     assertLS(fc, fc2);
     // He, H+e, any two electron atomic system

@@ -126,7 +126,7 @@ protected ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
 }
 
 protected ConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
-  SysE2 sys = new SysE2(-TARGET_Z, slater);// NOTE -1 for Hydrogen
+  SysE2 sys = new SysE2(TARGET_Z, slater);// NOTE 1 for Hydrogen
   ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtWfsNt, trgtWfsNt);   //log.dbg("sysArr=", sConfArr);
   ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  //log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;
