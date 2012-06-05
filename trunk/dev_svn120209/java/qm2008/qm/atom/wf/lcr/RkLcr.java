@@ -19,7 +19,7 @@ public static double calc(WFQuadrLcr w, Vec a, Vec b, Vec a2, Vec b2, int K) {
   FuncVec yk = new YkLcr(w, b, b2, K).calcYk();
 //  log.dbg("yk=\n", new VecDbgView(yk));
 //    double res = FastLoop.dot(a, a2, yk, w.getWithCR2DivR());
-  double res = w.calcPotDivR(a, a2, yk);
+  double res = w.calcWithDivR(a, a2, yk);
   return res;
 }
 }

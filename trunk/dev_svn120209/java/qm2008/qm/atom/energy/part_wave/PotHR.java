@@ -19,7 +19,7 @@ public class PotHR extends PotH {
     if (L == 0)
       return res;
     double L2 = 0.5 * (L * (L + 1));
-    double potL2 = quadr.calcPotDivR2(wf, wf2);     log.dbg("potL2=", potL2);
+    double potL2 = quadr.calcWithDivR2(wf, wf2);     log.dbg("potL2=", potL2);
     res += L2 * potL2;                                 log.dbg("res=", res);
     return res;
   }

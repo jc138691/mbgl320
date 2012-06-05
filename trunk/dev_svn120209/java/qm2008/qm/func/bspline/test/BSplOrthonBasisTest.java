@@ -26,7 +26,7 @@ public class BSplOrthonBasisTest extends TestCase {
     BSplOrthonBasis arr = new BSplOrthonBasis(w, knots, k);
 //    saveArrayK(x, arr, k, "lgrrN");
     OrthonFactory.makeOrthon(arr, w);
-    double normErr = OrthonFactory.calcMaxOrthonErr(arr, w); //double normErr = w.calcMaxNormError(arr);
+    double normErr = OrthonFactory.calcMaxOrthErr(arr, w); //double normErr = w.calcMaxNormError(arr);
 //    saveArrayK(x, arr, k, "orthog");
     assertEquals(0, normErr, 3.e-15);
   }

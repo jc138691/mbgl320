@@ -18,7 +18,7 @@ public class BSplLogCRBasisTest extends BSplOrthonBasisTest {
     int N = 6;
     FuncArr arr = BSplBasisFactory.makeFromBasisSize(wCR2, N, k);
 //    saveArrayK(x, arr, k, "orthog");
-    double normErr = OrthonFactory.calcMaxOrthonErr(arr, wCR2);
+    double normErr = OrthonFactory.calcMaxOrthErr(arr, wCR2);
     assertEquals(0, normErr, 2.e-15);
   }
 }

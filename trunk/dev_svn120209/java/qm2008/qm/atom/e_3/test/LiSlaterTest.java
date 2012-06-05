@@ -177,7 +177,7 @@ public class LiSlaterTest extends FlowTest {
       basis.set(2, f3);
     }
     OrthonFactory.makeOrthon(basis, quadr);
-    double orthErr = OrthonFactory.calcMaxOrthonErr(basis, quadr);
+    double orthErr = OrthonFactory.calcMaxOrthErr(basis, quadr);
     assertEquals("orthErr", 0, orthErr, 2.e-15);
     // 13Dec2010: looking for bug
     Ls LS = new Ls(0, Spin.ELECTRON);

@@ -45,7 +45,7 @@ public class ScattHyTest extends BSplLogCRBasisTest {
     int k = 5;
     int N = 20;
     FuncArr arr = BSplBasisFactory.makeFromBasisSize(w, N, k);
-    double normErr = OrthonFactory.calcMaxOrthonErr(arr, w);
+    double normErr = OrthonFactory.calcMaxOrthErr(arr, w);
     assertEquals(0, normErr, 3.e-15);
     SlaterLcr slater = new SlaterLcr(w);
     Ls S1 = new Ls(0, Spin.SINGLET);

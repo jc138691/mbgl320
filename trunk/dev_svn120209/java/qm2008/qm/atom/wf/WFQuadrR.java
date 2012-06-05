@@ -12,10 +12,6 @@ private WFQuadrR wDivR;
 public WFQuadrR(StepGrid x) {
   super(x);
 }
-//@Override
-//public double calcPot2(Vec pt, Vec wf, Vec wf2) {
-//  return calc(pt, wf, wf2);
-//}
 @Override
 public double calcInt(Vec wf, Vec wf2) {
 return calc(wf, wf2);
@@ -25,12 +21,12 @@ public double calcInt(Vec wf, Vec wf2, Vec wf3) {
   return calc(wf, wf2, wf3);
 }
 @Override
-public double calcPotDivR2(Vec wf, Vec wf2) {
+public double calcWithDivR2(Vec wf, Vec wf2) {
   return getWithDivR2().calc(wf, wf2);
 }
 
 @Override
-public double calcPotDivR(Vec wf, Vec wf2, Vec wf3) {
+public double calcWithDivR(Vec wf, Vec wf2, Vec wf3) {
   return getWithDivR().calc(wf, wf2, wf3);
 }
 

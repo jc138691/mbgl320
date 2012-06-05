@@ -59,7 +59,7 @@ public class PotHLcr extends PotH {
     double kin = quadr.calc(wf, wf2);  log.dbg("kin=", kin);
     double kinL = 0;
     if (L != 0) {
-      kinL = quadr.calcPotDivR2(wf, wf2);    log.dbg("kinL=L(L+1)*(y/r)^2=", kinL); //L(L+1)*(y/r)^2
+      kinL = quadr.calcWithDivR2(wf, wf2);    log.dbg("kinL=L(L+1)*(y/r)^2=", kinL); //L(L+1)*(y/r)^2
     }
     double potL2 = 0.125 * kin + 0.5 * L * (L + 1) * kinL;  log.dbg("potL2=", potL2);
     double res = calcDrv2(wf, wf2);

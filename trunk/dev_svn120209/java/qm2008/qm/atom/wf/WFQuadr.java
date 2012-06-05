@@ -11,8 +11,8 @@ public abstract class WFQuadr extends QuadrPts5 {
   public WFQuadr(StepGrid x) {
     super(x);
   }
-  public abstract double calcPotDivR2(Vec wf, Vec wf2);
-  public abstract double calcPotDivR(Vec wf, Vec wf2, Vec wf3);
+  public abstract double calcWithDivR2(Vec wf, Vec wf2);
+  public abstract double calcWithDivR(Vec wf, Vec wf2, Vec wf3);
 //  public abstract double calcPot2(Vec pt, Vec wf, Vec wf2);
   public Vec getR() {return getX();}
 
