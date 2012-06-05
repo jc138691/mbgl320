@@ -56,7 +56,7 @@ public ScttMthdBaseE1(CalcOptE1 calcOpt) {
 public CalcOptE1 getCalcOpt() {
   return calcOpt;
 }
-public ScttRes calcForScatEngModel() {
+public ScttRes calcForScttEngModel() {
   EngGrid engs = calcScattEngs();
   return calc(engs);
 }

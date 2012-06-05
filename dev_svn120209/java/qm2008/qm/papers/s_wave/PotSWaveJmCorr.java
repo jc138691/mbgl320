@@ -28,7 +28,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
   // Note: run one at a time as only one set of result files is produced
 
-  JM_TAIL_N = 2;
+  JM_TAIL_N = 1;
   runJob();
 }
 protected JmMthdE1 makeMthd(CalcOptE1 calcOpt) {

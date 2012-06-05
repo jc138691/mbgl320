@@ -144,7 +144,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
       res = method.calc(scttEngs);                  log.dbg("res=", res);
     }
     else {
-      res = method.calcForScatEngModel();                  log.dbg("res=", res);
+      res = method.calcForScttEngModel();                  log.dbg("res=", res);
     }
     setupScattRes(res, method);
 

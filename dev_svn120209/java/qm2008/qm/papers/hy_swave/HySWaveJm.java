@@ -34,7 +34,10 @@ public class HySWaveJm extends HyLikeSWaveJm {
     LAMBDA = 1.5; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 
     // Note: run one at a time as only one set of result files is produced
-    setupEngExcite();
+    ENG_FIRST = 0.01;
+    ENG_LAST = 10;
+    ENG_N = 101;
+//    setupEngExcite();
 //    setupResonances_n2_S1();
 //    setupResonances_n2_n3_S1();
 //    setupResonances_n2_n3_S3();
@@ -53,7 +56,7 @@ public class HySWaveJm extends HyLikeSWaveJm {
     int currNt = 20;
     int currN = 21;
     LCR_FIRST = -5;
-    LCR_N = 701;
+    LCR_N = 1501;
     R_LAST = 150;
 
 //      // upto N=40

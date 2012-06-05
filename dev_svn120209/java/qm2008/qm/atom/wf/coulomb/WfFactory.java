@@ -38,7 +38,7 @@ public static FuncVec makePotHy_1s_e(Vec r) {
 // This is a very small potential to test FirstBorn
 public static FuncVec makePotFBornTest(Vec r) {
   FuncVec res = makePotHy_1s_e(r);
-  res.mult(0.5);
+  res.mult(0.01);
   return res;
 }
 
