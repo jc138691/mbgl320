@@ -1,21 +1,17 @@
 package scatt.jm_2008.e2;
 import atom.energy.ConfHMtrx;
-import atom.wf.WFQuadr;
 import flanagan.complex.Cmplx;
 import math.Mathx;
 import math.complex.CmplxMtrx;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.func.arr.IFuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
-import papers.hy_swave.ees_bad.EesMethodE1;
 import scatt.eng.EngModel;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.laguerre.IWFuncArr;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.JmCh;
 import scatt.jm_2008.jm.target.ScttTrgtE2;
@@ -48,7 +44,7 @@ public void setOrthNt(LgrrOrthLcr orthNt) {
   this.orthNt = orthNt;
 }
 
-public ScttMthdBaseE2(CalcOptE1 calcOpt) {
+public ScttMthdBaseE2(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 @Override
@@ -118,7 +114,7 @@ protected void saveMtrxR(int i, ScttRes res, Mtrx fromR, int openNum) {
   }
 }
 protected JmCh[] loadChArr(double sysEng) {
-  LgrrModel jmModel = calcOpt.getLgrrModel();
+  LgrrOpt jmModel = calcOpt.getLgrrModel();
   Vec tEngs = trgtE2.getEngs();
   JmCh[] res = new JmCh[tEngs.size()];
   for (int i = 0; i < tEngs.size(); i++) {    log.dbg("i = ", i);

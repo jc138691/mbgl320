@@ -1,7 +1,7 @@
 package scatt.jm_2008.jm.laguerre.lcr;
 import atom.wf.lcr.WFQuadrLcr;
 import scatt.jm_2008.jm.laguerre.IWFuncArr;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.LgrrOrthR;
 
 import javax.utilx.log.Log;
@@ -17,7 +17,7 @@ public class LgrrOrthLcr extends LgrrOrth implements IWFuncArr {
   public static String HELP = "The LCT transform of\n" + LgrrOrthR.HELP;
   private WFQuadrLcr quadr;
 
-  public LgrrOrthLcr(WFQuadrLcr w, LgrrModel model) {
+  public LgrrOrthLcr(WFQuadrLcr w, LgrrOpt model) {
     super(w.getR(), model.getN(), 2 * model.getL() + 2, model.getLambda());  // NOTE!!! calculated on r
     mult(new FuncRToDivSqrtCR(w.getLcrToRFunc()));    // NOTE!!!  /qsrt(c+r)
     setX(w.getX());             // NOTE!!! but stores LCR as x

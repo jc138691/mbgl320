@@ -13,12 +13,12 @@ import math.mtrx.Mtrx;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import papers.he_swave.HeSWaveScatt;
 import project.workflow.task.test.FlowTest;
 import qm_station.QMSProject;
 import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.ScttTrgtE3;
 import stats.VecStats;
@@ -280,20 +280,20 @@ public class OptimLambda extends HeSWaveScatt {
   public double calcErrHeIon() {
     TAG = "_HeIon";
     initProject();
-    // from potScattTestOk
-    StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
+    // from allTestsOk
+    StepGridOpt sg = calcOpt.getGridOpt();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
     quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
-    rVec = quadr.getR();                        log.dbg("r grid =", rVec);
+    vR = quadr.getR();                        log.dbg("r grid =", vR);
     lgrrOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", lgrrOptN);
 
     // from hydrScattTestOk
     lgrrOptN = new JmLgrrLabelMaker(lgrrOptN, Nt);    log.dbg("lgrrOptN =", lgrrOptN); // this is just for the file name label
-    LgrrModel lgrrOptNt = new LgrrModel(lgrrOptN); // for the target N, i.e. N_t
+    LgrrOpt lgrrOptNt = new LgrrOpt(lgrrOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
     orthNt = new LgrrOrthLcr(quadr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthNt);
     potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-1./r
-    pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
+    pot = new FuncVec(vR, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
     // Making He+ eigen-states
     trgtPotH = new PotHMtrxLcr(L, orthNt, pot);       //log.dbg("trgtPotH=", trgtPotH);
@@ -310,20 +310,20 @@ public class OptimLambda extends HeSWaveScatt {
   public double calcErrJm() {
     TAG = "_JM";
     initProject();
-    // from potScattTestOk
-    StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
+    // from allTestsOk
+    StepGridOpt sg = calcOpt.getGridOpt();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
     quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
-    rVec = quadr.getR();                        log.dbg("r grid =", rVec);
+    vR = quadr.getR();                        log.dbg("r grid =", vR);
     lgrrOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", lgrrOptN);
 
     // Nt-part
     lgrrOptN = new JmLgrrLabelMaker(lgrrOptN, Nt);    log.dbg("lgrrOptN =", lgrrOptN); // this is just for the file name label
-    LgrrModel lgrrOptNt = new LgrrModel(lgrrOptN); // for the target N, i.e. N_t
+    LgrrOpt lgrrOptNt = new LgrrOpt(lgrrOptN); // for the target N, i.e. N_t
     lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
     orthNt = new LgrrOrthLcr(quadr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthNt);
     potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-1./r
-    pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
+    pot = new FuncVec(vR, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
     // making target  JM basis
     trgtWfsNt = orthNt;

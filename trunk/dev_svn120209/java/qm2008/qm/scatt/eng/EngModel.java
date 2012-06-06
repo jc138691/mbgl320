@@ -1,9 +1,9 @@
 package scatt.eng;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 29/09/2008, Time: 14:51:24
  */
-public class EngModel extends StepGridModel {
+public class EngModel extends StepGridOpt {
   public EngModel() {
   }
   public EngModel(double first, double last, int n) {

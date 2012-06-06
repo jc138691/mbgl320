@@ -6,7 +6,7 @@ import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.partial.wf.SinWfLcr;
 
 import javax.utilx.log.Log;
@@ -16,14 +16,14 @@ import javax.utilx.log.Log;
 // First Born
 public class FbMthdE1 extends ScttMthdBaseE1 {   // E1 - one electron
 public static Log log = Log.getLog(JmMthdE1_OLD.class);
-public FbMthdE1(CalcOptE1 calcOpt) {
+public FbMthdE1(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScttRes calc(Vec engs) {
   ScttRes res = new ScttRes();
   int chNum = getChNum();
   int eN = engs.size();
-  LgrrModel model = calcOpt.getLgrrModel();
+  LgrrOpt model = calcOpt.getLgrrModel();
   int N = model.getN();
   double lambda = model.getLambda();
   FuncVec arrShift = new FuncVec(engs);

@@ -1,7 +1,7 @@
 package scatt.jm_2008.e1;
 import atom.energy.part_wave.PotH;
 import atom.energy.part_wave.PotHMtrx;
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import atom.wf.lcr.WFQuadrLcr;
 import math.Calc;
 import math.func.FuncVec;
@@ -13,7 +13,7 @@ import scatt.Scatt;
 import scatt.eng.EngGrid;
 import scatt.eng.EngModel;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LagrrBiLcr;
 import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
@@ -38,7 +38,7 @@ protected PotHMtrx potH;
 protected LgrrOrthLcr orth;
 protected LagrrLcr lgrr;
 protected LagrrBiLcr lgrrBi;
-protected final CalcOptE1 calcOpt;
+protected final JmCalcOptE1 calcOpt;
 protected double scttE;
 protected double sysTotE;
 protected int L = 0;
@@ -50,10 +50,10 @@ public double getSysTotE() {
 public double getScttE() {
   return scttE;
 }
-public ScttMthdBaseE1(CalcOptE1 calcOpt) {
+public ScttMthdBaseE1(JmCalcOptE1 calcOpt) {
   this.calcOpt = calcOpt;
 }
-public CalcOptE1 getCalcOpt() {
+public JmCalcOptE1 getCalcOpt() {
   return calcOpt;
 }
 public ScttRes calcForScttEngModel() {
@@ -116,7 +116,7 @@ public int getN() {
 protected double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {
   int L = 0;
   FuncVec pot = potH.getPot();
-  WFQuadr quadr = potH.getQuadr();
+  WFQuadrD1 quadr = potH.getQuadr();
   double res = quadr.calcInt(wf, pot, wf2);
   PotH calcH = potH.makePotH();
 
@@ -129,7 +129,7 @@ protected double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {
 
 protected double calcPotInt(Vec wf, Vec wf2) {
   FuncVec pot = potH.getPot();
-  WFQuadr quadr = potH.getQuadr();
+  WFQuadrD1 quadr = potH.getQuadr();
   double res = quadr.calcInt(wf, pot, wf2);
   return res;
 }
@@ -146,7 +146,7 @@ protected int matchSysTotE() {
   return -1;
 }
 protected JmCh[] loadChArr(double sysEng) {
-  LgrrModel jmModel = calcOpt.getLgrrModel();
+  LgrrOpt jmModel = calcOpt.getLgrrModel();
   JmCh[] res = new JmCh[1];
     // NOTE!!! minus in "-trgtE2.getScreenZ()"
   res[0] = new JmCh(sysEng, 0, jmModel, 0);
@@ -169,7 +169,7 @@ public LagrrBiLcr getLgrrBi() {
   return lgrrBi;
 }
 public static FuncVec calcCosDelN(double chScattE
-  , WFQuadr quadr, IFuncArr basis, double regLambda) {  // channel scattering eng
+  , WFQuadrD1 quadr, IFuncArr basis, double regLambda) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   FuncVec wf = new CosRegWfLcr((WFQuadrLcr)quadr, momP, L, regLambda);   //log.dbg("sinL=", sinL);
@@ -177,14 +177,14 @@ public static FuncVec calcCosDelN(double chScattE
   return res;
 }
 public static FuncVec calcCosDelBi(double chScattE
-  , WFQuadr quadr, IFuncArr basis, IFuncArr basisBi, double regLambda) {  // channel scattering eng
+  , WFQuadrD1 quadr, IFuncArr basis, IFuncArr basisBi, double regLambda) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   FuncVec wf = new CosRegWfLcr((WFQuadrLcr)quadr, momP, L, regLambda);   //log.dbg("sinL=", sinL);
   FuncVec res = delBi(wf, quadr, basis, basisBi);          //log.dbg("resS=", resS);
   return res;
 }
-public static FuncVec delN(FuncVec wf, WFQuadr quadr, IFuncArr basis) {
+public static FuncVec delN(FuncVec wf, WFQuadrD1 quadr, IFuncArr basis) {
   Vec x = quadr.getX();
   FuncVec res = wf.copyY();
   for (int i = 0; i < basis.size(); i++) {
@@ -200,7 +200,7 @@ public static FuncVec delN(FuncVec wf, WFQuadr quadr, IFuncArr basis) {
   }
   return res;
 }
-public static FuncVec keepN(FuncVec wf, WFQuadr quadr, IFuncArr basis) {
+public static FuncVec keepN(FuncVec wf, WFQuadrD1 quadr, IFuncArr basis) {
   Vec x = quadr.getX();
   FuncVec res = new FuncVec(x);
   for (int i = 0; i < basis.size(); i++) {
@@ -216,7 +216,7 @@ public static FuncVec keepN(FuncVec wf, WFQuadr quadr, IFuncArr basis) {
 //  }
   return res;
 }
-public static FuncVec delBi(FuncVec wf, WFQuadr quadr, IFuncArr basis, IFuncArr basisBi) {
+public static FuncVec delBi(FuncVec wf, WFQuadrD1 quadr, IFuncArr basis, IFuncArr basisBi) {
   Vec x = quadr.getX();
   FuncVec res = wf.copyY();
   for (int i = 0; i < basis.size(); i++) {
@@ -240,7 +240,7 @@ public static FuncVec calcChSinWf(double chScattE, WFQuadrLcr quadr) {  // chann
   return res;
 }
 public static FuncVec calcSinDelN(double chScattE
-  , WFQuadr quadr, IFuncArr basis) {  // channel scattering eng
+  , WFQuadrD1 quadr, IFuncArr basis) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   FuncVec wf = new SinWfLcr((WFQuadrLcr)quadr, momP, L);   //log.dbg("wf=", wf);
@@ -248,7 +248,7 @@ public static FuncVec calcSinDelN(double chScattE
   return res;
 }
 public static FuncVec calcSinKeepN(double chScattE
-  , WFQuadr quadr, IFuncArr basis) {  // channel scattering eng
+  , WFQuadrD1 quadr, IFuncArr basis) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   FuncVec wf = new SinWfLcr((WFQuadrLcr)quadr, momP, L);   //log.dbg("wf=", wf);
@@ -256,7 +256,7 @@ public static FuncVec calcSinKeepN(double chScattE
   return res;
 }
 public static FuncVec calcSinDelBi(double chScattE
-  , WFQuadr quadr, IFuncArr basis, IFuncArr basisBi) {  // channel scattering eng
+  , WFQuadrD1 quadr, IFuncArr basis, IFuncArr basisBi) {  // channel scattering eng
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   FuncVec wf = new SinWfLcr((WFQuadrLcr)quadr, momP, L);   //log.dbg("wf=", wf);

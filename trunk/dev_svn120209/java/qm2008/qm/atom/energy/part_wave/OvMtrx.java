@@ -1,5 +1,5 @@
 package atom.energy.part_wave;
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
 import math.func.arr.IFuncArr;
 import math.mtrx.Mtrx;
@@ -11,8 +11,8 @@ import javax.utilx.log.Log;
 public class OvMtrx extends Mtrx {
 public static Log log = Log.getLog(OvMtrx.class);
 private final IFuncArr basis;
-private final WFQuadr quadr;
-public OvMtrx(IFuncArr basis, WFQuadr quadr) {
+private final WFQuadrD1 quadr;
+public OvMtrx(IFuncArr basis, WFQuadrD1 quadr) {
   super(basis.size(), basis.size());
   this.basis = basis;
   this.quadr = quadr;

@@ -6,7 +6,7 @@ import math.vec.Vec;
 import scatt.Scatt;
 import scatt.eng.EngModel;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.theory.JmTheory;
 
 import javax.utilx.log.Log;
@@ -15,7 +15,7 @@ import javax.utilx.log.Log;
  */
 public class JmMthdE1_OLD extends ScttMthdBaseE1 {   // E1 - one electron
 public static Log log = Log.getLog(JmMthdE1_OLD.class);
-public JmMthdE1_OLD(CalcOptE1 calcOpt) {
+public JmMthdE1_OLD(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScttRes calc(Vec scttEngs) {
@@ -23,7 +23,7 @@ public ScttRes calc(Vec scttEngs) {
   EngModel engModel = calcOpt.getGridEng();
   ScttRes res = new ScttRes();
   int chNum = getChNum();
-  LgrrModel model = calcOpt.getLgrrModel();
+  LgrrOpt model = calcOpt.getLgrrModel();
   int N = model.getN();
   double lambda = model.getLambda();
   FuncVec arrShift = new FuncVec(scttEngs);

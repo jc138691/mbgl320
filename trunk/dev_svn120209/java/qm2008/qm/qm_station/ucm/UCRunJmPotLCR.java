@@ -7,7 +7,7 @@ import qm_station.QMSProject;
 import javax.utilx.log.Log;
 
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import math.vec.Vec;
 import atom.wf.coulomb.WfFactory;
 import project.workflow.task.DefaultTaskUI;
@@ -35,7 +35,7 @@ public class UCRunJmPotLCR extends UCRunDefaultTask<QMS> {
     log.dbg("run()");
     QMS project = QMSProject.getInstance();
     CalcOptLcr model = project.getJmPotOptLcr();
-    StepGridModel sg = model.getGrid();
+    StepGridOpt sg = model.getGridOpt();
     StepGrid x = new StepGrid(sg);    log.dbg("LogCR grid = x =", x);
     WFQuadrLcr w = new WFQuadrLcr(x);     log.dbg("integration weights=", w);
     Vec r = w.getR();

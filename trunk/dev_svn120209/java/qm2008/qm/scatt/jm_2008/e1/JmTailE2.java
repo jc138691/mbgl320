@@ -3,7 +3,7 @@ import atom.wf.lcr.WFQuadrLcr;
 import math.Calc;
 import math.Mathx;
 import scatt.jm_2008.e2.JmMthdBaseE2;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
 import scatt.jm_2008.jm.target.JmCh;
 
@@ -26,25 +26,25 @@ protected void loadKatoLgrr() {
     return;
   WFQuadrLcr quadr = mthd.getQuadr();
 
-  CalcOptE1 calcOpt = mthd.getCalcOpt();
+  JmCalcOptE1 calcOpt = mthd.getCalcOpt();
   int tailN = calcOpt.getJmTailN();
 
-  LgrrModel lgrrN = calcOpt.getLgrrModel();
+  LgrrOpt lgrrN = calcOpt.getLgrrModel();
   int N = lgrrN.getN();
-  LgrrModel lgrrTail = new LgrrModel(lgrrN);
+  LgrrOpt lgrrTail = new LgrrOpt(lgrrN);
   lgrrTail.setN(N + tailN);     log.dbg("Kato Lgrr model =", lgrrTail);
   tailLgrr = new LagrrLcr(quadr, lgrrTail);    log.dbg("tailLgrr =\n", tailLgrr);
 }
 
 protected double[][][] calcFFromR() {
-  CalcOptE1 calcOpt = mthd.getCalcOpt();
+  JmCalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmR.getNumRows();
   int cN = mthd.jmR.getNumCols();
   int jN = calcOpt.getJmTailN();
 
-  LgrrModel lgrrN = calcOpt.getLgrrModel();
+  LgrrOpt lgrrN = calcOpt.getLgrrModel();
   int N = lgrrN.getN();
-  LgrrModel lgrrTail = new LgrrModel(lgrrN);
+  LgrrOpt lgrrTail = new LgrrOpt(lgrrN);
   double[] chE = mthd.trgtE2.getEngs().getArr(); // channel energies
 
   double[][][] res = new double[jN][rN][cN];

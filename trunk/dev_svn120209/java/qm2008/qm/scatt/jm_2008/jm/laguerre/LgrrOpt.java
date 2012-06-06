@@ -2,20 +2,20 @@ package scatt.jm_2008.jm.laguerre;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 15/09/2008, Time: 15:53:19
  */
-public class LgrrModel {
+public class LgrrOpt {
   protected double lambda;
   protected int N;
   protected int L;
 
-  public LgrrModel() {
+  public LgrrOpt() {
 
   }
-  public LgrrModel(int L, int N, double lambda) {
+  public LgrrOpt(int L, int N, double lambda) {
     this.lambda = lambda;
     this.N = N;
     this.L = L;
   }
-  public LgrrModel(LgrrModel from) {
+  public LgrrOpt(LgrrOpt from) {
     this.lambda = from.lambda;
     this.N = from.N;
     this.L = from.L;
@@ -24,7 +24,7 @@ public class LgrrModel {
   public void loadDefault() {
     loadDefault(this);
   }
-  public static void loadDefault(LgrrModel model) {
+  public static void loadDefault(LgrrOpt model) {
     model.setLambda(1f);
     model.setL(0);
     model.setN(10);
@@ -48,7 +48,7 @@ public class LgrrModel {
     L = l;
   }
   public String toString() {
-    return "LgrrModel(L=" + L + ", n=" + N + ", lambda=" + lambda + ")";
+    return "LgrrOpt(L=" + L + ", n=" + N + ", lambda=" + lambda + ")";
   }
 
   public String makeLabel() {

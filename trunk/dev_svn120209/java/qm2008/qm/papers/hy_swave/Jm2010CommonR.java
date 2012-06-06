@@ -3,11 +3,11 @@ package papers.hy_swave;
 import atom.wf.WFQuadrR;
 import math.integral.test.QuadrPts5Test;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
+import papers.project_setup.ProjTestOpt;
 import project.workflow.task.test.FlowTest;
 import qm_station.jm.H_Hy_P1s_RTest;
 import qm_station.jm.JmPotEigVecRTest;
-import scatt.jm_2008.jm.TestModel;
 import scatt.jm_2008.jm.laguerre.*;
 
 import javax.utilx.log.Log;
@@ -28,13 +28,13 @@ public class Jm2010CommonR extends Jm2010Common {
     project.setJmPotOptR(makeJmPotOptR());
 
     calcOpt = project.getJmPotOptR();
-    TestModel testOpt = calcOpt.getTestModel();
+    ProjTestOpt testOpt = calcOpt.getTestOpt();
     FlowTest.setMaxErr(testOpt.getMaxIntgrlErr());
     FlowTest.setLog(log);
 
-    StepGridModel sg = calcOpt.getGrid();    log.dbg("r step grid model =", sg);
+    StepGridOpt sg = calcOpt.getGridOpt();    log.dbg("r step grid model =", sg);
     quadr = new WFQuadrR(new StepGrid(sg));            log.dbg("r weights =", quadr);
-    rVec = quadr.getR();                   log.dbg("r grid =", rVec);
+    vR = quadr.getR();                   log.dbg("r grid =", vR);
     if (!new QuadrPts5Test().ok())         return;
 
     lgrrOptN = calcOpt.getLgrrModel();          log.dbg("Laguerr model =", lgrrOptN);

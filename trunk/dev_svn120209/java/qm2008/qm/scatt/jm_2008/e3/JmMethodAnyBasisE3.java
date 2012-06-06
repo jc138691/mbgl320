@@ -5,7 +5,7 @@ import atom.shell.ConfArr;
 import atom.shell.Ls;
 import atom.shell.Shell;
 import math.mtrx.Mtrx;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.target.ChConf;
 
 import javax.utilx.log.Log;
@@ -17,7 +17,7 @@ public class JmMethodAnyBasisE3 extends JmMethodBaseE3 { // many electrons (more
 public static Log log = Log.getLog(JmMethodAnyBasisE3.class);
 protected HashMap<String, String> equalSysTrgt;       // [12Apr2011] with equalSysTrgt, equals(Conf e3, Conf e2, int idx3) is much faster now!!!
 protected HashMap<String, Integer> mapTrgtToSysIdx;   // [12Apr2011] with mapTrgtToSysIdx, calcC(int i, int g, int m) is much faster!!!
-public JmMethodAnyBasisE3(CalcOptE1 calcOpt) {
+public JmMethodAnyBasisE3(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 //[system i][target gamma][overlap D]

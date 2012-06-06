@@ -10,7 +10,7 @@ import math.vec.VecDbgView;
 import papers.hy_swave.Jm2010Common;
 import papers.hy_swave.Jm2010CommonLcr;
 import qm_station.QMSProject;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.e1.JmMthdE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScttRes;
@@ -75,8 +75,8 @@ public void calc(int newN) {
   N = newN;
   initProject();
   potScattTestOk();   // lgrrN, orth, lgrrBi, quadr
-  pot = WfFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
-//  pot = WfFactory.makePotFBornTest(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+  pot = WfFactory.makePotHy_1s_e(vR);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+//  pot = WfFactory.makePotFBornTest(vR);         log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx potH = new PotHMtrxLcr(L, orthN, pot);
   Vec sysEngs = potH.getEigEngs();                   log.dbg("sysEngs=", new VecDbgView(sysEngs));
   FuncArr sysWfsN = potH.getEigWfs();         log.dbg("sysWfsN=", new FuncArrDbgView(sysWfsN));
@@ -103,7 +103,7 @@ public void calc(int newN) {
 protected String makeLabel(ScttMthdBaseE1 method) {
   return Jm2010Common.makeLabelBasisOptN();
 }
-protected JmMthdE1 makeMthd(CalcOptE1 calcOpt) {
+protected JmMthdE1 makeMthd(JmCalcOptE1 calcOpt) {
   return new JmMthdE1(calcOpt);
 }
 }

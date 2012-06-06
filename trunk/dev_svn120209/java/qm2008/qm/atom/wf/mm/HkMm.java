@@ -188,7 +188,7 @@ private FuncVec calcZ1(Vec vf, Vec vf2) {
 //  Vec vr = quadr.getR();
 //  zF0 = new FuncVec(vr);
 //  double[] z = zF.getArr();
-//  rK = new FuncVec(rVec);
+//  rK = new FuncVec(vR);
 //  double[] rk = rK.getArr();
 //  z[0] = 0;
 //  rk[0] = 0;

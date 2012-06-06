@@ -2,12 +2,12 @@ package qm_station.ucm.plot.lcr;
 import atom.wf.lcr.WFQuadrLcr;
 import math.func.arr.FuncArr;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 
 import javax.utilx.log.Log;
 
 import project.workflow.task.DefaultTaskUI;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import qm_station.QMS;
 import qm_station.QMSProject;
 import qm_station.ucm.plot.UCPlotFuncArr;
@@ -24,8 +24,8 @@ public class UCPlotJmLagrrLCR extends UCPlotFuncArr {
   }
   public FuncArr makeFuncArr() {
     QMS project = QMSProject.getInstance();
-    CalcOptE1 model = project.getJmPotOptLcr();    // LCR
-    StepGridModel sg = model.getGrid();
+    JmCalcOptE1 model = project.getJmPotOptLcr();    // LCR
+    StepGridOpt sg = model.getGridOpt();
     StepGrid x = new StepGrid(sg);    log.dbg("LCR grid = x =", x);
     WFQuadrLcr w = new WFQuadrLcr(x);     log.dbg("integration weights=", w);
     return new LagrrLcr(w, model.getLgrrModel() );

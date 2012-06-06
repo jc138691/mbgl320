@@ -2,30 +2,24 @@ package papers.hy_swave;
 import atom.energy.part_wave.PotHMtrx;
 import math.func.FuncVec;
 import math.vec.Vec;
-import math.vec.grid.StepGridModel;
-import project.workflow.task.test.FlowTest;
+import math.vec.grid.StepGridOpt;
+import papers.project_setup.ProjCommon;
+import papers.project_setup.ProjTestOpt;
 import qm_station.QMS;
 import qm_station.ui.scatt.CalcOptR;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.TestModel;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
-
-import javax.utilx.log.Log;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 11/02/2010, 10:33:47 AM
  */
-public abstract class Jm2010Common extends FlowTest {
-protected static String HOME_DIR = "HOME_DIR";
-protected static String MODEL_NAME = "MODEL_NAME";
-protected static String MODEL_DIR = "MODEL_DIR";
+public abstract class Jm2010Common extends ProjCommon {
 protected static QMS project;
-protected static CalcOptE1 calcOpt;
-protected static TestModel testOpt;
-protected static LgrrModel lgrrOptN;
-protected static Vec rVec;
+protected static JmCalcOptE1 calcOpt;
+protected static LgrrOpt lgrrOptN;
+protected static Vec vR;
 protected static FuncVec pot;
 protected static PotHMtrx trgtPotH;
 protected static int N = 10;
@@ -41,13 +35,10 @@ protected static int TARGET_Z = 1; // 1 for e-Hy
 protected static double ENG_FIRST = 0.01;
 protected static double ENG_LAST = 10;
 protected static int ENG_N = 1000;
-public void setUp() {
-  Log.addGlobal(System.out);
-}
-//  public abstract StepGridModel makeStepGridModel();
+//  public abstract StepGridOpt makeStepGridModel();
 //  @Override
-public StepGridModel makeStepGridModelR() {
-  StepGridModel res = new StepGridModel();
+public StepGridOpt makeStepGridModelR() {
+  StepGridOpt res = new StepGridOpt();
   res.setFirst(0);
   res.setLast(R_LAST);
   res.setNumPoints(R_N);
@@ -71,14 +62,14 @@ protected static String makeLabelBasisOptN() {
 }
 public CalcOptR makeJmPotOptR() {
   CalcOptR res = new CalcOptR();
-  res.setGrid(makeStepGridModelR());
+  res.setGridOpt(makeStepGridModelR());
   res.setLgrrModel(makeLgrrModel());
-  res.setTestModel(makeJmTest());
+  res.setTestOpt(makeJmTest());
   res.setGridEng(makeGridEng());
   return res;
 }
-public TestModel makeJmTest() {
-  TestModel res = new TestModel();
+public ProjTestOpt makeJmTest() {
+  ProjTestOpt res = new ProjTestOpt();
   res.setMaxIntgrlErr(MAX_INTGRL_ERR);
   return res;
 }
@@ -89,8 +80,8 @@ public EngModel makeGridEng() {
   res.setNumPoints(ENG_N);
   return res;
 }
-public LgrrModel makeLgrrModel() {
-  LgrrModel res = new LgrrModel();
+public LgrrOpt makeLgrrModel() {
+  LgrrOpt res = new LgrrOpt();
   res.setL(0);
   res.setLambda(LAMBDA);
   res.setN(N);

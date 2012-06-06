@@ -1,5 +1,5 @@
 package atom.energy.part_wave;
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
 import math.func.arr.IFuncArr;
 import scatt.jm_2008.jm.laguerre.IWFuncArr;
@@ -14,7 +14,7 @@ public PotHMtrxLcr(int L, IWFuncArr basis, FuncVec pot) {
   calc();
 }
 
-public PotHMtrxLcr(int L, IFuncArr basis, FuncVec pot, WFQuadr quadr) {
+public PotHMtrxLcr(int L, IFuncArr basis, FuncVec pot, WFQuadrD1 quadr) {
   super(L, basis, pot);
   setQuadr(quadr);
   calc();

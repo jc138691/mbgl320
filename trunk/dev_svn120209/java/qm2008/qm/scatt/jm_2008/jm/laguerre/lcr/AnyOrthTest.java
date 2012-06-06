@@ -1,5 +1,5 @@
 package scatt.jm_2008.jm.laguerre.lcr;
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
 import project.workflow.task.test.FlowTest;
 import math.Mathx;
@@ -23,7 +23,7 @@ public void testNorm() {
 //    TaskProgressMonitor monitor = ProjectProgressMonitor.getInstance();
   log.dbg("TEST_{n,m} = Intergal[0,rMax] R_n(r) * R_m(r) = delta(n, m)");
   log.dbg("Max relative intergation error =", getMaxErr());
-  WFQuadr w = arr.getQuadr();
+  WFQuadrD1 w = arr.getQuadr();
   for (int n = 0; n < arr.size(); n++) {
 //      if (monitor != null && monitor.isCanceled(n, 0, arr.size())) {
 //        TestCase.fail();

@@ -5,7 +5,7 @@ import atom.wf.coulomb.WfFactory;
 import qm_station.ui.scatt.CalcOptR;
 import qm_station.QMS;
 import qm_station.QMSProject;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import atom.wf.WFQuadrR;
@@ -35,7 +35,7 @@ public class UCRunJmPotR extends UCRunDefaultTask<QMS> {
     QMS project = QMSProject.getInstance();
     CalcOptR model = project.getJmPotOptR();
 
-    StepGridModel sg = model.getGrid();
+    StepGridOpt sg = model.getGridOpt();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
     WFQuadrR w = new WFQuadrR(r);     log.dbg("integration weights=", w);
     Vec pot = WfFactory.makePotHy_1s(r);  log.dbg("V_1s(r)=", pot);

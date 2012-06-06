@@ -1,16 +1,16 @@
 package scatt.jm_2008.e1;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
+import papers.project_setup.ProjTestOpt;
 import scatt.eng.EngModel;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
-import scatt.jm_2008.jm.TestModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 /**
 * Copyright dmitry.konovalov@jcu.edu.au Date: 29/09/2008, Time: 14:27:22
 */
-public class CalcOptE1 {
+public class JmCalcOptE1 {
 private EngModel gridEng;
-private StepGridModel grid;
-private LgrrModel lgrrModel;
-private TestModel testModel;
+private StepGridOpt gridOpt;
+private LgrrOpt lgrrModel;
+private ProjTestOpt testOpt;
 private String saveFileName;
 private String gridName;
 private int optIdx;
@@ -24,16 +24,16 @@ private boolean calcSdcs;
 private int sdcsEngN;
 private int jmTailN;
 
-public CalcOptE1() {
+public JmCalcOptE1() {
   init();
 }
 private void init() {
   gridEng = new EngModel() ;
-  grid = new StepGridModel();
-  lgrrModel = new LgrrModel();
-  testModel = new TestModel();
+  gridOpt = new StepGridOpt();
+  lgrrModel = new LgrrOpt();
+  testOpt = new ProjTestOpt();
   saveFileName = "file name";
-  gridName = "grid";
+  gridName = "gridOpt";
 //    optIdx = OPT_LGRR;
 }
 public void setSdcsEngN(int sdcsEngN) {
@@ -54,16 +54,16 @@ public EngModel getGridEng() {
 public void setGridEng(EngModel gridEng) {
   this.gridEng = gridEng;
 }
-public StepGridModel getGrid() {
-  return grid;
+public StepGridOpt getGridOpt() {
+  return gridOpt;
 }
-public void setGrid(StepGridModel grid) {
-  this.grid = grid;
+public void setGridOpt(StepGridOpt gridOpt) {
+  this.gridOpt = gridOpt;
 }
-public LgrrModel getLgrrModel() {
+public LgrrOpt getLgrrModel() {
   return lgrrModel;
 }
-public void setLgrrModel(LgrrModel lgrrModel) {
+public void setLgrrModel(LgrrOpt lgrrModel) {
   this.lgrrModel = lgrrModel;
 }
 public String getSaveFileName() {
@@ -78,11 +78,11 @@ public String getGridName() {
 public void setGridName(String gridName) {
   this.gridName = gridName;
 }
-public TestModel getTestModel() {
-  return testModel;
+public ProjTestOpt getTestOpt() {
+  return testOpt;
 }
-public void setTestModel(TestModel testModel) {
-  this.testModel = testModel;
+public void setTestOpt(ProjTestOpt testOpt) {
+  this.testOpt = testOpt;
 }
 public int getOptIdx() {
   return optIdx;

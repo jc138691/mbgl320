@@ -10,7 +10,7 @@ import math.mtrx.MtrxFactory;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.eng.EngModel;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
 
 import javax.triplet.Dble3;
@@ -26,7 +26,7 @@ private Mtrx mX1;
 private Mtrx mM0;
 private Mtrx mM1;
 private CmplxMtrx cmS; //complex-matrx
-public EesMthdBasisHyE2_v3b_AllE_bad(CalcOptE1 calcOpt) {
+public EesMthdBasisHyE2_v3b_AllE_bad(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScttRes calcSysEngs() {    log.setDbg();

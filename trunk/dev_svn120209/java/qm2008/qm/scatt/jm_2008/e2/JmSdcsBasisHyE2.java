@@ -13,7 +13,7 @@ import math.vec.VecDbgView;
 import scatt.Scatt;
 import scatt.eng.EngGrid;
 import scatt.eng.EngModel;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.coulomb.ClmbHyBoundTest;
 import scatt.partial.wf.JmClmbLcr;
@@ -109,7 +109,7 @@ protected void loadClmbPsi() {
     return;
 }
 private void makeScdsEngGrid(Mtrx resSdcs) {
-  CalcOptE1 calcOpt = mthd.getCalcOpt();
+  JmCalcOptE1 calcOpt = mthd.getCalcOpt();
   int engN = calcOpt.getSdcsEngN();
   double sysTotE = mthd.getSysTotE();
   double maxE = sysTotE / 2;

@@ -39,7 +39,7 @@ import scatt.eng.EngModel;
 import scatt.eng.EngModelArr;
 import scatt.jm_2008.e2.JmMthdBaseE2;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.ScttTrgtE3;
 
@@ -305,7 +305,7 @@ protected void jmHeTestOk() {
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
 
   potFunc = new FuncPowInt(-AtomHe.Z, -1);  // f(r)=-atomZ/r
-  pot = new FuncVec(rVec, potFunc);
+  pot = new FuncVec(vR, potFunc);
   log.dbg("-atomZ/r=", new VecDbgView(pot));
 
   if (!new ConfArrFactoryE3().ok()) return;
@@ -339,7 +339,7 @@ protected void calcLi(SlaterLcr slater) { // NOTE!!! Local set up just to test t
   // E(Nt=11,lambda=2.6) = -7.4483075
   // E(Nt=11,lambda=2.7) = -7.448364
   // E(Nt=11,lambda=2.8) = -7.4484067
-  LgrrModel optLiNt = new LgrrModel(lgrrOptN); // for the target N, i.e. N_t
+  LgrrOpt optLiNt = new LgrrOpt(lgrrOptN); // for the target N, i.e. N_t
   optLiNt.setN(LI_Nt);
   optLiNt.setLambda(lambdaLi);          log.dbg("Laguerr model (N_t, lambda)=", optLiNt);
   LgrrOrthLcr orthonLiNt = new LgrrOrthLcr(quadr, optLiNt);        log.dbg("LgrrOrthLcr(N_t) = ", orthonLiNt);

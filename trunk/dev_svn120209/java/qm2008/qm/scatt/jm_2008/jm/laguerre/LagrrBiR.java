@@ -9,12 +9,12 @@ public class LagrrBiR extends LgrrR {
   public static String HELP = "Bio-diagonal JM-matrix Laguerre lgrrN:\n"
     + "BioR(n, a, lambda, r) = [n! / (n + a)!] * R(n, a, lambda, r) / r,\n"
     + "see LgrrR.HELP for R";
-  public LagrrBiR(WFQuadrR w, LgrrModel model) {
+  public LagrrBiR(WFQuadrR w, LgrrOpt model) {
     super(w, model);
 //    multFirst(new ThisNormFunc()); // THIS IS called in super
     calcBioNorm();
   }
-  public LagrrBiR(Vec r, LgrrModel model) {
+  public LagrrBiR(Vec r, LgrrOpt model) {
     super(r, model);
 //    multFirst(new ThisNormFunc()); // THIS IS called in super
     calcBioNorm();

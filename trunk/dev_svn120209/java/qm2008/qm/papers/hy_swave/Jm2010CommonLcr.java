@@ -26,14 +26,14 @@ import math.integral.test.QuadrPts5Test;
 import math.interpol.test.PolynomInterpolTest;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import math.vec.test.FastLoopTest;
 import project.workflow.task.test.FlowTest;
 import qm_station.jm.H_Hy_P1s_LcrTest;
 import qm_station.jm.PotEigVecLcrTest;
 import qm_station.ui.scatt.CalcOptLcr;
 import scatt.jm_2008.jm.laguerre.JmLgrrLabelMaker;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.*;
 import scatt.partial.born.PBornDirScattTest;
 
@@ -62,17 +62,17 @@ protected static int JM_TAIL_N = 10;  // how many extra Ns to use
 protected static int SDCS_ENG_N = 10;  // how many extra Ns to use
 
 
-public StepGridModel makeStepGridModel() {
-  StepGridModel gridR = new StepGridModel(R_FIRST, R_LAST, R_N); // R_N not used!!!
-  StepGridModel gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);
+public StepGridOpt makeStepGridModel() {
+  StepGridOpt gridR = new StepGridOpt(R_FIRST, R_LAST, R_N); // R_N not used!!!
+  StepGridOpt gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);
   return gridLcr;
 }
 
 public CalcOptLcr makeJmPotOptLcr() {
   CalcOptLcr res = new CalcOptLcr();
-  res.setGrid(makeStepGridModel());
+  res.setGridOpt(makeStepGridModel());
   res.setLgrrModel(makeLgrrModel());
-  res.setTestModel(makeJmTest());
+  res.setTestOpt(makeJmTest());
   res.setGridEng(makeGridEng());
   return res;
 }
@@ -84,7 +84,7 @@ protected void initProject() {
 
   calcOpt = project.getJmPotOptLcr();
   calcOpt.setHomeDir(HOME_DIR);
-  testOpt = calcOpt.getTestModel();
+  testOpt = calcOpt.getTestOpt();
 
   calcOpt.setUseClosed(USE_CLOSED_CHANNELS);
   calcOpt.setUseClosedNum(KEEP_CLOSED_N);
@@ -96,7 +96,7 @@ protected void initProject() {
 }
 
 protected void potScattTestOk() {
-  log.info("-->potScattTestOk()");
+  log.info("-->allTestsOk()");
   FlowTest.setLog(log);
   FlowTest.unlockMaxErr();
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
@@ -111,10 +111,10 @@ protected void potScattTestOk() {
     if (!new DerivPts9Test().ok()) return;
     if (!new HyOvTest().ok()) return;
 
-    StepGridModel sg = calcOpt.getGrid();           log.dbg("x step grid model =", sg);
+    StepGridOpt sg = calcOpt.getGridOpt();           log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
     quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
-    rVec = quadr.getR();                        log.dbg("r grid =", rVec);
+    vR = quadr.getR();                        log.dbg("r grid =", vR);
     if (!new QuadrPts5Test().ok()) return;
     if (!new PolynomInterpolTest().ok()) return;
   }
@@ -143,13 +143,13 @@ protected void potScattTestOk() {
     if (!new PBornDirScattTest(quadr, calcOpt.getGridEng()).ok()) return;
   }
   FlowTest.unlockMaxErr();         // FREE MAX ERR
-  log.info("<--potScattTestOk()");
+  log.info("<--allTestsOk()");
 }
 protected void hydrScattTestOk(int trgtZ) {
   FlowTest.setLog(log);
 
   lgrrOptN = new JmLgrrLabelMaker(lgrrOptN, Nt);    log.dbg("lgrrOptN =", lgrrOptN); // this is just for the file name label
-  LgrrModel lgrrOptNt = new LgrrModel(lgrrOptN); // for the target N, i.e. N_t
+  LgrrOpt lgrrOptNt = new LgrrOpt(lgrrOptN); // for the target N, i.e. N_t
   lgrrOptNt.setN(Nt);                             log.dbg("Laguerr model (N_t)=", lgrrOptNt);
 
   orthNt = new LgrrOrthLcr(quadr, lgrrOptNt); log.dbg("LgrrOrthLcr(N_t) = ", orthNt);
@@ -163,7 +163,7 @@ protected void hydrScattTestOk(int trgtZ) {
 
 //    potFunc = new FuncPowInt(-AtomHy.atomZ, -1);  // f(r)=-1./r
   potFunc = new FuncPowInt(-trgtZ, -1);  // f(r)=-1./r
-  pot = new FuncVec(rVec, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
+  pot = new FuncVec(vR, potFunc);                       log.dbg("-1/r=", new VecDbgView(pot));
 
   if (!new YkLcrTest().ok()) return;
   if (!new YkLcrTest2(quadr).ok()) return;

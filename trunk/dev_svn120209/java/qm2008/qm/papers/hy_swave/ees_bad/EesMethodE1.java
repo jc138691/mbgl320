@@ -1,5 +1,4 @@
 package papers.hy_swave.ees_bad;
-import atom.wf.WFQuadr;
 import atom.wf.lcr.WFQuadrLcr;
 import flanagan.complex.Cmplx;
 import math.func.FuncVec;
@@ -9,7 +8,7 @@ import math.func.arr.IFuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.partial.wf.CosRegWfLcr;
@@ -27,7 +26,7 @@ public static final int IDX_IRR = 1;
 public static final int IDX_P_REG = 2;
 public static final int IDX_P_IRR = 3;
 private static final boolean OPER_P_ON = true;
-public EesMethodE1(CalcOptE1 calcOpt) {
+public EesMethodE1(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScttRes calcSysEngs() {

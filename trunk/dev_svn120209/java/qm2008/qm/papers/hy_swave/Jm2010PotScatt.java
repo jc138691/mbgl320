@@ -55,7 +55,7 @@ public class Jm2010PotScatt extends Jm2010CommonR {
     N = newN;
     initJm();
 
-    pot = WfFactory.makePotHy_1s_e(rVec);  log.dbg("V_1s(r)=", new VecDbgView(pot));
+    pot = WfFactory.makePotHy_1s_e(vR);  log.dbg("V_1s(r)=", new VecDbgView(pot));
 
     PotHMtrx H = new PotHMtrxR(L, orth, pot);
 //    PotH partH = H.makePotH();

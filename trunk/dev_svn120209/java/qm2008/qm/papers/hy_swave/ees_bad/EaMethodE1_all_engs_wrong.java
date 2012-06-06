@@ -9,7 +9,7 @@ import math.func.arr.IFuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.partial.wf.CosRegWfLcr;
@@ -26,7 +26,7 @@ private static final int SC_N_ROWS = 3;
 private static final int IDX_S = 0;
 private static final int IDX_C = 1;
 private static final int IDX_D = 2;
-public EaMethodE1_all_engs_wrong(CalcOptE1 calcOpt) {
+public EaMethodE1_all_engs_wrong(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScttRes calc(Vec engs) {
@@ -66,7 +66,7 @@ private Dble2 calcW(FuncArr psi, double scattE) {
 //protected double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {
 //  int L = 0;
 //  FuncVec pot = potH.getPot();
-//  WFQuadr quadr = potH.getQuadr();
+//  WFQuadrD1 quadr = potH.getQuadr();
 //  double res = quadr.calcInt(wf, pot, wf2);
 //  PotH calcH = potH.makePotH();
 //

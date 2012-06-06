@@ -1,9 +1,11 @@
 package qm_station.ucm;
 import atom.wf.lcr.WFQuadrLcr;
+import math.vec.grid.StepGridOpt;
+import papers.project_setup.ProjTestOpt;
 import qm_station.QMS;
 import qm_station.QMSProject;
 import qm_station.jm.*;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.eng.EngModel;
 import qm_station.ui.StepGridView;
 import project.workflow.task.DefaultTaskUI;
@@ -14,13 +16,11 @@ import project.workflow.task.test.FlowTest;
 import javax.utilx.log.Log;
 import javax.swingx.textx.TextView;
 
-import math.vec.grid.StepGridModel;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import math.func.arr.FuncArrDbgView;
 import scatt.jm_2008.jm.laguerre.lcr.*;
-import scatt.jm_2008.jm.TestModel;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 22/10/2008, Time: 13:04:14
  */
@@ -46,16 +46,16 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
     getOptView().loadTo(project);
     project.saveProjectToDefaultLocation();
 
-    CalcOptE1 potOpt = project.getJmPotOptLcr();    // LCR
-    StepGridModel sg = potOpt.getGrid();           log.dbg("StepGridModel = ", sg);
+    JmCalcOptE1 potOpt = project.getJmPotOptLcr();    // LCR
+    StepGridOpt sg = potOpt.getGridOpt();           log.dbg("StepGridOpt = ", sg);
     StepGrid x = new StepGrid(sg);                log.dbg("LogCR grid, StepGrid=", new VecDbgView(x));
     WFQuadrLcr w = new WFQuadrLcr(x);             log.dbg("integration weights, WFQuadrLcr=", new VecDbgView(w));
     Vec r = w.getR();                             log.dbg("StepGrid r = ", new VecDbgView(r));
-                                                  log.dbg("LgrrModel = ", potOpt.getLgrrModel());
+                                                  log.dbg("LgrrOpt = ", potOpt.getLgrrModel());
     LagrrLcr basis = new LagrrLcr(w, potOpt.getLgrrModel() );   log.dbg("LagrrLcr = ", new FuncArrDbgView(basis));
 
     // RUN ALL TESTS
-    TestModel testOpt = potOpt.getTestModel();
+    ProjTestOpt testOpt = potOpt.getTestOpt();
     FlowTest.setMaxErr(testOpt.getMaxIntgrlErr());
     FlowTest.setLog(log);
 //    if (!new PartHMtrxLCRTest(w).ok())

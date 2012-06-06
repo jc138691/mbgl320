@@ -6,7 +6,8 @@ import math.func.arr.FuncArrDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
+import papers.project_setup.ProjTestOpt;
 import project.workflow.task.DefaultResView;
 import project.workflow.task.DefaultTaskUI;
 import project.workflow.task.UCRunDefaultTask;
@@ -18,8 +19,7 @@ import qm_station.jm.JmJnnRTest;
 import qm_station.jm.JmPotEigVecRTest;
 import qm_station.ui.StepGridView;
 import scatt.eng.EngModel;
-import scatt.jm_2008.e1.CalcOptE1;
-import scatt.jm_2008.jm.TestModel;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.laguerre.*;
 
 import javax.swingx.textx.TextView;
@@ -53,12 +53,12 @@ public class UCTestJmPotR extends UCRunDefaultTask<QMS> {
     getOptView().loadTo(project);
     project.saveProjectToDefaultLocation();
 
-    CalcOptE1 potOpt = project.getJmPotOptR();    // R
-    StepGridModel sg = potOpt.getGrid();
-    log.dbg("StepGridModel = ", sg);
+    JmCalcOptE1 potOpt = project.getJmPotOptR();    // R
+    StepGridOpt sg = potOpt.getGridOpt();
+    log.dbg("StepGridOpt = ", sg);
     StepGrid r = new StepGrid(sg);
     log.dbg("StepGrid r = ", new VecDbgView(r));
-    log.dbg("LgrrModel = ", potOpt.getLgrrModel());
+    log.dbg("LgrrOpt = ", potOpt.getLgrrModel());
     WFQuadrR w = new WFQuadrR(r);
     log.dbg("integration weights=", w);
     LgrrR jm = new LgrrR(w, potOpt.getLgrrModel());
@@ -67,7 +67,7 @@ public class UCTestJmPotR extends UCRunDefaultTask<QMS> {
     log.dbg("V_1s(r)=", pot);
 
     // RUN ALL TESTS
-    TestModel testOpt = potOpt.getTestModel();
+    ProjTestOpt testOpt = potOpt.getTestOpt();
     FlowTest.setLog(log);
 
     FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());     // LOCK MAX ERR

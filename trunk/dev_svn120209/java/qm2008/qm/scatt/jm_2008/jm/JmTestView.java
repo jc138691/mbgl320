@@ -1,4 +1,5 @@
 package scatt.jm_2008.jm;
+import papers.project_setup.ProjTestOpt;
 import project.ucm.UCController;
 import project.ucm.AdapterUCCToALThread;
 
@@ -24,7 +25,7 @@ public class JmTestView extends GridBagView {
 //  private JLabel maxNLbl;
 //  private IntField maxN;
 
-  public JmTestView(TestModel model)    {
+  public JmTestView(ProjTestOpt model)    {
     super("Self-test");
     init();
     loadFrom(model);
@@ -48,12 +49,12 @@ public class JmTestView extends GridBagView {
 //    maxN = new IntField(INT_SIZE, 1, 30);
 //    maxN.setToolTipText("Maximum n in L^v_n(x), i.e. 0 <= n <= maxN");
   }
-  public void loadTo(TestModel model) {
+  public void loadTo(ProjTestOpt model) {
     model.setMaxIntgrlErr(maxErr.getInput());
   }
-  public void loadFrom(TestModel model) {
+  public void loadFrom(ProjTestOpt model) {
     maxErr.setValue(model.getMaxIntgrlErr());
-//    maxN.setValue(model.getMaxN());
+//    maxN.setValue(model.getMomN());
   }
   public void runTest(UCController uc) {
     testBttn.addActionListener(new AdapterUCCToALThread(uc));

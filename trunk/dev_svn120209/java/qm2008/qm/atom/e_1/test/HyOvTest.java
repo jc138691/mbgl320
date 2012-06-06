@@ -10,7 +10,7 @@ import math.func.simple.FuncPowInt;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import math.vec.test.FastLoopTest;
 import project.workflow.task.test.FlowTest;
 
@@ -39,8 +39,8 @@ public void testHOvMtrx() throws Exception {  log.setDbg();
   int R_LAST = 100;
   double LAMBDA = 2;
 
-  StepGridModel gridR = new StepGridModel(R_FIRST, R_LAST, LCR_N); // R_N not used!!!
-  StepGridModel gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);   log.dbg("gridLcr =\n", gridLcr);
+  StepGridOpt gridR = new StepGridOpt(R_FIRST, R_LAST, LCR_N); // R_N not used!!!
+  StepGridOpt gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);   log.dbg("gridLcr =\n", gridLcr);
   StepGrid x = new StepGrid(gridLcr);                 log.dbg("StepGrid x = new StepGrid(gridLcr) =\n", x);
   quadr = new WFQuadrLcr(x);                          log.dbg("quadr = new WFQuadrLcr(x)=\n", quadr);
 

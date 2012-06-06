@@ -16,7 +16,7 @@ public class StepGrid extends Vec {
     step = new Step(range, size);
     loadGrid(range);
   }
-  public StepGrid(StepGridModel model) {
+  public StepGrid(StepGridOpt model) {
     this(model.getFirst(), model.getLast(), model.getNumPoints());
   }
   public StepGrid(double first, int numSteps, double stepVal) {

@@ -21,10 +21,10 @@ import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import math.vec.test.FastLoopTest;
 import project.workflow.task.test.FlowTest;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.utilx.log.Log;
@@ -38,7 +38,7 @@ private int K = 0;
 private int L = 0;
 // N-related
 private int N = 5;
-private LgrrModel lgrrN;
+private LgrrOpt lgrrN;
 private FuncArr orthN;
 private double LAMBDA_N;
 
@@ -69,18 +69,18 @@ public void testHeMm2() throws Exception {  log.setDbg();
   LAMBDA_N = 2; // best single zeta 3.375 E=-2.84765625
   makeLgrrN();
 
-  LgrrModel lgrrMi = new LgrrModel();
+  LgrrOpt lgrrMi = new LgrrOpt();
   lgrrMi.setL(0);
   lgrrMi.setLambda(LAMBDA_MI);
   lgrrMi.setN(N_MI);      log.dbg("lgrrMi=\n", lgrrMi);
 
-  LgrrModel lgrrMa = new LgrrModel();
+  LgrrOpt lgrrMa = new LgrrOpt();
   lgrrMa.setL(0);
   lgrrMa.setLambda(LAMBDA_MA);
   lgrrMa.setN(N_MA);      log.dbg("lgrrMa=\n", lgrrMa);
 
-  StepGridModel gridR = new StepGridModel(R_FIRST, R_LAST, LCR_N); // R_N not used!!!
-  StepGridModel gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);   log.dbg("gridLcr =\n", gridLcr);
+  StepGridOpt gridR = new StepGridOpt(R_FIRST, R_LAST, LCR_N); // R_N not used!!!
+  StepGridOpt gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);   log.dbg("gridLcr =\n", gridLcr);
   StepGrid x = new StepGrid(gridLcr);                 log.dbg("StepGrid x = new StepGrid(gridLcr) =\n", x);
   quadr = new WFQuadrLcr(x);                          log.dbg("quadr = new WFQuadrLcr(x)=\n", quadr);
   log.dbg("quadr.getR()=\n", quadr.getR());
@@ -169,8 +169,8 @@ public void testHyMm() throws Exception {  log.setDbg();
   LAMBDA_N = 2;
   makeLgrrN();
 
-  StepGridModel gridR = new StepGridModel(R_FIRST, R_LAST, LCR_N); // R_N not used!!!
-  StepGridModel gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);   log.dbg("gridLcr =\n", gridLcr);
+  StepGridOpt gridR = new StepGridOpt(R_FIRST, R_LAST, LCR_N); // R_N not used!!!
+  StepGridOpt gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);   log.dbg("gridLcr =\n", gridLcr);
   StepGrid x = new StepGrid(gridLcr);                 log.dbg("StepGrid x = new StepGrid(gridLcr) =\n", x);
   quadr = new WFQuadrLcr(x);                          log.dbg("quadr = new WFQuadrLcr(x)=\n", quadr);
   log.dbg("quadr.getR()=\n", quadr.getR());
@@ -271,8 +271,8 @@ public void testHeMm() throws Exception {  log.setDbg();
   LAMBDA_N = 4;
   makeLgrrN();
 
-  StepGridModel gridR = new StepGridModel(R_FIRST, R_LAST, LCR_N); // R_N not used!!!
-  StepGridModel gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);   log.dbg("gridLcr =\n", gridLcr);
+  StepGridOpt gridR = new StepGridOpt(R_FIRST, R_LAST, LCR_N); // R_N not used!!!
+  StepGridOpt gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);   log.dbg("gridLcr =\n", gridLcr);
   StepGrid x = new StepGrid(gridLcr);                 log.dbg("StepGrid x = new StepGrid(gridLcr) =\n", x);
   quadr = new WFQuadrLcr(x);                          log.dbg("quadr = new WFQuadrLcr(x)=\n", quadr);
   log.dbg("quadr.getR()=\n", quadr.getR());
@@ -370,7 +370,7 @@ public void testHeMm() throws Exception {  log.setDbg();
 }
 
 private void makeLgrrN() {
-  lgrrN = new LgrrModel();
+  lgrrN = new LgrrOpt();
   lgrrN.setL(0);
   lgrrN.setLambda(LAMBDA_N);
   lgrrN.setN(N);      log.dbg("lgrrModel=\n", lgrrN);

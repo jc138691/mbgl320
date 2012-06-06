@@ -14,7 +14,7 @@ import math.vec.Vec;
 import math.vec.VecDbgView;
 import scatt.Scatt;
 import scatt.eng.EngModel;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
 
 import javax.utilx.log.Log;
@@ -32,7 +32,7 @@ private Mtrx mX;
 private Mtrx mY;
 private CmplxMtrx cmS; //complex-matrx
 
-public EesMthdBasisHyE2_v1_bad(CalcOptE1 calcOpt) {
+public EesMthdBasisHyE2_v1_bad(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScttRes calcSysEngs() {    log.setDbg();

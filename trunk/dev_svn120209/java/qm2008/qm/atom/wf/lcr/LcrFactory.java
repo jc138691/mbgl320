@@ -2,8 +2,7 @@ package atom.wf.lcr;
 
 import math.func.Func;
 import math.func.arr.FuncArr;
-import math.vec.grid.StepGridModel;
-
+import math.vec.grid.StepGridOpt;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 14/05/2010, 4:23:19 PM
  */
@@ -21,9 +20,9 @@ public class LcrFactory {
     res.setX(w.getR());
     return res;
   }
-  public static StepGridModel makeLcrFromR(double firstLcr, int nLcr, StepGridModel fromR) {
+  public static StepGridOpt makeLcrFromR(double firstLcr, int nLcr, StepGridOpt fromR) {
     Func rToLcr = new FuncRToLcr(firstLcr, fromR.getFirst());
-    StepGridModel res = new StepGridModel();
+    StepGridOpt res = new StepGridOpt();
     res.setFirst(rToLcr.calc(fromR.getFirst()));
     res.setLast(rToLcr.calc(fromR.getLast()));
     res.setNumPoints(nLcr);

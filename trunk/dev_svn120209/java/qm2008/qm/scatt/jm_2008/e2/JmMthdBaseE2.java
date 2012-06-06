@@ -11,7 +11,7 @@ import math.vec.VecDbgView;
 import scatt.Scatt;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.target.JmCh;
 
@@ -27,7 +27,7 @@ protected static final int CS_CH_OFFSET = 1;
 private int exclSysIdx = -1;
 public Mtrx jmX;
 
-public JmMthdBaseE2(CalcOptE1 calcOpt) {
+public JmMthdBaseE2(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 protected abstract Mtrx calcX();
@@ -43,7 +43,7 @@ private boolean isValidD(Vec overD, int nt) {
     return false;
   if (overD.size() <= nt)   // something is wrong!
     return false;
-  double maxErr = calcOpt.getTestModel().getMaxIntgrlErr();
+  double maxErr = calcOpt.getTestOpt().getMaxIntgrlErr();
   for (int i = 0; i < overD.size(); i++) {
     double d_i = overD.get(i);
     if (i < nt && Math.abs(d_i) > maxErr) { // must be zero
