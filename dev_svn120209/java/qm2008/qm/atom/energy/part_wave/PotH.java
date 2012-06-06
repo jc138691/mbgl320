@@ -1,5 +1,5 @@
 package atom.energy.part_wave;
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
 
 import javax.utilx.log.Log;
@@ -8,9 +8,9 @@ import javax.utilx.log.Log;
  */
 public abstract class PotH {
   public static Log log = Log.getLog(PotH.class);
-  protected WFQuadr quadr;
+  protected WFQuadrD1 quadr;
 
-  public PotH(WFQuadr quadr) {
+  public PotH(WFQuadrD1 quadr) {
     this.quadr = quadr;
   }
   public abstract double calcKin(int L, FuncVec wf, FuncVec wf2);

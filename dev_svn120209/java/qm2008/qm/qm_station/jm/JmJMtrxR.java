@@ -1,6 +1,6 @@
 package qm_station.jm;
 import atom.energy.part_wave.PotHR;
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
 import math.mtrx.Mtrx;
 
@@ -21,7 +21,7 @@ public class JmJMtrxR extends Mtrx {
     calc(arr);
   }
   private void calc(LgrrR arr) {
-    WFQuadr w = arr.getQuadr();
+    WFQuadrD1 w = arr.getQuadr();
     PotHR partH = new PotHR(w);
     int L = arr.getModel().getL();
     for (int n = 0; n < getNumRows(); n++) {

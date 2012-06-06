@@ -1,11 +1,7 @@
 package scatt.jm_2008.e1;
 import math.mtrx.Mtrx;
 import scatt.jm_2008.e2.JmMthdBaseE2;
-import scatt.jm_2008.e2.JmSdcsBasisHyE2;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.laguerre.lcr.LagrrBiLcr;
-import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
-import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.utilx.log.Log;
 /**
@@ -14,7 +10,7 @@ import javax.utilx.log.Log;
 // [120529] converted JmMthdE1 to use JmMthdBaseE2: nice!
 public class JmMthdE1 extends JmMthdBaseE2 {
 public static Log log = Log.getLog(JmMthdE1.class);
-public JmMthdE1(CalcOptE1 calcOpt) {
+public JmMthdE1(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 

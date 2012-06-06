@@ -10,9 +10,9 @@ import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.e1.JmTailE2;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.target.JmCh;
 
 import javax.utilx.log.Log;
@@ -85,14 +85,14 @@ private double calcAA(int r, int c) {
 }
 
 protected Cmplx[][][] calcCFFromR() {
-  CalcOptE1 calcOpt = mthd.getCalcOpt();
+  JmCalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmS.getNumRows();
   int cN = mthd.jmS.getNumCols();
   int katoN = calcOpt.getJmTailN();
 //  int initChIdx = mthd.trgtE2.getInitTrgtIdx();
-  LgrrModel jmModel = calcOpt.getLgrrModel();
+  LgrrOpt jmModel = calcOpt.getLgrrModel();
   int N = jmModel.getN();
-  LgrrModel xiModel = new LgrrModel(jmModel);
+  LgrrOpt xiModel = new LgrrOpt(jmModel);
   Vec tEngs = mthd.trgtE2.getEngs();
   Cmplx[][][] res = new Cmplx[katoN][rN][cN];
   for (int r = 0; r < rN; r++) {
@@ -199,7 +199,7 @@ protected double calcSumK(Conf leftConf) {
   int L = 0;
   Ls LS = mthd.sysConfH.getBasis().getLs();
 
-  CalcOptE1 calcOpt = mthd.getCalcOpt();
+  JmCalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmR.getNumRows();
   int katoN = calcOpt.getJmTailN();
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
@@ -226,7 +226,7 @@ protected Cmplx calcSumCK(Conf leftConf) {
   int L = 0;
   Ls LS = mthd.sysConfH.getBasis().getLs();
 
-  CalcOptE1 calcOpt = mthd.getCalcOpt();
+  JmCalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmS.getNumRows();
   int katoN = calcOpt.getJmTailN();
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();

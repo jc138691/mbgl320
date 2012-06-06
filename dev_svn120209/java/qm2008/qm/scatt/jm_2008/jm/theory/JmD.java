@@ -1,6 +1,6 @@
 package scatt.jm_2008.jm.theory;
 
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.vec.Vec;
@@ -15,7 +15,7 @@ public class JmD extends Vec {
   // D_{n, N-1} = < bi_{N-1} | chi_n > 
   public JmD(IWFuncArr bi, FuncArr basisArr) {
     super(basisArr.size());
-    WFQuadr w = bi.getQuadr();
+    WFQuadrD1 w = bi.getQuadr();
     FuncVec lastBi = bi.getFunc(bi.size() - 1);
     for (int i = 0; i < size(); i++) {
       double overlap = w.calcInt(lastBi, basisArr.get(i));

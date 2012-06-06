@@ -6,7 +6,7 @@ import math.func.arr.IFuncArr;
 import math.mtrx.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
 
 import javax.utilx.log.Log;
@@ -15,7 +15,7 @@ import javax.utilx.log.Log;
  */
 public class EaMethodE1_FBorn_db extends EesMethodE1 {   // E1 - one electron
 public static Log log = Log.getLog(EaMethodE1_FBorn_db.class);
-public EaMethodE1_FBorn_db(CalcOptE1 calcOpt) {
+public EaMethodE1_FBorn_db(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScttRes calcSysEngs() {

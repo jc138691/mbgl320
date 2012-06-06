@@ -54,7 +54,7 @@ public void calc(int newN, int newNt) {
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
-  Vec D = new JmDe3(lgrrBiN, orthN, method.getCalcOpt().getTestModel());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
+  Vec D = new JmDe3(lgrrBiN, orthN, method.getCalcOpt().getTestOpt());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
   method.setOverD(D);
 
   if (CALC_DENSITY) {

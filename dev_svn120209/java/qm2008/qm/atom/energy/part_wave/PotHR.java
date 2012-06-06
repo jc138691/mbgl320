@@ -1,5 +1,5 @@
 package atom.energy.part_wave;
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
 
 import javax.utilx.log.Log;
@@ -8,7 +8,7 @@ import javax.utilx.log.Log;
  */
 public class PotHR extends PotH {
   public static Log log = Log.getLog(PotHR.class);
-  public PotHR(WFQuadr quadr) {
+  public PotHR(WFQuadrD1 quadr) {
     super(quadr);
   }
   public double calcKin(int L, FuncVec wf, FuncVec wf2) {

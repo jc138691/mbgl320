@@ -1,13 +1,13 @@
 package qm_station.ucm.plot;
+import math.vec.grid.StepGridOpt;
 import qm_station.QMS;
 import qm_station.QMSProject;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 
 import javax.utilx.log.Log;
 
 import project.workflow.task.DefaultTaskUI;
 import math.func.arr.FuncArr;
-import math.vec.grid.StepGridModel;
 import math.vec.grid.StepGrid;
 import scatt.partial.wf.eng_arr_not_used.SinPWaveEArrR;
 /**
@@ -20,8 +20,8 @@ public class UCPlotSinPWaveR extends UCPlotFuncArr {
   }
   public FuncArr makeFuncArr() {
     QMS project = QMSProject.getInstance();
-    CalcOptE1 model = project.getJmPotOptR();    // R
-    StepGridModel sg = model.getGrid();
+    JmCalcOptE1 model = project.getJmPotOptR();    // R
+    StepGridOpt sg = model.getGridOpt();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
     return new SinPWaveEArrR(r, model.getGridEng(), model.getLgrrModel().getL() ); //
   }

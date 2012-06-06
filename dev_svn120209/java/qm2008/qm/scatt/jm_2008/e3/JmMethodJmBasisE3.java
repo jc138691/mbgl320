@@ -4,7 +4,7 @@ package scatt.jm_2008.e3;
  */
 import atom.shell.ConfArr;
 import math.mtrx.Mtrx;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 
 import javax.utilx.log.Log;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class JmMethodJmBasisE3 extends JmMethodAnyBasisE3 {
   public static Log log = Log.getLog(JmMethodJmBasisE3.class);
 
-  public JmMethodJmBasisE3(CalcOptE1 calcOpt) {
+  public JmMethodJmBasisE3(JmCalcOptE1 calcOpt) {
     super(calcOpt);
   }
 

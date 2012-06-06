@@ -11,7 +11,7 @@ import atom.shell.Ls;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import papers.hy_swave.HyLikeSWave;
 import qm_station.QMSProject;
 import scatt.jm_2008.jm.ScttRes;
@@ -61,7 +61,7 @@ public void runJob() {
   double LAMBDA_MIN = 1;
   double LAMBDA_MAX = 1.5;
   int LAMBDA_N = 51;
-  StepGrid lamGrid = new StepGrid(new StepGridModel(LAMBDA_MIN, LAMBDA_MAX, LAMBDA_N));
+  StepGrid lamGrid = new StepGrid(new StepGridOpt(LAMBDA_MIN, LAMBDA_MAX, LAMBDA_N));
   for (int i = 0; i < lamGrid.size(); i++) {
     LAMBDA = lamGrid.get(i);
     SPIN = Spin.SINGLET;

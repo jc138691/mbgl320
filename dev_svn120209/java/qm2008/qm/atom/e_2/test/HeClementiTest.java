@@ -20,7 +20,7 @@ import math.integral.OrthonFactory;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
 import project.workflow.task.test.FlowTest;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 16/02/2010, 11:12:27 AM
@@ -82,7 +82,7 @@ public class HeClementiTest extends FlowTest {
     double Zeff = AtomHeClementi.ZETA;// from p445 of Clementi Roetti, Atomic Data 14, 177 (1974)
     double lambda = 2. * Zeff;
     int N = 10;
-    LgrrModel model = new LgrrModel();
+    LgrrOpt model = new LgrrOpt();
     model.setL(L);
     model.setLambda((float)lambda);
     model.setN(N);

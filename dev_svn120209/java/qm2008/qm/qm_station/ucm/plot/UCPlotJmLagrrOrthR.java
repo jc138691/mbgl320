@@ -1,7 +1,7 @@
 package qm_station.ucm.plot;
 import qm_station.QMS;
 import qm_station.QMSProject;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 
 import javax.utilx.log.Log;
 
@@ -20,8 +20,8 @@ public class UCPlotJmLagrrOrthR extends UCPlotFuncArr {
   }
   public FuncArr makeFuncArr() {
     QMS project = QMSProject.getInstance();
-    CalcOptE1 model = project.getJmPotOptR();    // R
-    StepGrid r = new StepGrid(model.getGrid());    log.dbg("r grid=", r);
+    JmCalcOptE1 model = project.getJmPotOptR();    // R
+    StepGrid r = new StepGrid(model.getGridOpt());    log.dbg("r grid=", r);
     WFQuadrR w = new WFQuadrR(r);     log.dbg("integration weights=", w);
     return new LgrrOrthR(w, model.getLgrrModel() );
   }

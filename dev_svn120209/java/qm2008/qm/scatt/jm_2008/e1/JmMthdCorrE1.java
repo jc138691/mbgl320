@@ -8,7 +8,7 @@ import javax.utilx.log.Log;
 public class JmMthdCorrE1 extends JmMthdE1 {
 public static Log log = Log.getLog(JmMthdCorrE1.class);
 private JmAlgCorrE1 jmCorr;
-public JmMthdCorrE1(CalcOptE1 calcOpt) {
+public JmMthdCorrE1(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 protected Mtrx calcCorrR() {

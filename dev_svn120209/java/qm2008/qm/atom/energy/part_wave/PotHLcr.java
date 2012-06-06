@@ -1,5 +1,5 @@
 package atom.energy.part_wave;
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
 
 import javax.utilx.log.Log;
@@ -47,7 +47,7 @@ import javax.utilx.log.Log;
 // ***=  1/sqrt(y) [F/2 + F']
 public class PotHLcr extends PotH {
   public static Log log = Log.getLog(PotHLcr.class);
-  public PotHLcr(WFQuadr quadr) {
+  public PotHLcr(WFQuadrD1 quadr) {
     super(quadr);
   }
 

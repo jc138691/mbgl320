@@ -2,14 +2,14 @@ package math.vec.grid;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 12/09/2008, Time: 15:05:14
  */
-public class StepGridModel {
+public class StepGridOpt {
   private double first;
   private double last;
   private int numPoints;
 
-  public StepGridModel() {
+  public StepGridOpt() {
   }
-  public StepGridModel(double first, double last, int n) {
+  public StepGridOpt(double first, double last, int n) {
     this.first = first;
     this.last = last;
     this.numPoints = n;

@@ -6,7 +6,7 @@ import atom.wf.coulomb.WfFactory;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import papers.hy_swave.Jm2010Common;
 import papers.hy_swave.Jm2010CommonLcr;
 import qm_station.QMSProject;
@@ -61,7 +61,7 @@ public void runJob() {
   double LAMBDA_MIN = 1;
   double LAMBDA_MAX = 1.5;
   int LAMBDA_N = 51;
-  StepGrid lamGrid = new StepGrid(new StepGridModel(LAMBDA_MIN, LAMBDA_MAX, LAMBDA_N));
+  StepGrid lamGrid = new StepGrid(new StepGridOpt(LAMBDA_MIN, LAMBDA_MAX, LAMBDA_N));
   for (int i = 0; i < lamGrid.size(); i++) {
      LAMBDA = lamGrid.get(i);
      calc(20);
@@ -72,7 +72,7 @@ public void calc(int newN) {
   initProject();
   potScattTestOk();   // lgrrN, lgrrBi, orthNt, quadr
 
-  pot = WfFactory.makePotHy_1s_e(rVec);             log.dbg("V_1s(r)=", new VecDbgView(pot));
+  pot = WfFactory.makePotHy_1s_e(vR);             log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx sysH = new PotHMtrxLcr(L, orthN, pot);
   Vec sysEngs = sysH.getEigEngs();            log.dbg("eigVal=", new VecDbgView(sysEngs));
 //  EaMethodE1_G_db method = new EaMethodE1_G_db(calcOpt);

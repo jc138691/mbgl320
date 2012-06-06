@@ -1,6 +1,7 @@
 package papers.jm2008;
+import papers.project_setup.ProjTestOpt;
 import qm_station.ui.scatt.CalcOptR;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.eng.EngModel;
 import qm_station.QMS;
 import qm_station.QMSProject;
@@ -8,14 +9,13 @@ import qm_station.jm.*;
 
 import javax.utilx.log.Log;
 
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import math.func.FuncVec;
 import atom.wf.WFQuadrR;
 import atom.wf.coulomb.WfFactory;
 import scatt.jm_2008.jm.laguerre.*;
-import scatt.jm_2008.jm.TestModel;
 import project.workflow.task.test.FlowTest;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 16/12/2008, Time: 13:05:09
@@ -29,22 +29,22 @@ public class Jm2008PotR extends Jm2008Common {
     log.setDbg();
   }
 
-  public static LgrrModel makeJmLagrr() {
-    LgrrModel res = new LgrrModel();
+  public static LgrrOpt makeJmLagrr() {
+    LgrrOpt res = new LgrrOpt();
     res.setL(0);
     res.setLambda(1);
     res.setN(10);
     return res;
   }
-  public static StepGridModel makeStepGridModel() {
-    StepGridModel res = new StepGridModel();
+  public static StepGridOpt makeStepGridModel() {
+    StepGridOpt res = new StepGridOpt();
     res.setFirst(0);
     res.setLast(100);
     res.setNumPoints(1301);
     return res;
   }
-  public static TestModel makeJmTest() {
-    TestModel res = new TestModel();
+  public static ProjTestOpt makeJmTest() {
+    ProjTestOpt res = new ProjTestOpt();
     res.setMaxIntgrlErr(0.001f);
     return res;
   }
@@ -57,9 +57,9 @@ public class Jm2008PotR extends Jm2008Common {
   }
   public static CalcOptR makeJmPotOpt() {
     CalcOptR res = new CalcOptR();
-    res.setGrid(makeStepGridModel());
+    res.setGridOpt(makeStepGridModel());
     res.setLgrrModel(makeJmLagrr());
-    res.setTestModel(makeJmTest());
+    res.setTestOpt(makeJmTest());
     res.setGridEng(makeGridEng());
     return res;
   }
@@ -78,14 +78,14 @@ public class Jm2008PotR extends Jm2008Common {
   public void testHyPot() {
     QMS project = makeProject();
 
-    CalcOptE1 potOpt = project.getJmPotOptR();
-    StepGridModel sg = potOpt.getGrid();     log.dbg("r step grid model =", sg);
+    JmCalcOptE1 potOpt = project.getJmPotOptR();
+    StepGridOpt sg = potOpt.getGridOpt();     log.dbg("r step grid model =", sg);
     StepGrid r = new StepGrid(sg);           log.dbg("r grid =", r);
     WFQuadrR w = new WFQuadrR(r);            log.dbg("r weights =", w);
 
-    LgrrModel lgrrOpt = potOpt.getLgrrModel(); log.dbg("Laguerr model =", lgrrOpt);
+    LgrrOpt lgrrOpt = potOpt.getLgrrModel(); log.dbg("Laguerr model =", lgrrOpt);
     LgrrR basis = new LgrrR(w, lgrrOpt);  log.dbg("LgrrR =\n", basis);
-    TestModel testOpt = potOpt.getTestModel();
+    ProjTestOpt testOpt = potOpt.getTestOpt();
     FlowTest.setMaxErr(testOpt.getMaxIntgrlErr());
     FlowTest.setLog(log);
 

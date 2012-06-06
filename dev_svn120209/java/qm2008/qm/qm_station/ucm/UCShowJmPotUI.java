@@ -28,29 +28,29 @@ public abstract class UCShowJmPotUI implements UCController {
     flowUI.setApplyAction(makeApply(flowUI));
     optView.setRunTest(makeTest(flowUI));
         
-//    optView.setRunPlot(makeLgrrPlot(flowUI), CalcOptE1.OPT_LGRR);
-//    optView.setRunSave(makeLgrrSave(flowUI), CalcOptE1.OPT_LGRR);
+//    optView.setRunPlot(makeLgrrPlot(flowUI), JmCalcOptE1.OPT_LGRR);
+//    optView.setRunSave(makeLgrrSave(flowUI), JmCalcOptE1.OPT_LGRR);
 //
-//    optView.setRunPlot(makeOrthPlot(flowUI), CalcOptE1.OPT_ORTH);
-//    optView.setRunSave(makeOrthSave(flowUI), CalcOptE1.OPT_ORTH);
+//    optView.setRunPlot(makeOrthPlot(flowUI), JmCalcOptE1.OPT_ORTH);
+//    optView.setRunSave(makeOrthSave(flowUI), JmCalcOptE1.OPT_ORTH);
 //
-//    optView.setRunPlot(makePotPlot(flowUI), CalcOptE1.OPT_POT);
-//    optView.setRunSave(makePotSave(flowUI), CalcOptE1.OPT_POT);
+//    optView.setRunPlot(makePotPlot(flowUI), JmCalcOptE1.OPT_POT);
+//    optView.setRunSave(makePotSave(flowUI), JmCalcOptE1.OPT_POT);
 //
-//    optView.setRunPlot(makeNmrvPlot(flowUI), CalcOptE1.OPT_NUMEROV);
-//    optView.setRunSave(makeNmrvSave(flowUI), CalcOptE1.OPT_NUMEROV);
+//    optView.setRunPlot(makeNmrvPlot(flowUI), JmCalcOptE1.OPT_NUMEROV);
+//    optView.setRunSave(makeNmrvSave(flowUI), JmCalcOptE1.OPT_NUMEROV);
 //
-//    optView.setRunPlot(makeEngKNmrvPlot(flowUI), CalcOptE1.OPT_K_MTRX_ENG);
-//    optView.setRunSave(makeEngKNmrvSave(flowUI), CalcOptE1.OPT_K_MTRX_ENG);
+//    optView.setRunPlot(makeEngKNmrvPlot(flowUI), JmCalcOptE1.OPT_K_MTRX_ENG);
+//    optView.setRunSave(makeEngKNmrvSave(flowUI), JmCalcOptE1.OPT_K_MTRX_ENG);
 //
-//    optView.setRunPlot(makeKNmrvArrPlot(flowUI), CalcOptE1.OPT_K_MTRX_FUNC_ARR);
-//    optView.setRunSave(makeKNmrvArrSave(flowUI), CalcOptE1.OPT_K_MTRX_FUNC_ARR);
+//    optView.setRunPlot(makeKNmrvArrPlot(flowUI), JmCalcOptE1.OPT_K_MTRX_FUNC_ARR);
+//    optView.setRunSave(makeKNmrvArrSave(flowUI), JmCalcOptE1.OPT_K_MTRX_FUNC_ARR);
 //
-//    optView.setRunPlot(makeEngGnnPlot(flowUI), CalcOptE1.OPT_GNN_ENG);
-//    optView.setRunSave(makeEngGnnSave(flowUI), CalcOptE1.OPT_GNN_ENG);
+//    optView.setRunPlot(makeEngGnnPlot(flowUI), JmCalcOptE1.OPT_GNN_ENG);
+//    optView.setRunSave(makeEngGnnSave(flowUI), JmCalcOptE1.OPT_GNN_ENG);
 //
-//    optView.setRunPlot(makeEngKnnPlot(flowUI), CalcOptE1.OPT_KNN_ENG);
-//    optView.setRunSave(makeEngKnnSave(flowUI), CalcOptE1.OPT_KNN_ENG);
+//    optView.setRunPlot(makeEngKnnPlot(flowUI), JmCalcOptE1.OPT_KNN_ENG);
+//    optView.setRunSave(makeEngKnnSave(flowUI), JmCalcOptE1.OPT_KNN_ENG);
 
     setPotUI(scattUI, flowUI);
     return true;

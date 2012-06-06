@@ -1,5 +1,5 @@
 package scatt.jm_2008.jm.laguerre;
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import math.func.polynom.laguerre.LgrrArr;
 import math.func.Func;
 import math.vec.Vec;
@@ -16,19 +16,19 @@ public class LgrrR extends LgrrArr implements IWFuncArr {
   + "R(n, a, lambda, r) = exp(-x/2) x^((a+1)/2) L^a_n(x),\n"
   + "where x = lambda * r;  a = alpha=2*L+1, L - angular momentum; L^a_n - the associated Laguerre polynomials.";
   public static Log log = Log.getLog(LgrrR.class);
-  protected LgrrModel model;
+  protected LgrrOpt model;
   private WFQuadrR quadr;
 
-  public LgrrModel getModel() {
+  public LgrrOpt getModel() {
     return model;
   }
-  public LgrrR(WFQuadrR w, LgrrModel model) {
+  public LgrrR(WFQuadrR w, LgrrOpt model) {
     super(w.getX(), model.getN(), 2 * model.getL() + 1, model.getLambda());
     this.model = model;
     quadr = w;
     mult(makeNormFunc());
   }
-  public LgrrR(Vec r, LgrrModel model) {
+  public LgrrR(Vec r, LgrrOpt model) {
     super(r, model.getN(), 2 * model.getL() + 1, model.getLambda());
     this.model = model;
     mult(makeNormFunc());
@@ -46,7 +46,7 @@ public class LgrrR extends LgrrArr implements IWFuncArr {
   protected Func makeNormFunc() {
     return new ThisNormFunc();
   }
-  public WFQuadr getQuadr() {
+  public WFQuadrD1 getQuadr() {
     return quadr;
   }
 

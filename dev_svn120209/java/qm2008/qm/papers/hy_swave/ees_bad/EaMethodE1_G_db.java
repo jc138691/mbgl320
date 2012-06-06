@@ -5,7 +5,7 @@ import math.func.arr.FuncArr;
 import math.func.arr.IFuncArr;
 import math.vec.Vec;
 import scatt.Scatt;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.partial.wf.CosPWaveLcr;
 import scatt.partial.wf.SinWfLcr;
 
@@ -15,7 +15,7 @@ import javax.utilx.log.Log;
  */
 public class EaMethodE1_G_db extends EesMethodE1 {   // E1 - one electron
 public static Log log = Log.getLog(EaMethodE1_G_db.class);
-public EaMethodE1_G_db(CalcOptE1 calcOpt) {
+public EaMethodE1_G_db(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 protected FuncArr calcPsi(double scattE, int engIdx) {  log.setDbg();

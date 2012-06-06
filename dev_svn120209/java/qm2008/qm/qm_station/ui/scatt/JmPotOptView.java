@@ -3,7 +3,7 @@ import qm_station.QMS;
 import qm_station.ui.StepGridView;
 import project.workflow.task.TaskOptView;
 import project.workflow.task.UCRunTask;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.laguerre.JmLagrrView;
 import scatt.jm_2008.jm.JmTestView;
 import scatt.partial.wf.JmPotPlotListView_DEL;
@@ -45,17 +45,17 @@ abstract public class JmPotOptView extends TaskOptView<QMS> {
     endRow(panel);
 
   }
-  public void loadTo(CalcOptE1 model) {
-    gridView.loadTo(model.getGrid());
+  public void loadTo(JmCalcOptE1 model) {
+    gridView.loadTo(model.getGridOpt());
     lagrrView.loadTo(model.getLgrrModel());
     engView.loadTo(model.getGridEng());
-    testView.loadTo(model.getTestModel());
+    testView.loadTo(model.getTestOpt());
     listOptView.loadTo(model);
   }
-  public void loadFrom(CalcOptE1 model) {
-    gridView = new StepGridView(model.getGrid(), model.getGridName());
+  public void loadFrom(JmCalcOptE1 model) {
+    gridView = new StepGridView(model.getGridOpt(), model.getGridName());
     lagrrView = new JmLagrrView(model.getLgrrModel());
-    testView = new JmTestView(model.getTestModel());
+    testView = new JmTestView(model.getTestOpt());
     engView = new StepGridView(model.getGridEng(), "Energy grid");
 
     listOptView = new JmPotPlotListView_DEL(model);

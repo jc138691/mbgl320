@@ -6,7 +6,7 @@ import math.func.FuncVec;
 import math.func.simple.FuncConst;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import project.workflow.task.test.FlowTest;
 import scatt.Scatt;
 import scatt.partial.wf.numerov.NmrvAlgR;
@@ -66,8 +66,8 @@ public class CoulombNmrvLcr extends FlowTest {
     int R_MAX = (int)(er / E);
     int R_N = R_MAX * POINTS_PER_ONE + 1;
 
-    StepGridModel modelR = new StepGridModel(0, R_MAX, R_N);
-    StepGridModel calcGrid = LcrFactory.makeLcrFromR(LCR_FIRST, R_N, modelR);
+    StepGridOpt modelR = new StepGridOpt(0, R_MAX, R_N);
+    StepGridOpt calcGrid = LcrFactory.makeLcrFromR(LCR_FIRST, R_N, modelR);
     StepGrid x = new StepGrid(calcGrid);           log.dbg("x grid =", x);
     TransLcrToR lcrToR = new TransLcrToR(x); // x is Lcr; y is r
 
@@ -77,14 +77,14 @@ public class CoulombNmrvLcr extends FlowTest {
 
     Vec rVec = lcrToR.getY();
     double k = Scatt.calcMomFromE(E);
-//    FuncVec testF = new FuncVec(rVec, new CoulombRegAsymptFunc(L, atomZ, k));
+//    FuncVec testF = new FuncVec(vR, new CoulombRegAsymptFunc(L, atomZ, k));
 //    FileX.writeToFile(testF.toTab(), HOME_DIR, "wf"
 //      , "CoulombRegAsymptFunc.dat");
 
 //    R_MAX = 10;
 //    R_N = R_MAX * POINTS_PER_ONE + 1;
-//    StepGridModel testGrid = new StepGridModel(0, R_MAX, R_N);
-//    rVec = new StepGrid(testGrid);
+//    StepGridOpt testGrid = new StepGridOpt(0, R_MAX, R_N);
+//    vR = new StepGrid(testGrid);
     k = Scatt.calcMomFromE(E);
     FuncVec testF = new FuncVec(rVec, new CoulombRegFunc(L, Z, k));
 //    FileX.writeToFile(testF.toTab(), HOME_DIR, "wf"

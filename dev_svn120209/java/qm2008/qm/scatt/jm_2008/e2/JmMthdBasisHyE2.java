@@ -2,7 +2,7 @@ package scatt.jm_2008.e2;
 import atom.shell.*;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
 
 import javax.utilx.log.Log;
@@ -13,7 +13,7 @@ public class JmMthdBasisHyE2 extends JmMthdBaseE2 {  // two-electrons
 public static Log log = Log.getLog(JmMthdBasisHyE2.class);
 private JmSdcsBasisHyE2 scdsHyE2;
 
-public JmMthdBasisHyE2(CalcOptE1 calcOpt) {
+public JmMthdBasisHyE2(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 

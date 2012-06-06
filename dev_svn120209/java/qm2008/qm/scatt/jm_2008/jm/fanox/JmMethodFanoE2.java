@@ -4,7 +4,7 @@ import atom.energy.ConfOvMtrx;
 import atom.energy.part_wave.PotHMtrx;
 import math.mtrx.Mtrx;
 import math.mtrx.MtrxDbgView;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.e2.JmMthdBasisHyE2;
 
 import javax.utilx.log.Log;
@@ -19,7 +19,7 @@ public class JmMethodFanoE2 extends JmMthdBasisHyE2 {
   private ConfOvMtrx chiOverlap;
   private PotHMtrx targetH;
 
-  public JmMethodFanoE2(CalcOptE1 potOpt) {
+  public JmMethodFanoE2(JmCalcOptE1 potOpt) {
     super(potOpt);
   }
 

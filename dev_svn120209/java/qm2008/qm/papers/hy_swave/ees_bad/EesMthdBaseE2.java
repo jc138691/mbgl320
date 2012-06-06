@@ -9,7 +9,7 @@ import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.arr.IFuncArr;
 import math.vec.Vec;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.e2.ScttMthdBaseE2;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
@@ -24,7 +24,7 @@ protected FuncArr sinWfs;
 protected FuncArr sinDelN;
 protected FuncArr pnS;    // pnS = \oveline{\psi} =  \hat{P}_N \psi = \psi - \phi
 protected FuncArr cosDelN;
-public EesMthdBaseE2(CalcOptE1 calcOpt) {
+public EesMthdBaseE2(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 protected void loadPnS(int sysIdx, LgrrOrthLcr orthN, int chNum) {

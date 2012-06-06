@@ -5,7 +5,7 @@ import javax.swingx.text_fieldx.FloatField;
 import javax.swing.*;
 import javax.utilx.log.Log;
 
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 11/09/2008, Time: 17:13:21
  */
@@ -23,13 +23,13 @@ public class StepGridView extends GridBagView {
   private JLabel nPtsLbl;
   private IntField nPts;
 
-  public StepGridView(StepGridModel model)    {
+  public StepGridView(StepGridOpt model)    {
     super("Step Grid");
     init();
     loadFrom(model);
     assemble();
   }
-  public StepGridView(StepGridModel model, String title)    {
+  public StepGridView(StepGridOpt model, String title)    {
     super(title);
     init();
     loadFrom(model);
@@ -53,12 +53,12 @@ public class StepGridView extends GridBagView {
     nPts = new IntField(INT_SIZE, 2, 10000);
     nPts.setToolTipText("Number of points in this grid");
   }
-  public void loadTo(StepGridModel model) {
+  public void loadTo(StepGridOpt model) {
     model.setFirst(first.getInput());
     model.setLast(last.getInput());
     model.setNumPoints(nPts.getInput());
   }
-  public void loadFrom(StepGridModel model) {
+  public void loadFrom(StepGridOpt model) {
     first.setValue(model.getFirst());
     last.setValue(model.getLast());
     nPts.setValue(model.getNumPoints());

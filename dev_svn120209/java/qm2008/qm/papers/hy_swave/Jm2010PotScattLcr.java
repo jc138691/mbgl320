@@ -62,7 +62,7 @@ public void calc(int newN) {
   N = newN;
   initProject();
   potScattTestOk();
-  pot = WfFactory.makePotHy_1s_e(rVec);         log.dbg("V_1s(r)=", new VecDbgView(pot));
+  pot = WfFactory.makePotHy_1s_e(vR);         log.dbg("V_1s(r)=", new VecDbgView(pot));
   PotHMtrx sysH = new PotHMtrxLcr(L, orthN, pot);
 ////    PotH partH = sysConfH.makePotH();
   Vec sysEngs = sysH.getEigEngs();                   log.dbg("eigVal=", new VecDbgView(sysEngs));

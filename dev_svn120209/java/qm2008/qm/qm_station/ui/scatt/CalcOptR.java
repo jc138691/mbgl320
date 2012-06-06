@@ -1,20 +1,20 @@
 package qm_station.ui.scatt;
-import math.vec.grid.StepGridModel;
-import scatt.jm_2008.e1.CalcOptE1;
+import math.vec.grid.StepGridOpt;
+import scatt.jm_2008.e1.JmCalcOptE1;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 29/09/2008, Time: 14:32:19
  */
-public class CalcOptR extends CalcOptE1 {
+public class CalcOptR extends JmCalcOptE1 {
   public void loadDefault() {
     loadDefault(this);
   }
-  public static void loadDefault(CalcOptE1 model) {
-    loadDefaultGridR(model.getGrid());
+  public static void loadDefault(JmCalcOptE1 model) {
+    loadDefaultGridR(model.getGridOpt());
     model.getGridEng().loadDefault();
     model.getLgrrModel().loadDefault();
-    model.getTestModel().loadDefault();
+    model.getTestOpt().loadDefault();
   }
-  public static void loadDefaultGridR(StepGridModel grid) {
+  public static void loadDefaultGridR(StepGridOpt grid) {
     grid.setFirst(0);
     grid.setLast(100);
     grid.setNumPoints(101);

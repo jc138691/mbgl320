@@ -9,9 +9,9 @@ import atom.wf.lcr.LcrFactory;
 import atom.wf.lcr.WFQuadrLcr;
 import math.func.arr.FuncArr;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import project.workflow.task.test.FlowTest;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.triplet.Int3;
@@ -39,14 +39,14 @@ public class ConfArrFactoryE3 extends FlowTest {
 
   public void testMakePoet() throws Exception {
     ConfArrFactoryE3.log.setDbg();
-    StepGridModel modelR = new StepGridModel(R_FIRST, R_LAST, R_N); // R_N not used!!!
-    StepGridModel sg = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, modelR);
+    StepGridOpt modelR = new StepGridOpt(R_FIRST, R_LAST, R_N); // R_N not used!!!
+    StepGridOpt sg = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, modelR);
     log.dbg("x step grid model =", sg);
     StepGrid x = new StepGrid(sg);
     log.dbg("x grid =", x);
     WFQuadrLcr quadrLcr = new WFQuadrLcr(x);
     log.dbg("x weights =", quadrLcr);
-    LgrrModel basisOptN = new LgrrModel(L, MAX_N, LAMBDA);
+    LgrrOpt basisOptN = new LgrrOpt(L, MAX_N, LAMBDA);
     LgrrOrthLcr orthonN = new LgrrOrthLcr(quadrLcr, basisOptN);
     log.dbg("LgrrOrthLcr = ", orthonN);
     ShWf.convertToShWf(orthonN, L);

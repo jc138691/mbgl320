@@ -3,7 +3,7 @@ import atom.wf.coulomb.CoulombNmrvR;
 import atom.wf.coulomb.CoulombRegFunc;
 import math.func.FuncVec;
 import math.vec.grid.StepGrid;
-import math.vec.grid.StepGridModel;
+import math.vec.grid.StepGridOpt;
 import math.vec.metric.DistMaxAbsErr;
 import project.workflow.task.test.FlowTest;
 import scatt.Scatt;
@@ -52,7 +52,7 @@ public class NmrvAlgR extends FlowTest {
     int POINTS_PER_ONE = 100;
     int R_MAX = 10;
     int R_N = R_MAX * POINTS_PER_ONE + 1;
-    StepGridModel calcGrid = new StepGridModel(0, R_MAX, R_N);
+    StepGridOpt calcGrid = new StepGridOpt(0, R_MAX, R_N);
     StepGrid rVec = new StepGrid(calcGrid);
     FuncVec calcF = CoulombNmrvR.calc(L, Z, E, rVec);
 //    FileX.writeToFile(calcF.toTab(), HOME_DIR, "wf"

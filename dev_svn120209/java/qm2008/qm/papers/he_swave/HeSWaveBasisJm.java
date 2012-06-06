@@ -14,7 +14,7 @@ import scatt.jm_2008.e2.JmResonE2;
 import scatt.jm_2008.e3.JmDe3;
 import scatt.jm_2008.e3.JmMethodJmBasisE3;
 import scatt.jm_2008.jm.ScttRes;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.ScttTrgtE3;
 
@@ -104,7 +104,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     calcLi(slater);
 
     // Making He+ eigen-states from Nc (core N).   this is only to calc ionization threshold
-    LgrrModel lgrrOptNc = new LgrrModel(lgrrOptN); // for the target N, i.e. N_t
+    LgrrOpt lgrrOptNc = new LgrrOpt(lgrrOptN); // for the target N, i.e. N_t
     lgrrOptNc.setN(Nc);                                    log.dbg("Laguerr model (N_c)=", lgrrOptNc);
     orthonNc = new LgrrOrthLcr(quadr, lgrrOptNc);     log.dbg("LgrrOrthLcr(N_c) = ", orthonNc);
     trgtPotH = new PotHMtrxLcr(L, orthonNc, pot);        log.dbg("trgtPotH=", trgtPotH);
@@ -130,7 +130,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
     method.setSysEngs(sEngs);
     method.setSysConfH(sysH);
-    Vec D = new JmDe3(lgrrBiN, orthN, method.getCalcOpt().getTestModel());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
+    Vec D = new JmDe3(lgrrBiN, orthN, method.getCalcOpt().getTestOpt());   log.dbg("D_{i<Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
     method.setOverD(D);
 
     if (CALC_DENSITY) {          log.info("if (CALC_DENSITY) {");

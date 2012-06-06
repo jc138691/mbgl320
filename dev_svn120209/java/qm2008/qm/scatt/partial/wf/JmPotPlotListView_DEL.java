@@ -1,5 +1,5 @@
 package scatt.partial.wf;
-import scatt.jm_2008.e1.CalcOptE1;
+import scatt.jm_2008.e1.JmCalcOptE1;
 
 import javax.swingx.listx.ListWithToolTip;
 import javax.utilx.log.Log;
@@ -23,7 +23,7 @@ public class JmPotPlotListView_DEL extends SavePlotPanel  {
   private UCController[] plotArr;
   private ListWithToolTip list;
 
-  public JmPotPlotListView_DEL(CalcOptE1 model) {
+  public JmPotPlotListView_DEL(JmCalcOptE1 model) {
     super("Save/Plot");
     init();
     loadFrom(model);
@@ -34,11 +34,11 @@ public class JmPotPlotListView_DEL extends SavePlotPanel  {
     startRow(saveBttn);  endRow(plotBttn);
   }
   private void init() {
-//    saveArr = new UCRunTask[CalcOptE1.N_OPTS];
-//    plotArr = new UCRunTask[CalcOptE1.N_OPTS];
+//    saveArr = new UCRunTask[JmCalcOptE1.N_OPTS];
+//    plotArr = new UCRunTask[JmCalcOptE1.N_OPTS];
     saveArr = new UCRunTask[0];
     plotArr = new UCRunTask[0];
-//    list = new ListWithToolTip(CalcOptE1.OPT_NAMES, CalcOptE1.OPT_HELP_TIPS);
+//    list = new ListWithToolTip(JmCalcOptE1.OPT_NAMES, JmCalcOptE1.OPT_HELP_TIPS);
     list = new ListWithToolTip(null, null);
 
     plotBttn.addActionListener(new ThisActionListener(plotArr));
@@ -58,10 +58,10 @@ public class JmPotPlotListView_DEL extends SavePlotPanel  {
       }
     }
   }
-  public void loadFrom(CalcOptE1 from) {
+  public void loadFrom(JmCalcOptE1 from) {
     list.setSelectedIndex(from.getOptIdx());
   }
-  public void loadTo(CalcOptE1 to) {
+  public void loadTo(JmCalcOptE1 to) {
     to.setOptIdx(list.getSelectedIndex());
   }
   public void runPlot(UCController uc, int idx) {

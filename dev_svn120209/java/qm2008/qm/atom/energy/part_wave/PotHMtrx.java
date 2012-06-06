@@ -1,6 +1,6 @@
 package atom.energy.part_wave;
 import atom.energy.HMtrx;
-import atom.wf.WFQuadr;
+import atom.wf.WFQuadrD1;
 import math.mtrx.Mtrx;
 import math.mtrx.jamax.EigenSymm;
 import math.vec.Vec;
@@ -19,7 +19,7 @@ private final int L;
 private final IFuncArr basis;
 private FuncArr eigVec;
 private FuncVec pot;
-private WFQuadr quadr;
+private WFQuadrD1 quadr;
 
 public PotHMtrx(int L, IFuncArr basis, FuncVec pot) {
   super(basis.size(), basis.size());
@@ -84,10 +84,10 @@ public IFuncArr getBasis() {
 public FuncVec getPot() {
   return pot;
 }
-public WFQuadr getQuadr() {
+public WFQuadrD1 getQuadr() {
   return quadr;
 }
-public void setQuadr(WFQuadr quadr) {
+public void setQuadr(WFQuadrD1 quadr) {
   this.quadr = quadr;
 }
 }

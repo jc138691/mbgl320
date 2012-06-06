@@ -6,7 +6,7 @@ import math.func.simple.FuncPowInt;
 /**
 * Copyright dmitry.konovalov@jcu.edu.au Date: 11/07/2008, Time: 16:30:58
 */
-public class WFQuadrR extends WFQuadr {
+public class WFQuadrR extends WFQuadrD1 {
 private WFQuadrR wDivR2;
 private WFQuadrR wDivR;
 public WFQuadrR(StepGrid x) {

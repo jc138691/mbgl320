@@ -2,7 +2,7 @@ package scatt.jm_2008.jm.target;
 
 import flanagan.complex.Cmplx;
 import math.Calc;
-import scatt.jm_2008.jm.laguerre.LgrrModel;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.theory.JmTools;
 
 import javax.utilx.log.Log;
@@ -14,9 +14,9 @@ c     j-matrix references to the papers:
 c     I  - J.T.Broad and W.P.Reinhardt, J.Phys.B9, 1491 (1976).
 c     II - H.A.Yamani and L.Fishman, J.Math.Phys.16, 410 (1975).
 */
-public class JmCh //extends LgrrModel
+public class JmCh //extends LgrrOpt
 {   // target channel
-private final LgrrModel jmModel;
+private final LgrrOpt jmModel;
 public static Log log = Log.getLog(JmCh.class);
 private Cmplx jnn; // from cjm
 private Cmplx scattMom; // scattering momentum; from q
@@ -41,7 +41,7 @@ public static final double EPS = 1e-10;
 /*
 see J_matrix
  */
-public JmCh(double sysEng, double chEng, LgrrModel jmModel, int jmZ) { // channel energy
+public JmCh(double sysEng, double chEng, LgrrOpt jmModel, int jmZ) { // channel energy
   this.jmModel = jmModel;
   init();
   eng = chEng;
