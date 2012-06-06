@@ -10,11 +10,11 @@ import javax.utilx.arraysx.TArr;
 public class ConfArr extends TArr<Conf> {
 private Ls ls;
 public Vec getX() {
-    if (size() == 0) {
-      return null;
-    }
-    return get(0).getX();
+  if (size() == 0) {
+    return null;
   }
+  return get(0).getX();
+}
 public void setLs(Ls ls) {
   this.ls = ls;
 }

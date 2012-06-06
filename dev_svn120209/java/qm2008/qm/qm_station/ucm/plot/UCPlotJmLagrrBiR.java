@@ -25,6 +25,6 @@ public class UCPlotJmLagrrBiR extends UCPlotFuncArr {
     StepGridOpt sg = model.getGridOpt();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
     WFQuadrR w = new WFQuadrR(r);                          
-    return new LagrrBiR(w, model.getLgrrModel() );
+    return new LagrrBiR(w, model.getBasisOpt() );
   }
 }

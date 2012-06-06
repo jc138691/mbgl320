@@ -133,32 +133,6 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
   log.info("<--makeTrgtBasisNt");
   return res;
 }
-//  private ScttTrgtE3 makeTrgtE3_OLD(SlaterLcr slater) {
-//    // NOTE!!!  As of 2011, SysE2 replaces SysE2OldOk.
-//    SysE2 tgrtE2 = new SysHe(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
-//
-//    Ls tLs = new Ls(0, Spin.SINGLET);  // t - for target
-//    ConfArr tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, orthNt, orthNt);     log.dbg("tConfArr=", tConfArr);
-//    ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                                   log.dbg("tH=\n", new MtrxDbgView(tH));
-////    Vec tEngs = tH.getEigEngs();                                                 log.dbg("tEngs=", new VecDbgView(tEngs));
-//
-//    FileX.writeToFile(tH.getEigEngs().toCSV(), HOME_DIR, "He"
-//      , "He_SModel_trgEngs_SING_" + lgrrOptN.makeLabel() + ".dat");
-//
-//
-//    tLs = new Ls(0, Spin.TRIPLET);  // t - for target
-//    tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, orthNt, orthNt);               log.dbg("tConfArr=", tConfArr);
-//    ConfHMtrx tH2 = new ConfHMtrx(tConfArr, tgrtE2);                                   log.dbg("tH=\n", new MtrxDbgView(tH));
-//
-//    FileX.writeToFile(tH2.getEigEngs().toCSV(), HOME_DIR, "He"
-//          , "He_SModel_trgEngs_TRIP_" + lgrrOptN.makeLabel() + ".dat");
-//
-//    ScttTrgtE3 res = new ScttTrgtE3();
-//    res.add(tH);
-//    res.add(tH2);
-//    res.makeReady();
-//    return res;
-//  }
 
 
 protected ConfHMtrx makeSysBasisN(SlaterLcr slater) {
@@ -171,15 +145,6 @@ protected ConfHMtrx makeSysBasisN(SlaterLcr slater) {
   log.info("<--makeSysBasisN");
   return res;
 }
-//  private ConfHMtrx makeSysH_OLD(SlaterLcr slater) {
-//    Ls sLs = new Ls(0, Spin.ELECTRON);     // s - for system
-//    SysE3 sysE3 = new SysE3(-AtomHe.atomZ, slater);    // NOTE!!! Helium (AtomHe.atomZ), not Li (AtomLi.atomZ)
-//    AtomShModelE3 modelE3 = new AtomShModelE3(Nt, Nt, N, sLs);
-//    ConfArr sConfArr = ConfArrFactoryE3.makeSModel(modelE3, orthNt);    log.dbg("sConfArr=", sConfArr);
-//    ConfHMtrx res = new ConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
-////    Vec sEngs = sH.getEigEngs();                                        log.dbg("sEngs=", new VecDbgView(sEngs));
-//    return res;
-//  }
 
 
 public void setupEngAu_2() {

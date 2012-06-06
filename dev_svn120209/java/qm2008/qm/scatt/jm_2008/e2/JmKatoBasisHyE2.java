@@ -90,7 +90,7 @@ protected Cmplx[][][] calcCFFromR() {
   int cN = mthd.jmS.getNumCols();
   int katoN = calcOpt.getJmTailN();
 //  int initChIdx = mthd.trgtE2.getInitTrgtIdx();
-  LgrrOpt jmModel = calcOpt.getLgrrModel();
+  LgrrOpt jmModel = calcOpt.getBasisOpt();
   int N = jmModel.getN();
   LgrrOpt xiModel = new LgrrOpt(jmModel);
   Vec tEngs = mthd.trgtE2.getEngs();

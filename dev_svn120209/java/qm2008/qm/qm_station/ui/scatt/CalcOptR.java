@@ -11,7 +11,7 @@ public class CalcOptR extends JmCalcOptE1 {
   public static void loadDefault(JmCalcOptE1 model) {
     loadDefaultGridR(model.getGridOpt());
     model.getGridEng().loadDefault();
-    model.getLgrrModel().loadDefault();
+    model.getBasisOpt().loadDefault();
     model.getTestOpt().loadDefault();
   }
   public static void loadDefaultGridR(StepGridOpt grid) {

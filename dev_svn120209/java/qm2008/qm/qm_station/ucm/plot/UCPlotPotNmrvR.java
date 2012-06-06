@@ -32,6 +32,6 @@ public class UCPlotPotNmrvR extends UCPlotFuncArr {
     StepGridOpt sg = model.getGridOpt();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
     FuncVec pot = WfFactory.makePotHy_1s_e(r);  log.dbg("V_1s(r)=", pot);
-    return new NmrvPotR(pot, model.getGridEng(), model.getLgrrModel().getL() ); //
+    return new NmrvPotR(pot, model.getGridEng(), model.getBasisOpt().getL() ); //
   }
 }

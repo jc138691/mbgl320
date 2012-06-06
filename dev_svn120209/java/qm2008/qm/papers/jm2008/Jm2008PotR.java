@@ -58,7 +58,7 @@ public class Jm2008PotR extends Jm2008Common {
   public static CalcOptR makeJmPotOpt() {
     CalcOptR res = new CalcOptR();
     res.setGridOpt(makeStepGridModel());
-    res.setLgrrModel(makeJmLagrr());
+    res.setBasisOpt(makeJmLagrr());
     res.setTestOpt(makeJmTest());
     res.setGridEng(makeGridEng());
     return res;
@@ -83,7 +83,7 @@ public class Jm2008PotR extends Jm2008Common {
     StepGrid r = new StepGrid(sg);           log.dbg("r grid =", r);
     WFQuadrR w = new WFQuadrR(r);            log.dbg("r weights =", w);
 
-    LgrrOpt lgrrOpt = potOpt.getLgrrModel(); log.dbg("Laguerr model =", lgrrOpt);
+    LgrrOpt lgrrOpt = potOpt.getBasisOpt(); log.dbg("Laguerr model =", lgrrOpt);
     LgrrR basis = new LgrrR(w, lgrrOpt);  log.dbg("LgrrR =\n", basis);
     ProjTestOpt testOpt = potOpt.getTestOpt();
     FlowTest.setMaxErr(testOpt.getMaxIntgrlErr());

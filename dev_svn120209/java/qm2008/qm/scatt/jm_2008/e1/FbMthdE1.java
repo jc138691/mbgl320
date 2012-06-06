@@ -23,7 +23,7 @@ public ScttRes calc(Vec engs) {
   ScttRes res = new ScttRes();
   int chNum = getChNum();
   int eN = engs.size();
-  LgrrOpt model = calcOpt.getLgrrModel();
+  LgrrOpt model = calcOpt.getBasisOpt();
   int N = model.getN();
   double lambda = model.getLambda();
   FuncVec arrShift = new FuncVec(engs);

@@ -28,6 +28,6 @@ public class UCPlotCosPWaveLCR extends UCPlotFuncArr {
     StepGridOpt sg = model.getGridOpt();
     StepGrid x = new StepGrid(sg);    log.dbg("LCR grid=", x);
     WFQuadrLcr w = new WFQuadrLcr(x);             log.dbg("LCR integration weights, WFQuadrLcr=", new VecDbgView(w));
-    return new CosPWaveEArrLcr(w, model.getGridEng(), model.getLgrrModel().getL() ); //
+    return new CosPWaveEArrLcr(w, model.getGridEng(), model.getBasisOpt().getL() ); //
   }
 }

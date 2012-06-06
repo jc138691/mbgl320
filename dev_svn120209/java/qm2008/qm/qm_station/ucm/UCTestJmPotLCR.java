@@ -51,8 +51,8 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
     StepGrid x = new StepGrid(sg);                log.dbg("LogCR grid, StepGrid=", new VecDbgView(x));
     WFQuadrLcr w = new WFQuadrLcr(x);             log.dbg("integration weights, WFQuadrLcr=", new VecDbgView(w));
     Vec r = w.getR();                             log.dbg("StepGrid r = ", new VecDbgView(r));
-                                                  log.dbg("LgrrOpt = ", potOpt.getLgrrModel());
-    LagrrLcr basis = new LagrrLcr(w, potOpt.getLgrrModel() );   log.dbg("LagrrLcr = ", new FuncArrDbgView(basis));
+                                                  log.dbg("LgrrOpt = ", potOpt.getBasisOpt());
+    LagrrLcr basis = new LagrrLcr(w, potOpt.getBasisOpt() );   log.dbg("LagrrLcr = ", new FuncArrDbgView(basis));
 
     // RUN ALL TESTS
     ProjTestOpt testOpt = potOpt.getTestOpt();
@@ -64,11 +64,11 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
     if (!new LagrrLcrTest(basis).ok())
         return false;
 
-    LagrrBiLcr bi = new LagrrBiLcr(w, potOpt.getLgrrModel() );  log.dbg("LagrrBiLcr = ", new FuncArrDbgView(bi));
+    LagrrBiLcr bi = new LagrrBiLcr(w, potOpt.getBasisOpt() );  log.dbg("LagrrBiLcr = ", new FuncArrDbgView(bi));
     if (!new LagrrBiLcrTest(basis, bi).ok())
       return false;
 
-    LgrrOrthLcr orth = new LgrrOrthLcr(w, potOpt.getLgrrModel() );  log.dbg("LgrrOrthLcr = ", new FuncArrDbgView(bi));
+    LgrrOrthLcr orth = new LgrrOrthLcr(w, potOpt.getBasisOpt() );  log.dbg("LgrrOrthLcr = ", new FuncArrDbgView(bi));
     if (!new AnyOrthTest(orth).ok())
       return false;
 

@@ -27,6 +27,6 @@ public class UCPlotJmLagrrBiLCR extends UCPlotFuncArr {
     StepGridOpt sg = model.getGridOpt();
     StepGrid x = new StepGrid(sg);    log.dbg("LCR grid = x =", x);
     WFQuadrLcr w = new WFQuadrLcr(x);     log.dbg("integration weights=", w);
-    return new LagrrBiLcr(w, model.getLgrrModel() );
+    return new LagrrBiLcr(w, model.getBasisOpt() );
   }
 }

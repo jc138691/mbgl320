@@ -5,27 +5,27 @@ package math.vec;
  */
 public class TVec<T> {
   private int size = -1;
-  protected T[] vec;
+  protected T[] arr;
 
   public TVec(T[] from) {
     setArr(from);
   }
 
   public T[] getArr() {
-    return vec;
+    return arr;
   }
 
   public void setArr(T[] arr) {
-    vec = arr;
+    this.arr = arr;
     size = arr.length;
   }
 
   public T get(int i) {
-    return vec[i];
+    return arr[i];
   }
 
   public void set(int i, T v) {
-    vec[i] = v;
+    arr[i] = v;
   }
 
   public int size() {

@@ -23,6 +23,6 @@ public class UCPlotJmLagrrOrthR extends UCPlotFuncArr {
     JmCalcOptE1 model = project.getJmPotOptR();    // R
     StepGrid r = new StepGrid(model.getGridOpt());    log.dbg("r grid=", r);
     WFQuadrR w = new WFQuadrR(r);     log.dbg("integration weights=", w);
-    return new LgrrOrthR(w, model.getLgrrModel() );
+    return new LgrrOrthR(w, model.getBasisOpt() );
   }
 }

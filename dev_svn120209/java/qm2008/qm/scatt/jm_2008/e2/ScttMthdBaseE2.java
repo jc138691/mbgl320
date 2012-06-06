@@ -114,7 +114,7 @@ protected void saveMtrxR(int i, ScttRes res, Mtrx fromR, int openNum) {
   }
 }
 protected JmCh[] loadChArr(double sysEng) {
-  LgrrOpt jmModel = calcOpt.getLgrrModel();
+  LgrrOpt jmModel = calcOpt.getBasisOpt();
   Vec tEngs = trgtE2.getEngs();
   JmCh[] res = new JmCh[tEngs.size()];
   for (int i = 0; i < tEngs.size(); i++) {    log.dbg("i = ", i);

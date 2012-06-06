@@ -7,14 +7,14 @@ import papers.project_setup.ProjTestOpt;
 public class BoxCalcOptD1 {
 private ProjTestOpt testOpt;
 private StepGridOpt gridOpt;
-private BoxTrigOpt boxTrigOpt;
+private BoxTrigOpt basisOpt;
 public BoxCalcOptD1() {
   init();
 }
 private void init() {
   testOpt = new ProjTestOpt();
   gridOpt = new StepGridOpt();
-  boxTrigOpt = new BoxTrigOpt();
+  basisOpt = new BoxTrigOpt();
 //  saveFileName = "file name";
 //  gridName = "grid";
 }
@@ -30,10 +30,10 @@ public StepGridOpt getGridOpt() {
 public void setGridOpt(StepGridOpt gridOpt) {
   this.gridOpt = gridOpt;
 }
-public BoxTrigOpt getBoxTrigOpt() {
-  return boxTrigOpt;
+public BoxTrigOpt getBasisOpt() {
+  return basisOpt;
 }
-public void setBoxTrigOpt(BoxTrigOpt boxTrigOpt) {
-  this.boxTrigOpt = boxTrigOpt;
+public void setBasisOpt(BoxTrigOpt basisOpt) {
+  this.basisOpt = basisOpt;
 }
 }

@@ -58,10 +58,10 @@ public class UCTestJmPotR extends UCRunDefaultTask<QMS> {
     log.dbg("StepGridOpt = ", sg);
     StepGrid r = new StepGrid(sg);
     log.dbg("StepGrid r = ", new VecDbgView(r));
-    log.dbg("LgrrOpt = ", potOpt.getLgrrModel());
+    log.dbg("LgrrOpt = ", potOpt.getBasisOpt());
     WFQuadrR w = new WFQuadrR(r);
     log.dbg("integration weights=", w);
-    LgrrR jm = new LgrrR(w, potOpt.getLgrrModel());
+    LgrrR jm = new LgrrR(w, potOpt.getBasisOpt());
     log.dbg("LgrrR = ", new FuncArrDbgView(jm));
     Vec pot = WfFactory.makePotHy_1s_e(r);
     log.dbg("V_1s(r)=", pot);
@@ -78,12 +78,12 @@ public class UCTestJmPotR extends UCRunDefaultTask<QMS> {
       if (!new JmLagrrRTest(jm).ok())
         return false;
 
-      LagrrBiR bi = new LagrrBiR(w, potOpt.getLgrrModel());
+      LagrrBiR bi = new LagrrBiR(w, potOpt.getBasisOpt());
       log.dbg("LagrrBiR = ", bi);
       if (!new JmLagrrBiRTest(jm, bi).ok())
         return false;
 
-      LgrrOrthR orth = new LgrrOrthR(w, potOpt.getLgrrModel());
+      LgrrOrthR orth = new LgrrOrthR(w, potOpt.getBasisOpt());
       log.dbg("LgrrOrthR = ", orth);
       if (!new JmLagrrOrthRTest(orth).ok())
         return false;

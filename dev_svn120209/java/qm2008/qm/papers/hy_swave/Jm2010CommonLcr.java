@@ -62,24 +62,24 @@ protected static int JM_TAIL_N = 10;  // how many extra Ns to use
 protected static int SDCS_ENG_N = 10;  // how many extra Ns to use
 
 
-public StepGridOpt makeStepGridModel() {
+public StepGridOpt makeGridOpt() {
   StepGridOpt gridR = new StepGridOpt(R_FIRST, R_LAST, R_N); // R_N not used!!!
-  StepGridOpt gridLcr = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);
-  return gridLcr;
+  StepGridOpt res = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);
+  return res;
 }
 
-public CalcOptLcr makeJmPotOptLcr() {
+public CalcOptLcr makeCalcOpt() {
   CalcOptLcr res = new CalcOptLcr();
-  res.setGridOpt(makeStepGridModel());
-  res.setLgrrModel(makeLgrrModel());
-  res.setTestOpt(makeJmTest());
+  res.setGridOpt(makeGridOpt());
+  res.setBasisOpt(makeBasisOpt());
+  res.setTestOpt(makeTestOpt());
   res.setGridEng(makeGridEng());
   return res;
 }
 
 protected void initProject() {
-  log.info("-->initProject()");
-  project.setJmPotOptLcr(makeJmPotOptLcr());
+  log.info("-->initProjOpts()");
+  project.setJmPotOptLcr(makeCalcOpt());
   project.setJmPotOptR(makeJmPotOptR());
 
   calcOpt = project.getJmPotOptLcr();
@@ -92,7 +92,7 @@ protected void initProject() {
   calcOpt.setJmTailN(JM_TAIL_N);
   calcOpt.setSdcsEngN(SDCS_ENG_N);
 
-  log.info("<--initProject()");
+  log.info("<--initProjOpts()");
 }
 
 protected void potScattTestOk() {
@@ -123,7 +123,7 @@ protected void potScattTestOk() {
   if (!new SlaterWFFactory(quadr).ok()) return;
   if (!new YkLcrTest2(quadr).ok()) return;
 
-  lgrrOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", lgrrOptN);
+  lgrrOptN = calcOpt.getBasisOpt();                 log.dbg("Laguerr model =", lgrrOptN);
   lgrrN = new LagrrLcr(quadr, lgrrOptN);    log.dbg("LagrrLcr =\n", lgrrN);
 
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());       // LOCK MAX ERR

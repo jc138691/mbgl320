@@ -29,13 +29,13 @@ protected static int R_LAST = 100;
 protected static int R_N = 1301;
 public static double VEC_DBG_MIN_VAL = 1e-10;
 public static int VEC_DBG_NUM_SHOW = 40;
-protected static float MAX_INTGRL_ERR = 0.000001f;  // [7Sep2011]changed from 1e-5 to 1e-6
+protected static double MAX_INTGRL_ERR = 1e-6;  // [7Sep2011]changed from 1e-5 to 1e-6
 protected final static int L = 0;
 protected static int TARGET_Z = 1; // 1 for e-Hy
 protected static double ENG_FIRST = 0.01;
 protected static double ENG_LAST = 10;
 protected static int ENG_N = 1000;
-//  public abstract StepGridOpt makeStepGridModel();
+//  public abstract StepGridOpt makeGridOpt();
 //  @Override
 public StepGridOpt makeStepGridModelR() {
   StepGridOpt res = new StepGridOpt();
@@ -63,12 +63,12 @@ protected static String makeLabelBasisOptN() {
 public CalcOptR makeJmPotOptR() {
   CalcOptR res = new CalcOptR();
   res.setGridOpt(makeStepGridModelR());
-  res.setLgrrModel(makeLgrrModel());
-  res.setTestOpt(makeJmTest());
+  res.setBasisOpt(makeBasisOpt());
+  res.setTestOpt(makeTestOpt());
   res.setGridEng(makeGridEng());
   return res;
 }
-public ProjTestOpt makeJmTest() {
+public ProjTestOpt makeTestOpt() {
   ProjTestOpt res = new ProjTestOpt();
   res.setMaxIntgrlErr(MAX_INTGRL_ERR);
   return res;
@@ -80,7 +80,7 @@ public EngModel makeGridEng() {
   res.setNumPoints(ENG_N);
   return res;
 }
-public LgrrOpt makeLgrrModel() {
+public LgrrOpt makeBasisOpt() {
   LgrrOpt res = new LgrrOpt();
   res.setL(0);
   res.setLambda(LAMBDA);

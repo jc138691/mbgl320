@@ -39,7 +39,7 @@ public class UCPlotEngKnnR extends UCPlotFuncArr {
     JmCalcOptE1 model = project.getJmPotOptR();
 
     EngModel eng = model.getGridEng();    log.dbg("eng model=", eng);
-    JmEngSC_NN1 jmSC = new JmEngSC_NN1(model.getLgrrModel(), eng);
+    JmEngSC_NN1 jmSC = new JmEngSC_NN1(model.getBasisOpt(), eng);
 
 //    UCPlotEngGnnR gnn = new UCPlotEngGnnR(getDefaultUi());
 //    FuncVec g = gnn.makeFuncVec();        log.dbg("G_{N,N-1}(E)=", g);
