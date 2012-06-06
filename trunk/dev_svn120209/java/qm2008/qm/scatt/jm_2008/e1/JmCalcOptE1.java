@@ -9,7 +9,7 @@ import scatt.jm_2008.jm.laguerre.LgrrOpt;
 public class JmCalcOptE1 {
 private EngModel gridEng;
 private StepGridOpt gridOpt;
-private LgrrOpt lgrrModel;
+private LgrrOpt basisOpt;
 private ProjTestOpt testOpt;
 private String saveFileName;
 private String gridName;
@@ -30,7 +30,7 @@ public JmCalcOptE1() {
 private void init() {
   gridEng = new EngModel() ;
   gridOpt = new StepGridOpt();
-  lgrrModel = new LgrrOpt();
+  basisOpt = new LgrrOpt();
   testOpt = new ProjTestOpt();
   saveFileName = "file name";
   gridName = "gridOpt";
@@ -60,11 +60,11 @@ public StepGridOpt getGridOpt() {
 public void setGridOpt(StepGridOpt gridOpt) {
   this.gridOpt = gridOpt;
 }
-public LgrrOpt getLgrrModel() {
-  return lgrrModel;
+public LgrrOpt getBasisOpt() {
+  return basisOpt;
 }
-public void setLgrrModel(LgrrOpt lgrrModel) {
-  this.lgrrModel = lgrrModel;
+public void setBasisOpt(LgrrOpt basisOpt) {
+  this.basisOpt = basisOpt;
 }
 public String getSaveFileName() {
   return saveFileName;
@@ -92,10 +92,10 @@ public void setOptIdx(int optIdx) {
 }
 
 public int getN() {
-  return lgrrModel.getN();
+  return basisOpt.getN();
 }
 public int getL() {
-  return lgrrModel.getL();
+  return basisOpt.getL();
 }
 public boolean getUseClosed() {
   return useClosed;

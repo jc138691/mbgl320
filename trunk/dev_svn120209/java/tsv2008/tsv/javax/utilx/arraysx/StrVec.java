@@ -1,5 +1,4 @@
 package javax.utilx.arraysx;
-import flanagan.complex.Cmplx;
 import math.vec.IntVec;
 import math.vec.TVec;
 
@@ -19,7 +18,7 @@ public class StrVec extends TVec<String> {
     super(from.getArr());
   }
   public String toString() {
-    return StrVec.toString(vec);
+    return StrVec.toString(arr);
   }
 
   public static String[] asArray(ArrayList arr) {

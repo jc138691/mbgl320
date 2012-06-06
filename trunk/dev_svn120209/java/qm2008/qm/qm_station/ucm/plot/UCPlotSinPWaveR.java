@@ -23,6 +23,6 @@ public class UCPlotSinPWaveR extends UCPlotFuncArr {
     JmCalcOptE1 model = project.getJmPotOptR();    // R
     StepGridOpt sg = model.getGridOpt();
     StepGrid r = new StepGrid(sg);    log.dbg("r grid=", r);
-    return new SinPWaveEArrR(r, model.getGridEng(), model.getLgrrModel().getL() ); //
+    return new SinPWaveEArrR(r, model.getGridEng(), model.getBasisOpt().getL() ); //
   }
 }

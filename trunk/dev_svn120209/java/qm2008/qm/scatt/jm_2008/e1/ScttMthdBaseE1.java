@@ -110,7 +110,7 @@ public void setQuadr(WFQuadrLcr quadr) {
   this.quadr = quadr;
 }
 public int getN() {
-  return calcOpt.getLgrrModel().getN();
+  return calcOpt.getBasisOpt().getN();
 }
 
 protected double calcHE(FuncVec wf, PotHMtrx potH, FuncVec wf2, double scattE) {
@@ -146,7 +146,7 @@ protected int matchSysTotE() {
   return -1;
 }
 protected JmCh[] loadChArr(double sysEng) {
-  LgrrOpt jmModel = calcOpt.getLgrrModel();
+  LgrrOpt jmModel = calcOpt.getBasisOpt();
   JmCh[] res = new JmCh[1];
     // NOTE!!! minus in "-trgtE2.getScreenZ()"
   res[0] = new JmCh(sysEng, 0, jmModel, 0);

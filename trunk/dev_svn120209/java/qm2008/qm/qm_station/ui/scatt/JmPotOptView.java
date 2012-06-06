@@ -47,14 +47,14 @@ abstract public class JmPotOptView extends TaskOptView<QMS> {
   }
   public void loadTo(JmCalcOptE1 model) {
     gridView.loadTo(model.getGridOpt());
-    lagrrView.loadTo(model.getLgrrModel());
+    lagrrView.loadTo(model.getBasisOpt());
     engView.loadTo(model.getGridEng());
     testView.loadTo(model.getTestOpt());
     listOptView.loadTo(model);
   }
   public void loadFrom(JmCalcOptE1 model) {
     gridView = new StepGridView(model.getGridOpt(), model.getGridName());
-    lagrrView = new JmLagrrView(model.getLgrrModel());
+    lagrrView = new JmLagrrView(model.getBasisOpt());
     testView = new JmTestView(model.getTestOpt());
     engView = new StepGridView(model.getGridEng(), "Energy grid");
 

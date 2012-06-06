@@ -37,7 +37,7 @@ public class Jm2010CommonR extends Jm2010Common {
     vR = quadr.getR();                   log.dbg("r grid =", vR);
     if (!new QuadrPts5Test().ok())         return;
 
-    lgrrOptN = calcOpt.getLgrrModel();          log.dbg("Laguerr model =", lgrrOptN);
+    lgrrOptN = calcOpt.getBasisOpt();          log.dbg("Laguerr model =", lgrrOptN);
     basis = new LgrrR(quadr, lgrrOptN);   log.dbg("LgrrR =\n", basis);
 
     // JM-lgrrN

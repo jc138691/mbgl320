@@ -1,4 +1,7 @@
 package papers.box_d1;
+import func.d1.ConfArrD1;
+import func.d1.ConfArrFactoryD1;
+
 import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 6/06/12, 9:19 AM
@@ -24,7 +27,7 @@ public void setUp() {
   log.info("-->setUp()");
   super.setUp();
   log.info("log.info(BoxD1N2)");
-  BoxD1N2.log.setDbg();
+  BoxD1Common.log.setDbg();
   log.setDbg();
 }
 public void runJob() {
@@ -34,7 +37,13 @@ public void runJob() {
 }
 public void calc() {
   log.info("-->calc()");
-  initProject();
-  allTestsOk();
+  initProjOpts();
+  libTestsOk();
+  setupProjOk();
+
+  ConfArrD1 confArr = ConfArrFactoryD1.makeBosonConfN2(basis);
+  log.dbg("confArr=\n", confArr);
+
+  int dbgLine = 0;
 }
 }

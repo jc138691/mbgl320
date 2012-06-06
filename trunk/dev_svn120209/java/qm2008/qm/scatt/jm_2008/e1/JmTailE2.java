@@ -29,7 +29,7 @@ protected void loadKatoLgrr() {
   JmCalcOptE1 calcOpt = mthd.getCalcOpt();
   int tailN = calcOpt.getJmTailN();
 
-  LgrrOpt lgrrN = calcOpt.getLgrrModel();
+  LgrrOpt lgrrN = calcOpt.getBasisOpt();
   int N = lgrrN.getN();
   LgrrOpt lgrrTail = new LgrrOpt(lgrrN);
   lgrrTail.setN(N + tailN);     log.dbg("Kato Lgrr model =", lgrrTail);
@@ -42,7 +42,7 @@ protected double[][][] calcFFromR() {
   int cN = mthd.jmR.getNumCols();
   int jN = calcOpt.getJmTailN();
 
-  LgrrOpt lgrrN = calcOpt.getLgrrModel();
+  LgrrOpt lgrrN = calcOpt.getBasisOpt();
   int N = lgrrN.getN();
   LgrrOpt lgrrTail = new LgrrOpt(lgrrN);
   double[] chE = mthd.trgtE2.getEngs().getArr(); // channel energies

@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 /**
-* Copyright KinGroup Team.
 * User: jc138691, Date: 9/07/2008, Time: 14:19:58
 */
 public class Vec {
@@ -123,7 +122,6 @@ public static String toString(double[] a, int size) {
   if (a.length < size) {
     throw new IllegalArgumentException(log.error("a.length < size=" + size));
   }
-//    int L = Math.min(a.length, size);
   StringBuffer buff = new StringBuffer();
   buff.append("Vec["+size+"]=");
   buff.append(VecToString.toString(a, size));

@@ -285,7 +285,7 @@ public class OptimLambda extends HeSWaveScatt {
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
     quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
     vR = quadr.getR();                        log.dbg("r grid =", vR);
-    lgrrOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", lgrrOptN);
+    lgrrOptN = calcOpt.getBasisOpt();                 log.dbg("Laguerr model =", lgrrOptN);
 
     // from hydrScattTestOk
     lgrrOptN = new JmLgrrLabelMaker(lgrrOptN, Nt);    log.dbg("lgrrOptN =", lgrrOptN); // this is just for the file name label
@@ -315,7 +315,7 @@ public class OptimLambda extends HeSWaveScatt {
     StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
     quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
     vR = quadr.getR();                        log.dbg("r grid =", vR);
-    lgrrOptN = calcOpt.getLgrrModel();                 log.dbg("Laguerr model =", lgrrOptN);
+    lgrrOptN = calcOpt.getBasisOpt();                 log.dbg("Laguerr model =", lgrrOptN);
 
     // Nt-part
     lgrrOptN = new JmLgrrLabelMaker(lgrrOptN, Nt);    log.dbg("lgrrOptN =", lgrrOptN); // this is just for the file name label
