@@ -7,6 +7,6 @@ import math.func.FuncVec;
 public interface ISysH {
   Energy calcH(IConf fc, IConf fc2);
   int getNumElec();
-  FuncVec calcDensity(IConf fc, IConf fc2);
-  double calcOverlap(IConf fc, IConf fc2);
+  FuncVec calcDens(IConf fc, IConf fc2);
+  double calcOver(IConf fc, IConf fc2);
 }

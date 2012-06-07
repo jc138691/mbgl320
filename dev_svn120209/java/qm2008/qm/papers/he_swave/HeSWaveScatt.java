@@ -13,7 +13,7 @@ import atom.e_3.AtomShModelE3;
 import atom.e_3.SysE3;
 import atom.e_3.SysLi;
 import atom.e_3.test.LiSlaterTest;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.LsConfs;
 import atom.smodel.HeSWaveAtom;
@@ -103,7 +103,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
 
   Ls tLs = new Ls(0, Spin.SINGLET);  // t - for target
   LsConfs tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, basisNt, Nc);    log.dbg("tConfArr=", tConfArr);
-  AConfHMtrx tH = new AConfHMtrx(tConfArr, tgrtE2);                          log.dbg("tH=\n", new MtrxDbgView(tH));
+  LsConfHMtrx tH = new LsConfHMtrx(tConfArr, tgrtE2);                          log.dbg("tH=\n", new MtrxDbgView(tH));
   Mtrx tVecs = tH.getEigVec();                                             log.dbg("tH.getEigVec=", new MtrxDbgView(tVecs));
   if (SAVE_TRGT_ENGS)  {
     FileX.writeToFile(tH.getEigEngs().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME+"_trgEngs_S1_" + makeLabelNc());
@@ -116,7 +116,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
 
   tLs = new Ls(0, Spin.TRIPLET);  // t - for target
   tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, basisNt, Nc);            log.dbg("tConfArr=", tConfArr);
-  AConfHMtrx tH2 = new AConfHMtrx(tConfArr, tgrtE2);                         log.dbg("tH=\n", new MtrxDbgView(tH2));
+  LsConfHMtrx tH2 = new LsConfHMtrx(tConfArr, tgrtE2);                         log.dbg("tH=\n", new MtrxDbgView(tH2));
   if (SAVE_TRGT_ENGS)  {
     FileX.writeToFile(tH2.getEigEngs().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME+"_trgEngs_S3_" + makeLabelNc());
   }
@@ -135,13 +135,13 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
 }
 
 
-protected AConfHMtrx makeSysBasisN(SlaterLcr slater) {
+protected LsConfHMtrx makeSysBasisN(SlaterLcr slater) {
   log.info("-->makeSysBasisN(SlaterLcr slater)");
   SYS_LS = new Ls(0, Spin.ELECTRON);     // s - for system
   SysE3 sysE3 = new SysE3(AtomHe.Z, slater);    // NOTE!!! Helium (AtomHe.atomZ), not Li (AtomLi.atomZ)
   AtomShModelE3 modelE3 = new AtomShModelE3(Nc, Nt, N, SYS_LS);
   LsConfs sConfArr = ConfArrFactoryE3.makeSModel(modelE3, wfN);    log.dbg("sConfArr=", sConfArr);
-  AConfHMtrx res = new AConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
+  LsConfHMtrx res = new LsConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
   log.info("<--makeSysBasisN");
   return res;
 }
@@ -331,12 +331,12 @@ protected void calcLi(SlaterLcr slater) { // NOTE!!! Local set up just to test t
   AtomShModelE3 modelE3 = new AtomShModelE3(LI_Nt, LI_Nt, LI_Nt, LS);
 
   LsConfs sysArr;
-  AConfHMtrx sysH;
+  LsConfHMtrx sysH;
   Vec sysE;
   // Test with all different shells
   sysArr = ConfArrFactoryE3.makePoetDiffShells(modelE3, orthonLiNt);
   log.dbg("sysArr=", sysArr);
-  sysH = new AConfHMtrx(sysArr, tgrtE3);
+  sysH = new LsConfHMtrx(sysArr, tgrtE3);
   log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
   sysE = sysH.getEigEngs();
   log.dbg("sysE=", new VecDbgView(sysE));
@@ -344,14 +344,14 @@ protected void calcLi(SlaterLcr slater) { // NOTE!!! Local set up just to test t
   // Test with all closed shells
   sysArr = ConfArrFactoryE3.makePoetClosedShell(modelE3, orthonLiNt);
   log.dbg("sysArr=", sysArr);
-  sysH = new AConfHMtrx(sysArr, tgrtE3);
+  sysH = new LsConfHMtrx(sysArr, tgrtE3);
   log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
   sysE = sysH.getEigEngs();
   log.dbg("sysE=", new VecDbgView(sysE));
 
   // Test with all possible shells
   sysArr = ConfArrFactoryE3.makeSModel(modelE3, orthonLiNt);    log.dbg("sysArr=", sysArr);
-  sysH = new AConfHMtrx(sysArr, tgrtE3);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
+  sysH = new LsConfHMtrx(sysArr, tgrtE3);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
   sysE = sysH.getEigEngs();    log.dbg("sysE=", new VecDbgView(sysE));
   assertFloorRel("E_1s2_2s_2S_CI", AtomLi.E_1s2_2s_2S_CI, sysE.get(0), 0.005);
 
@@ -368,8 +368,8 @@ protected void calcHe(SlaterLcr slater) {    // HELIUM TEST
   Ls S1 = new Ls(0, Spin.SINGLET);
   LsConfs confs = ConfArrFactoryE2.makeSModelE2(S1, orthNt, orthNt);
   log.dbg("trgtArr=", confs);
-  AConfHMtrx sysH = new AConfHMtrx(confs, sysE2);
-  AConfHMtrx oldH = new AConfHMtrx(confs, oldE2);
+  LsConfHMtrx sysH = new LsConfHMtrx(confs, sysE2);
+  LsConfHMtrx oldH = new LsConfHMtrx(confs, oldE2);
   log.dbg("htFS1=\n", new MtrxDbgView(oldH));
   log.dbg("htS1=\n", new MtrxDbgView(sysH));
 
@@ -388,7 +388,7 @@ protected void calcHe(SlaterLcr slater) {    // HELIUM TEST
   Ls S3 = new Ls(0, Spin.TRIPLET);
   LsConfs arrS3 = ConfArrFactoryE2.makeSModelE2(S3, orthNt, orthNt);
   log.dbg("trgtArr=", arrS3);
-  AConfHMtrx htS3 = new AConfHMtrx(arrS3, oldE2);
+  LsConfHMtrx htS3 = new LsConfHMtrx(arrS3, oldE2);
   log.dbg("sysConfH=\n", new MtrxDbgView(htS3));
   Vec etS3 = htS3.getEigEngs();
   log.dbg("eigVal=", new VecDbgView(etS3));

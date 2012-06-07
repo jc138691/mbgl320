@@ -3,7 +3,7 @@ package papers.hy_swave;
 import atom.AtomUtil;
 import atom.data.AtomHy;
 import atom.e_2.SysE2;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.energy.part_wave.PotHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
@@ -128,7 +128,7 @@ public void calc(int newN, int newNt) {
   SlaterLcr slater = new SlaterLcr(quadr);
 //    SysE2OldOk sys = new SysE2OldOk(TARGET_Z, slater);
   SysE2 sys = new SysE2(TARGET_Z, slater);
-  AConfHMtrx sysH = new AConfHMtrx(sysArr, sys);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
+  LsConfHMtrx sysH = new LsConfHMtrx(sysArr, sys);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 //    double e0 = sysEngs.get(0);
 

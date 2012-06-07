@@ -45,10 +45,10 @@ private void loadCurr(IConf fc, IConf fc2) {
 public int getNumElec() {
   return 0;
 }
-public FuncVec calcDensity(IConf fc, IConf fc2) {
+public FuncVec calcDens(IConf fc, IConf fc2) {
   return null;
 }
-public double calcOverlap(IConf fc, IConf fc2) {
+public double calcOver(IConf fc, IConf fc2) {
   loadCurr(fc, fc2);
   double res = currHk.calcOv();
   return res;

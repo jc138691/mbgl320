@@ -3,7 +3,7 @@ import atom.angular.Spin;
 import atom.data.AtomHy;
 import atom.e_1.SysE1;
 import atom.e_2.SysE2;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.LsConfs;
 import atom.shell.ConfArrFactoryE2;
@@ -93,7 +93,7 @@ public void calc(int newN) {
   trgt.loadSdcsW();
   trgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
 
-  AConfHMtrx sysH = makeSysH(SYS_LS, slater);
+  LsConfHMtrx sysH = makeSysH(SYS_LS, slater);
 
   EesMethodBasisAnyE2 method = new EesMethodBasisAnyE2(calcOpt);
   method.setTrgtE2(trgt);
@@ -115,7 +115,7 @@ protected ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
 
   LsConfs tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtWfsNt);     log.dbg("tConfArr=", tConfArr);
 
-  AConfHMtrx tH = new AConfHMtrx(tConfArr, tgrtE2);                  log.dbg("tH=\n", new MtrxDbgView(tH));
+  LsConfHMtrx tH = new LsConfHMtrx(tConfArr, tgrtE2);                  log.dbg("tH=\n", new MtrxDbgView(tH));
   FileX.writeToFile(tH.getEigEngs().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
   FileX.writeToFile(tH.getEngEv(0).toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_eV_" + makeLabelBasisOptN());
 
@@ -125,10 +125,10 @@ protected ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
   return res;
 }
 
-protected AConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
+protected LsConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
   SysE2 sys = new SysE2(TARGET_Z, slater);// NOTE 1 for Hydrogen
   LsConfs sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtWfsNt, trgtWfsNt);   //log.dbg("sysArr=", sConfArr);
-  AConfHMtrx res = new AConfHMtrx(sConfArr, sys);                  //log.dbg("sysConfH=\n", new MtrxDbgView(res));
+  LsConfHMtrx res = new LsConfHMtrx(sConfArr, sys);                  //log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;
 }
 @Override

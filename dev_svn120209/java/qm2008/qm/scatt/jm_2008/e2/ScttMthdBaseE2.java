@@ -1,5 +1,5 @@
 package scatt.jm_2008.e2;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import flanagan.complex.Cmplx;
 import math.Mathx;
 import math.complex.CmplxMtrx;
@@ -24,7 +24,7 @@ public class ScttMthdBaseE2 extends ScttMthdBaseE1 {
 public static Log log = Log.getLog(ScttMthdBaseE2.class);
 protected static final int IDX_IONIZ = 1;
 public ScttTrgtE2 trgtE2;
-protected AConfHMtrx sysConfH;
+protected LsConfHMtrx sysConfH;
 protected LgrrOrthLcr orthNt;
 //protected FuncArr lgrrN;  // use trgtE2.statesE1
 protected CmplxMtrx jmS;
@@ -57,7 +57,7 @@ public ScttTrgtE2 getTrgtE2() {
 public void setTrgtE2(ScttTrgtE2 trgtE2) {
   this.trgtE2 = trgtE2;
 }
-public void setSysConfH(AConfHMtrx sysConfH) {
+public void setSysConfH(LsConfHMtrx sysConfH) {
   this.sysConfH = sysConfH;
 //  setPotH(sysConfH);
 //    setSysEngs(sysConfH.getEigEngs(H_OVERWRITE));

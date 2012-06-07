@@ -160,7 +160,7 @@ public class target {
 //        if (i_atom .eq. 2 ) then
 //           k = k1
 //           atom = 'Closed'
-//           print*, ' AtomFano1965 with CLOSED shells is the target'
+//           print*, ' LsFermiSysH with CLOSED shells is the target'
 //           nsht = 2
 //           j = 1
 //  c
@@ -441,7 +441,7 @@ C=======================================================================
       if (i_atom .eq. 2 ) then
          k = k1
          atom = 'Closed'
-         print*, ' AtomFano1965 with CLOSED shells is the target'
+         print*, ' LsFermiSysH with CLOSED shells is the target'
          nsht = 2
          j = 1
 c

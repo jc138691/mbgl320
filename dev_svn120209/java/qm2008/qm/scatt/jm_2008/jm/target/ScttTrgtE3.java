@@ -1,5 +1,5 @@
 package scatt.jm_2008.jm.target;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import math.vec.Vec;
 
 import javax.utilx.log.Log;
@@ -11,25 +11,25 @@ import java.util.Comparator;
  */
 public class ScttTrgtE3 extends ScttTrgtE2 {
   public static Log log = Log.getLog(ScttTrgtE3.class);
-  private ArrayList<AConfHMtrx> arrH;
+  private ArrayList<LsConfHMtrx> arrH;
   private ChConf[] confArr;
   public ScttTrgtE3() {
-    arrH = new ArrayList<AConfHMtrx>();
+    arrH = new ArrayList<LsConfHMtrx>();
   }
-  public void add(AConfHMtrx h) {
+  public void add(LsConfHMtrx h) {
     confArr = null;
     setEngs(null);
     arrH.add(h);
   }
   public void makeReady() {
     int arrSize = 0;
-    for (AConfHMtrx h : arrH) {    // count required size
+    for (LsConfHMtrx h : arrH) {    // count required size
       arrSize += h.getEigEngs().size();
     }                                        log.dbg("arrSize=", arrSize);
     // get all channels
     confArr = new ChConf[arrSize];
     int idx = 0;
-    for (AConfHMtrx h : arrH) {
+    for (LsConfHMtrx h : arrH) {
       Vec engs = h.getEigEngs();              log.dbg("engs=\n", engs);
       for (int i = 0; i < engs.size(); i++) {
         ChConf conf = new ChConf(i, engs.get(i), h);
@@ -61,7 +61,7 @@ public class ScttTrgtE3 extends ScttTrgtE2 {
     return confArr[idx];
   }
 
-  public ArrayList<AConfHMtrx> getArrH() {
+  public ArrayList<LsConfHMtrx> getArrH() {
     return arrH;
   }
   public void removeClosed(double maxScttE, int idxFromCh, int numExtra) {

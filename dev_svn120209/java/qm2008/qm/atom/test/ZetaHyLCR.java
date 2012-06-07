@@ -1,6 +1,6 @@
 package atom.test;
 import atom.e_1.SysE1;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.energy.slater.SlaterLr;
@@ -90,7 +90,7 @@ public class ZetaHyLCR extends LCRTestCase {
 
     // 18Jul08:  check B-Splines
     int N_BASIS = 20;
-    AConfHMtrx H = HMtrxFactory.makeFromBsplLogCR(FIRST, LAST, GRID_SIZE, N_BASIS, 0);
+    LsConfHMtrx H = HMtrxFactory.makeFromBsplLogCR(FIRST, LAST, GRID_SIZE, N_BASIS, 0);
     EigenSymm eig = H.eig();
     log.dbg("H.eig()=", new Vec(eig.getRealEVals()));
 

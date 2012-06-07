@@ -1,5 +1,5 @@
 package atom.energy;
-import atom.shell.IConfArr;
+import atom.shell.IConfs;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.Mtrx;
@@ -9,34 +9,34 @@ import math.vec.VecSort;
 
 import javax.utilx.log.Log;
 /**
-* Copyright dmitry.konovalov@jcu.edu.au Date: 16/07/2008, Time: 12:24:45
-*/
-public class AConfHMtrx extends HMtrx {
-public static Log log = Log.getLog(AConfHMtrx.class);
+ * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 7/06/12, 11:40 AM
+ */
+public class IConfHMtrx  extends HMtrx {
+public static Log log = Log.getLog(LsConfHMtrx.class);
 private final ISysH sysH;
-private final IConfArr confArr;
+private final IConfs confs;
 private FuncArr density;
-public AConfHMtrx(IConfArr basis, final ISysH atom) {
+public IConfHMtrx(IConfs basis, final ISysH atom) {
   super(basis.size(), basis.size());
   this.sysH = atom;
-  this.confArr = basis;
+  this.confs = basis;
   load();
 }
 
-public IConfArr getConfArr() {
-  return confArr;
+public IConfs getConfs() {
+  return confs;
 }
 public ISysH getSysH() {
   return sysH;
 }
 private void load() {
-  for (int r = 0; r < confArr.size(); r++) {
-    if ((10* confArr.size())%(r+1) == 0) {
-      log.dbg("AConfHMtrx row=" + r + ", " + (int)(100.* r / confArr.size()) + "%");
+  for (int r = 0; r < confs.size(); r++) {
+    if ((10* confs.size())%(r+1) == 0) {
+      log.dbg("LsConfHMtrx row=" + r + ", " + (int)(100.* r / confs.size()) + "%");
     }
-    for (int c = r; c < confArr.size(); c++) { // NOTE c=r
+    for (int c = r; c < confs.size(); c++) { // NOTE c=r
       // Atomic system should know how to calculate itself
-      Energy res = sysH.calcH(confArr.get(r), confArr.get(c));
+      Energy res = sysH.calcH(confs.get(r), confs.get(c));
       set(r, c, res.kin + res.pt);
       set(c, r, res.kin + res.pt);
     }
@@ -50,33 +50,33 @@ public FuncArr getDensity(int maxNum) {
   return density;
 }
 private FuncArr calcDensity(int maxNum) {
-  if (confArr == null  ||  confArr.size() == 0  ||  maxNum == 0) {
+  if (confs == null  ||  confs.size() == 0  ||  maxNum == 0) {
     return null;
   }
-  int size = confArr.size();
+  int size = confs.size();
   if (maxNum > 0) {
-    size = Math.min(maxNum, confArr.size());
+    size = Math.min(maxNum, confs.size());
   }
 
-  Vec x = confArr.getX();
+  Vec x = confs.getX();
   FuncArr res = new FuncArr(x, size);
-  FuncVec[][] confArr = new FuncVec[this.confArr.size()][this.confArr.size()];
-  boolean[][] doneArr = new boolean[this.confArr.size()][this.confArr.size()];
+  FuncVec[][] confArr = new FuncVec[this.confs.size()][this.confs.size()];
+  boolean[][] doneArr = new boolean[this.confs.size()][this.confs.size()];
 
   Mtrx v = eig().getV();
   double[][] C = v.getArray();
   double norm = 1. / sysH.getNumElec();
   for (int r = 0; r < size; r++) {
-    if ((10* this.confArr.size())%(r+1) == 0) {
-      log.dbg("calcDensity row=", r); log.dbg("rows%=", 100.* r / this.confArr.size());
+    if ((10* this.confs.size())%(r+1) == 0) {
+      log.dbg("calcDens row=", r); log.dbg("rows%=", 100.* r / this.confs.size());
     }
     FuncVec f_i = new FuncVec(x);
-    for (int j = 0; j < this.confArr.size(); j++) {
+    for (int j = 0; j < this.confs.size(); j++) {
       double cij = C[j][r];  // [j][i] is correct, see  PotHMtrx;  // BY ROW is correct!   see HydrogenJUnit.test_2s
-      for (int j2 = 0; j2 < this.confArr.size(); j2++) {
+      for (int j2 = 0; j2 < this.confs.size(); j2++) {
         FuncVec conf = confArr[j][j2];
         if (conf == null  &&  !doneArr[j][j2]) {
-          conf = sysH.calcDensity(this.confArr.get(j), this.confArr.get(j2));
+          conf = sysH.calcDens(this.confs.get(j), this.confs.get(j2));
           confArr[j][j2] = conf;
           doneArr[j][j2] = true;  // this is to stop re-calculating null contributions
           confArr[j2][j] = conf;
@@ -103,7 +103,7 @@ public String toStringSorted(EigenSymm eig, int col) {
     int sortedIdx = idx[r];
     buff.append("\n\tv[" + sortedIdx + "]=\t");
     buff.append((float) m.get(sortedIdx, col)).append(" * ");
-    buff.append(confArr.get(sortedIdx).toString());
+    buff.append(confs.get(sortedIdx).toString());
   }
   return buff.toString();
 }
@@ -118,12 +118,12 @@ public String toString(EigenSymm eig, int col) {
 //         double val = m.getLine(col, r);  // this is WRONG!!!
     norm += val * val;
     buff.append((float) val).append(" * ");
-    buff.append(confArr.get(r).toString());
+    buff.append(confs.get(r).toString());
   }
   buff.append("\n\tnorm=" + norm);
   return buff.toString();
 }
 public int getConfArrSize() {
-  return confArr.size();
+  return confs.size();
 }
 }

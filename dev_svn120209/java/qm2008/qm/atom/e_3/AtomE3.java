@@ -1,6 +1,5 @@
 package atom.e_3;
 
-import atom.AtomFano1965;
 import atom.AtomLcr;
 import atom.energy.slater.SlaterLcr;
 
@@ -13,7 +12,6 @@ public abstract class AtomE3 extends AtomLcr {
   public AtomE3(double z, SlaterLcr si) {
     super(z, si);
   }
-  @Override
   final public int getNumElec() {
     return THREE_ELEC;
   }

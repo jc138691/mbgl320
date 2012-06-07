@@ -66,7 +66,7 @@ public void calcScds(int scttIdx, ScttRes scttRes, int prntN) {
 protected double calcScds(int idxEngA) {
   int N = mthd.getN();
   int L = 0;
-  Ls LS = mthd.sysConfH.getConfArr().getLs();
+  Ls LS = mthd.sysConfH.getConfs().getLs();
   FuncVec cA = clmbPsi.get(idxEngA);
   FuncVec cB = clmbPsi2.get(idxEngA);
   int ID_E2_A = ID_A_OFFSET + N;
@@ -74,7 +74,7 @@ protected double calcScds(int idxEngA) {
   LsConf clmbE2 = ShPairFactory.makePair(cA, ID_E2_A, L, cB, ID_E2_B, L, LS);
 
 //  if (DEBUG_JM1) {
-//    LsConfs sB = mthd.sysConfH.getConfArr();     // sBasis
+//    LsConfs sB = mthd.sysConfH.getConfs();     // sBasis
 //    clmbE2 = sB.get(idxEngA);
 //  }
 

@@ -26,7 +26,7 @@ protected Mtrx calcX() {
   double[][] C = sysConfH.getEigVec().getArray();      log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
   double[] D = getOverD().getArr();
   log.dbg("D_j2=", getOverD());
-  LsConfs sysBasis = sysConfH.getConfArr();
+  LsConfs sysBasis = sysConfH.getConfs();
   int sN = getSysBasisSize();
   int cN = getChNum();
   Mtrx res = new Mtrx(cN, sN);

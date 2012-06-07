@@ -38,7 +38,7 @@ public ISysH getAtom() {
 protected void load() {
   for (int r = 0; r < basisL.size(); r++) {
     for (int c = 0; c < basisR.size(); c++) {
-      double res = atom.calcOverlap(basisL.get(r), basisR.get(c));
+      double res = atom.calcOver(basisL.get(r), basisR.get(c));
       set(r, c, res);
     }
   }

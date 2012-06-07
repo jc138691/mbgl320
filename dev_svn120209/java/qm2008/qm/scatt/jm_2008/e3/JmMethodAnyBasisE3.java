@@ -1,5 +1,5 @@
 package scatt.jm_2008.e3;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.shell.LsConf;
 import atom.shell.LsConfs;
 import atom.shell.Ls;
@@ -23,13 +23,13 @@ public JmMethodAnyBasisE3(JmCalcOptE1 calcOpt) {
 //[system i][target gamma][overlap D]
 protected double calcC(int i, int g, int m) { // needed in calcX()
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
-  LsConfs sB = sysConfH.getConfArr();     // sBasis
+  LsConfs sB = sysConfH.getConfs();     // sBasis
 
   ChConf conf = trgtE3.getChConf(g);
   int gt = conf.fromIdx; // gamma in target H
-  AConfHMtrx tH = conf.hMtrx;
+  LsConfHMtrx tH = conf.hMtrx;
   double[][] tV = tH.getEigArr();  // tEigVec
-  LsConfs tB = tH.getConfArr(); // tBasis
+  LsConfs tB = tH.getConfs(); // tBasis
 
   double res = 0;
   for (int b = 0; b < tB.size(); b++) {  // b - for basis index
@@ -60,7 +60,7 @@ X_i^{\alpha} = \sum_{j}  \delta_{j_1,\alpha} C_{ij} A_j D_{j_2,N-1},
 @Override
 protected Mtrx calcX() {
   double[] D = getOverD().getArr();
-  LsConfs sysBasis = sysConfH.getConfArr();
+  LsConfs sysBasis = sysConfH.getConfs();
   int sN = getSysBasisSize();
   int cN = getChNum();
   int N = calcOpt.getN();  // big N

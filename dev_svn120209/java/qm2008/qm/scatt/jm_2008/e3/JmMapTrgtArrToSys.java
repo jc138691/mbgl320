@@ -13,11 +13,11 @@ public class JmMapTrgtArrToSys {
 //    loadMaps();
 //  }
 //  private void loadMaps() {
-//    ArrayList<AConfHMtrx> arrH = trgtArr.getArrH();
+//    ArrayList<LsConfHMtrx> arrH = trgtArr.getArrH();
 //    maps = new JmMapTrgtToSys[arrH.size()];
 //    for (int i = 0; i < arrH.size(); i++) {
-//      AConfHMtrx h = arrH.get(i);
-//      JmMapTrgtToSys map = new JmMapTrgtToSys(h.getConfArr(), toSys);
+//      LsConfHMtrx h = arrH.get(i);
+//      JmMapTrgtToSys map = new JmMapTrgtToSys(h.getConfs(), toSys);
 //      maps[i] = map;
 //    }
 //
