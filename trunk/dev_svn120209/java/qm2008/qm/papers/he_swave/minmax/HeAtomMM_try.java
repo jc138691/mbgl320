@@ -3,7 +3,7 @@ import atom.angular.Spin;
 import atom.data.AtomHe;
 import atom.data.AtomHy;
 import atom.e_2.*;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.energy.ConfHOvMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
@@ -135,8 +135,8 @@ public void testHeMm2() throws Exception {  log.setDbg();
   assertEquals(0, engE2.pt+engE2.kin - tot, 4e-13);  // GOOD TEST!!!
 
   //
-  AConfHMtrx sysH = new AConfHMtrx(confs, sysE2); log.dbg("\n sysH=\n", new MtrxDbgView(sysH));
-  AConfHMtrx oldH = new AConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
+  LsConfHMtrx sysH = new LsConfHMtrx(confs, sysE2); log.dbg("\n sysH=\n", new MtrxDbgView(sysH));
+  LsConfHMtrx oldH = new LsConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
   ConfHOvMtrx mmH = new ConfHOvMtrx(confsMm, mmE2);
 //  ConfHOvMtrx mmH = new ConfHOvMtrx(confs, mmE2);
   log.dbg("\n mmH=\n", new MtrxDbgView(mmH));
@@ -186,9 +186,9 @@ public void testHyMm() throws Exception {  log.setDbg();
   Ls sysLs = new Ls(0, Spin.SINGLET);  // t - for target
   LsConfs confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, orthN);
   log.dbg("confs=", confs);
-  AConfHMtrx sysH = new AConfHMtrx(confs, sysE2); log.dbg("sysH=\n", new MtrxDbgView(sysH));
-  AConfHMtrx oldH = new AConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
-  AConfHMtrx mmH = new AConfHMtrx(confs, mmE2); log.dbg("mmH=\n", new MtrxDbgView(mmH));
+  LsConfHMtrx sysH = new LsConfHMtrx(confs, sysE2); log.dbg("sysH=\n", new MtrxDbgView(sysH));
+  LsConfHMtrx oldH = new LsConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
+  LsConfHMtrx mmH = new LsConfHMtrx(confs, mmE2); log.dbg("mmH=\n", new MtrxDbgView(mmH));
 
   Vec sysEngs = sysH.getEigEngs();
   log.dbg("sysEngs=\n", new VecDbgView(sysEngs));
@@ -347,8 +347,8 @@ public void testHeMm() throws Exception {  log.setDbg();
   assertEquals(0, engE2.pt+engE2.kin - tot, 1e-12);  // GOOD TEST!!!
 
   //
-  AConfHMtrx sysH = new AConfHMtrx(confs, sysE2); log.dbg("\n sysH=\n", new MtrxDbgView(sysH));
-  AConfHMtrx oldH = new AConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
+  LsConfHMtrx sysH = new LsConfHMtrx(confs, sysE2); log.dbg("\n sysH=\n", new MtrxDbgView(sysH));
+  LsConfHMtrx oldH = new LsConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
   ConfHOvMtrx mmH = new ConfHOvMtrx(confs, mmE2);
   log.dbg("\n mmH=\n", new MtrxDbgView(mmH));
   log.dbg("\n sysH=\n", new MtrxDbgView(sysH));

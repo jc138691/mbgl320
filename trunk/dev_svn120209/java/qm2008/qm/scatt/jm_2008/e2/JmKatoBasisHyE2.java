@@ -165,7 +165,7 @@ private double calcHESys(LsConf leftConf, int sysIdx) {
   return res;
 }
 protected Vec calcHEBasis(LsConf leftConf) {
-  IConfArr sB = mthd.sysConfH.getConfArr();     // sBasis
+  IConfs sB = mthd.sysConfH.getConfs();     // sBasis
   Vec res = new Vec(sB.size());
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
     IConf basisConf = sB.get(sbi);
@@ -198,7 +198,7 @@ protected Cmplx calcSumCA(LsConf leftConf) {
 }
 protected double calcSumK(LsConf leftConf) {
   int L = 0;
-  LsConfs confArr = (LsConfs)mthd.sysConfH.getConfArr();
+  LsConfs confArr = (LsConfs)mthd.sysConfH.getConfs();
   Ls LS = confArr.getLs();
 
   JmCalcOptE1 calcOpt = mthd.getCalcOpt();
@@ -226,7 +226,7 @@ protected double calcSumK(LsConf leftConf) {
 }
 protected Cmplx calcSumCK(LsConf leftConf) {
   int L = 0;
-  LsConfs confArr = (LsConfs)mthd.sysConfH.getConfArr();
+  LsConfs confArr = (LsConfs)mthd.sysConfH.getConfs();
   Ls LS = confArr.getLs();
 
   JmCalcOptE1 calcOpt = mthd.getCalcOpt();
@@ -259,7 +259,7 @@ protected double calcHE(IConf leftConf, IConf conf) {
 
 //  if (DEBUG_JM1) {
 //    SysE2OldOk sys = new SysE2OldOk(sysE2.getAtomZ(), sysE2.getSlaterLcr());
-//    double x = sys.calcOverlap(leftConf, conf);
+//    double x = sys.calcOver(leftConf, conf);
 //    double sysTotE = mthd.getSysTotE();
 //    double he = res.kin + res.pt - sysTotE * x;
 //  }

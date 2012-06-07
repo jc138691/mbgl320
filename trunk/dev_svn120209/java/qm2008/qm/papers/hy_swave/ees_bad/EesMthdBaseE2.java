@@ -55,7 +55,7 @@ protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
   Dble3 res = new Dble3();
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
-  LsConfs sB = sysConfH.getConfArr();     // sBasis
+  LsConfs sB = sysConfH.getConfs();     // sBasis
   SysE2 sysE2 = (SysE2)sysConfH.getSysH();
   Energy eng;
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index

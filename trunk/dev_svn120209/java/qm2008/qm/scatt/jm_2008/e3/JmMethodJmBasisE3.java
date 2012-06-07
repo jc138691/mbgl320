@@ -21,7 +21,7 @@ public class JmMethodJmBasisE3 extends JmMethodAnyBasisE3 {
   @Override
   protected Mtrx calcX() {
     double[] D = getOverD().getArr();
-    LsConfs sysBasis = sysConfH.getConfArr();
+    LsConfs sysBasis = sysConfH.getConfs();
     int sN = getSysBasisSize();
     int cN = getChNum();
     int N = calcOpt.getN();  // big N

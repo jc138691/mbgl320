@@ -1,6 +1,6 @@
 package papers.hy_swave;
 import atom.angular.Spin;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.shell.Ls;
 import math.func.arr.FuncArr;
 import math.vec.DbgView;
@@ -33,7 +33,7 @@ public void setUp() {
   log.info("log.info(HyLikeSWave)");
 
 //    JmMethodJmBasisE3.log.setDbg();
-  AConfHMtrx.log.setDbg();
+  LsConfHMtrx.log.setDbg();
 
   DbgView.setMinVal(VEC_DBG_MIN_VAL);
   DbgView.setNumShow(VEC_DBG_NUM_SHOW);

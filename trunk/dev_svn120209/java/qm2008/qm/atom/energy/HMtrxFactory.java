@@ -12,7 +12,7 @@ import func.bspline.BSplBasisFactory;
  * Copyright dmitry.konovalov@jcu.edu.au Date: 18/07/2008, Time: 15:45:51
  */
 public class HMtrxFactory {
-  public static AConfHMtrx makeFromBsplLogCR(double first, double last, int gridSize
+  public static LsConfHMtrx makeFromBsplLogCR(double first, double last, int gridSize
     , int basisSize, int L) {
     StepGrid logCR = new StepGrid(first, last, gridSize);
     WFQuadrLcr w = new WFQuadrLcr(logCR);
@@ -23,6 +23,6 @@ public class HMtrxFactory {
 
     LsConfs basis = ConfArrFactoryE2.makeOneElec(basisSize, L, arr);
     SysE1 hydR = new SysE1(-1., slater);
-    return new AConfHMtrx(basis, hydR);
+    return new LsConfHMtrx(basis, hydR);
   }
 }

@@ -20,7 +20,7 @@ public ConfHOvMtrx(LsConfs basis, final ISysH atom) {
   loadNormAndDiag();
   loadNonDiag();
   setOv(mOv);
-//  super(new AConfHMtrx(basis, atom));
+//  super(new LsConfHMtrx(basis, atom));
 //  setOv(new ConfOvMtrx(basis, atom));
 }
 
@@ -28,7 +28,7 @@ private void loadNormAndDiag() {     log.setDbg();
   int len = basis.size();
   for (int i = 0; i < len; i++) {
     LsConf ci = basis.get(i);
-    double ovDiag = atom.calcOverlap(ci, ci);  log.dbg("\n \n ovDiag[i="+i+"] = " + ovDiag);
+    double ovDiag = atom.calcOver(ci, ci);  log.dbg("\n \n ovDiag[i="+i+"] = " + ovDiag);
 //    mOv.set(i, i, ovDiag); // DEBUG
     mOv.set(i, i, 1.);
 
@@ -55,7 +55,7 @@ private void loadNonDiag() {
       LsConf cj = basis.get(j);
       double nj = cj.getNorm();
 
-      double ov = atom.calcOverlap(ci, cj);  log.dbg("\n \n ov[i="+i+", j="+j+"] = " + ov);
+      double ov = atom.calcOver(ci, cj);  log.dbg("\n \n ov[i="+i+", j="+j+"] = " + ov);
       ov *= (ni * nj);                       log.dbg("\n ni * nj * ov = " + ov);
 //      ov = 0; // DEBUG
       mOv.set(i, j, ov);

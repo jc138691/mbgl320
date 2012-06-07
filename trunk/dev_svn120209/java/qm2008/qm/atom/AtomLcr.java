@@ -8,7 +8,7 @@ import javax.utilx.log.Log;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,29/11/2010,3:18:10 PM
  */
-public abstract class AtomLcr extends AtomFano1965 {
+public abstract class AtomLcr extends LsFermiSysH {
 public static Log log = Log.getLog(AtomLcr.class);
 protected final SlaterLcr slaterLcr;
 

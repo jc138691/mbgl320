@@ -4,7 +4,7 @@ import atom.data.AtomLiSlaterJoy;
 import atom.data.AtomLiSlaterJoy3;
 import atom.e_3.AtomShModelE3;
 import atom.e_3.SysLi;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
@@ -125,7 +125,7 @@ public class LiSlaterTest extends FlowTest {
     cfArr.add(cf2);
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
-    AConfHMtrx sysH = new AConfHMtrx(cfArr, sys);
+    LsConfHMtrx sysH = new LsConfHMtrx(cfArr, sys);
     log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     Vec sysE = sysH.getEigEngs();
     log.dbg("sysE=", new VecDbgView(sysE));
@@ -150,7 +150,7 @@ public class LiSlaterTest extends FlowTest {
     cfArr = new LsConfs();
     cfArr.add(cf);
     cfArr.add(cf2);
-    sysH = new AConfHMtrx(cfArr, sys);
+    sysH = new LsConfHMtrx(cfArr, sys);
     log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigEngs();
     log.dbg("sysE=", new VecDbgView(sysE));
@@ -185,7 +185,7 @@ public class LiSlaterTest extends FlowTest {
     SysLi sys = new SysLi(slater);
     AtomShModelE3 modelLi = new AtomShModelE3(3, 3, 3, LS);
     LsConfs cfArr = ConfArrFactoryE3.makePoetClosedShell(modelLi, basis);//    ALL CLOSED SHELLS
-    AConfHMtrx sysH = new AConfHMtrx(cfArr, sys);
+    LsConfHMtrx sysH = new LsConfHMtrx(cfArr, sys);
     log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     Vec sysE = sysH.getEigEngs();
     log.dbg("sysE=", new VecDbgView(sysE));
@@ -208,14 +208,14 @@ public class LiSlaterTest extends FlowTest {
     log.dbg("cf=", cf);
     cfArr.add(cf);
     //    Energy e = sys.calcH(cf, cfArr.get(2));         log.dbg("e=", e);
-    sysH = new AConfHMtrx(cfArr, sys);
+    sysH = new LsConfHMtrx(cfArr, sys);
     log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigEngs();
     log.dbg("sysE=", new VecDbgView(sysE));
     //    assertEqualsRel("Full= -7.4322894; S1=-7.383171, S3=-7.4235334;", atomLi.getEngTot(), sysE.get(0), true);
     // STOPPED HERE 8Dec2010: expected:<-7.4322896> but was:<-7.453902>, -7.445353(13Dec);
     cfArr = ConfArrFactoryE3.makeSModel(modelLi, basis);//
-    sysH = new AConfHMtrx(cfArr, sys);
+    sysH = new LsConfHMtrx(cfArr, sys);
     log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigEngs();
     log.dbg("sysE=", new VecDbgView(sysE));

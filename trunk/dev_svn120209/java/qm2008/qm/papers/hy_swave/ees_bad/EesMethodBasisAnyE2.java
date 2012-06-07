@@ -1,6 +1,6 @@
 package papers.hy_swave.ees_bad;
 import atom.e_2.SysE2;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.energy.Energy;
 import atom.shell.*;
 import flanagan.complex.Cmplx;
@@ -78,7 +78,7 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
 
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
-  LsConfs sB = sysConfH.getConfArr();     // sBasis
+  LsConfs sB = sysConfH.getConfs();     // sBasis
   SysE2 sysE2 = (SysE2)sysConfH.getSysH();
 
   // getting relevant trgtEigVec
@@ -86,10 +86,10 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
 
   ChConf conf = ((ScttTrgtE3)trgtE2).getChConf(CH_IDX);
   int gt = conf.fromIdx; // gamma in target H
-  AConfHMtrx tH = conf.hMtrx;
+  LsConfHMtrx tH = conf.hMtrx;
 
   double[][] tV = tH.getEigArr();  // tEigVec
-  LsConfs tB = tH.getConfArr(); // tBasis
+  LsConfs tB = tH.getConfs(); // tBasis
 
   Energy eng;
   for (int tbi = 0; tbi < tB.size(); tbi++) {  // target basis index

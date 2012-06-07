@@ -7,7 +7,7 @@ import atom.data.clementi.AtomHeClementi;
 import atom.e_2.SysE2;
 import atom.e_2.SysE2OldOk;
 import atom.e_2.SysHe;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
@@ -103,7 +103,7 @@ public class HeClementiTest extends FlowTest {
     double tot = -2.8616799;
     assertEquals(kin + pot, tot, 6e-22);
     LsConfs basis = ConfArrFactoryE2.makeTwoElecSameN(LS, N, arr);
-    AConfHMtrx H = new AConfHMtrx(basis, sys);
+    LsConfHMtrx H = new LsConfHMtrx(basis, sys);
     EigenvalueDecomposition eig = H.eig();
 //    LOG.report(this, "H=" + Vec.toCsv(eig.getRealEigenvalues()));
     double e0 = eig.getRealEigenvalues()[0];
@@ -111,7 +111,7 @@ public class HeClementiTest extends FlowTest {
 //      + (kin + pt) + "\n   e[0]=" + e0);
     assertEquals(0, Math.abs(-2.8615628084911 - e0), 3e-6); //
     assertEquals(0, e0 - tot, 2e-4);
-//    FuncVec conf = H.calcDensity(eig, 0);
+//    FuncVec conf = H.calcDens(eig, 0);
 //      LOG.saveToFile(valarray.asArray(x), valarray.asArray(conf), "wf", "He_ground_density.csv");
 //    res = FastLoop.dot(conf, w);
 //    assertEquals(2, res, 3e-15);

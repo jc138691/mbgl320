@@ -1,6 +1,6 @@
 package atom.test;
 import atom.e_2.SysE2OldOk;
-import atom.energy.AConfHMtrx;
+import atom.energy.LsConfHMtrx;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.LsConfs;
 import atom.shell.Ls;
@@ -55,7 +55,7 @@ public class ScattHyTest extends BSplLogCRBasisTest {
     double tot = -2.878990; // from p.164 of Froese-Fischer
     int L = 0;
     LsConfs basis = ConfArrFactoryE2.makeTwoElec(S1, N, L, arr);
-    AConfHMtrx H = new AConfHMtrx(basis, sys);
+    LsConfHMtrx H = new LsConfHMtrx(basis, sys);
     EigenSymm eig = H.eig();
 //    LOG.report(this, "H=" + Vec.toCsv(eig.getRealEigenvalues()));
     log.dbg("H=", new Vec(eig.getRealEVals()));

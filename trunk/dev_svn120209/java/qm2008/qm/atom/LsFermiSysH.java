@@ -6,6 +6,7 @@ import atom.fano.FanoTermE2;
 import atom.shell.*;
 import atom.angular.Wign6j;
 import atom.angular.Reduced3j;
+import d1.IConf;
 import math.func.FuncVec;
 import math.Mathx;
 
@@ -16,20 +17,43 @@ import static math.Mathx.dlt;
 * Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 11:51:44
 */
 // this uses equations from Fano 1965 PhysRev 140, pA65
-abstract public class AtomFano1965 implements ISysH {
-public static Log log = Log.getLog(AtomFano1965.class);
+abstract public class LsFermiSysH implements ISysH {
+public static Log log = Log.getLog(LsFermiSysH.class);
 final public double atomZ;
 final protected Slater si;
-public AtomFano1965(double az, Slater si) {
+public LsFermiSysH(double az, Slater si) {
   atomZ = az;
   this.si = si;
 }
 //public double getAtomZ() {
 //  return atomZ;
 //}
-public FuncVec calcDensity(LsConf fc, LsConf fc2) {
+
+//+++++++++++++++++++++++++++++++++++++++++++
+//  implementing ISysH
+public Energy calcH(IConf fc, IConf fc2) {
+  return calcLsH((LsConf)fc, (LsConf)fc2) ;
+}
+public FuncVec calcDens(IConf fc, IConf fc2) {
+  return calcLsDens((LsConf) fc, (LsConf) fc2) ;
+}
+public double calcOver(IConf fc, IConf fc2) {
+  return calcLsOver((LsConf) fc, (LsConf) fc2);
+}
+//+++++++++++++++++++++++++++++++++++++++++
+
+//----------------------------------------------------
+//
+public FuncVec calcLsDens(LsConf fc, LsConf fc2) {
+  // density
   return null;
 }
+public double calcLsOver(LsConf fc, LsConf fc2) {
+  return 0;
+}
+abstract public Energy calcLsH(LsConf fc, LsConf fc2);
+//-------------------------------------------------------
+
 
 public static void assertLS(LsConf fc, LsConf fc2) {
   if (!fc.getTotLS().equals(fc2.getTotLS())) {// this is not possible, and must be a bug
