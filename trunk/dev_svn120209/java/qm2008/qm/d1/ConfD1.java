@@ -1,9 +1,8 @@
-package func.d1;
-import math.vec.IntVec;
+package d1;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 6/06/12, 10:54 AM
  */
-public class ConfD1 {
+public class ConfD1 implements IConf {
 protected int[] arrQ;  // occupation numbers
 protected int[] arrId; //
 public ConfD1(int size) {

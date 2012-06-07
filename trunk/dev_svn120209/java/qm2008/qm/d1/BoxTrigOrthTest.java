@@ -1,4 +1,4 @@
-package func.d1;
+package d1;
 import atom.wf.WFQuadrD1;
 import atom.wf.WFQuadrR;
 import math.vec.VecDbgView;

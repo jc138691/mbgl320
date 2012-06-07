@@ -3,7 +3,7 @@ import atom.AtomUtil;
 import atom.angular.Spin;
 import atom.data.AtomHe;
 import atom.data.AtomHy;
-import atom.energy.ConfHMtrx;
+import atom.energy.AConfHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.wf.lcr.LcrFactory;
@@ -134,7 +134,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     jmTrgt.loadSdcsW();
     saveTrgtInfo(jmTrgt);
 
-    ConfHMtrx sysH = makeSysBasisN(slater);
+    AConfHMtrx sysH = makeSysBasisN(slater);
 
     JmMethodAnyBasisE3 method = new JmMethodAnyBasisE3(calcOpt);
     method.setTrgtE3(jmTrgt);

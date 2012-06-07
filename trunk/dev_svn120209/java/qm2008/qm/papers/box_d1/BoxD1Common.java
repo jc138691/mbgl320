@@ -1,9 +1,9 @@
 package papers.box_d1;
 import atom.wf.WFQuadrR;
-import func.d1.BoxTrigOpt;
-import func.d1.BoxTrigOrth;
-import func.d1.BoxCalcOptD1;
-import func.d1.BoxTrigOrthTest;
+import d1.BoxTrigOpt;
+import d1.BoxTrigOrth;
+import d1.BoxCalcOptD1;
+import d1.BoxTrigOrthTest;
 import math.func.deriv.test.DerivPts5Test;
 import math.func.deriv.test.DerivPts9Test;
 import math.integral.test.QuadrPts5Test;

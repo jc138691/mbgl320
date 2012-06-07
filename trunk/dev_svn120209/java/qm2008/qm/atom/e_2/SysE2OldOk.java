@@ -16,7 +16,7 @@ public class SysE2OldOk extends AtomE2 {
   public SysE2OldOk(double z, SlaterLcr si) {
     super(z, si);
   }
-  public Energy calcH(Conf fc, Conf fc2) {
+  public Energy calcH(LsConf fc, LsConf fc2) {
     assertLS(fc, fc2);
     // He, H+e, any two electron atomic system
     ShPair sp = (ShPair) fc;
@@ -43,7 +43,7 @@ public class SysE2OldOk extends AtomE2 {
     return dir;
   }
 
-  public double calcOverlap(Conf fc, Conf fc2) {
+  public double calcOverlap(LsConf fc, LsConf fc2) {
     assertLS(fc, fc2);
     // He, H+e, any two electron atomic system
     ShPair sp = (ShPair) fc;

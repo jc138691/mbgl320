@@ -3,12 +3,11 @@ package papers.hy_swave;
 import atom.AtomUtil;
 import atom.data.AtomHy;
 import atom.e_2.SysE2;
-import atom.e_2.SysE2OldOk;
-import atom.energy.ConfHMtrx;
+import atom.energy.AConfHMtrx;
 import atom.energy.part_wave.PotHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
-import atom.shell.ConfArr;
+import atom.shell.LsConfs;
 import atom.shell.ConfArrFactoryE2;
 import atom.shell.Ls;
 import atom.wf.lcr.LcrFactory;
@@ -118,7 +117,7 @@ public void calc(int newN, int newNt) {
   Vec D = new JmD(lgrrBiN, trgtWfsNt);      log.dbg("D_{n,m>=Nt}=must be ZERO=", D); // MUST BE ALL ZERO!!!!!
 
   SYS_LS = new Ls(0, SPIN);
-  ConfArr sysArr = ConfArrFactoryE2.makeSModelE2(SYS_LS, trgtWfsNt, orthN);    log.dbg("sysArr=", sysArr);
+  LsConfs sysArr = ConfArrFactoryE2.makeSModelE2(SYS_LS, trgtWfsNt, orthN);    log.dbg("sysArr=", sysArr);
 
   // one electron basis
   wfN = orthN;    // only the last wfs were used from  orthNt, so now we can reuse it
@@ -129,7 +128,7 @@ public void calc(int newN, int newNt) {
   SlaterLcr slater = new SlaterLcr(quadr);
 //    SysE2OldOk sys = new SysE2OldOk(TARGET_Z, slater);
   SysE2 sys = new SysE2(TARGET_Z, slater);
-  ConfHMtrx sysH = new ConfHMtrx(sysArr, sys);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
+  AConfHMtrx sysH = new AConfHMtrx(sysArr, sys);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 //    double e0 = sysEngs.get(0);
 

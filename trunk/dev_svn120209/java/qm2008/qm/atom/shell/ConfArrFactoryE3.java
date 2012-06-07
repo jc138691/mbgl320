@@ -63,7 +63,7 @@ public class ConfArrFactoryE3 extends FlowTest {
     ShId id1 = new ShId(1, 0);
     ShId id2 = new ShId(2, 0);
 
-    ConfArr arrD = ConfArrFactoryE3.makePoetDiffShells(modelE3, orthonN);
+    LsConfs arrD = ConfArrFactoryE3.makePoetDiffShells(modelE3, orthonN);
     log.dbg("arrD=", arrD);
     assertEquals(2, arrD.size());
 
@@ -99,7 +99,7 @@ public class ConfArrFactoryE3 extends FlowTest {
     log.dbg("validArr=", validArr);
     assertEquals(3, validArr.size());
 
-    ConfArr arrC = ConfArrFactoryE3.makePoetClosedShell(modelE3, orthonN);
+    LsConfs arrC = ConfArrFactoryE3.makePoetClosedShell(modelE3, orthonN);
     log.dbg("arrC=", arrC);
     assertEquals(3, arrC.size());
 
@@ -146,7 +146,7 @@ public class ConfArrFactoryE3 extends FlowTest {
     assertEquals(0, count.a);
     assertEquals(1, count.b);
 
-    ConfArr arr = ConfArrFactoryE3.makeSModel(modelE3, orthonN);
+    LsConfs arr = ConfArrFactoryE3.makeSModel(modelE3, orthonN);
     log.dbg("arr=", arr);
     assertEquals(5, arr.size());
 
@@ -203,10 +203,10 @@ public class ConfArrFactoryE3 extends FlowTest {
 
   // All electrons are in DIFFERENT shells!!!!
 
-  public static ConfArr makePoetDiffShells(AtomShModelE3 model, FuncArr arr) {
+  public static LsConfs makePoetDiffShells(AtomShModelE3 model, FuncArr arr) {
     log.info("--->makePoetDiffShells(AtomShModelE3 model=", model);
     int L = 0;
-    ConfArr res = new ConfArr();
+    LsConfs res = new LsConfs();
     Ls[] arrLS = {new Ls(L, Spin.SINGLET), new Ls(L, Spin.TRIPLET)};
     for (int n = 0; n < model.getSize(); n++) {
       Shell sh = new Shell(n, arr.get(n), L);      log.dbg("sh=", sh);
@@ -219,7 +219,7 @@ public class ConfArrFactoryE3 extends FlowTest {
         for (int idxLS = 0; idxLS < arrLS.length; idxLS++) {
           Ls tmpLS = arrLS[idxLS];
           for (int n3 = n2 + 1; n3 < model.getSize3(); n3++) {
-            Conf fc = new ShPair(sh, sh2, tmpLS);          log.dbg("fc=", fc);
+            LsConf fc = new ShPair(sh, sh2, tmpLS);          log.dbg("fc=", fc);
             if (!fc.isValid()) {
               log.dbg("NOT VALID");
               continue;
@@ -243,9 +243,9 @@ public class ConfArrFactoryE3 extends FlowTest {
 
   // One electron above/below a closed shell
 
-  public static ConfArr makePoetClosedShell(AtomShModelE3 model, FuncArr arr) {
+  public static LsConfs makePoetClosedShell(AtomShModelE3 model, FuncArr arr) {
     log.info("--->makePoetClosedShell(AtomShModelE3 model=", model);
-    ConfArr res = new ConfArr();
+    LsConfs res = new LsConfs();
     int size = model.getSize();
     int size2 = model.getSize2();
     int size3 = model.getSize3();
@@ -268,7 +268,7 @@ public class ConfArrFactoryE3 extends FlowTest {
           if (n == n3)
             continue;
           Shell sh3 = new Shell(n3, arr.get(n3), L);             log.dbg("sh3=", sh3);
-          Conf fc;
+          LsConf fc;
           if (n < n3) {
             fc = new ShPair(sh12, sh3, model.getLs());
           }
@@ -292,7 +292,7 @@ public class ConfArrFactoryE3 extends FlowTest {
         }
         for (int n = 0; n < size; n++) {
           Shell sh = new Shell(n, arr.get(n), L);             log.dbg("sh=", sh);
-          Conf fc = new ShPair(sh, sh23, model.getLs());
+          LsConf fc = new ShPair(sh, sh23, model.getLs());
           log.dbg("fc=", fc);
           if (!fc.isValid()) {
             log.dbg("NOT VALID");
@@ -308,10 +308,10 @@ public class ConfArrFactoryE3 extends FlowTest {
     return res;
   }
 
-  public static ConfArr makeSModel(AtomShModelE3 model, FuncArr arr) {
+  public static LsConfs makeSModel(AtomShModelE3 model, FuncArr arr) {
     log.info("-->makeSModel(AtomShModelE3 model=", model);
-    ConfArr res = makePoetDiffShells(model, arr);
-    ConfArr closed = makePoetClosedShell(model, arr);
+    LsConfs res = makePoetDiffShells(model, arr);
+    LsConfs closed = makePoetClosedShell(model, arr);
     res.addAll(closed);
     log.info("res.size()=" + res.size());
     log.info("<--makeSModel(AtomShModelE3 model=", model);

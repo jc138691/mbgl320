@@ -3,7 +3,7 @@ package atom.e_3;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.fano.Atom2011;
-import atom.shell.Conf;
+import atom.shell.LsConf;
 import atom.shell.DiEx;
 import atom.shell.Ls;
 import atom.shell.ShInfo;
@@ -17,8 +17,8 @@ public class SysE3 extends AtomE3 {   //
   public static Log log = Log.getLog(SysE3.class);
 
   // the following vars are here for them to be highlighted nicely in the editor
-  private Conf conf;
-  private Conf conf2;
+  private LsConf conf;
+  private LsConf conf2;
   private FanoTermE3 t; // a single combination of lambda, rho, sigma
   private FanoTermE3 t2;
   private Ls ls;
@@ -28,7 +28,7 @@ public class SysE3 extends AtomE3 {   //
   }
 
   @Override
-  public Energy calcH(Conf cf, Conf cf2) {
+  public Energy calcH(LsConf cf, LsConf cf2) {
     ls = cf.getTotLS();
     this.conf = cf;
     this.conf2 = cf2;
@@ -140,13 +140,13 @@ public class SysE3 extends AtomE3 {   //
   }
 
   @Override
-  public double calcOverlap(Conf fc, Conf fc2) {
+  public double calcOverlap(LsConf fc, LsConf fc2) {
     throw new IllegalArgumentException(log.error(" todo"));
   }
 
   @Override
-  public FuncVec calcDensity(Conf cf, Conf cf2) {    // based on calcH(Conf cf, Conf cf2)
-    // DO NOT NOT EDIT!!!  This code copied from calcH(Conf cf, Conf cf2)
+  public FuncVec calcDensity(LsConf cf, LsConf cf2) {    // based on calcH(LsConf cf, LsConf cf2)
+    // DO NOT NOT EDIT!!!  This code copied from calcH(LsConf cf, LsConf cf2)
     ls = cf.getTotLS();
     this.conf = cf;
     this.conf2 = cf2;

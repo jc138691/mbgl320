@@ -2,7 +2,7 @@ package scatt.jm_2008.e3;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,4/04/11,9:55 AM
  */
-import atom.shell.ConfArr;
+import atom.shell.LsConfs;
 import math.mtrx.Mtrx;
 import scatt.jm_2008.e1.JmCalcOptE1;
 
@@ -21,7 +21,7 @@ public class JmMethodJmBasisE3 extends JmMethodAnyBasisE3 {
   @Override
   protected Mtrx calcX() {
     double[] D = getOverD().getArr();
-    ConfArr sysBasis = sysConfH.getBasis();
+    LsConfs sysBasis = sysConfH.getConfArr();
     int sN = getSysBasisSize();
     int cN = getChNum();
     int N = calcOpt.getN();  // big N

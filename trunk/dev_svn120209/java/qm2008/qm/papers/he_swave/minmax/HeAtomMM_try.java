@@ -3,7 +3,7 @@ import atom.angular.Spin;
 import atom.data.AtomHe;
 import atom.data.AtomHy;
 import atom.e_2.*;
-import atom.energy.ConfHMtrx;
+import atom.energy.AConfHMtrx;
 import atom.energy.ConfHOvMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
@@ -104,12 +104,12 @@ public void testHeMm2() throws Exception {  log.setDbg();
   SysHeMm mmE2 = new SysHeMm(slater);
 
   Ls sysLs = new Ls(0, Spin.SINGLET);  // t - for target
-  ConfArr confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, N);
+  LsConfs confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, N);
   log.dbg("confs=", confs);
-//  ConfArr confsMm = ConfArrFactoryE2.makeSModelE2(sysLs, orth, N_MI);
-//  ConfArr confsMm = ConfArrFactoryE2.makeSModelE2(sysLs, orth, orthMa);
-  ConfArr confsMm = ConfArrFactoryE2.makeSModelMmE2(sysLs, orthMi, orthMa);
-//  ConfArr confsMm = ConfArrFactoryE2.makeSModelMmE2(sysLs, orthMi, N_MI);
+//  LsConfs confsMm = ConfArrFactoryE2.makeSModelE2(sysLs, orth, N_MI);
+//  LsConfs confsMm = ConfArrFactoryE2.makeSModelE2(sysLs, orth, orthMa);
+  LsConfs confsMm = ConfArrFactoryE2.makeSModelMmE2(sysLs, orthMi, orthMa);
+//  LsConfs confsMm = ConfArrFactoryE2.makeSModelMmE2(sysLs, orthMi, N_MI);
   log.dbg("confsMm=", confsMm);
 
   // ================
@@ -127,7 +127,7 @@ public void testHeMm2() throws Exception {  log.setDbg();
   pot2 = hkmm.calcPot2();  log.dbg("calcPot2()=" + pot2);
   tot = hkmm.calcTotE(AtomHe.Z);  log.dbg("calcTotE()=" + tot);
 
-  Conf cfAA = confs.get(0);
+  LsConf cfAA = confs.get(0);
   Energy engE2 = sysE2.calcH(cfAA, cfAA);  log.dbg("sysE2.calcH(cf, cf2)=\n" + engE2);
   assertEquals(0, engE2.p1 - pot1, 4e-13);  // GOOD TEST!!!
   assertEquals(0, engE2.p2 - pot2, 1e-13);  // GOOD TEST!!!
@@ -135,8 +135,8 @@ public void testHeMm2() throws Exception {  log.setDbg();
   assertEquals(0, engE2.pt+engE2.kin - tot, 4e-13);  // GOOD TEST!!!
 
   //
-  ConfHMtrx sysH = new ConfHMtrx(confs, sysE2); log.dbg("\n sysH=\n", new MtrxDbgView(sysH));
-  ConfHMtrx oldH = new ConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
+  AConfHMtrx sysH = new AConfHMtrx(confs, sysE2); log.dbg("\n sysH=\n", new MtrxDbgView(sysH));
+  AConfHMtrx oldH = new AConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
   ConfHOvMtrx mmH = new ConfHOvMtrx(confsMm, mmE2);
 //  ConfHOvMtrx mmH = new ConfHOvMtrx(confs, mmE2);
   log.dbg("\n mmH=\n", new MtrxDbgView(mmH));
@@ -184,11 +184,11 @@ public void testHyMm() throws Exception {  log.setDbg();
   SysHyMmE2 mmE2 = new SysHyMmE2(slater);
 
   Ls sysLs = new Ls(0, Spin.SINGLET);  // t - for target
-  ConfArr confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, orthN);
+  LsConfs confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, orthN);
   log.dbg("confs=", confs);
-  ConfHMtrx sysH = new ConfHMtrx(confs, sysE2); log.dbg("sysH=\n", new MtrxDbgView(sysH));
-  ConfHMtrx oldH = new ConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
-  ConfHMtrx mmH = new ConfHMtrx(confs, mmE2); log.dbg("mmH=\n", new MtrxDbgView(mmH));
+  AConfHMtrx sysH = new AConfHMtrx(confs, sysE2); log.dbg("sysH=\n", new MtrxDbgView(sysH));
+  AConfHMtrx oldH = new AConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
+  AConfHMtrx mmH = new AConfHMtrx(confs, mmE2); log.dbg("mmH=\n", new MtrxDbgView(mmH));
 
   Vec sysEngs = sysH.getEigEngs();
   log.dbg("sysEngs=\n", new VecDbgView(sysEngs));
@@ -217,7 +217,7 @@ public void testHyMm() throws Exception {  log.setDbg();
   pot2 = hkmm.calcPot2();  log.dbg("calcPot2()=" + pot2);
   tot = hkmm.calcTotE(AtomHy.Z);  log.dbg("calcTotE()=" + tot);
 
-  Conf cfAA = confs.get(0);
+  LsConf cfAA = confs.get(0);
   Energy engE2 = sysE2.calcH(cfAA, cfAA);  log.dbg("sysE2.calcH(cf, cf2)=\n" + engE2);
   assertEquals(0, engE2.p1 - pot1, 3e-13);  // GOOD TEST!!!
   assertEquals(0, engE2.p2 - pot2, 1e-13);  // GOOD TEST!!!
@@ -235,7 +235,7 @@ public void testHyMm() throws Exception {  log.setDbg();
   pot2 = hkmm.calcPot2();  log.dbg("calcPot2()=" + pot2);
   tot = hkmm.calcTotE(AtomHy.Z);  log.dbg("calcTotE()=" + tot);
 
-  Conf cfBB = confs.get(2);
+  LsConf cfBB = confs.get(2);
   engE2 = sysE2.calcH(cfBB, cfBB);  log.dbg("sysE2.calcH(cf, cf2)=\n" + engE2);
   assertEquals(0, engE2.p1 - pot1, 1e-12);  // GOOD TEST!!!
   assertEquals(0, engE2.p2 - pot2, 1e-13);  // GOOD TEST!!!
@@ -285,7 +285,7 @@ public void testHeMm() throws Exception {  log.setDbg();
   SysHeMm mmE2 = new SysHeMm(slater);
 
   Ls sysLs = new Ls(0, Spin.SINGLET);  // t - for target
-  ConfArr confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, orthN);
+  LsConfs confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, orthN);
   log.dbg("confs=", confs);
 
   // ================
@@ -304,7 +304,7 @@ public void testHeMm() throws Exception {  log.setDbg();
   pot2 = hkmm.calcPot2();  log.dbg("calcPot2()=" + pot2);
   tot = hkmm.calcTotE(AtomHe.Z);  log.dbg("calcTotE()=" + tot);
 
-  Conf cfAA = confs.get(0);
+  LsConf cfAA = confs.get(0);
   Energy engE2 = sysE2.calcH(cfAA, cfAA);  log.dbg("sysE2.calcH(cf, cf2)=\n" + engE2);
   assertEquals(0, engE2.p1 - pot1, 3e-13);  // GOOD TEST!!!
   assertEquals(0, engE2.p2 - pot2, 1e-13);  // GOOD TEST!!!
@@ -322,7 +322,7 @@ public void testHeMm() throws Exception {  log.setDbg();
   pot2 = hkmm.calcPot2();  log.dbg("calcPot2()=" + pot2);
   tot = hkmm.calcTotE(AtomHe.Z);  log.dbg("calcTotE()=" + tot);
 
-  Conf cfBB = confs.get(N); // TAKING
+  LsConf cfBB = confs.get(N); // TAKING
   engE2 = sysE2.calcH(cfBB, cfBB);  log.dbg("sysE2.calcH(cf, cf2)=\n" + engE2);
   assertEquals(0, engE2.p1 - pot1, 1e-12);  // GOOD TEST!!!
   assertEquals(0, engE2.p2 - pot2, 1e-13);  // GOOD TEST!!!
@@ -347,8 +347,8 @@ public void testHeMm() throws Exception {  log.setDbg();
   assertEquals(0, engE2.pt+engE2.kin - tot, 1e-12);  // GOOD TEST!!!
 
   //
-  ConfHMtrx sysH = new ConfHMtrx(confs, sysE2); log.dbg("\n sysH=\n", new MtrxDbgView(sysH));
-  ConfHMtrx oldH = new ConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
+  AConfHMtrx sysH = new AConfHMtrx(confs, sysE2); log.dbg("\n sysH=\n", new MtrxDbgView(sysH));
+  AConfHMtrx oldH = new AConfHMtrx(confs, oldE2); log.dbg("oldH=\n", new MtrxDbgView(oldH));
   ConfHOvMtrx mmH = new ConfHOvMtrx(confs, mmE2);
   log.dbg("\n mmH=\n", new MtrxDbgView(mmH));
   log.dbg("\n sysH=\n", new MtrxDbgView(sysH));

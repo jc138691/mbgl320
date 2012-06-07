@@ -1,6 +1,6 @@
 package papers.box_d1;
-import func.d1.ConfArrD1;
-import func.d1.ConfArrFactoryD1;
+import d1.ConfsD1;
+import d1.ConfArrFactoryD1;
 
 import javax.utilx.log.Log;
 /**
@@ -41,7 +41,7 @@ public void calc() {
   libTestsOk();
   setupProjOk();
 
-  ConfArrD1 confArr = ConfArrFactoryD1.makeBosonConfN2(basis);
+  ConfsD1 confArr = ConfArrFactoryD1.makeBosonConfN2(basis);
   log.dbg("confArr=\n", confArr);
 
   int dbgLine = 0;

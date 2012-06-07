@@ -5,19 +5,19 @@ package scatt.jm_2008.e3;
 // This should work/implemented for any number of electrons
 public class JmMapTrgtArrToSys {
 //  private final ScttTrgtE3 trgtArr;
-//  private final ConfArr toSys;
+//  private final LsConfs toSys;
 //  private JmMapTrgtToSys[] maps;
-//  public JmMapTrgtArrToSys(ScttTrgtE3 trgtArr, ConfArr toSys) {
+//  public JmMapTrgtArrToSys(ScttTrgtE3 trgtArr, LsConfs toSys) {
 //    this.trgtArr = trgtArr;
 //    this.toSys = toSys;
 //    loadMaps();
 //  }
 //  private void loadMaps() {
-//    ArrayList<ConfHMtrx> arrH = trgtArr.getArrH();
+//    ArrayList<AConfHMtrx> arrH = trgtArr.getArrH();
 //    maps = new JmMapTrgtToSys[arrH.size()];
 //    for (int i = 0; i < arrH.size(); i++) {
-//      ConfHMtrx h = arrH.get(i);
-//      JmMapTrgtToSys map = new JmMapTrgtToSys(h.getBasis(), toSys);
+//      AConfHMtrx h = arrH.get(i);
+//      JmMapTrgtToSys map = new JmMapTrgtToSys(h.getConfArr(), toSys);
 //      maps[i] = map;
 //    }
 //

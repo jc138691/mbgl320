@@ -7,7 +7,7 @@ import atom.data.clementi.AtomHeClementi;
 import atom.e_2.SysE2;
 import atom.e_2.SysE2OldOk;
 import atom.e_2.SysHe;
-import atom.energy.ConfHMtrx;
+import atom.energy.AConfHMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
@@ -102,8 +102,8 @@ public class HeClementiTest extends FlowTest {
     double pot = -5.7233927;// from Clementi, p185
     double tot = -2.8616799;
     assertEquals(kin + pot, tot, 6e-22);
-    ConfArr basis = ConfArrFactoryE2.makeTwoElecSameN(LS, N, arr);
-    ConfHMtrx H = new ConfHMtrx(basis, sys);
+    LsConfs basis = ConfArrFactoryE2.makeTwoElecSameN(LS, N, arr);
+    AConfHMtrx H = new AConfHMtrx(basis, sys);
     EigenvalueDecomposition eig = H.eig();
 //    LOG.report(this, "H=" + Vec.toCsv(eig.getRealEigenvalues()));
     double e0 = eig.getRealEigenvalues()[0];

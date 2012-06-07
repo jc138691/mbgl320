@@ -3,9 +3,9 @@ import atom.angular.Spin;
 import atom.data.AtomHy;
 import atom.e_1.SysE1;
 import atom.e_2.SysE2;
-import atom.energy.ConfHMtrx;
+import atom.energy.AConfHMtrx;
 import atom.energy.slater.SlaterLcr;
-import atom.shell.ConfArr;
+import atom.shell.LsConfs;
 import atom.shell.ConfArrFactoryE2;
 import atom.shell.Ls;
 import math.mtrx.MtrxDbgView;
@@ -93,7 +93,7 @@ public void calc(int newN) {
   trgt.loadSdcsW();
   trgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
 
-  ConfHMtrx sysH = makeSysH(SYS_LS, slater);
+  AConfHMtrx sysH = makeSysH(SYS_LS, slater);
 
   EesMethodBasisAnyE2 method = new EesMethodBasisAnyE2(calcOpt);
   method.setTrgtE2(trgt);
@@ -113,9 +113,9 @@ protected ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
   SysE1 tgrtE2 = new SysE1(-TARGET_Z, slater);
   Ls tLs = new Ls(0, Spin.ELECTRON);  // t - for target
 
-  ConfArr tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtWfsNt);     log.dbg("tConfArr=", tConfArr);
+  LsConfs tConfArr = ConfArrFactoryE2.makePoetConfE1(trgtWfsNt);     log.dbg("tConfArr=", tConfArr);
 
-  ConfHMtrx tH = new ConfHMtrx(tConfArr, tgrtE2);                  log.dbg("tH=\n", new MtrxDbgView(tH));
+  AConfHMtrx tH = new AConfHMtrx(tConfArr, tgrtE2);                  log.dbg("tH=\n", new MtrxDbgView(tH));
   FileX.writeToFile(tH.getEigEngs().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_" + makeLabelBasisOptN());
   FileX.writeToFile(tH.getEngEv(0).toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgEngs_eV_" + makeLabelBasisOptN());
 
@@ -125,10 +125,10 @@ protected ScttTrgtE3 makeTrgtE3(SlaterLcr slater) {
   return res;
 }
 
-protected ConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
+protected AConfHMtrx makeSysH(Ls sLs, SlaterLcr slater) {
   SysE2 sys = new SysE2(TARGET_Z, slater);// NOTE 1 for Hydrogen
-  ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtWfsNt, trgtWfsNt);   //log.dbg("sysArr=", sConfArr);
-  ConfHMtrx res = new ConfHMtrx(sConfArr, sys);                  //log.dbg("sysConfH=\n", new MtrxDbgView(res));
+  LsConfs sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, trgtWfsNt, trgtWfsNt);   //log.dbg("sysArr=", sConfArr);
+  AConfHMtrx res = new AConfHMtrx(sConfArr, sys);                  //log.dbg("sysConfH=\n", new MtrxDbgView(res));
   return res;
 }
 @Override

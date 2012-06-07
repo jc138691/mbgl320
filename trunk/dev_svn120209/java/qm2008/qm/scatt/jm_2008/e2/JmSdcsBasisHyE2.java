@@ -66,15 +66,15 @@ public void calcScds(int scttIdx, ScttRes scttRes, int prntN) {
 protected double calcScds(int idxEngA) {
   int N = mthd.getN();
   int L = 0;
-  Ls LS = mthd.sysConfH.getBasis().getLs();
+  Ls LS = mthd.sysConfH.getConfArr().getLs();
   FuncVec cA = clmbPsi.get(idxEngA);
   FuncVec cB = clmbPsi2.get(idxEngA);
   int ID_E2_A = ID_A_OFFSET + N;
   int ID_E2_B = ID_B_OFFSET + N;  // NOTE!!! This will only work for E2!!! TODO: Check this if doing E3+
-  Conf clmbE2 = ShPairFactory.makePair(cA, ID_E2_A, L, cB, ID_E2_B, L, LS);
+  LsConf clmbE2 = ShPairFactory.makePair(cA, ID_E2_A, L, cB, ID_E2_B, L, LS);
 
 //  if (DEBUG_JM1) {
-//    ConfArr sB = mthd.sysConfH.getBasis();     // sBasis
+//    LsConfs sB = mthd.sysConfH.getConfArr();     // sBasis
 //    clmbE2 = sB.get(idxEngA);
 //  }
 

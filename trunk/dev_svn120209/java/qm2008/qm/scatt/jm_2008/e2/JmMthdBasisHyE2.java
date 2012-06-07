@@ -26,7 +26,7 @@ protected Mtrx calcX() {
   double[][] C = sysConfH.getEigVec().getArray();      log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
   double[] D = getOverD().getArr();
   log.dbg("D_j2=", getOverD());
-  ConfArr sysBasis = sysConfH.getBasis();
+  LsConfs sysBasis = sysConfH.getConfArr();
   int sN = getSysBasisSize();
   int cN = getChNum();
   Mtrx res = new Mtrx(cN, sN);
@@ -34,7 +34,7 @@ protected Mtrx calcX() {
     for (int i = 0; i < sN; i++) {  // system states
       double sum = 0;
       for (int j = 0; j < sN; j++) {  // system states
-        Conf sysConf = sysBasis.get(j);      //log.dbg("sysBasis["+j+"]=", sysConf);
+        LsConf sysConf = sysBasis.get(j);      //log.dbg("sysBasis["+j+"]=", sysConf);
         ShPair sp = (ShPair) sysConf;
         int j1 = sp.a.getIdx();
         int j2 = sp.b.getIdx();                       //log.dbg("(j1,j2) = ("+j1 + ", ", j2);

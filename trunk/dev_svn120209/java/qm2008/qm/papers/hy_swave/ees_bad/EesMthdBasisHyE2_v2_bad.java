@@ -95,11 +95,11 @@ private Dble2 calcSC(ShPair confS, ShPair confC, int sysIdx) {
   Dble2 res = new Dble2();
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
-  ConfArr sB = sysConfH.getBasis();     // sBasis
-  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
+  LsConfs sB = sysConfH.getConfArr();     // sBasis
+  SysE2 sysE2 = (SysE2)sysConfH.getSysH();
   Energy eng;
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
-    Conf sysConf = sB.get(sbi);
+    LsConf sysConf = sB.get(sbi);
     double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
     if (Calc.isZero(term))
       continue;
@@ -122,7 +122,7 @@ protected void calcAllVecs(int sysIdx, int chNum) {
   int ID_S = idx++;   // id for s-like
   int ID_C = idx++;   // id for c-like
 
-  Ls LS = sysConfH.getBasis().getLs();
+  Ls LS = sysConfH.getConfArr().getLs();
 
   int L = 0;
   vB0 = new Vec(chNum);
@@ -179,7 +179,7 @@ protected void calcAllVecs(int sysIdx, int chNum) {
 }
 private double calcHE(int g, int g2, FuncVec pw2, Ls ls) {
   int L = 0;
-  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
+  SysE2 sysE2 = (SysE2)sysConfH.getSysH();
   FuncArr trgtWfs = getWfsE1();
 
   FuncVec tWf = trgtWfs.get(g);

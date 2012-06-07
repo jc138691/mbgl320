@@ -1,6 +1,6 @@
 package atom.fano;
 
-import atom.shell.Conf;
+import atom.shell.LsConf;
 import atom.shell.ShInfo;
 import atom.shell.Shell;
 import atom.shell.deepcopy.ShId;
@@ -22,7 +22,7 @@ import java.util.TreeMap;
 public class Atom2011 {
   public static Log log = Log.getLog(Atom2011.class);
 
-  public static TreeMap<ShId, Int3> loadIdMap(Conf conf, Conf C2) {
+  public static TreeMap<ShId, Int3> loadIdMap(LsConf conf, LsConf C2) {
     TreeMap<ShId, Int3> res = new TreeMap<ShId, Int3>();
     for (int i = 0; i < conf.size(); i++) {
       Shell sh = conf.getSh(i);
@@ -107,7 +107,7 @@ public class Atom2011 {
   // scan one spectator shell
   // This is ok for 3-electron systems
 
-  public static ArrInt4 loadOneSpecShell(Conf conf, Conf C2) {
+  public static ArrInt4 loadOneSpecShell(LsConf conf, LsConf C2) {
     ArrInt4 res = new ArrInt4();
     TreeMap<ShId, Int3> idMap = Atom2011.loadIdMap(conf, C2);
     // check all possible spectator electrons, \bar{N}_\lambda (14)

@@ -2,11 +2,11 @@ package papers.hy_swave.v3_bi;
 
 import atom.data.AtomHy;
 import atom.e_2.SysE2OldOk;
-import atom.energy.ConfHMtrx;
+import atom.energy.AConfHMtrx;
 import atom.energy.ConfOvMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
-import atom.shell.ConfArr;
+import atom.shell.LsConfs;
 import atom.shell.ConfArrFactoryE2;
 import atom.shell.Ls;
 import math.mtrx.MtrxDbgView;
@@ -50,16 +50,16 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
     Ls sLs = new Ls(0, SPIN);         // s - for system
 
     // NOTE [dak 24Mar2011] Use (Nt, N). (N,N) is not allowed, see 2011 e-He paper
-//    ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthNt, orthNt);   log.dbg("sConfArr=", sConfArr);
-    ConfArr sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthNt, orthN);   log.dbg("sConfArr=", sConfArr);
+//    LsConfs sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthNt, orthNt);   log.dbg("sConfArr=", sConfArr);
+    LsConfs sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthNt, orthN);   log.dbg("sConfArr=", sConfArr);
 
-    ConfArr chiArr = ConfArrFactoryE2.makeTwoElec_forJmV2(sLs, L, orthNt
+    LsConfs chiArr = ConfArrFactoryE2.makeTwoElec_forJmV2(sLs, L, orthNt
       , lgrrBiN.size(), lgrrBiN.getLast());   log.dbg("chiArr=", chiArr);
 
     SlaterLcr slater = new SlaterLcr(quadr);
     SysE2OldOk sys = new SysE2OldOk(AtomHy.Z, slater);// NOTE -1 for Hydrogen
     ConfOvMtrx chiOv = new ConfOvMtrx(sConfArr, sys, chiArr);     log.dbg("chiOv=\n", new MtrxDbgView(chiOv));
-    ConfHMtrx sysH = new ConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
+    AConfHMtrx sysH = new AConfHMtrx(sConfArr, sys);                  log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
 
     JmMethodFanoE2 method = new JmMethodFanoE2(calcOpt);
     Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);

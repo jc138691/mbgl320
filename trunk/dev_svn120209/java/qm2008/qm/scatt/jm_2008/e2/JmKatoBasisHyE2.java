@@ -2,6 +2,7 @@ package scatt.jm_2008.e2;
 import atom.e_2.SysE2;
 import atom.energy.Energy;
 import atom.shell.*;
+import d1.IConf;
 import flanagan.complex.Cmplx;
 import math.Calc;
 import math.Mathx;
@@ -150,11 +151,11 @@ private Cmplx calcCAi(int sysIdx, int c) {
   }
   return res;
 }
-private double calcHESys(Conf leftConf, int sysIdx) {
+private double calcHESys(LsConf leftConf, int sysIdx) {
   double[][] sV = mthd.sysConfH.getEigArr(); // sysEigVec
-  ConfArr sB = mthd.sysConfH.getBasis();     // sBasis
+  int sN = mthd.sysConfH.getConfArrSize();     // sBasis
   double res = 0;
-  for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
+  for (int sbi = 0; sbi < sN; sbi++) {   // system basis index
     double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
     if (Calc.isZero(term))
       continue;
@@ -163,17 +164,17 @@ private double calcHESys(Conf leftConf, int sysIdx) {
   }
   return res;
 }
-protected Vec calcHEBasis(Conf leftConf) {
-  ConfArr sB = mthd.sysConfH.getBasis();     // sBasis
+protected Vec calcHEBasis(LsConf leftConf) {
+  IConfArr sB = mthd.sysConfH.getConfArr();     // sBasis
   Vec res = new Vec(sB.size());
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
-    Conf basisConf = sB.get(sbi);
+    IConf basisConf = sB.get(sbi);
     double a = calcHE(leftConf, basisConf);         //log.dbg("eng=", eng);
     res.set(sbi, a);
   }
   return res;
 }
-protected double calcSumA(Conf leftConf) {
+protected double calcSumA(LsConf leftConf) {
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   int sN = mthd.getSysBasisSize();
   double res = 0;  // amplitude
@@ -184,7 +185,7 @@ protected double calcSumA(Conf leftConf) {
   }
   return res;
 }
-protected Cmplx calcSumCA(Conf leftConf) {
+protected Cmplx calcSumCA(LsConf leftConf) {
   int initChIdx = mthd.trgtE2.getInitTrgtIdx();
   int sN = mthd.getSysBasisSize();
   Cmplx res = new Cmplx();  // amplitude
@@ -195,9 +196,10 @@ protected Cmplx calcSumCA(Conf leftConf) {
   }
   return res;
 }
-protected double calcSumK(Conf leftConf) {
+protected double calcSumK(LsConf leftConf) {
   int L = 0;
-  Ls LS = mthd.sysConfH.getBasis().getLs();
+  LsConfs confArr = (LsConfs)mthd.sysConfH.getConfArr();
+  Ls LS = confArr.getLs();
 
   JmCalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmR.getNumRows();
@@ -222,9 +224,10 @@ protected double calcSumK(Conf leftConf) {
   }
   return res;
 }
-protected Cmplx calcSumCK(Conf leftConf) {
+protected Cmplx calcSumCK(LsConf leftConf) {
   int L = 0;
-  Ls LS = mthd.sysConfH.getBasis().getLs();
+  LsConfs confArr = (LsConfs)mthd.sysConfH.getConfArr();
+  Ls LS = confArr.getLs();
 
   JmCalcOptE1 calcOpt = mthd.getCalcOpt();
   int rN = mthd.jmS.getNumRows();
@@ -250,8 +253,8 @@ protected Cmplx calcSumCK(Conf leftConf) {
   }
   return res;
 }
-protected double calcHE(Conf leftConf, Conf conf) {
-  SysE2 sysE2 = (SysE2)mthd.sysConfH.getAtom();
+protected double calcHE(IConf leftConf, IConf conf) {
+  SysE2 sysE2 = (SysE2)mthd.sysConfH.getSysH();
   Energy res = sysE2.calcH(leftConf, conf);   //log.dbg("calcHE res=", res);
 
 //  if (DEBUG_JM1) {

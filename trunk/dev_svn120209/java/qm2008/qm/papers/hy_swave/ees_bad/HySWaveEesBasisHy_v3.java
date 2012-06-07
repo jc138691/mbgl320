@@ -1,6 +1,6 @@
 package papers.hy_swave.ees_bad;
 import atom.data.AtomHy;
-import atom.energy.ConfHMtrx;
+import atom.energy.AConfHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.Ls;
@@ -65,7 +65,7 @@ public void calc(int newNt) {      log.setDbg();
   trgt.loadSdcsW();
   trgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
 
-  ConfHMtrx sysH = makeSysH(SYS_LS, slater);
+  AConfHMtrx sysH = makeSysH(SYS_LS, slater);
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 
 //  EesMethodBasisAnyE2 method = new EesMethodBasisAnyE2(calcOpt);

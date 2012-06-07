@@ -2,11 +2,6 @@ package atom.e_2;
 
 import atom.AtomLcr;
 import atom.energy.slater.SlaterLcr;
-import atom.shell.Conf;
-import atom.shell.Ls;
-import atom.shell.ShPair;
-import atom.shell.Shell;
-import math.Mathx;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,29/11/2010,10:31:35 AM
  */
@@ -33,7 +28,7 @@ final public int getNumElec() {
 //public double calcVbabb_OLD(
 //  Shell bX  // bound shell
 //  , Shell aY  // any (free-moving-wf or bound)
-//  , Conf bbXY2  // bound-bound-(shell-pair)    // NOTE! bound wf and conf are built from the same radial basis
+//  , LsConf bbXY2  // bound-bound-(shell-pair)    // NOTE! bound wf and conf are built from the same radial basis
 //) {
 //  Ls ls = bbXY2.getTotLS();
 //  ShPair sp = (ShPair) bbXY2;

@@ -1,4 +1,4 @@
-package func.d1;
+package d1;
 import atom.wf.WFQuadrD1;
 import math.Mathx;
 import math.func.FuncVec;
@@ -17,12 +17,14 @@ private WFQuadrD1 quadr;
 private BoxTrigOpt opt;
 private int[] momN; // momentum number
 private double[] mom; // momenta
+private double[] engs; // engs
 public BoxTrigOrth(WFQuadrD1 quadr, BoxTrigOpt model) {
   super(quadr.getX());
   this.quadr = quadr;
   this.opt = model;
   int size = 2 * model.getMomN() + 1;
   mom = new double[size];
+  engs = new double[size];
   momN = new int[size];
   load();
   norm();
@@ -36,15 +38,18 @@ private void load() {
   add(new FuncVec(getX(), new FuncConst(1.)));
   int i = 0;
   mom[i] = 0;
+  engs[i] = 0;
   momN[i++] = 0;
   if (opt.getMomN() == 0)
     return;
   for (int n = 1; n <= opt.getMomN(); n++) {
     double p = 2. * Math.PI * n / opt.getBoxLen();
     mom[i] = p;
+    engs[i] = 0.5 * p * p;
     momN[i++] = n;
     add(new FuncVec(getX(), new FuncCos2(p)));
     mom[i] = p;
+    engs[i] = 0.5 * p * p;
     momN[i++] = n;
     add(new FuncVec(getX(), new FuncSin2(p)));
   }

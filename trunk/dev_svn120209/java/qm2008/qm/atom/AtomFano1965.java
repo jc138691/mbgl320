@@ -27,11 +27,11 @@ public AtomFano1965(double az, Slater si) {
 //public double getAtomZ() {
 //  return atomZ;
 //}
-public FuncVec calcDensity(Conf fc, Conf fc2) {
+public FuncVec calcDensity(LsConf fc, LsConf fc2) {
   return null;
 }
 
-public static void assertLS(Conf fc, Conf fc2) {
+public static void assertLS(LsConf fc, LsConf fc2) {
   if (!fc.getTotLS().equals(fc2.getTotLS())) {// this is not possible, and must be a bug
     String mssg = "!fc.Ls().equals(fc2.Ls()); " + fc.getTotLS() + "!=" + fc2.getTotLS();
     throw new IllegalArgumentException(log.error(mssg));

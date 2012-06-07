@@ -3,7 +3,7 @@ package atom.shell;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 14:12:56
  */
-public class ShPair extends Conf {
+public class ShPair extends LsConf {
   public Shell a;
   public Shell b;
   public ShPair(final Shell sh, final Shell sh2, Ls totLs) {

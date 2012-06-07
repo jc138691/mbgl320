@@ -1,7 +1,7 @@
 package atom.e_3;
 
 import atom.fano.FanoTermE2;
-import atom.shell.Conf;
+import atom.shell.LsConf;
 import atom.shell.ShInfo;
 
 /**
@@ -10,7 +10,7 @@ import atom.shell.ShInfo;
 public class FanoTermE3 extends FanoTermE2 {
   public final ShInfo b;
 
-  public FanoTermE3(ShInfo b, ShInfo r, ShInfo s, Conf conf) {
+  public FanoTermE3(ShInfo b, ShInfo r, ShInfo s, LsConf conf) {
     super(r, s, conf);
     this.b = b;
   }
