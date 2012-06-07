@@ -1,6 +1,6 @@
 package atom.fano;
 
-import atom.shell.Conf;
+import atom.shell.LsConf;
 import atom.shell.ConfFinal;
 import atom.shell.ShInfo;
 
@@ -14,7 +14,7 @@ public class FanoTermE2 extends ConfFinal {
   public final ShInfo r;
   public final ShInfo s;
 
-  public FanoTermE2(ShInfo r, ShInfo s, Conf conf) {
+  public FanoTermE2(ShInfo r, ShInfo s, LsConf conf) {
     super(conf);
     this.r = r;
     this.s = s;

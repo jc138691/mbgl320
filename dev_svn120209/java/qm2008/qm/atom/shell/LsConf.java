@@ -1,8 +1,6 @@
 package atom.shell;
 import atom.angular.AngMomRules;
-import math.func.FuncVec;
-import math.func.arr.FuncArr;
-import math.mtrx.Mtrx;
+import d1.IConf;
 import math.vec.Vec;
 
 import javax.utilx.log.Log;
@@ -10,28 +8,28 @@ import java.util.ArrayList;
 /**
  * dmitry.d.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,04/06/2010,2:10:36 PM
  */
-public class Conf {  // this class is good for building a config
-public static Log log = Log.getLog(Conf.class);
+public class LsConf implements IConf {  // this class is good for building a config
+public static Log log = Log.getLog(LsConf.class);
 private ArrayList<Shell> arr;
 private ArrayList<Ls> lsArr;
 private String keyStr;         // for any sort of mapping
 private double norm;
-protected Conf(final Conf from) {
+protected LsConf(final LsConf from) {
   this.arr = from.arr;
   this.lsArr = from.lsArr;
 }
-protected Conf(final Conf from, boolean deepcopy) {
+protected LsConf(final LsConf from, boolean deepcopy) {
   this(from);
   if (deepcopy) {
     this.arr = (ArrayList<Shell>)from.arr.clone();
     this.lsArr = (ArrayList<Ls>)from.lsArr.clone();
   }
 }
-public Conf(final Shell sh) {
+public LsConf(final Shell sh) {
   init();
   add(sh, sh.getLs());
 }
-public Conf(final Shell sh, final Shell sh2, Ls totLs) {
+public LsConf(final Shell sh, final Shell sh2, Ls totLs) {
   this(sh);
   add(sh2, totLs);
 }
@@ -46,7 +44,7 @@ private void init() {
   lsArr = new ArrayList<Ls>();
 }
 public int[] getArrQ() {
-  throw new IllegalArgumentException(log.error("Use ConfFinal.getArrQ instead of Conf.getArrQ()."));
+  throw new IllegalArgumentException(log.error("Use ConfFinal.getArrQ instead of LsConf.getArrQ()."));
 }
 public void add(Shell sh, Ls currLs) {
   arr.add(sh);

@@ -1,4 +1,4 @@
-package func.d1;
+package d1;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 6/06/12, 12:09 PM
  */

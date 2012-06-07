@@ -1,8 +1,8 @@
 package atom.test;
 import atom.e_2.SysE2OldOk;
-import atom.energy.ConfHMtrx;
+import atom.energy.AConfHMtrx;
 import atom.energy.slater.SlaterLcr;
-import atom.shell.ConfArr;
+import atom.shell.LsConfs;
 import atom.shell.Ls;
 import atom.wf.lcr.WFQuadrLcr;
 import junit.framework.Test;
@@ -54,8 +54,8 @@ public class ScattHyTest extends BSplLogCRBasisTest {
     // Multi-Config Hartree-Fock with 1s2+...+4s2
     double tot = -2.878990; // from p.164 of Froese-Fischer
     int L = 0;
-    ConfArr basis = ConfArrFactoryE2.makeTwoElec(S1, N, L, arr);
-    ConfHMtrx H = new ConfHMtrx(basis, sys);
+    LsConfs basis = ConfArrFactoryE2.makeTwoElec(S1, N, L, arr);
+    AConfHMtrx H = new AConfHMtrx(basis, sys);
     EigenSymm eig = H.eig();
 //    LOG.report(this, "H=" + Vec.toCsv(eig.getRealEigenvalues()));
     log.dbg("H=", new Vec(eig.getRealEVals()));

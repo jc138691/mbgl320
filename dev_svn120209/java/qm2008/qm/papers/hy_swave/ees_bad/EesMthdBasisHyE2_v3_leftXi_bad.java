@@ -92,7 +92,7 @@ protected void calcAllVecs(int sysIdx, int chNum) {
   int ID_S = idx++;   // id for s-like
   int ID_C = idx++;   // id for c-like
 
-  Ls LS = sysConfH.getBasis().getLs();
+  Ls LS = sysConfH.getConfArr().getLs();
 
   int L = 0;
   vG = new Vec(chNum);

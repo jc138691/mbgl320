@@ -91,7 +91,7 @@ protected void calcAllVecs(double sysTotE, int gNum) {
   int ID_S = idx++;   // id for s-like
   int ID_C = idx++;   // id for c-like
 
-  Ls LS = sysConfH.getBasis().getLs();
+  Ls LS = sysConfH.getConfArr().getLs();
   int sysNum = getSysBasisSize();
 
   int L = 0;

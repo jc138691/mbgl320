@@ -1,6 +1,6 @@
 package atom.energy;
-import atom.shell.Conf;
-import atom.shell.ConfArr;
+import atom.shell.LsConf;
+import atom.shell.LsConfs;
 import math.mtrx.Mtrx;
 
 import javax.utilx.log.Log;
@@ -10,9 +10,9 @@ import javax.utilx.log.Log;
 public class ConfHOvMtrx extends HOvMtrx {
 public static Log log = Log.getLog(ConfHOvMtrx.class);
 private final ISysH atom;
-private final ConfArr basis;
+private final LsConfs basis;
 private final Mtrx mOv;
-public ConfHOvMtrx(ConfArr basis, final ISysH atom) {
+public ConfHOvMtrx(LsConfs basis, final ISysH atom) {
   super(basis.size(), basis.size());
   this.atom = atom;
   this.basis = basis;
@@ -20,14 +20,14 @@ public ConfHOvMtrx(ConfArr basis, final ISysH atom) {
   loadNormAndDiag();
   loadNonDiag();
   setOv(mOv);
-//  super(new ConfHMtrx(basis, atom));
+//  super(new AConfHMtrx(basis, atom));
 //  setOv(new ConfOvMtrx(basis, atom));
 }
 
 private void loadNormAndDiag() {     log.setDbg();
   int len = basis.size();
   for (int i = 0; i < len; i++) {
-    Conf ci = basis.get(i);
+    LsConf ci = basis.get(i);
     double ovDiag = atom.calcOverlap(ci, ci);  log.dbg("\n \n ovDiag[i="+i+"] = " + ovDiag);
 //    mOv.set(i, i, ovDiag); // DEBUG
     mOv.set(i, i, 1.);
@@ -43,7 +43,7 @@ private void loadNormAndDiag() {     log.setDbg();
 private void loadNonDiag() {
   int len = basis.size();
   for (int i = 0; i < len; i++) {
-    Conf ci = basis.get(i);
+    LsConf ci = basis.get(i);
     double ni = ci.getNorm();
     if ((10 * len)%(i+1) == 0) {
       log.info("ConfHOvMtrx row=" + i + ", " + (int)(100.* i / len) + "%");
@@ -52,7 +52,7 @@ private void loadNonDiag() {
 //    for (int j = 0; j < basis.size(); j++) { // DEBUG
       if (j == i)
         continue;
-      Conf cj = basis.get(j);
+      LsConf cj = basis.get(j);
       double nj = cj.getNorm();
 
       double ov = atom.calcOverlap(ci, cj);  log.dbg("\n \n ov[i="+i+", j="+j+"] = " + ov);

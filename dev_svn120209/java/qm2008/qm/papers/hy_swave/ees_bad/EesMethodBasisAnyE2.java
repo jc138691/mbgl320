@@ -1,6 +1,6 @@
 package papers.hy_swave.ees_bad;
 import atom.e_2.SysE2;
-import atom.energy.ConfHMtrx;
+import atom.energy.AConfHMtrx;
 import atom.energy.Energy;
 import atom.shell.*;
 import flanagan.complex.Cmplx;
@@ -78,25 +78,25 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
 
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
-  ConfArr sB = sysConfH.getBasis();     // sBasis
-  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
+  LsConfs sB = sysConfH.getConfArr();     // sBasis
+  SysE2 sysE2 = (SysE2)sysConfH.getSysH();
 
   // getting relevant trgtEigVec
   int CH_IDX = 0; // this is temp for testing
 
   ChConf conf = ((ScttTrgtE3)trgtE2).getChConf(CH_IDX);
   int gt = conf.fromIdx; // gamma in target H
-  ConfHMtrx tH = conf.hMtrx;
+  AConfHMtrx tH = conf.hMtrx;
 
   double[][] tV = tH.getEigArr();  // tEigVec
-  ConfArr tB = tH.getBasis(); // tBasis
+  LsConfs tB = tH.getConfArr(); // tBasis
 
   Energy eng;
   for (int tbi = 0; tbi < tB.size(); tbi++) {  // target basis index
-    Conf tConf = tB.get(tbi);
+    LsConf tConf = tB.get(tbi);
     Shell tSh = tConf.getSh(0);
     for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
-      Conf sysConf = sB.get(sbi);
+      LsConf sysConf = sB.get(sbi);
 
       double term = tV[tbi][gt] * sV[sbi][sysIdx];     log.dbg("term=", term);
       if (Calc.isZero(term))

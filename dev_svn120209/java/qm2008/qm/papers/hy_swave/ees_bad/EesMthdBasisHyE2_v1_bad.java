@@ -87,11 +87,11 @@ public ScttRes calcSysEngs() {    log.setDbg();
 private double calcB(Shell tSh, Shell freeSh, int sysIdx) {
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
-  ConfArr sB = sysConfH.getBasis();     // sBasis
-  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
+  LsConfs sB = sysConfH.getConfArr();     // sBasis
+  SysE2 sysE2 = (SysE2)sysConfH.getSysH();
   double res = 0;
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
-    Conf sysConf = sB.get(sbi);
+    LsConf sysConf = sB.get(sbi);
     double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
     if (Calc.isZero(term))
       continue;
@@ -107,11 +107,11 @@ private Dble2 calcSC(ShPair confS, ShPair confC, int sysIdx) {
   Dble2 res = new Dble2();
   // getting relevant sysEigVec
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
-  ConfArr sB = sysConfH.getBasis();     // sBasis
-  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
+  LsConfs sB = sysConfH.getConfArr();     // sBasis
+  SysE2 sysE2 = (SysE2)sysConfH.getSysH();
   Energy eng;
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
-    Conf sysConf = sB.get(sbi);
+    LsConf sysConf = sB.get(sbi);
     double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
     if (Calc.isZero(term))
       continue;
@@ -135,8 +135,8 @@ protected void calcAllVecs(int sysIdx, int chNum) {
   int ID_S = idx++;   // id for s-like
   int ID_C = idx++;   // id for c-like
 
-  Ls LS = sysConfH.getBasis().getLs();
-  SysE2 sysE2 = (SysE2)sysConfH.getAtom();
+  Ls LS = sysConfH.getConfArr().getLs();
+  SysE2 sysE2 = (SysE2)sysConfH.getSysH();
 
   int L = 0;
   vS = new Vec(chNum);

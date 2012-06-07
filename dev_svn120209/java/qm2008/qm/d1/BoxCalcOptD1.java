@@ -1,4 +1,4 @@
-package func.d1;
+package d1;
 import math.vec.grid.StepGridOpt;
 import papers.project_setup.ProjTestOpt;
 /**

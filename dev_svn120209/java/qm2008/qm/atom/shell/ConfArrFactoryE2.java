@@ -11,13 +11,13 @@ import javax.utilx.log.Log;
 public class ConfArrFactoryE2 {
 public static Log log = Log.getLog(ConfArrFactoryE2.class);
 
-public static ConfArr makeTwoElec(Ls LS, int N, int L, FuncArr fromArr) {
-  ConfArr res = new ConfArr();
+public static LsConfs makeTwoElec(Ls LS, int N, int L, FuncArr fromArr) {
+  LsConfs res = new LsConfs();
   for (int n = 0; n < N; n++) {
     Shell sh = new ShellQ2(n, fromArr.get(n), L, LS);
     log.dbg("q=2, sh=", sh);
     if (sh.isValid()) {
-      Conf fc = new ShPair(sh);
+      LsConf fc = new ShPair(sh);
       log.dbg("fc(n=n2)=", fc);
       res.add(fc);
     }
@@ -26,7 +26,7 @@ public static ConfArr makeTwoElec(Ls LS, int N, int L, FuncArr fromArr) {
     for (int n2 = n + 1; n2 < N; n2++) {
       Shell sh2 = new Shell(n2, fromArr.get(n2), L);
       log.dbg("sh2=", sh2);
-      Conf fc = new ShPair(sh, sh2, LS);
+      LsConf fc = new ShPair(sh, sh2, LS);
       log.dbg("fc=", fc);
       res.add(fc);
     }
@@ -36,14 +36,14 @@ public static ConfArr makeTwoElec(Ls LS, int N, int L, FuncArr fromArr) {
   return res;
 }
 
-public static ConfArr makePoetConfE1(FuncArr arr) {  //[14Apr2011] converted from makeSModelE2() for testing/debuging
+public static LsConfs makePoetConfE1(FuncArr arr) {  //[14Apr2011] converted from makeSModelE2() for testing/debuging
   int L = 0;
-  ConfArr res = new ConfArr();
+  LsConfs res = new LsConfs();
   int minN = arr.size();
   FuncArr minA = arr;
   for (int n = 0; n < minN; n++) { // n=0,...,(N-1)
     Shell sh = new Shell(n, minA.get(n), L);      log.dbg("sh=", sh);
-    Conf fc = new Conf(sh);                       log.dbg("fc=", fc);
+    LsConf fc = new LsConf(sh);                       log.dbg("fc=", fc);
     res.add(fc);
   }
   log.dbg("from arr=\n", arr);
@@ -51,18 +51,18 @@ public static ConfArr makePoetConfE1(FuncArr arr) {  //[14Apr2011] converted fro
   return res;
 }
 
-public static ConfArr makeSModelE2(Ls LS, FuncArr arr, FuncArr arr2) {
+public static LsConfs makeSModelE2(Ls LS, FuncArr arr, FuncArr arr2) {
   int L = 0;
-  ConfArr res = new ConfArr();
+  LsConfs res = new LsConfs();
   int minN = arr.size();
   int maxN = arr2.size();
   FuncArr minA = arr;
   FuncArr maxA = arr2;
   return makeSModelE2(LS, minA, minN, maxA, maxN);
 }
-public static ConfArr makeSModelMmE2(Ls LS, FuncArr arr, FuncArr arr2) {
+public static LsConfs makeSModelMmE2(Ls LS, FuncArr arr, FuncArr arr2) {
 int L = 0;
-  ConfArr res = new ConfArr();
+  LsConfs res = new LsConfs();
   int minN = arr.size();
   int maxN = arr2.size();
   FuncArr minA = arr;
@@ -70,22 +70,22 @@ int L = 0;
   return makePoetConfMmE2(LS, minA, minN, maxA, maxN);
 }
 
-public static ConfArr makeSModelE2(Ls LS, FuncArr arr, int minN) {
+public static LsConfs makeSModelE2(Ls LS, FuncArr arr, int minN) {
   int maxN = arr.size();
   FuncArr minA = arr;
   FuncArr maxA = arr;
   return makeSModelE2(LS, minA, minN, maxA, maxN);
 }
-public static ConfArr makeSModelMmE2(Ls LS, FuncArr arr, int minN) {
+public static LsConfs makeSModelMmE2(Ls LS, FuncArr arr, int minN) {
   int maxN = arr.size();
   FuncArr minA = arr;
   FuncArr maxA = arr;
   return makeSModelE2(LS, minA, minN, maxA, maxN);
 }
 
-public static ConfArr makeSModelE2(Ls LS, FuncArr minA, int minN, FuncArr maxA, int maxN) {
+public static LsConfs makeSModelE2(Ls LS, FuncArr minA, int minN, FuncArr maxA, int maxN) {
   int L = 0;
-  ConfArr res = new ConfArr();
+  LsConfs res = new LsConfs();
   res.setLs(LS);
   if (minN > maxN) {
     throw new IllegalArgumentException(log.error("arr2.size() < arr.size()!!!!!!!!"));
@@ -93,7 +93,7 @@ public static ConfArr makeSModelE2(Ls LS, FuncArr minA, int minN, FuncArr maxA, 
   for (int n = 0; n < minN; n++) { // n=0,...,(N-1)
     Shell sh = new ShellQ2(n, minA.get(n), L, LS); log.dbg("q=2 at sh=", sh);
     if (sh.isValid()) {
-      Conf fc = new ShPair(sh);                  log.dbg("fc(n=n2)=", fc);
+      LsConf fc = new ShPair(sh);                  log.dbg("fc(n=n2)=", fc);
       res.add(fc);
     }
     sh = new Shell(n, minA.get(n), L);
@@ -101,7 +101,7 @@ public static ConfArr makeSModelE2(Ls LS, FuncArr minA, int minN, FuncArr maxA, 
     for (int n2 = n + 1; n2 < minN; n2++) {
       Shell sh2 = new Shell(n2, minA.get(n2), L);
       log.dbg("sh2=", sh2);
-      Conf fc = new ShPair(sh, sh2, LS);
+      LsConf fc = new ShPair(sh, sh2, LS);
       log.dbg("fc=", fc);
       res.add(fc);
     }
@@ -110,9 +110,9 @@ public static ConfArr makeSModelE2(Ls LS, FuncArr minA, int minN, FuncArr maxA, 
     for (int n2 = minN; n2 < maxN; n2++) {
       Shell sh2 = new Shell(n2, maxA.get(n2), L);
       log.dbg("sh2=", sh2);
-      Conf fc = new ShPair(sh, sh2, LS);
+      LsConf fc = new ShPair(sh, sh2, LS);
       log.dbg("fc=", fc);
-//        Conf fc = new ShPair(sh).addShell(sh2, LS);   log.dbg("fc=", fc);
+//        LsConf fc = new ShPair(sh).addShell(sh2, LS);   log.dbg("fc=", fc);
       res.add(fc);
     }
   }
@@ -122,9 +122,9 @@ public static ConfArr makeSModelE2(Ls LS, FuncArr minA, int minN, FuncArr maxA, 
   return res;
 }
 
-public static ConfArr makePoetConfMmE2_DBG(Ls LS, FuncArr minA, int minN, FuncArr maxA, int maxN) {
+public static LsConfs makePoetConfMmE2_DBG(Ls LS, FuncArr minA, int minN, FuncArr maxA, int maxN) {
   int L = 0;
-  ConfArr res = new ConfArr();
+  LsConfs res = new LsConfs();
   res.setLs(LS);
   if (minN > maxN) {
     throw new IllegalArgumentException(log.error("arr2.size() < arr.size()!!!!!!!!"));
@@ -132,7 +132,7 @@ public static ConfArr makePoetConfMmE2_DBG(Ls LS, FuncArr minA, int minN, FuncAr
   for (int n = 0; n < minN; n++) { // n=0,...,(N-1)
     Shell sh = new ShellQ2(n, minA.get(n), L, LS); log.dbg("q=2 at sh=", sh);
     if (sh.isValid()) {
-      Conf fc = new ShPair(sh);                  log.dbg("fc(n=n2)=", fc);
+      LsConf fc = new ShPair(sh);                  log.dbg("fc(n=n2)=", fc);
       res.add(fc);
     }
     sh = new Shell(n, minA.get(n), L);
@@ -143,7 +143,7 @@ public static ConfArr makePoetConfMmE2_DBG(Ls LS, FuncArr minA, int minN, FuncAr
         continue;
       Shell sh2 = new Shell(n2, minA.get(n2), L);
       log.dbg("sh2=", sh2);
-      Conf fc = new ShPair(sh, sh2, LS);
+      LsConf fc = new ShPair(sh, sh2, LS);
       log.dbg("fc=", fc);
       res.add(fc);
     }
@@ -152,9 +152,9 @@ public static ConfArr makePoetConfMmE2_DBG(Ls LS, FuncArr minA, int minN, FuncAr
     for (int n2 = minN; n2 < maxN; n2++) {
       Shell sh2 = new Shell(n2, maxA.get(n2), L);
       log.dbg("sh2=", sh2);
-      Conf fc = new ShPair(sh, sh2, LS);
+      LsConf fc = new ShPair(sh, sh2, LS);
       log.dbg("fc=", fc);
-//        Conf fc = new ShPair(sh).addShell(sh2, LS);   log.dbg("fc=", fc);
+//        LsConf fc = new ShPair(sh).addShell(sh2, LS);   log.dbg("fc=", fc);
       res.add(fc);
     }
   }
@@ -164,20 +164,20 @@ public static ConfArr makePoetConfMmE2_DBG(Ls LS, FuncArr minA, int minN, FuncAr
   return res;
 }
 
-public static ConfArr makePoetConfMmE2(Ls LS, FuncArr minA, int minN, FuncArr maxA, int maxN) {
+public static LsConfs makePoetConfMmE2(Ls LS, FuncArr minA, int minN, FuncArr maxA, int maxN) {
   int L = 0;
-  ConfArr res = new ConfArr();
+  LsConfs res = new LsConfs();
   res.setLs(LS);
   if (minN > maxN) {
     throw new IllegalArgumentException(log.error("arr2.size() < arr.size()!!!!!!!!"));
   }
   Shell sh, sh2;
   int n2;
-  Conf fc;
+  LsConf fc;
   for (int n = 0; n < minN; n++) { // n=0,...,(N-1)
 //    sh = new ShellQ2(n, minA.get(n), L, LS); log.dbg("q=2 at sh=", sh);
 //    if (sh.isValid()) {
-//      Conf fc = new ShPair(sh);                  log.dbg("fc(n=n2)=", fc);
+//      LsConf fc = new ShPair(sh);                  log.dbg("fc(n=n2)=", fc);
 //      res.add(fc);
 //    }
 
@@ -196,7 +196,7 @@ public static ConfArr makePoetConfMmE2(Ls LS, FuncArr minA, int minN, FuncArr ma
 //      }
 
       log.dbg("sh2=", sh2);
-//      Conf fc = new ShPair(sh, sh2, LS);
+//      LsConf fc = new ShPair(sh, sh2, LS);
       fc = new ShPair(sh2, sh, LS);
       log.dbg("fc=", fc);
       res.add(fc);
@@ -209,7 +209,7 @@ public static ConfArr makePoetConfMmE2(Ls LS, FuncArr minA, int minN, FuncArr ma
       log.dbg("sh2=", sh2);
       fc = new ShPair(sh, sh2, LS);
       log.dbg("fc=", fc);
-//        Conf fc = new ShPair(sh).addShell(sh2, LS);   log.dbg("fc=", fc);
+//        LsConf fc = new ShPair(sh).addShell(sh2, LS);   log.dbg("fc=", fc);
       res.add(fc);
     }
   }
@@ -220,8 +220,8 @@ public static ConfArr makePoetConfMmE2(Ls LS, FuncArr minA, int minN, FuncArr ma
 }
 
 // this should be deleted if the jmV2 idea is no good.
-public static ConfArr makeTwoElec_forJmV2(Ls LS, int L, FuncArr arr, int n2, FuncVec func2) {
-  ConfArr res = new ConfArr();
+public static LsConfs makeTwoElec_forJmV2(Ls LS, int L, FuncArr arr, int n2, FuncVec func2) {
+  LsConfs res = new LsConfs();
   for (int n = 0; n < arr.size(); n++) { // n=0,...,(N-1)
     if (n == n2) { // why adding a different function with the same n?
       String mssg = "adding n=n2=" + n2;
@@ -231,9 +231,9 @@ public static ConfArr makeTwoElec_forJmV2(Ls LS, int L, FuncArr arr, int n2, Fun
     log.dbg("sh=", sh);
     Shell sh2 = new Shell(n2, func2, L);
     log.dbg("sh2=", sh2);
-    Conf fc = new ShPair(sh, sh2, LS);
+    LsConf fc = new ShPair(sh, sh2, LS);
     log.dbg("fc=", fc);
-//      Conf fc = new ShPair(sh).addShell(sh2, LS);   log.dbg("fc=", fc);
+//      LsConf fc = new ShPair(sh).addShell(sh2, LS);   log.dbg("fc=", fc);
     res.add(fc);
   }
   log.dbg("from arr=\n", arr);
@@ -242,11 +242,11 @@ public static ConfArr makeTwoElec_forJmV2(Ls LS, int L, FuncArr arr, int n2, Fun
   return res;
 }
 
-public static ConfArr makeTwoElecSameN(Ls LS, int N, FuncArr from) {
-  ConfArr res = new ConfArr();
+public static LsConfs makeTwoElecSameN(Ls LS, int N, FuncArr from) {
+  LsConfs res = new LsConfs();
   for (int n = 0; n < N; n++) {
     Shell sh = new Shell(n, from.get(n), 2, 0, LS);
-    Conf c = new ShPair(sh);
+    LsConf c = new ShPair(sh);
     res.add(c);
   }
   log.dbg("from=\n", from);
@@ -254,16 +254,16 @@ public static ConfArr makeTwoElecSameN(Ls LS, int N, FuncArr from) {
   return res;
 }
 
-public static ConfArr makeOneElec(int N, int L, FuncArr from) {
+public static LsConfs makeOneElec(int N, int L, FuncArr from) {
   log.dbg("makeOneElec(N=", N);
   log.dbg("L=", L);
   log.dbg("from lgrrN=", from);
-  ConfArr res = new ConfArr();
+  LsConfs res = new LsConfs();
   for (int n = 0; n < N; n++) {
     Shell sh = new Shell(n, from.get(n), L);
     log.dbg("shell[n=", n);
     log.dbg("=", sh);
-    Conf c = new Conf(sh);
+    LsConf c = new LsConf(sh);
     log.dbg("shell config=", c);
     res.add(c);
   }

@@ -4,7 +4,7 @@ import atom.data.AtomLiSlaterJoy;
 import atom.data.AtomLiSlaterJoy3;
 import atom.e_3.AtomShModelE3;
 import atom.e_3.SysLi;
-import atom.energy.ConfHMtrx;
+import atom.energy.AConfHMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
@@ -40,7 +40,7 @@ public class LiSlaterTest extends FlowTest {
     FuncVec f2 = atomLi.makeNormP2sLcr(quadr);
     res = quadr.calcInt(f2, f2);
     assertEqualsRel("norm=<2s|2s>=", 1, res, true);
-    Conf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
+    LsConf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
     Energy eng = sys.calcH(cf, cf);
@@ -60,7 +60,7 @@ public class LiSlaterTest extends FlowTest {
     f2.setX(quadr.getX()); // MUST change grid for derivatives
     res = quadr.calcInt(f2, f2);
     assertEqualsRel("norm=<2s|2s>=", 1.0000079, res, true); //1.0000079 error is in the original expression
-    Conf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
+    LsConf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
     double pot = sys.calcH(cf, cf).pt;
@@ -87,7 +87,7 @@ public class LiSlaterTest extends FlowTest {
     f2.setX(quadr.getX()); // MUST change grid for derivatives
     res = quadr.calcInt(f2, f2);
     assertEqualsRel("norm=<2s|2s>=", 0.9999683, res, true);  // error due to the raw funcs
-    Conf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
+    LsConf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
     Energy eng = sys.calcH(cf, cf);
@@ -102,7 +102,7 @@ public class LiSlaterTest extends FlowTest {
     FuncVec f2 = atomLi.makeNormP2sLcr(quadr);
     res = quadr.calcInt(f2, f2);
     assertEqualsRel("norm=<2s|2s>=", 1, res, true);
-    Conf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
+    LsConf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
     Energy eng = sys.calcH(cf, cf);
@@ -118,14 +118,14 @@ public class LiSlaterTest extends FlowTest {
     res = quadr.calcInt(f2, f2);
     assertEqualsRel("norm=<2s|2s>=", 1, res, true);
     // TEST 1
-    Conf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
-    Conf cf2 = ConfFactory.makeLi_1s_2s2_2S(f, f2); // Making Li(1s^2, 2s)
-    ConfArr cfArr = new ConfArr();
+    LsConf cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
+    LsConf cf2 = ConfFactory.makeLi_1s_2s2_2S(f, f2); // Making Li(1s^2, 2s)
+    LsConfs cfArr = new LsConfs();
     cfArr.add(cf);
     cfArr.add(cf2);
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
-    ConfHMtrx sysH = new ConfHMtrx(cfArr, sys);
+    AConfHMtrx sysH = new AConfHMtrx(cfArr, sys);
     log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     Vec sysE = sysH.getEigEngs();
     log.dbg("sysE=", new VecDbgView(sysE));
@@ -147,10 +147,10 @@ public class LiSlaterTest extends FlowTest {
     f2 = basis.get(1);
     cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
     cf2 = ConfFactory.makeLi_1s_2s2_2S(f, f2); // Making Li(1s^2, 2s)
-    cfArr = new ConfArr();
+    cfArr = new LsConfs();
     cfArr.add(cf);
     cfArr.add(cf2);
-    sysH = new ConfHMtrx(cfArr, sys);
+    sysH = new AConfHMtrx(cfArr, sys);
     log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigEngs();
     log.dbg("sysE=", new VecDbgView(sysE));
@@ -184,8 +184,8 @@ public class LiSlaterTest extends FlowTest {
     SlaterLcr slater = new SlaterLcr(quadr);
     SysLi sys = new SysLi(slater);
     AtomShModelE3 modelLi = new AtomShModelE3(3, 3, 3, LS);
-    ConfArr cfArr = ConfArrFactoryE3.makePoetClosedShell(modelLi, basis);//    ALL CLOSED SHELLS
-    ConfHMtrx sysH = new ConfHMtrx(cfArr, sys);
+    LsConfs cfArr = ConfArrFactoryE3.makePoetClosedShell(modelLi, basis);//    ALL CLOSED SHELLS
+    AConfHMtrx sysH = new AConfHMtrx(cfArr, sys);
     log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     Vec sysE = sysH.getEigEngs();
     log.dbg("sysE=", new VecDbgView(sysE));
@@ -201,21 +201,21 @@ public class LiSlaterTest extends FlowTest {
     log.dbg("sh2=", sh2);
     Shell sh3 = new Shell(2, basis.get(2), L);
     log.dbg("sh3=", sh3);
-    Conf cf = new ShPair(sh, sh2, S1);
+    LsConf cf = new ShPair(sh, sh2, S1);
     log.dbg("cf=", cf);
-    //    Conf cf = new ShPair(sh, sh2, S3);           log.dbg("cf=", cf);
+    //    LsConf cf = new ShPair(sh, sh2, S3);           log.dbg("cf=", cf);
     cf.add(sh3, modelLi.getLs());
     log.dbg("cf=", cf);
     cfArr.add(cf);
     //    Energy e = sys.calcH(cf, cfArr.get(2));         log.dbg("e=", e);
-    sysH = new ConfHMtrx(cfArr, sys);
+    sysH = new AConfHMtrx(cfArr, sys);
     log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigEngs();
     log.dbg("sysE=", new VecDbgView(sysE));
     //    assertEqualsRel("Full= -7.4322894; S1=-7.383171, S3=-7.4235334;", atomLi.getEngTot(), sysE.get(0), true);
     // STOPPED HERE 8Dec2010: expected:<-7.4322896> but was:<-7.453902>, -7.445353(13Dec);
     cfArr = ConfArrFactoryE3.makeSModel(modelLi, basis);//
-    sysH = new ConfHMtrx(cfArr, sys);
+    sysH = new AConfHMtrx(cfArr, sys);
     log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
     sysE = sysH.getEigEngs();
     log.dbg("sysE=", new VecDbgView(sysE));

@@ -1,9 +1,10 @@
 package atom.test;
 import atom.e_1.SysE1;
+import atom.energy.AConfHMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.energy.slater.SlaterLr;
-import atom.shell.Conf;
+import atom.shell.LsConf;
 import atom.shell.Ls;
 import atom.shell.Shell;
 import atom.wf.coulomb.WfFactory;
@@ -14,7 +15,6 @@ import atom.wf.log_r.WFQuadrLr;
 import atom.wf.WFQuadrR;
 import atom.angular.Spin;
 import atom.energy.slater.SlaterR;
-import atom.energy.ConfHMtrx;
 import atom.energy.HMtrxFactory;
 import math.func.FuncVec;
 import math.mtrx.jamax.EigenSymm;
@@ -76,7 +76,7 @@ public class ZetaHyLCR extends LCRTestCase {
     double testPot = 2 * test0;
     Ls LS = new Ls(L, Spin.ELECTRON);
     Shell sh = new Shell(0, f, L);
-    Conf fc = new Conf(sh);
+    LsConf fc = new LsConf(sh);
     SlaterLcr slater = new SlaterLcr(w);
     SysE1 sys = new SysE1(-Z_EFF, slater);
     double kin = sys.calcH(fc, fc).kin;
@@ -90,7 +90,7 @@ public class ZetaHyLCR extends LCRTestCase {
 
     // 18Jul08:  check B-Splines
     int N_BASIS = 20;
-    ConfHMtrx H = HMtrxFactory.makeFromBsplLogCR(FIRST, LAST, GRID_SIZE, N_BASIS, 0);
+    AConfHMtrx H = HMtrxFactory.makeFromBsplLogCR(FIRST, LAST, GRID_SIZE, N_BASIS, 0);
     EigenSymm eig = H.eig();
     log.dbg("H.eig()=", new Vec(eig.getRealEVals()));
 
@@ -114,7 +114,7 @@ public class ZetaHyLCR extends LCRTestCase {
     double testPot = 2 * test0;
     Ls LS = new Ls(L, Spin.ELECTRON);
     Shell sh = new Shell(0, f, L);
-    Conf fc = new Conf(sh);
+    LsConf fc = new LsConf(sh);
     SlaterLcr slater = new SlaterLcr(w);
     SysE1 sys = new SysE1(-1., slater);
     double kin = sys.calcH(fc, fc).kin;
@@ -145,7 +145,7 @@ public class ZetaHyLCR extends LCRTestCase {
     double testPot = 2 * test0;
     Ls LS = new Ls(L, Spin.ELECTRON);
     Shell sh = new Shell(0, f, L);
-    Conf fc = new Conf(sh);
+    LsConf fc = new LsConf(sh);
     SlaterLr slater = new SlaterLr(w);
     SysE1 sys = new SysE1(-Z, slater);
     double kin = sys.calcH(fc, fc).kin;
@@ -161,7 +161,7 @@ public class ZetaHyLCR extends LCRTestCase {
     StepGrid smallR = new StepGrid(0, r.get(0), 9);
     f = WfFactory.makeP1s(smallR, Z);
     sh = new Shell(0, f, L);
-    fc = new Conf(sh);
+    fc = new LsConf(sh);
     WFQuadrR wR = new WFQuadrR(smallR);
     SlaterR slaterR = new SlaterR(wR);
     sys = new SysE1(-Z, slaterR);

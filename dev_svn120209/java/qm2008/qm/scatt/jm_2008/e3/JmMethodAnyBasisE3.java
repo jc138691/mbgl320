@@ -1,7 +1,7 @@
 package scatt.jm_2008.e3;
-import atom.energy.ConfHMtrx;
-import atom.shell.Conf;
-import atom.shell.ConfArr;
+import atom.energy.AConfHMtrx;
+import atom.shell.LsConf;
+import atom.shell.LsConfs;
 import atom.shell.Ls;
 import atom.shell.Shell;
 import math.mtrx.Mtrx;
@@ -15,7 +15,7 @@ import java.util.HashMap;
  */
 public class JmMethodAnyBasisE3 extends JmMethodBaseE3 { // many electrons (more than 2). TODO: this should work for e-H as well
 public static Log log = Log.getLog(JmMethodAnyBasisE3.class);
-protected HashMap<String, String> equalSysTrgt;       // [12Apr2011] with equalSysTrgt, equals(Conf e3, Conf e2, int idx3) is much faster now!!!
+protected HashMap<String, String> equalSysTrgt;       // [12Apr2011] with equalSysTrgt, equals(LsConf e3, LsConf e2, int idx3) is much faster now!!!
 protected HashMap<String, Integer> mapTrgtToSysIdx;   // [12Apr2011] with mapTrgtToSysIdx, calcC(int i, int g, int m) is much faster!!!
 public JmMethodAnyBasisE3(JmCalcOptE1 calcOpt) {
   super(calcOpt);
@@ -23,22 +23,22 @@ public JmMethodAnyBasisE3(JmCalcOptE1 calcOpt) {
 //[system i][target gamma][overlap D]
 protected double calcC(int i, int g, int m) { // needed in calcX()
   double[][] sV = sysConfH.getEigArr(); // sysEigVec
-  ConfArr sB = sysConfH.getBasis();     // sBasis
+  LsConfs sB = sysConfH.getConfArr();     // sBasis
 
   ChConf conf = trgtE3.getChConf(g);
   int gt = conf.fromIdx; // gamma in target H
-  ConfHMtrx tH = conf.hMtrx;
+  AConfHMtrx tH = conf.hMtrx;
   double[][] tV = tH.getEigArr();  // tEigVec
-  ConfArr tB = tH.getBasis(); // tBasis
+  LsConfs tB = tH.getConfArr(); // tBasis
 
   double res = 0;
   for (int b = 0; b < tB.size(); b++) {  // b - for basis index
-    Conf tConf = tB.get(b);
+    LsConf tConf = tB.get(b);
     String tKey = makeTrgtKey(tConf, m);
     Integer sysIdx = mapTrgtToSysIdx.get(tKey);
     if (sysIdx == null) {
       for (int j = 0; j < sB.size(); j++) { // j - system index
-        Conf jConf = sB.get(j);
+        LsConf jConf = sB.get(j);
         if (equals(jConf, tConf, m)) {
           sysIdx = j;
           mapTrgtToSysIdx.put(tKey, sysIdx);
@@ -60,7 +60,7 @@ X_i^{\alpha} = \sum_{j}  \delta_{j_1,\alpha} C_{ij} A_j D_{j_2,N-1},
 @Override
 protected Mtrx calcX() {
   double[] D = getOverD().getArr();
-  ConfArr sysBasis = sysConfH.getBasis();
+  LsConfs sysBasis = sysConfH.getConfArr();
   int sN = getSysBasisSize();
   int cN = getChNum();
   int N = calcOpt.getN();  // big N
@@ -83,10 +83,10 @@ protected Mtrx calcX() {
   }
   return res;
 }
-private String makeTrgtKey(Conf e2, int idx3) {
+private String makeTrgtKey(LsConf e2, int idx3) {
   return e2.getKeyStr() + "!" + idx3;
 }
-public boolean equals(Conf e3, Conf e2, int idx3) { // this should work for any targets (not just E3-system and E2-target)
+public boolean equals(LsConf e3, LsConf e2, int idx3) { // this should work for any targets (not just E3-system and E2-target)
   String sys = e3.getKeyStr();
   String oldTrgt = equalSysTrgt.get(sys);
   if (oldTrgt != null) {  // already found
@@ -122,8 +122,8 @@ public boolean equals(Conf e3, Conf e2, int idx3) { // this should work for any 
   }
   String trgt = makeTrgtKey(e2, idx3);
   equalSysTrgt.put(sys, trgt);
-//    log.dbg("Conf e3 =", e3);
-//    log.dbg("Conf e2 =", e2);
+//    log.dbg("LsConf e3 =", e3);
+//    log.dbg("LsConf e2 =", e2);
 //    log.dbg("last electron is in =", idx3);
   return true;
 }

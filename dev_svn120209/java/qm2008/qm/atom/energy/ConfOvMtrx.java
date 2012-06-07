@@ -1,9 +1,8 @@
 package atom.energy;
 
-import atom.AtomFano1965;
 import javax.utilx.arraysx.TArr;
 
-import atom.shell.ConfArr;
+import atom.shell.LsConfs;
 import math.mtrx.Mtrx;
 
 /**
@@ -11,16 +10,16 @@ import math.mtrx.Mtrx;
  */
 public class ConfOvMtrx extends Mtrx {
 protected final ISysH atom;
-protected final ConfArr basisL;
-protected final ConfArr basisR;
-public ConfOvMtrx(ConfArr basisL, final ISysH atom, ConfArr basisR) {
+protected final LsConfs basisL;
+protected final LsConfs basisR;
+public ConfOvMtrx(LsConfs basisL, final ISysH atom, LsConfs basisR) {
   super(basisL.size(), basisR.size());
   this.atom = atom;
   this.basisL = basisL;
   this.basisR = basisR;
   load();
 }
-public ConfOvMtrx(ConfArr basis, final ISysH atom) {
+public ConfOvMtrx(LsConfs basis, final ISysH atom) {
   super(basis.size(), basis.size());
   this.atom = atom;
   this.basisL = basis;
