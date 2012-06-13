@@ -86,7 +86,9 @@ public class YkLcrTest extends FlowTest {
     log.setDbg();
     double FIRST = -4;
     int NUM_STEPS = 220;
+//    int NUM_STEPS = 440;
     double STEP = 1. / 16.;
+//    double STEP = 1. / 32.;
     StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
     WFQuadrLcr quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
     TransLcrToR xToR = new TransLcrToR(x);
@@ -105,8 +107,8 @@ public class YkLcrTest extends FlowTest {
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(r), ".", "wf", "logCR.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(T), ".", "wf", "Y_0_1s_test.csv");
 //    log.saveToFile(VecToString.toCsv(x) + "\n" + VecToString.toCsv(Y), ".", "wf", "Y_0_1s.csv");
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 2e-9);
-//    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), 4e-8); // TODO: was 2e-9
+    assertEquals(0, DistMaxAbsErr.distSLOW(T, Y), 2e-9);
+//    assertEquals(0, DistMaxAbsErr.distSLOW(T, Y), 4e-8); // TODO: was 2e-9
 
     // 1s-2s
     FuncVec f2 = WfFactory.makeP2s(r, 1.);

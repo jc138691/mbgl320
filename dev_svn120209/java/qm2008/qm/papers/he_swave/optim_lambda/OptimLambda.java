@@ -175,7 +175,6 @@ public class OptimLambda extends HeSWaveScatt {
     LCR_N = 701;
     R_LAST = 200;
 
-    IGNORE_BUG_PoetHeAtom = true;
     SPIN = Spin.ELECTRON;
 
     double lamLL = 1;
@@ -188,7 +187,6 @@ public class OptimLambda extends HeSWaveScatt {
   }
 
   public Dble2 findBestLambda(double lamLL, double lamRR, int numLam) {
-    IGNORE_BUG_PoetHeAtom = true;
     SPIN = Spin.ELECTRON;
 
     Dble2 res = new Dble2();

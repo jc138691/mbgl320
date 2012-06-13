@@ -51,7 +51,7 @@ public class HeClementiTest extends FlowTest {
     ShPair fc = new ShPair(sh);
     SlaterLcr slater = new SlaterLcr(w);
 
-    SysE2OldOk sys = new SysE2OldOk(-2., slater);
+    SysE2OldOk sys = new SysE2OldOk(2., slater);
     double kin = sys.calcH(fc, fc).kin;
     assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_KIN  - kin), 2e-11);
 
@@ -60,15 +60,18 @@ public class HeClementiTest extends FlowTest {
     assertEquals(kin, kin2, 1e-11);
 
     double pot = sys.calcH(fc, fc).pt;
-    assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_POT - pot), 2e-11);
-    assertEquals(0, Math.abs(-2. - pot / kin), 2e-11);
+//    assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_POT - pot), 2e-11);
+    assertEquals(0, AtomHeClementi.E_ZETA_POT - pot, 7e-9); // [3Jun12] switched to Yk_NEW
+//    assertEquals(0, -2. - pot / kin, 2e-11);
+    assertEquals(0, -2. - pot / kin, 3e-9); // [3Jun12] switched to Yk_NEW
 
     double pot2 = sys2.calcH(fc, fc).pt;
     assertEquals(pot, pot2, 1e-11);
 
     Energy eng = sys.calcH(fc, fc);
     res = eng.kin + eng.pt;
-    assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_TOT - res), 3e-11);
+//    assertEquals(0, AtomHeClementi.E_ZETA_TOT - res, 3e-11);
+    assertEquals(0, AtomHeClementi.E_ZETA_TOT - res, 7e-9);
   }
   public void testClementiLimitOneConfig() throws Exception  {
 //    LOG.setTrace(true);
@@ -95,7 +98,7 @@ public class HeClementiTest extends FlowTest {
     assertEquals(0, res, 2e-8);
     SlaterLcr slater = new SlaterLcr(w);
     Ls LS = new Ls(0, Spin.SINGLET);
-    SysE2OldOk sys = new SysE2OldOk(-2., slater);
+    SysE2OldOk sys = new SysE2OldOk(2., slater);
 
     // One config hartree-fock limit
     double kin = 2.8617128;// from Clementi, p185
@@ -109,7 +112,7 @@ public class HeClementiTest extends FlowTest {
     double e0 = eig.getRealEigenvalues()[0];
 //    LOG.report(this, "\nkin+pt="
 //      + (kin + pt) + "\n   e[0]=" + e0);
-    assertEquals(0, Math.abs(-2.8615628084911 - e0), 3e-6); //
+    assertEquals(0, -2.8615628084911 - e0, 3e-6); //
     assertEquals(0, e0 - tot, 2e-4);
 //    FuncVec conf = H.calcDens(eig, 0);
 //      LOG.saveToFile(valarray.asArray(x), valarray.asArray(conf), "wf", "He_ground_density.csv");

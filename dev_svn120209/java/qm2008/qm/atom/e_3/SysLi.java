@@ -8,6 +8,6 @@ import atom.energy.slater.SlaterLcr;
  */
 public class SysLi extends SysE3 {
   public SysLi(SlaterLcr si) {
-    super(-AtomLi.Z, si);
+    super(AtomLi.Z, si);
   }
 }

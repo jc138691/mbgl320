@@ -45,7 +45,7 @@ import javax.utilx.log.Log;
 public class Jm2010CommonLcr extends Jm2010Common {
 public static Log log = Log.getLog(Jm2010CommonLcr.class);
 protected static int LCR_N = 301;
-protected static int LCR_FIRST = -4;// -1 for Hydrogen
+protected static double LCR_FIRST = -4;
 
 protected static FuncArr wfN;
 protected static LagrrLcr lgrrN;

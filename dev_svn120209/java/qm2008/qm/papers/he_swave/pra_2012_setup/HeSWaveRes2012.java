@@ -1,6 +1,7 @@
-package papers.he_swave;
+package papers.he_swave.pra_2012_setup;
 import atom.angular.Spin;
 import atom.data.AtomHe;
+import papers.he_swave.HeSWaveBasisJm;
 import qm_station.QMSProject;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngModel;
@@ -8,39 +9,38 @@ import scatt.eng.EngModelArr;
 
 import javax.utilx.log.Log;
 /**
- * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,18/08/11,11:11 AM
- */
-public class HeSWaveResonances2011 extends HeSWaveBasisJm {
-  public static Log log = Log.getLog(HeSWaveResonances2011.class);
-  public static void main(String[] args) {
-    // NOTE!!! for Nt>20 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
-    HeSWaveResonances2011 runMe = new HeSWaveResonances2011();
-    runMe.setUp();
-    runMe.testRun();
-  }
+* dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,18/08/11,11:11 AM
+*/
+public class HeSWaveRes2012 extends HeSWaveBasisJm {
+public static Log log = Log.getLog(HeSWaveRes2012.class);
+public static void main(String[] args) {
+  // NOTE!!! for Nt>20 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
+  HeSWaveRes2012 runMe = new HeSWaveRes2012();
+  runMe.setUp();
+  runMe.testRun();
+}
 
-  public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-    project = QMSProject.makeInstance("HeSWaveResonances2011", "110818");
-    TARGET_Z = AtomHe.Z;
-    HOME_DIR = "C:\\dev\\physics\\papers\\output";
-    MODEL_NAME = "HeSWaveResonances2011";
-    MODEL_DIR = MODEL_NAME;
-    IGNORE_BUG_PoetHeAtom = true;
-    CALC_DENSITY = false;
-    CALC_DENSITY_MAX_NUM = 30;
-    SAVE_TRGT_ENGS = true;
-    H_OVERWRITE = true;
+public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
+  MODEL_NAME = "HeSWaveRes2012";
+  project = QMSProject.makeInstance(MODEL_NAME, "110818");
+  TARGET_Z = AtomHe.Z;
+  HOME_DIR = "C:\\dev\\physics\\papers\\output";
+  MODEL_DIR = MODEL_NAME;
+  CALC_DENSITY = false;
+  CALC_DENSITY_MAX_NUM = 2;
+  SAVE_TRGT_ENGS = true;
+  H_OVERWRITE = true;
 //    LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 //    LAMBDA = 2 * 1.68750; // best single zeta
 //    LAMBDA = 3.787828; // best for Nc=10, Nt=30  , n_gamma=5
 //    LAMBDA = 2.526; // best for Nc=10, Nt=30  , n_gamma=7
 //    LAMBDA = 2.05; // best for Nc=14, Nt=14  , n_gamma=5
-    // Note: run one at a time as only one set of result files is produced
-    setupResEngs_SLOW();
-    runJob();
-  }
+  // Note: run one at a time as only one set of result files is produced
+  setupResEngs_SLOW();
+  runJob();
+}
 
-  public void runJob() {
+public void runJob() {
 //    // Nt= 80
 //    int currN = 81;
 //    LCR_FIRST = -7;
@@ -53,12 +53,13 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 //    LCR_N = 1201;
 //    R_LAST = 330;
 
-    // upto N=50
-    LCR_FIRST = -5;  //-5
-    LCR_N = 1001;  //901
-    R_LAST = 250;
+  // upto N=50
+  // see HeAtomMM_try
+  LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
+  LCR_N = 2001;  //901
+  R_LAST = 200;
 
-    // upto N=40
+  // upto N=40
 //    LCR_FIRST = -5;
 //    LCR_N = 701;
 //    R_LAST = 200;
@@ -135,10 +136,10 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 //    int currN = 31;
 
 //    LAMBDA = 1.881; // best for Nc=12, Nt=12  , n_gamma=5
-    LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
-    Nc = 14;
-    int currNt = 14;
-    int currN = 50;
+  LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
+  Nc = 15;
+  int currNt = 15;
+  int currN = 30;
 
 
 //    LAMBDA = 1.807; // best for Nc=11, Nt=11  , n_gamma=5
@@ -152,25 +153,25 @@ public class HeSWaveResonances2011 extends HeSWaveBasisJm {
 //    int currNt = 10;
 //    int currN = 40;
 
-    SPIN = Spin.ELECTRON;
-    calc(currN, currNt);
-  }
-  public static void setupResEngs_SLOW() {
-    EngModelArr arr = new EngModelArr();
-    arr.add(new EngModel(0.204,  0.704,  501));
-    arr.add(new EngModel(0.704,  0.705,  1001));
-    arr.add(new EngModel(0.705,  0.730,  501));
-    arr.add(new EngModel(0.730,  0.740,  1001));
-    arr.add(new EngModel(0.740,  0.810,  501));
-    arr.add(new EngModel(0.810,  0.811,  1001));
-    arr.add(new EngModel(0.811,  0.818,  501));
-    arr.add(new EngModel(0.818,  0.819,  1001));
-    arr.add(new EngModel(0.819,  0.842,  501));
+  SPIN = Spin.ELECTRON;
+  calc(currN, currNt);
+}
+public static void setupResEngs_SLOW() {
+  EngModelArr arr = new EngModelArr();
+  arr.add(new EngModel(0.204,  0.704,  501));
+  arr.add(new EngModel(0.704,  0.705,  1001));
+  arr.add(new EngModel(0.705,  0.730,  501));
+  arr.add(new EngModel(0.730,  0.740,  1001));
+  arr.add(new EngModel(0.740,  0.810,  501));
+  arr.add(new EngModel(0.810,  0.811,  1001));
+  arr.add(new EngModel(0.811,  0.818,  501));
+  arr.add(new EngModel(0.818,  0.819,  1001));
+  arr.add(new EngModel(0.819,  0.842,  501));
 //    arr.add(new EngModel(0.845,  3.845,  3001));
-    scttEngs = EngGridFactory.makeEngs(arr);
-    ENG_FIRST = scttEngs.getFirst();
-    ENG_LAST = scttEngs.getLast();
-    ENG_N = scttEngs.size();
-  }
+  scttEngs = EngGridFactory.makeEngs(arr);
+  ENG_FIRST = scttEngs.getFirst();
+  ENG_LAST = scttEngs.getLast();
+  ENG_N = scttEngs.size();
+}
 
 }
