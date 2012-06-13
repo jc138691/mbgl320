@@ -12,8 +12,8 @@ public abstract class AtomLcr extends LsFermiSysH {
 public static Log log = Log.getLog(AtomLcr.class);
 protected final SlaterLcr slaterLcr;
 
-public AtomLcr(double z, SlaterLcr si) {
-  super(z, si);
+public AtomLcr(double atomZ, SlaterLcr si) {
+  super(atomZ, si);
   slaterLcr = si;
 }
 public AtomLcr(AtomLcr from) {

@@ -77,7 +77,6 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     int currNt = 20;
     int currN = 21;
 //    int currN = currNt + 1;
-    IGNORE_BUG_PoetHeAtom = true;
     CALC_DENSITY = true;
     SAVE_TRGT_ENGS = true;
 

@@ -50,7 +50,6 @@ import javax.utilx.log.Log;
 */
 abstract public class HeSWaveScatt  extends HyLikeSWave {
 public static Log log = Log.getLog(HeSWaveScatt.class);
-protected boolean IGNORE_BUG_PoetHeAtom = false;
 protected static LgrrOrthLcr orthonNc;  // for N_c
 protected static int Nc = 1;
 
@@ -375,8 +374,8 @@ protected void calcHe(SlaterLcr slater) {    // HELIUM TEST
 
   Vec oldEngs = oldH.getEigEngs();
   log.dbg("oldEngs=", new VecDbgView(oldEngs));
-    assertFloorRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, oldEngs.get(0), 2e-4);
-    assertFloorRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, oldEngs.get(1), 3e-5);
+  assertCeilRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, oldEngs.get(0), 2e-4);
+  assertCeilRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, oldEngs.get(1), 3e-5);
 //    assertFloorRel("E_1s3s_1S", HeSWaveAtom.E_1s3s_1S, etFS1.get(2), 4e-4);
 
   Vec sysEngs = sysH.getEigEngs();
@@ -392,9 +391,7 @@ protected void calcHe(SlaterLcr slater) {    // HELIUM TEST
   log.dbg("sysConfH=\n", new MtrxDbgView(htS3));
   Vec etS3 = htS3.getEigEngs();
   log.dbg("eigVal=", new VecDbgView(etS3));
-  if (!IGNORE_BUG_PoetHeAtom) {
-    assertFloorRel("E_1s1s_3S", HeSWaveAtom.E_1s2s_3S, etS3.get(0), 7e-6);
-    assertFloorRel("E_1s2s_3S", HeSWaveAtom.E_1s3s_3S, etS3.get(1), 2e-4);
-  }
+  assertCeilRel("E_1s1s_3S", HeSWaveAtom.E_1s2s_3S, etS3.get(0), 7e-6);
+  assertCeilRel("E_1s2s_3S", HeSWaveAtom.E_1s3s_3S, etS3.get(1), 2e-4);
 }
 }

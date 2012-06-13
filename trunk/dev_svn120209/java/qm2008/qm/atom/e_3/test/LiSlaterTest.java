@@ -72,7 +72,8 @@ public class LiSlaterTest extends FlowTest {
     // 8Dec2010     correct value E_ZETA_TOT = -7.4184820
     // the difference is due to using RAW 1s and 2s wave functions, see testAtomLiSlaterJoyNorm
     //    assertEqualsRel("AtomLiSlaterJoy.E_ZETA_TOT", AtomLiSlaterJoy.E_ZETA_TOT, res, true);
-    assertEqualsRel("AtomLiSlaterJoy.E_ZETA_TOT = -7.4184820;", -7.418584, res, true);   //  full  -7.418583696729879
+//    assertEqualsRel("AtomLiSlaterJoy.E_ZETA_TOT = -7.4184820;", -7.418584, res, true);   //  full  -7.418583696729879
+    assertEqualsRel("AtomLiSlaterJoy.E_ZETA_TOT = -7.4184820;", -7.4185214, res, true);
   }
   public void testAtomLiSlaterJoy3() throws Exception {
     AtomLiSlaterJoy3 atomLi = new AtomLiSlaterJoy3();
@@ -92,7 +93,8 @@ public class LiSlaterTest extends FlowTest {
     SysLi sys = new SysLi(slater);
     Energy eng = sys.calcH(cf, cf);
     res = eng.kin + eng.pt;
-    assertEqualsRel("AtomLiSlaterJoy3.E_ZETA_TOT = -7.4322894", -7.4319043, res, true);   // // not E_ZETA_TOT = -7.4322894; due to the raw funcs
+//    assertEqualsRel("AtomLiSlaterJoy3.E_ZETA_TOT = -7.4322894", -7.4319043, res, true);   // // not E_ZETA_TOT = -7.4322894; due to the raw funcs
+    assertEqualsRel("AtomLiSlaterJoy3.E_ZETA_TOT = -7.4322894", -7.4321475, res, true);   // // not E_ZETA_TOT = -7.4322894; due to the raw funcs
   }
   public void testAtomLiSlaterJoyNorm3() throws Exception {
     AtomLiSlaterJoy3 atomLi = new AtomLiSlaterJoy3();

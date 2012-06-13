@@ -14,8 +14,8 @@ import javax.utilx.log.Log;
 */
 public class SysE2OldOk extends AtomE2 {
 public static Log log = Log.getLog(SysE2OldOk.class);
-public SysE2OldOk(double z, SlaterLcr si) {
-  super(z, si);
+public SysE2OldOk(double atomZ, SlaterLcr si) {
+  super(atomZ, si);
 }
 public Energy calcLsH(LsConf fc, LsConf fc2) {
   assertLS(fc, fc2);

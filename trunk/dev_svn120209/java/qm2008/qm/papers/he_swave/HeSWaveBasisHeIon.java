@@ -86,7 +86,6 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     int currNt = 20;
     int currN = 21;
 //    int currN = currNt + 1;
-    IGNORE_BUG_PoetHeAtom = true;
 
     SPIN = Spin.ELECTRON;
     calc(currN, currNt);

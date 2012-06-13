@@ -23,8 +23,8 @@ private FanoTermE3 t; // a single combination of lambda, rho, sigma
 private FanoTermE3 t2;
 private Ls ls;
 
-public SysE3(double z, SlaterLcr si) {
-  super(z, si);
+public SysE3(double atomZ, SlaterLcr si) {
+  super(atomZ, si);
 }
 
 public Energy calcLsH(LsConf cf, LsConf cf2) {

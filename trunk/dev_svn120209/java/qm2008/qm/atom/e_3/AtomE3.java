@@ -9,8 +9,8 @@ import atom.energy.slater.SlaterLcr;
 public abstract class AtomE3 extends AtomLcr {
   private final static int THREE_ELEC = 3;
 
-  public AtomE3(double z, SlaterLcr si) {
-    super(z, si);
+  public AtomE3(double atomZ, SlaterLcr si) {
+    super(atomZ, si);
   }
   final public int getNumElec() {
     return THREE_ELEC;
