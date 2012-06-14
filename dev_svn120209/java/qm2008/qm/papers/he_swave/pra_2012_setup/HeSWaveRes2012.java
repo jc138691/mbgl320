@@ -56,8 +56,8 @@ public void runJob() {
   // upto N=50
   // see HeAtomMM_try
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
-  LCR_N = 2001;  //901
-  R_LAST = 200;
+  LCR_N = 3001;  //901
+  R_LAST = 300;   // 200 for N=30
 
   // upto N=40
 //    LCR_FIRST = -5;
@@ -139,7 +139,7 @@ public void runJob() {
   LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
   Nc = 15;
   int currNt = 15;
-  int currN = 30;
+  int currN = 50;
 
 
 //    LAMBDA = 1.807; // best for Nc=11, Nt=11  , n_gamma=5

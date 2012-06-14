@@ -19,10 +19,14 @@ public class FuncVec extends Vec {
     super(x.size());
     this.x = x;
   }
-  public FuncVec(Vec x, Vec y) {
-    super(y);
-    this.x = x;
-  }
+public FuncVec(Vec x, Vec y) {
+  super(y);
+  this.x = x;
+}
+public FuncVec(Vec x, double[] y) {
+  super(y);
+  this.x = x;
+}
   public FuncVec(final Vec x, final Func f) {
     super(x.size());
     this.x = x;
