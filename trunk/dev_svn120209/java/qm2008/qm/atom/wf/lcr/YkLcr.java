@@ -45,12 +45,13 @@ import javax.utilx.log.Log;
 //
 public class YkLcr {
 public static Log log = Log.getLog(YkLcr.class);
+private final static double[] yTmp = new double[10]; // tmp array for zk_OLD
 private final Vec f;
 private final Vec f2;
 private final double[] CR2;//(c+r)^2
 private final double[] CR;//(c+r)
 private final double[] r;
-private final Vec rVec;
+private final Vec vR;
 private final double[] divR;
 private final double[] yDivR;
 private final int K;
@@ -79,7 +80,7 @@ public YkLcr(final WFQuadrLcr quadrLcr, final Vec f, final Vec f2, final int K) 
   this.quadrLcr = quadrLcr;
   xToR = quadrLcr.getLcrToR();
   this.r = xToR.getArr();
-  this.rVec = xToR;
+  this.vR = xToR;
   this.CR2 = xToR.getCR2().getArr();
   this.CR = xToR.getCR().getArr();
   this.divR = xToR.getDivR().getArr();
@@ -98,7 +99,7 @@ public YkLcr(final WFQuadrLcr quadrLcr, final Vec f, final Vec f2, final int K) 
   useLast = checkUseLast();
 }
 private boolean checkUseLast() {
-  if (last_f == f  && last_f2 == f2  &&  last_K == K  &&  last_r  == rVec)
+  if (last_f == f  && last_f2 == f2  &&  last_K == K  &&  last_r  == vR)
     return true;
   return false;
 }
@@ -151,7 +152,7 @@ public FuncVec calcZk_NEW() {   log.setDbg();
 private void loadZFuncs() {
   zF = new FuncVec(xToR.getX());
   double[] z = zF.getArr();
-  rK = new FuncVec(rVec);
+  rK = new FuncVec(vR);
   double[] rk = rK.getArr();
   z[0] = 0;
   rk[0] = 0;
@@ -167,7 +168,7 @@ private void loadZFuncs() {
 private void loadYFuncs(FuncVec zkFunc) {
   yF = new FuncVec(xToR.getX());
   double[] y = yF.getArr();
-  rK1 = new FuncVec(rVec);
+  rK1 = new FuncVec(vR);
   double[] rk = rK1.getArr();
   double[] zk = zkFunc.getArr();
   y[0] = 0;
@@ -184,7 +185,7 @@ private void loadYFuncs(FuncVec zkFunc) {
   log.info("rK1=", new VecDbgView(rK1));
 }
 public FuncVec calcZk_OLD() {
-  FuncVec res = new FuncVec(rVec);
+  FuncVec res = new FuncVec(vR);
   double[] YK = res.getArr();
   //      DEN = L(I) + L(J) + 3+ K                                          AATK4107
   //      FACT = (D1/(L(I)+1) + D1/(L(J)+1))/(DEN + D1)                     AATK4108
@@ -266,7 +267,7 @@ public FuncVec calcZk_OLD() {
   return res;
 }
 private double approxFirstZ(int idxDest, double F2, double F3) {
-  FuncVec tmp = new FuncVec(rVec);
+  FuncVec tmp = new FuncVec(vR, yTmp);
   int M = 0;
   tmp.set(M, 0);
   M++;
