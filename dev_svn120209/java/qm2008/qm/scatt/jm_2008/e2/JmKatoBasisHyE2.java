@@ -8,7 +8,7 @@ import math.Calc;
 import math.Mathx;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import scatt.jm_2008.e1.JmCalcOptE1;

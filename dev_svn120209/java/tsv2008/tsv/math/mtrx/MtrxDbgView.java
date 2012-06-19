@@ -1,5 +1,6 @@
 package math.mtrx;
 
+import math.mtrx.api.Mtrx;
 import math.vec.DbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
@@ -11,7 +12,7 @@ import javax.langx.SysProp;
  */
 public class MtrxDbgView extends Mtrx {
 public MtrxDbgView(Mtrx from) {
-  super(from.getArray());
+  super(from);
 }
 public String toString() {
   double[][] a = getArray();

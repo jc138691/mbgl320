@@ -1,7 +1,7 @@
 package scatt.jm_2008.e1;
 import flanagan.complex.Cmplx;
 import math.func.FuncVec;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.eng.EngModel;

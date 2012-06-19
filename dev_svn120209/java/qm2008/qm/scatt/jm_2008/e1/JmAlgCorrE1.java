@@ -2,7 +2,7 @@ package scatt.jm_2008.e1;
 import math.Calc;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import scatt.jm_2008.e2.JmMthdBaseE2;

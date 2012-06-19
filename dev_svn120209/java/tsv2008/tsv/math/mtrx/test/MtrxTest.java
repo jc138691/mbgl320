@@ -2,13 +2,15 @@ package math.mtrx.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 25/07/2008, Time: 16:42:45 */
 import junit.framework.*;
 import Jama.*;
+import project.workflow.task.test.FlowTest;
 
 import javax.utilx.log.Log;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import java.io.*;
-public class MtrxTest extends TestCase {
+//public class MtrxTest extends TestCase {
+public class MtrxTest extends FlowTest {
   public static Log log = Log.getLog(MtrxTest.class);
   public static void main(String[] args) {
     junit.textui.TestRunner.run(suite());
@@ -16,6 +18,9 @@ public class MtrxTest extends TestCase {
   public static Test suite() {
     return new TestSuite(MtrxTest.class);
   }
+public MtrxTest() {
+  super(MtrxTest.class);    // <------ CHECK!!!!! Must be the same name. [is there a better way??? ;o( ]
+}
   // THIS is from Jama.test.TestMatrix
   public void testMtrx() throws Exception {
      Matrix A,B,C,Z,O,I,R,S,X,SUB,M,T,SQ,DEF,SOL;

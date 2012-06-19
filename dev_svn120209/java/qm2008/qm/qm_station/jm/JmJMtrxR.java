@@ -2,7 +2,7 @@ package qm_station.jm;
 import atom.energy.part_wave.PotHR;
 import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 
 import javax.utilx.log.Log;
 

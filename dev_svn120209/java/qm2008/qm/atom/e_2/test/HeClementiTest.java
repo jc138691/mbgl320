@@ -1,6 +1,5 @@
 package atom.e_2.test;
 
-import Jama.EigenvalueDecomposition;
 import atom.AtomUtil;
 import atom.angular.Spin;
 import atom.data.clementi.AtomHeClementi;
@@ -17,6 +16,7 @@ import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.integral.OrthonFactory;
+import math.mtrx.api.EigenSymm;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
 import project.workflow.task.test.FlowTest;
@@ -107,14 +107,14 @@ public class HeClementiTest extends FlowTest {
     assertEquals(kin + pot, tot, 6e-22);
     LsConfs basis = ConfArrFactoryE2.makeTwoElecSameN(LS, N, arr);
     LsConfHMtrx H = new LsConfHMtrx(basis, sys);
-    EigenvalueDecomposition eig = H.eig();
-//    LOG.report(this, "H=" + Vec.toCsv(eig.getRealEigenvalues()));
-    double e0 = eig.getRealEigenvalues()[0];
+    EigenSymm eig = H.eigSymm();
+//    LOG.report(this, "H=" + Vec.toCsv(eigSymm.getRealEigenvalues()));
+    double e0 = eig.getRealEVals()[0];
 //    LOG.report(this, "\nkin+pt="
 //      + (kin + pt) + "\n   e[0]=" + e0);
     assertEquals(0, -2.8615628084911 - e0, 3e-6); //
     assertEquals(0, e0 - tot, 2e-4);
-//    FuncVec conf = H.calcDens(eig, 0);
+//    FuncVec conf = H.calcDens(eigSymm, 0);
 //      LOG.saveToFile(valarray.asArray(x), valarray.asArray(conf), "wf", "He_ground_density.csv");
 //    res = FastLoop.dot(conf, w);
 //    assertEquals(2, res, 3e-15);

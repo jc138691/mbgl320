@@ -1,8 +1,8 @@
 package atom.energy;
 
 import atom.data.AtomUnits;
-import math.mtrx.Mtrx;
-import math.mtrx.jamax.EigenSymm;
+import math.mtrx.api.Mtrx;
+import math.mtrx.api.EigenSymm;
 import math.vec.Vec;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 16/02/2010, 2:16:07 PM
@@ -12,10 +12,13 @@ private EigenSymm eig;
 public HMtrx(int m, int n) {
   super(m, n);
 }
+//public HMtrx(Mtrx mh) {
+//  super(mh.getArray());
+//}
 public HMtrx(Mtrx mh) {
-  super(mh.getArray());
+  super(mh);
 }
-public EigenSymm eig() {
+public EigenSymm eigSymm() {
   return eig(false);
 }
 private EigenSymm eig(boolean overwrite) {

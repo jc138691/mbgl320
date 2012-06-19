@@ -2,8 +2,8 @@ package math.integral;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.arr.NormFuncArr;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
-import math.mtrx.Mtrx;
 
 import javax.utilx.log.Log;
 /**

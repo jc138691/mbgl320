@@ -1,8 +1,8 @@
 package atom.energy.part_wave;
 import atom.energy.HMtrx;
 import atom.wf.WFQuadrD1;
-import math.mtrx.Mtrx;
-import math.mtrx.jamax.EigenSymm;
+import math.mtrx.api.Mtrx;
+import math.mtrx.api.EigenSymm;
 import math.vec.Vec;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
@@ -58,7 +58,7 @@ public void loadEigVec() {
   eigVec = new FuncArr(x, basis.size());
 
   // f_i = SUM_j C_ji * lgrrN(j)
-  EigenSymm thisEig = eig();
+  EigenSymm thisEig = eigSymm();
   Mtrx v = thisEig.getV();
   double[][] C = v.getArray();
   for (int i = 0; i < basis.size(); i++) {

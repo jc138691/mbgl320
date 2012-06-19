@@ -166,6 +166,9 @@ public class SimpleMatrix extends SimpleBase<SimpleMatrix> {
     public SimpleMatrix( DenseMatrix64F orig ) {
         this.mat = orig.copy();
     }
+public SimpleMatrix( DenseMatrix64F orig, boolean shallow ) {
+    this.mat = orig;
+}
 
     /**
      * Creates a new SimpleMatrix which is a copy of the Matrix64F.

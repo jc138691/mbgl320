@@ -26,7 +26,7 @@ import atom.wf.slater.SlaterWFFactory;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.simple.FuncPowInt;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;

@@ -1,7 +1,7 @@
 package math.func.deriv;
 import math.func.FuncVec;
+import math.mtrx.api.Mtrx;
 import math.vec.grid.StepGrid;
-import math.mtrx.Mtrx;
 
 import javax.utilx.log.Log;
 /**
@@ -9,15 +9,14 @@ import javax.utilx.log.Log;
  */
 public class DerivPts3 extends FuncVec {
   public static Log log = Log.getLog(DerivPts3.class);
-  private static double coeff[] = { // from p708 Russian A.&S.
-    -3, 4, -1
-    , -1, 0, 1
-    , 1, -4, 3
+  private static double[][] coeff = { // from p708 Russian A.&S.
+    {-3, 4, -1}
+    , {-1, 0, 1}
+    , {1, -4, 3}
   };
-  private static int NCOL = 3;
   private static int NROW = 3;
   private static int SIZE_1 = NROW - 1;
-  private static Mtrx A = new Mtrx(NROW, NCOL, coeff);
+  private static Mtrx A = new Mtrx(coeff);
   public DerivPts3(FuncVec f) {
     super(f.getX());  log.dbg("f(x)=\n", f);
     calc(f);               log.dbg("f'(x)=\n", this);

@@ -1,4 +1,6 @@
 package math.mtrx;
+import math.mtrx.api.Mtrx;
+
 import javax.utilx.arraysx.StrVec;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,19/09/11,9:30 AM
@@ -7,7 +9,7 @@ public class MtrxInfo extends Mtrx {
   private StrVec colHrds;
   private StrVec rowHrds;
   public MtrxInfo(Mtrx from) {
-    super(from.getArray());
+    super(from);
   }
   @Override
   public String toGnuplot() {

@@ -2,8 +2,8 @@ package atom.energy;
 import atom.shell.IConfs;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.mtrx.Mtrx;
-import math.mtrx.jamax.EigenSymm;
+import math.mtrx.api.Mtrx;
+import math.mtrx.api.EigenSymm;
 import math.vec.Vec;
 import math.vec.VecSort;
 
@@ -63,7 +63,7 @@ private FuncArr calcDensity(int maxNum) {
   FuncVec[][] confArr = new FuncVec[this.confs.size()][this.confs.size()];
   boolean[][] doneArr = new boolean[this.confs.size()][this.confs.size()];
 
-  Mtrx v = eig().getV();
+  Mtrx v = eigSymm().getV();
   double[][] C = v.getArray();
   double norm = 1. / sysH.getNumElec();
   for (int r = 0; r < size; r++) {

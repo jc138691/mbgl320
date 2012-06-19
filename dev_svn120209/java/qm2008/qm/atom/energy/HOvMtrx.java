@@ -1,8 +1,8 @@
 package atom.energy;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.mtrx.MtrxFactory;
-import math.mtrx.jamax.EigenSymm;
+import math.mtrx.api.EigenSymm;
 import math.vec.Vec;
 
 import javax.utilx.log.Log;
@@ -49,11 +49,6 @@ private void calc() {     log.setDbg();
   corrH = new HMtrx(ovC.transpose().times(this.times(ovC)));
 }
 
-@Override
-public EigenSymm eig() {
-//  return eig(false);
-  return null;
-}
 public Vec getEigVal(boolean overwrite) {
   if (corrH == null)
     calc();

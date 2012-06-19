@@ -242,7 +242,32 @@ public class EigenvalueDecomposition implements java.io.Serializable {
       d[l] = d[l] + f;
       e[l] = 0.0;
     }
+
+    softByEValues();
+//    // Sort eigenvalues and corresponding vectors.
+//    for (int i = 0; i < n - 1; i++) {
+//      int k = i;
+//      double p = d[i];
+//      for (int j = i + 1; j < n; j++) {
+//        if (d[j] < p) {
+//          k = j;
+//          p = d[j];
+//        }
+//      }
+//      if (k != i) {
+//        d[k] = d[i];
+//        d[i] = p;
+//        for (int j = 0; j < n; j++) {
+//          p = V[j][i];
+//          V[j][i] = V[j][k];
+//          V[j][k] = p;
+//        }
+//      }
+//    }
+  }
+
     // Sort eigenvalues and corresponding vectors.
+  public void softByEValues() {
     for (int i = 0; i < n - 1; i++) {
       int k = i;
       double p = d[i];
