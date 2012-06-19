@@ -1,5 +1,5 @@
 package scatt.jm_2008.e1;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 
 import javax.utilx.log.Log;
 /**

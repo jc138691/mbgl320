@@ -3,8 +3,7 @@ package atom.energy;
 import javax.utilx.arraysx.TArr;
 
 import atom.shell.LsConfs;
-import math.mtrx.Mtrx;
-
+import math.mtrx.api.Mtrx;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 28/05/2010, 11:09:54 AM
  */

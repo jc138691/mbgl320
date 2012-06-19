@@ -1,7 +1,7 @@
 package atom.energy;
 import atom.shell.LsConf;
 import atom.shell.LsConfs;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 
 import javax.utilx.log.Log;
 /**

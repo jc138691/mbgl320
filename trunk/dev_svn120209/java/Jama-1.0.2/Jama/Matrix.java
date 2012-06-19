@@ -118,6 +118,9 @@ public class Matrix implements Cloneable, java.io.Serializable {
       }
       this.A = A;
    }
+public Matrix (Matrix from) {
+  this(from.getArray());
+}
 
    /** Construct a matrix quickly without checking arguments.
    @param A    Two-dimensional array of doubles.

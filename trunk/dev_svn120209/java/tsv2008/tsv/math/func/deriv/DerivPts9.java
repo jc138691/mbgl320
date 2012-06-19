@@ -1,7 +1,7 @@
 package math.func.deriv;
 import math.func.FuncVec;
+import math.mtrx.api.Mtrx;
 import math.vec.grid.StepGrid;
-import math.mtrx.Mtrx;
 
 import javax.utilx.log.Log;
 /**
@@ -10,21 +10,20 @@ import javax.utilx.log.Log;
 public class DerivPts9 extends FuncVec {
   public static Log log = Log.getLog(DerivPts9.class);
   public static final int MIN_GRID_SIZE = 9;
-  static double coeff[] = { // from p24 of Bickley MathGaz 25 (1941)
-    -109584., 322560., -564480, 752640, -705600
-    , -5040., -64224., 141120, -141120, 117600
-    , 720., -11520., -38304, 80640, -50400
-    , -240., 2880., -20160, -18144, 50400
-    , 144., -1536., 8064, -32256, 0
-    , -144., 1440., -6720, 20160, -50400
-    , 240., -2304., 10080, -26880, 50400
-    , -720., 6720., -28224, 70560, -117600
-    , 5040., -46080., 188160, -451584, 705600
+  static double[][] coeff = { // from p24 of Bickley MathGaz 25 (1941)
+    {-109584., 322560., -564480, 752640, -705600}
+    , {-5040., -64224., 141120, -141120, 117600}
+    , {720., -11520., -38304, 80640, -50400}
+    , {-240., 2880., -20160, -18144, 50400}
+    , {144., -1536., 8064, -32256, 0}
+    , {-144., 1440., -6720, 20160, -50400}
+    , {240., -2304., 10080, -26880, 50400}
+    , {-720., 6720., -28224, 70560, -117600}
+    , {5040., -46080., 188160, -451584, 705600}
   };
-  private static int N_COL = 5;
   private static int N_ROW = 9;
   private static int SIZE_1 = N_ROW - 1;
-  static Mtrx A = new Mtrx(N_ROW, N_COL, coeff);
+  static Mtrx A = new Mtrx(coeff);
 
   public DerivPts9(FuncVec f) {
     super(f.getX());       //log.dbg("f(x)=\n", f);

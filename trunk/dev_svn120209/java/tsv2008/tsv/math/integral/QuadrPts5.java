@@ -1,7 +1,7 @@
 package math.integral;
 import math.func.FuncVec;
 import math.func.intrg.IntgPts7;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
 

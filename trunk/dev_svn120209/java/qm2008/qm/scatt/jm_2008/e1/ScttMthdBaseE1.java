@@ -6,7 +6,7 @@ import atom.wf.lcr.WFQuadrLcr;
 import math.Calc;
 import math.func.FuncVec;
 import math.func.arr.IFuncArr;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import project.workflow.task.test.FlowTest;
 import scatt.Scatt;

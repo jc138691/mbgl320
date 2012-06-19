@@ -9,7 +9,7 @@ import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArrDbgView;
 import math.func.simple.FuncPowInt;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;

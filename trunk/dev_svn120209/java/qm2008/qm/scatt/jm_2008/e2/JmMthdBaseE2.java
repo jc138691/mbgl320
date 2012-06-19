@@ -3,7 +3,7 @@ import flanagan.complex.Cmplx;
 import math.Mathx;
 import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.mtrx.MtrxFactory;
 import math.vec.Vec;

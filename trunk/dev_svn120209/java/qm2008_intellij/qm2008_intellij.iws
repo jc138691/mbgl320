@@ -125,7 +125,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/fanox/JmMethodFanoE2.java" line="48" class="scatt.jm_2008.jm.fanox.JmMethodFanoE2" package="scatt.jm_2008.jm.fanox">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/fanox/JmMethodFanoE2.java" line="47" class="scatt.jm_2008.jm.fanox.JmMethodFanoE2" package="scatt.jm_2008.jm.fanox">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -177,7 +177,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" line="193" class="papers.he_swave.HeSWaveScatt" package="papers.he_swave">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" line="191" class="papers.he_swave.HeSWaveScatt" package="papers.he_swave">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -203,7 +203,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/optim_lambda/OptimLambda.java" line="193" class="papers.he_swave.optim_lambda.OptimLambda" package="papers.he_swave.optim_lambda">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/optim_lambda/OptimLambda.java" line="192" class="papers.he_swave.optim_lambda.OptimLambda" package="papers.he_swave.optim_lambda">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -229,7 +229,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmMthdE1_OLD.java" line="25" class="scatt.jm_2008.e1.JmMthdE1_OLD" package="scatt.jm_2008.e1">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmMthdE1_OLD.java" line="24" class="scatt.jm_2008.e1.JmMthdE1_OLD" package="scatt.jm_2008.e1">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -242,7 +242,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EaMethodE1_all_engs_wrong.java" line="80" class="papers.hy_swave.ees_bad.EaMethodE1_all_engs_wrong" package="papers.hy_swave.ees_bad">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EaMethodE1_all_engs_wrong.java" line="79" class="papers.hy_swave.ees_bad.EaMethodE1_all_engs_wrong" package="papers.hy_swave.ees_bad">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -255,7 +255,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EaMethodE1_all_engs_wrong.java" line="61" class="papers.hy_swave.ees_bad.EaMethodE1_all_engs_wrong" package="papers.hy_swave.ees_bad">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EaMethodE1_all_engs_wrong.java" line="60" class="papers.hy_swave.ees_bad.EaMethodE1_all_engs_wrong" package="papers.hy_swave.ees_bad">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -268,7 +268,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EaMethodE1_all_engs_wrong.java" line="131" class="papers.hy_swave.ees_bad.EaMethodE1_all_engs_wrong" package="papers.hy_swave.ees_bad">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EaMethodE1_all_engs_wrong.java" line="129" class="papers.hy_swave.ees_bad.EaMethodE1_all_engs_wrong" package="papers.hy_swave.ees_bad">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -281,7 +281,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmAlgCorrE1.java" line="44" class="scatt.jm_2008.e1.JmAlgCorrE1" package="scatt.jm_2008.e1">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmAlgCorrE1.java" line="42" class="scatt.jm_2008.e1.JmAlgCorrE1" package="scatt.jm_2008.e1">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -294,7 +294,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/FbMthdE1.java" line="38" class="scatt.jm_2008.e1.FbMthdE1" package="scatt.jm_2008.e1">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/FbMthdE1.java" line="37" class="scatt.jm_2008.e1.FbMthdE1" package="scatt.jm_2008.e1">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -307,7 +307,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmAlgCorrE1.java" line="93" class="scatt.jm_2008.e1.JmAlgCorrE1" package="scatt.jm_2008.e1">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmAlgCorrE1.java" line="91" class="scatt.jm_2008.e1.JmAlgCorrE1" package="scatt.jm_2008.e1">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -320,7 +320,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBaseE2.java" line="460" class="scatt.jm_2008.e2.JmMthdBaseE2" package="scatt.jm_2008.e2">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBaseE2.java" line="459" class="scatt.jm_2008.e2.JmMthdBaseE2" package="scatt.jm_2008.e2">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -411,6 +411,32 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/HOvMtrx.java" line="44" class="atom.energy.HOvMtrx" package="atom.energy">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenSymmEjml.java" line="35" class="math.mtrx.jamax.EigenSymmAdaptorEjml" package="math.mtrx.jamax">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
@@ -459,8 +485,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="field_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -470,64 +496,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HeSWaveRes2012.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java">
+      <file leaf-file-name="MtrxEjml.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/MtrxEjml.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="3" selection-start="4167" selection-end="4167" vertical-scroll-proportion="0.0">
+            <state line="51" column="23" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.35433072">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleBase.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/simple/SimpleBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="20" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeSWaveBasisJm.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java">
+      <file leaf-file-name="SimpleMatrix.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/simple/SimpleMatrix.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="34" selection-start="3416" selection-end="3416" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HMtrx.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="20" selection-start="488" selection-end="488" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EigenSymm.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/jamax/EigenSymm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="38" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EigenvalueDecomposition.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/EigenvalueDecomposition.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="13" selection-start="814" selection-end="814" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SymmetricQREigenHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/alg/dense/decomposition/eig/symm/SymmetricQREigenHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="13" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SymmetricQrAlgorithm.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/alg/dense/decomposition/eig/symm/SymmetricQrAlgorithm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="23" selection-start="1438" selection-end="1438" vertical-scroll-proportion="0.0">
+            <state line="168" column="7" selection-start="6660" selection-end="6660" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -536,25 +528,65 @@
       <file leaf-file-name="DenseMatrix64F.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/data/DenseMatrix64F.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="41" selection-start="2824" selection-end="2824" vertical-scroll-proportion="0.0">
+            <state line="276" column="24" selection-start="8843" selection-end="8843" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RowD1Matrix64F.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/data/RowD1Matrix64F.java">
+      <file leaf-file-name="Mtrx.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="50" selection-start="964" selection-end="964" vertical-scroll-proportion="0.0">
+            <state line="40" column="12" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="D1Matrix64F.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/data/D1Matrix64F.java">
+      <file leaf-file-name="MtrxFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="22" selection-start="1165" selection-end="1165" vertical-scroll-proportion="-6.152334">
+            <state line="55" column="43" selection-start="1607" selection-end="1607" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DerivPts9.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts9.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="24" selection-start="938" selection-end="938" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EigenSymmJama.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/EigenSymmJama.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="41" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MtrxJama.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxJama.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="0" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MtrxDbgView.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxDbgView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="7" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -579,22 +611,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_2/AtomE2.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/test/YkLcrTest.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_2/test/HeClementiTest.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_3/SysLi.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_3/AtomE3.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_3/SysE3.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_3/test/LiSlaterTest.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/optim_lambda/OptimLambda.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/phys_rev_a/pra_2012_setup/HeSWaveRes2012.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/phys_rev_a/HeSWaveRes2012.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcr.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/FuncVec.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/jama/MtrxAdaptorJama.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/EigenSymm.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxAdaptorJama.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenSymmEjml.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts3.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts9.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java" />
+        <option value="$PROJECT_DIR$/../Jama-1.0.2/Jama/Matrix.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxDbgView.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxInfo.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxJama.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/EigenSymmJama.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java" />
+        <option value="$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/simple/SimpleMatrix.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/MtrxEjml.java" />
       </list>
     </option>
   </component>
@@ -715,6 +747,232 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="math" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="math" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mtrx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="math" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mtrx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="math" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mtrx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jama" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tsv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="math" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mtrx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ejml" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="papers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="papers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="he_swave" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="papers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="he_swave" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pra_2012_setup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ejml" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
@@ -790,208 +1048,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dense" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dense" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="decomposition" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dense" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="decomposition" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eig" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dense" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="decomposition" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eig" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="symm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Favorites" />
     </panes>
   </component>
@@ -1010,9 +1066,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -1025,16 +1081,16 @@
       <recent name="C:\dev\physics\dev_svn_110812\java\lapack4j\lapack4j\src\c" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="math.mtrx.api.ejml" />
+      <recent name="math.mtrx.api" />
       <recent name="papers.he_swave.pra_2012_setup" />
       <recent name="papers.he_swave" />
       <recent name="papers.he_swave.phys_rev_a" />
-      <recent name="papers.he_swave.phys_rev_a.pra_2012_setup" />
-      <recent name="" />
     </key>
   </component>
   <component name="RunManager" selected="Application.HeSWaveRes2012">
-    <configuration default="false" name="HySWaveJm" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="papers.hy_swave.HySWaveJm" />
+    <configuration default="false" name="MtrxTest" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="math.mtrx.test.MtrxTest" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -1043,61 +1099,19 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="qm2008" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="54611" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <ConfigurationWrapper RunnerId="Debug" />
-      <method />
-    </configuration>
-    <configuration default="false" name="BoxD1N2" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="papers.box_d1.BoxD1N2" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="qm2008" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="56105" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="HeSWaveRes2012" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="papers.he_swave.pra_2012_setup.HeSWaveRes2012" />
-      <option name="VM_PARAMETERS" value=" -Xmx999M" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="qm2008" />
+      <module name="tsv2008" />
       <envs />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="HeClementiTest.testClementiSingleZeta" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="qm2008" />
+    <configuration default="false" name="MtrxTest.testMtrx" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="tsv2008" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="atom.e_2.test" />
-      <option name="MAIN_CLASS_NAME" value="atom.e_2.test.HeClementiTest" />
-      <option name="METHOD_NAME" value="testClementiSingleZeta" />
+      <option name="PACKAGE_NAME" value="math.mtrx.test" />
+      <option name="MAIN_CLASS_NAME" value="math.mtrx.test.MtrxTest" />
+      <option name="METHOD_NAME" value="testMtrx" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -1113,14 +1127,14 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="YkLcrTest.testYkLogCR" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="qm2008" />
+    <configuration default="false" name="&lt;default&gt;" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="atom.wf.lcr.test" />
-      <option name="MAIN_CLASS_NAME" value="atom.wf.lcr.test.YkLcrTest" />
-      <option name="METHOD_NAME" value="testYkLogCR" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -1132,6 +1146,34 @@
       <envs />
       <patterns />
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="HyOvTest.testHOvMtrx" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="qm2008" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="atom.e_1.test" />
+      <option name="MAIN_CLASS_NAME" value="atom.e_1.test.HyOvTest" />
+      <option name="METHOD_NAME" value="testHOvMtrx" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="51554" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -1231,6 +1273,27 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="HeSWaveRes2012" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="papers.he_swave.pra_2012_setup.HeSWaveRes2012" />
+      <option name="VM_PARAMETERS" value="-Xmx2999M" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="qm2008" />
+      <envs />
+      <RunnerSettings RunnerId="JProfiler">
+        <option name="WINDOW" value="false" />
+        <option name="JVMPI" value="false" />
+        <option name="INTERPRETED" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="false" name="HySWaveJmBasisHy" type="JUnit" factoryName="JUnit">
       <module name="qm2008" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1261,12 +1324,12 @@
     </configuration>
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.RunOlgaHelp" />
-      <item index="1" class="java.lang.String" itemvalue="Application.HySWaveJm" />
-      <item index="2" class="java.lang.String" itemvalue="Application.BoxD1N2" />
-      <item index="3" class="java.lang.String" itemvalue="Application.HeSWaveRes2012" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.HySWaveJmBasisHy" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.HeClementiTest.testClementiSingleZeta" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.YkLcrTest.testYkLogCR" />
+      <item index="1" class="java.lang.String" itemvalue="Application.MtrxTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.HeSWaveRes2012" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.HySWaveJmBasisHy" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.MtrxTest.testMtrx" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.&lt;default&gt;" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.HyOvTest.testHOvMtrx" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -1350,18 +1413,19 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36993605" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.68869936" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2469537" sideWeight="0.6340378" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48720682" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48614073" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-2230" y="469" width="3398" height="409" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4392324" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-2230" y="469" width="3398" height="409" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2867804" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40618336" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24747474" sideWeight="0.5053305" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.65072304" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39946738" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3849607" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33838382" sideWeight="0.31130064" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="28" y="240" width="1457" height="562" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3923241" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="28" y="240" width="1457" height="562" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
@@ -1377,7 +1441,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1505,115 +1568,123 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmResonE2.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/EigenSymm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="0" selection-start="3922" selection-end="3922" vertical-scroll-proportion="0.0">
+        <state line="15" column="4" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/ScttMthdBaseE2.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="0" selection-start="3673" selection-end="3673" vertical-scroll-proportion="0.0">
+        <state line="16" column="0" selection-start="436" selection-end="436" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/flanagan/complex/Cmplx.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenSymmEjml.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="9" selection-start="3016" selection-end="3016" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="15" column="22" selection-start="532" selection-end="546" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java">
+    <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/Matrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="10" selection-start="305" selection-end="305" vertical-scroll-proportion="0.37056738">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/FuncVec.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="6" selection-start="560" selection-end="560" vertical-scroll-proportion="0.6585789">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="269" column="25" selection-start="11471" selection-end="11471" vertical-scroll-proportion="0.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="3" selection-start="4167" selection-end="4167" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="34" selection-start="3416" selection-end="3416" vertical-scroll-proportion="0.0">
+        <state line="121" column="22" selection-start="3755" selection-end="3755" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="20" selection-start="488" selection-end="488" vertical-scroll-proportion="0.0">
+        <state line="18" column="4" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/jamax/EigenSymm.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="38" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0">
+        <state line="12" column="1" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/EigenvalueDecomposition.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxDbgView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="814" selection-end="814" vertical-scroll-proportion="0.0">
+        <state line="13" column="7" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/alg/dense/decomposition/eig/symm/SymmetricQREigenHelper.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="13" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0">
+        <state line="55" column="43" selection-start="1607" selection-end="1607" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/alg/dense/decomposition/eig/symm/SymmetricQrAlgorithm.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts9.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="23" selection-start="1438" selection-end="1438" vertical-scroll-proportion="0.0">
+        <state line="25" column="24" selection-start="938" selection-end="938" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxJama.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/EigenSymmJama.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="41" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/simple/SimpleMatrix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="7" selection-start="6660" selection-end="6660" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/simple/SimpleBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="20" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/data/DenseMatrix64F.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="41" selection-start="2824" selection-end="2824" vertical-scroll-proportion="0.0">
+        <state line="276" column="24" selection-start="8843" selection-end="8843" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/data/RowD1Matrix64F.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="50" selection-start="964" selection-end="964" vertical-scroll-proportion="0.0">
+        <state line="40" column="12" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/data/D1Matrix64F.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/MtrxEjml.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="22" selection-start="1165" selection-end="1165" vertical-scroll-proportion="-6.152334">
-          <folding />
+        <state line="51" column="23" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.35433072">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1681,12 +1752,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>ejml</last-edited>
+          <last-edited>tsv2008</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

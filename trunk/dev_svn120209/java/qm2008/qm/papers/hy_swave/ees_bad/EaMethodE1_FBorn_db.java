@@ -3,7 +3,7 @@ import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
 import math.func.arr.IFuncArr;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.jm_2008.e1.JmCalcOptE1;

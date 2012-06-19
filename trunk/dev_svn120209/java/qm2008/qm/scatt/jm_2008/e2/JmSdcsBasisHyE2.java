@@ -7,7 +7,7 @@ import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
 import math.func.FuncVec;
 import math.func.arr.FuncArrDbgView;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import scatt.Scatt;

@@ -5,7 +5,7 @@ import math.Mathx;
 import math.complex.CmplxMtrx;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import scatt.eng.EngModel;
 import scatt.jm_2008.e1.JmCalcOptE1;

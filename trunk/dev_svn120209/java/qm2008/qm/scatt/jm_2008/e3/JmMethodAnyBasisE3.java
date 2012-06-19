@@ -4,7 +4,7 @@ import atom.shell.LsConf;
 import atom.shell.LsConfs;
 import atom.shell.Ls;
 import atom.shell.Shell;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.target.ChConf;
 

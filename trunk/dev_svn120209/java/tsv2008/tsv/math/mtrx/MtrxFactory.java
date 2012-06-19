@@ -1,5 +1,7 @@
 package math.mtrx;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
+import math.vec.VecDbgView;
 
 import javax.utilx.log.Log;
 /**
@@ -49,4 +51,32 @@ public static void makeDiagOneSqrt(Mtrx m) {
     arr[r][r] = 1./Math.sqrt(diag);
   }
 }
+public static void sort(double[] d, double[][] V) {   //log.setDbg();
+  log.dbg("--->sort(d=", new VecDbgView(d));
+  log.dbg("--->sort(V=\n", new MtrxDbgView(new Mtrx(V)));
+
+  int n = d.length;
+  for (int i = 0; i < n - 1; i++) {
+    int k = i;
+    double p = d[i];
+    for (int j = i + 1; j < n; j++) {
+      if (d[j] < p) {
+        k = j;
+        p = d[j];
+      }
+    }
+    if (k != i) {
+      d[k] = d[i];
+      d[i] = p;
+      for (int j = 0; j < n; j++) {
+        p = V[j][i];
+        V[j][i] = V[j][k];
+        V[j][k] = p;
+      }
+    }
+  }
+  log.dbg("<---sort(d=", new VecDbgView(d));
+  log.dbg("<---sort(V=\n", new MtrxDbgView(new Mtrx(V)));
+}
+
 }

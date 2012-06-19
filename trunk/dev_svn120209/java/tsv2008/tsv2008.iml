@@ -12,6 +12,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="junit4.0" exported="" />
     <orderEntry type="module" module-name="Jama-1.0.2" exported="" />
+    <orderEntry type="module" module-name="ejml" exported="" />
   </component>
 </module>
 

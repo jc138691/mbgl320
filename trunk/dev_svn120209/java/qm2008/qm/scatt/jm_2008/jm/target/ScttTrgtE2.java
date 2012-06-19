@@ -3,7 +3,7 @@ package scatt.jm_2008.jm.target;
 import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import scatt.partial.wf.JmClmbLcr;
 

@@ -7,11 +7,11 @@ import atom.shell.Ls;
 import atom.wf.lcr.WFQuadrLcr;
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import math.mtrx.api.EigenSymm;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import math.func.arr.FuncArr;
 import math.integral.OrthonFactory;
-import math.mtrx.jamax.EigenSymm;
 import atom.angular.Spin;
 import atom.shell.ConfArrFactoryE2;
 import func.bspline.BSplBasisFactory;
@@ -56,8 +56,8 @@ public class ScattHyTest extends BSplLogCRBasisTest {
     int L = 0;
     LsConfs basis = ConfArrFactoryE2.makeTwoElec(S1, N, L, arr);
     LsConfHMtrx H = new LsConfHMtrx(basis, sys);
-    EigenSymm eig = H.eig();
-//    LOG.report(this, "H=" + Vec.toCsv(eig.getRealEigenvalues()));
+    EigenSymm eig = H.eigSymm();
+//    LOG.report(this, "H=" + Vec.toCsv(eigSymm.getRealEigenvalues()));
     log.dbg("H=", new Vec(eig.getRealEVals()));
     double e0 = eig.getRealEVals()[0];
 //    LOG.report(this, "Multi-Config Hartree-Fock with 1s2+...+4s2"

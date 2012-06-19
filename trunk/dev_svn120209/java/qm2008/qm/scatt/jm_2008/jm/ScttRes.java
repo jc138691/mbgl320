@@ -1,7 +1,7 @@
 package scatt.jm_2008.jm;
 import math.complex.CmplxVec;
 import math.func.FuncVec;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 
 import javax.iox.FileX;

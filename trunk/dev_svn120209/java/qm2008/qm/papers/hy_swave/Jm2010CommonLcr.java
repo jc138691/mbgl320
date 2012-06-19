@@ -24,6 +24,7 @@ import math.func.deriv.test.DerivPts9Test;
 import math.func.simple.FuncPowInt;
 import math.integral.test.QuadrPts5Test;
 import math.interpol.test.PolynomInterpolTest;
+import math.mtrx.test.MtrxTest;
 import math.vec.VecDbgView;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridOpt;
@@ -101,6 +102,8 @@ protected void potScattTestOk() {
   FlowTest.unlockMaxErr();
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
+    if (!new MtrxTest().ok()) return;
+
     if (!new WfFactory().ok()) return;
     if (!new CmplxGamma().ok()) return;
     if (!new Cmplx1F1().ok()) return;
@@ -156,7 +159,6 @@ protected void hydrScattTestOk(int trgtZ) {
   FlowTest.lockMaxErr(testOpt.getMaxIntgrlErr());      // LOCK MAX ERR
   {
     if (!new AnyOrthTest(orthNt).ok()) return;
-//      if (!new PotEigVecLcrTest(AtomHy.atomZ, orthNt).ok()) return;
     if (!new PotEigVecLcrTest(trgtZ, orthNt).ok()) return;
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR

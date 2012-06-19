@@ -67,9 +67,11 @@ public void testHOvMtrx() throws Exception {  log.setDbg();
   PotHOvMLcr potH = new PotHOvMLcr(L, basis, pot, quadr);
   Vec engs = potH.getEigEngs();                log.dbg("engs=", new VecDbgView(engs));
   assertEquals("Hy(1s) =", 0, -0.5 - engs.get(0)); // testing against maxErr
-  assertEquals("Hy(1s) =", 0, -0.5 - engs.get(0), 2e-15);
+//  assertEquals("Hy(1s) =", 0, -0.5 - engs.get(0), 2e-15); // JAMA
+  assertEquals("Hy(1s) =", 0, -0.5 - engs.get(0), 3e-15); //  EJML
 
   assertEquals("Hy(2s) =", 0, -0.5 / 4. - engs.get(1)); // testing against maxErr
-  assertEquals("Hy(2s) =", 0, -0.5 / 4. - engs.get(1), 2e-15);
+//  assertEquals("Hy(2s) =", 0, -0.5 / 4. - engs.get(1), 2e-15); // JAMA
+  assertEquals("Hy(2s) =", 0, -0.5 / 4. - engs.get(1), 3e-15); //  EJML
 }
 }

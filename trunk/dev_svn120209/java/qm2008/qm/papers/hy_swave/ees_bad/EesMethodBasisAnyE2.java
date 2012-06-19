@@ -7,7 +7,7 @@ import flanagan.complex.Cmplx;
 import math.Calc;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
 import scatt.eng.EngModel;

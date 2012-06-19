@@ -3,7 +3,7 @@ package scatt.jm_2008.e3;
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,4/04/11,9:55 AM
  */
 import atom.shell.LsConfs;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import scatt.jm_2008.e1.JmCalcOptE1;
 
 import javax.utilx.log.Log;

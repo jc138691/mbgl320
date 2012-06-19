@@ -5,7 +5,7 @@ import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
 import math.complex.CmplxVec;
 import math.complex.CmplxVecDbgView;
-import math.mtrx.Mtrx;
+import math.mtrx.api.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.mtrx.MtrxInfo;
 import scatt.jm_2008.jm.ScttRes;
