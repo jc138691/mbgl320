@@ -2,11 +2,14 @@ package math.mtrx.api.jama;
 import Jama.Matrix;
 import math.mtrx.MtrxToStr;
 import math.vec.Vec;
+
+import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 19/06/12, 10:14 AM
  */
 // Adaptor to Jama
 public class MtrxJama extends Matrix {
+public static Log log = Log.getLog(MtrxJama.class);
 
 public MtrxJama(int m, int n) {
   super(m, n);
@@ -18,8 +21,20 @@ public MtrxJama(double[][] A) {
 public MtrxJama(MtrxJama m) {
   super(m);
 }
-private MtrxJama(Matrix m) {
+public MtrxJama(Matrix m) {
   super(m);
+}
+
+public double[][] getArr2D() {
+  log.error("TODO: STOP USING double[][] getArr2D()");//since Ejml uses double[], JAMA uses double[][]
+  return super.getArray();
+}
+public double[][] getArray() {
+  throw new IllegalArgumentException(log.error("Use Mtrx.getArr2D"));
+}
+public double[] getArr1D() {
+  log.error("TODO: STOP USING double[] getArr1D()");//since Ejml uses double[], JAMA uses double[][]
+  throw new IllegalArgumentException(log.error("Jama does not have getArr1D()"));
 }
 
 public String toString() {
@@ -38,22 +53,21 @@ public String toGnuplot() {
 }
 
 public MtrxJama inverse() {
-  Matrix res = super.inverse();
-  return new MtrxJama(res);
+  return new MtrxJama(super.inverse());
 }
 public MtrxJama copy() {
   Matrix res = super.copy();
   return new MtrxJama(res);
 }
-public MtrxJama plusEquals(MtrxJama B) {
+public MtrxJama addEquals(MtrxJama B) {
   super.plusEquals(B);
   return this;
 }
-public MtrxJama minusEquals(MtrxJama B) {
+public MtrxJama subEquals(MtrxJama B) {
   super.minusEquals(B);
   return this;
 }
-public MtrxJama timesEquals(double d) {
+public MtrxJama multEquals(double d) {
   super.timesEquals(d);
   return this;
 }
@@ -73,28 +87,12 @@ public static void copyEach(double[][] from, double[][] to) {
   }
 }
 
-public double[] getColCopy(int c) {
-  double[] res = new double[getNumRows()];
-  for (int r = 0; r < res.length; r++) {
-    res[r] = get(r, c);
-  }
-  return res;
-}
 
-public MtrxJama times(MtrxJama B) {
+public MtrxJama mult(MtrxJama B) {
   return new MtrxJama(super.times(B));
 }
 public MtrxJama transpose () {
   return new MtrxJama(super.transpose());
 }
 
-public Vec times(Vec vec) {     // v = M * w
-  Vec res = new Vec(getNumRows());
-  double[][] arr = getArray();
-  for (int i = 0; i < getNumRows(); i++) {
-    double d = vec.dot(arr[i]);
-    res.set(i, d);
-  }
-  return res;
-}
 }

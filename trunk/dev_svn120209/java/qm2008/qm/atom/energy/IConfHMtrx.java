@@ -64,7 +64,7 @@ private FuncArr calcDensity(int maxNum) {
   boolean[][] doneArr = new boolean[this.confs.size()][this.confs.size()];
 
   Mtrx v = eigSymm().getV();
-  double[][] C = v.getArray();
+  double[][] C = v.getArr2D();
   double norm = 1. / sysH.getNumElec();
   for (int r = 0; r < size; r++) {
     if ((10* this.confs.size())%(r+1) == 0) {

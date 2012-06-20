@@ -15,7 +15,7 @@ public MtrxDbgView(Mtrx from) {
   super(from);
 }
 public String toString() {
-  double[][] a = getArray();
+  double[][] a = getArr2D();
   String head = "Mtrx["+getNumRows()+"]["+getNumCols()+"] = {" + SysProp.EOL;
   if (DbgView.getNumShow() >= a.length) {
     return head + toString(a, 0, a.length);

@@ -424,7 +424,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenSymmEjml.java" line="35" class="math.mtrx.api.ejml.EigenSymmEjml" package="math.mtrx.api.ejml">
+      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenEjml.java" line="38" class="math.mtrx.api.ejml.EigenSymmEjml" package="math.mtrx.api.ejml">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -485,8 +485,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="field_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -495,31 +495,42 @@
     <favorites_list name="qm2008_intellij" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.54657686">
+    <splitter split-orientation="horizontal" split-proportion="0.34744525">
       <split-first>
         <leaf>
-          <file leaf-file-name="MtrxEjml.java" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="MtrxEjml.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/MtrxEjml.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="93" column="0" selection-start="2133" selection-end="2133" vertical-scroll-proportion="1.6688669">
+                <state line="28" column="22" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SimpleBase.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/simple/SimpleBase.java">
+          <file leaf-file-name="Mtrx.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="112" column="13" selection-start="3417" selection-end="3417" vertical-scroll-proportion="0.0">
+                <state line="99" column="0" selection-start="1932" selection-end="1932" vertical-scroll-proportion="0.9794521">
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MtrxJama.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxJama.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="89" column="0" selection-start="1927" selection-end="1927" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CommonOps.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/ops/CommonOps.java">
+          <file leaf-file-name="DerivPts9.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts9.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1669" column="38" selection-start="56864" selection-end="56864" vertical-scroll-proportion="0.0">
+                <state line="11" column="0" selection-start="260" selection-end="315" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -529,21 +540,57 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="MtrxEjml.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/MtrxEjml.java">
+          <file leaf-file-name="EigenJama.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/EigenJama.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="24" column="14" selection-start="706" selection-end="706" vertical-scroll-proportion="0.0">
+                <state line="19" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EigenSymm.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/EigenSymm.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="9" column="15" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
                   <folding>
-                    <marker date="1340156516736" expanded="true" signature="1307:2133" placeholder="//..." />
+                    <element signature="imports" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Mtrx.java" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java">
+          <file leaf-file-name="EigenEjml.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenEjml.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="46" column="14" selection-start="793" selection-end="793" vertical-scroll-proportion="0.72827286">
+                <state line="17" column="20" selection-start="589" selection-end="589" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="HeSWaveRes2012.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="13" column="13" selection-start="377" selection-end="377" vertical-scroll-proportion="-0.08675799">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DecompositionInterface.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/alg/dense/decomposition/DecompositionInterface.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="54" column="19" selection-start="2092" selection-end="2092" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EesMthdBasisHyE2_v2_bad.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EesMthdBasisHyE2_v2_bad.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="210" column="15" selection-start="7040" selection-end="7040" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -570,22 +617,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/jama/MtrxAdaptorJama.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/EigenSymm.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxAdaptorJama.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenSymmEjml.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts3.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts9.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java" />
         <option value="$PROJECT_DIR$/../Jama-1.0.2/Jama/Matrix.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxDbgView.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxInfo.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxJama.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/EigenSymmJama.java" />
         <option value="$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/simple/SimpleMatrix.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EesMthdBasisHyE2_v2_bad.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/javax/utilx/log/kiss/KissLog.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/MtrxEjml.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/EigenSymmJama.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/EigenJama.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/EigenSymm.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxJama.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenEjml.java" />
       </list>
     </option>
   </component>
@@ -706,7 +753,82 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jm_2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008_intellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qm2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jm_2008" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="e1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -736,98 +858,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="math" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tsv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="math" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mtrx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tsv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="math" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mtrx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tsv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="math" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mtrx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jama" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tsv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="math" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mtrx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejml" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -933,81 +963,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jm_2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008_intellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qm2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jm_2008" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="e1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1025,9 +980,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -1376,13 +1331,13 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2469537" sideWeight="0.6340378" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4392324" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-2230" y="469" width="3398" height="409" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40618336" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30170575" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24747474" sideWeight="0.5053305" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.65072304" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39946738" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33838382" sideWeight="0.31130064" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2312009" sideWeight="0.6076759" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3923241" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="28" y="240" width="1457" height="562" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1527,94 +1482,116 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenSymmEjml.java">
+    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/simple/SimpleBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="22" selection-start="532" selection-end="546" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Jama-1.0.2/Jama/Matrix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="22" selection-start="3755" selection-end="3755" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/HMtrx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="4" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="1" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/data/DenseMatrix64F.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="276" column="24" selection-start="8843" selection-end="8843" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="43" selection-start="1607" selection-end="1607" vertical-scroll-proportion="0.0" />
+        <state line="112" column="13" selection-start="3417" selection-end="3417" vertical-scroll-proportion="0.021205356">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/func/deriv/DerivPts9.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="24" selection-start="938" selection-end="938" vertical-scroll-proportion="0.0" />
+        <state line="11" column="0" selection-start="260" selection-end="315" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/EigenSymmJama.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/javax/utilx/log/kiss/KissLog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="41" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxJama.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxDbgView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="7" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" />
+        <state line="50" column="22" selection-start="1384" selection-end="1384" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/simple/SimpleMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="13" selection-start="4017" selection-end="4017" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="89" column="13" selection-start="4017" selection-end="4017" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/ops/CommonOps.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1669" column="38" selection-start="56864" selection-end="56864" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="14" selection-start="793" selection-end="793" vertical-scroll-proportion="0.72827286">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/simple/SimpleBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="13" selection-start="3417" selection-end="3417" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/test/org/ejml/alg/dense/decomposition/lu/GeneralLuDecompositionChecks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="16" selection-start="1182" selection-end="1182" vertical-scroll-proportion="0.33203885">
+        <state line="7" column="32" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/MtrxEjml.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="0" selection-start="2133" selection-end="2133" vertical-scroll-proportion="1.6688669">
+        <state line="28" column="22" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/EigenJama.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EesMthdBasisHyE2_v2_bad.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="210" column="15" selection-start="7040" selection-end="7040" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/IConfHMtrx.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="16" selection-start="3057" selection-end="3057" vertical-scroll-proportion="0.22488585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxJama.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="0" selection-start="1927" selection-end="1927" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="0" selection-start="1932" selection-end="1932" vertical-scroll-proportion="0.9794521">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/EigenSymm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="15" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/alg/dense/decomposition/DecompositionInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="19" selection-start="2092" selection-end="2092" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ejml-0.19-src/ejml/src/org/ejml/alg/dense/decomposition/eig/SymmetricQRAlgorithmDecomposition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="134" column="19" selection-start="4809" selection-end="4809" vertical-scroll-proportion="0.3325893">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenEjml.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="20" selection-start="589" selection-end="589" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="377" selection-end="377" vertical-scroll-proportion="-0.08675799">
           <folding />
         </state>
       </provider>
@@ -1683,7 +1660,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>tsv2008</last-edited>
+          <last-edited>ejml</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

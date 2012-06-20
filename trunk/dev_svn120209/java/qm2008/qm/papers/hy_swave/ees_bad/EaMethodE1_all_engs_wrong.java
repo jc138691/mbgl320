@@ -131,7 +131,7 @@ private FuncArr calcPsi(double scattE, PotHMtrx potH, int idxCount) {
 }
 private Dble2 calcG(Mtrx mSC, double E) {
   Dble2 res = new Dble2();
-  double[][] arr = mSC.getArray();
+  double[][] arr = mSC.getArr2D();
   for (int i = 0; i < sysEngs.size(); i++) {
     double ei = sysEngs.get(i);
     double ss = arr[IDX_D][i] * arr[IDX_S][i];

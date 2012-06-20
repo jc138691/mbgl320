@@ -40,8 +40,8 @@ public static double calcSigmaPiFromS(Cmplx s, double scattE) {
 }
 public static CmplxMtrx calcSFromK(Mtrx mK, int openChN) {
   int chNum = openChN;
-  double[][] diag = MtrxFactory.makeOneDiag(chNum).getArray();
-  double[][] k = mK.getArray();
+  double[][] diag = MtrxFactory.makeOneDiag(chNum).getArr2D();
+  double[][] k = mK.getArr2D();
   CmplxMtrx zp = new CmplxMtrx(chNum, chNum); // (1+iK)
   CmplxMtrx zm = new CmplxMtrx(chNum, chNum); // (1-iK)
   for (int r = 0; r < chNum; r++) {

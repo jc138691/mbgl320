@@ -71,7 +71,7 @@ public class OrthonFactory {
         }
       }        log.dbg("M=\n", M);  log.dbg("D = ", D);
       M = M.inverse();          log.dbg("M.inverse=\n", M);
-      C.mult(M.getArray(), D);   log.dbg("C=M*D=", C);
+      C.mult(M.getArr2D(), D);   log.dbg("C=M*D=", C);
       CC[i] = new Vec(i + 1);
       CC[i].set(i, 1);
       for (int j = 0; j < i; j++) {

@@ -102,7 +102,7 @@ public class JmResonE2 {
     return res;
   }
   protected CmplxVec calcResDlts(Mtrx mX, CmplxMtrx mResA) {
-    double[][] X = mX.getArray();
+    double[][] X = mX.getArr2D();
     Cmplx[][] A = mResA.getArr();
     int sN = jmm.getSysBasisSize();
     Cmplx[] res = new Cmplx[sN];

@@ -24,18 +24,18 @@ public class JmMethodFanoE2 extends JmMthdBasisHyE2 {
   }
 
   protected double[][] calcC() {
-    double[][] sC = sysConfH.getEigVec().getArray();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
+    double[][] sC = sysConfH.getEigVec().getArr2D();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
     return sC;
   }
 
   // THIS works only for two electrons, see  JmMethodJmBasisE3 for a general case of any electrons
   @Override protected Mtrx calcX() {
     // [for JmMethodFanoX] Next line was MOVED to calcC();
-//    double[][] sC = sysConfH.getEigVec().getArray();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
+//    double[][] sC = sysConfH.getEigVec().getArr2D();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
     double[][] sC = calcC();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
 
-    double[][] chiOv = chiOverlap.getArray();
-    double[][] tC = targetH.getEigVec().getArray();  log.dbg("D_ij=", new MtrxDbgView(targetH.getEigVec()));
+    double[][] chiOv = chiOverlap.getArr2D();
+    double[][] tC = targetH.getEigVec().getArr2D();  log.dbg("D_ij=", new MtrxDbgView(targetH.getEigVec()));
     int sN = getSysBasisSize();
     int cN = getChNum();
     Mtrx res = new Mtrx(cN, sN);

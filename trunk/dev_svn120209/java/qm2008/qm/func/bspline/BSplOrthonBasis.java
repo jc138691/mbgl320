@@ -15,7 +15,7 @@ public class BSplOrthonBasis extends BSplArr {    //B-splines
     setNormQuadr(w);
     setRefQuadr(w);
 
-//    FuncVec[] saved = getArray();
+//    FuncVec[] saved = getArr2D();
     int newSize = calcBasisSize(t, k);
     FuncArr newArr = new FuncArr(getX());
 //    setArray(new FuncVec[calcBasisSize(t, k)]); // the first and the last two are ignored

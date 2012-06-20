@@ -18,6 +18,8 @@ import math.func.arr.FuncArrDbgView;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 12/09/2008, Time: 15:56:38
  */
+
+// Trying to write the simplest possible logger, hence the KISS name.
 public class KissLog {
   private static HashSet<PrintStream> staticPrStreams = new HashSet<PrintStream>();
   private HashSet<PrintStream> localPrStreams = new HashSet<PrintStream>();

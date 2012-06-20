@@ -58,7 +58,7 @@ private void addSumJmTail(Mtrx mR) {
   int jN = jmF.length;
   int N = mthd.getN();
 
-  double[][] res = mR.getArray();
+  double[][] res = mR.getArr2D();
   for (int r = 0; r < rN; r++) {
     Vec psiR = sinWfs.get(r);
     for (int c = 0; c < cN; c++) {
@@ -78,7 +78,7 @@ private void addSumJmTail(Mtrx mR) {
 private void addSumJmAll_BAD(Mtrx mR) {
   int rN = mthd.jmR.getNumRows();
   int cN = mthd.jmR.getNumCols();
-  double[][] res = mR.getArray();
+  double[][] res = mR.getArr2D();
   for (int r = 0; r < rN; r++) {
     Vec psiR = sinWfs.get(r);
     for (int c = 0; c < cN; c++) {
@@ -128,7 +128,7 @@ private Mtrx calcSumA() {
 private Mtrx loadNorms(Mtrx mR) {
   int rN = mthd.jmR.getNumRows();
   int cN = mthd.jmR.getNumCols();
-  double[][] res = mR.getArray();
+  double[][] res = mR.getArr2D();
   for (int r = 0; r < rN; r++) { // channel ROWS
     JmCh chR = mthd.chArr[r];
     double rSq = chR.getSqrtAbsMom();
