@@ -71,7 +71,7 @@ public Mtrx getEigVec(boolean overwrite) {
 }
 public double[][] getEigArr() {
   return null;
-//  return getEigVec().getArray();
+//  return getEigVec().getArr2D();
 }
 
 

@@ -13,7 +13,7 @@ public HMtrx(int m, int n) {
   super(m, n);
 }
 //public HMtrx(Mtrx mh) {
-//  super(mh.getArray());
+//  super(mh.getArr2D());
 //}
 public HMtrx(Mtrx mh) {
   super(mh);
@@ -52,6 +52,6 @@ public Mtrx getEigVec(boolean overwrite) {
   return thisEig.getV();
 }
 public double[][] getEigArr() {
-  return getEigVec().getArray();
+  return getEigVec().getArr2D();
 }
 }

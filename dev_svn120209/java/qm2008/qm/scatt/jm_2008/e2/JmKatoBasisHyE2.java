@@ -137,7 +137,7 @@ protected Cmplx[][] calcVecCA() {
   return res;
 }
 private Cmplx calcCAi(int sysIdx, int c) {
-  double[][] X = mthd.jmX.getArray();
+  double[][] X = mthd.jmX.getArr2D();
   int rN = mthd.jmS.getNumRows();
   Cmplx res = new Cmplx();
   int IDX_N = 0; // N'th value is stored in the first column

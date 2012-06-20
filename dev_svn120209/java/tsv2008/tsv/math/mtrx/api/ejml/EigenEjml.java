@@ -10,26 +10,29 @@ import javax.utilx.log.Log;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 18/06/12, 9:10 AM
  */
-public class EigenSymmEjml extends SymmetricQRAlgorithmDecomposition {
-public static Log log = Log.getLog(EigenSymmEjml.class);
-private Mtrx mtrx;
-private DenseMatrix64F mWork;
+public class EigenEjml extends SymmetricQRAlgorithmDecomposition {
+public static Log log = Log.getLog(EigenEjml.class);
+private MtrxEjml mtrx;
 private boolean decompOk;
 private double[] vals;
-private Mtrx mVec;
-private Mtrx mD;
-
-public EigenSymmEjml(Mtrx mtrx) {
+private MtrxEjml mVec;
+private MtrxEjml mD;
+private static final int GC_TEST = 1000000; // 1000 x 1000 matrix
+public EigenEjml(MtrxEjml mtrx) {
   super(true);                                   //log.setDbg();
   this.mtrx = mtrx;                              //log.dbg("mtrx=\n", new MtrxDbgView(mtrx));
-  mWork = new DenseMatrix64F(mtrx.getArray());   //log.dbg("mWork=\n", mWork);
-  decompOk = decompose(mWork);
+  if (mtrx.getNumElements() > GC_TEST)  {   // try cleaning up for a large matrix
+    System.gc();
+  }
+  decompOk = decompose(mtrx.getMatrix());
 }
-public EigenSymmEjml(Mtrx mtrx, boolean overwrite) {
+public EigenEjml(Mtrx mtrx, boolean overwrite) {
   super(true);                                   //log.setDbg();
   this.mtrx = mtrx;                              //log.dbg("mtrx=\n", new MtrxDbgView(mtrx));
-  mWork = new DenseMatrix64F(mtrx.getArray());   //log.dbg("mWork=\n", mWork);
-  decompOk = decompose(mWork);
+  if (mtrx.getNumElements() > GC_TEST)  {   // try cleaning up for a large matrix
+    System.gc();
+  }
+  decompOk = decompose(mtrx.getMatrix());
 }
 public double[] getRealEVals () {
   if (vals == null) {
@@ -46,12 +49,12 @@ public double[] getRealEVals () {
     // SORT ONLY ONCE!!!
     mVec = getV();             //log.dbg("mVec=\n", new MtrxDbgView(mVec));
     if (mVec != null  &&  vals != null) {// SORT ONLY ONCE!!!
-      MtrxFactory.sort(vals, mVec.getArray());
+      MtrxFactory.sort(vals, mVec.getArr2D());
     }
   }
   return vals;
 }
-public Mtrx getV () {
+public MtrxEjml getV () {
   if (mVec == null) {
     int nc = getNumberOfEigenvalues(); // number of columns
     double[][] arr = new double[nc][nc];
@@ -66,14 +69,14 @@ public Mtrx getV () {
     // SORT ONLY ONCE!!!
     vals = getRealEVals();       log.dbg("vals=", new VecDbgView(vals));
     if (mVec != null  &&  vals != null) { // SORT ONLY ONCE!!!
-      MtrxFactory.sort(vals, mVec.getArray());
+      MtrxFactory.sort(vals, mVec.getArr2D());
     }
   }
   return mVec;
 }
 
-// see EigenSymmJama
-public Mtrx getD () {
+// see EigenJama
+public MtrxEjml getD () {
   if (mD == null) {
     vals = getRealEVals();
     int n = vals.length;

@@ -60,7 +60,7 @@ public void loadEigVec() {
   // f_i = SUM_j C_ji * lgrrN(j)
   EigenSymm thisEig = eigSymm();
   Mtrx v = thisEig.getV();
-  double[][] C = v.getArray();
+  double[][] C = v.getArr2D();
   for (int i = 0; i < basis.size(); i++) {
     FuncVec f_i = new FuncVec(x);
     for (int j = 0; j < basis.size(); j++) {

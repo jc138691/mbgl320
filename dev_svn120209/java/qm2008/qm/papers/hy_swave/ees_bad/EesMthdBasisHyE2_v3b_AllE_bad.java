@@ -154,9 +154,9 @@ protected void calcK(int chNum) {
 
   mK = mInv.mult(mMX0);               log.dbg("MX1^{-1} MX0 =\n", new MtrxDbgView(mK));
   mK.multEquals(-1.);                 log.dbg("K=-MX1^{-1} MX0\n", new MtrxDbgView(mK));
-  double[][] aK = mK.getArray();
+  double[][] aK = mK.getArr2D();
   Mtrx mK2 = mK.copy();
-  double[][] aK2 = mK2.getArray();
+  double[][] aK2 = mK2.getArr2D();
   for (int g = 0; g < chNum; g++) {
     double pg = chArr[g].getAbsMom();
     for (int g2 = 0; g2 < chNum; g2++) {

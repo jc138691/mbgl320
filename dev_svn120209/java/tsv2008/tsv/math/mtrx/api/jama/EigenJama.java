@@ -4,20 +4,20 @@ import math.mtrx.api.Mtrx;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 18/06/12, 9:10 AM
  */
-public class EigenSymmJama extends EigenvalueDecomposition {
-public EigenSymmJama(Mtrx mtrx) {
+public class EigenJama extends EigenvalueDecomposition {
+public EigenJama(MtrxJama mtrx) {
   super(mtrx, true);
 }
-public EigenSymmJama(Mtrx mtrx, boolean overwrite) {
+public EigenJama(MtrxJama mtrx, boolean overwrite) {
   super(mtrx, true, overwrite);
 }
 public double[] getRealEVals () {
   return getRealEigenvalues();
 }
-public Mtrx getV () {
-  return new Mtrx(super.getV().getArray());
+public MtrxJama getV () {
+  return new MtrxJama(super.getV());
 }
-public Mtrx getD () {
-  return new Mtrx(super.getD().getArray());
+public MtrxJama getD () {
+  return new MtrxJama(super.getD());
 }
 }

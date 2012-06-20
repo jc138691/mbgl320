@@ -220,7 +220,7 @@ protected void calcSdcsFromW(int scttIdx, ScttRes res, int showNum) {
   }
 }
 protected CmplxMtrx calcWCJC_v1_ok(Mtrx mW) {
-  double[][] W = mW.getArray();
+  double[][] W = mW.getArr2D();
   int tN = mW.getNumRows();
   CmplxMtrx res = new CmplxMtrx(tN, tN);
   for (int t = 0; t < tN; t++) {
@@ -239,7 +239,7 @@ protected CmplxMtrx calcWCJC_v1_ok(Mtrx mW) {
   return res;
 }
 protected Mtrx calcWcjc(Mtrx mW) {
-  double[][] W = mW.getArray();
+  double[][] W = mW.getArr2D();
   int n = mW.getNumRows();
   Mtrx res = new Mtrx(n, n);
   for (int r = 0; r < n; r++) {
@@ -343,7 +343,7 @@ protected void loadCorrCn1(Mtrx mK) {
   }
 }
 protected Mtrx calcWsjs(Mtrx mW, int openN) {
-  double[][] W = mW.getArray();
+  double[][] W = mW.getArr2D();
   int tN = mW.getNumRows();
   Mtrx res = new Mtrx(tN, openN);
   for (int t = 0; t < tN; t++) {
@@ -364,7 +364,7 @@ protected Mtrx calcWsjs(Mtrx mW, int openN) {
   return res;
 }
 protected double calcDeltaSysIdx_bad(Mtrx mW) {
-  double[][] W = mW.getArray();
+  double[][] W = mW.getArr2D();
   int tN = mW.getNumRows();
   double res = 0;
   for (int t = 0; t < tN; t++) {
@@ -375,7 +375,7 @@ protected double calcDeltaSysIdx_bad(Mtrx mW) {
   return res;
 }
 protected Vec calcAVecSysIdx_bad(int sysIdx, int tN) {
-  double[][] X = jmX.getArray();
+  double[][] X = jmX.getArr2D();
   Vec res = new Vec(tN);
   for (int t = 0; t < tN; t++) {
     JmCh ch = chArr[t];
@@ -387,7 +387,7 @@ protected Vec calcAVecSysIdx_bad(int sysIdx, int tN) {
   return res;
 }
 protected Mtrx calcW(int calcNum) {
-  double[][] X = jmX.getArray();
+  double[][] X = jmX.getArr2D();
   int sN = getSysBasisSize();
   int tN = calcNum;
   Mtrx res = new Mtrx(tN, tN);
@@ -416,7 +416,7 @@ protected Mtrx calcW(int calcNum) {
   return res;
 }
 protected Mtrx calcW_DBG(int calcNum) {
-  double[][] X = jmX.getArray();
+  double[][] X = jmX.getArr2D();
   int sN = getSysBasisSize();
   int tN = calcNum;
   Mtrx res = new Mtrx(tN, tN);

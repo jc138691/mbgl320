@@ -29,7 +29,7 @@ public static Mtrx makeFromTwoVecs(Vec vR, Vec vC) {
 }
 
 public static void makeSymmByAvr(Mtrx m, int openN) {
-  double[][] arr = m.getArray();
+  double[][] arr = m.getArr2D();
   for (int r = 0; r < openN; r++) {
     for (int c = 0; c < r; c++) {
       double avr = 0.5 * (arr[r][c] + arr[c][r]);
@@ -39,7 +39,7 @@ public static void makeSymmByAvr(Mtrx m, int openN) {
   }
 }
 public static void makeDiagOneSqrt(Mtrx m) {
-  double[][] arr = m.getArray();
+  double[][] arr = m.getArr2D();
   int len = Math.max(m.getNumRows(), m.getNumCols());
   for (int r = 0; r < len; r++) {
     double diag = arr[r][r];

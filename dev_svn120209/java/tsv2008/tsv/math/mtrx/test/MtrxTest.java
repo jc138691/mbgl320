@@ -132,7 +132,7 @@ public MtrxTest() {
      Access Methods:
         getColumnDimension()
         getRowDimension()
-        getArray()
+        getArr2D()
         getArrayCopy()
         getColumnPackedCopy()
         getRowPackedCopy()

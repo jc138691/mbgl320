@@ -23,7 +23,7 @@ X_i^{\alpha} = \sum_{j}  \delta_{j_1,\alpha} C_{ij} A_j D_{j_2,N-1},
 */
 @Override
 protected Mtrx calcX() {
-  double[][] C = sysConfH.getEigVec().getArray();      log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
+  double[][] C = sysConfH.getEigVec().getArr2D();      log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
   double[] D = getOverD().getArr();
   log.dbg("D_j2=", getOverD());
   LsConfs sysBasis = sysConfH.getConfs();

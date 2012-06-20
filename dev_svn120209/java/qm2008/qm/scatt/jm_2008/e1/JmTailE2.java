@@ -102,7 +102,7 @@ protected double[][] calcVecA() {
   return res;
 }
 private double calcAsc(int s, int c) {
-  double[][] X = mthd.jmX.getArray();
+  double[][] X = mthd.jmX.getArr2D();
   int rN = mthd.jmR.getNumRows();
   double sum = 0;
   int IDX_N = 0; // N'th value is stored in the first column
