@@ -451,9 +451,9 @@ public MtrxTest() {
  /**
      Array-like methods:
         minus
-        minusEquals
+        subEquals
         plus
-        plusEquals
+        addEquals
         arrayLeftDivide
         arrayLeftDivideEquals
         arrayRightDivide
@@ -679,7 +679,7 @@ public MtrxTest() {
  /**
      LA methods:
         transpose
-        times
+        mult
         cond
         rank
         det

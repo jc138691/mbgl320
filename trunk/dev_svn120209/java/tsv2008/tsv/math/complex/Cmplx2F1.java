@@ -125,9 +125,9 @@ public class Cmplx2F1 extends FlowTest {
 //    Cmplx zOneZ = z.div(Cmplx.ONE.minus(z));
 //
 //    Cmplx f  = calcLargeZ(a, c.minus(b), c, zOneZ, eps);   log.dbg("f=", f);
-//    Cmplx t = Cmplx.ONE.minus(z).pow(a.times(-1)); log.dbg("t=", t);
+//    Cmplx t = Cmplx.ONE.minus(z).pow(a.mult(-1)); log.dbg("t=", t);
 //
-//    return t.times(f);
+//    return t.mult(f);
 //  }
 
     // Eq. 15.3.6      p373 of Russian A&S

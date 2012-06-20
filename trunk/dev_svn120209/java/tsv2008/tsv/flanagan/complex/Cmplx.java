@@ -1963,7 +1963,7 @@ public class Cmplx {
 
 
   // returns true if the differences between the real and imaginary parts of two complex numbers
-  // are less than fract times the larger real and imaginary part
+  // are less than fract mult the larger real and imaginary part
   public boolean equalsWithinLimits(Cmplx a, double fract){
     return isEqualWithinLimits(a, fract);
   }

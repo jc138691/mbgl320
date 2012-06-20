@@ -3,6 +3,7 @@ import Jama.Matrix;
 import math.mtrx.MtrxToStr;
 import math.vec.Vec;
 import org.ejml.data.DenseMatrix64F;
+import org.ejml.ops.CommonOps;
 import org.ejml.simple.SimpleBase;
 import org.ejml.simple.SimpleMatrix;
 /**
@@ -48,18 +49,18 @@ public MtrxEjml inverse() {
 public MtrxEjml copy() {
   return new MtrxEjml(super.copy());
 }
-public MtrxEjml plusEquals(MtrxEjml B) {
-  super.plusEquals(B);
+public MtrxEjml addEquals(MtrxEjml B) {
+  CommonOps.addEquals(getMatrix(), B.getMatrix());
   return this;
 }
-//public MtrxEjml minusEquals(MtrxEjml B) {
-//  super.minusEquals(B);
-//  return this;
-//}
-//public MtrxEjml timesEquals(double d) {
-//  super.timesEquals(d);
-//  return this;
-//}
+public MtrxEjml subEquals(MtrxEjml B) {
+  CommonOps.subEquals(getMatrix(), B.getMatrix());
+  return this;
+}
+public MtrxEjml multEquals(double d) {
+  CommonOps.scale(d, getMatrix());
+  return this;
+}
 //
 //
 //public int getNumRows() {
@@ -84,20 +85,10 @@ public MtrxEjml plusEquals(MtrxEjml B) {
 //  return res;
 //}
 //
-//public MtrxEjml times(MtrxEjml B) {
-//  return new MtrxEjml(super.times(B).getArray());
-//}
-//public MtrxEjml transpose () {
-//  return new MtrxJama(super.transpose().getArray());
-//}
-//
-//public Vec times(Vec vec) {     // v = M * w
-//  Vec res = new Vec(getNumRows());
-//  double[][] arr = getArray();
-//  for (int i = 0; i < getNumRows(); i++) {
-//    double d = vec.dot(arr[i]);
-//    res.set(i, d);
-//  }
-//  return res;
-//}
+public MtrxEjml mult(MtrxEjml B) {
+  return new MtrxEjml(super.mult(B));
+}
+public MtrxEjml transpose () {
+  return new MtrxEjml(super.transpose());
+}
 }

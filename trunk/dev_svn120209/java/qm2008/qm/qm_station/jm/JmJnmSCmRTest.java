@@ -42,10 +42,10 @@ public class JmJnmSCmRTest extends FlowTest {
       double E = engGrid.get(i);  log.dbg("E = " + E);
       JmJMtrxR jnm = new JmJMtrxR(basis, E);      log.dbg("J-matrix, Jnm=", jnm);
       JmSm sn = new JmSm(basis, E);      log.dbg("S_n =", sn);
-      Vec js = jnm.times(sn);               log.info("Jnm * Sm =", js);
+      Vec js = jnm.mult(sn);               log.info("Jnm * Sm =", js);
 
       JmCm cn = new JmCm(basis, E);      log.dbg("C_n =", cn);
-      Vec jc = jnm.times(cn);               log.info("Jnm * Cm =", jc);
+      Vec jc = jnm.mult(cn);               log.info("Jnm * Cm =", jc);
 
       for (int n = 0; n < js.size()-1; n++) { // NOTE!! all but last, "size-1"
         assertEquals("Jnm*Sm=V[" + n + "] =", 0, js.get(n), true);

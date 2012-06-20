@@ -7,7 +7,7 @@ public class EigenSymm
 //  extends EigenSymmJama { //
   extends EigenSymmEjml {
 
-//  18Jun12: ejml was about 8 times faster for 1000x1000 matrix
+//  18Jun12: ejml was about 8 mult faster for 1000x1000 matrix
 
 public EigenSymm(Mtrx mtrx) {
   super(mtrx, true);

@@ -281,7 +281,7 @@ protected Mtrx calcR_v1_ok(CmplxMtrx WCJC, Mtrx WSJS) {
       R.set(t, t2, sum);             log.dbg("R[t="+t+"][t2="+t2+"]=", R.get(t, t2));
     }
   }
-  R.timesEquals(-1.);                          log.dbg("R.timesEquals(-1.)=\n", new MtrxDbgView(R));
+  R.multEquals(-1.);                          log.dbg("R.multEquals(-1.)=\n", new MtrxDbgView(R));
   loadCorrSqrt(R);                               log.dbg("loadConsts(R)=\n", new MtrxDbgView(R));
   loadCorrCn1(R);                               log.dbg("loadCorrCn1(R)=\n", new MtrxDbgView(R));
   MtrxFactory.makeSymmByAvr(R, openN);           log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(R));
@@ -291,7 +291,7 @@ protected Mtrx calcR(Mtrx WCJC, Mtrx WSJS) {
 //  int calcN = WCJC.getNumCols();
 //  int openN = WSJS.getNumCols();
   Mtrx invWC = WCJC.inverse();     log.dbg("WCJC^{-1}=\n", new MtrxDbgView(invWC));
-  Mtrx R = invWC.times(WSJS);      log.dbg("R = invWC.timesSelf(WSJS)=\n", new MtrxDbgView(R));
+  Mtrx R = invWC.mult(WSJS);      log.dbg("R = invWC.timesSelf(WSJS)=\n", new MtrxDbgView(R));
 
 // DEBUGGING
 //  Mtrx R = new Mtrx(openN, openN);
@@ -310,7 +310,7 @@ protected Mtrx calcR(Mtrx WCJC, Mtrx WSJS) {
 //    }
 //  }
 
-  R.timesEquals(-1.);                    log.dbg("R.timesEquals(-1.)=\n", new MtrxDbgView(R));
+  R.multEquals(-1.);                    log.dbg("R.multEquals(-1.)=\n", new MtrxDbgView(R));
   loadCorrSqrt(R);                     log.dbg("loadCorrSqrt(R)=\n", new MtrxDbgView(R));
   loadCorrCn1(R);                      log.dbg("loadCorrCn1(R)=\n", new MtrxDbgView(R));
   return R;

@@ -44,9 +44,9 @@ private void calc() {     log.setDbg();
   ovV = ovEig.getV(); log.dbg("ovEig.getVec()=\n", new MtrxDbgView(ovV));
   Mtrx D = ovEig.getD(); log.dbg("ovEig.getD()=\n", new MtrxDbgView(D));
   MtrxFactory.makeDiagOneSqrt(D); log.dbg("makeDiagOneSqrt(D)=\n", new MtrxDbgView(D));
-  ovC = ovV.times(D); log.dbg("ovC = ovV.times(D)=\n", new MtrxDbgView(ovC));
+  ovC = ovV.mult(D); log.dbg("ovC = ovV.mult(D)=\n", new MtrxDbgView(ovC));
   D = null;
-  corrH = new HMtrx(ovC.transpose().times(this.times(ovC)));
+  corrH = new HMtrx(ovC.transpose().mult(this.mult(ovC)));
 }
 
 public Vec getEigVal(boolean overwrite) {
@@ -84,22 +84,22 @@ public double[][] getEigArr() {
 //  Mtrx D = ovEig.getD();
 //  log.dbg("ovEig.getD()=\n", new MtrxDbgView(D));
 //
-//  Mtrx test = V.times(D).times(V.transpose());
+//  Mtrx test = V.mult(D).mult(V.transpose());
 //  log.dbg("test=\n", new MtrxDbgView(test));
 //
 //  MtrxFactory.makeDiagOneSqrt(D);
 //  log.dbg("makeDiagOneSqrt(D)=\n", new MtrxDbgView(D));
 //
-//  Mtrx C = V.times(D);
-//  log.dbg("C = V.times(D)=\n", new MtrxDbgView(C));
+//  Mtrx C = V.mult(D);
+//  log.dbg("C = V.mult(D)=\n", new MtrxDbgView(C));
 //
-//  Mtrx newH = C.transpose().times(this.times(C));
+//  Mtrx newH = C.transpose().mult(this.mult(C));
 //  EigenSymm newEig = new EigenSymm(newH, false);
 //  double[] newEngs = newEig.getRealEVals();
 //  log.dbg("newEngs=\n", new VecDbgView(newEngs));
 //
 //  // WF   F_i = \sum_j V_ji B_j  = \sum_jj' V_ji C_j'j b_j'
-//  test = C.times(newEig.getV());
+//  test = C.mult(newEig.getV());
 //  log.dbg("test=\n", new MtrxDbgView(test));
 //}
 
