@@ -40,7 +40,7 @@ public Mtrx calcKatoR_todo(Mtrx mtR) { //mt-matrix trial
   loadKatoLgrr();
   Mtrx res = mtR.copy();
   Mtrx mKato = calcKato(); log.dbg("mKato=", new MtrxDbgView(mKato));
-  res.minusEquals(mKato);
+  res.subEquals(mKato);
   return res;
 }
 private Mtrx calcKato() {

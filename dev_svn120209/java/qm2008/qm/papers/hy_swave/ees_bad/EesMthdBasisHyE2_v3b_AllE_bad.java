@@ -142,18 +142,18 @@ protected void calcAllVecs(double sysTotE, int gNum) {
   log.dbg("mW=\n", new MtrxDbgView(mW));
   log.dbg("mB0=\n", new MtrxDbgView(mB0));
   log.dbg("mB1=\n", new MtrxDbgView(mB1));
-  mX0 = mW.times(mB0);
-  mX1 = mW.times(mB1);
+  mX0 = mW.mult(mB0);
+  mX1 = mW.mult(mB1);
   log.dbg("mX0=\n", new MtrxDbgView(mX0));
   log.dbg("mX1=\n", new MtrxDbgView(mX1));
 }
 protected void calcK(int chNum) {
-  Mtrx mMX0 = mM0.minusEquals(mX0);    log.dbg("mMX0=\n", new MtrxDbgView(mMX0));
-  Mtrx mMX1 = mM1.minusEquals(mX1);    log.dbg("mMX1=\n", new MtrxDbgView(mMX1));
+  Mtrx mMX0 = mM0.subEquals(mX0);    log.dbg("mMX0=\n", new MtrxDbgView(mMX0));
+  Mtrx mMX1 = mM1.subEquals(mX1);    log.dbg("mMX1=\n", new MtrxDbgView(mMX1));
   Mtrx mInv = mMX1.inverse();          log.dbg("mInv=mMX1^{-1}=\n", new MtrxDbgView(mInv));
 
-  mK = mInv.times(mMX0);               log.dbg("MX1^{-1} MX0 =\n", new MtrxDbgView(mK));
-  mK.timesEquals(-1.);                 log.dbg("K=-MX1^{-1} MX0\n", new MtrxDbgView(mK));
+  mK = mInv.mult(mMX0);               log.dbg("MX1^{-1} MX0 =\n", new MtrxDbgView(mK));
+  mK.multEquals(-1.);                 log.dbg("K=-MX1^{-1} MX0\n", new MtrxDbgView(mK));
   double[][] aK = mK.getArray();
   Mtrx mK2 = mK.copy();
   double[][] aK2 = mK2.getArray();

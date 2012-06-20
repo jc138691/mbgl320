@@ -207,25 +207,25 @@ protected void calcAllVecs(int sysIdx, int chNum) {
 }
 protected void calcK(int chNum) {
   Mtrx mOneY = MtrxFactory.makeOneDiag(chNum);  log.dbg("oneDiag=\n", new MtrxDbgView(mOneY));
-  mOneY = mOneY.plusEquals(mY);       log.dbg("mOneY=\n", new MtrxDbgView(mOneY));
+  mOneY = mOneY.addEquals(mY);       log.dbg("mOneY=\n", new MtrxDbgView(mOneY));
   Mtrx mW = mOneY.inverse();          log.dbg("mW=(1+Y)^{-1}=\n", new MtrxDbgView(mW));
 
-  Vec vWB = mW.times(vB);             log.dbg("vWB=", new VecDbgView(vWB));
+  Vec vWB = mW.mult(vB);             log.dbg("vWB=", new VecDbgView(vWB));
   double beta = vC.dot(vWB);         log.dbg("beta=", beta);
   double oneBeta = 1. / beta;       log.dbg("oneBeta=1./beta=", oneBeta);
 
-  Mtrx mWX = mW.times(mX);           log.dbg("WX=\n", new MtrxDbgView(mWX));
+  Mtrx mWX = mW.mult(mX);           log.dbg("WX=\n", new MtrxDbgView(mWX));
   Mtrx mWXt = mWX.transpose();       log.dbg("WXt=\n", new MtrxDbgView(mWXt));
-  Vec vZ = mWXt.times(vC);           log.dbg("atomZ=WXt * vC=", new VecDbgView(vZ));
+  Vec vZ = mWXt.mult(vC);           log.dbg("atomZ=WXt * vC=", new VecDbgView(vZ));
 
   Vec vA = vS.copy();
   vA.addMultSafe(-1., vZ);           log.dbg("A=S-atomZ=", new VecDbgView(vA));
   vA.mult(oneBeta);                 log.dbg("A=(S-atomZ)/beta=", new VecDbgView(vA));
 
   Mtrx mAB = MtrxFactory.makeFromTwoVecs(vB, vA);  log.dbg("AB=\n", new MtrxDbgView(mAB));
-  mAB.plusEquals(mX);                              log.dbg("AB=AB+X\n", new MtrxDbgView(mAB));
-  mK = mW.times(mAB);                              log.dbg("W*(AB+X)\n", new MtrxDbgView(mK));
-  mK.timesEquals(-1.);                             log.dbg("K=-W*(AB+X)\n", new MtrxDbgView(mK));
+  mAB.addEquals(mX);                              log.dbg("AB=AB+X\n", new MtrxDbgView(mAB));
+  mK = mW.mult(mAB);                              log.dbg("W*(AB+X)\n", new MtrxDbgView(mK));
+  mK.multEquals(-1.);                             log.dbg("K=-W*(AB+X)\n", new MtrxDbgView(mK));
 }
 
 }

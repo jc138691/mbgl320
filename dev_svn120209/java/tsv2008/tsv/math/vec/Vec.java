@@ -150,7 +150,7 @@ public double dot(double[] v2) {
 /* http://homepages.inf.ed.ac.uk/rmcnally/specksim/doc/javax/vecmath/GVector.html#mul(javax.vecmath.GMatrix,%20javax.vecmath.GVector)
 public final void mul(GMatrix m1,
                     GVector v1)
-  Multiplies matrix m1 times Vector v1 and places the result into this vector (this = m1*v1).
+  Multiplies matrix m1 mult Vector v1 and places the result into this vector (this = m1*v1).
   Parameters:
       m1 - The matrix in the multiplication
       v1 - The vector that is multiplied
