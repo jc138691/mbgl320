@@ -21,9 +21,6 @@ public MtrxEjml(MtrxEjml from) {
 public MtrxEjml(SimpleMatrix from) {
   super(from.getMatrix(), true);// shallow copy
 }
-//public MtrxEjml(DenseMatrix64F from) {
-//  super(from, true);
-//}
 public MtrxEjml(int m, int n) {
   super(m, n);
 }
