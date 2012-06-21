@@ -15,22 +15,23 @@ public MtrxDbgView(Mtrx from) {
   super(from);
 }
 public String toString() {
-  double[][] a = getArr2D();
+  int nr = getNumRows();
   String head = "Mtrx["+getNumRows()+"]["+getNumCols()+"] = {" + SysProp.EOL;
-  if (DbgView.getNumShow() >= a.length) {
-    return head + toString(a, 0, a.length);
+  if (DbgView.getNumShow() >= nr) {
+    return head + toString(this, 0, nr);
   }
   int n = DbgView.getNumShow() / 2;
-  String start = toString(a, 0, n);
-  String tail = toString(a, a.length - n, n);
+  String start = toString(this, 0, n);
+  String tail = toString(this, nr - n, n);
   return head + start + SysProp.EOL + ", ..., " + SysProp.EOL + tail + SysProp.EOL + "}";
 }
 
-public static String toString(double[][] a, int firstIdx, int size) {
-  int len = Math.min(a.length, firstIdx + size);
+public static String toString(Mtrx m, int firstIdx, int size) {
+  int nr = m.getNumRows();
+  int len = Math.min(nr, firstIdx + size);
   StringBuffer buff = new StringBuffer();
   for (int i = firstIdx; i < len; i++) {
-    buff.append(new VecDbgView(new Vec(a[i])));
+    buff.append(new VecDbgView(new Vec(m.getRowCopy(i))));
     if (i != len - 1)
       buff.append(SysProp.EOL);
   }

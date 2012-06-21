@@ -39,19 +39,18 @@ public static void makeSymmByAvr(Mtrx m, int openN) {
   }
 }
 public static void makeDiagOneSqrt(Mtrx m) {
-  double[][] arr = m.getArr2D();
   int len = Math.max(m.getNumRows(), m.getNumCols());
   for (int r = 0; r < len; r++) {
-    double diag = arr[r][r];
+    double diag = m.get(r, r);
     if (diag <= 0) {     log.setDbg();
       log.dbg("makeDiagOneSqrt(m=\n", new MtrxDbgView(m));
       String mssg = "diag <= 0";
       throw new IllegalArgumentException(log.error(mssg));
     }
-    arr[r][r] = 1./Math.sqrt(diag);
+    m.set(r, r, 1./Math.sqrt(diag));
   }
 }
-public static void sort(double[] d, double[][] V) {   //log.setDbg();
+public static void sort(double[] d, Mtrx V) {   //log.setDbg();
   log.dbg("--->sort(d=", new VecDbgView(d));
   log.dbg("--->sort(V=\n", new MtrxDbgView(new Mtrx(V)));
 
@@ -69,9 +68,12 @@ public static void sort(double[] d, double[][] V) {   //log.setDbg();
       d[k] = d[i];
       d[i] = p;
       for (int j = 0; j < n; j++) {
-        p = V[j][i];
-        V[j][i] = V[j][k];
-        V[j][k] = p;
+//        p = V[j][i];
+        p = V.get(j, i);
+//        V[j][i] = V[j][k];
+        V.set(j, i, V.get(j, k));
+//        V[j][k] = p;
+        V.set(j, k, p);
       }
     }
   }

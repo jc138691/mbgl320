@@ -106,7 +106,7 @@ public double[][] getArr2D() {  log.setDbg();
   double[][] res = new double[nr][nc];
   for (int r = 0; r < nr; r++) {
     for (int c = 0; c < nc; c++) {
-      res[nr][nc] = get(r, c);
+      res[r][c] = get(r, c);
     }
   }
   return res;

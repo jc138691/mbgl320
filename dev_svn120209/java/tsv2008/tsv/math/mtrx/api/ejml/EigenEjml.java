@@ -15,7 +15,7 @@ public static Log log = Log.getLog(EigenEjml.class);
 private MtrxEjml mtrx;
 private boolean decompOk;
 private double[] vals;
-private MtrxEjml mVec;
+private Mtrx mVec;
 private MtrxEjml mD;
 private static final int GC_TEST = 1000000; // 1000 x 1000 matrix
 public EigenEjml(MtrxEjml mtrx) {
@@ -49,27 +49,27 @@ public double[] getRealEVals () {
     // SORT ONLY ONCE!!!
     mVec = getV();             //log.dbg("mVec=\n", new MtrxDbgView(mVec));
     if (mVec != null  &&  vals != null) {// SORT ONLY ONCE!!!
-      MtrxFactory.sort(vals, mVec.getArr2D());
+      MtrxFactory.sort(vals, mVec);
     }
   }
   return vals;
 }
-public MtrxEjml getV () {
+public Mtrx getV () {
   if (mVec == null) {
     int nc = getNumberOfEigenvalues(); // number of columns
-    double[][] arr = new double[nc][nc];
+    mVec = new Mtrx(nc, nc);
     for (int c = 0; c < nc; c++) {  // store by columns
       DenseMatrix64F vec = getEigenVector(c);
       for (int r = 0; r < nc; r++) {
-        arr[r][c] = vec.get(r);
+        mVec.set(r, c, vec.get(r));
       }
     }
-    mVec = new Mtrx(arr);        //log.dbg("mVec=\n", new MtrxDbgView(mVec));
+    //log.dbg("mVec=\n", new MtrxDbgView(mVec));
 
     // SORT ONLY ONCE!!!
     vals = getRealEVals();       log.dbg("vals=", new VecDbgView(vals));
     if (mVec != null  &&  vals != null) { // SORT ONLY ONCE!!!
-      MtrxFactory.sort(vals, mVec.getArr2D());
+      MtrxFactory.sort(vals, mVec);
     }
   }
   return mVec;
