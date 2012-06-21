@@ -41,12 +41,13 @@ private void calc() {     log.setDbg();
 // H_ij = \sum_i' \sum_j' C_i'i h_i'j' C_j'j
 // where h_ij = <b_i|H|b_j>
   ovEig = new EigenSymm(ov, false);
-  ovV = ovEig.getV(); log.dbg("ovEig.getVec()=\n", new MtrxDbgView(ovV));
+  ovV = ovEig.getV();    log.dbg("ovEig.getVec()=\n", new MtrxDbgView(ovV));
   Mtrx D = ovEig.getD(); log.dbg("ovEig.getD()=\n", new MtrxDbgView(D));
   MtrxFactory.makeDiagOneSqrt(D); log.dbg("makeDiagOneSqrt(D)=\n", new MtrxDbgView(D));
   ovC = ovV.mult(D); log.dbg("ovC = ovV.mult(D)=\n", new MtrxDbgView(ovC));
   D = null;
   corrH = new HMtrx(ovC.transpose().mult(this.mult(ovC)));
+  int dbgPoint = 1;
 }
 
 public Vec getEigVal(boolean overwrite) {

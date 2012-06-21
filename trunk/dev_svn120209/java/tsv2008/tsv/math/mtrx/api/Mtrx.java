@@ -26,7 +26,8 @@ public Mtrx(Mtrx from) {
   super(from);
 }
 public double[][] getArr2D() {
-   return super.getArr2D();
+
+  return super.getArr2D();
 }
 public double[] getArr1D() {
   return super.getArr1D();
@@ -97,5 +98,11 @@ public double[] getColCopy(int c) {
   }
   return res;
 }
-
+public double[] getRowCopy(int r) {
+  double[] res = new double[getNumCols()];
+  for (int c = 0; c < res.length; c++) {
+    res[c] = get(r, c);
+  }
+  return res;
+}
 }

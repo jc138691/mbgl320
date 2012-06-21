@@ -2,6 +2,7 @@ package atom.energy.part_wave;
 import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
 import math.func.arr.IFuncArr;
+import math.mtrx.MtrxDbgView;
 import math.mtrx.api.Mtrx;
 
 import javax.utilx.log.Log;
@@ -28,5 +29,6 @@ public void calc() {   log.setDbg();
       set(c, r, res);
     }
   }
+  log.dbg("OvMtrx=", new MtrxDbgView(this));
 }
 }
