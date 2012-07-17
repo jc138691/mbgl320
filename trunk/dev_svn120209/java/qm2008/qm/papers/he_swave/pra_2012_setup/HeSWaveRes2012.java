@@ -136,11 +136,17 @@ public void runJob() {
 //    int currN = 31;
 
 //    LAMBDA = 1.881; // best for Nc=12, Nt=12  , n_gamma=5
+//  LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
+//  Nc = 10;
+//  int currNt = 20;
+//  int currN = 55;  // 35-done; 50-done;
+
+
+//    LAMBDA = 1.881; // best for Nc=12, Nt=12  , n_gamma=5
   LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
   Nc = 10;
   int currNt = 20;
-  int currN = 55;  // 35-done; 50-done;
-
+  int currN = 21;  // 35-done; 50-done;
 
 //    LAMBDA = 1.807; // best for Nc=11, Nt=11  , n_gamma=5
 //    Nc = 11;
