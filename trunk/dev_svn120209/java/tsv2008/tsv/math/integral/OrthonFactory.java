@@ -62,7 +62,6 @@ public class OrthonFactory {
     // C = M^-1 * D
     for (; i < from.size(); i++) {    log.dbg("i = ", i);
       Vec D = new Vec(i);
-      Vec C = new Vec(i);
       Mtrx M = new Mtrx(i, i);
       for (int j = 0; j < i; j++) {
         D.set(j, -BB.get(i, j));
@@ -71,7 +70,9 @@ public class OrthonFactory {
         }
       }        log.dbg("M=\n", M);  log.dbg("D = ", D);
       M = M.inverse();          log.dbg("M.inverse=\n", M);
-      C.mult(M.getArr2D(), D);   log.dbg("C=M*D=", C);
+//      Vec C = new Vec(i);
+//      C.mult(M, D);   log.dbg("C=M*D=", C);
+      Vec C = M.mult(D);     log.dbg("C=M*D=", C);
       CC[i] = new Vec(i + 1);
       CC[i].set(i, 1);
       for (int j = 0; j < i; j++) {

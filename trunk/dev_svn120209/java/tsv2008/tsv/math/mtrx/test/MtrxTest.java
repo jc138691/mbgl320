@@ -453,7 +453,7 @@ public MtrxTest() {
         minus
         subEquals
         plus
-        addEquals
+        addSelf
         arrayLeftDivide
         arrayLeftDivideEquals
         arrayRightDivide

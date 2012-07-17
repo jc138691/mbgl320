@@ -1,6 +1,7 @@
 package math.mtrx.api.jama;
 import Jama.Matrix;
 import math.mtrx.MtrxToStr;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 
 import javax.utilx.log.Log;
@@ -35,21 +36,6 @@ public double[][] getArray() {
 public double[] getArr1D() {
   log.error("TODO: STOP USING double[] getArr1D()");//since Ejml uses double[], JAMA uses double[][]
   throw new IllegalArgumentException(log.error("Jama does not have getArr1D()"));
-}
-
-public String toString() {
-  return MtrxToStr.toCsv(getArray());
-}
-
-public String toTab(int digs) {
-  return MtrxToStr.toTab(getArray(), digs);
-}
-
-public String toTab() {
-  return MtrxToStr.toTab(getArray());
-}
-public String toGnuplot() {
-  return MtrxToStr.toTab(getArray());
 }
 
 public MtrxJama inverse() {

@@ -1,5 +1,6 @@
 package scatt;
 import flanagan.complex.Cmplx;
+import math.Mathx;
 import math.complex.CmplxMtrx;
 import math.complex.CmplxMtrxDbgView;
 import math.mtrx.api.Mtrx;
@@ -40,14 +41,16 @@ public static double calcSigmaPiFromS(Cmplx s, double scattE) {
 }
 public static CmplxMtrx calcSFromK(Mtrx mK, int openChN) {
   int chNum = openChN;
-  double[][] diag = MtrxFactory.makeOneDiag(chNum).getArr2D();
-  double[][] k = mK.getArr2D();
+//  double[][] diag = MtrxFactory.makeOneDiag(chNum).getArr2D();
+//  double[][] k = mK.getArr2D();
   CmplxMtrx zp = new CmplxMtrx(chNum, chNum); // (1+iK)
   CmplxMtrx zm = new CmplxMtrx(chNum, chNum); // (1-iK)
   for (int r = 0; r < chNum; r++) {
     for (int c = 0; c < chNum; c++) {
-      zp.set(r, c, new Cmplx(diag[r][c],  k[r][c]));
-      zm.set(r, c, new Cmplx(diag[r][c], -k[r][c]));
+//      zp.set(r, c, new Cmplx(diag[r][c],  k[r][c]));
+//      zm.set(r, c, new Cmplx(diag[r][c], -k[r][c]));
+      zp.set(r, c, new Cmplx(Mathx.dlt(r, c),  mK.get(r, c)));
+      zm.set(r, c, new Cmplx(Mathx.dlt(r, c), -mK.get(r, c)));
     }
   }
   CmplxMtrx zmInv = null;

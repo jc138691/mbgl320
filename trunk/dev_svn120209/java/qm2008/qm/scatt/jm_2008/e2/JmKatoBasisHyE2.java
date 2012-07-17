@@ -137,13 +137,14 @@ protected Cmplx[][] calcVecCA() {
   return res;
 }
 private Cmplx calcCAi(int sysIdx, int c) {
-  double[][] X = mthd.jmX.getArr2D();
+//  double[][] X = mthd.jmX.getArr2D();
   int rN = mthd.jmS.getNumRows();
   Cmplx res = new Cmplx();
   int IDX_N = 0; // N'th value is stored in the first column
   for (int r = 0; r < rN; r++) {     //log.dbg("t = ", t);  // Target channels
     JmCh ch = mthd.chArr[r];
-    double xx = X[r][sysIdx];
+//    double xx = X[r][sysIdx];
+    double xx = mthd.jmX.get(r, sysIdx);
     Cmplx f = jmCF[IDX_N][r][c];
 //    Cmplx xjf = -xx * ch.getJnn().getRe() * f;
     Cmplx xjf = f.times(-xx * ch.getJnn().getRe());
@@ -152,11 +153,13 @@ private Cmplx calcCAi(int sysIdx, int c) {
   return res;
 }
 private double calcHESys(LsConf leftConf, int sysIdx) {
-  double[][] sV = mthd.sysConfH.getEigArr(); // sysEigVec
+//  double[][] sV = mthd.sysConfH.getEigArr(); // sysEigVec
+  Mtrx sV = mthd.sysConfH.getEigVec();
   int sN = mthd.sysConfH.getConfArrSize();     // sBasis
   double res = 0;
   for (int sbi = 0; sbi < sN; sbi++) {   // system basis index
-    double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
+//    double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
+    double term = sV.get(sbi, sysIdx);     //log.dbg("term=", term);
     if (Calc.isZero(term))
       continue;
     double a = vHEBasis.get(sbi);         //log.dbg("eng=", eng);

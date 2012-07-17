@@ -64,7 +64,7 @@ public void setupEngResonance_2S() {
 public void setUp() {
   super.setUp();
   log.info("log.info(HeSWaveScatt)");
-//    JmResonE2.log.setDbg();
+//    JmResonE2_bad.log.setDbg();
 //    log.setDbg();
 }
 

@@ -19,8 +19,8 @@ import javax.utilx.log.Log;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,6/06/11,9:55 AM
  */
-public class JmResonE2 {
-  public static Log log = Log.getLog(JmResonE2.class);
+public class JmResonE2_bad {
+  public static Log log = Log.getLog(JmResonE2_bad.class);
   private static int count = 0;
   public static final int RES_INFO_ID = count++;
   public static final int RES_INFO_ENG = count++;
@@ -34,7 +34,7 @@ public class JmResonE2 {
   public static final int RES_INFO_SIZE = count++;
 
   private JmMthdBaseE2 jmm;
-  public JmResonE2(JmMthdBaseE2 method) {
+  public JmResonE2_bad(JmMthdBaseE2 method) {
     this.jmm = method;
   }
 
@@ -102,7 +102,7 @@ public class JmResonE2 {
     return res;
   }
   protected CmplxVec calcResDlts(Mtrx mX, CmplxMtrx mResA) {
-    double[][] X = mX.getArr2D();
+//    double[][] X = mX.getArr2D();
     Cmplx[][] A = mResA.getArr();
     int sN = jmm.getSysBasisSize();
     Cmplx[] res = new Cmplx[sN];
@@ -110,7 +110,8 @@ public class JmResonE2 {
     for (int i = 0; i < sN; i++) {  // iIdx, system state
       Cmplx sum = new Cmplx();
       for (int g = 0; g < cN; g++) {  // gIdx, g - for "little" gamma; target channel/state
-        Cmplx a = A[g][i].times(X[g][i] * X[g][i]);
+//        Cmplx a = A[g][i].times(X[g][i] * X[g][i]);
+        Cmplx a = A[g][i].times(mX.get(g, i) * mX.get(g, i));
         sum = sum.add(a);
       }
       res[i] = sum;                           //log.dbg("X[" + g + ", " + i + "]=", sum);

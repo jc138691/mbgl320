@@ -68,7 +68,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
     method.setSysConfH(sysH);
     method.setTrgtE2(trgtUtils);
     method.setTargetH(trgtPotH);
-    method.setChiOverlap(chiOv);
+    method.setChiOv(chiOv);
     ScttRes res = method.calcForScttEngModel();                  log.dbg("res=", res);
 
     FileX.writeToFile(sEngs.toCSV(), HOME_DIR, "hy"

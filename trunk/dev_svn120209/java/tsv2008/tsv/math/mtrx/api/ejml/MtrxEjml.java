@@ -1,6 +1,7 @@
 package math.mtrx.api.ejml;
 import Jama.Matrix;
 import math.mtrx.MtrxToStr;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import org.ejml.data.DenseMatrix64F;
 import org.ejml.ops.CommonOps;
@@ -29,24 +30,10 @@ public MtrxEjml(double[][] A) {
   log.error("TODO: STOP USING raw double[][], since Ejml uses double[], JAMA uses double[][]");
 }
 
-public double[] getArr1D() {
-  log.error("TODO: STOP USING double[] getArr1D()");//since Ejml uses double[], JAMA uses double[][]
-  return super.getMatrix().getData();
-}
-
-public String toString() {
-  return MtrxToStr.toCsv(getArr2D());
-}
-public String toTab(int digs) {
-  return MtrxToStr.toTab(getArr2D(), digs);
-}
-public String toTab() {
-  return MtrxToStr.toTab(getArr2D());
-}
-public String toGnuplot() {
-  return MtrxToStr.toTab(getArr2D());
-}
-
+//public double[] getArr1D() {
+//  log.error("TODO: STOP USING double[] getArr1D()");//since Ejml uses double[], JAMA uses double[][]
+//  return super.getMatrix().getData();
+//}
 
 public MtrxEjml inverse() {
   return new MtrxEjml(super.invert());
@@ -96,16 +83,16 @@ public MtrxEjml mult(MtrxEjml B) {
 public MtrxEjml transpose () {
   return new MtrxEjml(super.transpose());
 }
-public double[][] getArr2D() {  log.setDbg();
-  log.error("TODO: STOP USING double[][] getArr2D()");//since Ejml uses double[], JAMA uses double[][]
-  int nr = getNumRows();
-  int nc = getNumCols();
-  double[][] res = new double[nr][nc];
-  for (int r = 0; r < nr; r++) {
-    for (int c = 0; c < nc; c++) {
-      res[r][c] = get(r, c);
-    }
-  }
-  return res;
-}
+//private double[][] getArr2D() {  log.setDbg();
+//  log.error("TODO: STOP USING double[][] getArr2D()");//since Ejml uses double[], JAMA uses double[][]
+//  int nr = getNumRows();
+//  int nc = getNumCols();
+//  double[][] res = new double[nr][nc];
+//  for (int r = 0; r < nr; r++) {
+//    for (int c = 0; c < nc; c++) {
+//      res[r][c] = get(r, c);
+//    }
+//  }
+//  return res;
+//}
 }

@@ -17,7 +17,7 @@ public class MtrxInfo extends Mtrx {
     if (colHrds != null) {
       res += colHrds.toString();
     }
-    return MtrxToStr.toTab(getArr2D());
+    return super.toTab();
   }
   public StrVec getColHrds() {
     return colHrds;

@@ -25,24 +25,28 @@ public Mtrx(double[][] A) {
 public Mtrx(Mtrx from) {
   super(from);
 }
-public double[][] getArr2D() {
+//public double[][] getArr2D() {
+//  return super.getArr2D();
+//}
+//public double[] getArr1D() {
+//  return super.getArr1D();
+//}
 
-  return super.getArr2D();
+public String toString() {
+  return MtrxToStr.toCsv(this);
 }
-public double[] getArr1D() {
-  return super.getArr1D();
-}
-
 
 public String toTab(int digs) {
-  return super.toTab(digs);
+  return MtrxToStr.toTab(this, digs);
 }
+
 public String toTab() {
-  return super.toTab();
+  return MtrxToStr.toTab(this);
 }
 public String toGnuplot() {
-  return super.toGnuplot();
+  return MtrxToStr.toTab(this);
 }
+
 
 public int getNumRows() {
   return super.getNumRows();
@@ -104,5 +108,11 @@ public double[] getRowCopy(int r) {
     res[c] = get(r, c);
   }
   return res;
+}
+public void addSelf(int r, int c, double d) {
+  set(r, c, get(r, c) + d);
+}
+public void multSelf(int r, int c, double d) {
+  set(r, c, get(r, c) * d);
 }
 }

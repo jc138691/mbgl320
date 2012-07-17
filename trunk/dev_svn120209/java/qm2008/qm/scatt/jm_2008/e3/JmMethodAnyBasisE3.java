@@ -22,13 +22,15 @@ public JmMethodAnyBasisE3(JmCalcOptE1 calcOpt) {
 }
 //[system i][target gamma][overlap D]
 protected double calcC(int i, int g, int m) { // needed in calcX()
-  double[][] sV = sysConfH.getEigArr(); // sysEigVec
+//  double[][] sV = sysConfH.getEigArr(); // sysEigVec
+  Mtrx sV = sysConfH.getEigVec(); // sysEigVec
   LsConfs sB = sysConfH.getConfs();     // sBasis
 
   ChConf conf = trgtE3.getChConf(g);
   int gt = conf.fromIdx; // gamma in target H
   LsConfHMtrx tH = conf.hMtrx;
-  double[][] tV = tH.getEigArr();  // tEigVec
+//  double[][] tV = tH.getEigArr();  // tEigVec
+  Mtrx tV = tH.getEigVec();  // tEigVec
   LsConfs tB = tH.getConfs(); // tBasis
 
   double res = 0;
@@ -49,7 +51,8 @@ protected double calcC(int i, int g, int m) { // needed in calcX()
     if (sysIdx == null) {// something is very wrong
       throw new IllegalArgumentException(log.error("sysIdx == null"));
     }
-    res += tV[b][gt] * sV[sysIdx][i];  // [14Apr2011] Verified order of indexes tV[b][gt] * sV[sysIdx][i] by comparing HyPoetV3 and HyPoetV4
+//    res += tV[b][gt] * sV[sysIdx][i];  // [14Apr2011] Verified order of indexes tV[b][gt] * sV[sysIdx][i] by comparing HyPoetV3 and HyPoetV4
+    res += tV.get(b, gt) * sV.get(sysIdx, i);  // [14Apr2011] Verified order of indexes tV[b][gt] * sV[sysIdx][i] by comparing HyPoetV3 and HyPoetV4
   }
   return res;
 }

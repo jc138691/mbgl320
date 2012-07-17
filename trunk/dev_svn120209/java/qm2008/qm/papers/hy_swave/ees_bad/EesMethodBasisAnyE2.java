@@ -77,7 +77,8 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   Shell shC = new Shell(ID_C, psiC, L);
 
   // getting relevant sysEigVec
-  double[][] sV = sysConfH.getEigArr(); // sysEigVec
+//  double[][] sV = sysConfH.getEigArr(); // sysEigVec
+  Mtrx sV = sysConfH.getEigVec(); // sysEigVec
   LsConfs sB = sysConfH.getConfs();     // sBasis
   SysE2 sysE2 = (SysE2)sysConfH.getSysH();
 
@@ -88,7 +89,8 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
   int gt = conf.fromIdx; // gamma in target H
   LsConfHMtrx tH = conf.hMtrx;
 
-  double[][] tV = tH.getEigArr();  // tEigVec
+//  double[][] tV = tH.getEigArr();  // tEigVec
+  Mtrx tV = tH.getEigVec();  // tEigVec
   LsConfs tB = tH.getConfs(); // tBasis
 
   Energy eng;
@@ -98,7 +100,8 @@ protected Dble2 calcSC(FuncArr psi, double scattE, int sysIdx) {
     for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
       LsConf sysConf = sB.get(sbi);
 
-      double term = tV[tbi][gt] * sV[sbi][sysIdx];     log.dbg("term=", term);
+//      double term = tV[tbi][gt] * sV[sbi][sysIdx];     log.dbg("term=", term);
+      double term = tV.get(tbi, gt) * sV.get(sbi, sysIdx);     log.dbg("term=", term);
       if (Calc.isZero(term))
         continue;
       Ls sLs = sysConf.getTotLS();

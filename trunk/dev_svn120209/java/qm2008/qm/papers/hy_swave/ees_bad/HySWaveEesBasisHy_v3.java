@@ -68,12 +68,12 @@ public void calc(int newNt) {      log.setDbg();
   LsConfHMtrx sysH = makeSysH(SYS_LS, slater);
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sEngs=", sEngs);
 
-//  EesMethodBasisAnyE2 method = new EesMethodBasisAnyE2(calcOpt);
+  EesMethodBasisAnyE2 method = new EesMethodBasisAnyE2(calcOpt);
 //  EesMthdBasisHyE2_v1_bad method = new EesMthdBasisHyE2_v1_bad(calcOpt);
 //  EesMthdBasisHyE2_v2_bad method = new EesMthdBasisHyE2_v2_bad(calcOpt);
 //  EesMthdBasisHyE2_v3_leftXi_bad method = new EesMthdBasisHyE2_v3_leftXi_bad(calcOpt);
 //  EesMthdBasisHyE2_v3b_AllE_bad method = new EesMthdBasisHyE2_v3b_AllE_bad(calcOpt);
-  EesMthdBasisHyE2_v3c_limitE_bad method = new EesMthdBasisHyE2_v3c_limitE_bad(calcOpt);
+//  EesMthdBasisHyE2_v3c_limitE_bad method = new EesMthdBasisHyE2_v3c_limitE_bad(calcOpt);
   method.setTrgtE2(trgt);
   method.setSysEngs(sEngs);
   method.setSysConfH(sysH);
