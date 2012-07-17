@@ -220,18 +220,21 @@ protected void calcSdcsFromW(int scttIdx, ScttRes res, int showNum) {
   }
 }
 protected CmplxMtrx calcWCJC_v1_ok(Mtrx mW) {
-  double[][] W = mW.getArr2D();
+//  double[][] W = mW.getArr2D();
   int tN = mW.getNumRows();
   CmplxMtrx res = new CmplxMtrx(tN, tN);
   for (int t = 0; t < tN; t++) {
     for (int t2 = 0; t2 < tN; t2++) {
       JmCh ch2 = chArr[t2];
-      log.dbg("W[t="+t+"][t2="+t2+"]", W[t][t2]);
+      double w = mW.get(t, t2);
+//      log.dbg("W[t="+t+"][t2="+t2+"]", W[t][t2]);
+      log.dbg("W[t="+t+"][t2="+t2+"]", w);
       log.dbg("ch2.getJnn()=", ch2.getJnn());
       log.dbg("ch2.getCn()=", ch2.getCn());
       log.dbg("ch2.getCn1()=", ch2.getCn1());
       log.dbg("ch2.getCnn1()=", ch2.getCnn1());
-      Cmplx wcj = ch2.getJnn().times(W[t][t2]).mult(ch2.getCnn1());   log.dbg("wcj=", wcj);
+//      Cmplx wcj = ch2.getJnn().times(W[t][t2]).mult(ch2.getCnn1());   log.dbg("wcj=", wcj);
+      Cmplx wcj = ch2.getJnn().times(w).mult(ch2.getCnn1());   log.dbg("wcj=", wcj);
       Cmplx wcjc = wcj.add(new Cmplx(Mathx.dlt(t, t2)));              log.dbg("wcjc[t="+t+"][t2="+t2+"]=", wcjc);
       res.set(t, t2, wcjc);
     }
@@ -239,14 +242,16 @@ protected CmplxMtrx calcWCJC_v1_ok(Mtrx mW) {
   return res;
 }
 protected Mtrx calcWcjc(Mtrx mW) {
-  double[][] W = mW.getArr2D();
+//  double[][] W = mW.getArr2D();
   int n = mW.getNumRows();
   Mtrx res = new Mtrx(n, n);
   for (int r = 0; r < n; r++) {
     for (int c = 0; c < n; c++) {
       JmCh cCh = chArr[c];
+      double w = mW.get(r, c);
       // NOTE! using *c_N / c_{N-1}; i.e. 1/c_{N-1} needs to be corrected when calculating R
-      double wcj = cCh.getJnn().getRe() * W[r][c] * cCh.getCnn1().getRe();
+//      double wcj = cCh.getJnn().getRe() * W[r][c] * cCh.getCnn1().getRe();
+      double wcj = cCh.getJnn().getRe() * w * cCh.getCnn1().getRe();
       double wcjc = wcj + Mathx.dlt(r, c);
 //      log.dbg("W[r="+r+"][c="+c+"]", W[r][c]);
 //      log.dbg("cCh.getJnn()=", cCh.getJnn());
@@ -343,7 +348,7 @@ protected void loadCorrCn1(Mtrx mK) {
   }
 }
 protected Mtrx calcWsjs(Mtrx mW, int openN) {
-  double[][] W = mW.getArr2D();
+//  double[][] W = mW.getArr2D();
   int tN = mW.getNumRows();
   Mtrx res = new Mtrx(tN, openN);
   for (int t = 0; t < tN; t++) {
@@ -352,7 +357,8 @@ protected Mtrx calcWsjs(Mtrx mW, int openN) {
       if (!ch2.isOpen()) {
         throw new IllegalArgumentException(log.error("!ch2.isOpen()"));
       }
-      double wsj = ch2.getJnn().getRe() * W[t][t2] * ch2.getSn();
+//      double wsj = ch2.getJnn().getRe() * W[t][t2] * ch2.getSn();
+      double wsj = ch2.getJnn().getRe() * mW.get(t, t2) * ch2.getSn();
       double s = ch2.getSn1() * Mathx.dlt(t, t2);
 //      if (ch2.getEng() > 0) { // DEBUG
 //        s = 0;
@@ -363,31 +369,8 @@ protected Mtrx calcWsjs(Mtrx mW, int openN) {
   }
   return res;
 }
-protected double calcDeltaSysIdx_bad(Mtrx mW) {
-  double[][] W = mW.getArr2D();
-  int tN = mW.getNumRows();
-  double res = 0;
-  for (int t = 0; t < tN; t++) {
-    JmCh ch = chArr[t];
-    double d = ch.getJnn().getRe() * W[t][t] * ch.getCnn1().getRe();
-    res += d;
-  }
-  return res;
-}
-protected Vec calcAVecSysIdx_bad(int sysIdx, int tN) {
-  double[][] X = jmX.getArr2D();
-  Vec res = new Vec(tN);
-  for (int t = 0; t < tN; t++) {
-    JmCh ch = chArr[t];
-    double a = ch.getJnn().getRe() * X[t][sysIdx] * ch.getQn1();
-    double b = ch.getSnn1() - ch.getCnn1().getRe();
-    double c = a * b;
-    res.set(t, c);
-  }
-  return res;
-}
 protected Mtrx calcW(int calcNum) {
-  double[][] X = jmX.getArr2D();
+//  double[][] X = jmX.getArr2D();
   int sN = getSysBasisSize();
   int tN = calcNum;
   Mtrx res = new Mtrx(tN, tN);
@@ -400,7 +383,8 @@ protected Mtrx calcW(int calcNum) {
 //          continue;
 //        }
         double ei = sysE[i];
-        double xx = X[t][i] * X[t2][i];     //log.dbg("xx=", xx);
+//        double xx = X[t][i] * X[t2][i];     //log.dbg("xx=", xx);
+        double xx = jmX.get(t, i) * jmX.get(t2, i);     //log.dbg("xx=", xx);
         if (Double.compare(ei, sysTotE) == 0) {
 //          double eps = calcZeroG(i, sysE);
           throw new IllegalArgumentException(log.error("sysE[i="+i+"]=sysTotE=" + sysTotE));

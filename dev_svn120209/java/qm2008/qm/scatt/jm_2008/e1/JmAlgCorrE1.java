@@ -75,33 +75,6 @@ private void addSumJmTail(Mtrx mR) {
     }
   }
 }
-private void addSumJmAll_BAD(Mtrx mR) {
-  int rN = mthd.jmR.getNumRows();
-  int cN = mthd.jmR.getNumCols();
-  double[][] res = mR.getArr2D();
-  for (int r = 0; r < rN; r++) {
-    Vec psiR = sinWfs.get(r);
-    for (int c = 0; c < cN; c++) {
-      double sum = 0;
-      for (int R2 = 0; R2 < rN; R2++) {
-        Vec sinWf = sinDelN.get(R2);
-//        Vec cosWf = cosDelN.get(R2);
-//        double fb = mthd.calcPotInt(psiR, psiR);
-        double sinV = mthd.calcPotInt(psiR, sinWf);
-//        double sinV = mthd.calcPotInt(psiR, psiR);
-//        double cosV = mthd.calcPotInt(psiR, cosWf);
-
-        double tanX = mthd.jmR.get(R2, c);
-        double cosX = Calc.cosFromTan(tanX);
-        double sinX = Calc.sinFromCos(cosX);
-        double f = sinV * cosX;
-//        double f = sinV * cosX + cosV * sinX;
-        sum += f;
-      }
-      res[r][c] += sum;
-    }
-  }
-}
 private Mtrx calcSumA() {
   FuncArr sWfs = mthd.getWfsE1();
 
