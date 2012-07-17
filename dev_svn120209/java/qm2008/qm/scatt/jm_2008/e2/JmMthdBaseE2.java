@@ -77,7 +77,7 @@ private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
   int prntNum = calcPrntChNum();
   jmX = calcX();                              log.dbg("X=", new MtrxDbgView(jmX));
 
-  new JmResonE2(this).calc(res, jmX);
+//  new JmResonE2_bad(this).calc(res, jmX);
   Mtrx mCs = new Mtrx(eN, prntNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
   Mtrx mR = new Mtrx(eN, prntNum + 1);
   Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
@@ -400,7 +400,7 @@ protected Mtrx calcW(int calcNum) {
   return res;
 }
 protected Mtrx calcW_DBG(int calcNum) {
-  double[][] X = jmX.getArr2D();
+//  double[][] X = jmX.getArr2D();
   int sN = getSysBasisSize();
   int tN = calcNum;
   Mtrx res = new Mtrx(tN, tN);
@@ -413,7 +413,8 @@ protected Mtrx calcW_DBG(int calcNum) {
 //          continue;
 //        }
         double ei = sysE[i];
-        double xx = X[t][i] * X[t2][i];     //log.dbg("xx=", xx);
+//        double xx = X[t][i] * X[t2][i];     //log.dbg("xx=", xx);
+        double xx = jmX.get(t, i) * jmX.get(t2, i);     //log.dbg("xx=", xx);
         if (Double.compare(ei, sysTotE) == 0) {
 //          double eps = calcZeroG(i, sysE);
           throw new IllegalArgumentException(log.error("sysE[i="+i+"]=sysTotE=" + sysTotE));

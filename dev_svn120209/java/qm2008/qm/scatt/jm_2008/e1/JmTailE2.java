@@ -102,13 +102,14 @@ protected double[][] calcVecA() {
   return res;
 }
 private double calcAsc(int s, int c) {
-  double[][] X = mthd.jmX.getArr2D();
+//  double[][] X = mthd.jmX.getArr2D();
   int rN = mthd.jmR.getNumRows();
   double sum = 0;
   int IDX_N = 0; // N'th value is stored in the first column
   for (int r = 0; r < rN; r++) {     //log.dbg("r = ", r);
     JmCh rCh = mthd.chArr[r];
-    double xx = X[r][s];             //log.dbg("xx = ", xx);
+//    double xx = X[r][s];             //log.dbg("xx = ", xx);
+    double xx = mthd.jmX.get(r, s);             //log.dbg("xx = ", xx);
     double f = jmF[IDX_N][r][c];
     double xjf = -xx * rCh.getJnn().getRe() * f;  //log.dbg("xjf = ", xjf);
     sum += xjf;       //log.dbg("sum=", sum);

@@ -42,7 +42,6 @@ public void setUp() {
   log.info("log.info(PotScattEes)");
 //    JmMthdE1_OLD.log.setDbg();
   PBornDirScattTest.log.setDbg();
-  EaMethodE1_all_engs_wrong.log.setDbg();
   log.setDbg();
 }
 public void runJob() {

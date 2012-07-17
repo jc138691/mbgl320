@@ -23,7 +23,8 @@ X_i^{\alpha} = \sum_{j}  \delta_{j_1,\alpha} C_{ij} A_j D_{j_2,N-1},
 */
 @Override
 protected Mtrx calcX() {
-  double[][] C = sysConfH.getEigVec().getArr2D();      log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
+//  double[][] C = sysConfH.getEigVec().getArr2D();      log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
+  Mtrx C = sysConfH.getEigVec();      log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
   double[] D = getOverD().getArr();
   log.dbg("D_j2=", getOverD());
   LsConfs sysBasis = sysConfH.getConfs();
@@ -42,11 +43,13 @@ protected Mtrx calcX() {
           continue;
         double dir = 0;  // direct
         if (j1 == t) {
-          dir = C[j][i] * D[j2];   // NOTE!!! [j, i]
+//          dir = C[j][i] * D[j2];   // NOTE!!! [j, i]
+          dir = C.get(j, i) * D[j2];   // NOTE!!! [j, i]
           sum += dir;                                     //log.dbg("sum = ", sum);
         }                                           //log.dbg("di = ", di);
         if (j2 == t) {
-          dir = C[j][i] * D[j1];   // NOTE!!! [j, i]
+//          dir = C[j][i] * D[j1];   // NOTE!!! [j, i]
+          dir = C.get(j, i) * D[j1];   // NOTE!!! [j, i]
           sum += dir;                                     //log.dbg("sum = ", sum);
         }                                           //log.dbg("di = ", di);
       }

@@ -16,15 +16,16 @@ import javax.utilx.log.Log;
  */
 public class JmMethodFanoE2 extends JmMthdBasisHyE2 {
   public static Log log = Log.getLog(JmMethodFanoE2.class);
-  private ConfOvMtrx chiOverlap;
+  private ConfOvMtrx chiOv;
   private PotHMtrx targetH;
 
   public JmMethodFanoE2(JmCalcOptE1 potOpt) {
     super(potOpt);
   }
 
-  protected double[][] calcC() {
-    double[][] sC = sysConfH.getEigVec().getArr2D();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
+  protected Mtrx calcC() {
+//    double[][] sC = sysConfH.getEigVec().getArr2D();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
+    Mtrx sC = sysConfH.getEigVec();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
     return sC;
   }
 
@@ -32,10 +33,12 @@ public class JmMethodFanoE2 extends JmMthdBasisHyE2 {
   @Override protected Mtrx calcX() {
     // [for JmMethodFanoX] Next line was MOVED to calcC();
 //    double[][] sC = sysConfH.getEigVec().getArr2D();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
-    double[][] sC = calcC();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
+//    double[][] sC = calcC();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
+    Mtrx sC = calcC();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));
 
-    double[][] chiOv = chiOverlap.getArr2D();
-    double[][] tC = targetH.getEigVec().getArr2D();  log.dbg("D_ij=", new MtrxDbgView(targetH.getEigVec()));
+//    double[][] chiOv = this.chiOv.getArr2D();
+//    double[][] tC = targetH.getEigVec().getArr2D();  log.dbg("D_ij=", new MtrxDbgView(targetH.getEigVec()));
+    Mtrx tC = targetH.getEigVec();  log.dbg("D_ij=", new MtrxDbgView(targetH.getEigVec()));
     int sN = getSysBasisSize();
     int cN = getChNum();
     Mtrx res = new Mtrx(cN, sN);
@@ -44,8 +47,10 @@ public class JmMethodFanoE2 extends JmMthdBasisHyE2 {
         double sum = 0;
         for (int t2 = 0; t2 < cN; t2++) {
           for (int j = 0; j < sN; j++) {
-            double c = sC[j][i] * tC[t2][g]; //log.dbg("c = ", c); // note order [j][i]
-            double d = chiOv[j][t2];         //log.dbg("d = ", d);
+//            double c = sC[j][i] * tC[t2][g]; //log.dbg("c = ", c); // note order [j][i]
+            double c = sC.get(j, i) * tC.get(t2, g); //log.dbg("c = ", c); // note order [j][i]
+//            double d = chiOv[j][t2];         //log.dbg("d = ", d);
+            double d = chiOv.get(j, t2);         //log.dbg("d = ", d);
             sum += (c * d);                  //log.dbg("sum = ", sum);
           }
         }
@@ -55,8 +60,8 @@ public class JmMethodFanoE2 extends JmMthdBasisHyE2 {
     return res;
   }
 
-  public void setChiOverlap(ConfOvMtrx chiOverlap) {
-    this.chiOverlap = chiOverlap;
+  public void setChiOv(ConfOvMtrx chiOv) {
+    this.chiOv = chiOv;
   }
 
   public void setTargetH(PotHMtrx targetH) {

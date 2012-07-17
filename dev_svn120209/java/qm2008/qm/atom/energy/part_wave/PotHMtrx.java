@@ -59,13 +59,14 @@ public void loadEigVec() {
 
   // f_i = SUM_j C_ji * lgrrN(j)
   EigenSymm thisEig = eigSymm();
-  Mtrx v = thisEig.getV();
-  double[][] C = v.getArr2D();
+  Mtrx C = thisEig.getV();
+//  double[][] C = v.getArr2D();
   for (int i = 0; i < basis.size(); i++) {
     FuncVec f_i = new FuncVec(x);
     for (int j = 0; j < basis.size(); j++) {
 //        f_i.addMultSafe(C[i][j], lgrrN.getFunc(j));  // this is WRONG!!!
-      f_i.addMultSafe(C[j][i], basis.getFunc(j));   // this is correct!!!
+//      f_i.addMultSafe(C[j][i], basis.getFunc(j));   // this is correct!!!
+      f_i.addMultSafe(C.get(j, i), basis.getFunc(j));   // this is correct!!!
     }
     eigVec.set(i, f_i);
   }

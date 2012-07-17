@@ -9,13 +9,13 @@ import javax.utilx.log.Log;
  */
 public class MtrxFactory {
 public static Log log = Log.getLog(MtrxFactory.class);
-public static Mtrx makeOneDiag(int size) {
-  Mtrx res = new Mtrx(size, size);
-  for (int i = 0; i < size; i++) {
-      res.set(i, i, 1.);
-  }
-  return res;
-}
+//public static Mtrx makeOneDiag(int size) {
+//  Mtrx res = new Mtrx(size, size);
+//  for (int i = 0; i < size; i++) {
+//      res.set(i, i, 1.);
+//  }
+//  return res;
+//}
 public static Mtrx makeFromTwoVecs(Vec vR, Vec vC) {
   Mtrx res = new Mtrx(vR.size(), vC.size());
   for (int r = 0; r < vR.size(); r++) {
@@ -29,12 +29,11 @@ public static Mtrx makeFromTwoVecs(Vec vR, Vec vC) {
 }
 
 public static void makeSymmByAvr(Mtrx m, int openN) {
-  double[][] arr = m.getArr2D();
   for (int r = 0; r < openN; r++) {
     for (int c = 0; c < r; c++) {
-      double avr = 0.5 * (arr[r][c] + arr[c][r]);
-      arr[r][c] = avr;
-      arr[c][r] = avr;
+      double avr = 0.5 * (m.get(r, c) + m.get(c, r));
+      m.set(r, c, avr);
+      m.set(c, r, avr);
     }
   }
 }

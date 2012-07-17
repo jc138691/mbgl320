@@ -155,17 +155,17 @@ public final void mul(GMatrix m1,
       m1 - The matrix in the multiplication
       v1 - The vector that is multiplied
  */
-public void mult(double[][] m, Vec v2) {
-  int nRows = m.length;
-  int nCols = m[0].length;
-  if (size() != nRows) {
-    throw new IllegalArgumentException(log.error("V1=M*V2 : V1.size()="+ size() + ", M.nRows=" + nRows));
-  }
-  if (v2.size() != nCols) {
-    throw new IllegalArgumentException(log.error("V1=M*V2 : V2.size()="+ v2.size() + ", M.nCols=" + nCols));
-  }
-  FastLoop.mul(arr, m, v2.getArr());
-}
+//public void mult(double[][] m, Vec v2) {
+//  int nRows = m.length;
+//  int nCols = m[0].length;
+//  if (size() != nRows) {
+//    throw new IllegalArgumentException(log.error("V1=M*V2 : V1.size()="+ size() + ", M.nRows=" + nRows));
+//  }
+//  if (v2.size() != nCols) {
+//    throw new IllegalArgumentException(log.error("V1=M*V2 : V2.size()="+ v2.size() + ", M.nCols=" + nCols));
+//  }
+//  FastLoop.mul(arr, m, v2.getArr());
+//}
 
 public void addSafe(Vec from) {
   if (size() >= from.size()) {

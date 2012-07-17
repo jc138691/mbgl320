@@ -51,7 +51,4 @@ public Mtrx getEigVec(boolean overwrite) {
   EigenSymm thisEig = eig(overwrite);
   return thisEig.getV();
 }
-public double[][] getEigArr() {
-  return getEigVec().getArr2D();
-}
 }

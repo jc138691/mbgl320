@@ -8,6 +8,7 @@ import math.Mathx;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.arr.IFuncArr;
+import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.e2.ScttMthdBaseE2;
@@ -54,13 +55,15 @@ protected void loadTrialWfs(double sTotE, int chNum) {
 protected Dble3 calcSC(ShPair confS, ShPair confC, ShPair pXi, int sysIdx) {
   Dble3 res = new Dble3();
   // getting relevant sysEigVec
-  double[][] sV = sysConfH.getEigArr(); // sysEigVec
+//  double[][] sV = sysConfH.getEigArr(); // sysEigVec
+  Mtrx sV = sysConfH.getEigVec(); // sysEigVec
   LsConfs sB = sysConfH.getConfs();     // sBasis
   SysE2 sysE2 = (SysE2)sysConfH.getSysH();
   Energy eng;
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
     LsConf sysConf = sB.get(sbi);
-    double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
+//    double term = sV[sbi][sysIdx];     //log.dbg("term=", term);
+    double term = sV.get(sbi, sysIdx);     //log.dbg("term=", term);
     if (Calc.isZero(term))
       continue;
 

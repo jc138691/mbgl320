@@ -63,8 +63,8 @@ private FuncArr calcDensity(int maxNum) {
   FuncVec[][] confArr = new FuncVec[this.confs.size()][this.confs.size()];
   boolean[][] doneArr = new boolean[this.confs.size()][this.confs.size()];
 
-  Mtrx v = eigSymm().getV();
-  double[][] C = v.getArr2D();
+  Mtrx C = eigSymm().getV();
+//  double[][] C = v.getArr2D();
   double norm = 1. / sysH.getNumElec();
   for (int r = 0; r < size; r++) {
     if ((10* this.confs.size())%(r+1) == 0) {
@@ -72,7 +72,8 @@ private FuncArr calcDensity(int maxNum) {
     }
     FuncVec f_i = new FuncVec(x);
     for (int j = 0; j < this.confs.size(); j++) {
-      double cij = C[j][r];  // [j][i] is correct, see  PotHMtrx;  // BY ROW is correct!   see HydrogenJUnit.test_2s
+//      double cij = C[j][r];  // [j][i] is correct, see  PotHMtrx;  // BY ROW is correct!   see HydrogenJUnit.test_2s
+      double cij = C.get(j, r);  // [j][i] is correct, see  PotHMtrx;  // BY ROW is correct!   see HydrogenJUnit.test_2s
       for (int j2 = 0; j2 < this.confs.size(); j2++) {
         FuncVec conf = confArr[j][j2];
         if (conf == null  &&  !doneArr[j][j2]) {
@@ -84,7 +85,8 @@ private FuncArr calcDensity(int maxNum) {
         }
         if (conf == null)
           continue;
-        double c2 = C[j2][r];  // [j][i] is correct, see  PotHMtrx
+//        double c2 = C[j2][r];  // [j][i] is correct, see  PotHMtrx
+        double c2 = C.get(j2, r);  // [j][i] is correct, see  PotHMtrx
         f_i.addMultSafe(cij * c2, conf);
       }
     }

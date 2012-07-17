@@ -1,5 +1,4 @@
 package scatt.jm_2008.e1;
-import math.Calc;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.api.Mtrx;
@@ -58,7 +57,7 @@ private void addSumJmTail(Mtrx mR) {
   int jN = jmF.length;
   int N = mthd.getN();
 
-  double[][] res = mR.getArr2D();
+//  double[][] res = mR.getArr2D();
   for (int r = 0; r < rN; r++) {
     Vec psiR = sinWfs.get(r);
     for (int c = 0; c < cN; c++) {
@@ -71,7 +70,8 @@ private void addSumJmTail(Mtrx mR) {
           sum += (f * v);
         }
       }
-      res[r][c] += sum;
+//      res[r][c] += sum;
+      mR.addSelf(r, c, sum);
     }
   }
 }
@@ -101,7 +101,7 @@ private Mtrx calcSumA() {
 private Mtrx loadNorms(Mtrx mR) {
   int rN = mthd.jmR.getNumRows();
   int cN = mthd.jmR.getNumCols();
-  double[][] res = mR.getArr2D();
+//  double[][] res = mR.getArr2D();
   for (int r = 0; r < rN; r++) { // channel ROWS
     JmCh chR = mthd.chArr[r];
     double rSq = chR.getSqrtAbsMom();
@@ -111,9 +111,11 @@ private Mtrx loadNorms(Mtrx mR) {
       double cSq = chC.getSqrtAbsMom();
 
       double norm = -2. / cSq;
-      res[r][c] *= norm;
+//      res[r][c] *= norm;
+      mR.multSelf(r, c, norm);
     }
   }
-  return new Mtrx(res);
+//  return new Mtrx(res);
+  return mR;
 }
 }
