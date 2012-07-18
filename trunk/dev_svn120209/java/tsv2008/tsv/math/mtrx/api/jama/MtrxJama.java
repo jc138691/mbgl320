@@ -26,17 +26,17 @@ public MtrxJama(Matrix m) {
   super(m);
 }
 
-public double[][] getArr2D() {
-  log.error("TODO: STOP USING double[][] getArr2D()");//since Ejml uses double[], JAMA uses double[][]
-  return super.getArray();
-}
-public double[][] getArray() {
-  throw new IllegalArgumentException(log.error("Use Mtrx.getArr2D"));
-}
-public double[] getArr1D() {
-  log.error("TODO: STOP USING double[] getArr1D()");//since Ejml uses double[], JAMA uses double[][]
-  throw new IllegalArgumentException(log.error("Jama does not have getArr1D()"));
-}
+//public double[][] getArr2D() {
+//  log.error("TODO: STOP USING double[][] getArr2D()");//since Ejml uses double[], JAMA uses double[][]
+//  return super.getArray();
+//}
+//public double[][] getArray() {
+//  throw new IllegalArgumentException(log.error("Use Mtrx.getArr2D"));
+//}
+//public double[] getArr1D() {
+//  log.error("TODO: STOP USING double[] getArr1D()");//since Ejml uses double[], JAMA uses double[][]
+//  throw new IllegalArgumentException(log.error("Jama does not have getArr1D()"));
+//}
 
 public MtrxJama inverse() {
   return new MtrxJama(super.inverse());

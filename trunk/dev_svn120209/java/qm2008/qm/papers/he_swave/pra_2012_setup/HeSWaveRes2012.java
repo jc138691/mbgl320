@@ -41,6 +41,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
 }
 
 public void runJob() {
+  LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 //    // Nt= 80
 //    int currN = 81;
 //    LCR_FIRST = -7;
@@ -49,18 +50,17 @@ public void runJob() {
 
 //    // Nt= 70
 //    int currN = 71;
-//    LCR_FIRST = -5;
 //    LCR_N = 1201;
 //    R_LAST = 330;
 
   // upto N=50
   // see HeAtomMM_try
-  LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
-  LCR_N = 3001;  //901
-  R_LAST = 300;   // 200 for N=30
+//  LCR_N = 3001;  //901
+//  R_LAST = 300;   // 200 for N=30
+  LCR_N = 1001;  //901
+  R_LAST = 100;   // 200 for N=30
 
   // upto N=40
-//    LCR_FIRST = -5;
 //    LCR_N = 701;
 //    R_LAST = 200;
 
@@ -145,8 +145,8 @@ public void runJob() {
 //    LAMBDA = 1.881; // best for Nc=12, Nt=12  , n_gamma=5
   LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
   Nc = 10;
-  int currNt = 20;
-  int currN = 21;  // 35-done; 50-done;
+  int currNt = 12;
+  int currN = 20;  // 35-done; 50-done;
 
 //    LAMBDA = 1.807; // best for Nc=11, Nt=11  , n_gamma=5
 //    Nc = 11;

@@ -103,8 +103,7 @@ public static void assertFloor(String mssg, double floor, double actual, double 
 public static void assertCeil(String mssg, double ceil, double actual, double delta) {
   if (Double.compare(ceil, actual) == 0)
     return;
-  if (ceil  < actual
-    || !(Math.abs(ceil - actual) <= delta))
+  if (actual - ceil > delta)
     failNotEquals(mssg, new Double(ceil), new Double(actual));
 }
 

@@ -13,6 +13,7 @@ import math.mtrx.api.Mtrx;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
+import papers.he_swave.pra_2012_setup.HeSWaveRes2012;
 import qm_station.QMSProject;
 import scatt.jm_2008.e3.JmMethodAnyBasisE3;
 import scatt.jm_2008.jm.ScttRes;
@@ -39,58 +40,55 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     log.setDbg();
   }
   public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-    project = QMSProject.makeInstance("HeSWaveBasisHeIon", "110606");
+    MODEL_NAME = "HeSModelBasisHeIon";
+    project = QMSProject.makeInstance(MODEL_NAME, "110606");
     TARGET_Z = AtomHe.Z;
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
-    MODEL_NAME = "HeSModelBasisHeIon";
-    MODEL_DIR = "HeSModelBasisHeIon";
+    MODEL_DIR = MODEL_NAME;
+
+    CALC_DENSITY = false;
+    CALC_DENSITY_MAX_NUM = 2;
+    SAVE_TRGT_ENGS = true;
+    H_OVERWRITE = true;
+
     LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 
     // Note: run one at a time as only one set of result files is produced
 //    setupEngAu_3();
 //    setupEngAu_4();
-//    setupEng01_1000eV_SLOW();
+    setupEng01_1000eV_SLOW();
+//    HeSWaveRes2012.setupResEngs_SLOW();
 //    setupEng1_100eV_SLOW();
 //    setupEng01_1000eV_FAST();
 //    setupEng10_30eV();
-    setupEngResonance_2S();
+//    setupEngResonance_2S();
 //    setupEngTICS();
 //    setupEngSDCS();
     runJob();
   }
 
   public void runJob() {
-//    // Nt= 80
-//    int currN = 81;
-//    LCR_FIRST = -7;
-//    LCR_N = 1601;
-//    R_LAST = 450;
+    int currN = 10;
+    LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
+//    LCR_N = 2001;//    N= 80
+//    R_LAST = 450;//    N= 80
+//    LCR_N = 2001;//    N= 70
+//    R_LAST = 400;//    N= 70
+//    LCR_N = 2001;//    N= 60
+//    R_LAST = 400;//    N= 60
+//    currN = 50;
+//    LCR_N = 1001;//    N= 50
+//    R_LAST = 250;//    N= 50
+    currN = 40;
+    LCR_N = 801;//    N= 40
+    R_LAST = 200;//    N= 40
 
-//    // Nt= 70
-//    int currN = 71;
-//    LCR_FIRST = -5;
-//    LCR_N = 1201;
-//    R_LAST = 330;
-
-    // upto N=50
-//    LCR_FIRST = -5;  //-5
-//    LCR_N = 1001;  //901
-//    R_LAST = 250;
-
-    // upto N=40
-    LCR_FIRST = -5;
-    LCR_N = 701;
-    R_LAST = 200;
-
-    Nc = 2;
+    Nc = 1;
     int currNt = 20;
-    int currN = 21;
 //    int currN = currNt + 1;
 
     SPIN = Spin.ELECTRON;
     calc(currN, currNt);
-//    calc(12, 11);
-//    calc(13, 12);
 //    calc(14, 13);
   }
 

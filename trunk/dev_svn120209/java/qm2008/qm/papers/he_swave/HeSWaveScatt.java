@@ -7,7 +7,7 @@ import atom.e_2.SysE2;
 import atom.e_2.SysE2OldOk;
 import atom.e_2.SysHe;
 import atom.e_2.SysHeOldOk;
-import atom.e_2.test.HeClementiTest;
+import atom.e_2.test.AtomHeTest;
 import atom.e_2.test.HeClementiZetaTest;
 import atom.e_3.AtomShModelE3;
 import atom.e_3.SysE3;
@@ -263,7 +263,7 @@ protected void jmHeTestOk() {
     if (!new PotEigVecLcrTest(AtomHe.Z, orthNt).ok()) return;
     if (!new Wign3jTest().ok()) return;
     if (!new Wign6jTest().ok()) return;
-    if (!new HeClementiTest().ok()) return;
+    if (!new AtomHeTest().ok()) return;
     if (!new HeClementiZetaTest(quadr).ok()) return;
   }
   FlowTest.unlockMaxErr();                             // FREE MAX ERR
@@ -376,13 +376,13 @@ protected void calcHe(SlaterLcr slater) {    // HELIUM TEST
   log.dbg("oldEngs=", new VecDbgView(oldEngs));
   assertCeilRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, oldEngs.get(0), 2e-4);
   assertCeilRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, oldEngs.get(1), 3e-5);
-//    assertFloorRel("E_1s3s_1S", HeSWaveAtom.E_1s3s_1S, etFS1.get(2), 4e-4);
+  assertCeilRel("E_1s3s_1S", HeSWaveAtom.E_1s3s_1S, oldEngs.get(2), 4e-4);
 
   Vec sysEngs = sysH.getEigEngs();
   log.dbg("sysEngs=", new VecDbgView(sysEngs));
-//    assertFloorRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, etS1.get(0), 2e-4);
-//    assertFloorRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, etS1.get(1), 3e-5);
-//    assertFloorRel("E_1s3s_1S", HeSWaveAtom.E_1s3s_1S, etS1.get(2), 4e-4);
+  assertCeilRel("E_1s1s_1S", HeSWaveAtom.E_1s1s_1S, sysEngs.get(0), 2e-4);
+  assertCeilRel("E_1s2s_1S", HeSWaveAtom.E_1s2s_1S, sysEngs.get(1), 3e-5);
+  assertCeilRel("E_1s3s_1S", HeSWaveAtom.E_1s3s_1S, sysEngs.get(2), 4e-4);
 
   Ls S3 = new Ls(0, Spin.TRIPLET);
   LsConfs arrS3 = ConfArrFactoryE2.makeSModelE2(S3, orthNt, orthNt);
