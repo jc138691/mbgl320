@@ -26,7 +26,7 @@ public EigenEjml(MtrxEjml mtrx) {
   }
   decompOk = decompose(mtrx.getMatrix());
 }
-public EigenEjml(Mtrx mtrx, boolean overwrite) {
+public EigenEjml(MtrxEjml mtrx, boolean overwrite) {
   super(true);                                   //log.setDbg();
   this.mtrx = mtrx;                              //log.dbg("mtrx=\n", new MtrxDbgView(mtrx));
   if (mtrx.getNumElements() > GC_TEST)  {   // try cleaning up for a large matrix
@@ -76,11 +76,11 @@ public Mtrx getV () {
 }
 
 // see EigenJama
-public MtrxEjml getD () {
+public MtrxEjml getD() {
   if (mD == null) {
     vals = getRealEVals();
     int n = vals.length;
-    mD = new Mtrx(n, n);
+    mD = new MtrxEjml(n, n);
     for (int i = 0; i < vals.length; i++) {
       mD.set(i, i, vals[i]);
     }
