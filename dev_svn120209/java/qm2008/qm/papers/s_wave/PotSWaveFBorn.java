@@ -45,7 +45,7 @@ public void calc(int newN) {
   method.setPotH(sysH);
   method.setOrth(orthN);
 
-  ScttRes res = method.calcForScttEngModel();      log.dbg("res=", res);
+  ScttRes res = method.calcScttEngModel();      log.dbg("res=", res);
 
   setupScattRes(res, method);
   res.setCalcLabel(makeLabel(method));

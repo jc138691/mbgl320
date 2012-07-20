@@ -117,7 +117,6 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
     jmTrgt.setNt(trgtWfsNt.size());
-//    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED, );   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
 //    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
     jmTrgt.loadSdcsW();
     saveTrgtInfo(jmTrgt);
@@ -143,7 +142,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
       res = method.calc(scttEngs);                  log.dbg("res=", res);
     }
     else {
-      res = method.calcForScttEngModel();                  log.dbg("res=", res);
+      res = method.calcScttEngModel();                  log.dbg("res=", res);
     }
     setupScattRes(res, method);
 

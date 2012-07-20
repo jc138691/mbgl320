@@ -3,7 +3,7 @@ import project.workflow.task.test.FlowTest;
 import project.workflow.task.TaskProgressMonitor;
 import project.workflow.task.ProjectProgressMonitor;
 import scatt.eng.EngGrid;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.jm.laguerre.LgrrR;
 import math.vec.Vec;
 import junit.framework.TestCase;
@@ -12,8 +12,8 @@ import junit.framework.TestCase;
  */
 public class JmJnmSCmRTest extends FlowTest {
   private static LgrrR basis;
-  private static EngModel eng;
-  public JmJnmSCmRTest(LgrrR basis, EngModel engModel) {
+  private static EngOpt eng;
+  public JmJnmSCmRTest(LgrrR basis, EngOpt engModel) {
     super(JmJnmSCmRTest.class);
     JmJnmSCmRTest.basis = basis;
     JmJnmSCmRTest.eng = engModel;

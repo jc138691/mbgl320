@@ -4,7 +4,7 @@ import atom.data.AtomHy;
 import atom.data.AtomUnits;
 import qm_station.QMSProject;
 import scatt.eng.EngGridFactory;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.eng.EngModelArr;
 
 import javax.utilx.log.Log;
@@ -34,9 +34,9 @@ public class HySWaveJm extends HyLikeSWaveJm {
     LAMBDA = 1.5; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 
     // Note: run one at a time as only one set of result files is produced
-    ENG_FIRST = 0.01;
-    ENG_LAST = 10;
-    ENG_N = 101;
+    SCTT_ENG_MIN = 0.01;
+    SCTT_ENG_MAX = 10;
+    SCTT_ENG_N = 101;
 //    setupEngExcite();
 //    setupResonances_n2_S1();
 //    setupResonances_n2_n3_S1();
@@ -88,16 +88,16 @@ public class HySWaveJm extends HyLikeSWaveJm {
   }
 
 public void setupResonances_n2_S1() {
-//    ENG_FIRST = (float) AtomUnits.fromEV(10.1);
-  ENG_FIRST = (float) AtomUnits.fromEV(9.0);
-  ENG_LAST = (float)AtomUnits.fromEV(10.25);
-  ENG_N = 15001;
+//    SCTT_ENG_MIN = (float) AtomUnits.fromEV(10.1);
+  SCTT_ENG_MIN = (float) AtomUnits.fromEV(9.0);
+  SCTT_ENG_MAX = (float)AtomUnits.fromEV(10.25);
+  SCTT_ENG_N = 15001;
 }
 public void setupResonances_n2_S1_TestClosed() {
-//    ENG_FIRST = (float) AtomUnits.fromEV(10.1);
-  ENG_FIRST = (float) AtomUnits.fromEV(10.10);
-  ENG_LAST = (float)AtomUnits.fromEV(10.7);
-  ENG_N = 151;
+//    SCTT_ENG_MIN = (float) AtomUnits.fromEV(10.1);
+  SCTT_ENG_MIN = (float) AtomUnits.fromEV(10.10);
+  SCTT_ENG_MAX = (float)AtomUnits.fromEV(10.7);
+  SCTT_ENG_N = 151;
 }
 
 
@@ -107,18 +107,18 @@ public void setupResonances_n2_S1_TestClosed() {
     int n = 4001;
     float first = (float)AtomUnits.fromEV(10.1);
     float last = (float)AtomUnits.fromEV(10.5);
-    arr.add(new EngModel(first, last, n));
+    arr.add(new EngOpt(first, last, n));
 
     int n2 = 5001;
     float first2 = (float)AtomUnits.fromEV(12.0);
     float last2 = (float)AtomUnits.fromEV(12.5);
-    arr.add(new EngModel(first2, last2, n2));
+    arr.add(new EngOpt(first2, last2, n2));
 
     scttEngs = EngGridFactory.makeEngs(arr);
 
-    ENG_N = n + n2;
-    ENG_FIRST = first;
-    ENG_LAST = last2;
+    SCTT_ENG_N = n + n2;
+    SCTT_ENG_MIN = first;
+    SCTT_ENG_MAX = last2;
   }
 
   public void setupResonances_n2_n3_S3() {
@@ -127,36 +127,36 @@ public void setupResonances_n2_S1_TestClosed() {
     int n = 6001;
     float first = (float)AtomUnits.fromEV(10.1);
     float last = (float)AtomUnits.fromEV(10.7);
-    arr.add(new EngModel(first, last, n));
+    arr.add(new EngOpt(first, last, n));
 
     int n2 = 5001;
     float first2 = (float)AtomUnits.fromEV(12.0);
     float last2 = (float)AtomUnits.fromEV(12.5);
-    arr.add(new EngModel(first2, last2, n2));
+    arr.add(new EngOpt(first2, last2, n2));
 
     scttEngs = EngGridFactory.makeEngs(arr);
 
-    ENG_N = n + n2;
-    ENG_FIRST = first;
-    ENG_LAST = last2;
+    SCTT_ENG_N = n + n2;
+    SCTT_ENG_MIN = first;
+    SCTT_ENG_MAX = last2;
   }
 
   public void setupEngTICS() {
-    ENG_FIRST = 0.5f;    // TICS
-    ENG_LAST = 5.5f;
-    ENG_N = 501;
+    SCTT_ENG_MIN = 0.5f;    // TICS
+    SCTT_ENG_MAX = 5.5f;
+    SCTT_ENG_N = 501;
   }
 
   public void setupEngExcite() {
-    ENG_FIRST = 0.3f;
-    ENG_LAST = 0.5f;
-    ENG_N = 501;
+    SCTT_ENG_MIN = 0.3f;
+    SCTT_ENG_MAX = 0.5f;
+    SCTT_ENG_N = 501;
   }
 
   public void setupEngSDCS() {
-    ENG_FIRST = 1f; // SDCS
-    ENG_LAST = 2f;
-    ENG_N = 3;
+    SCTT_ENG_MIN = 1f; // SDCS
+    SCTT_ENG_MAX = 2f;
+    SCTT_ENG_N = 3;
   }
 
 

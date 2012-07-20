@@ -27,6 +27,10 @@ public class ScttTrgtE2 {   // target properties
     this.engs = targetEngs;
   }
   public void replaceTrgtEngs(double[] from, int toIdxExc) {
+    log.info("replaceTrgtEngs(from, toIdxExc=" + toIdxExc);
+    if (toIdxExc <=0) {       log.info("if (toIdxExc <=0) return;");
+      return;
+    }
     log.info("OLD   target engs=", engs);
     log.info("REPLACE with engs=", new Vec(from));
     for (int i = 0; i < toIdxExc; i++) {

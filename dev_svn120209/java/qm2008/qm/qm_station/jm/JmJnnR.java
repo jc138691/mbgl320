@@ -2,11 +2,11 @@ package qm_station.jm;
 import atom.energy.part_wave.PotHR;
 import atom.wf.WFQuadrD1;
 import scatt.eng.EngGrid;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.jm.laguerre.LgrrR;
 
 import javax.utilx.log.Log;
 
-import scatt.eng.EngModel;
 import math.func.FuncVec;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 19/11/2008, Time: 15:46:32
@@ -15,7 +15,7 @@ public class JmJnnR extends FuncVec {
   public static String HELP = "The JM's J_{N,N-1}; calculated by numerical integration";
   public static Log log = Log.getLog(JmJnnR.class);
 
-  public JmJnnR(LgrrR arr, EngModel eng) {
+  public JmJnnR(LgrrR arr, EngOpt eng) {
     super(new EngGrid(eng));   // energy grid storred in x
     calc(arr);
   }

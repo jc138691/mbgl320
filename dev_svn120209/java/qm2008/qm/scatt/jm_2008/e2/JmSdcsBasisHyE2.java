@@ -12,7 +12,7 @@ import math.vec.Vec;
 import math.vec.VecDbgView;
 import scatt.Scatt;
 import scatt.eng.EngGrid;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.coulomb.ClmbHyBoundTest;
@@ -114,8 +114,8 @@ private void makeScdsEngGrid(Mtrx resSdcs) {
   double sysTotE = mthd.getSysTotE();
   double maxE = sysTotE / 2;
   double minE = maxE / engN;
-  sdcsEngs = new EngGrid(new EngModel(minE, maxE, engN));
-  sdcsEngs2 = new EngGrid(new EngModel(minE, maxE, engN));
+  sdcsEngs = new EngGrid(new EngOpt(minE, maxE, engN));
+  sdcsEngs2 = new EngGrid(new EngOpt(minE, maxE, engN));
   double[] engs = sdcsEngs2.getArr();
   for (int i = 0; i < engs.length; i++) {
     engs[i] = sysTotE - engs[i];

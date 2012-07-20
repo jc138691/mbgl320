@@ -7,14 +7,14 @@ import javax.utilx.log.Log;
 import scatt.eng.EngGrid;
 import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.theory.JmTheory;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 20/11/2008, Time: 14:07:40
  */
 public class JnnEng extends FuncVec {
   public static String HELP = "J_{N,N-1}";
   public static Log log = Log.getLog(JnnEng.class);
-  public JnnEng(LgrrOpt jmModel, EngModel eng) {  // TODO L
+  public JnnEng(LgrrOpt jmModel, EngOpt eng) {  // TODO L
     super(new EngGrid(eng));
     load(jmModel);
   }

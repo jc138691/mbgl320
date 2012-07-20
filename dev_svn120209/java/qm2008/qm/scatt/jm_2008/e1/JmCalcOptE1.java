@@ -1,13 +1,13 @@
 package scatt.jm_2008.e1;
 import math.vec.grid.StepGridOpt;
 import papers.project_setup.ProjTestOpt;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.jm.laguerre.LgrrOpt;
 /**
 * Copyright dmitry.konovalov@jcu.edu.au Date: 29/09/2008, Time: 14:27:22
 */
 public class JmCalcOptE1 {
-private EngModel gridEng;
+private EngOpt gridEng;
 private StepGridOpt gridOpt;
 private LgrrOpt basisOpt;
 private ProjTestOpt testOpt;
@@ -28,7 +28,7 @@ public JmCalcOptE1() {
   init();
 }
 private void init() {
-  gridEng = new EngModel() ;
+  gridEng = new EngOpt() ;
   gridOpt = new StepGridOpt();
   basisOpt = new LgrrOpt();
   testOpt = new ProjTestOpt();
@@ -48,10 +48,10 @@ public int getJmTailN() {
 public void setJmTailN(int jmTailN) {
   this.jmTailN = jmTailN;
 }
-public EngModel getGridEng() {
+public EngOpt getGridEng() {
   return gridEng;
 }
-public void setGridEng(EngModel gridEng) {
+public void setGridEng(EngOpt gridEng) {
   this.gridEng = gridEng;
 }
 public StepGridOpt getGridOpt() {

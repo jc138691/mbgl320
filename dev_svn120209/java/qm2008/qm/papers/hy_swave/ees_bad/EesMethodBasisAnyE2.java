@@ -10,7 +10,7 @@ import math.func.arr.FuncArr;
 import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.target.ChConf;
@@ -27,7 +27,7 @@ public EesMethodBasisAnyE2(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScttRes calcSysEngs() {
-  EngModel engModel = calcOpt.getGridEng();
+  EngOpt engModel = calcOpt.getGridEng();
   ScttRes res = new ScttRes();
   int chNum = getChNum();
   Vec sEngs = getSysEngs();

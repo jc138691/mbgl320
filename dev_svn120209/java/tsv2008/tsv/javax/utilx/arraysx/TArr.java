@@ -20,9 +20,15 @@ public class TArr<T> {
     return buff.toString();
   }
 
-  public T get(int idx) {
-    return arr.get(idx);
-  }
+public T get(int idx) {
+  return arr.get(idx);
+}
+public T getLast() {
+  return arr.get(size()-1);
+}
+public T getFirst() {
+  return arr.get(0);
+}
 
 
   public int size() {

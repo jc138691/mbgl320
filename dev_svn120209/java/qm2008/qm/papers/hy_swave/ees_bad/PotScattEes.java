@@ -51,9 +51,9 @@ public void runJob() {
   R_LAST = 150;
 //  LCR_N = 301;
 //  R_LAST = 150;
-  ENG_FIRST = 0.1f;
-  ENG_LAST = 1.1f;
-  ENG_N = 101;
+  SCTT_ENG_MIN = 0.1f;
+  SCTT_ENG_MAX = 1.1f;
+  SCTT_ENG_N = 101;
 //  LAMBDA = 1.0;  calc(20);
 //  LAMBDA = 1.1;  calc(20);
 

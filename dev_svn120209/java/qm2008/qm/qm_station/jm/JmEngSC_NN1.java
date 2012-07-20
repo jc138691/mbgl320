@@ -2,12 +2,11 @@ package qm_station.jm;
 import math.vec.Vec;
 import flanagan.complex.Cmplx;
 import scatt.eng.EngGrid;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.theory.JmTheory;
 
 import javax.utilx.log.Log;
-
-import scatt.eng.EngModel;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 12/11/2008, Time: 16:37:07
  */
@@ -17,7 +16,7 @@ public class JmEngSC_NN1 extends EngGrid {
   private Vec sn1;
   private Vec cn;
   private Vec cn1;
-  public JmEngSC_NN1(LgrrOpt jmLagrr, EngModel engModel) {
+  public JmEngSC_NN1(LgrrOpt jmLagrr, EngOpt engModel) {
     super(engModel);
     calc(jmLagrr);
   }

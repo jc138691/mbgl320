@@ -4,7 +4,7 @@ import project.workflow.task.TaskProgressMonitor;
 import project.workflow.task.ProjectProgressMonitor;
 import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
 import scatt.jm_2008.jm.theory.JmTheory;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import math.vec.Vec;
 import junit.framework.TestCase;
 /**
@@ -12,8 +12,8 @@ import junit.framework.TestCase;
  */
 public class JmJnnLCRTest extends FlowTest {
   private static LagrrLcr funcArr;
-  private static EngModel eng;
-  public JmJnnLCRTest(LagrrLcr arr, EngModel eng) {
+  private static EngOpt eng;
+  public JmJnnLCRTest(LagrrLcr arr, EngOpt eng) {
     super(JmJnnLCRTest.class);
     this.funcArr = arr;
     this.eng = eng;

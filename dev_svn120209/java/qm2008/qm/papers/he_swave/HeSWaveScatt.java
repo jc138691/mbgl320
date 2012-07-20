@@ -35,7 +35,7 @@ import papers.hy_swave.Jm2010Common;
 import project.workflow.task.test.FlowTest;
 import qm_station.jm.PotEigVecLcrTest;
 import scatt.eng.EngGridFactory;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.eng.EngModelArr;
 import scatt.jm_2008.e2.JmMthdBaseE2;
 import scatt.jm_2008.jm.ScttRes;
@@ -55,9 +55,9 @@ protected static int Nc = 1;
 
 
 public void setupEngResonance_2S() {
-  ENG_FIRST = (float) AtomUnits.fromEV(18.5);
-  ENG_LAST = (float)AtomUnits.fromEV(19.5);
-  ENG_N = 11;
+  SCTT_ENG_MIN = (float) AtomUnits.fromEV(18.5);
+  SCTT_ENG_MAX = (float)AtomUnits.fromEV(19.5);
+  SCTT_ENG_N = 11;
 }
 
 
@@ -147,19 +147,19 @@ protected LsConfHMtrx makeSysBasisN(SlaterLcr slater) {
 
 
 public void setupEngAu_2() {
-  ENG_FIRST = 0.01f;
-  ENG_LAST = 1.00f;
-  ENG_N = 100;
+  SCTT_ENG_MIN = 0.01f;
+  SCTT_ENG_MAX = 1.00f;
+  SCTT_ENG_N = 100;
 }
 public void setupEngAu_3() {
-  ENG_FIRST = 0.001f;
-  ENG_LAST = 1.00f;
-  ENG_N = 1000;
+  SCTT_ENG_MIN = 0.001f;
+  SCTT_ENG_MAX = 1.00f;
+  SCTT_ENG_N = 1000;
 }
 public void setupEngAu_4() {
-  ENG_FIRST = 0.0001f;
-  ENG_LAST = 1.00f;
-  ENG_N = 10000;
+  SCTT_ENG_MIN = 0.0001f;
+  SCTT_ENG_MAX = 1.00f;
+  SCTT_ENG_N = 10000;
 }
 
 public void setupEng01_1000eV_SLOW() {
@@ -168,28 +168,28 @@ public void setupEng01_1000eV_SLOW() {
   int n = 189;
   float first = (float)AtomUnits.fromEV(0.1);
   float last = (float)AtomUnits.fromEV(18.9);
-  arr.add(new EngModel(first, last, n));
+  arr.add(new EngOpt(first, last, n));
 
   int n2 = 2000;
   float first2 = (float)AtomUnits.fromEV(18.9001);
   float last2 = (float)AtomUnits.fromEV(19.1);
-  arr.add(new EngModel(first2, last2, n2));
+  arr.add(new EngOpt(first2, last2, n2));
 
   int n3 = 1000;
   float first3 = (float)AtomUnits.fromEV(19.11);
   float last3 = (float)AtomUnits.fromEV(29.1);
-  arr.add(new EngModel(first3, last3, n3));
+  arr.add(new EngOpt(first3, last3, n3));
 
   int n4 = 971;
   float first4 = (float)AtomUnits.fromEV(30.0);
   float last4 = (float)AtomUnits.fromEV(1000.0);
-  arr.add(new EngModel(first4, last4, n4));
+  arr.add(new EngOpt(first4, last4, n4));
 
   scttEngs = EngGridFactory.makeEngs(arr);
 
-  ENG_N = n + n2 + n3 + n4;
-  ENG_FIRST = first;
-  ENG_LAST = last4;
+  SCTT_ENG_N = n + n2 + n3 + n4;
+  SCTT_ENG_MIN = first;
+  SCTT_ENG_MAX = last4;
 }
 public void setupEng1_100eV_SLOW() {
   EngModelArr arr = new EngModelArr();
@@ -197,28 +197,28 @@ public void setupEng1_100eV_SLOW() {
   int n = 190;
   float first = (float)AtomUnits.fromEV(1);
   float last = (float)AtomUnits.fromEV(18.9);
-  arr.add(new EngModel(first, last, n));
+  arr.add(new EngOpt(first, last, n));
 
   int n2 = 1000;
   float first2 = (float)AtomUnits.fromEV(18.991);
   float last2 = (float)AtomUnits.fromEV(19.29);
-  arr.add(new EngModel(first2, last2, n2));
+  arr.add(new EngOpt(first2, last2, n2));
 
   int n3 = 1001;
   float first3 = (float)AtomUnits.fromEV(19.30);
   float last3 = (float)AtomUnits.fromEV(29.3);
-  arr.add(new EngModel(first3, last3, n3));
+  arr.add(new EngOpt(first3, last3, n3));
 
   int n4 = 71;
   float first4 = (float)AtomUnits.fromEV(30.0);
   float last4 = (float)AtomUnits.fromEV(100.0);
-  arr.add(new EngModel(first4, last4, n4));
+  arr.add(new EngOpt(first4, last4, n4));
 
   scttEngs = EngGridFactory.makeEngs(arr);
 
-  ENG_N = n + n2 + n3 + n4;
-  ENG_FIRST = first;
-  ENG_LAST = last4;
+  SCTT_ENG_N = n + n2 + n3 + n4;
+  SCTT_ENG_MIN = first;
+  SCTT_ENG_MAX = last4;
 }
 public void setupEng01_1000eV_FAST() {
   EngModelArr arr = new EngModelArr();
@@ -226,18 +226,18 @@ public void setupEng01_1000eV_FAST() {
   int n = 1000;
   float first = (float)AtomUnits.fromEV(0.1);
   float last = (float)AtomUnits.fromEV(100.0);
-  arr.add(new EngModel(first, last, n));
+  arr.add(new EngOpt(first, last, n));
 
   int n2 = 900;
   float first2 = (float)AtomUnits.fromEV(101);
   float last2 = (float)AtomUnits.fromEV(1000);
-  arr.add(new EngModel(first2, last2, n2));
+  arr.add(new EngOpt(first2, last2, n2));
 
   scttEngs = EngGridFactory.makeEngs(arr);
 
-  ENG_N = n + n2;
-  ENG_FIRST = first;
-  ENG_LAST = last2;
+  SCTT_ENG_N = n + n2;
+  SCTT_ENG_MIN = first;
+  SCTT_ENG_MAX = last2;
 }
 public void setupEng10_30eV() {
   EngModelArr arr = new EngModelArr();
@@ -245,13 +245,13 @@ public void setupEng10_30eV() {
   int n = 1000;
   float first = (float)AtomUnits.fromEV(10.0);
   float last = (float)AtomUnits.fromEV(30.0);
-  arr.add(new EngModel(first, last, n));
+  arr.add(new EngOpt(first, last, n));
 
   scttEngs = EngGridFactory.makeEngs(arr);
 
-  ENG_N = n;
-  ENG_FIRST = first;
-  ENG_LAST = last;
+  SCTT_ENG_N = n;
+  SCTT_ENG_MIN = first;
+  SCTT_ENG_MAX = last;
 }
 protected void jmHeTestOk() {
   FlowTest.setLog(log);

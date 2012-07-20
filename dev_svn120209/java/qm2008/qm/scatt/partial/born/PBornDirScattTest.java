@@ -6,7 +6,7 @@ import math.vec.Vec;
 import math.vec.grid.StepGrid;
 import project.workflow.task.test.FlowTest;
 import scatt.Scatt;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.partial.wf.SinWfLcr;
 
 import javax.utilx.log.Log;
@@ -17,11 +17,11 @@ public class PBornDirScattTest extends FlowTest {
 public static Log log = Log.getLog(PBornDirScattTest.class);
 // NOTE!! class variables are static to work with FlowTest
 private static WFQuadrLcr quadr;
-private static EngModel gridEng;
+private static EngOpt gridEng;
 public PBornDirScattTest() {      // needed by FlowTest
   super(PBornDirScattTest.class);
 }
-public PBornDirScattTest(WFQuadrLcr quadr_, EngModel gridEng_) {
+public PBornDirScattTest(WFQuadrLcr quadr_, EngOpt gridEng_) {
   super(PBornDirScattTest.class);
   quadr = quadr_;
   gridEng = gridEng_;

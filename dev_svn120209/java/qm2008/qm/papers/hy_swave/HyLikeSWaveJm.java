@@ -68,7 +68,7 @@ public void calc(int newN, int newNt) {
     res = method.calc(scttEngs);                  log.dbg("res=", res);
   }
   else {
-//    res = method.calcForScttEngModel();                  log.dbg("res=", res);
+//    res = method.calcScttEngModel();                  log.dbg("res=", res);
     res = method.calcForMidSysEngs();                  log.dbg("res=", res);
   }
   setupScattRes(res, method);

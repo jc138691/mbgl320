@@ -1,8 +1,8 @@
 package papers.jm2008;
 import papers.project_setup.ProjTestOpt;
 import qm_station.ui.scatt.CalcOptR;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.e1.JmCalcOptE1;
-import scatt.eng.EngModel;
 import qm_station.QMS;
 import qm_station.QMSProject;
 import qm_station.jm.*;
@@ -48,8 +48,8 @@ public class Jm2008PotR extends Jm2008Common {
     res.setMaxIntgrlErr(0.001f);
     return res;
   }
-  public static EngModel makeGridEng() {
-    EngModel res = new EngModel();
+  public static EngOpt makeGridEng() {
+    EngOpt res = new EngOpt();
     res.setFirst(0.01f);
     res.setLast(1);
     res.setNumPoints(3);
@@ -101,7 +101,7 @@ public class Jm2008PotR extends Jm2008Common {
     if (!new JmPotEigVecRTest(orth).ok())      return;
 
     // JM-properties
-    EngModel eng = potOpt.getGridEng();    log.dbg("Incident Energies =", eng);
+    EngOpt eng = potOpt.getGridEng();    log.dbg("Incident Energies =", eng);
     if (!new JmJnnRTest(basis, eng).ok())      return;
     if (!new JmJnmSCmRTest(basis, eng).ok())      return;
 

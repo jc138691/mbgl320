@@ -11,7 +11,7 @@ import math.vec.Vec;
 import project.workflow.task.test.FlowTest;
 import scatt.Scatt;
 import scatt.eng.EngGrid;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LagrrBiLcr;
@@ -56,12 +56,12 @@ public ScttMthdBaseE1(JmCalcOptE1 calcOpt) {
 public JmCalcOptE1 getCalcOpt() {
   return calcOpt;
 }
-public ScttRes calcForScttEngModel() {
+public ScttRes calcScttEngModel() {
   EngGrid engs = calcScattEngs();
   return calc(engs);
 }
 public EngGrid calcScattEngs() {
-  EngModel eng = calcOpt.getGridEng();    //log.dbg("Incident Energies =", eng);
+  EngOpt eng = calcOpt.getGridEng();    //log.dbg("Incident Energies =", eng);
   EngGrid engs = new EngGrid(eng);
   return engs;
 }

@@ -2,7 +2,7 @@ package qm_station.jm;
 import project.workflow.task.test.FlowTest;
 import project.workflow.task.TaskProgressMonitor;
 import project.workflow.task.ProjectProgressMonitor;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.jm.laguerre.LgrrR;
 import scatt.jm_2008.jm.theory.JmTheory;
 import math.vec.Vec;
@@ -12,8 +12,8 @@ import junit.framework.TestCase;
  */
 public class JmJnnRTest extends FlowTest {
   private static LgrrR funcArr;
-  private static EngModel eng;
-  public JmJnnRTest(LgrrR arr, EngModel eng) {
+  private static EngOpt eng;
+  public JmJnnRTest(LgrrR arr, EngOpt eng) {
     super(JmJnnRTest.class);
     this.funcArr = arr;
     this.eng = eng;

@@ -2,7 +2,7 @@ package scatt.partial.wf.numerov;
 import math.func.FuncVec;
 import math.func.simple.FuncConst;
 import math.vec.Vec;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.partial.wf.eng_arr_not_used.EngFuncArr;
 
 import javax.utilx.log.Log;
@@ -15,7 +15,7 @@ public class NmrvPotR extends EngFuncArr {
   protected int L;
   private FuncVec pot;
 
-  public NmrvPotR(FuncVec pot, EngModel model, int L) {
+  public NmrvPotR(FuncVec pot, EngOpt model, int L) {
     super(pot.getX(), model);
     this.pot = pot;
     this.L = L;
