@@ -53,13 +53,13 @@ public void runJob() {
   LCR_N = 3001;
   R_LAST = 300;
 
-//  ENG_FIRST = 0.84f;
-//  ENG_LAST = 0.86;
-//  ENG_N = 1001;
-  ENG_FIRST = 0.001f;
-  ENG_LAST = 10.f;
-//  ENG_N = 101;
-  ENG_N = (int)(ENG_LAST / ENG_FIRST);
+//  SCTT_ENG_MIN = 0.84f;
+//  SCTT_ENG_MAX = 0.86;
+//  SCTT_ENG_N = 1001;
+  SCTT_ENG_MIN = 0.001f;
+  SCTT_ENG_MAX = 10.f;
+//  SCTT_ENG_N = 101;
+  SCTT_ENG_N = (int)(SCTT_ENG_MAX / SCTT_ENG_MIN);
 
   calc(10);
 //  calc(12);
@@ -93,7 +93,7 @@ public void calc(int newN) {
   mthd.setOrth(orthN);
 //  mthd.setLgrrBi(lgrrBiN);
 //  mthd.setLgrr(lgrrN);
-//  ScttRes res = mthd.calcForScttEngModel();   log.dbg("res=", res);
+//  ScttRes res = mthd.calcScttEngModel();   log.dbg("res=", res);
     ScttRes res = mthd.calcForMidSysEngs();                  log.dbg("res=", res);
 //
   setupScattRes(res, mthd);

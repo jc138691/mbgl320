@@ -4,7 +4,7 @@ import math.func.FuncVec;
 import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import scatt.Scatt;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.theory.JmTheory;
@@ -20,7 +20,7 @@ public JmMthdE1_OLD(JmCalcOptE1 calcOpt) {
 }
 public ScttRes calc(Vec scttEngs) {
   int eN = scttEngs.size();
-  EngModel engModel = calcOpt.getGridEng();
+  EngOpt engModel = calcOpt.getGridEng();
   ScttRes res = new ScttRes();
   int chNum = getChNum();
   LgrrOpt model = calcOpt.getBasisOpt();

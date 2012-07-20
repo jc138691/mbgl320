@@ -4,7 +4,7 @@ import atom.data.AtomHe;
 import papers.he_swave.HeSWaveBasisJm;
 import qm_station.QMSProject;
 import scatt.eng.EngGridFactory;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.eng.EngModelArr;
 
 import javax.utilx.log.Log;
@@ -164,20 +164,20 @@ public void runJob() {
 }
 public static void setupResEngs_SLOW() {
   EngModelArr arr = new EngModelArr();
-  arr.add(new EngModel(0.204,  0.704,  501));
-  arr.add(new EngModel(0.704,  0.705,  1001));
-  arr.add(new EngModel(0.705,  0.730,  501));
-  arr.add(new EngModel(0.730,  0.740,  1001));
-  arr.add(new EngModel(0.740,  0.810,  501));
-  arr.add(new EngModel(0.810,  0.811,  1001));
-  arr.add(new EngModel(0.811,  0.818,  501));
-  arr.add(new EngModel(0.818,  0.819,  1001));
-  arr.add(new EngModel(0.819,  0.842,  501));
-//    arr.add(new EngModel(0.845,  3.845,  3001));
+  arr.add(new EngOpt(0.204,  0.704,  501));
+  arr.add(new EngOpt(0.704,  0.705,  1001));
+  arr.add(new EngOpt(0.705,  0.730,  501));
+  arr.add(new EngOpt(0.730,  0.740,  1001));
+  arr.add(new EngOpt(0.740,  0.810,  501));
+  arr.add(new EngOpt(0.810,  0.811,  1001));
+  arr.add(new EngOpt(0.811,  0.818,  501));
+  arr.add(new EngOpt(0.818,  0.819,  1001));
+  arr.add(new EngOpt(0.819,  0.842,  501));
+//    arr.add(new EngOpt(0.845,  3.845,  3001));
   scttEngs = EngGridFactory.makeEngs(arr);
-  ENG_FIRST = scttEngs.getFirst();
-  ENG_LAST = scttEngs.getLast();
-  ENG_N = scttEngs.size();
+  SCTT_ENG_MIN = scttEngs.getFirst();
+  SCTT_ENG_MAX = scttEngs.getLast();
+  SCTT_ENG_N = scttEngs.size();
 }
 
 }

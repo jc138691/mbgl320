@@ -5,7 +5,7 @@ import qm_station.QMSProject;
 import qm_station.QMS;
 import qm_station.jm.JmEngSC_NN1;
 import scatt.jm_2008.e1.JmCalcOptE1;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import project.workflow.task.DefaultTaskUI;
 
 import javax.utilx.log.Log;
@@ -38,7 +38,7 @@ public class UCPlotEngKnnR extends UCPlotFuncArr {
     QMS project = QMSProject.getInstance();
     JmCalcOptE1 model = project.getJmPotOptR();
 
-    EngModel eng = model.getGridEng();    log.dbg("eng model=", eng);
+    EngOpt eng = model.getGridEng();    log.dbg("eng model=", eng);
     JmEngSC_NN1 jmSC = new JmEngSC_NN1(model.getBasisOpt(), eng);
 
 //    UCPlotEngGnnR gnn = new UCPlotEngGnnR(getDefaultUi());

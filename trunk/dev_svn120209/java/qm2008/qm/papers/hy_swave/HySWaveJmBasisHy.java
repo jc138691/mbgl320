@@ -51,9 +51,9 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
 //    LAMBDA = 1.7;
 
   // Note: run one at a time as only one set of result files is produced
-  ENG_FIRST = 0.01;
-  ENG_LAST = 10;
-  ENG_N = 101;
+  SCTT_ENG_MIN = 0.01;
+  SCTT_ENG_MAX = 10;
+  SCTT_ENG_N = 101;
 
 //    setupEngExcite();
 //    setupResonances_n2_n3_S1();

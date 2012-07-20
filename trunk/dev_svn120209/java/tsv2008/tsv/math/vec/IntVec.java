@@ -2,6 +2,7 @@ package math.vec;
 import javax.utilx.RandomSeed;
 import javax.utilx.IdxComparator;
 import javax.utilx.comparatorx.IntIdxComparator;
+import javax.utilx.log.Log;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Comparator;
@@ -11,6 +12,7 @@ import java.util.Arrays;
 * Copyright dmitry.konovalov@jcu.edu.au Date: 16/07/2008, Time: 13:24:32
 */
 public class IntVec {
+public static Log log = Log.getLog(IntVec.class);
 private int[] arr;
 public IntVec(int size) {
   this.arr = new int[size];
@@ -18,6 +20,13 @@ public IntVec(int size) {
 public IntVec(int[] from) {
   this.arr = from;
 }
+public final int get(int i) {
+  return arr[i];
+}
+public final int size() {
+  return arr.length;
+}
+
 public String toString() {
   return IntVec.toString(arr);
 }

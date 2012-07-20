@@ -10,7 +10,7 @@ import math.vec.Vec;
 import math.vec.VecDbgView;
 import scatt.Scatt;
 import scatt.eng.EngGridFactory;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.target.JmCh;
@@ -72,23 +72,23 @@ public ScttRes calc(Vec scttEngs) {          //JmMethodJmBasisE3.log.setDbg();
 }
 private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
   int eN = scttEngs.size();
-  EngModel engModel = calcOpt.getGridEng();
+  EngOpt engModel = calcOpt.getGridEng();
   ScttRes res = new ScttRes();
   int prntNum = calcPrntChNum();
   jmX = calcX();                              log.dbg("X=", new MtrxDbgView(jmX));
 
 //  new JmResonE2_bad(this).calc(res, jmX);
   Mtrx mCs = new Mtrx(eN, prntNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
-  Mtrx mR = new Mtrx(eN, prntNum + 1);
+//  Mtrx mR = new Mtrx(eN, prntNum + 1);
   Mtrx mTics = new Mtrx(eN, 2);// ionisation cross section
   res.setSdcs(new Mtrx(prntNum + 1, eN + 1));
-  res.setMtrxR(mR);
+//  res.setMtrxR(mR);
   res.setCrossSecs(mCs);
   res.setTics(mTics);
 
   for (int scttIdx = 0; scttIdx < eN; scttIdx++) {     log.info("i = ", scttIdx);
     scttE = scttEngs.get(scttIdx);             log.info("scttE = ", scttE);
-    mR.set(scttIdx, IDX_ENRGY, scttE);
+//    mR.set(scttIdx, IDX_ENRGY, scttE);
     mCs.set(scttIdx, IDX_ENRGY, scttE);
     mTics.set(scttIdx, IDX_ENRGY, scttE);                 // first column is for the energies
     if (scttE <= 0  ||  engModel.getFirst() > scttE ||  scttE > engModel.getLast()) {
@@ -117,7 +117,7 @@ private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
 
     jmS = Scatt.calcSFromK(jmR, openChN);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(jmS));
     saveCrossSecs(scttIdx, res, jmS, openChN);
-    saveMtrxR(scttIdx, res, jmR, openChN);
+//    saveMtrxR(scttIdx, res, jmR, openChN);
     if (calcOpt.getCalcSdcs()) {
       calcSdcs(scttIdx, res, prntNum);
     }

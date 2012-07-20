@@ -230,7 +230,8 @@ public static double[] convert(int[] arr) {
   }
   return res;
 }
-public void sort() {
-Arrays.sort(arr);
+public Vec sortSelf() {
+  Arrays.sort(arr);
+  return this;
 }
 }

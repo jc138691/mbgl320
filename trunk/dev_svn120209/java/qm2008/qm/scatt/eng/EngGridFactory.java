@@ -26,12 +26,12 @@ public class EngGridFactory {
   }
   public static Vec makeEngs(EngModelArr arr) {
     int size = 0;
-    for (EngModel model : arr) {
+    for (EngOpt model : arr) {
       size += model.getNumPoints();
     }
     double[] engs = new double[size];
     int idx = 0;
-    for (EngModel model : arr) {
+    for (EngOpt model : arr) {
       double[] grid = new EngGrid(model).getArr();
       for (int i = 0; i < grid.length; i++) {
         engs[idx++] = grid[i];

@@ -55,8 +55,8 @@ public void runJob() {
   LCR_N = 1501;
   R_LAST = 150;
 
-  ENG_FIRST = 0.3;
-  ENG_LAST = 0.5;
+  SCTT_ENG_MIN = 0.3;
+  SCTT_ENG_MAX = 0.5;
 
   double LAMBDA_MIN = 1;
   double LAMBDA_MAX = 1.5;

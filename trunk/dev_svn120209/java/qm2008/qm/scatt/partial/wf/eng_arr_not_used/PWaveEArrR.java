@@ -5,7 +5,7 @@ import math.vec.Vec;
 
 import javax.utilx.log.Log;
 
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.Scatt;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 13:18:04
@@ -14,7 +14,7 @@ public abstract class PWaveEArrR extends EngFuncArr {
   public static Log log = Log.getLog(PWaveEArrR.class);
   protected int L;
 
-  public PWaveEArrR(Vec r, EngModel model, int L) {
+  public PWaveEArrR(Vec r, EngOpt model, int L) {
     super(r, model);
     this.L = L;
     load();

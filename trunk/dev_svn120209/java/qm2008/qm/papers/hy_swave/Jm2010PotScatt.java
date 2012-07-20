@@ -35,9 +35,9 @@ public class Jm2010PotScatt extends Jm2010CommonR {
     R_N = 3001;
     R_LAST = 100;
 
-    ENG_FIRST = 0.01f;
-    ENG_LAST = 0.5f;
-    ENG_N = 50;
+    SCTT_ENG_MIN = 0.01f;
+    SCTT_ENG_MAX = 0.5f;
+    SCTT_ENG_N = 50;
 
 //    calcPot2(24);
 //    calcPot2(22);
@@ -67,7 +67,7 @@ public class Jm2010PotScatt extends Jm2010CommonR {
     JmMthdE1_OLD method = new JmMthdE1_OLD(calcOpt);
     method.setOverD(D);
     method.setSysEngs(eigEng);
-    ScttRes res = method.calcForScttEngModel();                  log.dbg("res=", res);
+    ScttRes res = method.calcScttEngModel();                  log.dbg("res=", res);
 //    ScttRes res = method.calcForMidSysEngs();                  log.dbg("res=", res);
 
 //    FuncVec func = new FuncVecToString(res.getCross());
@@ -80,7 +80,7 @@ public class Jm2010PotScatt extends Jm2010CommonR {
     res.writeToFiles();
 
     // JM-properties
-//    EngModel eng = calcOpt.getGridEng();    log.dbg("Incident Energies =", eng);
+//    EngOpt eng = calcOpt.getGridEng();    log.dbg("Incident Energies =", eng);
 //    if (!new JmJnnRTest(lgrrN, eng).ok())      return;
 //    if (!new JmJnmSCmRTest(lgrrN, eng).ok())      return;
 

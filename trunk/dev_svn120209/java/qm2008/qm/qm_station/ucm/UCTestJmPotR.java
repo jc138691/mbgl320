@@ -18,7 +18,7 @@ import qm_station.jm.H_Hy_P1s_RTest;
 import qm_station.jm.JmJnnRTest;
 import qm_station.jm.JmPotEigVecRTest;
 import qm_station.ui.StepGridView;
-import scatt.eng.EngModel;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.jm.laguerre.*;
 
@@ -90,7 +90,7 @@ public class UCTestJmPotR extends UCRunDefaultTask<QMS> {
       if (!new JmPotEigVecRTest(orth).ok())
         return false;
 
-      EngModel eng = potOpt.getGridEng();
+      EngOpt eng = potOpt.getGridEng();
       if (!new JmJnnRTest(jm, eng).ok())
         return false;
     }

@@ -47,9 +47,9 @@ public void runJob() {
   LCR_FIRST = -5;
   LCR_N = 701;
   R_LAST = 200;
-  ENG_FIRST = 0.01f;
-  ENG_LAST = 4.01f;
-  ENG_N = 2001;
+  SCTT_ENG_MIN = 0.01f;
+  SCTT_ENG_MAX = 4.01f;
+  SCTT_ENG_N = 2001;
 //  calc(10);
 //  calc(12);
   calc(20);
@@ -71,7 +71,7 @@ public void calc(int newN) {
   JmMthdE1_OLD method = new JmMthdE1_OLD(calcOpt);
   method.setOverD(D);
   method.setSysEngs(sysEngs);
-  ScttRes res = method.calcForScttEngModel();
+  ScttRes res = method.calcScttEngModel();
   log.dbg("res=", res);
 //    ScttRes res = method.calcForMidSysEngs();                  log.dbg("res=", res);
 //

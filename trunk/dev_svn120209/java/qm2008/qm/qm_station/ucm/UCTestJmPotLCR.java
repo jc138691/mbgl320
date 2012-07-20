@@ -5,8 +5,8 @@ import papers.project_setup.ProjTestOpt;
 import qm_station.QMS;
 import qm_station.QMSProject;
 import qm_station.jm.*;
+import scatt.eng.EngOpt;
 import scatt.jm_2008.e1.JmCalcOptE1;
-import scatt.eng.EngModel;
 import qm_station.ui.StepGridView;
 import project.workflow.task.DefaultTaskUI;
 import project.workflow.task.DefaultResView;
@@ -76,7 +76,7 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
     if (!new PotEigVecLcrTest(Z, orth).ok())
       return false;
 
-    EngModel eng = potOpt.getGridEng();
+    EngOpt eng = potOpt.getGridEng();
     if (!new JmJnnLCRTest(basis, eng).ok())
       return false;
 

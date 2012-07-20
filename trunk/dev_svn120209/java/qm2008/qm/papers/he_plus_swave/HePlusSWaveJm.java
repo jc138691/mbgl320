@@ -53,9 +53,9 @@ public class HePlusSWaveJm extends HyLikeSWaveJm {
 
 
   public void setupEngTCS() {
-    ENG_FIRST = (float) AtomUnits.fromEV(1.0);
-    ENG_LAST = (float)AtomUnits.fromEV(101.0);
-    ENG_N = 1001;
+    SCTT_ENG_MIN = (float) AtomUnits.fromEV(1.0);
+    SCTT_ENG_MAX = (float)AtomUnits.fromEV(101.0);
+    SCTT_ENG_N = 1001;
   }
 
   public void runJob() {

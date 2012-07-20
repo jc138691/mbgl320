@@ -15,7 +15,66 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="2806653a-487d-4eaa-b546-24883f956ee4" name="Default" comment="Failed commit: Default (2)" />
+    <list default="true" readonly="true" id="2806653a-487d-4eaa-b546-24883f956ee4" name="Default" comment="Failed commit: Default (2)">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/eng/auto" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/eng/auto/AutoEngFactory.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TMPMATRIX.serial" afterPath="" />
+      <change type="MOVED" beforePath="C:\dev\physics\dev_svn_120209\java\qm2008\qm\scatt\eng\EngModel.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/eng/EngOpt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_plus_swave/HePlusSWaveJm.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_plus_swave/HePlusSWaveJm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWaveJm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJm.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJmBasisHy.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJmBasisHy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010Common.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010Common.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScatt.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScatt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScattLcr.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScattLcr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EesMethodBasisAnyE2.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/EesMethodBasisAnyE2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/HySWaveEes.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/HySWaveEes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/PotScattEes.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/ees_bad/PotScattEes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/v3_bi/HySWaveViaOverlap_OLD.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/v3_bi/HySWaveViaOverlap_OLD.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/jm2008/Jm2008PotR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/jm2008/Jm2008PotR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/s_wave/PotSWaveFBorn.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/s_wave/PotSWaveFBorn.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/papers/s_wave/PotSWaveJm.java" afterPath="$PROJECT_DIR$/../qm2008/qm/papers/s_wave/PotSWaveJm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmEngSC_NN1.java" afterPath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmEngSC_NN1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmJnmSCmRTest.java" afterPath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmJnmSCmRTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmJnnLCR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmJnnLCR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmJnnLCRTest.java" afterPath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmJnnLCRTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmJnnR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmJnnR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmJnnRTest.java" afterPath="$PROJECT_DIR$/../qm2008/qm/qm_station/jm/JmJnnRTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/qm_station/ucm/UCTestJmPotLCR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/qm_station/ucm/UCTestJmPotLCR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/qm_station/ucm/UCTestJmPotR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/qm_station/ucm/UCTestJmPotR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/qm_station/ucm/plot/UCPlotEngKnnR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/qm_station/ucm/plot/UCPlotEngKnnR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/eng/EngGridFactory.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/eng/EngGridFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/eng/EngModelArr.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/eng/EngModelArr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmCalcOptE1.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmCalcOptE1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmMthdE1_OLD.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmMthdE1_OLD.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/ScttMthdBaseE1.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/ScttMthdBaseE1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBaseE2.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBaseE2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmSdcsBasisHyE2.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmSdcsBasisHyE2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/ScttMthdBaseE2.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/ScttMthdBaseE2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/ScttTrgtE2.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/ScttTrgtE2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/born/PBornDirScattTest.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/born/PBornDirScattTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/JnnEng.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/JnnEng.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/CosPWaveEArrLcr.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/CosPWaveEArrLcr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/CosPWaveEArrR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/CosPWaveEArrR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/EngFuncArr.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/EngFuncArr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/PWaveEArrLcr.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/PWaveEArrLcr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/PWaveEArrR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/PWaveEArrR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/SinPWaveEArrLcr.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/SinPWaveEArrLcr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/SinPWaveEArrR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/eng_arr_not_used/SinPWaveEArrR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/numerov/NmrvPotR.java" afterPath="$PROJECT_DIR$/../qm2008/qm/scatt/partial/wf/numerov/NmrvPotR.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JamaTestMatrix.out" afterPath="$PROJECT_DIR$/JamaTestMatrix.out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qm2008_intellij.ipr" afterPath="$PROJECT_DIR$/qm2008_intellij.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qm2008_intellij.iws" afterPath="$PROJECT_DIR$/qm2008_intellij.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tsv2008/tsv/javax/utilx/arraysx/TArr.java" afterPath="$PROJECT_DIR$/../tsv2008/tsv/javax/utilx/arraysx/TArr.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/IntVec.java" afterPath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/IntVec.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java" afterPath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/VecFactory.java" afterPath="$PROJECT_DIR$/../tsv2008/tsv/math/vec/VecFactory.java" />
+    </list>
     <list id="3208e6f2-510e-4ba1-b5d7-a4bbdcaef33b" name="Failed commit: Failed commit: Default (2)" comment="Failed commit: Default (2)" />
     <list id="a0ae5b75-b946-4c59-8218-d93de0a4d5ec" name="Failed commit: Default" comment="" />
     <list id="97ecb7d7-42ca-40c3-b8a4-3790ffd161ec" name="Failed commit: Default (2)" comment="Failed commit: Default (2)" />
@@ -40,7 +99,6 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-    <option name="REVERSE_PATCH" value="false" />
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
@@ -112,20 +170,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/atom/e_3/test/LiSlaterTest.java" line="206" class="atom.e_3.test.LiSlaterTest" package="atom.e_3.test">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/he_plus_swave/HePlusSWaveJm.java" line="85" class="papers.he_plus_swave.HePlusSWaveJm" package="papers.he_plus_swave">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/he_plus_swave/HePlusSWaveJm.java" line="84" class="papers.he_plus_swave.HePlusSWaveJm" package="papers.he_plus_swave">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -203,7 +248,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScattLcr.java" line="62" class="papers.hy_swave.Jm2010PotScattLcr" package="papers.hy_swave">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010PotScattLcr.java" line="61" class="papers.hy_swave.Jm2010PotScattLcr" package="papers.hy_swave">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -268,7 +313,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJmBasisHy.java" line="132" class="papers.hy_swave.HySWaveJmBasisHy" package="papers.hy_swave">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HySWaveJmBasisHy.java" line="131" class="papers.hy_swave.HySWaveJmBasisHy" package="papers.hy_swave">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -346,7 +391,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/HOvMtrx.java" line="49" class="atom.energy.HOvMtrx" package="atom.energy">
+      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/MtrxEjml.java" line="86" class="math.mtrx.api.ejml.MtrxEjml" package="math.mtrx.api.ejml">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -359,7 +404,20 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/MtrxEjml.java" line="86" class="math.mtrx.api.ejml.MtrxEjml" package="math.mtrx.api.ejml">
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/ScttMthdBaseE2.java" line="61" class="scatt.jm_2008.e2.ScttMthdBaseE2" package="scatt.jm_2008.e2">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/../qm2008/qm/scatt/eng/auto/AutoEngFactory.java" line="19" class="scatt.eng.auto.AutoEngFactory" package="scatt.eng.auto">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -430,42 +488,13 @@
     <favorites_list name="qm2008_intellij" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.40661687">
+    <splitter split-orientation="horizontal" split-proportion="0.4576556">
       <split-first>
         <leaf>
-          <file leaf-file-name="HeSWaveBasisJm.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java">
+          <file leaf-file-name="HeSWaveBasisHeIon.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="132" column="34" selection-start="4703" selection-end="4703" vertical-scroll-proportion="0.0">
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Jm2010CommonLcr.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010CommonLcr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="74" column="23" selection-start="2554" selection-end="2554" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="HeSWaveRes2012.java" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="164" column="19" selection-start="4438" selection-end="4438" vertical-scroll-proportion="0.16857143">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="HeSWaveScatt.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="189" column="6" selection-start="6687" selection-end="6687" vertical-scroll-proportion="0.0">
+                <state line="55" column="46" selection-start="1828" selection-end="1828" vertical-scroll-proportion="-0.1484375">
                   <folding />
                 </state>
               </provider>
@@ -475,28 +504,19 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="HeSWaveBasisHeIon.java" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java">
+          <file leaf-file-name="Vec.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="85" column="10" selection-start="2658" selection-end="2658" vertical-scroll-proportion="0.543021">
+                <state line="21" column="24" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Mtrx.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java">
+          <file leaf-file-name="YkLcr.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="31" selection-start="223" selection-end="223" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EigenSymm.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/EigenSymm.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="10" column="17" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0">
+                <state line="45" column="16" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.1484375">
                   <folding />
                 </state>
               </provider>
@@ -511,10 +531,6 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
-  <component name="Git.Settings">
-    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
-    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
-  </component>
   <component name="HierarchyBrowserManager">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="SORT_ALPHABETICALLY" value="false" />
@@ -523,21 +539,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/MtrxFactory.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/Scatt.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/fanox/JmMethodFanoE2.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/ejml/EigenEjml.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/jama/MtrxJama.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/project/workflow/task/test/FlowTest.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_2/test/HeClementiTest.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_2/test/HeAtomTest.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/shell/ConfArrFactoryE2.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/atom/e_2/test/AtomHeTest.java" />
-        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java" />
-        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java" />
         <option value="$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/EigenSymm.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/HyLikeSWave.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/ScttTrgtE2.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/ScttMthdBaseE1.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/eng/auto/AutoEngOpt.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/eng/auto/AutoScttEngs.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/JmMthdBaseE2.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/VecFactory.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/math/vec/IntVec.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010Common.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/ScttMthdBaseE2.java" />
+        <option value="$PROJECT_DIR$/../tsv2008/tsv/javax/utilx/arraysx/TArr.java" />
+        <option value="$PROJECT_DIR$/../qm2008/qm/scatt/eng/auto/AutoEngFactory.java" />
         <option value="$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java" />
       </list>
     </option>
@@ -590,6 +606,12 @@
   <component name="PerforceDirect.Settings">
     <option name="port" value="jasper:1666" />
     <option name="useNativeApi" value="true" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1848" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -659,7 +681,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -706,7 +727,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="papers" />
+              <option name="myItemId" value="scatt" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -724,11 +745,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="papers" />
+              <option name="myItemId" value="scatt" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="he_swave" />
+              <option name="myItemId" value="eng" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -746,15 +767,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="papers" />
+              <option name="myItemId" value="scatt" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="he_swave" />
+              <option name="myItemId" value="eng" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pra_2012_setup" />
+              <option name="myItemId" value="auto" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -835,6 +856,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1076,12 +1098,18 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="qm2008" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="JProfiler">
         <option name="WINDOW" value="false" />
         <option name="JVMPI" value="false" />
         <option name="INTERPRETED" value="false" />
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -1158,7 +1186,7 @@
     <option name="LOCK_ON_CHECKOUT" value="false" />
     <option name="UNLOCK_ON_CHECKIN" value="false" />
   </component>
-  <component name="SvnConfiguration" maxAnnotateRevisions="500">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="true">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -1176,6 +1204,24 @@
     <configuration useDefault="true">C:\Users\jc138691\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\dev\physics\dev_svn_120209" />
+          <option name="myCopyRoot" value="C:\dev\physics\dev_svn_120209" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\dev\physics\dev_svn_120209" />
+          <option name="myCopyRoot" value="C:\dev\physics\dev_svn_120209" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -1226,20 +1272,22 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36993605" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25692964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46047008" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2469537" sideWeight="0.6340378" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4392324" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-2230" y="469" width="3398" height="409" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4508547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-2230" y="469" width="3398" height="409" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24747474" sideWeight="0.5053305" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.65072304" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39946738" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25084174" sideWeight="0.6130064" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38699362" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="28" y="240" width="1457" height="562" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.326977" sideWeight="0.6752137" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30555555" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="28" y="240" width="1457" height="562" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
@@ -1256,9 +1304,13 @@
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
@@ -1284,7 +1336,16 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" value="Failed commit: Default (2)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -1382,116 +1443,116 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/test/ScattHyTest.java">
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/energy/HOvMtrx.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="45" selection-start="1871" selection-end="1871" vertical-scroll-proportion="0.0">
+        <state line="49" column="0" selection-start="1535" selection-end="1535" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/e_2/test/HeClementiZetaTest.java">
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/e_3/test/LiSlaterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="21" selection-start="522" selection-end="522" vertical-scroll-proportion="0.0">
+        <state line="206" column="0" selection-start="9003" selection-end="9003" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/grid/StepGridOpt.java">
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/JmCh.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="9" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0">
+        <state line="153" column="10" selection-start="4844" selection-end="4844" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/laguerre/lcr/LgrrOrthLcr.java">
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/ScttMthdBaseE1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="9" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0">
+        <state line="152" column="11" selection-start="4135" selection-end="4135" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/laguerre/LgrrOpt.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/IntVec.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
+        <state line="21" column="25" selection-start="542" selection-end="542" vertical-scroll-proportion="0.29262927">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/shell/ConfArrFactoryE2.java">
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010Common.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="49" selection-start="4666" selection-end="4666" vertical-scroll-proportion="0.0">
+        <state line="38" column="39" selection-start="1407" selection-end="1407" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/e_2/test/AtomHeTest.java">
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/ScttTrgtE2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="22" selection-start="4917" selection-end="4917" vertical-scroll-proportion="0.0">
+        <state line="28" column="14" selection-start="816" selection-end="816" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisJm.java">
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/jm/target/ScttTrgtE3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="34" selection-start="4703" selection-end="4703" vertical-scroll-proportion="0.0">
+        <state line="52" column="17" selection-start="1631" selection-end="1631" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/javax/utilx/arraysx/TArr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/javax/utilx/arraysx/DbleArr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="30" selection-start="145" selection-end="145" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/smodel/HeSWaveAtomNt50_LMBD4p0.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="31" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e2/ScttMthdBaseE2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="0" selection-start="1870" selection-end="1870" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/eng/auto/AutoEngFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="33" selection-start="544" selection-end="544" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010Common.java">
+    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/vec/Vec.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="5" selection-start="2600" selection-end="2600" vertical-scroll-proportion="0.504298">
+        <state line="21" column="24" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/scatt/jm_2008/e1/JmCalcOptE1.java">
+    <entry file="file://$PROJECT_DIR$/../qm2008/qm/atom/wf/lcr/YkLcr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="18" selection-start="1292" selection-end="1292" vertical-scroll-proportion="0.4756447">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/hy_swave/Jm2010CommonLcr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="23" selection-start="2554" selection-end="2554" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/Mtrx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="31" selection-start="223" selection-end="223" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../tsv2008/tsv/math/mtrx/api/EigenSymm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="17" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveScatt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="6" selection-start="6687" selection-end="6687" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/pra_2012_setup/HeSWaveRes2012.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="19" selection-start="4438" selection-end="4438" vertical-scroll-proportion="0.16857143">
+        <state line="45" column="16" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.1484375">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../qm2008/qm/papers/he_swave/HeSWaveBasisHeIon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="10" selection-start="2658" selection-end="2658" vertical-scroll-proportion="0.543021">
+        <state line="55" column="46" selection-start="1828" selection-end="1828" vertical-scroll-proportion="-0.1484375">
           <folding />
         </state>
       </provider>

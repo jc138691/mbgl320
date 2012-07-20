@@ -6,8 +6,12 @@ import math.complex.CmplxMtrx;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.api.Mtrx;
+import math.vec.IntVec;
 import math.vec.Vec;
-import scatt.eng.EngModel;
+import math.vec.VecDbgView;
+import math.vec.VecFactory;
+import scatt.eng.EngOpt;
+import scatt.eng.auto.AutoEngFactory;
 import scatt.jm_2008.e1.JmCalcOptE1;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScttRes;
@@ -47,6 +51,16 @@ public void setOrthNt(LgrrOrthLcr orthNt) {
 public ScttMthdBaseE2(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
+public ScttRes calcAutoScttEngs(IntVec points) {   log.setDbg();
+  log.dbg("engs=", new VecDbgView(getTrgtE2().getEngs()));
+  Vec engs = AutoEngFactory.makeEngs(getTrgtE2().getEngs(), points);   log.dbg("engs=", new VecDbgView(engs));
+  engs.add(-getTrgtE2().getInitTrgtEng());
+
+  EngOpt engModel = calcOpt.getGridEng();
+  engs = VecFactory.crop(engs, engModel.getFirst(), engModel.getLast());  log.dbg("crop(engs)=", new VecDbgView(engs));
+
+  return calc(engs);
+}
 @Override
 public ScttRes calc(Vec engs) {
   throw new IllegalArgumentException(log.error("call relevant implementation of calc(Vec engs)"));
@@ -76,8 +90,7 @@ protected void saveCrossSecs(int i, ScttRes res, CmplxMtrx mS, int openNum) {
   Mtrx mTics = res.getTics();
   double ionSum = 0;
   int initChIdx = trgtE2.getInitTrgtIdx();
-  for (int to = 0; to < openNum; to++) {
-    log.dbg("to = ", to);  // Target channels
+  for (int to = 0; to < openNum; to++) {          //log.dbg("to = ", to);  // Target channels
     JmCh ch = chArr[to];
     double k0 = chArr[initChIdx].getAbsMom();
     double k02 = k0 * k0;
@@ -85,7 +98,7 @@ protected void saveCrossSecs(int i, ScttRes res, CmplxMtrx mS, int openNum) {
     Cmplx S = mS.get(to, initChIdx);
     S = S.minus(Mathx.dlt(to, initChIdx));
 
-    double sigma = Math.PI * S.abs2() / k02;    log.dbg("sigma = ", sigma).eol();
+    double sigma = Math.PI * S.abs2() / k02;    //log.dbg("sigma = ", sigma).eol();
     mCrss.set(i, to + 1, sigma);  // NOTE +1; first column has incident energies
     if (trgtE2.getEngs().get(to) > trgtE2.getIonGrndEng()) {  // sum up all positive energy target states
       ionSum += sigma;
@@ -117,15 +130,15 @@ protected JmCh[] loadChArr(double sysEng) {
   LgrrOpt jmModel = calcOpt.getBasisOpt();
   Vec tEngs = trgtE2.getEngs();
   JmCh[] res = new JmCh[tEngs.size()];
-  for (int i = 0; i < tEngs.size(); i++) {    log.dbg("i = ", i);
+  for (int i = 0; i < tEngs.size(); i++) {    //log.dbg("i = ", i);
     // NOTE!!! minus in "-trgtE2.getScreenZ()"
     res[i] = new JmCh(sysEng, tEngs.get(i), jmModel, -trgtE2.getScreenZ());
-    log.dbg("res[i]=", res[i]);
+    //log.dbg("res[i]=", res[i]);
   }
   return res;
 }
 protected int calcPrntChNum() {
-  EngModel engModel = calcOpt.getGridEng();
+  EngOpt engModel = calcOpt.getGridEng();
   double maxScattE = engModel.getLast();
   return calcOpenChNum(maxScattE);
 }
