@@ -15,7 +15,6 @@ import math.vec.metric.DistMaxAbsErr;
 import project.workflow.task.test.FlowTest;
 
 import javax.utilx.log.Log;
-import java.math.BigDecimal;
 public class QuadrPts5Test extends FlowTest {
 public static Log log = Log.getLog(QuadrPts5Test.class);
 public QuadrPts5Test() {
@@ -34,7 +33,7 @@ public void testIntgl() throws Exception {    log.setDbg();
   assertEquals(1.0, w.calc(func), Calc.EPS_16);
 
   // fi(x) = Int_0^x 1 = x;
-  FuncVec fi = w.calcFuncIntOK(func);
+  FuncVec fi = w.calcFuncInt_DEV(func);
   // Int_0^1 fi(x) = 0.5
   assertEquals(0.5, w.calc(fi), Calc.EPS_16);
   FuncVec fi2 = new DerivPts5(func);                   log.info("DerivPts5(func)=", fi2);
@@ -44,7 +43,7 @@ public void testIntgl() throws Exception {    log.setDbg();
   grid = new StepGrid(0., 1., 9);
   w = new QuadrPts5(grid);
   func = new FuncVec(grid, new FuncConst(1.0));   log.info("func=", func);
-  fi = w.calcFuncIntOK(func);
+  fi = w.calcFuncInt_DEV(func);
   assertEquals(0.5, w.calc(fi), Calc.EPS_16);
   fi2 = new DerivPts5(func);                   log.info("DerivPts5(func)=", fi2);
   fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
@@ -53,7 +52,7 @@ public void testIntgl() throws Exception {    log.setDbg();
   grid = new StepGrid(0., 1., 13);
   w = new QuadrPts5(grid);
   func = new FuncVec(grid, new FuncConst(1.0));
-  fi = w.calcFuncIntOK(func);
+  fi = w.calcFuncInt_DEV(func);
   assertEquals(0.5, w.calc(fi), Calc.EPS_16);
   fi2 = new DerivPts5(func);                   log.info("DerivPts5(func)=", fi2);
   fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
@@ -81,7 +80,7 @@ public void testIntgl() throws Exception {    log.setDbg();
   assertEquals(0.5, w.calc(func), Calc.EPS_16);
 
   // fi(x) = Int_0^x r = 0.5 r^2;
-  fi = w.calcFuncIntOK(func);
+  fi = w.calcFuncInt_DEV(func);
   // Int_0^1 fi(x) = 0.5/3
   assertEquals(0.5 / 3, w.calc(fi), Calc.EPS_16);
   fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
@@ -97,7 +96,7 @@ public void testIntgl() throws Exception {    log.setDbg();
   double[] c4 = {0, 0, 0, 1./3.};
   FuncVec fiT = new FuncVec(grid, new FuncPolynom(c4));
   // fi(x) = Int_0^x r^2 = 1/3 r^3;
-  fi = w.calcFuncIntOK(func);
+  fi = w.calcFuncInt_DEV(func);
   // Int_0^1 fi(x) = 1/3 1/4
   assertEquals(1. / (3 * 4), w.calc(fi), Calc.EPS_16);
   fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
@@ -128,7 +127,7 @@ public void testWeights() {   log.setDbg();
   assertEquals(2., w.calc(func), 2e-5);
 
   // fi(x) = Int_0^x sin(r) = 1 - cos(x);
-  FuncVec fi = w.calcFuncIntOK(func);                 log.info("calcFuncIntOLD(Sin)=", fi);
+  FuncVec fi = w.calcFuncInt_DEV(func);                 log.info("calcFuncIntOLD(Sin)=", fi);
   // Int_0^PI [1 - cos(x)] = PI
   assertEquals(Math.PI, w.calc(fi), 1e-3);
 
@@ -139,7 +138,7 @@ public void testWeights() {   log.setDbg();
   grid = new StepGrid(0., Math.PI, 13);
   w = new QuadrPts5(grid);
   func = new FuncVec(grid, new FuncSin());
-  fi = w.calcFuncIntOK(func);
+  fi = w.calcFuncInt_DEV(func);
   assertEquals(Math.PI, w.calc(fi), 1e-4);
   fi2 = new IntgPts7(func);                            log.info("IntgPts7(func)=", fi2);
   assertEquals(Math.PI, w.calc(fi2), 1e-3);   // TODO: not good!!!!!
@@ -147,7 +146,7 @@ public void testWeights() {   log.setDbg();
   grid = new StepGrid(0., Math.PI, 21);
   w = new QuadrPts5(grid);
   func = new FuncVec(grid, new FuncSin());
-  fi = w.calcFuncIntOK(func);
+  fi = w.calcFuncInt_DEV(func);
   assertEquals(Math.PI, w.calc(fi), 1e-5);
 
   StepGrid grid4 = new StepGrid(0., Math.PI, 10);
@@ -175,7 +174,7 @@ public void testWeights() {   log.setDbg();
   func = new FuncVec(grid, new FuncExp(-1.));
   assertEquals(Math.exp(1.) - Math.exp(-1.), w.calc(func), 1e-7);
 
-  fi = w.calcFuncIntOK(func);   // exp(1)-exp(-x)
+  fi = w.calcFuncInt_DEV(func);   // exp(1)-exp(-x)
   assertEquals(Math.exp(1.) + Math.exp(-1.), w.calc(fi), 2e-5);
 
   grid = new StepGrid(-1., 1., 13);
@@ -214,7 +213,7 @@ public void testInfty() {
   assertEquals(0, 1. - w.calc(func), 1e-10);
 
   // int_0^r dx exp(-x) = 1 - exp(-r)
-  fi = w.calcFuncIntOK(func);  log.info("w.calcFuncIntOK(func)=", new VecDbgView(fi));
+  fi = w.calcFuncInt_DEV(func);  log.info("w.calcFuncIntOK(func)=", new VecDbgView(fi));
   fi.add(-1); // -exp(-r)
   fi.mult(-1); // exp(-r)
   assertEquals(0, 1. - w.calc(fi), 2e-7);
@@ -224,7 +223,7 @@ public void testInfty() {
   fi.add(-1); // -exp(-r)
   fi.mult(-1); // exp(-r)
   log.info("fi.mult(-1)=", new VecDbgView(fi));
-  assertEquals(0, 1. - w.calc(fi), 2e-9); // NOTE!!! Much better than calcFuncIntOK
+  assertEquals(0, 1. - w.calc(fi), 2e-9); // NOTE!!! Much better than calcFuncInt_DEV
 
   // NEW TEST
   grid = new StepGrid(-1, 100., 2001);
@@ -234,7 +233,7 @@ public void testInfty() {
   assertEquals(0, EXP_1 - w.calc(func), 1e-10);
 
   // int_{-1}^r dx exp(-x) = exp(1) - exp(-r)
-  fi = w.calcFuncIntOK(func);  log.info("w.calcFuncIntOK(func)=", new VecDbgView(fi));
+  fi = w.calcFuncInt_DEV(func);  log.info("w.calcFuncIntOK(func)=", new VecDbgView(fi));
   fi.add(-EXP_1); // -exp(-r)
   fi.mult(-1); // exp(-r)
   assertEquals(0, EXP_1 - w.calc(fi), 3e-7);
@@ -243,6 +242,6 @@ public void testInfty() {
   fi.add(-EXP_1); // -exp(-r)
   fi.mult(-1); // exp(-r)
   log.info("fi.mult(-1)=", new VecDbgView(fi));
-  assertEquals(0, EXP_1 - w.calc(fi), 6e-9); // NOTE!!! Much better than calcFuncIntOK
+  assertEquals(0, EXP_1 - w.calc(fi), 6e-9); // NOTE!!! Much better than calcFuncInt_DEV
 }
 }

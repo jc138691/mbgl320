@@ -21,15 +21,6 @@ public QuadrPts5(StepGrid grid) {
     throw new IllegalArgumentException(log.error("invalid size=" + size()));
   }
 }
-//public Vec makeQuadrFuncInt(double step) {
-//  double a[] = makeQuadrArr(step);
-//  return new Vec(a);
-//}
-//public static double[] makeQuadrArr(double step) {
-//  double tmp = 2.0 * step / 45.0;
-//  double a[] = {tmp * 7, tmp * 32, tmp * 12, tmp * 32, tmp * 7};
-//  return a;
-//}
 private void loadWeights(double step) {
   double tmp = 2.0 * step / 45.0;
   double a[] = {tmp * 14, tmp * 32, tmp * 12, tmp * 32};
@@ -39,7 +30,7 @@ private void loadWeights(double step) {
   arr[0] *= 0.5;
   arr[size() - 1] *= 0.5;
 }
-public FuncVec calcFuncIntOK(Vec funcV) {
+public FuncVec calcFuncInt_DEV(Vec funcV) {
   double[] f = funcV.getArr();
   FuncVec resF = new FuncVec(getX());
   double[] res = resF.getArr();
