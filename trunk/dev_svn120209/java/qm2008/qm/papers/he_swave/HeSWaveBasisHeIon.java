@@ -53,7 +53,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     H_OVERWRITE = true;
     REPLACE_TRGT_ENGS_N = 5;
 
-    AUTO_ENG_POINTS = new IntVec(new int[] {100, 20, 10, 10});
+    AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
     SCTT_ENG_N = 10; // not used
     SCTT_ENG_MIN = 0.5;
     SCTT_ENG_MAX = 2;
@@ -79,9 +79,17 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     int currN = 10;
     LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 
-    currN = 80;// N=80
-    LCR_N = 2001;//    N= 80
-    R_LAST = 400;//    N= 80
+    currN = 100;// N=100
+    LCR_N = 2001;//    N= 100
+    R_LAST = 400;//    N= 100
+
+//    currN = 90;// N=90
+//    LCR_N = 2001;//    N= 90
+//    R_LAST = 400;//    N= 90
+
+//    currN = 80;// N=80
+//    LCR_N = 2001;//    N= 80
+//    R_LAST = 400;//    N= 80
 
 //    currN = 70;// N=70
 //    LCR_N = 2001;//    N= 70
@@ -99,8 +107,8 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
 //    LCR_N = 801;//    N= 40
 //    R_LAST = 200;//    N= 40
 
-    Nc = 1;
-    int currNt = 20;
+    Nc = 3;
+    int currNt = 16;
 //    int currN = currNt + 1;
 
     SPIN = Spin.ELECTRON;

@@ -8,10 +8,10 @@ import math.vec.Vec;
 * Copyright dmitry.konovalov@jcu.edu.au Date: 9/07/2008, Time: 16:33:44
 */
 public class Mtrx
-//  extends MtrxJama {
-//  public Mtrx(MtrxJama from) {   super(from);}
-  extends MtrxEjml {
-  public Mtrx(MtrxEjml from) {  super(from);}
+  extends MtrxJama {
+  public Mtrx(MtrxJama from) {   super(from);}
+//  extends MtrxEjml {
+//  public Mtrx(MtrxEjml from) {  super(from);}
  //TODO: Remember to switch Jama/ejml in EigenSymm
 
 

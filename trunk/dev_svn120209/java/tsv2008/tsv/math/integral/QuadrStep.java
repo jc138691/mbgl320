@@ -15,10 +15,7 @@ public QuadrStep(StepGrid grid, int ptsNum) {
   this.nextN = ptsNum - 1;
   stepGrid = grid;
 }
-public Vec calcFuncIntOK(Vec f) {
-  throw new IllegalArgumentException(log.error("not implemented"));
-}
-public Vec makeQuadrFuncInt() {
+public Vec calcFuncInt_DEV(Vec f) {
   throw new IllegalArgumentException(log.error("not implemented"));
 }
 public StepGrid getStepGrid() {

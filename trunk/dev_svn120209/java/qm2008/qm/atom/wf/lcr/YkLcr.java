@@ -9,9 +9,6 @@ import math.Mathx;
 import math.interpol.PolynIntrp;
 
 import javax.utilx.log.Log;
-/**
-* Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 14:20:39
-*/
 // YkLogR(r)=r I^oo_0 r<^k/r>^(k+1) s^2 ds Rn(s)Rn'(s)
 // R(r)=sqrt(y)/r * P(r); where y(r)=c+r
 // YkLogR(r) = Zk(r) + I^oo_r (r/s)^(k+1) yds Pn(s) Pn'(s)
@@ -46,21 +43,21 @@ import javax.utilx.log.Log;
 public class YkLcr {
 public static Log log = Log.getLog(YkLcr.class);
 private final static double[] yTmp = new double[10]; // tmp array for zk_OLD
-private final Vec f;
-private final Vec f2;
-private final double[] CR2;//(c+r)^2
-private final double[] CR;//(c+r)
+private final Vec wf;
+private final Vec wf2;
+private final double[] cr2;//(c+r)^2
+private final double[] cr;//(c+r)
 private final double[] r;
 private final Vec vR;
 private final double[] divR;
 private final double[] yDivR;
-private final int K;
+private final int k;
 private final int MX;
 private final double H;
 private final double H2;
 private final double H3;
 private final TransLcrToR xToR;
-private final WFQuadrLcr quadrLcr;
+private final WFQuadrLcr quadr;
 
 // NOTE! THIS IS optimization. Stop re-calculating the same values
 private static FuncVec zF;  // z-function inside int_0^r
@@ -73,16 +70,16 @@ private static Vec last_r;
 private static int last_K;
 private boolean useLast = false;
 
-public YkLcr(final WFQuadrLcr quadrLcr, final Vec f, final Vec f2, final int K) {
-  this.K = K;
-  this.f = f;
-  this.f2 = f2;
-  this.quadrLcr = quadrLcr;
-  xToR = quadrLcr.getLcrToR();
+public YkLcr(final WFQuadrLcr quadr, final Vec wf, final Vec wf2, final int K) {
+  this.k = K;
+  this.wf = wf;
+  this.wf2 = wf2;
+  this.quadr = quadr;
+  xToR = quadr.getLcrToR();
   this.r = xToR.getArr();
   this.vR = xToR;
-  this.CR2 = xToR.getCR2().getArr();
-  this.CR = xToR.getCR().getArr();
+  this.cr2 = xToR.getCR2().getArr();
+  this.cr = xToR.getCR().getArr();
   this.divR = xToR.getDivR().getArr();
   this.yDivR = xToR.getCRDivR().getArr();
   if (!(xToR.getX() instanceof StepGrid)) {
@@ -92,14 +89,14 @@ public YkLcr(final WFQuadrLcr quadrLcr, final Vec f, final Vec f2, final int K) 
   this.H = ((StepGrid) xToR.getX()).getGridStep();
   this.H2 = H / 2.0;
   this.H3 = H / 3.0;
-  this.MX = (Math.min(f.size(), f2.size()) / 2) * 2;//      MX = (MIN0(MAX(I),MAX(J))/2)*2                                    AATK4123
+  this.MX = (Math.min(wf.size(), wf2.size()) / 2) * 2;//      MX = (MIN0(MAX(I),MAX(J))/2)*2                                    AATK4123
   // MX is used to trace simpson's rule errors
   //EH = DEXP(-H)   // from SUBROUTINE INIT
 
   useLast = checkUseLast();
 }
 private boolean checkUseLast() {
-  if (last_f == f  && last_f2 == f2  &&  last_K == K  &&  last_r  == vR)
+  if (last_f == wf && last_f2 == wf2 &&  last_K == k &&  last_r  == vR)
     return true;
   return false;
 }
@@ -142,9 +139,9 @@ public FuncVec calcZk_NEW() {   log.setDbg();
 //  FuncVec res = new IntgInftyPts7(zF);    log.info("IntgInftyPts7(zF)=", new VecDbgView(res));
 //  res.add(-res.getFirst());
 
-  //NOTE!!  HERE  IntgPts7 is much better than calcFuncIntOK
+  //NOTE!!  HERE  IntgPts7 is much better than calcFuncInt_DEV
   FuncVec res = new IntgPts7(zF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
-//  FuncVec res = quadr.calcFuncIntOK(zF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
+//  FuncVec res = quadr.calcFuncInt_DEV(zF);    log.info("IntgPts7(zF)=", new VecDbgView(res));
 
   res.multSelf(rK);
   return res;
@@ -157,8 +154,8 @@ private void loadZFuncs() {
   z[0] = 0;
   rk[0] = 0;
   for (int i = 1; i < z.length; i++) {
-    z[i] = CR2[i] * f.get(i) * f2.get(i);
-    double rki = Mathx.pow(r[i], K);
+    z[i] = cr2[i] * wf.get(i) * wf2.get(i);
+    double rki = Mathx.pow(r[i], k);
     z[i] *= rki;
     rk[i] = 1. / rki;
   }
@@ -173,10 +170,10 @@ private void loadYFuncs(FuncVec zkFunc) {
   double[] zk = zkFunc.getArr();
   y[0] = 0;
   rk[0] = 0;
-  double kk = -(2. * K + 1.);
-  int K1 = K + 1;
+  double kk = -(2. * k + 1.);
+  int K1 = k + 1;
   for (int i = 1; i < y.length; i++) {
-    y[i] = kk * (CR[i] / r[i])* zk[i];
+    y[i] = kk * (cr[i] / r[i])* zk[i];
     double rki = Mathx.pow(r[i], K1);
     y[i] /= rki;
     rk[i] = rki;
@@ -197,25 +194,25 @@ public FuncVec calcZk_OLD() {
   //      AN = 114.D0*A*H90                                                 AATK4114
   double A34 = 34.0 * H90;//      A34 = 34.D0*H90                                                   AATK4115
   int M = 0;
-  double F1 = CR2[M] * f.get(M) * f2.get(M);
+  double f1 = cr2[M] * wf.get(M) * wf2.get(M);
   M++;//      F1 = RR(1)*P(1,I)*P(1,J)                                          AATK4116
-  double F2 = CR2[M] * f.get(M) * f2.get(M);
+  double f2 = cr2[M] * wf.get(M) * wf2.get(M);
   M++;//      F2 = RR(2)*P(2,I)*P(2,J)                                          AATK4117
-  double F3 = CR2[M] * f.get(M) * f2.get(M);
+  double f3 = cr2[M] * wf.get(M) * wf2.get(M);
   M++;//      F3 = RR(3)*P(3,I)*P(3,J)                                          AATK4118
-  double F4 = CR2[M] * f.get(M) * f2.get(M);
+  double f4 = cr2[M] * wf.get(M) * wf2.get(M);
   M++;//      F4 = RR(4)*P(4,I)*P(4,J)                                          AATK4119
   //YK(1) = F1*(D1 + atomZ*R(1)*FACT)/DEN                                 AATK4120
   //YK(2) = F2*(D1 + atomZ*R(2)*FACT)/DEN                                 AATK4121
   //YK(3) = YK(1)*A2 + H3*(F3 + D4*A*F2 + A2*F1)                      AATK4122
   YK[0] = 0;
-  YK[1] = approxFirstZ(1, F2, F3);
-  YK[2] = approxFirstZ(2, F2, F3); // simpson does not work as good as this
+  YK[1] = approxFirstZ(1, f2, f3);
+  YK[2] = approxFirstZ(2, f2, f3); // simpson does not work as good as this
 //  YK[1] = 0;
 //  YK[2] = 0;
 
   for (M = 5; M <= MX; M++) {//      DO 8 M = 5,MX                                                     AATK4124
-    double F5 = CR2[M - 1] * f.get(M - 1) * f2.get(M - 1);//      F5 = (RR(M)*P(M,I))*P(M,J)                                        AATK4125
+    double f5 = cr2[M - 1] * wf.get(M - 1) * wf2.get(M - 1);//      F5 = (RR(M)*P(M,I))*P(M,J)                                        AATK4125
 
     // Zim = (ri/rim)^k Zi + I^im_i FF y^2 * (r/rim)^k dx;  where ri=r_i, rim=r_(i+m)
     // the same as in Froese-Fischer but replacing
@@ -225,11 +222,11 @@ public FuncVec calcZk_OLD() {
     // Replace exp(-mhk) with (ri/rim)^k;  where m=2
     //      EH = DEXP(-H)   // from SUBROUTINE INIT
     //      A = EH**K                                                         AATK4109
-    double rM2 = divR[M - 2];
-    double A3 = Mathx.pow(r[M - 5] * rM2, K) * H90;//      A3 = A2*A*H90                                                     AATK4112
-    double A2 = Mathx.pow(r[M - 4] * rM2, K);//      A2 = A*A                                                          AATK4110
-    double AN = Mathx.pow(r[M - 3] * rM2, K) * 114.0 * H90;//      AN = 114.D0*A*H90                                                 AATK4114
-    double AI = Mathx.pow(r[M - 1] * rM2, K) * H90;//      AI = H90/A                                                        AATK4113
+    double ovR = divR[M - 2];
+    double a3 = Mathx.pow(r[M - 5] * ovR, k) * H90;//      A3 = A2*A*H90                                                     AATK4112
+    double a2 = Mathx.pow(r[M - 4] * ovR, k);//      A2 = A*A                                                          AATK4110
+    double a1 = Mathx.pow(r[M - 3] * ovR, k) * 114.0 * H90;//      AN = 114.D0*A*H90                                                 AATK4114
+    double ai = Mathx.pow(r[M - 1] * ovR, k) * H90;//      AI = H90/A                                                        AATK4113
 
     // From Froese Fischer etal Computational atomic structure 2000
     // DELTA^2 F = F2 - 2*F3 + F4
@@ -239,12 +236,12 @@ public FuncVec calcZk_OLD() {
     //
     //      YK(M-1) = YK(M-3)*A2 + ( AN*F3 + A34*(F4+A2*F2)-F5*AI-F1*A3)      AATK4126
     double YKM_3 = YK[M - 4];
-    double YKM_1 = YKM_3 * A2 + (AN * F3 + A34 * (F4 + A2 * F2) - F5 * AI - F1 * A3);
+    double YKM_1 = YKM_3 * a2 + (a1 * f3 + A34 * (f4 + a2 * f2) - f5 * ai - f1 * a3);
     YK[M - 2] = YKM_1;
-    F1 = F2;//      F1 = F2                                                           AATK4127
-    F2 = F3;//      F2 = F3                                                           AATK4128
-    F3 = F4;//      F3 = F4                                                           AATK4129
-    F4 = F5;//8     F4 = F5                                                           AATK4130
+    f1 = f2;//      F1 = F2                                                           AATK4127
+    f2 = f3;//      F2 = F3                                                           AATK4128
+    f3 = f4;//      F3 = F4                                                           AATK4129
+    f4 = f5;//8     F4 = F5                                                           AATK4130
   }
   int M1 = MX - 1;//      M1 = MX - 1                                                       AATK4131
 //  if (K == 0) {//      IF (IABS(I-J)  +  IABS(K) .NE. 0) GO TO 2                         AATK4132
@@ -261,7 +258,7 @@ public FuncVec calcZk_OLD() {
 //  }
   int NO = r.length;
   for (M = M1 + 1; M <= NO; M++) {//2     DO 1 M = M1+1,NO                                                  AATK4143
-    double A = Mathx.pow(r[M - 2] * divR[M - 1], K);//A = EH**K                                                         AATK4109
+    double A = Mathx.pow(r[M - 2] * divR[M - 1], k);//A = EH**K                                                         AATK4109
     YK[M - 1] = A * YK[M - 2];//         YK(M) = A*YK(M-1)                                              AATK4144
   }//1     CONTINUE                                                          AATK4145
   return res;
@@ -273,12 +270,12 @@ private double approxFirstZ(int idxDest, double F2, double F3) {
   M++;
   double fx[] = {0, 0, 0};
   double rDest = r[idxDest];
-  double A = Mathx.pow(r[M] / rDest, K);
-  fx[M] = F2 * A / CR[M];
+  double A = Mathx.pow(r[M] / rDest, k);
+  fx[M] = F2 * A / cr[M];
   tmp.set(M, fx[M]);
   M++;
-  A = Mathx.pow(r[M] / rDest, K);
-  fx[M] = F3 * A / CR[M];
+  A = Mathx.pow(r[M] / rDest, k);
+  fx[M] = F3 * A / cr[M];
   tmp.set(M, fx[M]);
   double b = PolynIntrp.calcPowerSLOW(tmp, 0);
   return rDest / (b + 1) * fx[idxDest];
@@ -287,8 +284,8 @@ public FuncVec calcYk_OLD(FuncVec res) {
   double[] YK = res.getArr();
 //  FuncVec res = calcZk(); //CALL ZK(I,J,K)                                                    AATK4062
   //A =    EH**(K+1)                                                  AATK4063
-  int K1 = K + 1;
-  double C = 2 * K + 1;//      C = 2*K+1                                                         AATK4064
+  int K1 = k + 1;
+  double C = 2 * k + 1;//      C = 2*K+1                                                         AATK4064
   //      A2 = A*A                                                          AATK4065
   double H90 = C * H3 / 30.;//      H90 = C*H3/D30                                                    AATK4066
   //      A3 = A2*A*H90                                                     AATK4067

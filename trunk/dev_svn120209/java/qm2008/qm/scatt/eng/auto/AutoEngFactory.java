@@ -9,17 +9,17 @@ import javax.utilx.log.Log;
  */
 public class AutoEngFactory {
 public static Log log = Log.getLog(AutoEngFactory.class);
-public static Vec makeEngs(Vec engs, IntVec points) {    log.setDbg();
+public static Vec makeEngs(Vec engs, IntVec points) {    //log.setDbg();
   DbleArr res = new DbleArr();            log.dbg("points=", points);
   for (int i = 0; i < engs.size() - 1; i++) { // NOTE -1 !!!
-    double L = engs.get(i);      log.dbg("L=", L);// left
-    double R = engs.get(i+1);    log.dbg("R=", R);// right
-    int pN = points.get(0);      log.dbg("pN=", pN);
+    double L = engs.get(i);      //log.dbg("L=", L);// left
+    double R = engs.get(i+1);    //log.dbg("R=", R);// right
+    int pN = points.get(0);      //log.dbg("pN=", pN);
     add(res, L, R, pN);
-    double step = (R - L);     log.dbg("step=", step);
+    double step = (R - L);     //log.dbg("step=", step);
     for (int d = 1; d < points.size(); d++) { // note d=1; // d - for depth
-      step /= (pN + 1);        log.dbg("step/=(pN+1)=", step); // use prev num points
-      pN = points.get(d);      log.dbg("pN=", pN);
+      step /= (pN + 1);        //log.dbg("step/=(pN+1)=", step); // use prev num points
+      pN = points.get(d);      //log.dbg("pN=", pN);
       add(res, L, L + step, pN);
       add(res, R - step, R, pN);
     }
@@ -27,10 +27,10 @@ public static Vec makeEngs(Vec engs, IntVec points) {    log.setDbg();
   return new Vec(res.toArray()).sortSelf();
 }
 private static void add(DbleArr res, double L, double R, double n) {
-  log.dbg("add(L=", L);  log.dbg("R=", R);  log.dbg("n=", n);
-  double step = (R - L) / (n + 1);  log.dbg("step=", step);
+  //log.dbg("add(L=", L);  log.dbg("R=", R);  log.dbg("n=", n);
+  double step = (R - L) / (n + 1);  //log.dbg("step=", step);
   for (int i = 0; i < n; i++) {
-    res.add(L + step * (i+1));    log.dbg("res.getLast()=", res.getLast());
+    res.add(L + step * (i+1));    //log.dbg("res.getLast()=", res.getLast());
   }
 }
 }
