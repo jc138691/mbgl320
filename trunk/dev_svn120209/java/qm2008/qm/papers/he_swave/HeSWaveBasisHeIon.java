@@ -51,12 +51,12 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     CALC_DENSITY_MAX_NUM = 2;
     SAVE_TRGT_ENGS = true;
     H_OVERWRITE = true;
-    REPLACE_TRGT_ENGS_N = 5;
+    REPLACE_TRGT_ENGS_N = -1;
 
     AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
     SCTT_ENG_N = 10; // not used
     SCTT_ENG_MIN = 0.5;
-    SCTT_ENG_MAX = 2;
+    SCTT_ENG_MAX = 1;
 
     LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 
@@ -152,7 +152,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
     jmTrgt.setNt(trgtWfsNt.size());
-    jmTrgt.replaceTrgtEngs(HeSWaveAtomNt50_LMBD4p0.E_SORTED, REPLACE_TRGT_ENGS_N);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
+    jmTrgt.replaceTrgtEngs_DONOT_USE(HeSWaveAtomNt50_LMBD4p0.E_SORTED, REPLACE_TRGT_ENGS_N);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
     jmTrgt.loadSdcsW();
     saveTrgtInfo(jmTrgt);
 

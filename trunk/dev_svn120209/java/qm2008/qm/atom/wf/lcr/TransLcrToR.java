@@ -10,7 +10,7 @@ public class TransLcrToR extends FuncVec {
   public static Log log = Log.getLog(TransLcrToR.class);
   private Vec CR2OverR2;
   private Vec CR2DivR;
-  private Vec R2;
+  private Vec r2;
   private Vec CR2;
   private Vec CR; // y is used in FuncVec
   private Vec divR;
@@ -31,9 +31,9 @@ public class TransLcrToR extends FuncVec {
   }
 
   public Vec getR2() {
-    if (R2 == null)
-      R2 = new FuncVec(getX(), new FuncLcrToR2(c));
-    return R2;
+    if (r2 == null)
+      r2 = new FuncVec(getX(), new FuncLcrToR2(c));
+    return r2;
   }
   public Vec getCR2DivR2() {
     if (CR2OverR2 == null) {
@@ -87,5 +87,12 @@ public class TransLcrToR extends FuncVec {
   public FuncLcrToR getFunc() {
     return func;
   }
+public Vec getPowR(int k) {
+  if (k == 1)
+    return this;
+  else if (k == 2)
+    return getR2();
+  throw new IllegalArgumentException(log.error("getPowR(int k); k not ready"));
+}
 }
 
