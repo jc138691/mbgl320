@@ -26,7 +26,7 @@ public class ScttTrgtE2 {   // target properties
   public void setEngs(Vec targetEngs) {
     this.engs = targetEngs;
   }
-  public void replaceTrgtEngs(double[] from, int toIdxExc) {
+  public void replaceTrgtEngs_DONOT_USE(double[] from, int toIdxExc) {
     log.info("replaceTrgtEngs(from, toIdxExc=" + toIdxExc);
     if (toIdxExc <=0) {       log.info("if (toIdxExc <=0) return;");
       return;
@@ -37,6 +37,7 @@ public class ScttTrgtE2 {   // target properties
       engs.set(i, from[i]);
     }
     log.info("NEW   target engs=", engs);
+    throw new IllegalArgumentException(log.error("replaceTrgtEngs_DONOT_USE DEBUG_ONLY!!!!"));
   }
 
   public Vec getEngs() {

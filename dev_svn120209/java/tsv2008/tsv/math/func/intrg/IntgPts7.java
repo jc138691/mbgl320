@@ -43,19 +43,20 @@ protected void calc_h(final FuncVec fv) {  log.setDbg();
 //  double h2 = 0.5 * h;
 //  res[i] = res[i - STEP] + h2 * (f[i] + f[i - STEP]); // i=1
 
-  double y0 = f[i - STEP];
-  double y1 = f[i];
-  double y2 = f[i + STEP];
-  // y0 = c
-  // y1 = a h^2 + b h + c
-  // y2 = 4 a h^2 + 2 b h + c
-//  double a = (y2 - 2. * y1 - c) / (2. * h * h);
-//  double b = (4. * y1 - y2 + 3c) / (2. * h);
-//  double x = a / 3. * h^3 + bh^2 / 2. + c h;
-  double a = (y2 - 2. * y1 + y0) / 2.;
-  double b = (4. * y1 - y2 - 3. * y0) / 2.;
-  double x = (a / 3.  + b / 2. + y0) * h;
-  res[i] = res[i - STEP] + x;
+  // y(x) = a x^2 + b x + c
+  // f1 = c
+  // f2 = a h^2 + b h + c
+  // f3 = 4 a h^2 + 2 b h + c
+  //  double a = (f3 - 2. * f2 - c) / (2. * h * h);
+  //  double b = (4. * f2 - f3 + 3c) / (2. * h);
+  // int_0^h y(x) dx = a / 3. * h^3 + b h^2 / 2. + c h;
+  double f1 = f[i - STEP];
+  double f2 = f[i];
+  double f3 = f[i + STEP];
+  double a = (f3 - 2. * f2 + f1) / 2.;
+  double b = (4. * f2 - f3 - 3. * f1) / 2.;
+  double intgl = (a / 3.  + b / 2. + f1) * h;
+  res[i] = res[i - STEP] + intgl;
 
   i += STEP;
   double h3 = h / 3.;

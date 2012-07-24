@@ -24,7 +24,7 @@ public class YkLcrTest2 extends FlowTest {
     super(YkLcrTest2.class);   //??
   }
 
-  public void testZ_1() throws Exception { // zk = 1
+  public void testZ_1() throws Exception { // cZk = 1
     Vec r = quadr.getR();
     TransLcrToR xToR = quadr.getLcrToR();
     FuncVec f = WfFactory.makeP1s(r, 1.);
@@ -34,21 +34,22 @@ public class YkLcrTest2 extends FlowTest {
     String help = "< P1s | P1s > = ";
     assertEqualsRel(help, 1., res, true);   log.dbg(help, res);
 
-    FuncVec T = WfFactory.makeZ_1_1s(r); // valid
-    FuncVec zk = new YkLcr(quadr, f, f, 1).calcZk();
-    double absDist = Math.abs(DistMaxAbsErr.distSLOW(T, zk));   log.dbg("DistMaxAbsErr.distSLOW(T, zk)=", absDist);
+    FuncVec tYk, cYk, tZk, cZk;
+    tZk = WfFactory.makeZ_1_1s(r); // valid
+    cZk = new YkLcr(quadr, f, f, 1).calcZk();
+    double absDist = Math.abs(DistMaxAbsErr.distSLOW(tZk, cZk));   log.dbg("DistMaxAbsErr.distSLOW(trueZk, cZk)=", absDist);
     setMaxErr(MAX_WF_DIFF_ERR);
     assertEquals("Z_1_1s = ", 0, absDist);
 
-    T = WfFactory.makeZ_0_1s(r); // valid
-    zk = new YkLcr(quadr, f, f, 0).calcZk();
-    assertEquals("Z_0_1s = ", 0, Math.abs(DistMaxAbsErr.distSLOW(T, zk)));
+    tZk = WfFactory.makeZ_0_1s(r); // valid
+    cZk = new YkLcr(quadr, f, f, 0).calcZk();
+    assertEquals("Z_0_1s = ", 0, Math.abs(DistMaxAbsErr.distSLOW(tZk, cZk)));
 
-    T = WfFactory.makeY_0_1s(r); // valid
-    FuncVec Y = new YkLcr(quadr, f, f, 0).calcYk();
-    log.info("T = WfFactory.makeY_0_1s(r)=\n", new VecDbgView(T));
-    log.info("Y=\n", new VecDbgView(Y));
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)));
+    tYk = WfFactory.makeY_0_1s(r); // valid
+    cYk = new YkLcr(quadr, f, f, 0).calcYk();
+    log.info("trueZk = WfFactory.makeY_0_1s(r)=\n", new VecDbgView(cYk));
+    log.info("cYk=\n", new VecDbgView(cYk));
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(tYk, cYk)));
 
     // 1s-2s
     FuncVec f2 = WfFactory.makeP2s(r, 1.);
@@ -57,10 +58,10 @@ public class YkLcrTest2 extends FlowTest {
     assertEquals(0, Math.abs(res), MAX_INTGRL_ERR_E10);
     res = quadr.calcInt(f2, f2);
     assertEquals(1, Math.abs(res), MAX_INTGRL_ERR_E10);
-//    Y = new YkLcr(xToR, f, f2, 0).calcYk();
-    T = WfFactory.makeY_0_2s(r); // valid
-    Y = new YkLcr(quadr, f2, f2, 0).calcYk();
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), MAX_WF_DIFF_ERR);
+//    cYk = new YkLcr(xToR, f, f2, 0).calcYk();
+    tZk = WfFactory.makeY_0_2s(r); // valid
+    cYk = new YkLcr(quadr, f2, f2, 0).calcYk();
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(tZk, cYk)), MAX_WF_DIFF_ERR);
 
     // 2p
     f = WfFactory.makeP2p(r, 1.);
@@ -68,19 +69,19 @@ public class YkLcrTest2 extends FlowTest {
     f.multSelf(xToR.getDivSqrtCR());
     res = quadr.calcInt(f, f);
     assertEquals(0, Math.abs(res - 1), MAX_INTGRL_ERR_E10);
-    T = WfFactory.makeY_0_2p(r); // valid
-    Y = new YkLcr(quadr, f, f, 0).calcYk();
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), MAX_WF_DIFF_ERR);
+    tZk = WfFactory.makeY_0_2p(r); // valid
+    cYk = new YkLcr(quadr, f, f, 0).calcYk();
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(tZk, cYk)), MAX_WF_DIFF_ERR);
 
     // 2p
-    T = WfFactory.makeY_2_2p(r); // valid
+    tZk = WfFactory.makeY_2_2p(r); // valid
     log.info("f_2p=", new VecDbgView(f));
     log.info("r=", new VecDbgView(r));
     log.info("x=", new VecDbgView(xToR.getX()));
-    log.info("T=", new VecDbgView(T));
-    Y = new YkLcr(quadr, f, f, 2).calcYk();
-    log.info("Y=", new VecDbgView(Y));
-    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(T, Y)), MAX_WF_DIFF_ERR);
+    log.info("trueZk=", new VecDbgView(tZk));
+    cYk = new YkLcr(quadr, f, f, 2).calcYk();
+    log.info("cYk=", new VecDbgView(cYk));
+    assertEquals(0, Math.abs(DistMaxAbsErr.distSLOW(tZk, cYk)), MAX_WF_DIFF_ERR);
 
     int dbg = 1;
   }

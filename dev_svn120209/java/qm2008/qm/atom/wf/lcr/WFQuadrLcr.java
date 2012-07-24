@@ -82,6 +82,9 @@ public WFQuadrLcr getWithCR() {
 public Vec getR() {
   return lcrToR;
 }
+public Vec getPowR(int k) {
+  return lcrToR.getPowR(k);
+}
 public void transRToLCR(FuncVec f) {
   f.multSelf(getDivSqrtCR());
   f.setX(getX());
