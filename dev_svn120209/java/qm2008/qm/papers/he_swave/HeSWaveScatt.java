@@ -95,13 +95,13 @@ public void runJob() {
 //    LCR_N = 1001;//    N= 50
 //    R_LAST = 250;//    N= 50
 
-    currN = 40;
+    currN = 31;
     LCR_N = 801;//    N= 40
     R_LAST = 200;//    N= 40
 
   LAMBDA = 4; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   Nc = 3;
-  int currNt = 40;
+  int currNt = 30;
 //    int currN = currNt + 1;
 
   SPIN = Spin.ELECTRON;
@@ -137,7 +137,7 @@ protected static String makeLabelNc(JmMthdBaseE2 method) {
   return "Nc" + Nc + "_" + Jm2010Common.makeLabelBasisOptOpen(method);
 }
 
-protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
+protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {  log.setDbg();
   log.info("-->makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt)");
   SysE2 tgrtE2 = new SysHe(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
 
@@ -180,7 +180,7 @@ protected LsConfHMtrx makeSysBasisN(SlaterLcr slater) {
   SYS_LS = new Ls(0, Spin.ELECTRON);     // s - for system
   SysE3 sysE3 = new SysE3(AtomHe.Z, slater);    // NOTE!!! Helium (AtomHe.atomZ), not Li (AtomLi.atomZ)
   AtomShModelE3 modelE3 = new AtomShModelE3(Nc, Nt, N, SYS_LS);
-  LsConfs sConfArr = ConfArrFactoryE3.makeSModel(modelE3, wfN);    log.dbg("sConfArr=", sConfArr);
+  LsConfs sConfArr = ConfArrFactoryE3.makeSModelSmall(modelE3, wfN);    log.dbg("sConfArr=", sConfArr);
   LsConfHMtrx res = new LsConfHMtrx(sConfArr, sysE3);                     log.dbg("sH=\n", new MtrxDbgView(res));
   log.info("<--makeSysBasisN");
   return res;
@@ -374,7 +374,7 @@ protected void calcLi(SlaterLcr slater) { // NOTE!!! Local set up just to test t
   LsConfHMtrx sysH;
   Vec sysE;
   // Test with all different shells
-  sysArr = ConfArrFactoryE3.makePoetDiffShells(modelE3, orthonLiNt);
+  sysArr = ConfArrFactoryE3.makeSModelDiff(modelE3, orthonLiNt, -1);
   log.dbg("sysArr=", sysArr);
   sysH = new LsConfHMtrx(sysArr, tgrtE3);
   log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
@@ -382,7 +382,7 @@ protected void calcLi(SlaterLcr slater) { // NOTE!!! Local set up just to test t
   log.dbg("sysE=", new VecDbgView(sysE));
 
   // Test with all closed shells
-  sysArr = ConfArrFactoryE3.makePoetClosedShell(modelE3, orthonLiNt);
+  sysArr = ConfArrFactoryE3.makeSModelClosed(modelE3, orthonLiNt, -1);
   log.dbg("sysArr=", sysArr);
   sysH = new LsConfHMtrx(sysArr, tgrtE3);
   log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
@@ -390,7 +390,7 @@ protected void calcLi(SlaterLcr slater) { // NOTE!!! Local set up just to test t
   log.dbg("sysE=", new VecDbgView(sysE));
 
   // Test with all possible shells
-  sysArr = ConfArrFactoryE3.makeSModel(modelE3, orthonLiNt);    log.dbg("sysArr=", sysArr);
+  sysArr = ConfArrFactoryE3.makeSModelAll(modelE3, orthonLiNt);    log.dbg("sysArr=", sysArr);
   sysH = new LsConfHMtrx(sysArr, tgrtE3);    log.dbg("sysConfH=\n", new MtrxDbgView(sysH));
   sysE = sysH.getEigEngs();    log.dbg("sysE=", new VecDbgView(sysE));
   assertFloorRel("E_1s2_2s_2S_CI", AtomLi.E_1s2_2s_2S_CI, sysE.get(0), 0.005);

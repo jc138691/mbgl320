@@ -10,6 +10,7 @@ import javax.utilx.log.Log;
 */
 public class ConfArrFactoryE2 {
 public static Log log = Log.getLog(ConfArrFactoryE2.class);
+public static final int FAST_N1_FOR_N2 = 0;
 
 public static LsConfs makeTwoElec(Ls LS, int N, int L, FuncArr fromArr) {
   LsConfs res = new LsConfs();
@@ -58,7 +59,7 @@ public static LsConfs makeSModelE2(Ls LS, FuncArr arr, FuncArr arr2) {
   int maxN = arr2.size();
   FuncArr minA = arr;
   FuncArr maxA = arr2;
-  return makeSModelAllE2(LS, minA, minN, maxA, maxN);
+  return makeSModel(LS, minA, minN, maxA, maxN, -1);
 }
 public static LsConfs makeSModelE2(Ls LS, FuncArr arr) {
   int L = 0;
@@ -67,7 +68,7 @@ public static LsConfs makeSModelE2(Ls LS, FuncArr arr) {
   int maxN = arr.size();
   FuncArr minA = arr;
   FuncArr maxA = arr;
-  return makeSModelAllE2(LS, minA, minN, maxA, maxN);
+  return makeSModel(LS, minA, minN, maxA, maxN, -1);
 }
 public static LsConfs makeSModelMmE2(Ls LS, FuncArr arr, FuncArr arr2) {
 int L = 0;
@@ -83,64 +84,26 @@ public static LsConfs makeSModelAllE2(Ls LS, FuncArr arr, int minN) {
   int maxN = arr.size();
   FuncArr minA = arr;
   FuncArr maxA = arr;
-  return makeSModelAllE2(LS, minA, minN, maxA, maxN);
+  return makeSModel(LS, minA, minN, maxA, maxN, -1); // -1 means all;
 }
 public static LsConfs makeSModelSmallE2(Ls LS, FuncArr arr, int minN) {
   int maxN = arr.size();
   FuncArr minA = arr;
   FuncArr maxA = arr;
-  return makeSModelSmallE2(LS, minA, minN, maxA, maxN);
+  return makeSModel(LS, minA, minN, maxA, maxN, FAST_N1_FOR_N2);
 }
 public static LsConfs makeSModelMmE2(Ls LS, FuncArr arr, int minN) {
   int maxN = arr.size();
   FuncArr minA = arr;
   FuncArr maxA = arr;
-  return makeSModelAllE2(LS, minA, minN, maxA, maxN);
+  return makeSModel(LS, minA, minN, maxA, maxN, -1);
 }
 
-public static LsConfs makeSModelAllE2(Ls LS, FuncArr minA, int minN, FuncArr maxA, int maxN) {
-  int L = 0;
-  LsConfs res = new LsConfs();
-  res.setLs(LS);
-  if (minN > maxN) {
-    throw new IllegalArgumentException(log.error("arr2.size() < arr.size()!!!!!!!!"));
-  }
-  for (int n = 0; n < minN; n++) { // n=0,...,(N-1)
-    Shell sh = new ShellQ2(n, minA.get(n), L, LS); log.dbg("q=2 at sh=", sh);
-    if (sh.isValid()) {
-      LsConf fc = new ShPair(sh);                  log.dbg("fc(n=n2)=", fc);
-      res.add(fc);
-    }
-    sh = new Shell(n, minA.get(n), L);
-    log.dbg("sh=", sh);
-    for (int n2 = n + 1; n2 < minN; n2++) {
-      Shell sh2 = new Shell(n2, minA.get(n2), L);
-      log.dbg("sh2=", sh2);
-      LsConf fc = new ShPair(sh, sh2, LS);
-      log.dbg("fc=", fc);
-      res.add(fc);
-    }
-
-    // PLUS extra with (n>=N-1)
-    for (int n2 = minN; n2 < maxN; n2++) {
-      Shell sh2 = new Shell(n2, maxA.get(n2), L);
-      log.dbg("sh2=", sh2);
-      LsConf fc = new ShPair(sh, sh2, LS);
-      log.dbg("fc=", fc);
-      res.add(fc);
-    }
-  }
-  log.dbg("from minA=\n", minA);
-  log.dbg("from maxA=\n", maxA);
-  log.dbg("res=\n", res);
-  return res;
-}
-
-public static LsConfs makeSModelSmallE2(Ls LS
+public static LsConfs makeSModel(Ls LS
   , FuncArr minA, int minN
-  , FuncArr maxA, int maxN) {
+  , FuncArr maxA, int maxN, int minNForMaxN
+) {
   int L = 0;
-  int N1_IGNORE_FOR_N2 = 1;
   LsConfs res = new LsConfs();
   res.setLs(LS);
   if (minN > maxN) {
@@ -161,7 +124,7 @@ public static LsConfs makeSModelSmallE2(Ls LS
     }
 
     // PLUS extra with (n>=N-1)
-    if (n > N1_IGNORE_FOR_N2)
+    if (minNForMaxN != -1  &&  n > minNForMaxN)  //-1 means all
       continue;
     for (int n2 = minN; n2 < maxN; n2++) {
       Shell sh2 = new Shell(n2, maxA.get(n2), L);     log.dbg("sh2=", sh2);
