@@ -50,7 +50,7 @@ public class HySWaveViaOverlap_OLD extends HySWaveJmBasisHy {
     Ls sLs = new Ls(0, SPIN);         // s - for system
 
     // NOTE [dak 24Mar2011] Use (Nt, N). (N,N) is not allowed, see 2011 e-He paper
-//    LsConfs sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthNt, orthNt);   log.dbg("sConfArr=", sConfArr);
+//    LsConfs sConfArr = ConfArrFactoryE2.makeSModelAllE2(sLs, orthNt, orthNt);   log.dbg("sConfArr=", sConfArr);
     LsConfs sConfArr = ConfArrFactoryE2.makeSModelE2(sLs, orthNt, orthN);   log.dbg("sConfArr=", sConfArr);
 
     LsConfs chiArr = ConfArrFactoryE2.makeTwoElec_forJmV2(sLs, L, orthNt

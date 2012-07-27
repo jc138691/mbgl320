@@ -7,6 +7,7 @@ import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.wf.lcr.LcrFactory;
 import math.func.arr.FuncArr;
+import math.vec.IntVec;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
@@ -33,12 +34,24 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
   }
 
   public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-    project = QMSProject.makeInstance("HeSWaveBasisJm", "110606");
+    MODEL_NAME = "HeSWaveBasisJm";
+    project = QMSProject.makeInstance(MODEL_NAME, "110606");
     TARGET_Z = AtomHe.Z;
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
-    MODEL_NAME = "HeSModelBasisJm";
     MODEL_DIR = MODEL_NAME;
-    LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+
+    CALC_DENSITY = false;
+    CALC_DENSITY_MAX_NUM = 2;
+    SAVE_TRGT_ENGS = true;
+    H_OVERWRITE = true;
+    REPLACE_TRGT_ENGS_N = -1;
+
+    AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 10});
+    SCTT_ENG_N = 10; // not used
+    SCTT_ENG_MIN = 0.5;
+    SCTT_ENG_MAX = 1;
+
+//    LAMBDA = 4; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
     // Note: run one at a time as only one set of result files is produced
     runJob();
   }
@@ -48,43 +61,6 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     log.info("log.info(HeSWaveBasisJm)");
 //    JmResonE2_bad.log.setDbg();
     log.setDbg();
-  }
-
-  public void runJob() {
-//    // Nt= 80
-//    int currN = 81;
-//    LCR_FIRST = -7;
-//    LCR_N = 1601;
-//    R_LAST = 450;
-
-//    // Nt= 70
-//    int currN = 71;
-//    LCR_FIRST = -5;
-//    LCR_N = 1201;
-//    R_LAST = 330;
-
-    // upto N=50
-//    LCR_FIRST = -5;  //-5
-//    LCR_N = 1001;  //901
-//    R_LAST = 250;
-
-    // upto N=40
-    LCR_FIRST = -5;
-    LCR_N = 701;
-    R_LAST = 200;
-
-    Nc = 10;
-    int currNt = 20;
-    int currN = 21;
-//    int currN = currNt + 1;
-    CALC_DENSITY = true;
-    SAVE_TRGT_ENGS = true;
-
-    SPIN = Spin.ELECTRON;
-    calc(currN, currNt);
-//    calc(12, 11);
-//    calc(13, 12);
-//    calc(14, 13);
   }
 
 
@@ -139,10 +115,12 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
 
     ScttRes res;
     if (scttEngs != null) {
-      res = method.calc(scttEngs);                  log.dbg("res=", res);
+//      res = method.calc(scttEngs);                  log.dbg("res=", res);
+      res = null; // DBG
     }
     else {
-      res = method.calcScttEngModel();                  log.dbg("res=", res);
+//      res = method.calcScttEngModel();                  log.dbg("res=", res);
+      res = method.calcAutoScttEngs(AUTO_ENG_POINTS);                  log.dbg("res=", res);
     }
     setupScattRes(res, method);
 
