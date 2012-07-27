@@ -11,7 +11,6 @@ import atom.energy.LsConfHMtrx;
 import atom.energy.Energy;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.*;
-import atom.smodel.HeSWaveAtom;
 import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.LcrFactory;
 import atom.wf.lcr.TransLcrToR;
@@ -28,12 +27,9 @@ import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridOpt;
 import project.workflow.task.test.FlowTest;
 import scatt.jm_2008.jm.laguerre.LgrrOpt;
-import scatt.jm_2008.jm.laguerre.lcr.AnyOrthTest;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 
 import javax.utilx.log.Log;
-import java.awt.*;
-import java.awt.geom.NoninvertibleTransformException;
 /**
 * Created by Dmitry.A.Konovalov@gmail.com, 16/02/2010, 11:12:27 AM
 */
@@ -161,7 +157,7 @@ public void dbgBasisNc() throws Exception  {  log.setDbg();
   LsConfs confs = ConfArrFactoryE2.makeSModelE2(S1, orthNt);   log.dbg("confs=", confs);
   LsConfHMtrx sysH = new LsConfHMtrx(confs, sysE2);            log.dbg("htS1=\n", new MtrxDbgView(sysH));
 
-  LsConfs ltdConfs = ConfArrFactoryE2.makeSModelE2(Nt, Nt, Nt, S1, orthNt);   log.dbg("ltdConfs=", ltdConfs);
+  LsConfs ltdConfs = ConfArrFactoryE2.makeSModelSmallE2(Nt, Nt, Nt, S1, orthNt);   log.dbg("ltdConfs=", ltdConfs);
   LsConfHMtrx ltdH = new LsConfHMtrx(ltdConfs, sysE2);            log.dbg("htS1=\n", new MtrxDbgView(ltdH));
 
   Mtrx ev = ltdH.getEigVec();           log.dbg("ev=", new MtrxDbgView(ev));

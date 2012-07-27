@@ -67,6 +67,47 @@ public void setUp() {
 //    JmResonE2_bad.log.setDbg();
 //    log.setDbg();
 }
+public void runJob() {
+  int currN = 10;
+  LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
+
+  currN = 100;// N=100
+  LCR_N = 2001;//    N=100, LAMBDA=2
+  R_LAST = 400;//    N=100, LAMBDA=2
+
+//    currN = 90;// N=90
+//    LCR_N = 2001;//    N= 90
+//    R_LAST = 400;//    N= 90
+
+//    currN = 80;// N=80
+//    LCR_N = 2001;//    N= 80
+//    R_LAST = 400;//    N= 80
+
+//    currN = 70;// N=70
+//    LCR_N = 2001;//    N= 70
+//    R_LAST = 400;//    N= 70
+
+//    currN = 60;// N=60
+//    LCR_N = 2001;//    N= 60
+//    R_LAST = 400;//    N= 60
+
+//    currN = 50;// N=50
+//    LCR_N = 1001;//    N= 50
+//    R_LAST = 250;//    N= 50
+
+    currN = 40;
+    LCR_N = 801;//    N= 40
+    R_LAST = 200;//    N= 40
+
+  LAMBDA = 4; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+  Nc = 3;
+  int currNt = 40;
+//    int currN = currNt + 1;
+
+  SPIN = Spin.ELECTRON;
+  calc(currN, currNt);
+//    calc(14, 13);
+}
 
 protected void saveTrgtInfo(ScttTrgtE3 jmTrgt) {
   double ionGrnd = jmTrgt.getIonGrndEng();
@@ -101,7 +142,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
   SysE2 tgrtE2 = new SysHe(slater);// NOTE -2 for Helium       // USES equations from the 2011 e-He paper
 
   Ls tLs = new Ls(0, Spin.SINGLET);  // t - for target
-  LsConfs tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, basisNt, Nc);    log.dbg("tConfArr=", tConfArr);
+  LsConfs tConfArr = ConfArrFactoryE2.makeSModelSmallE2(tLs, basisNt, Nc);    log.dbg("tConfArr=", tConfArr);
   LsConfHMtrx tH = new LsConfHMtrx(tConfArr, tgrtE2);                          log.dbg("tH=\n", new MtrxDbgView(tH));
   Mtrx tVecs = tH.getEigVec();                                             log.dbg("tH.getEigVec=", new MtrxDbgView(tVecs));
   if (SAVE_TRGT_ENGS)  {
@@ -114,7 +155,7 @@ protected ScttTrgtE3 makeTrgtBasisNt(SlaterLcr slater, FuncArr basisNt) {
   }
 
   tLs = new Ls(0, Spin.TRIPLET);  // t - for target
-  tConfArr = ConfArrFactoryE2.makeSModelE2(tLs, basisNt, Nc);            log.dbg("tConfArr=", tConfArr);
+  tConfArr = ConfArrFactoryE2.makeSModelSmallE2(tLs, basisNt, Nc);            log.dbg("tConfArr=", tConfArr);
   LsConfHMtrx tH2 = new LsConfHMtrx(tConfArr, tgrtE2);                         log.dbg("tH=\n", new MtrxDbgView(tH2));
   if (SAVE_TRGT_ENGS)  {
     FileX.writeToFile(tH2.getEigEngs().toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME+"_trgEngs_S3_" + makeLabelNc());

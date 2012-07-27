@@ -58,7 +58,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     SCTT_ENG_MIN = 0.5;
     SCTT_ENG_MAX = 1;
 
-    LAMBDA = 2; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+    LAMBDA = 4; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 
     // Note: run one at a time as only one set of result files is produced
 //    setupEngAu_3();
@@ -75,46 +75,6 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     runJob();
   }
 
-  public void runJob() {
-    int currN = 10;
-    LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
-
-    currN = 100;// N=100
-    LCR_N = 2001;//    N= 100
-    R_LAST = 400;//    N= 100
-
-//    currN = 90;// N=90
-//    LCR_N = 2001;//    N= 90
-//    R_LAST = 400;//    N= 90
-
-//    currN = 80;// N=80
-//    LCR_N = 2001;//    N= 80
-//    R_LAST = 400;//    N= 80
-
-//    currN = 70;// N=70
-//    LCR_N = 2001;//    N= 70
-//    R_LAST = 400;//    N= 70
-
-//    currN = 60;// N=60
-//    LCR_N = 2001;//    N= 60
-//    R_LAST = 400;//    N= 60
-
-//    currN = 50;// N=50
-//    LCR_N = 1001;//    N= 50
-//    R_LAST = 250;//    N= 50
-
-//    currN = 40;
-//    LCR_N = 801;//    N= 40
-//    R_LAST = 200;//    N= 40
-
-    Nc = 3;
-    int currNt = 16;
-//    int currN = currNt + 1;
-
-    SPIN = Spin.ELECTRON;
-    calc(currN, currNt);
-//    calc(14, 13);
-  }
 
   public void calc(int newN, int newNt) {
     N = newN;
@@ -152,7 +112,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     jmTrgt.setIonGrndEng(basisEngs.getFirst());
     jmTrgt.removeClosed(calcOpt.getGridEng().getLast(), FROM_CH, KEEP_CLOSED_N);
     jmTrgt.setNt(trgtWfsNt.size());
-    jmTrgt.replaceTrgtEngs_DONOT_USE(HeSWaveAtomNt50_LMBD4p0.E_SORTED, REPLACE_TRGT_ENGS_N);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
+//    jmTrgt.replaceTrgtEngs_DONOT_USE(HeSWaveAtomNt50_LMBD4p0.E_SORTED, REPLACE_TRGT_ENGS_N);   log.info("REPLACING trgt engs with=", HeSWaveAtomNt50_LMBD4p0.E_SORTED);
     jmTrgt.loadSdcsW();
     saveTrgtInfo(jmTrgt);
 

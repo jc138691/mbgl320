@@ -52,14 +52,19 @@ public ScttMthdBaseE2(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 public ScttRes calcAutoScttEngs(IntVec points) {   log.setDbg();
-  log.dbg("engs=", new VecDbgView(getTrgtE2().getEngs()));
-  Vec engs = AutoEngFactory.makeEngs(getTrgtE2().getEngs(), points);   log.dbg("engs=", new VecDbgView(engs));
-  engs.add(-getTrgtE2().getInitTrgtEng());
+  log.dbg("tEngs=", new VecDbgView(getTrgtE2().getEngs()));
+  Vec tEngs = AutoEngFactory.makeEngs(getTrgtE2().getEngs(), points);   log.dbg("tEngs=", new VecDbgView(tEngs));
+  tEngs.add(-getTrgtE2().getInitTrgtEng());
+
+  Vec sEngs = AutoEngFactory.makeEngs(getSysEngs(), new IntVec(new int[]{10}));   log.dbg("sEngs=", new VecDbgView(sEngs));
+  sEngs.add(-getTrgtE2().getInitTrgtEng());
+  tEngs.append(sEngs);
+  tEngs.sortSelf();
 
   EngOpt engModel = calcOpt.getGridEng();
-  engs = VecFactory.crop(engs, engModel.getFirst(), engModel.getLast());  log.dbg("crop(engs)=", new VecDbgView(engs));
+  tEngs = VecFactory.crop(tEngs, engModel.getFirst(), engModel.getLast());  log.dbg("crop(tEngs)=", new VecDbgView(tEngs));
 
-  return calc(engs);
+  return calc(tEngs);
 }
 @Override
 public ScttRes calc(Vec engs) {

@@ -104,10 +104,10 @@ public void testHeMm2() throws Exception {  log.setDbg();
   SysHeMm mmE2 = new SysHeMm(slater);
 
   Ls sysLs = new Ls(0, Spin.SINGLET);  // t - for target
-  LsConfs confs = ConfArrFactoryE2.makeSModelE2(sysLs, orthN, N);
+  LsConfs confs = ConfArrFactoryE2.makeSModelAllE2(sysLs, orthN, N);
   log.dbg("confs=", confs);
-//  LsConfs confsMm = ConfArrFactoryE2.makeSModelE2(sysLs, orth, N_MI);
-//  LsConfs confsMm = ConfArrFactoryE2.makeSModelE2(sysLs, orth, orthMa);
+//  LsConfs confsMm = ConfArrFactoryE2.makeSModelAllE2(sysLs, orth, N_MI);
+//  LsConfs confsMm = ConfArrFactoryE2.makeSModelAllE2(sysLs, orth, orthMa);
   LsConfs confsMm = ConfArrFactoryE2.makeSModelMmE2(sysLs, orthMi, orthMa);
 //  LsConfs confsMm = ConfArrFactoryE2.makeSModelMmE2(sysLs, orthMi, N_MI);
   log.dbg("confsMm=", confsMm);
