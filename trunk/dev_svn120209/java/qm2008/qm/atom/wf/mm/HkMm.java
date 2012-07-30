@@ -159,7 +159,7 @@ private void calcZAA2() {  // with second deriv of a2
   // NOTE: \int dx DOE NOT have CR2!!!!!!
   zaa2 = calcZDrv2(a, a2);  log.info("zaa2=", new VecDbgView(zaa2));
 }
-private FuncVec calcZDrv2(Vec fa, FuncVec fb) {   log.setDbg();
+private FuncVec calcZDrv2(Vec fa, FuncVec fb) {   //log.setDbg();
   Vec v = fb.getDrv2().copy();      //[ d^2/dx^2 Fb(x)]
   v.addMultSafe(-0.25, fb);  // [ d^2/dx^2 -1/4 ]Fb(x)]
   v.multSelf(fa);            // Fa(x) [ d^2/dx^2 -1/4 ]Fb(x)]
@@ -167,7 +167,7 @@ private FuncVec calcZDrv2(Vec fa, FuncVec fb) {   log.setDbg();
   FuncVec res = new IntgPts7(z);
   return res;
 }
-private FuncVec calcZ0(Vec vf, Vec vf2) {   log.setDbg();
+private FuncVec calcZ0(Vec vf, Vec vf2) {   //log.setDbg();
   Vec v = vf.copy();
   v.multSelf(vcr2, vf2);
   FuncVec z = new FuncVec(vx, v);
