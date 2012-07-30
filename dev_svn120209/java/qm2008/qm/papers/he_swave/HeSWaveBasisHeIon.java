@@ -7,7 +7,9 @@ import atom.energy.LsConfHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.smodel.HeSWaveAtomNt50_LMBD4p0;
+import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.LcrFactory;
+import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;
 import math.mtrx.api.Mtrx;
@@ -41,7 +43,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     log.setDbg();
   }
   public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-    MODEL_NAME = "HeSModelBasisHeIon";
+    MODEL_NAME = "HeSWaveBasisHeIon";
     project = QMSProject.makeInstance(MODEL_NAME, "110606");
     TARGET_Z = AtomHe.Z;
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
@@ -83,14 +85,17 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     potScattTestOk();     // out: lgrrN, orthNt, lgrrBi
     hydrScattTestOk(AtomHy.Z);      // out: pt (for Hy), orthNt
     hydrScattTestOk(AtomHe.Z);      // out: pt (for Hy), orthNt
-    jmHeTestOk();      // out: re-loading pt (for He)
+    jmHeTestOk();      // out: re-loading pot (for He)
     initLiJm();
     SlaterLcr slater = new SlaterLcr(quadr);
     calcHe(slater);    //verified: SysHeOldOk and SysHe yield exactly the same results.
     calcLi(slater);
 
     // Making He+ eigen-states
-    trgtPotH = new PotHMtrxLcr(L, orthNt, pot);       log.dbg("trgtPotH=", trgtPotH);
+//    trgtPotH = new PotHMtrxLcr(L, orthNt, pot);       log.dbg("trgtPotH=", trgtPotH);
+    FuncVec potHeIon = WfFactory.makePotHeIon_1s_e(vR);  log.dbg("potHeIon(r)=", potHeIon);
+    trgtPotH = new PotHMtrxLcr(L, orthNt, potHeIon);       log.dbg("trgtPotH=", trgtPotH);
+
     Vec basisEngs = trgtPotH.getEigEngs();                log.dbg("eigVal=", new VecDbgView(basisEngs));
     Mtrx basisVecs = trgtPotH.getEigVec();               log.dbg("eigVec=", new MtrxDbgView(basisVecs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_basisEngs_" + makeLabelNc());

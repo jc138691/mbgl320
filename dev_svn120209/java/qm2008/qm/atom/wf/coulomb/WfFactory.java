@@ -27,10 +27,19 @@ public WfFactory() {
 public static FuncVec makePotHy_1s(Vec r) {
   return new FuncVec(r, new PotFuncHy_1s());
 }
+public static FuncVec makePotHeIon_1s(Vec r) {
+  return new FuncVec(r, new PotFuncHeIon_1s());
+}
 
 // V_1s as felt by an electron
 public static FuncVec makePotHy_1s_e(Vec r) {
   FuncVec res = makePotHy_1s(r);
+  res.mult(-1);
+  return res;
+}
+// V_1s as felt by an electron
+public static FuncVec makePotHeIon_1s_e(Vec r) {
+  FuncVec res = makePotHeIon_1s(r);
   res.mult(-1);
   return res;
 }
@@ -325,12 +334,21 @@ public double calc(double r) {
 }
 }
 class PotFuncHy_1s implements Func {
-public double calc(double r) {
-  if (r <= 0) {
-    return 0;
+  public double calc(double r) {
+    if (r <= 0) {
+      return 0;
+    }
+    return (1. / r + 1.) * Math.exp(-2. * r);
   }
-  return (1. / r + 1.) * Math.exp(-2. * r);
 }
+class PotFuncHeIon_1s implements Func {
+  public double calc(double r) {
+    if (r <= 0) {
+      return 0;
+    }
+    return 1./r + (1./r + 1.) * Math.exp(-2. * r);
+//    return 1./r + (1./r + 2.) * Math.exp(-4. * r);
+  }
 }
 class WFuncP2s extends WFuncP1s {
 public WFuncP2s(final double z) {

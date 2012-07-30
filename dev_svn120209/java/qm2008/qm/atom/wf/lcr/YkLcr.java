@@ -118,7 +118,7 @@ public FuncVec calcYk_OLD() {
 //  FuncVec zk = calcZk_NEW();
   return calcYk_OLD(zk);
 }
-public FuncVec calcYk_NEW(FuncVec zk) {   log.setDbg();
+public FuncVec calcYk_NEW(FuncVec zk) {   //log.setDbg();
   loadYFuncs(zk);
   // integrate backwards
   FuncVec res = new IntgInftyPts7(yF);    log.info("IntgInftyPts7(zF)=", new VecDbgView(res));
@@ -130,7 +130,7 @@ public FuncVec calcYk_NEW(FuncVec zk) {   log.setDbg();
   res.multSelf(rK1);
   return res;
 }
-public FuncVec calcZk_NEW() {   log.setDbg();
+public FuncVec calcZk_NEW() {   //log.setDbg();
   loadZFuncs();
 
   // IntgInftyPts7 is not good for ln(r)-type grid!!!!!!!!

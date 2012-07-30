@@ -109,7 +109,7 @@ public void testHeMm2() throws Exception {  log.setDbg();
 //  LsConfs confsMm = ConfArrFactoryE2.makeSModelAllE2(sysLs, orth, N_MI);
 //  LsConfs confsMm = ConfArrFactoryE2.makeSModelAllE2(sysLs, orth, orthMa);
   LsConfs confsMm = ConfArrFactoryE2.makeSModelMmE2(sysLs, orthMi, orthMa);
-//  LsConfs confsMm = ConfArrFactoryE2.makeSModelMmE2(sysLs, orthMi, N_MI);
+//  LsConfs confsMm = ConfArrFactoryE2.makeSModelMm(sysLs, orthMi, N_MI);
   log.dbg("confsMm=", confsMm);
 
   // ================
