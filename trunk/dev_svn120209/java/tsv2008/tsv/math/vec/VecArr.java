@@ -23,9 +23,12 @@ public class VecArr {
   public Vec get(int i) {
     return arr.get(i);
   }
-  public Vec getLast() {
-    return get(size()-1);
-  }
+public Vec getLast() {
+  return get(size()-1);
+}
+public Vec getFirst() {
+  return get(0);
+}
   final public void add(Vec v) {
     arr.add(v);
   }

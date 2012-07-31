@@ -46,7 +46,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     H_OVERWRITE = true;
     REPLACE_TRGT_ENGS_N = -1;
 
-    AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 10});
+    AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
     SCTT_ENG_N = 10; // not used
     SCTT_ENG_MIN = 0.5;
     SCTT_ENG_MAX = 1;
