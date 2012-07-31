@@ -30,9 +30,12 @@ public class FuncArr extends VecArr implements IFuncArr {
   final public FuncVec get(int i) {
     return (FuncVec)super.get(i);
   }
-  final public FuncVec getLast() {
-    return (FuncVec)super.getLast();
-  }
+final public FuncVec getLast() {
+  return (FuncVec)super.getLast();
+}
+final public FuncVec getFirst() {
+  return (FuncVec)super.getFirst();
+}
   private void init(Vec x, int arrSize) {
     for (int i = 0; i < arrSize; i++) {
       add(new FuncVec(x));

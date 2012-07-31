@@ -79,13 +79,13 @@ public void runJob() {
 //    LCR_N = 2001;//    N= 90
 //    R_LAST = 400;//    N= 90
 
-//    currN = 80;// N=80
-//    LCR_N = 2001;//    N= 80
-//    R_LAST = 400;//    N= 80
+    currN = 80;// N=80
+    LCR_N = 2001;//    N= 80
+    R_LAST = 400;//    N= 80
 
-//    currN = 70;// N=70
-//    LCR_N = 2001;//    N= 70
-//    R_LAST = 400;//    N= 70
+    currN = 100;// N=70
+    LCR_N = 2001;//    N= 70
+    R_LAST = 400;//    N= 70
 
 //    currN = 60;// N=60
 //    LCR_N = 2001;//    N= 60
@@ -95,13 +95,13 @@ public void runJob() {
 //    LCR_N = 1001;//    N= 50
 //    R_LAST = 250;//    N= 50
 
-    currN = 31;
-    LCR_N = 801;//    N= 40
-    R_LAST = 200;//    N= 40
+//    currN = 31;
+//    LCR_N = 801;//    N= 40
+//    R_LAST = 200;//    N= 40
 
-  LAMBDA = 2.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
-  Nc = 2;
-  int currNt = 20;
+  LAMBDA = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+  Nc = 3;
+  int currNt = 25;
 //    int currN = currNt + 1;
 
   SPIN = Spin.ELECTRON;

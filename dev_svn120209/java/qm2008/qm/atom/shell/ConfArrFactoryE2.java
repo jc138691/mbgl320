@@ -10,7 +10,7 @@ import javax.utilx.log.Log;
 */
 public class ConfArrFactoryE2 {
 public static Log log = Log.getLog(ConfArrFactoryE2.class);
-public static final int FAST_MAX_N12 = 18;
+public static final int FAST_MAX_N12 = 4;  //-1 all
 
 public static LsConfs makeTwoElec(Ls LS, int N, int L, FuncArr fromArr) {
   LsConfs res = new LsConfs();
@@ -152,7 +152,7 @@ public static void addValidN12(int n1, int n2, LsConfs res, LsConf fc
   }
 }
 
-public static LsConfs makeSModelSmallE2(int size1, int size2, int maxNN   // idx + idx2 <=maxNN
+public static LsConfs makeSModelSmall_TRY(int size1, int size2, int maxNN   // idx + idx2 <=maxNN
   , Ls LS, FuncArr basis) {
   int L = 0;
   LsConfs res = new LsConfs();

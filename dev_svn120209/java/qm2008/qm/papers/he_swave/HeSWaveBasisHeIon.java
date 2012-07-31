@@ -92,9 +92,9 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     calcLi(slater);
 
     // Making He+ eigen-states
-//    trgtPotH = new PotHMtrxLcr(L, orthNt, pot);       log.dbg("trgtPotH=", trgtPotH);
-    FuncVec potHeIon = WfFactory.makePotHeIon_1s_e(vR);  log.dbg("potHeIon(r)=", potHeIon);
-    trgtPotH = new PotHMtrxLcr(L, orthNt, potHeIon);       log.dbg("trgtPotH=", trgtPotH);
+    trgtPotH = new PotHMtrxLcr(L, orthNt, pot);       log.dbg("trgtPotH=", trgtPotH);
+//    FuncVec potHeIon = WfFactory.makePotHeIon_1s_e(vR);  log.dbg("potHeIon(r)=", potHeIon);
+//    trgtPotH = new PotHMtrxLcr(L, orthNt, potHeIon);       log.dbg("trgtPotH=", trgtPotH);
 
     Vec basisEngs = trgtPotH.getEigEngs();                log.dbg("eigVal=", new VecDbgView(basisEngs));
     Mtrx basisVecs = trgtPotH.getEigVec();               log.dbg("eigVec=", new MtrxDbgView(basisVecs));

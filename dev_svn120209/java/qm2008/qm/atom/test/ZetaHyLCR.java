@@ -28,7 +28,7 @@ import junit.framework.TestSuite;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 14:01:09
  */
-public class ZetaHyLCR extends LCRTestCase {
+public class ZetaHyLCR extends TestCaseLcr {
   public static Log log = Log.getLog(ZetaHyLCR.class);
   public static Test suite() {
     TestSuite suite = new TestSuite(ZetaHyLCR.class);

@@ -77,7 +77,7 @@ public void testSingleZeta() throws Exception  {
 //    assertEquals(0, Math.abs(AtomHeClementi.E_ZETA_POT - pot), 2e-11);
   assertEquals(0, AtomHeClementi.E_ZETA_POT - pot, 7e-9); // TODO: [3Jun12] switched to Yk_NEW
 //    assertEquals(0, -2. - pot / kin, 2e-11);  // TODO:
-  assertEquals(0, -2. - pot / kin, 3e-9); // TODO: [3Jun12] switched to Yk_NEW
+  assertEquals(0, -2. - pot / kin, 2e-9); // TODO: [3Jun12] switched to Yk_NEW
 
   double pot2 = sys2.calcH(fc, fc).pt;
   assertEquals(pot, pot2, 1e-11);
@@ -157,12 +157,45 @@ public void dbgBasisNc() throws Exception  {  log.setDbg();
   LsConfs confs = ConfArrFactoryE2.makeSModelE2(S1, orthNt);   log.dbg("confs=", confs);
   LsConfHMtrx sysH = new LsConfHMtrx(confs, sysE2);            log.dbg("htS1=\n", new MtrxDbgView(sysH));
 
-  LsConfs ltdConfs = ConfArrFactoryE2.makeSModelSmallE2(Nt, Nt, Nt, S1, orthNt);   log.dbg("ltdConfs=", ltdConfs);
+  LsConfs ltdConfs = ConfArrFactoryE2.makeSModelSmall_TRY(Nt, Nt, Nt, S1, orthNt);   log.dbg("ltdConfs=", ltdConfs);
   LsConfHMtrx ltdH = new LsConfHMtrx(ltdConfs, sysE2);            log.dbg("htS1=\n", new MtrxDbgView(ltdH));
 
   Mtrx ev = ltdH.getEigVec();           log.dbg("ev=", new MtrxDbgView(ev));
   Vec sysEngs = sysH.getEigEngs();      log.dbg("sysEngs=", new VecDbgView(sysEngs));
   Vec ltdEngs = ltdH.getEigEngs();      log.dbg("ltdEngs=", new VecDbgView(ltdEngs));
+
+}
+
+public void dbgSmallHeBasis() throws Exception  {  log.setDbg();
+
+  int Nt = 10;
+  LCR_FIRST = -5. - 2. * Math.log(AtomHe.Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
+  LCR_N = 1001;
+  R_LAST = 100;
+  LAMBDA = 1;
+
+  StepGridOpt gridR = new StepGridOpt(0, R_LAST, -1);
+  StepGridOpt sg = LcrFactory.makeLcrFromR(LCR_FIRST, LCR_N, gridR);
+  StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
+  WFQuadrLcr quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
+  SlaterLcr slater = new SlaterLcr(quadr);
+  SysE2 sysE2 = new SysHe(slater);// NOTE -2 for Helium
+
+  FuncVec wf1s = WfFactory.makeP1s(quadr.getR(), AtomHe.Z);
+  wf1s.setX(quadr.getX()); // MUST change grid for derivatives
+  wf1s.multSelf(quadr.getDivSqrtCR());
+
+  LgrrOrthLcr orthNt = new LgrrOrthLcr(quadr, new LgrrOpt(0, Nt, LAMBDA));         log.dbg("LgrrOrthLcr = ", orthNt);
+
+  double ovErr;
+  ovErr = quadr.calcInt(wf1s, orthNt.getFirst());   log.info("ovErr=first=" + ovErr);
+  ovErr = quadr.calcInt(wf1s, orthNt.getLast());    log.info("ovErr=last=" + ovErr);
+
+  Ls S1 = new Ls(0, Spin.SINGLET);
+  LsConfs confs = ConfArrFactoryE2.makeSModelE2(S1, orthNt);   log.dbg("confs=", confs);
+  LsConfHMtrx sysH = new LsConfHMtrx(confs, sysE2);            log.dbg("htS1=\n", new MtrxDbgView(sysH));
+
+  Vec sysEngs = sysH.getEigEngs();      log.dbg("sysEngs=", new VecDbgView(sysEngs));
 
 }
 }

@@ -6,8 +6,8 @@ import javax.utilx.log.Log;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 16:00:42
  */
-public class LCRTestCase extends TestCase {
-  public static Log log = Log.getLog(LCRTestCase.class);
+public class TestCaseLcr extends TestCase {
+  public static Log log = Log.getLog(TestCaseLcr.class);
   protected double NORM_ERROR = 1e-10;
 //   int NUM_STEPS = 880;
 //   double FIRST = -4;
