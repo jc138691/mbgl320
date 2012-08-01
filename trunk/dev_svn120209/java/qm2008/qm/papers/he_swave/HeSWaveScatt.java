@@ -54,11 +54,6 @@ protected static LgrrOrthLcr orthonNc;  // for N_c
 protected static int Nc = 1;
 
 
-public void setupEngResonance_2S() {
-  SCTT_ENG_MIN = (float) AtomUnits.fromEV(18.5);
-  SCTT_ENG_MAX = (float)AtomUnits.fromEV(19.5);
-  SCTT_ENG_N = 11;
-}
 
 
 public void setUp() {
@@ -71,7 +66,7 @@ public void runJob() {
   int currN = 10;
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 
-  currN = 100;// N=100
+  currN = 110;// N=100
   LCR_N = 2001;//    N=100, LAMBDA=2
   R_LAST = 400;//    N=100, LAMBDA=2
 
@@ -79,13 +74,13 @@ public void runJob() {
 //    LCR_N = 2001;//    N= 90
 //    R_LAST = 400;//    N= 90
 
-    currN = 80;// N=80
-    LCR_N = 2001;//    N= 80
-    R_LAST = 400;//    N= 80
+//    currN = 80;// N=80
+//    LCR_N = 2001;//    N= 80
+//    R_LAST = 400;//    N= 80
 
-    currN = 100;// N=70
-    LCR_N = 2001;//    N= 70
-    R_LAST = 400;//    N= 70
+//    currN = 120;// N=70
+//    LCR_N = 2001;//    N= 70
+//    R_LAST = 400;//    N= 70
 
 //    currN = 60;// N=60
 //    LCR_N = 2001;//    N= 60
@@ -101,7 +96,7 @@ public void runJob() {
 
   LAMBDA = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   Nc = 3;
-  int currNt = 25;
+  int currNt = 40;
 //    int currN = currNt + 1;
 
   SPIN = Spin.ELECTRON;
@@ -187,23 +182,8 @@ protected LsConfHMtrx makeSysBasisN(SlaterLcr slater) {
 }
 
 
-public void setupEngAu_2() {
-  SCTT_ENG_MIN = 0.01f;
-  SCTT_ENG_MAX = 1.00f;
-  SCTT_ENG_N = 100;
-}
-public void setupEngAu_3() {
-  SCTT_ENG_MIN = 0.001f;
-  SCTT_ENG_MAX = 1.00f;
-  SCTT_ENG_N = 1000;
-}
-public void setupEngAu_4() {
-  SCTT_ENG_MIN = 0.0001f;
-  SCTT_ENG_MAX = 1.00f;
-  SCTT_ENG_N = 10000;
-}
 
-public void setupEng01_1000eV_SLOW() {
+public void setupEng01_1000eV_OLD() {
   EngModelArr arr = new EngModelArr();
 
   int n = 189;
@@ -231,68 +211,6 @@ public void setupEng01_1000eV_SLOW() {
   SCTT_ENG_N = n + n2 + n3 + n4;
   SCTT_ENG_MIN = first;
   SCTT_ENG_MAX = last4;
-}
-public void setupEng1_100eV_SLOW() {
-  EngModelArr arr = new EngModelArr();
-
-  int n = 190;
-  float first = (float)AtomUnits.fromEV(1);
-  float last = (float)AtomUnits.fromEV(18.9);
-  arr.add(new EngOpt(first, last, n));
-
-  int n2 = 1000;
-  float first2 = (float)AtomUnits.fromEV(18.991);
-  float last2 = (float)AtomUnits.fromEV(19.29);
-  arr.add(new EngOpt(first2, last2, n2));
-
-  int n3 = 1001;
-  float first3 = (float)AtomUnits.fromEV(19.30);
-  float last3 = (float)AtomUnits.fromEV(29.3);
-  arr.add(new EngOpt(first3, last3, n3));
-
-  int n4 = 71;
-  float first4 = (float)AtomUnits.fromEV(30.0);
-  float last4 = (float)AtomUnits.fromEV(100.0);
-  arr.add(new EngOpt(first4, last4, n4));
-
-  scttEngs = EngGridFactory.makeEngs(arr);
-
-  SCTT_ENG_N = n + n2 + n3 + n4;
-  SCTT_ENG_MIN = first;
-  SCTT_ENG_MAX = last4;
-}
-public void setupEng01_1000eV_FAST() {
-  EngModelArr arr = new EngModelArr();
-
-  int n = 1000;
-  float first = (float)AtomUnits.fromEV(0.1);
-  float last = (float)AtomUnits.fromEV(100.0);
-  arr.add(new EngOpt(first, last, n));
-
-  int n2 = 900;
-  float first2 = (float)AtomUnits.fromEV(101);
-  float last2 = (float)AtomUnits.fromEV(1000);
-  arr.add(new EngOpt(first2, last2, n2));
-
-  scttEngs = EngGridFactory.makeEngs(arr);
-
-  SCTT_ENG_N = n + n2;
-  SCTT_ENG_MIN = first;
-  SCTT_ENG_MAX = last2;
-}
-public void setupEng10_30eV() {
-  EngModelArr arr = new EngModelArr();
-
-  int n = 1000;
-  float first = (float)AtomUnits.fromEV(10.0);
-  float last = (float)AtomUnits.fromEV(30.0);
-  arr.add(new EngOpt(first, last, n));
-
-  scttEngs = EngGridFactory.makeEngs(arr);
-
-  SCTT_ENG_N = n;
-  SCTT_ENG_MIN = first;
-  SCTT_ENG_MAX = last;
 }
 protected void jmHeTestOk() {
   FlowTest.setLog(log);
