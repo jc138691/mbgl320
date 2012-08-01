@@ -63,14 +63,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     LAMBDA = 4; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 
     // Note: run one at a time as only one set of result files is produced
-//    setupEngAu_3();
-//    setupEngAu_4();
-//    setupEng01_1000eV_SLOW();
-//    HeSWaveRes2012.setupResEngs_SLOW();
-//    setupEng1_100eV_SLOW();
-//    setupEng01_1000eV_FAST();
-//    setupEng10_30eV();
-//    setupEngResonance_2S();
+//    setupEng01_1000eV_OLD();
 //    setupEngTICS();
 //    setupEngSDCS();
 
