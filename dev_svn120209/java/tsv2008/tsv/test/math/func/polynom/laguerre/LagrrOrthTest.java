@@ -2,11 +2,11 @@ package math.func.polynom.laguerre;
 import junit.framework.TestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import math.integral.OrthFactory;
 import math.integral.QuadrPts5;
 import math.vec.grid.StepGrid;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrTailSearch;
-import math.integral.OrthonFactory;
 
 import javax.utilx.log.Log;
 /**
@@ -39,7 +39,7 @@ public class LagrrOrthTest extends TestCase {
     search.findLastGE(eps);
     log.info("search=", search);
 
-    double err = OrthonFactory.calcMaxOrthErr(arr, w);
+    double err = OrthFactory.calcMaxOrthErr(arr, w);
     log.assertZero("orthonorm error=", err, 1e-20) ;
 
   }

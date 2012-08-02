@@ -4,7 +4,7 @@ import atom.wf.lcr.WFQuadrLcr;
 import func.bspline.BSplBasisFactory;
 import math.func.arr.FuncArr;
 import math.vec.grid.StepGrid;
-import math.integral.OrthonFactory;
+import math.integral.OrthFactory;
 import func.bspline.test.BSplOrthonBasisTest;
 public class BSplLogCRBasisTest extends BSplOrthonBasisTest {
   public void testBSplineLogCR() throws Exception {
@@ -18,7 +18,7 @@ public class BSplLogCRBasisTest extends BSplOrthonBasisTest {
     int N = 6;
     FuncArr arr = BSplBasisFactory.makeFromBasisSize(wCR2, N, k);
 //    saveArrayK(x, arr, k, "orthog");
-    double normErr = OrthonFactory.calcMaxOrthErr(arr, wCR2);
+    double normErr = OrthFactory.calcMaxOrthErr(arr, wCR2);
     assertEquals(0, normErr, 2.e-15);
   }
 }

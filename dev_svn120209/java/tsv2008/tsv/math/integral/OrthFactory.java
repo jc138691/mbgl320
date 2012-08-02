@@ -1,6 +1,7 @@
 package math.integral;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
+import math.func.arr.IFuncArr;
 import math.func.arr.NormFuncArr;
 import math.mtrx.api.Mtrx;
 import math.vec.Vec;
@@ -9,8 +10,34 @@ import javax.utilx.log.Log;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 11/07/2008, Time: 10:37:57
  */
-public class OrthonFactory {
-  public static Log log = Log.getLog(OrthonFactory.class);
+public class OrthFactory {
+  public static Log log = Log.getLog(OrthFactory.class);
+
+public static FuncVec keepN(FuncVec wf, Quadr quadr, IFuncArr basis) {
+  Vec x = quadr.getX();
+  FuncVec res = new FuncVec(x);
+  for (int i = 0; i < basis.size(); i++) {
+    FuncVec fi = basis.getFunc(i);         //log.dbg("fi=", fi);
+    double dS = quadr.calcInt(wf, fi);     //log.dbg("d=", dS);
+    res.addMultSafe(dS, fi);              //log.dbg("res=", res);
+  }
+//  for (int i = 0; i < basis.size(); i++) {
+//    FuncVec fi = basis.getFunc(i);           //log.dbg("fi=", fi);
+//    double testInt = quadr.calcInt(res, fi);   //log.dbg("testS=", testS);
+//    assertEquals("testInt_" + i, testInt, 0d);
+//    assertEquals(0, testInt, MAX_INTGRL_ERR_E11);
+//  }
+  return res;
+}
+
+public static void keepN(IFuncArr dest, Quadr quadr, IFuncArr basis) {
+  for (int i = 0; i < dest.size(); i++) {
+    FuncVec wf = dest.getFunc(i);         //log.dbg("fi=", fi);
+    FuncVec wfN = keepN(wf, quadr, basis);         //log.dbg("fi=", fi);
+    dest.setFunc(i, wfN);
+  }
+  return ;
+}
   public static double calcMaxOrthonErr(NormFuncArr arr) {
     return calcMaxOrthErr(arr, arr.getNormQuadr());
   }
@@ -33,7 +60,7 @@ public class OrthonFactory {
   }
 
   //http://en.wikipedia.org/wiki/Gram-Schmidt_process
-  public static void makeOrthon(FuncArr from, Quadr w) {   // via GramSchmidt
+  public static void makeOrthRotate(FuncArr from, Quadr w) {   // via GramSchmidt
     Mtrx BB = new Mtrx(from.size(), from.size());
     for (int r = 0; r < from.size(); r++) {
       for (int c = 0; c <= r; c++) {
@@ -79,11 +106,11 @@ public class OrthonFactory {
         CC[i].set(j, C.get(j));
       }
     }
-    FuncArr res = makeOrthog(from, CC);
+    FuncArr res = makeOrth(from, CC);
     norm(res, w);
     from.setArr(res);
   }
-  public static FuncArr makeOrthog(FuncArr from, Vec[] C) {
+  public static FuncArr makeOrth(FuncArr from, Vec[] C) {
     Vec x = from.getX();
     FuncArr res = new FuncArr(x, from.size());
     for (int ix = 0; ix < x.size(); ix++) {
@@ -99,6 +126,25 @@ public class OrthonFactory {
     }
     return res;
   }
+//http://en.wikipedia.org/wiki/Gram-Schmidt_process
+public static FuncArr makeOrth_DEV(FuncArr from, Quadr w) {
+  FuncArr res = from.copyDeepY();
+  norm(res, w);
+  for (int k = 1; k < res.size(); k++) { // NOTE: k=1
+    FuncVec vk = res.get(k);
+    FuncVec uk = vk.copyY();
+    for (int j = 0; j < k; j++) {
+      FuncVec uj = res.get(j);
+      double vu = w.calcInt(vk, uj);
+      double uu = w.calcInt(uj, uj);
+      uk.addMultSafe(-vu / uu, uj);
+    }
+    double norm = w.calcInt(uk, uk);
+    uk.mult(1. / Math.sqrt(norm));
+    res.set(k, uk);
+  }
+  return res;
+}
   public static void norm(FuncArr arr, Quadr w) {
     for (int r = 0; r < arr.size(); r++) {
       FuncVec f = arr.get(r);

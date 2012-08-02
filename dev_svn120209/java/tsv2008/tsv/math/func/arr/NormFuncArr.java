@@ -1,8 +1,7 @@
 package math.func.arr;
 import math.integral.Quadr;
-import math.integral.OrthonFactory;
+import math.integral.OrthFactory;
 import math.vec.Vec;
-import math.func.arr.FuncArr;
 
 import javax.utilx.log.Log;
 /**
@@ -37,11 +36,11 @@ public class NormFuncArr extends FuncArr {
   public void setRefQuadr(Quadr w) {
     refQuadr = w;
   }
-//  public void makeOrthon() {
-//    OrthonFactory.makeOrthon(this, normQuadr);
+//  public void makeOrthRotate() {
+//    OrthFactory.makeOrthRotate(this, normQuadr);
 //  }
   public double calcMaxOrthonErr() {
-    double normErr = OrthonFactory.calcMaxOrthonErr(this);
+    double normErr = OrthFactory.calcMaxOrthonErr(this);
     return normErr;
   }
 }

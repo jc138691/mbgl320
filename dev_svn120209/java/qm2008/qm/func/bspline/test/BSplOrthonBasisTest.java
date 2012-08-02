@@ -2,9 +2,9 @@ package func.bspline.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 11/07/2008, Time: 10:27:40 */
 import junit.framework.*;
 import func.bspline.BSplOrthonBasis;
+import math.integral.OrthFactory;
 import math.integral.QuadrPts5;
 import math.vec.grid.StepGrid;
-import math.integral.OrthonFactory;
 
 import javax.utilx.log.Log;
 public class BSplOrthonBasisTest extends TestCase {
@@ -16,7 +16,7 @@ public class BSplOrthonBasisTest extends TestCase {
   public void calcArrayK(int k) {
     log.setDbg();
     Log.getLog(BSplOrthonBasis.class).setDbg();
-    Log.getLog(OrthonFactory.class).setDbg();
+    Log.getLog(OrthFactory.class).setDbg();
     double FIRST = 0;
     double LAST = 5;
     int NUM_STEPS = 101;
@@ -25,8 +25,8 @@ public class BSplOrthonBasisTest extends TestCase {
     StepGrid knots = new StepGrid(FIRST, LAST, Math.round((float) LAST + 1));
     BSplOrthonBasis arr = new BSplOrthonBasis(w, knots, k);
 //    saveArrayK(x, arr, k, "lgrrN");
-    OrthonFactory.makeOrthon(arr, w);
-    double normErr = OrthonFactory.calcMaxOrthErr(arr, w); //double normErr = w.calcMaxNormError(arr);
+    OrthFactory.makeOrthRotate(arr, w);
+    double normErr = OrthFactory.calcMaxOrthErr(arr, w); //double normErr = w.calcMaxNormError(arr);
 //    saveArrayK(x, arr, k, "orthog");
     assertEquals(0, normErr, 3.e-15);
   }

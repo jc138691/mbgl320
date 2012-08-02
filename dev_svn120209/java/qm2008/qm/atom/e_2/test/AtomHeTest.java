@@ -17,7 +17,7 @@ import atom.wf.lcr.TransLcrToR;
 import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.integral.OrthonFactory;
+import math.integral.OrthFactory;
 import math.mtrx.MtrxDbgView;
 import math.mtrx.api.EigenSymm;
 import math.mtrx.api.Mtrx;
@@ -106,8 +106,8 @@ public void testLimitOneConfig() throws Exception  {
   FuncArr arr = new LgrrOrthLcr(w, model);
   AtomUtil.trimTailSLOW(arr);
 
-  OrthonFactory.log.setDbg();
-  double res = OrthonFactory.calcMaxOrthErr(arr, w.getWithCR2());
+  OrthFactory.log.setDbg();
+  double res = OrthFactory.calcMaxOrthErr(arr, w.getWithCR2());
 
   assertEquals(0, res, 2e-8);
   SlaterLcr slater = new SlaterLcr(w);

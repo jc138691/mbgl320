@@ -2,7 +2,7 @@ package atom.wf.bspline;
 import func.bspline.BSplOrthonBasis;
 import math.vec.Vec;
 import math.integral.Quadr;
-import math.integral.OrthonFactory;
+import math.integral.OrthFactory;
 
 import javax.utilx.log.Log;
 /**
@@ -16,7 +16,7 @@ public class BSplBoundBasis extends BSplOrthonBasis {
   private static int NUM_MISSING = NUM_MISSING_HEAD + NUM_MISSING_TAIL;
   public BSplBoundBasis(Quadr w, Vec t, int k) {
     super(w, t, k);
-    OrthonFactory.makeOrthon(this, w);
+    OrthFactory.makeOrthRotate(this, w);
   }
   protected int getNumMissingHead() {
     return NUM_MISSING_HEAD;

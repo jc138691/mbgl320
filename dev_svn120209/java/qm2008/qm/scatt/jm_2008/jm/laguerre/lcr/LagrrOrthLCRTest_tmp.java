@@ -10,11 +10,10 @@ import javax.utilx.log.Log;
 import math.func.arr.FuncArrTailSearch;
 import math.func.arr.FuncArr;
 import math.func.polynom.laguerre.LgrrOrth;
+import math.integral.OrthFactory;
 import math.integral.QuadrPts5;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
-import math.integral.OrthonFactory;
-
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 16/09/2008, Time: 16:44:53
  */
@@ -47,7 +46,7 @@ public class LagrrOrthLCRTest_tmp extends TestCase {
     search.findLastGE(eps);
     log.info("search=", search);
 
-    double err = OrthonFactory.calcMaxOrthErr(arr, w);
+    double err = OrthFactory.calcMaxOrthErr(arr, w);
     log.assertZero("orthonorm error on r=", err, 4e-6) ;
 
     // THE SAME in LogCR grid
@@ -57,7 +56,7 @@ public class LagrrOrthLCRTest_tmp extends TestCase {
     WFQuadrLcr wx = new WFQuadrLcr(x);
     Vec rx = wx.getR();
     arr = new LgrrOrth(rx, N, alpha, lambda);
-    err = OrthonFactory.calcMaxOrthErr(arr, wx.getWithCR());
+    err = OrthFactory.calcMaxOrthErr(arr, wx.getWithCR());
     log.assertZero("orthonorm error on logCR=", err, 1e-20) ;
   }
 }
