@@ -50,7 +50,7 @@ import javax.utilx.log.Log;
 */
 abstract public class HeSWaveScatt  extends HyLikeSWave {
 public static Log log = Log.getLog(HeSWaveScatt.class);
-protected static LgrrOrthLcr orthonNc;  // for N_c
+protected static LgrrOrthLcr orthNc;  // for N_c
 protected static int Nc = 1;
 
 
@@ -66,7 +66,7 @@ public void runJob() {
   int currN = 10;
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 
-  currN = 110;// N=100
+  currN = 100;// N=100
   LCR_N = 2001;//    N=100, LAMBDA=2
   R_LAST = 400;//    N=100, LAMBDA=2
 
@@ -86,17 +86,18 @@ public void runJob() {
 //    LCR_N = 2001;//    N= 60
 //    R_LAST = 400;//    N= 60
 
-//    currN = 50;// N=50
-//    LCR_N = 1001;//    N= 50
-//    R_LAST = 250;//    N= 50
+    currN = 50;// N=50
+    LCR_N = 1001;//    N= 50
+    R_LAST = 250;//    N= 50
 
 //    currN = 31;
 //    LCR_N = 801;//    N= 40
 //    R_LAST = 200;//    N= 40
 
-  LAMBDA = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
-  Nc = 3;
-  int currNt = 40;
+  LAMBDA = 2.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+  LAMBDA_NC = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+  Nc = 1;
+  int currNt = 25;
 //    int currN = currNt + 1;
 
   SPIN = Spin.ELECTRON;

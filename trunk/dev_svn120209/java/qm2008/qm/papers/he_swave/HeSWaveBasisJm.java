@@ -1,5 +1,4 @@
 package papers.he_swave;
-import atom.angular.Spin;
 import atom.data.AtomHe;
 import atom.data.AtomHy;
 import atom.energy.LsConfHMtrx;
@@ -7,6 +6,7 @@ import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.wf.lcr.LcrFactory;
 import math.func.arr.FuncArr;
+import math.integral.OrthFactory;
 import math.vec.IntVec;
 import math.vec.Vec;
 import math.vec.VecDbgView;
@@ -79,12 +79,27 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     calcLi(slater);
 
     // Making He+ eigen-states from Nc (core N).   this is only to calc ionization threshold
-    LgrrOpt lgrrOptNc = new LgrrOpt(lgrrOptN); // for the target N, i.e. N_t
-    lgrrOptNc.setN(Nc);                                    log.dbg("Laguerr model (N_c)=", lgrrOptNc);
-    orthonNc = new LgrrOrthLcr(quadr, lgrrOptNc);     log.dbg("LgrrOrthLcr(N_c) = ", orthonNc);
-    trgtPotH = new PotHMtrxLcr(L, orthonNc, pot);        log.dbg("trgtPotH=", trgtPotH);
+    LgrrOpt lgrrOpt = new LgrrOpt(lgrrOptN); // for the target N, i.e. N_t
+    lgrrOpt.setN(Nc);
+    lgrrOpt.setLambda(LAMBDA_NC);                    log.dbg("Laguerr model (N_c)=", lgrrOpt);
+    orthNc = new LgrrOrthLcr(quadr, lgrrOpt);     log.dbg("LgrrOrthLcr(N_c) = ", orthNc);
+    trgtPotH = new PotHMtrxLcr(L, orthNc, pot);        log.dbg("trgtPotH=", trgtPotH);
     Vec basisEngs = trgtPotH.getEigEngs();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_NcEngs_" + makeLabelNc());
+
+    // making
+    OrthFactory.keepN(orthNc, quadr, orthNt); // span Nc-basis on Nt-basis
+    OrthFactory.norm(orthNc, quadr);
+    orthNt.copyFrom(orthNc, 0, orthNc.size()); // replace
+    OrthFactory.makeOrth_DEV(orthNt, quadr);
+
+//    lgrrOpt = new LgrrOpt(lgrrOptN);
+//    lgrrOpt.setN(Nc + Nt);
+//    LgrrOrthLcr tmpOrth = new LgrrOrthLcr(quadr, lgrrOpt);
+//    tmpOrth.copyFrom(orthNc, 0, orthNc.size());
+//    tmpOrth.copyFrom(orthNt, orthNc.size()-1, orthNt.size());
+//    OrthFactory.makeOrthRotate(tmpOrth, quadr);
+//    orthNt = tmpOrth;
 
     trgtWfsNt = orthNt;
     wfN = orthN;

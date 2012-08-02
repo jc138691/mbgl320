@@ -4,7 +4,7 @@ import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.slater.SlaterWFFactory;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.integral.OrthonFactory;
+import math.integral.OrthFactory;
 import math.vec.Vec;
 import project.workflow.task.test.FlowTest;
 
@@ -82,7 +82,7 @@ public class AtomLiSlaterJoy extends FlowTest {
       FuncVec f = makeRawP1s(r);
       f.multSelf(quadr.getDivSqrtCR());
       arr.set(0, f);
-      OrthonFactory.norm(arr, quadr);
+      OrthFactory.norm(arr, quadr);
       normP1s = arr.get(0);
     }
     FuncVec res = normP1s.copyY();
@@ -100,7 +100,7 @@ public class AtomLiSlaterJoy extends FlowTest {
       f2.multSelf(quadr.getDivSqrtCR());
       arr.set(0, f);
       arr.set(1, f2);
-      OrthonFactory.makeOrthon(arr, quadr);
+      OrthFactory.makeOrthRotate(arr, quadr);
       normP1s = arr.get(0);
       normP2s = arr.get(1);
     }
@@ -121,7 +121,7 @@ public class AtomLiSlaterJoy extends FlowTest {
 
     FuncVec fn = makeNormP1sLcr(quadr);
     double norm = quadr.calcInt(fn, fn);
-    assertEquals("AtomLiSlaterJoy.makeNormP1s norm=", 0, norm - 1, 1e-15);
+    assertEquals("AtomLiSlaterJoy.makeNormP1s norm=", 0, norm - 1, 2e-15);
 
     FuncVec f2 = makeRawP2s(r);
     f2.multSelf(quadr.getDivSqrtCR());

@@ -6,6 +6,7 @@ import atom.wf.lcr.WFQuadrLcr;
 import math.Calc;
 import math.func.FuncVec;
 import math.func.arr.IFuncArr;
+import math.integral.OrthFactory;
 import math.mtrx.api.Mtrx;
 import math.vec.Vec;
 import project.workflow.task.test.FlowTest;
@@ -200,22 +201,6 @@ public static FuncVec delN(FuncVec wf, WFQuadrD1 quadr, IFuncArr basis) {
   }
   return res;
 }
-public static FuncVec keepN(FuncVec wf, WFQuadrD1 quadr, IFuncArr basis) {
-  Vec x = quadr.getX();
-  FuncVec res = new FuncVec(x);
-  for (int i = 0; i < basis.size(); i++) {
-    FuncVec fi = basis.getFunc(i);         //log.dbg("fi=", fi);
-    double dS = quadr.calcInt(wf, fi);     //log.dbg("d=", dS);
-    res.addMultSafe(dS, fi);              //log.dbg("res=", res);
-  }
-//  for (int i = 0; i < basis.size(); i++) {
-//    FuncVec fi = basis.getFunc(i);           //log.dbg("fi=", fi);
-//    double testInt = quadr.calcInt(res, fi);   //log.dbg("testS=", testS);
-//    assertEquals("testInt_" + i, testInt, 0d);
-//    assertEquals(0, testInt, MAX_INTGRL_ERR_E11);
-//  }
-  return res;
-}
 public static FuncVec delBi(FuncVec wf, WFQuadrD1 quadr, IFuncArr basis, IFuncArr basisBi) {
   Vec x = quadr.getX();
   FuncVec res = wf.copyY();
@@ -252,7 +237,7 @@ public static FuncVec calcSinKeepN(double chScattE
   int L = 0;
   double momP = Scatt.calcMomFromE(chScattE);
   FuncVec wf = new SinWfLcr((WFQuadrLcr)quadr, momP, L);   //log.dbg("wf=", wf);
-  FuncVec res = keepN(wf, quadr, basis);          //log.dbg("resS=", resS);
+  FuncVec res = OrthFactory.keepN(wf, quadr, basis);          //log.dbg("resS=", resS);
   return res;
 }
 public static FuncVec calcSinDelBi(double chScattE

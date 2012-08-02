@@ -12,7 +12,7 @@ import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.slater.SlaterWFFactory;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.integral.OrthonFactory;
+import math.integral.OrthFactory;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.VecDbgView;
@@ -144,7 +144,7 @@ public class LiSlaterTest extends FlowTest {
     FuncArr basis = new FuncArr(f.getX(), 2);
     basis.set(0, f);
     basis.set(1, f2);
-    OrthonFactory.makeOrthon(basis, quadr);
+    OrthFactory.makeOrthRotate(basis, quadr);
     f = basis.get(0);
     f2 = basis.get(1);
     cf = ConfFactory.makeLi_1s2_2s_2S(f, f2); // Making Li(1s^2, 2s)
@@ -178,8 +178,8 @@ public class LiSlaterTest extends FlowTest {
       basis.set(1, f2);
       basis.set(2, f3);
     }
-    OrthonFactory.makeOrthon(basis, quadr);
-    double orthErr = OrthonFactory.calcMaxOrthErr(basis, quadr);
+    OrthFactory.makeOrthRotate(basis, quadr);
+    double orthErr = OrthFactory.calcMaxOrthErr(basis, quadr);
     assertEquals("orthErr", 0, orthErr, 2.e-15);
     // 13Dec2010: looking for bug
     Ls LS = new Ls(0, Spin.ELECTRON);

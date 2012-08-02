@@ -24,9 +24,12 @@ public class FuncArr extends VecArr implements IFuncArr {
     super(from);
     x = from.x;
   }
-  final public FuncVec getFunc(int i) {
-    return (FuncVec)super.get(i);
-  }
+final public FuncVec getFunc(int i) {
+  return (FuncVec)super.get(i);
+}
+final public void setFunc(int i, FuncVec fv) {
+  super.set(i, fv);
+}
   final public FuncVec get(int i) {
     return (FuncVec)super.get(i);
   }

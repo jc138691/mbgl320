@@ -23,7 +23,7 @@ public class BSplOrthonBasis extends BSplArr {    //B-splines
       newArr.add(get(i + getNumMissingHead()));
 //      set(i, saved[i + getNumMissingHead()]);
     }
-//    OrthonFactory.makeOrthon(newArr, w);
+//    OrthFactory.makeOrthRotate(newArr, w);
     setArr(newArr);
   }
 

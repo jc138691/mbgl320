@@ -11,7 +11,7 @@ import math.mtrx.api.EigenSymm;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import math.func.arr.FuncArr;
-import math.integral.OrthonFactory;
+import math.integral.OrthFactory;
 import atom.angular.Spin;
 import atom.shell.ConfArrFactoryE2;
 import func.bspline.BSplBasisFactory;
@@ -45,7 +45,7 @@ public class ScattHyTest extends BSplLogCRBasisTest {
     int k = 5;
     int N = 20;
     FuncArr arr = BSplBasisFactory.makeFromBasisSize(w, N, k);
-    double normErr = OrthonFactory.calcMaxOrthErr(arr, w);
+    double normErr = OrthFactory.calcMaxOrthErr(arr, w);
     assertEquals(0, normErr, 3.e-15);
     SlaterLcr slater = new SlaterLcr(w);
     Ls S1 = new Ls(0, Spin.SINGLET);

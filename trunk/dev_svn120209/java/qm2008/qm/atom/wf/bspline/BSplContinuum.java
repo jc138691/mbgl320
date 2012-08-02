@@ -3,8 +3,8 @@ import func.bspline.BSplOrthonBasis;
 
 import javax.utilx.log.Log;
 
+import math.integral.OrthFactory;
 import math.integral.Quadr;
-import math.integral.OrthonFactory;
 import math.vec.Vec;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 23/07/2008, Time: 10:22:13
@@ -17,7 +17,7 @@ public class BSplContinuum extends BSplOrthonBasis {
   private static int NUM_MISSING = NUM_MISSING_HEAD + NUM_MISSING_TAIL;
   public BSplContinuum(Quadr w, Vec t, int k) {
     super(w, t, k);
-    OrthonFactory.makeOrthon(this, w);
+    OrthFactory.makeOrthRotate(this, w);
   }
   protected int getNumMissingHead() {
     return NUM_MISSING_HEAD;
