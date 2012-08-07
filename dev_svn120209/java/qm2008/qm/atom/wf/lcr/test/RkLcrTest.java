@@ -106,8 +106,8 @@ public class RkLcrTest extends FlowTest {
     res = RkLcr.calc(wCR, f2p, f2p, f2p, f2p, 0);
     assertEquals(0, Math.abs(res - 93. / 512), 1e-10);
     res = RkLcr.calc(wCR, f2p, f2p, f2p, f2p, 1);
-    assertEquals(0, Math.abs(res - 0.12044270784428178), 2e-20); // at x=-4, 1/16, 220
+    assertEquals(0, Math.abs(res - 0.12044270784428178), 1e-16); // at x=-4, 1/16, 220
     res = RkLcr.calc(wCR, f2p, f2p, f2p, f2p, 2);
-    assertEquals(0, Math.abs(res - 0.08789062488574255), 2e-20); // at x=-4, 1/16, 220
+    assertEquals(0, Math.abs(res - 0.08789062488574255), 1e-16); // at x=-4, 1/16, 220
   }
 }

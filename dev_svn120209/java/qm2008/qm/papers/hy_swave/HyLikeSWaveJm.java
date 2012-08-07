@@ -13,7 +13,7 @@ import math.func.arr.FuncArr;
 import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import scatt.jm_2008.e3.JmDe3;
-import scatt.jm_2008.e3.JmMethodJmBasisE3;
+import scatt.jm_2008.e3.JmMthdBasisJmE3;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.target.ScttTrgtE3;
 
@@ -48,7 +48,7 @@ public void calc(int newN, int newNt) {
 
   LsConfHMtrx sysH = makeSysH(SYS_LS, slater);
 
-  JmMethodJmBasisE3 method = new JmMethodJmBasisE3(calcOpt);
+  JmMthdBasisJmE3 method = new JmMthdBasisJmE3(calcOpt);
   method.setExclSysIdx(EXCL_SYS_RESON_IDX);     // [15Jun2011] TODO: remember to remove this
   method.setTrgtE3(trgt);
   Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);

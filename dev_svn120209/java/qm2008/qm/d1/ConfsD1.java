@@ -1,10 +1,10 @@
 package d1;
-import atom.shell.IConfs;
+import atom.shell.AConfs;
 import scatt.jm_2008.jm.laguerre.IWFuncArr;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 6/06/12, 11:41 AM
  */
-public class ConfsD1 extends IConfs {
+public class ConfsD1 extends AConfs {
 private IWFuncArr basis;
 public ConfsD1(IWFuncArr basis) {
   this.basis = basis;

@@ -22,7 +22,7 @@ protected static final int MAX_ENG_NUM_FOR_SDCS = 10;
 protected static boolean CALC_TRUE_CONTINUUM = false;
 protected static Vec scttEngs;
 protected static double RES_MAX_LEVEL = 0.5; // maximum abs(Delta)/abs(Energy_distance)to be called a resonance
-protected static int REPLACE_TRGT_ENGS_N = -1;
+//protected static int REPLACE_TRGT_ENGS_N = -1;
 protected static int EXCL_SYS_RESON_IDX = -1;
 protected static boolean CALC_DENSITY = false;
 protected static int CALC_DENSITY_MAX_NUM = 1;
@@ -33,7 +33,7 @@ public void setUp() {
   super.setUp();
   log.info("log.info(HyLikeSWave)");
 
-//    JmMethodJmBasisE3.log.setDbg();
+//    JmMthdBasisJmE3.log.setDbg();
   LsConfHMtrx.log.setDbg();
 
   DbgView.setMinVal(VEC_DBG_MIN_VAL);

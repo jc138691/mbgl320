@@ -28,6 +28,7 @@ import math.func.arr.FuncArr;
 import math.func.simple.FuncPowInt;
 import math.mtrx.api.Mtrx;
 import math.mtrx.MtrxDbgView;
+import math.vec.IntVec;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import papers.hy_swave.HyLikeSWave;
@@ -53,9 +54,6 @@ public static Log log = Log.getLog(HeSWaveScatt.class);
 protected static LgrrOrthLcr orthNc;  // for N_c
 protected static int Nc = 1;
 
-
-
-
 public void setUp() {
   super.setUp();
   log.info("log.info(HeSWaveScatt)");
@@ -63,12 +61,18 @@ public void setUp() {
 //    log.setDbg();
 }
 public void runJob() {
+  AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
+  SCTT_ENG_N = 10; // not used
+  SCTT_ENG_MIN = 0.5;
+  SCTT_ENG_MAX = 1;
+
   int currN = 10;
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 
-  currN = 100;// N=100
-  LCR_N = 2001;//    N=100, LAMBDA=2
-  R_LAST = 400;//    N=100, LAMBDA=2
+  currN = 101;// N=100
+  LCR_N = 2401;//    N=100, LAMBDA=2
+//  R_LAST = 400;//    R_LAST = 400; N=100, LAMBDA=2, = 4
+  R_LAST = 600;//    R_LAST = 500; N=100, LAMBDA=1
 
 //    currN = 90;// N=90
 //    LCR_N = 2001;//    N= 90
@@ -86,18 +90,18 @@ public void runJob() {
 //    LCR_N = 2001;//    N= 60
 //    R_LAST = 400;//    N= 60
 
-    currN = 50;// N=50
-    LCR_N = 1001;//    N= 50
-    R_LAST = 250;//    N= 50
+//    currN = 50;// N=50
+//    LCR_N = 1001;//    N= 50
+//    R_LAST = 250;//    N= 50
 
 //    currN = 31;
 //    LCR_N = 801;//    N= 40
 //    R_LAST = 200;//    N= 40
 
-  LAMBDA = 2.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+  LAMBDA = 1.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   LAMBDA_NC = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
-  Nc = 1;
-  int currNt = 25;
+  Nc = 3;
+  int currNt = 30;
 //    int currN = currNt + 1;
 
   SPIN = Spin.ELECTRON;

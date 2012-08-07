@@ -53,4 +53,12 @@ public double calcOver(IConf fc, IConf fc2) {
   double res = currHk.calcOv();
   return res;
 }
+public void init() {
+
+}
+public boolean isFastMapOn() {
+  return false;
+}
+public void setFastMapOn(boolean v) {
+}
 }

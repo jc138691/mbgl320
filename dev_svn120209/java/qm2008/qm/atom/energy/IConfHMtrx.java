@@ -1,5 +1,5 @@
 package atom.energy;
-import atom.shell.IConfs;
+import atom.shell.AConfs;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;
 import math.mtrx.api.Mtrx;
@@ -14,16 +14,19 @@ import javax.utilx.log.Log;
 public class IConfHMtrx  extends HMtrx {
 public static Log log = Log.getLog(LsConfHMtrx.class);
 private final ISysH sysH;
-private final IConfs confs;
+private final AConfs confs;
 private FuncArr density;
-public IConfHMtrx(IConfs basis, final ISysH atom) {
+public IConfHMtrx(AConfs basis, final ISysH atom) {
   super(basis.size(), basis.size());
   this.sysH = atom;
   this.confs = basis;
+  sysH.init();
+  sysH.setFastMapOn(true);
   load();
+  sysH.init();
 }
 
-public IConfs getConfs() {
+public AConfs getConfs() {
   return confs;
 }
 public ISysH getSysH() {

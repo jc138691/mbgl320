@@ -10,7 +10,7 @@ import javax.utilx.log.Log;
 */
 public class ConfArrFactoryE2 {
 public static Log log = Log.getLog(ConfArrFactoryE2.class);
-public static final int FAST_MAX_N12 = 4;  //-1 all
+//public static final int FAST_MAX_N12 = 2;  //-1 all
 
 public static LsConfs makeTwoElec(Ls LS, int N, int L, FuncArr fromArr) {
   LsConfs res = new LsConfs();
@@ -90,7 +90,7 @@ public static LsConfs makeSModelSmall(Ls LS, FuncArr arr, int minN) {
   int maxN = arr.size();
   FuncArr minA = arr;
   FuncArr maxA = arr;
-  return makeSModel(LS, minA, minN, maxA, maxN, FAST_MAX_N12);
+  return makeSModel(LS, minA, minN, maxA, maxN, minN);
 }
 public static LsConfs makeSModelMm(Ls LS, FuncArr arr, int minN) {
   int maxN = arr.size();
@@ -102,7 +102,8 @@ public static LsConfs makeSModelMm(Ls LS, FuncArr arr, int minN) {
 public static LsConfs makeSModel(Ls LS
   , FuncArr minA, int minN
   , FuncArr maxA, int maxN
-  , int maxN12 // max sum n1+n2
+  , int maxSizeN12 // max n1 or n2
+//  , int maxN12 // max sum n1+n2
 ) {
   int L = 0;
   LsConfs res = new LsConfs();
@@ -115,7 +116,7 @@ public static LsConfs makeSModel(Ls LS
     Shell sh = new ShellQ2(n, minA.get(n), L, LS); log.dbg("q=2 at sh=", sh);
     if (sh.isValid()) {
       LsConf fc = new ShPair(sh);                  log.dbg("fc(n=n2)=", fc);
-      addValidN12(n, n2, res, fc, maxN12);
+      addValidN12(n, n2, res, fc, maxSizeN12);
 //      res.add(fc);
     }
     sh = new Shell(n, minA.get(n), L);
@@ -123,7 +124,7 @@ public static LsConfs makeSModel(Ls LS
     for (n2 = n + 1; n2 < minN; n2++) {
       Shell sh2 = new Shell(n2, minA.get(n2), L);      log.dbg("sh2=", sh2);
       LsConf fc = new ShPair(sh, sh2, LS);             log.dbg("fc=", fc);
-      addValidN12(n, n2, res, fc, maxN12);
+      addValidN12(n, n2, res, fc, maxSizeN12);
 //      res.add(fc);
     }
 
@@ -131,7 +132,7 @@ public static LsConfs makeSModel(Ls LS
     for (n2 = minN; n2 < maxN; n2++) {
       Shell sh2 = new Shell(n2, maxA.get(n2), L);     log.dbg("sh2=", sh2);
       LsConf fc = new ShPair(sh, sh2, LS);            log.dbg("fc=", fc);
-      addValidN12(n, n2, res, fc, maxN12);
+      addValidN12(n, n2, res, fc, maxSizeN12);
 //      res.add(fc);
     }
   }
@@ -142,10 +143,12 @@ public static LsConfs makeSModel(Ls LS
 }
 
 public static void addValidN12(int n1, int n2, LsConfs res, LsConf fc
-  , int maxN12 // max sum n1+n2
+//  , int maxN12 // max sum n1+n2
+  , int maxSizeN12 // max NUMBER of n1 and n2  (NOT index!!!!)
 ) {
-  if (maxN12 == -1      //-1 means all
-    ||  (n1 + n2) <= maxN12
+  if (maxSizeN12 == -1      //-1 means all
+    ||  (n1 < maxSizeN12  &&  n2 < maxSizeN12)     //// max NUMBER of n1 and n2  (NOT index!!!!)
+//    ||  (n1 + n2) <= maxN12    // max sum n1+n2
     ||  n1 == 0
     )  {
     res.add(fc);

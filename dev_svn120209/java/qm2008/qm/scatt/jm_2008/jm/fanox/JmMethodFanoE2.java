@@ -29,7 +29,7 @@ public class JmMethodFanoE2 extends JmMthdBasisHyE2 {
     return sC;
   }
 
-  // THIS works only for two electrons, see  JmMethodJmBasisE3 for a general case of any electrons
+  // THIS works only for two electrons, see  JmMthdBasisJmE3 for a general case of any electrons
   @Override protected Mtrx calcX() {
     // [for JmMethodFanoX] Next line was MOVED to calcC();
 //    double[][] sC = sysConfH.getEigVec().getArr2D();   log.dbg("C_ij=", new MtrxDbgView(sysConfH.getEigVec()));

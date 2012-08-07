@@ -204,7 +204,8 @@ public void testMakePoet() throws Exception {
 
 // All electrons are in DIFFERENT shells!!!!
 public static LsConfs makeSModelDiff(AtomShModelE3 model, FuncArr arr
-  , int maxN12 // max sum n1+n2
+  , int maxN12 // max n1 and n2
+//  , int maxN12 // max sum n1+n2
 ) {
   log.info("--->makeSModelDiff(AtomShModelE3 model=", model);
   int L = 0;
@@ -244,7 +245,7 @@ public static LsConfs makeSModelDiff(AtomShModelE3 model, FuncArr arr
   return res;
 }
 public static void addValidN123(int n1, int n2, int n3, LsConfs res, LsConf fc
-  , int maxSumN12 // max sum n1+n2
+  , int maxSizeN12 // max sum n1+n2
 ) {
   int maxN23 = Math.max(n2, n3);
   int maxN123 = Math.max(n1, maxN23);
@@ -258,7 +259,7 @@ public static void addValidN123(int n1, int n2, int n3, LsConfs res, LsConf fc
   int minN123 = Math.min(n1, minN23);
 
   int maxN2 = Math.max(minN123, n2);
-  ConfArrFactoryE2.addValidN12(minN123, maxN2, res, fc, maxSumN12);
+  ConfArrFactoryE2.addValidN12(minN123, maxN2, res, fc, maxSizeN12);
 }
 
 // One electron above/below a closed shell
@@ -266,7 +267,8 @@ public static LsConfs makeSModelClosed(AtomShModelE3 model, FuncArr arr) {
   return makeSModelClosed(model, arr, -1);
 }
 public static LsConfs makeSModelClosed(AtomShModelE3 model, FuncArr arr
-  , int maxN12 // max sum n1+n2
+  , int maxN12 // max n1 and n2
+//  , int maxN12 // max sum n1+n2
 ) {
   log.info("--->makePoetClosedShell(AtomShModelE3 model=", model);
   LsConfs res = new LsConfs();
@@ -347,8 +349,10 @@ public static LsConfs makeSModelAll(AtomShModelE3 model, FuncArr arr) {
 }
 public static LsConfs makeSModelSmall(AtomShModelE3 model, FuncArr arr) {
   log.info("-->makeSModel(AtomShModelE3 model=", model);
-  LsConfs res = makeSModelDiff(model, arr, ConfArrFactoryE2.FAST_MAX_N12);
-  LsConfs closed = makeSModelClosed(model, arr, ConfArrFactoryE2.FAST_MAX_N12);
+//  LsConfs res = makeSModelDiff(model, arr, ConfArrFactoryE2.FAST_MAX_N12);
+//  LsConfs closed = makeSModelClosed(model, arr, ConfArrFactoryE2.FAST_MAX_N12);
+  LsConfs res = makeSModelDiff(model, arr, model.getN1());
+  LsConfs closed = makeSModelClosed(model, arr, model.getN1());
   res.addAll(closed);
   log.info("res.size()=" + res.size());
   log.info("<--makeSModel(AtomShModelE3 model=", model);

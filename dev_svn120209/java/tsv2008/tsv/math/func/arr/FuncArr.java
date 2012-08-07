@@ -67,11 +67,18 @@ final public FuncVec getFirst() {
     mult(f);
   }
 
-  public void copyFrom(FuncArr fromArr, int idxFirst, int idxLastExcl) {
-    for (int i = idxFirst; i < idxLastExcl; i++) {
-        set(i, fromArr.get(i));
-    }
+public void copyFrom(int idxDest, FuncArr fromArr, int idxFirst, int idxLastExcl) {
+  int idx = idxDest;
+  for (int i = idxFirst; i < idxLastExcl; i++) {
+      set(idx++, fromArr.get(i));
   }
+}
+public void copyDeepFromY(int idxDest, FuncArr fromArr, int idxFirst, int idxLastExcl) {
+  int idx = idxDest;
+  for (int i = idxFirst; i < idxLastExcl; i++) {
+      setFunc(idx++, fromArr.getFunc(i).copyY());
+  }
+}
   public FuncArr copyDeepY() {
     FuncArr res = new FuncArr(x, size());
     for (int i = 0; i < size(); i++) {

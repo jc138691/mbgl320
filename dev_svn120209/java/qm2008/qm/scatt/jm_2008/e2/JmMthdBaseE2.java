@@ -67,7 +67,7 @@ public void setOverD(Vec overD) {
   super.setOverD(overD);
 }
 @Override
-public ScttRes calc(Vec scttEngs) {          //JmMethodJmBasisE3.log.setDbg();
+public ScttRes calc(Vec scttEngs) {          //JmMthdBasisJmE3.log.setDbg();
   return calcV3_best(scttEngs);
 }
 private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
@@ -75,7 +75,7 @@ private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
   EngOpt engModel = calcOpt.getGridEng();
   ScttRes res = new ScttRes();
   int prntNum = calcPrntChNum();
-  jmX = calcX();                              log.dbg("X=", new MtrxDbgView(jmX));
+  jmX = calcX();                              //log.dbg("X=", new MtrxDbgView(jmX));
 
 //  new JmResonE2_bad(this).calc(res, jmX);
   Mtrx mCs = new Mtrx(eN, prntNum + 1);   // NOTE!!! +1 for incident energies column; +1 for target channel eneries
@@ -115,13 +115,18 @@ private ScttRes calcV3_best(Vec scttEngs) { //log.setDbg();
 //      jmR = calcCorrR(); // DEBUG
 //    }
 
-    jmS = Scatt.calcSFromK(jmR, openChN);               log.dbg("S matrix=\n", new CmplxMtrxDbgView(jmS));
+    jmS = Scatt.calcSFromK(jmR, openChN);               //log.dbg("S matrix=\n", new CmplxMtrxDbgView(jmS));
     saveCrossSecs(scttIdx, res, jmS, openChN);
 //    saveMtrxR(scttIdx, res, jmR, openChN);
     if (calcOpt.getCalcSdcs()) {
       calcSdcs(scttIdx, res, prntNum);
     }
   }
+
+  // cleanup
+  jmX = null;
+  System.gc();
+
   return res;
 }
 protected Mtrx calcCorrR() {
@@ -137,11 +142,11 @@ protected Mtrx calcR(int calcN, int openN) {
   } else {
     W = calcW(openN);
 //    W = calcW_DBG(openN);
-  }                                                log.dbg("W=\n", new MtrxDbgView(W));
-  Mtrx WSJS = calcWsjs(W, openN);                  log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
-  Mtrx WCJC = calcWcjc(W);                         log.dbg("WCJC=\n", new MtrxDbgView(WCJC));
-  Mtrx res = calcR(WCJC, WSJS);                    log.dbg("R=\n", new MtrxDbgView(res));
-  MtrxFactory.makeSymmByAvr(res, openN);           log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(res));
+  }                                                //log.dbg("W=\n", new MtrxDbgView(W));
+  Mtrx WSJS = calcWsjs(W, openN);                  //log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
+  Mtrx WCJC = calcWcjc(W);                         //log.dbg("WCJC=\n", new MtrxDbgView(WCJC));
+  Mtrx res = calcR(WCJC, WSJS);                    //log.dbg("R=\n", new MtrxDbgView(res));
+  MtrxFactory.makeSymmByAvr(res, openN);           //log.dbg("MtrxFactory.makeSymmByAvr(R)=\n", new MtrxDbgView(res));
   return res;
 }
 private Mtrx calcR_v1_ok(int calcN, int openN) {
@@ -150,10 +155,10 @@ private Mtrx calcR_v1_ok(int calcN, int openN) {
     W = calcW(calcN);
   } else {
     W = calcW(openN);
-  }                                                 log.dbg("W=\n", new MtrxDbgView(W));
-  Mtrx WSJS = calcWsjs(W, openN);                   log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
-  CmplxMtrx WCJC = calcWCJC_v1_ok(W);               log.dbg("WCJC=\n", new CmplxMtrxDbgView(WCJC));
-  Mtrx res = calcR_v1_ok(WCJC, WSJS);               log.dbg("R=\n", new MtrxDbgView(res));
+  }                                                 //log.dbg("W=\n", new MtrxDbgView(W));
+  Mtrx WSJS = calcWsjs(W, openN);                   //log.dbg("WSJS=\n", new MtrxDbgView(WSJS));
+  CmplxMtrx WCJC = calcWCJC_v1_ok(W);               //log.dbg("WCJC=\n", new CmplxMtrxDbgView(WCJC));
+  Mtrx res = calcR_v1_ok(WCJC, WSJS);               //log.dbg("R=\n", new MtrxDbgView(res));
   return res;
 }
 protected void calcSdcs(int scttIdx, ScttRes res, int prntN) {
