@@ -19,21 +19,17 @@ public static FuncVec keepN(FuncVec wf, Quadr quadr, IFuncArr basis) {
   for (int i = 0; i < basis.size(); i++) {
     FuncVec fi = basis.getFunc(i);         //log.dbg("fi=", fi);
     double dS = quadr.calcInt(wf, fi);     //log.dbg("d=", dS);
-    res.addMultSafe(dS, fi);              //log.dbg("res=", res);
+    res.addMultSafe(dS, fi);
+//    log.dbg("wf =", wf);
+//    log.dbg("res=", res);
   }
-//  for (int i = 0; i < basis.size(); i++) {
-//    FuncVec fi = basis.getFunc(i);           //log.dbg("fi=", fi);
-//    double testInt = quadr.calcInt(res, fi);   //log.dbg("testS=", testS);
-//    assertEquals("testInt_" + i, testInt, 0d);
-//    assertEquals(0, testInt, MAX_INTGRL_ERR_E11);
-//  }
   return res;
 }
 
 public static void keepN(IFuncArr dest, Quadr quadr, IFuncArr basis) {
   for (int i = 0; i < dest.size(); i++) {
-    FuncVec wf = dest.getFunc(i);         //log.dbg("fi=", fi);
-    FuncVec wfN = keepN(wf, quadr, basis);         //log.dbg("fi=", fi);
+    FuncVec wf = dest.getFunc(i);                  log.dbg("wf=", wf);
+    FuncVec wfN = keepN(wf, quadr, basis);         log.dbg("wfN=", wfN);
     dest.setFunc(i, wfN);
   }
   return ;
@@ -127,23 +123,31 @@ public static void keepN(IFuncArr dest, Quadr quadr, IFuncArr basis) {
     return res;
   }
 //http://en.wikipedia.org/wiki/Gram-Schmidt_process
-public static FuncArr makeOrth_DEV(FuncArr from, Quadr w) {
+public static void makeOrth_DEV(FuncArr from, Quadr w) {
   FuncArr res = from.copyDeepY();
   norm(res, w);
   for (int k = 1; k < res.size(); k++) { // NOTE: k=1
     FuncVec vk = res.get(k);
     FuncVec uk = vk.copyY();
     for (int j = 0; j < k; j++) {
-      FuncVec uj = res.get(j);
-      double vu = w.calcInt(vk, uj);
-      double uu = w.calcInt(uj, uj);
+      FuncVec uj = res.get(j);          //log.dbg("uj=", uj);
+      double vu = w.calcInt(vk, uj);    //log.dbg("vu=", vu);
+      double uu = w.calcInt(uj, uj);    //log.dbg("uu=", uu);
       uk.addMultSafe(-vu / uu, uj);
     }
-    double norm = w.calcInt(uk, uk);
-    uk.mult(1. / Math.sqrt(norm));
+    double norm = w.calcInt(uk, uk);    //log.dbg("norm =", norm);
+    uk.mult(1. / Math.sqrt(norm));      //log.dbg("uk =", uk);
     res.set(k, uk);
+
+// DEBUG
+//    uk = res.get(k);
+//    for (int j = 0; j <= k; j++) {
+//      FuncVec uj = res.get(j);          log.dbg("uj=", uj);
+//      double ukj = w.calcInt(uk, uj);    log.dbg("ukj=", ukj);
+//      double uu = w.calcInt(uj, uj);    log.dbg("uu=", uu);
+//    }
   }
-  return res;
+  from.copyFrom(0, res, 0, res.size());
 }
   public static void norm(FuncArr arr, Quadr w) {
     for (int r = 0; r < arr.size(); r++) {

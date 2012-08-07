@@ -122,7 +122,7 @@ public void calc(int newN, int newNt) {
   // one electron basis
   wfN = orthN;    // only the last wfs were used from  orthNt, so now we can reuse it
   orthN = null; // making sure nobody uses old ref
-  wfN.copyFrom(trgtWfsNt, 0, trgtWfsNt.size());
+  wfN.copyFrom(0, trgtWfsNt, 0, trgtWfsNt.size());
   D = new JmD(lgrrBiN, wfN);   log.dbg("D_{n,N-1}=", D);
 
   SlaterLcr slater = new SlaterLcr(quadr);

@@ -11,10 +11,10 @@ import java.util.HashMap;
 /**
  * Created by Dmitry.A.Konovalov@gmail.com, 02/06/2010, 2:46:32 PM
  */
-public class JmMethodJmBasisE3 extends JmMethodAnyBasisE3 {
-  public static Log log = Log.getLog(JmMethodJmBasisE3.class);
+public class JmMthdBasisJmE3 extends JmMthdBasisAnyE3 {
+  public static Log log = Log.getLog(JmMthdBasisJmE3.class);
 
-  public JmMethodJmBasisE3(JmCalcOptE1 calcOpt) {
+  public JmMthdBasisJmE3(JmCalcOptE1 calcOpt) {
     super(calcOpt);
   }
 

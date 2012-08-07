@@ -10,7 +10,6 @@ import javax.utilx.log.Log;
  */
 public class YkLcrV2 {
 public static Log log = Log.getLog(YkLcrV2.class);
-//private final static double[] yTmp = new double[10]; // tmp array for zk_OLD
 private final Vec wf;
 private final Vec wf2;
 private final int k;
@@ -19,14 +18,12 @@ private final double[] cr2;//(c+r)^2
 private final double[] cr;//(c+r)
 private final double[] r;
 private final double[] divR;
+private final double[] yDivR;
 private final Vec vR;
 
-private static double h;
-private static double eh; // exp(-h)
-private static double h2;
-private static double h3;
-private static double h90;
-private static double a34;
+private final FuncVec fvRes; // tmp working space AND results
+private final double[] res; // tmp working space AND results
+private final double h;
 
 
 public YkLcrV2(final WFQuadrLcr quadr, final Vec wf, final Vec wf2, final int k) {
@@ -38,20 +35,65 @@ public YkLcrV2(final WFQuadrLcr quadr, final Vec wf, final Vec wf2, final int k)
   TransLcrToR xToR = quadr.getLcrToR();
   this.r = xToR.getArr();
   this.divR = xToR.getDivR().getArr();
+  this.yDivR = xToR.getCRDivR().getArr();
   this.cr2 = xToR.getCR2().getArr();
   this.cr = xToR.getCR().getArr();
 
   h = ((StepGrid) xToR.getX()).getGridStep();
-  h2 = h / 2.0;
-  h3 = h / 3.0;
-  h90 = h / 90.;
-  eh = Math.exp(-h);
-  a34 = 34. * h90;
-
+  fvRes = new FuncVec(vR);  // working space
+  res = fvRes.getArr();
 }
-public FuncVec calcZk() {       log.setDbg();
-  FuncVec fvRes = new FuncVec(vR);
-  double[] res = fvRes.getArr();
+public FuncVec calcZk() {
+  return calcZkV2();
+}
+public FuncVec calcYk() {
+  calcZkV2(); // result is in fvRes;
+  return calcYkV2();
+}
+
+private FuncVec calcYkV2() {
+  if (r[0] != 0) {
+    throw new IllegalArgumentException(log.error("r[0] != 0"));
+  }
+  int K1 = k + 1;
+  double C = 2 * k + 1;
+  double h2 = h / 2.0;
+  double h3 = h / 3.0;
+  double h90 = h / 90. * C;// NOTE *C
+  double h114 = 114.0 * h90;
+  double a34 = 34. * h90;
+
+  int last = res.length - 1;  // starting from last
+  double f1 = yDivR[last]   * res[last];
+  double f2 = yDivR[last-1] * res[last-1];
+  double f3 = yDivR[last-2] * res[last-2];
+  double f4 = yDivR[last-3] * res[last-3];
+  for (int i = last - 2; i >= 2; i--) {
+    double f5 = yDivR[i - 2] * res[i - 2];
+    double rM1 = r[i - 1]; // NOTE K1 not K below
+    double a3 = Mathx.pow(rM1 * divR[i + 2], K1) * h90;
+    double a2 = Mathx.pow(rM1 * divR[i + 1], K1);
+    double a1 = Mathx.pow(rM1 * divR[i + 0], K1) * h114;
+    double ai = Mathx.pow(rM1 * divR[i - 2], K1) * h90;
+    //      YK(M) = YK(M+2)*A2 + ( AN*F3 + A34*(F4+A2*F2)-F5*AI-F1*A3)        AATK4078
+    res[i - 1] = res[i + 1] * a2 + (a1 * f3 + a34 * (f4 + a2 * f2) - f5 * ai - f1 * a3);
+    f1 = f2;
+    f2 = f3;
+    f3 = f4;
+    f4 = f5;
+  }
+  res[0] = 0;
+  return fvRes;
+}
+
+
+private FuncVec calcZkV2() {       //log.setDbg();
+  double h2 = h / 2.0;
+  double h3 = h / 3.0;
+  double h90 = h / 90.;
+  double h114 = 114.0 * h90;
+  double a34 = 34. * h90;
+
   res[0] = 0;
   int n = res.length;
 
@@ -91,6 +133,8 @@ public FuncVec calcZk() {       log.setDbg();
   intgl = a *hb / (b+1) * r3;
   res[2] = intgl / rk3;
 
+  // START DEBUG CODE ====================================
+  //
   // Simpson rule
   // y(x) = a x^2 + b x + c
   // f1 = c
@@ -99,16 +143,18 @@ public FuncVec calcZk() {       log.setDbg();
   //  double a = (f3 - 2. * f2 - c) / (2. * h * h);
   //  double b = (4. * f2 - f3 + 3c) / (2. * h);
   // int_0^h y(x) dx = a / 3. * h^3 + b h^2 / 2. + c h;
-//  a = (f3 - 2. * f2 + f1) / 2.;
-//  b = (4. * f2 - f3 - 3. * f1) / 2.;
-//  intgl = (a / 3.  + b / 2. + f1) * h;
-//  res[1] = res[0] + intgl;
-//  res[1] = h2 * f2;   // trapezoidal
-
-//  // Simpson rule
-//  a = Mathx.pow(r[1] * divR[2], k);
-//  //YK(3) = YK(1)*A2 + H3*(F3 + D4*A*F2 + A2*F1)
-//  res[2] = h3*(f3 + 4.*a*f2);// NOTE!!! r[0]=Zk[0]=a2=f1=0 in the LCR grid
+  //  a = (f3 - 2. * f2 + f1) / 2.;
+  //  b = (4. * f2 - f3 - 3. * f1) / 2.;
+  //  intgl = (a / 3.  + b / 2. + f1) * h;
+  //  res[1] = res[0] + intgl;
+  //  res[1] = h2 * f2;   // trapezoidal
+  //
+  //  // Simpson rule
+  //  a = Mathx.pow(r[1] * divR[2], k);
+  //  //YK(3) = YK(1)*A2 + H3*(F3 + D4*A*F2 + A2*F1)
+  //  res[2] = h3*(f3 + 4.*a*f2);// NOTE!!! r[0]=Zk[0]=a2=f1=0 in the LCR grid
+  //
+  // END DEBUG CODE ====================================
 
   for (int i = 4; i < n; i++) {
     double f5 = cr2[i] * wf.get(i) * wf2.get(i);//      F5 = (RR(M)*P(M,I))*P(M,J)                                        AATK4125
@@ -122,10 +168,10 @@ public FuncVec calcZk() {       log.setDbg();
     //      EH = DEXP(-h)   // from SUBROUTINE INIT
     //      A = EH**K
     double ovR = divR[i - 1];
-    double a3 = Mathx.pow(r[i - 4] * ovR, k) * h90;//      A3 = A2*A*H90                                                     AATK4112
-    double a2 = Mathx.pow(r[i - 3] * ovR, k);//      A2 = A*A                                                          AATK4110
-    double a1 = Mathx.pow(r[i - 2] * ovR, k) * 114.0 * h90;//      AN = 114.D0*A*H90                                                 AATK4114
-    double ai = Mathx.pow(r[i - 0] * ovR, k) * h90;//      AI = H90/A                                                        AATK4113
+    double a3 = Mathx.pow(r[i - 4] * ovR, k) * h90; //      A3 = A2*A*H90                                                     AATK4112
+    double a2 = Mathx.pow(r[i - 3] * ovR, k);       //      A2 = A*A                                                          AATK4110
+    double a1 = Mathx.pow(r[i - 2] * ovR, k) * h114;//      AN = 114.D0*A*H90                                                 AATK4114
+    double ai = Mathx.pow(r[i - 0] * ovR, k) * h90; //      AI = H90/A                                                        AATK4113
 
     // From Froese Fischer etal Computational atomic structure 2000
     // DELTA^2 F = F2 - 2*F3 + F4
@@ -153,11 +199,11 @@ public FuncVec calcZk() {       log.setDbg();
     rkn2 = 1. / quadr.getPowR(k).get(n - 2);
     rkn3 = 1. / quadr.getPowR(k).get(n - 3);
   }
-  double corr = norm * rkn2 - res[n - 2];      log.info("corr=", corr);
+  double corr = norm * rkn2 - res[n - 2];      //log.info("corr=", corr);
   for (int i = n-2; i > 0; i -= 2) { // do not correct i=0
     res[i] += corr;
   }
-  corr = norm * rkn3 - res[n - 3];             log.info("corr=", corr);
+  corr = norm * rkn3 - res[n - 3];             //log.info("corr=", corr);
   for (int i = n-3; i > 0; i -= 2) { // do not correct i=0
     res[i] += corr;
   }

@@ -3,6 +3,7 @@ package atom;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.Shell;
 import atom.wf.lcr.RkLcr;
+import atom.wf.lcr.RkLcrMap;
 
 import javax.utilx.log.Log;
 /**
@@ -11,19 +12,32 @@ import javax.utilx.log.Log;
 public abstract class AtomLcr extends LsFermiSysH {
 public static Log log = Log.getLog(AtomLcr.class);
 protected final SlaterLcr slaterLcr;
+private RkLcrMap mapRk;
 
 public AtomLcr(double atomZ, SlaterLcr si) {
   super(atomZ, si);
   slaterLcr = si;
+  init();
 }
 public AtomLcr(AtomLcr from) {
   super(from.atomZ, from.slaterLcr);
   this.slaterLcr = from.slaterLcr;
 }
+public void init() {
+  setFastMapOn(false);
+  mapRk = new RkLcrMap(slaterLcr.getQaudrLcr());
+}
+
 @Override
 public double calcRk(Shell a, Shell b, Shell a2, Shell b2, int kk) {
-  double res = RkLcr.calc(slaterLcr.getQaudrLcr()
+  double res;
+  if (isFastMapOn()) {
+    res = mapRk.calc(a.getWf(), b.getWf(), a2.getWf(), b2.getWf(), kk);
+  }
+  else {
+    res = RkLcr.calc(slaterLcr.getQaudrLcr()
     , a.getWf(), b.getWf(), a2.getWf(), b2.getWf(), kk);
+  }
 //  log.dbg("RkLcr.calc=", res);
   return res;
 }

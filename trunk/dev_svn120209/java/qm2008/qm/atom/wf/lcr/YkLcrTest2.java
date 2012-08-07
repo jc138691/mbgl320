@@ -34,7 +34,7 @@ public class YkLcrTest2 extends FlowTest {
     String help = "< P1s | P1s > = ";
     assertEqualsRel(help, 1., res, true);   log.dbg(help, res);
 
-    FuncVec tYk, cYk, tZk, cZk;
+    FuncVec tYk, cYk, tZk, cZk, nYk, nZk;
     tZk = WfFactory.makeZ_1_1s(r); // valid
     cZk = new YkLcr(quadr, f, f, 1).calcZk();
     double absDist = Math.abs(DistMaxAbsErr.distSLOW(tZk, cZk));   log.dbg("DistMaxAbsErr.distSLOW(trueZk, cZk)=", absDist);

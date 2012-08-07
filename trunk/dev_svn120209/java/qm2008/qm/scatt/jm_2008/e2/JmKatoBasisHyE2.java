@@ -168,7 +168,7 @@ private double calcHESys(LsConf leftConf, int sysIdx) {
   return res;
 }
 protected Vec calcHEBasis(LsConf leftConf) {
-  IConfs sB = mthd.sysConfH.getConfs();     // sBasis
+  AConfs sB = mthd.sysConfH.getConfs();     // sBasis
   Vec res = new Vec(sB.size());
   for (int sbi = 0; sbi < sB.size(); sbi++) {   // system basis index
     IConf basisConf = sB.get(sbi);

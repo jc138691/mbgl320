@@ -1,25 +1,19 @@
 package papers.he_swave;
-import atom.AtomUtil;
-import atom.angular.Spin;
 import atom.data.AtomHe;
 import atom.data.AtomHy;
 import atom.energy.LsConfHMtrx;
 import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
-import atom.smodel.HeSWaveAtomNt50_LMBD4p0;
-import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.LcrFactory;
-import math.func.FuncVec;
 import math.func.arr.FuncArr;
-import math.func.arr.FuncArrDbgView;
-import math.mtrx.api.Mtrx;
-import math.mtrx.MtrxDbgView;
-import math.vec.IntVec;
+import math.integral.OrthFactory;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
-import scatt.jm_2008.e3.JmMethodAnyBasisE3;
+import scatt.jm_2008.e3.JmMthdBasisAnyE3;
 import scatt.jm_2008.jm.ScttRes;
+import scatt.jm_2008.jm.laguerre.LgrrOpt;
+import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
 import scatt.jm_2008.jm.target.ScttTrgtE3;
 import scatt.jm_2008.jm.theory.JmD;
 
@@ -28,18 +22,18 @@ import javax.utilx.log.Log;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,12/05/11,2:35 PM
  */
-public class HeSWaveBasisHeIon extends HeSWaveScatt {
-  public static Log log = Log.getLog(HeSWaveBasisHeIon.class);
+public class HeSWaveBasisAny extends HeSWaveScatt {
+  public static Log log = Log.getLog(HeSWaveBasisAny.class);
   public static void main(String[] args) {
     // NOTE!!! for Nt>20 you may need to increase the JVM memory: I used -Xmx900M for a laptop with 2GB RAM
-    HeSWaveBasisHeIon runMe = new HeSWaveBasisHeIon();
+    HeSWaveBasisAny runMe = new HeSWaveBasisAny();
     runMe.setUp();
     runMe.testRun();
   }
   public void setUp() {
     super.setUp();
-    log.info("log.info(HeSWaveBasisHeIon)");
-    HeSWaveBasisHeIon.log.setDbg();
+    log.info("log.info(HeSWaveBasisAny)");
+    HeSWaveBasisAny.log.setDbg();
     log.setDbg();
   }
   public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
@@ -53,20 +47,8 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     CALC_DENSITY_MAX_NUM = 2;
     SAVE_TRGT_ENGS = true;
     H_OVERWRITE = true;
-    REPLACE_TRGT_ENGS_N = -1;
-
-    AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
-    SCTT_ENG_N = 10; // not used
-    SCTT_ENG_MIN = 0.5;
-    SCTT_ENG_MAX = 1;
-
-    LAMBDA = 4; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
 
     // Note: run one at a time as only one set of result files is produced
-//    setupEng01_1000eV_OLD();
-//    setupEngTICS();
-//    setupEngSDCS();
-
     runJob();
   }
 
@@ -84,26 +66,41 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
     calcHe(slater);    //verified: SysHeOldOk and SysHe yield exactly the same results.
     calcLi(slater);
 
-    // Making He+ eigen-states
-    trgtPotH = new PotHMtrxLcr(L, orthNt, pot);       log.dbg("trgtPotH=", trgtPotH);
-//    FuncVec potHeIon = WfFactory.makePotHeIon_1s_e(vR);  log.dbg("potHeIon(r)=", potHeIon);
-//    trgtPotH = new PotHMtrxLcr(L, orthNt, potHeIon);       log.dbg("trgtPotH=", trgtPotH);
+    // Making He+ eigen-states from Nc (core N).   this is only to calc ionization threshold
+    LgrrOpt lgrrOpt = new LgrrOpt(lgrrOptN); // for the target N, i.e. N_t
+    lgrrOpt.setN(Nc);
+    lgrrOpt.setLambda(LAMBDA_NC);                    log.dbg("Laguerr model (N_c)=", lgrrOpt);
+    orthNc = new LgrrOrthLcr(quadr, lgrrOpt);     log.dbg("LgrrOrthLcr(N_c) = ", orthNc);
+    trgtPotH = new PotHMtrxLcr(L, orthNc, pot);        log.dbg("trgtPotH=", trgtPotH);
+    Vec basisEngs = trgtPotH.getEigEngs();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
+    FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_NcEngs_" + makeLabelNc());
 
-    Vec basisEngs = trgtPotH.getEigEngs();                log.dbg("eigVal=", new VecDbgView(basisEngs));
-    Mtrx basisVecs = trgtPotH.getEigVec();               log.dbg("eigVec=", new MtrxDbgView(basisVecs));
-    FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_basisEngs_" + makeLabelNc());
-    trgtWfsNt = trgtPotH.getEigWfs();              log.dbg("targetNt=", new FuncArrDbgView(trgtWfsNt));
+    // start tmp DEV ==============================
+    ////    log.dbg("LgrrOrthLcr(N_c) = ", orthNc);
+    OrthFactory.keepN(orthNc, quadr, orthNt); // span Nc-basis on Nt-basis
+    //    log.dbg("LgrrOrthLcr(N_c) = ", orthNc);
+    OrthFactory.norm(orthNc, quadr);
+    orthNt.copyDeepFromY(0, orthNc, 0, orthNc.size()); // replace
+    OrthFactory.makeOrth_DEV(orthNt, quadr);
+    trgtWfsNt = orthNt;
+    // end tmp DEV==============================
 
-    FuncArr basisR = LcrFactory.wfLcrToR(trgtWfsNt, quadr);
-    AtomUtil.trimTailSLOW(basisR);
-    FileX.writeToFile(basisR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtR_" + makeLabelNc());
+
+//    // Making He+ eigen-states
+//    trgtPotH = new PotHMtrxLcr(L, orthNt, pot);       log.dbg("trgtPotH=", trgtPotH);
+//    Vec basisEngs = trgtPotH.getEigEngs();                log.dbg("eigVal=", new VecDbgView(basisEngs));
+//    Mtrx basisVecs = trgtPotH.getEigVec();               log.dbg("eigVec=", new MtrxDbgView(basisVecs));
+//    FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_basisEngs_" + makeLabelNc());
+//    trgtWfsNt = trgtPotH.getEigWfs();              log.dbg("targetNt=", new FuncArrDbgView(trgtWfsNt));
+//    FuncArr basisR = LcrFactory.wfLcrToR(trgtWfsNt, quadr);
+//    AtomUtil.trimTailSLOW(basisR);
+//    FileX.writeToFile(basisR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_trgtBasisNtR_" + makeLabelNc());
 
 // TODO: check how Vec.size() is used
 //    AtomUtil.trimTailSLOW(trgtWfsNt);
-
     wfN = orthN;    // only the last wfs were used from  orthNt, so now we can reuse it
     orthN = null; // making sure nobody uses old ref
-    wfN.copyFrom(trgtWfsNt, 0, trgtWfsNt.size());
+    wfN.copyFrom(0, trgtWfsNt, 0, trgtWfsNt.size());
 
     ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtWfsNt);
     jmTrgt.setInitTrgtIdx(FROM_CH);
@@ -116,7 +113,7 @@ public class HeSWaveBasisHeIon extends HeSWaveScatt {
 
     LsConfHMtrx sysH = makeSysBasisN(slater);
 
-    JmMethodAnyBasisE3 method = new JmMethodAnyBasisE3(calcOpt);
+    JmMthdBasisAnyE3 method = new JmMthdBasisAnyE3(calcOpt);
     method.setTrgtE3(jmTrgt);
     Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
     method.setSysEngs(sEngs);

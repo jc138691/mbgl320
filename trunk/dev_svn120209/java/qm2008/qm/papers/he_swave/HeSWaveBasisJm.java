@@ -6,14 +6,12 @@ import atom.energy.part_wave.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.wf.lcr.LcrFactory;
 import math.func.arr.FuncArr;
-import math.integral.OrthFactory;
-import math.vec.IntVec;
 import math.vec.Vec;
 import math.vec.VecDbgView;
 import qm_station.QMSProject;
 //import scatt.jm_2008.e2.JmResonE2_bad;
 import scatt.jm_2008.e3.JmDe3;
-import scatt.jm_2008.e3.JmMethodJmBasisE3;
+import scatt.jm_2008.e3.JmMthdBasisJmE3;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.lcr.LgrrOrthLcr;
@@ -44,14 +42,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     CALC_DENSITY_MAX_NUM = 2;
     SAVE_TRGT_ENGS = true;
     H_OVERWRITE = true;
-    REPLACE_TRGT_ENGS_N = -1;
 
-    AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
-    SCTT_ENG_N = 10; // not used
-    SCTT_ENG_MIN = 0.5;
-    SCTT_ENG_MAX = 1;
-
-//    LAMBDA = 4; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
     // Note: run one at a time as only one set of result files is produced
     runJob();
   }
@@ -87,20 +78,6 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
     Vec basisEngs = trgtPotH.getEigEngs();                 log.dbg("eigVal=", new VecDbgView(basisEngs));
     FileX.writeToFile(basisEngs.toCSV(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_NcEngs_" + makeLabelNc());
 
-    // making
-    OrthFactory.keepN(orthNc, quadr, orthNt); // span Nc-basis on Nt-basis
-    OrthFactory.norm(orthNc, quadr);
-    orthNt.copyFrom(orthNc, 0, orthNc.size()); // replace
-    OrthFactory.makeOrth_DEV(orthNt, quadr);
-
-//    lgrrOpt = new LgrrOpt(lgrrOptN);
-//    lgrrOpt.setN(Nc + Nt);
-//    LgrrOrthLcr tmpOrth = new LgrrOrthLcr(quadr, lgrrOpt);
-//    tmpOrth.copyFrom(orthNc, 0, orthNc.size());
-//    tmpOrth.copyFrom(orthNt, orthNc.size()-1, orthNt.size());
-//    OrthFactory.makeOrthRotate(tmpOrth, quadr);
-//    orthNt = tmpOrth;
-
     trgtWfsNt = orthNt;
     wfN = orthN;
     ScttTrgtE3 jmTrgt = makeTrgtBasisNt(slater, trgtWfsNt);
@@ -114,7 +91,7 @@ public class HeSWaveBasisJm extends HeSWaveScatt {
 
     LsConfHMtrx sysH = makeSysBasisN(slater);
 
-    JmMethodJmBasisE3 method = new JmMethodJmBasisE3(calcOpt);
+    JmMthdBasisJmE3 method = new JmMthdBasisJmE3(calcOpt);
     method.setTrgtE3(jmTrgt);
     Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
     method.setSysEngs(sEngs);

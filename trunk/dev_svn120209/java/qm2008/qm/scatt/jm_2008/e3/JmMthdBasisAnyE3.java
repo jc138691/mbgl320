@@ -13,11 +13,11 @@ import java.util.HashMap;
 /**
  * dmitry.a.konovalov@gmail.com,dmitry.konovalov@jcu.edu.com,5/05/11,3:17 PM
  */
-public class JmMethodAnyBasisE3 extends JmMethodBaseE3 { // many electrons (more than 2). TODO: this should work for e-H as well
-public static Log log = Log.getLog(JmMethodAnyBasisE3.class);
+public class JmMthdBasisAnyE3 extends JmMethodBaseE3 { // many electrons (more than 2). TODO: this should work for e-H as well
+public static Log log = Log.getLog(JmMthdBasisAnyE3.class);
 protected HashMap<String, String> equalSysTrgt;       // [12Apr2011] with equalSysTrgt, equals(LsConf e3, LsConf e2, int idx3) is much faster now!!!
 protected HashMap<String, Integer> mapTrgtToSysIdx;   // [12Apr2011] with mapTrgtToSysIdx, calcC(int i, int g, int m) is much faster!!!
-public JmMethodAnyBasisE3(JmCalcOptE1 calcOpt) {
+public JmMthdBasisAnyE3(JmCalcOptE1 calcOpt) {
   super(calcOpt);
 }
 //[system i][target gamma][overlap D]

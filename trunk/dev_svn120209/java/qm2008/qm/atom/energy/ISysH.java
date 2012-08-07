@@ -9,4 +9,8 @@ public interface ISysH {
   int getNumElec();
   FuncVec calcDens(IConf fc, IConf fc2);
   double calcOver(IConf fc, IConf fc2);
+  void init();
+
+  boolean isFastMapOn();
+  void setFastMapOn(boolean v);
 }

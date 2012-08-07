@@ -21,13 +21,12 @@ abstract public class LsFermiSysH implements ISysH {
 public static Log log = Log.getLog(LsFermiSysH.class);
 final public double atomZ;
 final protected Slater si;
+private boolean fastMapOn;
 public LsFermiSysH(double az, Slater si) {
   atomZ = az;
   this.si = si;
 }
-//public double getAtomZ() {
-//  return atomZ;
-//}
+public void init() {}
 
 //+++++++++++++++++++++++++++++++++++++++++++
 //  implementing ISysH
@@ -39,6 +38,12 @@ public FuncVec calcDens(IConf fc, IConf fc2) {
 }
 public double calcOver(IConf fc, IConf fc2) {
   return calcLsOver((LsConf) fc, (LsConf) fc2);
+}
+public boolean isFastMapOn() {
+  return fastMapOn;
+}
+public void setFastMapOn(boolean fastMapOn) {
+  this.fastMapOn = fastMapOn;
 }
 //+++++++++++++++++++++++++++++++++++++++++
 
