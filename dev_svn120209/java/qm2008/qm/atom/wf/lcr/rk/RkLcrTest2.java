@@ -1,6 +1,8 @@
-package atom.wf.lcr;
+package atom.wf.lcr.rk;
 
 import atom.wf.coulomb.WfFactory;
+import atom.wf.lcr.WFQuadrLcr;
+import atom.wf.lcr.yk.YkLcr;
 import math.func.FuncVec;
 import math.vec.Vec;
 import math.vec.metric.DistMaxAbsErr;

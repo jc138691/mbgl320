@@ -11,6 +11,8 @@ public interface ISysH {
   double calcOver(IConf fc, IConf fc2);
   void init();
 
-  boolean isFastMapOn();
-  void setFastMapOn(boolean v);
+boolean isMapRk();
+void setMapRk(boolean v);
+boolean isMapYk();
+void setMapYk(boolean v);
 }

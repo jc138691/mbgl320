@@ -1,6 +1,8 @@
-package atom.wf.lcr;
+package atom.wf.lcr.yk;
 
 import atom.wf.coulomb.WfFactory;
+import atom.wf.lcr.TransLcrToR;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;
 import math.vec.Vec;
 import math.vec.VecDbgView;

@@ -1,4 +1,5 @@
-package atom.wf.lcr;
+package atom.wf.lcr.yk;
+import atom.wf.lcr.WFQuadrLcr;
 import math.vec.Vec;
 /**
  * Dmitry.Konovalov@jcu.edu.au Dmitry.A.Konovalov@gmail.com 7/08/12, 2:29 PM

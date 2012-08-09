@@ -61,10 +61,10 @@ public void setUp() {
 //    log.setDbg();
 }
 public void runJob() {
-  AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
+  AUTO_ENG_POINTS = new IntVec(new int[] {100, 100, 10});
   SCTT_ENG_N = 10; // not used
-  SCTT_ENG_MIN = 0.5;
-  SCTT_ENG_MAX = 1;
+  SCTT_ENG_MIN = 0.65;
+  SCTT_ENG_MAX = 0.9;
 
   int currN = 10;
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
@@ -98,7 +98,7 @@ public void runJob() {
 //    LCR_N = 801;//    N= 40
 //    R_LAST = 200;//    N= 40
 
-  LAMBDA = 1.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+  LAMBDA = 0.8; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   LAMBDA_NC = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   Nc = 3;
   int currNt = 30;

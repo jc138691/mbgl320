@@ -2,8 +2,10 @@ package atom;
 
 import atom.energy.slater.SlaterLcr;
 import atom.shell.Shell;
-import atom.wf.lcr.RkLcr;
-import atom.wf.lcr.RkLcrMap;
+import atom.wf.lcr.rk.RkLcr;
+import atom.wf.lcr.rk.RkLcrMap;
+import atom.wf.lcr.yk.YkLcrMap;
+import math.func.FuncVec;
 
 import javax.utilx.log.Log;
 /**
@@ -13,6 +15,7 @@ public abstract class AtomLcr extends LsFermiSysH {
 public static Log log = Log.getLog(AtomLcr.class);
 protected final SlaterLcr slaterLcr;
 private RkLcrMap mapRk;
+private YkLcrMap mapYk;
 
 public AtomLcr(double atomZ, SlaterLcr si) {
   super(atomZ, si);
@@ -24,15 +27,19 @@ public AtomLcr(AtomLcr from) {
   this.slaterLcr = from.slaterLcr;
 }
 public void init() {
-  setFastMapOn(false);
   mapRk = new RkLcrMap(slaterLcr.getQaudrLcr());
+  mapYk = new YkLcrMap(slaterLcr.getQaudrLcr());
 }
 
 @Override
 public double calcRk(Shell a, Shell b, Shell a2, Shell b2, int kk) {
   double res;
-  if (isFastMapOn()) {
+  if (isMapRk()) {
     res = mapRk.calc(a.getWf(), b.getWf(), a2.getWf(), b2.getWf(), kk);
+  }
+  else if (isMapYk()) {
+    FuncVec yk = mapYk.calcYk(b.getWf(), b2.getWf(), kk);
+    res = RkLcr.calc(slaterLcr.getQaudrLcr(), a.getWf(), a2.getWf(), yk, kk);
   }
   else {
     res = RkLcr.calc(slaterLcr.getQaudrLcr()

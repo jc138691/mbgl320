@@ -2,6 +2,9 @@ package atom.wf.lcr.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 15/07/2008, Time: 14:29:19 */
 import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.*;
+import atom.wf.lcr.yk.YkLcr;
+import atom.wf.lcr.yk.YkLcrV1;
+import atom.wf.lcr.yk.YkLcrV2;
 import math.integral.QuadrPts5;
 import math.vec.Vec;
 import math.vec.VecDbgView;

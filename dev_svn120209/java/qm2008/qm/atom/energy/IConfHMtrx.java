@@ -21,7 +21,8 @@ public IConfHMtrx(AConfs basis, final ISysH atom) {
   this.sysH = atom;
   this.confs = basis;
   sysH.init();
-  sysH.setFastMapOn(true);
+  sysH.setMapRk(false);   // todo: still debugging
+  sysH.setMapYk(true);
   load();
   sysH.init();
 }

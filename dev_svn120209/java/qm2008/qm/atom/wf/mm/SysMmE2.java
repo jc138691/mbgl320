@@ -56,9 +56,14 @@ public double calcOver(IConf fc, IConf fc2) {
 public void init() {
 
 }
-public boolean isFastMapOn() {
+public boolean isMapRk() {
   return false;
 }
-public void setFastMapOn(boolean v) {
+public void setMapRk(boolean v) {
+}
+public boolean isMapYk() {
+  return false;
+}
+public void setMapYk(boolean v) {
 }
 }
