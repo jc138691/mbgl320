@@ -1,4 +1,6 @@
-package atom.wf.lcr;
+package atom.wf.lcr.yk;
+import atom.wf.lcr.TransLcrToR;
+import atom.wf.lcr.WFQuadrLcr;
 import math.func.intrg.IntgInftyPts7;
 import math.func.intrg.IntgPts7;
 import math.vec.Vec;

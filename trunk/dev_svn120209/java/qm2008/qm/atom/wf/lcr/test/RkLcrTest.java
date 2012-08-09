@@ -1,10 +1,10 @@
 package atom.wf.lcr.test;
 /** Copyright dmitry.konovalov@jcu.edu.au Date: 16/07/2008, Time: 09:31:25 */
 import atom.wf.coulomb.WfFactory;
-import atom.wf.lcr.RkLcr;
+import atom.wf.lcr.rk.RkLcr;
 import atom.wf.lcr.TransLcrToR;
 import atom.wf.lcr.WFQuadrLcr;
-import atom.wf.lcr.YkLcr;
+import atom.wf.lcr.yk.YkLcr;
 import atom.wf.mm.HkMm;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;

@@ -1,4 +1,7 @@
-package atom.wf.lcr;
+package atom.wf.lcr.rk;
+import atom.shell.deepcopy.ShWf;
+import atom.wf.lcr.WFQuadrLcr;
+import atom.wf.lcr.yk.YkLcr;
 import math.func.FuncVec;
 import math.vec.Vec;
 
@@ -19,6 +22,10 @@ public static double calc(WFQuadrLcr w, Vec a, Vec b, Vec a2, Vec b2, int K) {
   FuncVec yk = new YkLcr(w, b, b2, K).calcYk();
 //  log.dbg("yk=\n", new VecDbgView(yk));
 //    double res = FastLoop.dot(a, a2, yk, w.getWithCR2DivR());
+  double res = w.calcWithDivR(a, a2, yk);
+  return res;
+}
+public static double calc(WFQuadrLcr w, ShWf a, ShWf a2, FuncVec yk, int kk) {
   double res = w.calcWithDivR(a, a2, yk);
   return res;
 }

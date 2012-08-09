@@ -1,7 +1,6 @@
-package atom.wf.lcr;
+package atom.wf.lcr.rk;
 import atom.shell.deepcopy.ShWf;
-import math.func.FuncVec;
-import math.vec.Vec;
+import atom.wf.lcr.WFQuadrLcr;
 
 import javax.utilx.log.Log;
 import java.util.HashMap;
