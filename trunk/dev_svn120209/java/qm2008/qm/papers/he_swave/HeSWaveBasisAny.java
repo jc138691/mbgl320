@@ -85,7 +85,6 @@ public class HeSWaveBasisAny extends HeSWaveScatt {
     trgtWfsNt = orthNt;
     // end tmp DEV==============================
 
-
 //    // Making He+ eigen-states
 //    trgtPotH = new PotHMtrxLcr(L, orthNt, pot);       log.dbg("trgtPotH=", trgtPotH);
 //    Vec basisEngs = trgtPotH.getEigEngs();                log.dbg("eigVal=", new VecDbgView(basisEngs));
