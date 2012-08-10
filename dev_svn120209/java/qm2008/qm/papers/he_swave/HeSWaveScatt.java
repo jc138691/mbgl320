@@ -61,18 +61,21 @@ public void setUp() {
 //    log.setDbg();
 }
 public void runJob() {
-  AUTO_ENG_POINTS = new IntVec(new int[] {100, 100, 10});
   SCTT_ENG_N = 10; // not used
-  SCTT_ENG_MIN = 0.65;
-  SCTT_ENG_MAX = 0.9;
+//  AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
+//  SCTT_ENG_MIN = 0.65;
+//  SCTT_ENG_MAX = 0.9;
+  AUTO_ENG_POINTS = new IntVec(new int[] {10, 10});
+  SCTT_ENG_MIN = 0.01;
+  SCTT_ENG_MAX = 40;
 
   int currN = 10;
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 
-  currN = 101;// N=100
-  LCR_N = 2401;//    N=100, LAMBDA=2
+  currN = 102;// N=100
+  LCR_N = 2001;//    N=100, LAMBDA=2
 //  R_LAST = 400;//    R_LAST = 400; N=100, LAMBDA=2, = 4
-  R_LAST = 600;//    R_LAST = 500; N=100, LAMBDA=1
+  R_LAST = 500;//    R_LAST = 500; N=100, LAMBDA=1
 
 //    currN = 90;// N=90
 //    LCR_N = 2001;//    N= 90
@@ -98,7 +101,7 @@ public void runJob() {
 //    LCR_N = 801;//    N= 40
 //    R_LAST = 200;//    N= 40
 
-  LAMBDA = 0.8; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+  LAMBDA = 1; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   LAMBDA_NC = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   Nc = 3;
   int currNt = 30;
