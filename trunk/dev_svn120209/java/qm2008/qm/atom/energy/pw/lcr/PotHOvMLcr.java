@@ -1,5 +1,6 @@
-package atom.energy.part_wave;
+package atom.energy.pw.lcr;
 import atom.energy.HOvMtrx;
+import atom.energy.pw.OvMtrx;
 import atom.wf.WFQuadrD1;
 import math.func.FuncVec;
 import math.func.arr.IFuncArr;

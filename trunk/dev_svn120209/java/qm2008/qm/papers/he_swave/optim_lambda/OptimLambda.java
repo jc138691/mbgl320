@@ -1,7 +1,7 @@
 package papers.he_swave.optim_lambda;
 import atom.angular.Spin;
 import atom.data.AtomHe;
-import atom.energy.part_wave.PotHMtrxLcr;
+import atom.energy.pw.lcr.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.smodel.HeSWaveAtom;
 import atom.smodel.HeSWaveAtomNt50_LMBD4p0;

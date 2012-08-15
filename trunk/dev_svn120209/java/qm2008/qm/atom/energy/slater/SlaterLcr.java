@@ -1,5 +1,5 @@
 package atom.energy.slater;
-import atom.energy.part_wave.PotHLcr;
+import atom.energy.pw.lcr.PotHLcr;
 import atom.shell.Shell;
 import atom.wf.lcr.TransLcrToR;
 import atom.wf.lcr.WFQuadrLcr;

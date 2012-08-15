@@ -1,7 +1,7 @@
 package scatt.jm_2008.jm.fanox;
 
 import atom.energy.ConfOvMtrx;
-import atom.energy.part_wave.PotHMtrx;
+import atom.energy.pw.PotHMtrx;
 import math.mtrx.api.Mtrx;
 import math.mtrx.MtrxDbgView;
 import scatt.jm_2008.e1.JmCalcOptE1;

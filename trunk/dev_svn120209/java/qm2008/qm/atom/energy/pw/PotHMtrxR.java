@@ -1,4 +1,4 @@
-package atom.energy.part_wave;
+package atom.energy.pw;
 import math.func.FuncVec;
 import scatt.jm_2008.jm.laguerre.IWFuncArr;
 

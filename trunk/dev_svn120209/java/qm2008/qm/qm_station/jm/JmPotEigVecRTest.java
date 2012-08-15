@@ -1,7 +1,7 @@
 package qm_station.jm;
-import atom.energy.part_wave.PotH;
-import atom.energy.part_wave.PotHMtrx;
-import atom.energy.part_wave.PotHMtrxR;
+import atom.energy.pw.PotH;
+import atom.energy.pw.PotHMtrx;
+import atom.energy.pw.PotHMtrxR;
 import project.workflow.task.test.FlowTest;
 import project.workflow.task.TaskProgressMonitor;
 import project.workflow.task.ProjectProgressMonitor;

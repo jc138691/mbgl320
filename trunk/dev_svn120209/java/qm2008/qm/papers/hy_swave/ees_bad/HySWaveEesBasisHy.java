@@ -1,7 +1,7 @@
 package papers.hy_swave.ees_bad;
 import atom.data.AtomHy;
 import atom.energy.LsConfHMtrx;
-import atom.energy.part_wave.PotHMtrxLcr;
+import atom.energy.pw.lcr.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.Ls;
 import math.func.arr.FuncArrDbgView;

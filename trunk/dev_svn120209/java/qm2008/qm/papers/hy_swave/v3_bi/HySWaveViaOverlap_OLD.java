@@ -4,7 +4,7 @@ import atom.data.AtomHy;
 import atom.e_2.SysE2OldOk;
 import atom.energy.LsConfHMtrx;
 import atom.energy.ConfOvMtrx;
-import atom.energy.part_wave.PotHMtrxLcr;
+import atom.energy.pw.lcr.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.shell.LsConfs;
 import atom.shell.ConfArrFactoryE2;
