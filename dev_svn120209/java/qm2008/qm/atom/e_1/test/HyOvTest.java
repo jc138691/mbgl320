@@ -1,5 +1,5 @@
 package atom.e_1.test;
-import atom.energy.part_wave.PotHOvMLcr;
+import atom.energy.pw.lcr.PotHOvMLcr;
 import atom.wf.lcr.LcrFactory;
 import atom.wf.lcr.WFQuadrLcr;
 import atom.wf.slater.SlaterWFFactory;

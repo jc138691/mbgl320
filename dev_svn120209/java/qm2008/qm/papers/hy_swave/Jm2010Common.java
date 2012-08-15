@@ -1,5 +1,5 @@
 package papers.hy_swave;
-import atom.energy.part_wave.PotHMtrx;
+import atom.energy.pw.PotHMtrx;
 import math.func.FuncVec;
 import math.vec.IntVec;
 import math.vec.Vec;

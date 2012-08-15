@@ -1,5 +1,5 @@
 package atom.energy.slater;
-import atom.energy.part_wave.PotHR;
+import atom.energy.pw.PotHR;
 import atom.shell.Shell;
 import atom.wf.WFQuadrR;
 import math.vec.Vec;

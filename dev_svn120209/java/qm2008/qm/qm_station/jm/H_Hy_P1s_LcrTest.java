@@ -1,6 +1,6 @@
 package qm_station.jm;
 
-import atom.energy.part_wave.PotHLcr;
+import atom.energy.pw.lcr.PotHLcr;
 import atom.wf.coulomb.WfFactory;
 import atom.wf.lcr.WFQuadrLcr;
 import math.func.FuncVec;

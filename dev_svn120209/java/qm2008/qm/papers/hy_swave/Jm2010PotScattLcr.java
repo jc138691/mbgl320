@@ -1,7 +1,7 @@
 package papers.hy_swave;
 import atom.data.AtomHy;
-import atom.energy.part_wave.PotHMtrx;
-import atom.energy.part_wave.PotHMtrxLcr;
+import atom.energy.pw.PotHMtrx;
+import atom.energy.pw.lcr.PotHMtrxLcr;
 import atom.wf.coulomb.WfFactory;
 import math.func.arr.FuncArr;
 import math.func.arr.FuncArrDbgView;

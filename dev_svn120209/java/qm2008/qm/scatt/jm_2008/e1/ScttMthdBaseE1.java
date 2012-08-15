@@ -1,6 +1,6 @@
 package scatt.jm_2008.e1;
-import atom.energy.part_wave.PotH;
-import atom.energy.part_wave.PotHMtrx;
+import atom.energy.pw.PotH;
+import atom.energy.pw.PotHMtrx;
 import atom.wf.WFQuadrD1;
 import atom.wf.lcr.WFQuadrLcr;
 import math.Calc;

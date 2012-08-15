@@ -2,7 +2,7 @@ package papers.he_swave;
 import atom.data.AtomHe;
 import atom.data.AtomHy;
 import atom.energy.LsConfHMtrx;
-import atom.energy.part_wave.PotHMtrxLcr;
+import atom.energy.pw.lcr.PotHMtrxLcr;
 import atom.energy.slater.SlaterLcr;
 import atom.wf.lcr.LcrFactory;
 import math.func.arr.FuncArr;

@@ -1,8 +1,8 @@
 package qm_station.jm;
 
-import atom.energy.part_wave.PotH;
-import atom.energy.part_wave.PotHMtrx;
-import atom.energy.part_wave.PotHMtrxLcr;
+import atom.energy.pw.PotH;
+import atom.energy.pw.PotHMtrx;
+import atom.energy.pw.lcr.PotHMtrxLcr;
 import atom.wf.coulomb.WfFactory;
 import math.func.FuncVec;
 import math.func.arr.FuncArr;

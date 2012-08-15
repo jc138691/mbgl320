@@ -1,5 +1,5 @@
 package qm_station.jm;
-import atom.energy.part_wave.PotHR;
+import atom.energy.pw.PotHR;
 import project.workflow.task.test.FlowTest;
 import math.vec.VecDbgView;
 import math.vec.Vec;

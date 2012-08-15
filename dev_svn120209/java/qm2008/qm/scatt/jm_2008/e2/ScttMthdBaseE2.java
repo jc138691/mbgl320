@@ -53,10 +53,10 @@ public ScttMthdBaseE2(JmCalcOptE1 calcOpt) {
 }
 public ScttRes calcAutoScttEngs(IntVec points) {   log.setDbg();
   log.dbg("tEngs=", new VecDbgView(getTrgtE2().getEngs()));
-  Vec tEngs = AutoEngFactory.makeEngs(getTrgtE2().getEngs(), points);   log.dbg("tEngs=", new VecDbgView(tEngs));
+  Vec tEngs = AutoEngFactory.makeEngsByDivHalf(getTrgtE2().getEngs(), points);   log.dbg("tEngs=", new VecDbgView(tEngs));
   tEngs.add(-getTrgtE2().getInitTrgtEng());
 
-  Vec sEngs = AutoEngFactory.makeEngs(getSysEngs(), new IntVec(new int[]{10}));   log.dbg("sEngs=", new VecDbgView(sEngs));
+  Vec sEngs = AutoEngFactory.makeEngsByDivLast(getSysEngs(), new IntVec(new int[]{10}));   log.dbg("sEngs=", new VecDbgView(sEngs));
   sEngs.add(-getTrgtE2().getInitTrgtEng());
   tEngs.append(sEngs);
   tEngs.sortSelf();

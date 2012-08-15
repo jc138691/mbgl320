@@ -1,4 +1,4 @@
-package atom.energy.part_wave;
+package atom.energy.pw;
 import atom.energy.HMtrx;
 import atom.wf.WFQuadrD1;
 import math.mtrx.api.Mtrx;

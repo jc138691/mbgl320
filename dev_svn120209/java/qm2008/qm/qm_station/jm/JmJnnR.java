@@ -1,5 +1,5 @@
 package qm_station.jm;
-import atom.energy.part_wave.PotHR;
+import atom.energy.pw.PotHR;
 import atom.wf.WFQuadrD1;
 import scatt.eng.EngGrid;
 import scatt.eng.EngOpt;
