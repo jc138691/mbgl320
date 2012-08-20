@@ -65,14 +65,17 @@ public void runJob() {
 //  AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
 //  SCTT_ENG_MIN = 0.65;
 //  SCTT_ENG_MAX = 0.9;
-  AUTO_ENG_POINTS = new IntVec(new int[] {101, 22, 23, 24, 25}); // funny number to help with debugging
-  SCTT_ENG_MIN = 0.01;
+  AUTO_ENG_POINTS = new IntVec(new int[] {20, 11, 12, 10, 11, 12, 10, 11, 12, 10, 11, 12, 10, 11, 12}); // funny number to help with debugging
+//  SCTT_ENG_MIN = 0.001;
+//  SCTT_ENG_MAX = 1;
+
+  SCTT_ENG_MIN = 1;
   SCTT_ENG_MAX = 40;
 
   int currN = 10;
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 
-  currN = 103;// N=100
+  currN = 99;// N=100
   LCR_N = 2001;//    N=100, LAMBDA=2
 //  R_LAST = 400;//    R_LAST = 400; N=100, LAMBDA=2, = 4
   R_LAST = 500;//    R_LAST = 500; N=100, LAMBDA=1
@@ -101,10 +104,10 @@ public void runJob() {
 //    LCR_N = 801;//    N= 40
 //    R_LAST = 200;//    N= 40
 
-  LAMBDA = 1; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
+  LAMBDA = 1.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   LAMBDA_NC = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   Nc = 3;
-  int currNt = 30;
+  int currNt = 40;
 //    int currN = currNt + 1;
 
   SPIN = Spin.ELECTRON;
