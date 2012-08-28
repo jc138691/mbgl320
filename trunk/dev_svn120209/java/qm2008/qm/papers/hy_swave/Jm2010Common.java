@@ -1,13 +1,19 @@
 package papers.hy_swave;
 import atom.energy.pw.PotHMtrx;
+import atom.wf.lcr.TransLcrToR;
+import atom.wf.lcr.WFQuadrLcr;
+import atom.wf.log_r.TransLrToR;
 import math.func.FuncVec;
 import math.vec.IntVec;
 import math.vec.Vec;
+import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridOpt;
 import papers.project_setup.ProjCommon;
 import papers.project_setup.ProjTestOpt;
 import qm_station.QMS;
 import qm_station.ui.scatt.CalcOptR;
+import scatt.eng.EngGridFactory;
+import scatt.eng.EngModelArr;
 import scatt.eng.EngOpt;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.e1.JmCalcOptE1;
@@ -38,6 +44,7 @@ protected static double SCTT_ENG_MIN = 0.01;
 protected static double SCTT_ENG_MAX = 10;
 protected static int SCTT_ENG_N = 1000;
 protected static IntVec AUTO_ENG_POINTS;  // num of point BETWEEN consecutive given engs
+protected static Vec scttEngs;
 
 //  @Override
 public StepGridOpt makeStepGridModelR() {
@@ -89,6 +96,51 @@ public LgrrOpt makeBasisOpt() {
   res.setLambda(LAMBDA);
   res.setN(N);
   return res;
+}
+
+public static void setupEngsHe_OLD() {
+  EngModelArr arr = new EngModelArr();
+  arr.add(new EngOpt(0.204,  0.704,  501));
+  arr.add(new EngOpt(0.704,  0.705,  1001));
+  arr.add(new EngOpt(0.705,  0.730,  501));
+  arr.add(new EngOpt(0.730,  0.740,  1001));
+  arr.add(new EngOpt(0.740,  0.810,  501));
+  arr.add(new EngOpt(0.810,  0.811,  1001));
+  arr.add(new EngOpt(0.811,  0.818,  501));
+  arr.add(new EngOpt(0.818,  0.819,  1001));
+  arr.add(new EngOpt(0.819,  0.842,  501));
+//    arr.add(new EngOpt(0.845,  3.845,  3001));
+  scttEngs = EngGridFactory.makeEngs(arr);
+  SCTT_ENG_MIN = scttEngs.getFirst();
+  SCTT_ENG_MAX = scttEngs.getLast();
+  SCTT_ENG_N = scttEngs.size();
+}
+public static void setupEngsLogE_TODO() {
+  StepGrid x = new StepGrid(SCTT_ENG_MIN, SCTT_ENG_MAX, SCTT_ENG_N);
+  TransLrToR logR = new TransLrToR(x);
+  Vec r = logR;
+
+//  StepGridOpt sg = calcOpt.getGridOpt();           log.dbg("x step grid model =", sg);
+//  StepGrid x = new StepGrid(sg);                 log.dbg("x grid =", x);
+//  quadr = new WFQuadrLcr(x);                  log.dbg("x weights =", quadr);
+//  vR = quadr.getR();                        log.dbg("r grid =", vR);
+
+
+  EngModelArr arr = new EngModelArr();
+  arr.add(new EngOpt(0.204,  0.704,  501));
+  arr.add(new EngOpt(0.704,  0.705,  1001));
+  arr.add(new EngOpt(0.705,  0.730,  501));
+  arr.add(new EngOpt(0.730,  0.740,  1001));
+  arr.add(new EngOpt(0.740,  0.810,  501));
+  arr.add(new EngOpt(0.810,  0.811,  1001));
+  arr.add(new EngOpt(0.811,  0.818,  501));
+  arr.add(new EngOpt(0.818,  0.819,  1001));
+  arr.add(new EngOpt(0.819,  0.842,  501));
+//    arr.add(new EngOpt(0.845,  3.845,  3001));
+  scttEngs = EngGridFactory.makeEngs(arr);
+  SCTT_ENG_MIN = scttEngs.getFirst();
+  SCTT_ENG_MAX = scttEngs.getLast();
+  SCTT_ENG_N = scttEngs.size();
 }
 
 }

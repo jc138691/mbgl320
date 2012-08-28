@@ -1,10 +1,12 @@
-package papers.hy_swave;
+package papers.he_plus_swave;
 import atom.angular.Spin;
 import atom.energy.LsConfHMtrx;
 import atom.shell.Ls;
 import math.func.arr.FuncArr;
 import math.vec.DbgView;
 import math.vec.Vec;
+import papers.hy_swave.Jm2010Common;
+import papers.hy_swave.Jm2010CommonLcr;
 import scatt.jm_2008.e1.ScttMthdBaseE1;
 import scatt.jm_2008.jm.ScttRes;
 
@@ -20,7 +22,6 @@ protected static Spin SPIN;
 protected static Ls SYS_LS;
 protected static final int MAX_ENG_NUM_FOR_SDCS = 10;
 protected static boolean CALC_TRUE_CONTINUUM = false;
-protected static Vec scttEngs;
 protected static double RES_MAX_LEVEL = 0.5; // maximum abs(Delta)/abs(Energy_distance)to be called a resonance
 //protected static int REPLACE_TRGT_ENGS_N = -1;
 protected static int EXCL_SYS_RESON_IDX = -1;

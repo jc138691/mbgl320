@@ -31,7 +31,7 @@ import math.mtrx.MtrxDbgView;
 import math.vec.IntVec;
 import math.vec.Vec;
 import math.vec.VecDbgView;
-import papers.hy_swave.HyLikeSWave;
+import papers.he_plus_swave.HyLikeSWave;
 import papers.hy_swave.Jm2010Common;
 import project.workflow.task.test.FlowTest;
 import qm_station.jm.PotEigVecLcrTest;
@@ -63,56 +63,27 @@ public void setUp() {
 public void runJob() {
   SCTT_ENG_N = 10; // not used
 //  AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
-//  SCTT_ENG_MIN = 0.65;
-//  SCTT_ENG_MAX = 0.9;
   AUTO_ENG_POINTS = new IntVec(new int[] {20, 11, 12, 10, 11, 12, 10, 11, 12, 10, 11, 12, 10, 11, 12}); // funny number to help with debugging
-//  SCTT_ENG_MIN = 0.001;
-//  SCTT_ENG_MAX = 1;
+  SCTT_ENG_MIN = 0.1;
+  SCTT_ENG_MAX = 0.9;
 
-  SCTT_ENG_MIN = 1;
-  SCTT_ENG_MAX = 40;
+//  SCTT_ENG_MIN = 0.85;
+//  SCTT_ENG_MAX = 40;   // 1000eV
 
   int currN = 10;
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 
-  currN = 99;// N=100
+  currN = 100;// N=100
   LCR_N = 2001;//    N=100, LAMBDA=2
-//  R_LAST = 400;//    R_LAST = 400; N=100, LAMBDA=2, = 4
   R_LAST = 500;//    R_LAST = 500; N=100, LAMBDA=1
-
-//    currN = 90;// N=90
-//    LCR_N = 2001;//    N= 90
-//    R_LAST = 400;//    N= 90
-
-//    currN = 80;// N=80
-//    LCR_N = 2001;//    N= 80
-//    R_LAST = 400;//    N= 80
-
-//    currN = 120;// N=70
-//    LCR_N = 2001;//    N= 70
-//    R_LAST = 400;//    N= 70
-
-//    currN = 60;// N=60
-//    LCR_N = 2001;//    N= 60
-//    R_LAST = 400;//    N= 60
-
-//    currN = 50;// N=50
-//    LCR_N = 1001;//    N= 50
-//    R_LAST = 250;//    N= 50
-
-//    currN = 31;
-//    LCR_N = 801;//    N= 40
-//    R_LAST = 200;//    N= 40
 
   LAMBDA = 1.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   LAMBDA_NC = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
-  Nc = 3;
-  int currNt = 40;
-//    int currN = currNt + 1;
+  Nc = 7;
+  int currNt = 30;
 
   SPIN = Spin.ELECTRON;
   calc(currN, currNt);
-//    calc(14, 13);
 }
 
 protected void saveTrgtInfo(ScttTrgtE3 jmTrgt) {

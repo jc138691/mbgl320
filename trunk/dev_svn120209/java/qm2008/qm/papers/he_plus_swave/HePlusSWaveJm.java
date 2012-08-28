@@ -3,7 +3,6 @@ import atom.angular.Spin;
 import atom.data.AtomHe;
 import atom.data.AtomUnits;
 import math.complex.Cmplx2F1;
-import papers.hy_swave.HyLikeSWaveJm;
 import qm_station.QMSProject;
 import scatt.jm_2008.e2.JmMthdBaseE2;
 import scatt.jm_2008.jm.theory.JmTools;
