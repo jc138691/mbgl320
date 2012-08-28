@@ -180,7 +180,7 @@ public class LiSlaterTest extends FlowTest {
     }
     OrthFactory.makeOrthRotate(basis, quadr);
     double orthErr = OrthFactory.calcMaxOrthErr(basis, quadr);
-    assertEquals("orthErr", 0, orthErr, 3.e-15);
+    assertEquals("orthErr", 0, orthErr, 4.e-15);
     // 13Dec2010: looking for bug
     Ls LS = new Ls(0, Spin.ELECTRON);
     SlaterLcr slater = new SlaterLcr(quadr);

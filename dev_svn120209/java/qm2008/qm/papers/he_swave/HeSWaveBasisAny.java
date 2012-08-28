@@ -112,18 +112,18 @@ public class HeSWaveBasisAny extends HeSWaveScatt {
 
     LsConfHMtrx sysH = makeSysBasisN(slater);
 
-    JmMthdBasisAnyE3 method = new JmMthdBasisAnyE3(calcOpt);
-    method.setTrgtE3(jmTrgt);
+    JmMthdBasisAnyE3 mthd = new JmMthdBasisAnyE3(calcOpt);
+    mthd.setTrgtE3(jmTrgt);
     Vec sEngs = sysH.getEigVal(H_OVERWRITE);                               log.dbg("sysConfH=", sEngs);
-    method.setSysEngs(sEngs);
-    method.setSysConfH(sysH);
+    mthd.setSysEngs(sEngs);
+    mthd.setSysConfH(sysH);
     Vec D = new JmD(lgrrBiN, wfN);             log.dbg("D_{n,N-1}=", D);
-    method.setOverD(D);
+    mthd.setOverD(D);
 
     if (CALC_DENSITY) {          log.info("if (CALC_DENSITY) {");
       FuncArr sysDens = sysH.getDensity(CALC_DENSITY_MAX_NUM);
       FuncArr sysDensR = LcrFactory.densLcrToR(sysDens, quadr);  // NOTE!! converting density to R (not wf)
-      FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelNc(method));
+      FileX.writeToFile(sysDensR.toTab(), HOME_DIR, MODEL_DIR, MODEL_NAME + "_sysDensityR_" + makeLabelNc(mthd));
     }
 
     ScttRes res;
@@ -133,9 +133,9 @@ public class HeSWaveBasisAny extends HeSWaveScatt {
     }
     else {
 //      res = method.calcScttEngModel();                  log.dbg("res=", res);
-      res = method.calcAutoScttEngs(AUTO_ENG_POINTS);                  log.dbg("res=", res);
+      res = mthd.calcAutoScttEngs(AUTO_ENG_POINTS);                  log.dbg("res=", res);
     }
-    setupScattRes(res, method);
+    setupScattRes(res, mthd);
 
 //    JmResonE2_bad.saveResRadDist(RES_MAX_LEVEL, res, sysConfH);
     res.writeToFiles();

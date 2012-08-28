@@ -1,4 +1,4 @@
-package papers.he_swave.pra_2012_setup;
+package papers.he_swave.setup_pra2012;
 import atom.angular.Spin;
 import atom.data.AtomHe;
 import papers.he_swave.HeSWaveBasisJm;
@@ -36,7 +36,7 @@ public void testRun() { // starts with 'test' so it could be run via JUnit witho
 //    LAMBDA = 2.526; // best for Nc=10, Nt=30  , n_gamma=7
 //    LAMBDA = 2.05; // best for Nc=14, Nt=14  , n_gamma=5
   // Note: run one at a time as only one set of result files is produced
-  setupResEngs_SLOW();
+//  setupEngsLogE();
   runJob();
 }
 
@@ -115,33 +115,6 @@ public void runJob() {
 //    int currNt = 17;
 //    int currN = 31;
 
-//    LAMBDA = 2.22; // best for Nc=16, Nt=16  , n_gamma=5
-//    Nc = 16;
-//    int currNt = 16;
-//    int currN = 31;
-
-//    LAMBDA = 2.132; // best for Nc=15, Nt=15  , n_gamma=5
-//    Nc = 15;
-//    int currNt = 15;
-//    int currN = 31;
-
-//    LAMBDA = 2.048; // best for Nc=14, Nt=14  , n_gamma=5
-//    Nc = 14;
-//    int currNt = 14;
-//    int currN = 31;
-
-//    LAMBDA = 1.964; // best for Nc=13, Nt=13  , n_gamma=5
-//    Nc = 13;
-//    int currNt = 13;
-//    int currN = 31;
-
-//    LAMBDA = 1.881; // best for Nc=12, Nt=12  , n_gamma=5
-//  LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
-//  Nc = 10;
-//  int currNt = 20;
-//  int currN = 55;  // 35-done; 50-done;
-
-
 //    LAMBDA = 1.881; // best for Nc=12, Nt=12  , n_gamma=5
   LAMBDA = 2; // best for Nc=12, Nt=12  , n_gamma=5
   Nc = 10;
@@ -161,23 +134,6 @@ public void runJob() {
 
   SPIN = Spin.ELECTRON;
   calc(currN, currNt);
-}
-public static void setupResEngs_SLOW() {
-  EngModelArr arr = new EngModelArr();
-  arr.add(new EngOpt(0.204,  0.704,  501));
-  arr.add(new EngOpt(0.704,  0.705,  1001));
-  arr.add(new EngOpt(0.705,  0.730,  501));
-  arr.add(new EngOpt(0.730,  0.740,  1001));
-  arr.add(new EngOpt(0.740,  0.810,  501));
-  arr.add(new EngOpt(0.810,  0.811,  1001));
-  arr.add(new EngOpt(0.811,  0.818,  501));
-  arr.add(new EngOpt(0.818,  0.819,  1001));
-  arr.add(new EngOpt(0.819,  0.842,  501));
-//    arr.add(new EngOpt(0.845,  3.845,  3001));
-  scttEngs = EngGridFactory.makeEngs(arr);
-  SCTT_ENG_MIN = scttEngs.getFirst();
-  SCTT_ENG_MAX = scttEngs.getLast();
-  SCTT_ENG_N = scttEngs.size();
 }
 
 }

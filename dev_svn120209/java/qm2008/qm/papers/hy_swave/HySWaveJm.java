@@ -2,6 +2,7 @@ package papers.hy_swave;
 import atom.angular.Spin;
 import atom.data.AtomHy;
 import atom.data.AtomUnits;
+import papers.he_plus_swave.HyLikeSWaveJm;
 import qm_station.QMSProject;
 import scatt.eng.EngGridFactory;
 import scatt.eng.EngOpt;

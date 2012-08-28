@@ -12,7 +12,7 @@ import math.mtrx.MtrxDbgView;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
 import math.vec.grid.StepGridOpt;
-import papers.hy_swave.HyLikeSWave;
+import papers.he_plus_swave.HyLikeSWave;
 import qm_station.QMSProject;
 import scatt.jm_2008.jm.ScttRes;
 import scatt.jm_2008.jm.target.ScttTrgtE3;

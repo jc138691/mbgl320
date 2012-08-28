@@ -146,8 +146,9 @@ public void calc(int newN, int newNt) {
   }
 
   ScttRes res;
-  if (scttEngs == null) {
-    scttEngs = mthd.calcScattEngs();
+  if (scttEngs != null) {
+    res = mthd.calc(scttEngs);                  log.dbg("res=", res);
+  } else {
 //      Vec sysScatEngs = method.calcSysScatEngs();
 //      scttEngs = scttEngs.append(sysScatEngs);
 //      scttEngs.sort();
@@ -157,9 +158,10 @@ public void calc(int newN, int newNt) {
 //      vE2.add(+1.0E-6);
 //      scttEngs = vE.append(vE2);
 //      scttEngs.sort();
+    res = mthd.calcAutoScttEngs(AUTO_ENG_POINTS);                  log.dbg("res=", res);
+//    res = mthd.calcForMidSysEngs();                  log.dbg("res=", res);
+//    scttEngs = mthd.calcScattEngs();
   }
-//  res = mthd.calc(scttEngs);                  log.dbg("res=", res);
-  res = mthd.calcForMidSysEngs();                  log.dbg("res=", res);
 
   setupScattRes(res, mthd);                        log.dbg("res=", res);
   res.writeToFiles();
