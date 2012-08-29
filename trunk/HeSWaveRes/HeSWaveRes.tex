@@ -32,11 +32,11 @@
 
 \begin{document}
 
-\title {Electron-helium $S$-wave scattering. II. Single ionization and single excitation}
+\title {$J$-matrix calculation of electron-helium $S$-wave scattering. II. Beyond the frozen-core model}
 
 \author{Dmitry A. Konovalov}
-\affiliation{Discipline of Information Technology, School of Business}
-\affiliation{ARC Centre for Antimatter-Matter Studies, James Cook University, Townsville, Queensland 4811, Australia}
+\affiliation{ARC Centre for Antimatter-Matter Studies}
+\affiliation{Discipline of Information Technology, School of Business, James Cook University, Townsville, Queensland 4811, Australia}
 
 \author{Dmitry V. Fursa}
 \affiliation{ARC Centre for Antimatter-Matter Studies,
@@ -52,17 +52,13 @@ Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
 
 \begin{abstract}
 
-In the preceding paper (referred as Ref. [I]), [D. A. Konovalov {\em et. al.} Phys. Rev. A {\bf 84}, 032707 (2011)],
-the $S$-wave $e$-He scattering problem was solved within the frozen-core (FC) model of helium for
-the elastic, $2^{1,3}S$-excitation, and single ionization cross sections for impact energies in the range 0.1-1000eV.
-The reported in Ref. [I] "proof-of-principle" J-matrix (JM) calculations were in complete agreement with the convergent-close-coupling (CCC) method,
-which was also applied to the FC model.
-In this sequel, the target helium atom is described at much higher level of accuracy by disregarding the FC model.
-Both target electrons are described within the configuration-interaction (CI) model of helium obtaining accurate
-first seven bound states of helium.
-It is found that the theory in Ref. [I] is sufficient to solve the $S$-model for single-excitation and single-ionization.
-The presented JM results (0.1-1000 eV) are confirmed by the corresponding CCC calculations providing
-total elastic, $2^{1,3}S$ and $3^{1,3}S$ excitation cross sections with a "benchmark"-level of accuracy for the first time for the considered $S$-wave model.
+In the preceding paper [D. A. Konovalov {\em et. al.} Phys. Rev. A {\bf 84}, 032707 (2011)],
+the $S$-wave $e$-He scattering ($S$-$e$-He) problem was solved within the frozen-core (FC) model of helium for impact energies in the range 0.1-1000eV.
+In this sequel,
+both target electrons are described within the configuration-interaction model of helium obtaining significantly more accurate (compared to the FC model)
+first seven bound states of the helium $S$-wave model.
+The presented JM results are confirmed by the corresponding convergent-close-coupling (CCC) calculations providing
+total elastic, $2^{1,3}S$, $3^{1,3}S$ excitation cross sections with a benchmark level of accuracy for the considered $S$-$e$-He problem below the ionization threshold.
 
 \end{abstract}
 
@@ -74,7 +70,7 @@ total elastic, $2^{1,3}S$ and $3^{1,3}S$ excitation cross sections with a "bench
 \section{INTRODUCTION}
 
 Resonances in electron-atom scattering processes is a striking quantum mechanical phenomenon, which were comprehensively reviewed by \citet{Schulz73} in 1973 and then by \citet{BC94} in 1994.
-Historically and limiting the scope of this introduction to the helium and atomic hydrogen scattering targets, in 1962 \citet{BS62} theoretically predicted a very sharp resonance in the elastic $e$-H scattering  at 9.6~eV with a half-width ($\Gamma$) of 0.1~eV. Due to technical difficulties working with atomic hydrogen, the resonances were confirmed experimentally first for the $e$-He scattering, when in 1963 \citet{Schulz63} observed the resonance in the elastic $e$-He scattering at 19.3~eV with $\Gamma$=0.06~eV.
+Historically and limiting the scope of this introduction to the helium and atomic hydrogen scattering targets, in 1962 \citet{BS62} theoretically predicted a very sharp resonance in the elastic $e$-H scattering  at 9.6~eV with a half-width ($\Gamma$) of 0.1~eV. The resonances were confirmed experimentally first for the $e$-He scattering, when in 1963 \citet{Schulz63} observed the resonance in the elastic $e$-He scattering at 19.3~eV with $\Gamma$=0.06~eV.
 Since their discovery in the 1960s, the resonances have been and continue to be studied extensively
 for $e$-H \cite{WC94,FRA94_pra,KM94pL741,OSB95p4320,DLTL96,DTLM99,DTL00} and $e$-He \cite{KM95pL139,HBSBB96,NP01,PN03,SMC2006} (citing only studies not already referenced in \cite{Schulz73,BC94}),
 where it is well understood that the resonances are nothing more (nor less) than the manifestation of the negative-ion metastable states \cite{BC94}.
@@ -123,74 +119,103 @@ Classification & threshold & $e_i$  &    \\
                       &    & -2.879 028 767 315 &  Ref. \cite{G94}    \\
                       &    & -2.879 028 732   &  Ref. \cite{JB97p2614}    \\
 $\mbox{He}(1s^2,^1S)$ &  0 & -2.879 028 569 1 &  $N_t=50$   \\ %-2.879028569120921, -2.1441972587315763, -2.060794037546864,
-                      &    & -2.879 028 504   &  $N_t=45$   \\
                       &    & -2.879 027 69    &  Ref. \cite{DHIF94}    \\
                       &    & -2.879 03        &  Ref. \cite{HMR05R}    \\
+                      &    & -2.878 962 303   &  $N_c=7$, $N_t=30$    \\
                       &    & -2.878 95        &  Ref. \cite{BS10p022715}    \\
+                      &    & -2.872 506 673   &  $N_c=1$, $N_t=30$    \\
 \hline
 $\mbox{He}(1s2s,^3S)$    & 0.704 763 712  & -2.174 264 856 2 & $N_t=50$ \\  %-2.174264856287701, -2.0684901366080752,
-                         &                & -2.174 264 856 2 & $N_t=45$ \\
+                         &                & -2.174 264 618   &  $N_c=7$, $N_t=30$    \\
+                         &                & -2.174 26        &  Ref. \cite{BS10p022715}    \\
+                         &                & -2.174 245 504   &  $N_c=1$, $N_t=30$    \\
 \hline
 $\mbox{He}(1s2s,^1S)$    & 0.734 831 310 & -2.144 197 258 7 &  $N_t=50$ \\
-                         &               & -2.144 197 253   &  $N_t=45$   \\
+                         &               & -2.144 191 393   &  $N_c=7$, $N_t=30$    \\
+                         &               & -2.144 19        &  Ref. \cite{BS10p022715}    \\
+                         &               & -2.143 449 321   &  $N_c=1$, $N_t=30$    \\
 \hline
 $\mbox{He}(1s3s,^3S)$    & 0.810 538 432 & -2.068 490 136 6 & $N_t=50$  \\
-                         &               & -2.068 490 135   & $N_t=45$\\
+                         &               & -2.068 490 070   &  $N_c=7$, $N_t=30$    \\
+                         &               & -2.068 48        &  Ref. \cite{BS10p022715}    \\
+                         &               & -2.068 484 660   &  $N_c=1$, $N_t=30$    \\
 \hline
 $\mbox{He}(1s3s,^1S)$    & 0.818 234 531 & -2.060 794 037 5 & $N_t=50$ \\
-                         &               & -2.060 794 025   & $N_t=45$\\
+                         &               & -2.060 792 356   &  $N_c=7$, $N_t=30$    \\
+                         &               & -2.060 79     &  Ref. \cite{BS10p022715}    \\
+                         &               & -2.060 573 161   &  $N_c=1$, $N_t=30$    \\
 \hline
 $\mbox{He}(1s4s,^3S)$    & 0.842 589 989 & -2.036 438 58    & Ref. \cite{DHIF94} \\
+                         &               & -2.036 438 560   &  $N_c=7$, $N_t=30$    \\
+                         &               & -2.036 43     &  Ref. \cite{BS10p022715}    \\
+                         &               & -2.036 436 372   &  $N_c=1$, $N_t=30$    \\
+\hline
+$\mbox{He}(1s4s,^1S)$    &               &  & $N_t=50$ \\
+                         &               & -2.033 392 203 &  $N_c=7$, $N_t=30$    \\
+                         &               & -2.033 39      &  Ref. \cite{BS10p022715}    \\
+                         &               & -2.033 300 706 &  $N_c=1$, $N_t=30$    \\
+\hline
+$\mbox{He}(1s5s,^3S)$    &         &     & Ref. \cite{DHIF94} \\
+                         &               & -2.022 583 695   &  $N_c=7$, $N_t=30$    \\
+                         &               & -2.022 582 608   &  $N_c=1$, $N_t=30$    \\
+                         &               & -2.022 58        &  Ref. \cite{BS10p022715}    \\
+\hline
+$\mbox{He}(1s5s,^1S)$    &               &  & $N_t=50$ \\
+                         &               & -2.021 079 423 &  $N_c=7$, $N_t=30$    \\
+                         &               & -2.021 07        &  Ref. \cite{BS10p022715}    \\
+                         &               & -2.021 033 007   &  $N_c=1$, $N_t=30$    \\
 \hline
 $\mbox{He}^+(1s)$        & 0.879 028 569 & -2 	 &    \\
+
+%nc10   -2.878976298682523, -2.1441926558786752, -2.0607927208274255, -2.0333923539473497,
+% -2.1742647128049755, -2.0684900966824507, -2.036438571423033,
+
+%nc7 -2.8789623026211353, -2.1441913928180427, -2.0607923564616435, -2.0333922030334937, -2.0210794228323463,
+% -2.1742646178307643, -2.068490069685457, -2.036438559573639, -2.022583694613397,
+
+%nc1 -2.872506672905663, -2.143449321021511, -2.06057316103011, -2.033300705504141, -2.0210330065059448,
+% -2.1742455043163393, -2.0684846598208337, -2.0364363721136964, -2.022582608219962,
+
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
 
-\begin{figure}[htb]
-\includegraphics[scale=0.9]{fig1.ps}
+\begin{figure*}[htb]
+\includegraphics[scale=1]{fig1.ps}
 \caption{(Color online) Elastic ($1^1S$),
-single $n=2$ excitation ($2^3S$ and $2^1S$) and single ionization cross sections ($\sigma_{\mbox{\tiny{I}}}$) for electron scattering on a ground-state helium target in
-the $S$-wave model.}
-\label{Fig_TICS}
-\end{figure}
+$n=2$ ($2^3S$ and $2^1S$) and $n=3$ ($3^3S$ and $3^1S$) single-excitation cross sections  below the ionization threshold (23.92eV from Table~\ref{Tab_ENGS}) for the $e$-He $S$-wave scattering model.
+Sub-figure (b) zooms in on the $2^3S$ excitation threshold (Table~\ref{Tab_ENGS}) shown by the vertical dashed line.
+Frozen-core (FC), JM and CCC results  were shifted by 0.17747eV, 0.0018eV and 0.0018eV (Table~\ref{Tab_ENGS}), respectively.
+}
+\label{Fig_1}
+\end{figure*}
 
 
 \begin{figure}[htb]
-\includegraphics[scale=1]{fig_res_1S_2S3.ps}
+\includegraphics[scale=1]{fig2.ps}
 \caption{(Color online)
-The same as in Fig.~\ref{Fig_TICS}
-but zooming in on the $2^3S$ excitation threshold (Table~\ref{Tab_ENGS}) shown by the vertical dashed line.
+The same as in Fig.~\ref{Fig_1} but zooming in on the corresponding excitation threshold energies (Table~\ref{Tab_ENGS}).
 }
-\label{Fig_2S3}
+\label{Fig_2}
 \end{figure}
 
-
 \begin{figure}[htb]
-\includegraphics[scale=1]{fig_res_2S1.ps}
-\caption{(Color online) The same as in Fig.~\ref{Fig_TICS}
-but for the impact energies between the $2^1S$ and $3^3S$ excitation thresholds (Table~\ref{Tab_ENGS}) shown by the left and right vertical dashed lines, respectively.
+\includegraphics[scale=1]{fig3.ps}
+\caption{(Color online)
+The same as in Fig.~\ref{Fig_1} but starting from the $3^3S$ threshold
+and aligned by incident energies. The $3^1S$, $4^{1,3}S$, ..., $7^{1,3}S$, excitation thresholds (Table~\ref{Tab_ENGS})
+are shown by vertical dashed lines (from left to right).
 }
-\label{Fig_2S1}
+\label{Fig_3}
 \end{figure}
 
-
 \begin{figure}[htb]
-\includegraphics[scale=1]{fig_res_3S3.ps}
-\caption{(Color online) The same as in Fig.~\ref{Fig_2S3}
-but zooming in on the $3^3S$ excitation threshold (Table~\ref{Tab_ENGS}).
+\includegraphics[scale=1]{fig4.ps}
+\caption{(Color online)
+The same as in Fig.~\ref{Fig_1} but above the ionization threshold. 
 }
-\label{Fig_3S3}
-\end{figure}
-
-
-\begin{figure}[htb]
-\includegraphics[scale=1]{fig_res_3S1.ps}
-\caption{(Color online) The same as in Fig.~\ref{Fig_2S1}
-but for the impact energies between the $3^1S$ and $4^3S$ excitation thresholds (Table~\ref{Tab_ENGS}).
-}
-\label{Fig_3S1}
+\label{Fig_4}
 \end{figure}
 
 
@@ -199,8 +224,9 @@ but for the impact energies between the $3^1S$ and $4^3S$ excitation thresholds 
 
 \section{THEORY}
 
-\subsection{Wave functions}
-TODO: describe two Laguerre bases.
+Arguably, the main attraction of the JM method is its computational efficiency, where cross sections could be calculated many thousands of in one calculation.
+
+Both JM and CCC methods rely on a
 
 Let the nonorthogonal Laguerre functions used in the original JM method \cite{HY74p1201,BR76p1491}
 be referred to as the JM functions and denoted by $\{\xi_p(r)\}_{p=0}^\infty$,

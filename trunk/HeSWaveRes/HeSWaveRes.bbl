@@ -344,6 +344,17 @@
   freely available from jmatrix.googlecode.com or a relevant link at
   www.dmitrykonovalov.org for academic use. }}}.
 
+\bibitem[{\citenamefont{Goldman}(1994)}]{G94}
+\bibinfo{author}{\bibfnamefont{S.~P.} \bibnamefont{Goldman}},
+  \bibinfo{journal}{Phys.~Rev.~Lett.} \textbf{\bibinfo{volume}{73}},
+  \bibinfo{pages}{2547} (\bibinfo{year}{1994}).
+
+\bibitem[{\citenamefont{Jitrik and Bunge}(1997)}]{JB97p2614}
+\bibinfo{author}{\bibfnamefont{O.}~\bibnamefont{Jitrik}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{C.~F.} \bibnamefont{Bunge}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{56}},
+  \bibinfo{pages}{2614} (\bibinfo{year}{1997}).
+
 \bibitem[{\citenamefont{Heller and Yamani}(1974{\natexlab{b}})}]{HY74p1201}
 \bibinfo{author}{\bibfnamefont{E.~J.} \bibnamefont{Heller}} \bibnamefont{and}
   \bibinfo{author}{\bibfnamefont{H.~A.} \bibnamefont{Yamani}},
@@ -362,16 +373,5 @@
   \emph{\bibinfo{title}{Handbook of Mathematical Functions}}
   (\bibinfo{publisher}{Dover Publications}, \bibinfo{address}{Mineola, NY},
   \bibinfo{year}{1965}).
-
-\bibitem[{\citenamefont{Goldman}(1994)}]{G94}
-\bibinfo{author}{\bibfnamefont{S.~P.} \bibnamefont{Goldman}},
-  \bibinfo{journal}{Phys.~Rev.~Lett.} \textbf{\bibinfo{volume}{73}},
-  \bibinfo{pages}{2547} (\bibinfo{year}{1994}).
-
-\bibitem[{\citenamefont{Jitrik and Bunge}(1997)}]{JB97p2614}
-\bibinfo{author}{\bibfnamefont{O.}~\bibnamefont{Jitrik}} \bibnamefont{and}
-  \bibinfo{author}{\bibfnamefont{C.~F.} \bibnamefont{Bunge}},
-  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{56}},
-  \bibinfo{pages}{2614} (\bibinfo{year}{1997}).
 
 \end{thebibliography}
