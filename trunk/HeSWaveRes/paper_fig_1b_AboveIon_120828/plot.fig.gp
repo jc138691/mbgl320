@@ -52,9 +52,9 @@ set style line 11 lt 1 lc 1   lw 2  pt 1 ps 1.2 pi 2   # lc 3 blue line; lc 1 re
 set style line 12 lt 2 lc -1  lw 2  pt 7 ps 0.5 
 set style line 13 lt 2 lc 3   lw 1  pt 7 ps 0.5 
 
-set term postscript eps enhanced lw 1 size 8.6cm,18cm solid color 18 "fixed"; set out 'fig4.ps'
+set term postscript eps enhanced lw 1 size 18cm,15cm solid color 18 "fixed"; set out 'fig1b.ps'
 set termoption dashed;
-set multiplot layout 4,1  scale 1.01, 1.01;
+set multiplot layout 3,2  scale 1.01, 1.01;
 set parametric;   
 set format y "%3.0f"; 
 
@@ -74,8 +74,7 @@ CCC_SHIFT = CCC_SHIFT * xJM;
 
 
 
-set xlabel ''; 
-set ylabel ' ';
+set xlabel ''; set ylabel ' ';
 
 
 E_max = 100; 
@@ -92,10 +91,23 @@ p \
 
 
 set xlabel ''; 
-set ylabel 'cross section (a.u.)' offset 0,-8; 
+set ylabel ' '; 
+
+set yrange [0.0:5];            set ytics 1;    set mytics 5;   set format y "%3.0f"; 
+set key right center Right title "(b) TICS [x0.01]"
+p \
+  CCC_TICS  u ($1*xCCC + CCC_SHIFT):($2*yCCC*100)    t ''   w p ls 1, \
+  TICS_2 u ($1*xJM + SHIFT_2):($2*yJM*100) t '' w l ls 12, \
+  TICS_1 u ($1*xJM + SHIFT_1):($2*yJM*100) t '' w l ls 11
+
+
+
+
+set xlabel  '';  
+set ylabel  'cross section (a.u.)'; 
 
 set yrange [0.0:5];            set ytics 1;  set mytics 5;   set format y "%3.0f"; 
-set key right top Right title "(b) 2^3S [x0.01]"
+set key right top Right title "(c) 2^3S [x0.01]"
 p \
   CCC_t2S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*100)    t ''   w p ls 1, \
   JM_2 u ($1*xJM + SHIFT_2):($3*yJM*100) t '' w l ls 12, \
@@ -103,30 +115,43 @@ p \
 
 
 
-set xlabel  '';  
-set ylabel  ' ';
 
+
+set xlabel ''; set ylabel ' ';  
+
+set xrange [E_min:E_max];  
+ 
 set yrange [0.0:1.7];           set ytics 0.5;  set mytics 5;   set format y "%3.1f"; 
-set key right top Right title "(c) 2^1S [x0.01]"
+set key right top Right title "(d) 2^1S [x0.01]"
 p \
   CCC_s2S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*100)    t ''   w p ls 1, \
   JM_2 u ($1*xJM + SHIFT_2):($4*yJM*100) t '' w l ls 12,\
   JM_1 u ($1*xJM + SHIFT_1):($4*yJM*100) t '' w l ls 11
+ 
+
+set xlabel 'incident energy (eV)';  set ylabel ' ';  
+
+set yrange [0.0:9];            set ytics 2;  set mytics 4;   set format y "%3.0f"; 
+set key right top Right title "(e) 3^3S [x0.001]"
+p \
+  CCC_t3S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*1000)    t ''   w p ls 1, \
+  JM_2 u ($1*xJM + SHIFT_2):($5*yJM*1000) t '' w l ls 12, \
+  JM_1 u ($1*xJM + SHIFT_1):($5*yJM*1000) t '' w l ls 11
 
 
 
 
-set xlabel 'incident energy (eV)'; 
-set ylabel ' ';  
+
+set xlabel 'incident energy (eV)';  set ylabel ' ';  
 
 set xrange [E_min:E_max];  
  
-set yrange [0.0:5];            set ytics 1;    set mytics 5;   set format y "%3.0f"; 
-set key right center Right title "(d) TICS [x0.01]"
+set yrange [0.0:4];           set ytics 1;  set mytics 5;   set format y "%3.0f"; 
+set key right top Right title "(f) 3^1S [x0.001]"
 p \
-  CCC_TICS  u ($1*xCCC + CCC_SHIFT):($2*yCCC*100)    t ''   w p ls 1, \
-  TICS_2 u ($1*xJM + SHIFT_2):($2*yJM*100) t '' w l ls 12, \
-  TICS_1 u ($1*xJM + SHIFT_1):($2*yJM*100) t '' w l ls 11
+  CCC_s3S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*1000)    t ''   w p ls 1, \
+  JM_2 u ($1*xJM + SHIFT_2):($6*yJM*1000) t '' w l ls 12,\
+  JM_1 u ($1*xJM + SHIFT_1):($6*yJM*1000) t '' w l ls 11
  
 
 unset multiplot

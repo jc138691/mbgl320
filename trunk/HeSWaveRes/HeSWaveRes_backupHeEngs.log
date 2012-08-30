@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=latex 2011.10.25)  30 AUG 2012 12:33
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=latex 2011.10.25)  30 AUG 2012 14:56
 entering extended mode
-**C:/dev/physics/papers/pra_2012_HeSWaveRes/HeSWaveRes.tex
-(C:/dev/physics/papers/pra_2012_HeSWaveRes/HeSWaveRes.tex
+**C:/dev/physics/papers/pra_2012_HeSWaveRes/HeSWaveRes_backupHeEngs.tex
+(C:/dev/physics/papers/pra_2012_HeSWaveRes/HeSWaveRes_backupHeEngs.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -185,7 +185,7 @@ LaTeX Info: Redefining \] on input line 2667.
 LaTeX Warning: Unused global option(s):
     [aip].
 
-(C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes.aux)
+(C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes_backupHeEngs.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
 LaTeX Font Info:    ... okay on input line 33.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
@@ -201,14 +201,11 @@ LaTeX Font Info:    ... okay on input line 33.
 Class revtex4 Info: Patching array package. on input line 33.
 Class revtex4 Info: cite was not loaded (OK!) on input line 33.
 Class revtex4 Info: multicol was not loaded (OK!) on input line 33.
- [1]
-Overfull \hbox (1.08806pt too wide) in alignment at lines 124--189
- [] [] [] 
- []
 
+[1]
 File: fig1.ps Graphic file (type eps)
-<fig1.ps>
-Overfull \hbox (1.91249pt too wide) in paragraph at lines 195--196
+ <fig1.ps>
+Overfull \hbox (1.91249pt too wide) in paragraph at lines 120--121
  [][][] 
  []
 
@@ -216,64 +213,59 @@ File: fig2.ps Graphic file (type eps)
 <fig2.ps>
 File: fig3.ps Graphic file (type eps)
  <fig3.ps>
-File: fig4.ps Graphic file (type eps)
- <fig4.ps>
-
-LaTeX Warning: Reference `psi_H_psi' on page 2 undefined on input line 268.
-
-
-LaTeX Warning: Reference `Fig_He_n2' on page 2 undefined on input line 269.
+File: fig1b.ps Graphic file (type eps)
+ <fig1b.ps>
+Overfull \hbox (1.91249pt too wide) in paragraph at lines 151--152
+ [][][] 
+ []
 
 
-LaTeX Warning: Reference `Fig_He_n3' on page 2 undefined on input line 269.
+LaTeX Warning: Reference `psi_H_psi' on page 2 undefined on input line 252.
 
-(C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes.bbl [2]
+
+LaTeX Warning: Reference `Fig_He_n2' on page 2 undefined on input line 253.
+
+
+LaTeX Warning: Reference `Fig_He_n3' on page 2 undefined on input line 253.
+
+(C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes_backupHeEngs.bbl
 Underfull \hbox (badness 2894) in paragraph at lines 55--60
  [][]\OT1/cmr/m/n/9 A. K. Bha-tia, B. I. Schnei-der, and A. Temkin,
  []
 
-
+[2]
 Underfull \hbox (badness 3333) in paragraph at lines 145--150
  [][]\OT1/cmr/m/n/9 M. S. Pindzola, D. Mit-nik, and F. Ro-bicheaux,
  []
 
-[3]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 169.
-
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 169.
-
-
-Class revtex4 Warning: Deferred float stuck during \clearpage processing.
-
-[4]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 241.
-
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 241.
-
-
-Class revtex4 Warning: Deferred float stuck during \clearpage processing.
-
-
-Underfull \hbox (badness 2680) in paragraph at lines 242--253
+Underfull \hbox (badness 2680) in paragraph at lines 228--239
  [][]\OT1/cmr/m/n/9 M. Stepanovic, M. Minic, D. Cve-janovic, J. Ju-
  []
 
-) [5] (C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes.aux)
+[3]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 265.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 265.
+
+
+Class revtex4 Warning: Deferred float stuck during \clearpage processing.
+
+) [4] [5]
+(C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes_backupHeEngs.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3025 strings out of 494046
- 36858 string characters out of 3148400
- 144702 words of memory out of 3000000
- 6301 multiletter control sequences out of 15000+200000
+ 3018 strings out of 494046
+ 36923 string characters out of 3148400
+ 130806 words of memory out of 3000000
+ 6294 multiletter control sequences out of 15000+200000
  15779 words of font info for 55 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 25i,8n,24p,682b,322s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 25i,8n,24p,695b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on HeSWaveRes.dvi (5 pages, 25752 bytes).
+Output written on HeSWaveRes_backupHeEngs.dvi (5 pages, 24664 bytes).
