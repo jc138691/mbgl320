@@ -64,16 +64,16 @@ public void runJob() {
   SCTT_ENG_N = 10; // not used
 //  AUTO_ENG_POINTS = new IntVec(new int[] {100, 10, 100});
   AUTO_ENG_POINTS = new IntVec(new int[] {20, 11, 12, 10, 11, 12, 10, 11, 12, 10, 11, 12, 10, 11, 12}); // funny number to help with debugging
-  SCTT_ENG_MIN = 0.1;
-  SCTT_ENG_MAX = 0.9;
+//  SCTT_ENG_MIN = 0.1;
+//  SCTT_ENG_MAX = 0.9;
 
-//  SCTT_ENG_MIN = 0.85;
-//  SCTT_ENG_MAX = 40;   // 1000eV
+  SCTT_ENG_MIN = 0.85;
+  SCTT_ENG_MAX = 40;   // 1000eV
 
   int currN = 10;
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 
-  currN = 100;// N=100
+  currN = 101;// N=100
   LCR_N = 2001;//    N=100, LAMBDA=2
   R_LAST = 500;//    R_LAST = 500; N=100, LAMBDA=1
 
