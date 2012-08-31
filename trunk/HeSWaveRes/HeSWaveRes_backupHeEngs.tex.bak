@@ -83,11 +83,12 @@ and partial-wave expansions.
 The $S$-wave models have proven to be a very productive testing ground for {\it ab initio} scattering theories,
 see \cite{T62,HY74p1209,P78,P80,P81,CO84,BS92p53,BST93,KM94pL407,IDHF95,PS96,JS02,JS00l,BRIM99,S99l,MHR02,BS04,Frapiccini10} for the $S$-wave $e$-H scattering ($S$-$e$-H)
 and \cite{DHIF94,PMR99,PBFS02,PNBFS04,HMR05R,HMR05,BS10p022715,BS10p022716,KFB11} for  the $S$-$e$-He problem.
-The main attraction of the $S$-wave models is that they retain most (arguably all) of the physics complexities of the full
+The main attraction of the $S$-wave models is that they retain most of the physics complexities of the full
 scattering problems while reduce the problems computationally.
 In particular, it is somewhat expected and implied that if a theoretical method solves a $S$-wave model, then
 the remaining partial waves could be solved with additional computational resources,
-which is indeed the case for the convergent-close-coupling (CCC) \cite{FB95} and $J$-matrix (JM) \cite{KM94pL741,KM95pL139} methods.
+which is indeed the case for the convergent-close-coupling (CCC) \cite{FB95},
+$R$-matrix (RM) \cite{FLRS94b, SMC2006} and $J$-matrix (JM) \cite{KM94pL741,KM95pL139} methods.
 
 
 The main goal of this study is to provide high accuracy total elastic and excitation $S$-$e$-He cross sections for 5-100eV impact energies highlighting resonant features of the cross sections.
@@ -97,14 +98,14 @@ However none of their cross sections, including elastic and $2^{1,3}S$ excitatio
 In 2005, \citet{HMR05} reported results using
 time-dependent exterior complex scaling (TD-ECS), which also failed to described resonance behavior of the cross sections.
 In 2002 and 2004, the CCC method \cite{PBFS02,PNBFS04} also did not examine the resonance regions with sufficiently fine energy grid.
-This is now corrected to some extent when in 2011 \citet{KFB11} reported the CCC and $J$-matrix (JM) {\em frozen-core}
+This is now corrected to some extent when in 2011 \citet{KFB11} reported the CCC and JM {\em frozen-core}
 (FC) results clearly showing the resonances in the elastic and $n=2$ ($2^1S$ and $2^3S$) excitation cross sections.
-And finally, the $R$-matrix method \cite{FLRS94b, SMC2006} has never reported its results for the $S$-$e$-He problem.
+And finally, the RM method \cite{FLRS94b, SMC2006} has never reported its results for the $S$-$e$-He problem.
 
 
 The stated goal is attempted and achieved in many aspects by combining advantages of the CCC and JM methods,
 where the later has been recently revised \cite{KFB11} by merging it with the Fano's multi-configuration interaction matrix elements \cite{Fano65}.
-The CCC method is able to solve the scattering problem very accurately via the Lippmann-Schwinger equation \cite{BS92p6995}.  
+The CCC method is able to solve the scattering problem very accurately via the Lippmann-Schwinger equation \cite{BS92p6995}.
 However, it is not practical to run the CCC method for each of the many thousands of impact energy points required for the final benchmark results.
 On the other hand, the JM method is very efficient \cite{HY74p1201,BR76p1491} in calculating a vast number of energy points
 but numerical-convergence properties of the JM method remains largely unknown.
@@ -113,82 +114,6 @@ Therefore, the CCC and JM methods can be and were used to cross-verify that thei
 
 The presented JM method is implemented using Java programming language, which is freely available for MS Windows,
 Mac OS, and many versions of Linux or Unix. See \cite{JMatrixWebsite} for information on availability of the results and source code.
-
-\begin{table}[htb]
-\caption{\label{Tab_ENGS}
-Energies and classifications for $S$-wave helium electron configurations.
-$\lambda_{\rm c}=4$, $\lambda_{\rm 0}=1$, 
-}
-\begin{ruledtabular}
-%\begin{tabular}{lcr}
-\begin{tabular}{lll}
-Classification     & $e_i$  &    \\
-threshold [a.u.] and eV & $e_i$  &    \\
-\hline
-                          & -2.879 028 767 315 &  Ref. \cite{G94}    \\
-                          & -2.879 028 732   &  Ref. \cite{JB97p2614}    \\
-$\mbox{He}(1s^2,^1S)$   & -2.879 028 569 1 &  $N_t=50$   \\ %-2.879028569120921, -2.1441972587315763, -2.060794037546864,
-0 a.u.                  & -2.879 027 69    &  Ref. \cite{DHIF94}    \\
-0 eV                    & -2.879 03        &  Ref. \cite{HMR05R}    \\
-                        & -2.878 962 303   &  $N_c=7$, $N_t=30$    \\
-                        & -2.878 95        &  Ref. \cite{BS10p022715}    \\
-                        & -2.872 506 673   &  $N_c=1$, $N_t=30$    \\
-\hline
-$\mbox{He}(1s2s,^3S)$      & -2.174 264 856 2 & $N_t=50$ \\  %-2.174264856287701, -2.0684901366080752,
-0.704 763 712              & -2.174 264 618   &  $N_c=7$, $N_t=30$    \\
-                                        & -2.174 26        &  Ref. \cite{BS10p022715}    \\
-                                        & -2.174 245 504   &  $N_c=1$, $N_t=30$    \\
-\hline
-$\mbox{He}(1s2s,^1S)$      & -2.144 197 258 7 &  $N_t=50$ \\
-0.734 831 310              & -2.144 191 393   &  $N_c=7$, $N_t=30$    \\
-                                        & -2.144 19        &  Ref. \cite{BS10p022715}    \\
-                                        & -2.143 449 321   &  $N_c=1$, $N_t=30$    \\
-\hline
-$\mbox{He}(1s3s,^3S)$      & -2.068 490 136 6 & $N_t=50$  \\
-0.810 538 432              & -2.068 490 070   &  $N_c=7$, $N_t=30$    \\
-                                        & -2.068 48        &  Ref. \cite{BS10p022715}    \\
-                                        & -2.068 484 660   &  $N_c=1$, $N_t=30$    \\
-\hline
-$\mbox{He}(1s3s,^1S)$      & -2.060 794 037 5 & $N_t=50$ \\
-0.818 234 531              & -2.060 792 356   &  $N_c=7$, $N_t=30$    \\
-                                        & -2.060 79     &  Ref. \cite{BS10p022715}    \\
-                                        & -2.060 573 161   &  $N_c=1$, $N_t=30$    \\
-\hline
-$\mbox{He}(1s4s,^3S)$      & -2.036 438 58    & Ref. \cite{DHIF94} \\
-0.842 589 989              & -2.036 438 560   &  $N_c=7$, $N_t=30$    \\
-                                        & -2.036 43     &  Ref. \cite{BS10p022715}    \\
-                                        & -2.036 436 372   &  $N_c=1$, $N_t=30$    \\
-\hline
-$\mbox{He}(1s4s,^1S)$                   &  & $N_t=50$ \\
-                                        & -2.033 392 203 &  $N_c=7$, $N_t=30$    \\
-                                        & -2.033 39      &  Ref. \cite{BS10p022715}    \\
-                                        & -2.033 300 706 &  $N_c=1$, $N_t=30$    \\
-\hline
-$\mbox{He}(1s5s,^3S)$             &     & Ref. \cite{DHIF94} \\
-                                        & -2.022 583 695   &  $N_c=7$, $N_t=30$    \\
-                                        & -2.022 582 608   &  $N_c=1$, $N_t=30$    \\
-                                        & -2.022 58        &  Ref. \cite{BS10p022715}    \\
-\hline
-$\mbox{He}(1s5s,^1S)$                   &  & $N_t=50$ \\
-                                        & -2.021 079 423 &  $N_c=7$, $N_t=30$    \\
-                                        & -2.021 07        &  Ref. \cite{BS10p022715}    \\
-                                        & -2.021 033 007   &  $N_c=1$, $N_t=30$    \\
-\hline
-$\mbox{He}^+(1s)$    & -2 	 &    \\
-0.879 028 569        &  	 &    \\
-
-%nc10   -2.878976298682523, -2.1441926558786752, -2.0607927208274255, -2.0333923539473497,
-% -2.1742647128049755, -2.0684900966824507, -2.036438571423033,
-
-%nc7 -2.8789623026211353, -2.1441913928180427, -2.0607923564616435, -2.0333922030334937, -2.0210794228323463,
-% -2.1742646178307643, -2.068490069685457, -2.036438559573639, -2.022583694613397,
-
-%nc1 -2.872506672905663, -2.143449321021511, -2.06057316103011, -2.033300705504141, -2.0210330065059448,
-% -2.1742455043163393, -2.0684846598208337, -2.0364363721136964, -2.022582608219962,
-
-\end{tabular}
-\end{ruledtabular}
-\end{table}
 
 
 \begin{figure*}[htb]
@@ -200,6 +125,7 @@ Frozen-core (FC), JM and CCC results  were shifted by 0.17747eV, 0.0018eV and 0.
 }
 \label{Fig_1}
 \end{figure*}
+
 
 
 \begin{figure}[htb]
@@ -220,15 +146,73 @@ are shown by vertical dashed lines (from left to right).
 \label{Fig_3}
 \end{figure}
 
-\begin{figure}[htb]
-\includegraphics[scale=1]{fig4.ps}
+
+\begin{figure*}[htb]
+\includegraphics[scale=1]{fig1b.ps}
 \caption{(Color online)
 The same as in Fig.~\ref{Fig_1} but above the ionization threshold.
 }
-\label{Fig_4}
-\end{figure}
+\label{Fig_1b}
+\end{figure*}
 
 
+\begin{table}[htb]
+\caption{\label{Tab_ENGS}
+Energies and classifications for $S$-wave helium electron configurations.
+$\lambda_c=4$, $\lambda_t=1$, a.u.$=27.2116$eV
+}
+\begin{ruledtabular}
+%\begin{tabular}{lcr}
+\begin{tabular}{rlll}
+Classification & threshold [eV] & Eigenvalues [a.u] & ($N_c$,$N_t$)   \\
+\hline
+$\mbox{He}(1s^2,^1S)$ & 0  & -2.879 028 569 1 &  (50,50)   \\ %
+            error =          & 0.001 80 & -2.878 962 303   &  (7,30)    \\
+            error =          & 0.177 47 & -2.872 506 673   &  (1,30)    \\
+\hline
+$\mbox{He}(1s2s,^3S)$      & 19.178 & -2.174 264 856 3 & (50,50) \\  %-2.174 264 856 288154 -2.174264856287701, -2.0684901366080752,
+                           &    & -2.174 264 618   &  (7,30)   \\
+                           &    & -2.174 245 504   &  (1,30)    \\
+\hline
+$\mbox{He}(1s2s,^1S)$     &  19.996 & -2.144 197 258 7 &  (50,50) \\ %-2.144 197 258 7 31818,
+                          &  & -2.144 191 393   &  (7,30)   \\
+                          &   & -2.143 449 321   &  (1,30)    \\
+\hline
+$\mbox{He}(1s3s,^3S)$     & 22.056  & -2.068 490 070   &  (7,30)   \\
+                          &        & -2.068 484 660   &  (1,30)    \\
+\hline
+$\mbox{He}(1s3s,^1S)$     & 22.266   & -2.060 792 356   & (7,30)    \\
+                          &          & -2.060 573 161   &  (1,30)    \\
+\hline
+$\mbox{He}(1s4s,^3S)$    & 22.928  & -2.036 438 560   &  (7,30)    \\
+                         &         & -2.036 436 372   &  (1,30)   \\
+\hline
+$\mbox{He}(1s4s,^1S)$   &  23.011 & -2.033 392 203 &  (7,30)   \\
+                        &         & -2.033 300 706 &  (1,30)   \\
+\hline
+$\mbox{He}(1s5s,^3S)$   &   23.305  & -2.022 583 695   &  (7,30)    \\
+                        &           & -2.022 582 608   &  (1,30)    \\
+\hline
+$\mbox{He}(1s5s,^1S)$   &  23.346   & -2.021 079 423   &  (7,30)    \\
+                        &              & -2.021 033 007   &  (1,30)    \\
+\hline
+$\mbox{He}^+(1s)$       &  23.920 & -2 	 &    Ionization \\
+
+%nc50 -2.8790285691204813, -2.144197258731818, -2.060794037546691, -2.0333785522995016, -2.019784513192403,
+%-2.174264856288154, -2.0684901366081845, -2.0364341783161515, -2.021798838036517,
+
+%nc10   -2.878976298682523, -2.1441926558786752, -2.0607927208274255, -2.0333923539473497,
+% -2.1742647128049755, -2.0684900966824507, -2.036438571423033,
+
+%nc7 -2.8789623026211353, -2.1441913928180427, -2.0607923564616435, -2.0333922030334937, -2.0210794228323463,
+% -2.1742646178307643, -2.068490069685457, -2.036438559573639, -2.022583694613397,
+
+%nc1 -2.872506672905663, -2.143449321021511, -2.06057316103011, -2.033300705504141, -2.0210330065059448,
+% -2.1742455043163393, -2.0684846598208337, -2.0364363721136964, -2.022582608219962,
+
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
 
 

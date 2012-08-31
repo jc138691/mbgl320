@@ -1,4 +1,4 @@
-\begin{thebibliography}{40}
+\begin{thebibliography}{39}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -213,20 +213,6 @@
   \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{52}},
   \bibinfo{pages}{1279} (\bibinfo{year}{1995}).
 
-\bibitem[{\citenamefont{Konovalov and
-  McCarthy}(1994{\natexlab{b}})}]{KM94pL741}
-\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Konovalov}}
-  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{I.~E.}
-  \bibnamefont{McCarthy}}, \bibinfo{journal}{J.~Phys.~B}
-  \textbf{\bibinfo{volume}{27}}, \bibinfo{pages}{L741}
-  (\bibinfo{year}{1994}{\natexlab{b}}).
-
-\bibitem[{\citenamefont{Konovalov and McCarthy}(1995)}]{KM95pL139}
-\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Konovalov}}
-  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{I.~E.}
-  \bibnamefont{McCarthy}}, \bibinfo{journal}{J.~Phys.~B}
-  \textbf{\bibinfo{volume}{28}}, \bibinfo{pages}{L139} (\bibinfo{year}{1995}).
-
 \bibitem[{\citenamefont{Fon et~al.}(1994)\citenamefont{Fon, Lim, Ratnavelu, and
   Sawey}}]{FLRS94b}
 \bibinfo{author}{\bibfnamefont{W.~C.} \bibnamefont{Fon}},
@@ -250,6 +236,20 @@
   \bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Bartschat}},
   \bibinfo{journal}{J.~Phys.~B} \textbf{\bibinfo{volume}{39}},
   \bibinfo{pages}{1547} (\bibinfo{year}{2006}).
+
+\bibitem[{\citenamefont{Konovalov and
+  McCarthy}(1994{\natexlab{b}})}]{KM94pL741}
+\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Konovalov}}
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{I.~E.}
+  \bibnamefont{McCarthy}}, \bibinfo{journal}{J.~Phys.~B}
+  \textbf{\bibinfo{volume}{27}}, \bibinfo{pages}{L741}
+  (\bibinfo{year}{1994}{\natexlab{b}}).
+
+\bibitem[{\citenamefont{Konovalov and McCarthy}(1995)}]{KM95pL139}
+\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Konovalov}}
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{I.~E.}
+  \bibnamefont{McCarthy}}, \bibinfo{journal}{J.~Phys.~B}
+  \textbf{\bibinfo{volume}{28}}, \bibinfo{pages}{L139} (\bibinfo{year}{1995}).
 
 \bibitem[{\citenamefont{Fano}(1965)}]{Fano65}
 \bibinfo{author}{\bibfnamefont{U.}~\bibnamefont{Fano}},
@@ -279,16 +279,11 @@
   freely available for academic use from jmatrix.googlecode.com or a relevant
   link at www.dmitrykonovalov.org . }}}.
 
-\bibitem[{\citenamefont{Goldman}(1994)}]{G94}
-\bibinfo{author}{\bibfnamefont{S.~P.} \bibnamefont{Goldman}},
-  \bibinfo{journal}{Phys.~Rev.~Lett.} \textbf{\bibinfo{volume}{73}},
-  \bibinfo{pages}{2547} (\bibinfo{year}{1994}).
-
-\bibitem[{\citenamefont{Jitrik and Bunge}(1997)}]{JB97p2614}
-\bibinfo{author}{\bibfnamefont{O.}~\bibnamefont{Jitrik}} \bibnamefont{and}
-  \bibinfo{author}{\bibfnamefont{C.~F.} \bibnamefont{Bunge}},
-  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{56}},
-  \bibinfo{pages}{2614} (\bibinfo{year}{1997}).
+\bibitem[{\citenamefont{Konovalov and Bray}(2010)}]{KB10p022708}
+\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Konovalov}}
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{82}},
+  \bibinfo{pages}{{022708}} (\bibinfo{year}{2010}).
 
 \bibitem[{\citenamefont{Abramowitz and Stegun}(1965)}]{abramowitz}
 \bibinfo{editor}{\bibfnamefont{M.}~\bibnamefont{Abramowitz}} \bibnamefont{and}

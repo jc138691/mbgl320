@@ -32,11 +32,11 @@
 
 \begin{document}
 
-\title {$J$-matrix calculation of electron-helium $S$-wave scattering. II. Benchmark cross sections below ionization threshold}
+\title {$J$-matrix calculation of electron-helium $S$-wave scattering. II. Beyond the frozen-core model}
 
 \author{Dmitry A. Konovalov}
-\affiliation{Discipline of Information Technology, School of Business}
-\affiliation{ARC Centre for Antimatter-Matter Studies, James Cook University, Townsville, Queensland 4811, Australia}
+\affiliation{ARC Centre for Antimatter-Matter Studies}
+\affiliation{Discipline of Information Technology, School of Business, James Cook University, Townsville, Queensland 4811, Australia}
 
 \author{Dmitry V. Fursa}
 \affiliation{ARC Centre for Antimatter-Matter Studies,
@@ -52,13 +52,19 @@ Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
 
 \begin{abstract}
 
-In the preceding paper [D. A. Konovalov {\em et. al.} Phys. Rev. A {\bf 84}, 032707 (2011)],
+In the preceding $J$-matrix (JM) paper [D. A. Konovalov {\em et. al.} Phys. Rev. A {\bf 84}, 032707 (2011)],
 the $S$-wave $e$-He scattering ($S$-$e$-He) problem was solved within the frozen-core (FC) model of helium for impact energies in the range 0.1-1000eV.
-In this sequel,
-both target electrons are described within the configuration-interaction model of helium obtaining significantly more accurate (compared to the FC model)
-first seven bound states of the helium $S$-wave model.
-The presented JM results are confirmed by the corresponding the convergent-close-coupling (CCC) calculations providing
-total elastic, $2^{1,3}S$, $3^{1,3}S$ excitation cross sections with a benchmark level of accuracy for the considered $S$-$e$-He problem below the ionization threshold.
+In this sequel, both target electrons are described within the configuration-interaction model of helium obtaining  more accurate (compared to the FC model)
+first seven bound states of the $S$-wave helium.
+The presented JM calculations solve the $S$-$e$-He problem essentially exactly
+for the total elastic, $2^{1,3}S$, $3^{1,3}S$ excitation cross sections below the ionization threshold.
+The JM results are confirmed by the corresponding convergent-close-coupling (CCC) calculations creating a challenging benchmark
+for any current or future {\it ab initio} electron-atom scattering methods.
+
+Above the ionization threshold, only the elastic and triplet excitation cross sections are obtained at the benchmark accuracy level.
+The total ionization and singlet excitation cross sections still exhibit noticeable pseudo-resonances (up to 10\% fluctuations),
+which could not be eliminated with the considered number of target states (up to 95 eigenstates of He were considered).
+
 
 \end{abstract}
 
@@ -69,103 +75,131 @@ total elastic, $2^{1,3}S$, $3^{1,3}S$ excitation cross sections with a benchmark
 
 \section{INTRODUCTION}
 
-Resonances in electron-atom scattering processes is a striking quantum mechanical phenomenon, which were comprehensively reviewed by \citet{Schulz73} in 1973 and then by \citet{BC94} in 1994.
-Historically and limiting the scope of this introduction to the helium and atomic hydrogen scattering targets, in 1962 \citet{BS62} theoretically predicted a very sharp resonance in the elastic $e$-H scattering  at 9.6~eV with a half-width ($\Gamma$) of 0.1~eV. The resonances were confirmed experimentally first for the $e$-He scattering, when in 1963 \citet{Schulz63} observed the resonance in the elastic $e$-He scattering at 19.3~eV with $\Gamma$=0.06~eV.
-Since their discovery in the 1960s, the resonances have been and continue to be studied extensively
-for $e$-H \cite{WC94,FRA94_pra,KM94pL741,OSB95p4320,DLTL96,DTLM99,DTL00} and $e$-He \cite{KM95pL139,HBSBB96,NP01,PN03,SMC2006} (citing only studies not already referenced in \cite{Schulz73,BC94}),
-where it is well understood that the resonances are nothing more (nor less) than the manifestation of the negative-ion metastable states \cite{BC94}.
 
-
-This study focuses on the resonances in the $S$-wave $e$-He ($S$-$e$-He) scattering,
+This study focuses on the $S$-wave $e$-He ($S$-$e$-He) scattering,
 where the target helium atom is in its ground state before the electron impact,
 and where only the partial wave with zero angular momentum ($l=0$) is retained in all calculations
 and partial-wave expansions.
-The $S$-wave model has proven to be a very productive testing ground for scattering theories,
+The $S$-wave models have proven to be a very productive testing ground for {\it ab initio} scattering theories,
 see \cite{T62,HY74p1209,P78,P80,P81,CO84,BS92p53,BST93,KM94pL407,IDHF95,PS96,JS02,JS00l,BRIM99,S99l,MHR02,BS04,Frapiccini10} for the $S$-wave $e$-H scattering ($S$-$e$-H)
 and \cite{DHIF94,PMR99,PBFS02,PNBFS04,HMR05R,HMR05,BS10p022715,BS10p022716,KFB11} for  the $S$-$e$-He problem.
-The main attraction of the $S$-wave model is that it retains most of the physics complexities of the full
-scattering problems while simplifying the problems computationally.
-In particular, it is somewhat expected or implied that if a theoretical method solves the $S$-wave model, then
-the remaining partial waves could be solved with additional computational resources, which is in deed the case for the CCC \cite{FB95} and JM \cite{KM94pL741,KM95pL139} methods.
+The main attraction of the $S$-wave models is that they retain most of the physics complexities of the full
+scattering problems while reduce the problems computationally.
+In particular, it is somewhat expected and implied that if a theoretical method solves a $S$-wave model, then
+the remaining partial waves could be solved with additional computational resources,
+which is indeed the case for the convergent-close-coupling (CCC) \cite{FB95},
+$R$-matrix (RM) \cite{FLRS94b, SMC2006} and $J$-matrix (JM) \cite{KM94pL741,KM95pL139} methods.
 
 
-The main goal of this study is to provide high accuracy total elastic and excitation $S$-$e$-He cross sections below the ionization threshold, focusing on their resonant features.
+The main goal of this study is to provide high accuracy total elastic and excitation $S$-$e$-He cross sections for 5-100eV impact energies highlighting resonant features of the cross sections.
 The need for such benchmark theoretical data is evident from the existing {\em ab initio} attempts to solve the $S$-$e$-He problem.
-Reviewing in reverse chronological order, in 2010 \citet{BS10p022715} developed a four-body propagating exterior scaling (PECS) method and reported results claiming to achieve "benchmark" level of accuracy.
+Reviewing in reverse chronological order, in 2010, \citet{BS10p022715} developed a four-body propagating exterior scaling (PECS) method and reported results claiming to achieve "benchmark" level of accuracy.
 However none of their cross sections, including elastic and $2^{1,3}S$ excitation cross sections, displayed any resonances at the accuracy level achieved for the $S$-$e$-H problem \cite{P78}.
 In 2005, \citet{HMR05} reported results using
 time-dependent exterior complex scaling (TD-ECS), which also failed to described resonance behavior of the cross sections.
-The notable exception is the convergent-close-coupling (CCC) method which in 2002 and 2004 \cite{PBFS02,PNBFS04}
-did not examine the resonance regions with sufficiently fine energy grid.
-This is now corrected to some extent when in 2011 \citet{KFB11} reported the CCC and $J$-matrix (JM) {\em frozen-core}
+In 2002 and 2004, the CCC method \cite{PBFS02,PNBFS04} also did not examine the resonance regions with sufficiently fine energy grid.
+This is now corrected to some extent when in 2011 \citet{KFB11} reported the CCC and JM {\em frozen-core}
 (FC) results clearly showing the resonances in the elastic and $n=2$ ($2^1S$ and $2^3S$) excitation cross sections.
+And finally, the RM method \cite{FLRS94b, SMC2006} has never reported its results for the $S$-$e$-He problem.
 
 
-The stated goal is achieved by applying the CCC method together with the JM method,
-where the later has been recently revised by merging it with the Fano's multi-configuration interaction matrix elements \cite{Fano65},
-see \cite{JMatrixWebsite} for information on availability of the JM source code used in this paper.
+The stated goal is attempted and achieved in many aspects by combining advantages of the CCC and JM methods,
+where the later has been recently revised \cite{KFB11} by merging it with the Fano's multi-configuration interaction matrix elements \cite{Fano65}.
+The CCC method is able to solve the scattering problem very accurately via the Lippmann-Schwinger equation \cite{BS92p6995}.
+However, it is not practical to run the CCC method for each of the many thousands of impact energy points required for the final benchmark results.
+On the other hand, the JM method is very efficient \cite{HY74p1201,BR76p1491} in calculating a vast number of energy points
+but numerical-convergence properties of the JM method remains largely unknown.
+The JM and CCC methods are implemented independently and use completely different approaches to solve the scattering equations.
+Therefore, the CCC and JM methods can be and were used to cross-verify that their results are convergent within their own numerical parameters at key energy points.
+
+The presented JM method is implemented using Java programming language, which is freely available for MS Windows,
+Mac OS, and many versions of Linux or Unix. See \cite{JMatrixWebsite} for information on availability of the results and source code.
+
+
+\begin{figure*}[htb]
+\includegraphics[scale=1]{fig1.ps}
+\caption{(Color online) Elastic ($1^1S$),
+$n=2$ ($2^3S$ and $2^1S$) and $n=3$ ($3^3S$ and $3^1S$) single-excitation cross sections  below the ionization threshold (23.92eV from Table~\ref{Tab_ENGS}) for the $e$-He $S$-wave scattering model.
+Sub-figure (b) zooms in on the $2^3S$ excitation threshold (Table~\ref{Tab_ENGS}) shown by the vertical dashed line.
+Frozen-core (FC), JM and CCC results  were shifted by 0.17747eV, 0.0018eV and 0.0018eV (Table~\ref{Tab_ENGS}), respectively.
+}
+\label{Fig_1}
+\end{figure*}
+
+
+
+\begin{figure}[htb]
+\includegraphics[scale=1]{fig2.ps}
+\caption{(Color online)
+The same as in Fig.~\ref{Fig_1} but zooming in on the corresponding excitation threshold energies (Table~\ref{Tab_ENGS}).
+}
+\label{Fig_2}
+\end{figure}
+
+\begin{figure}[htb]
+\includegraphics[scale=1]{fig3.ps}
+\caption{(Color online)
+The same as in Fig.~\ref{Fig_1} but starting from the $3^3S$ threshold
+and aligned by incident energies. The $3^1S$, $4^{3,1}S$, ..., $7^{3,1}S$, excitation thresholds (Table~\ref{Tab_ENGS})
+are shown by vertical dashed lines (from left to right).
+}
+\label{Fig_3}
+\end{figure}
+
+
+\begin{figure*}[htb]
+\includegraphics[scale=1]{fig1b.ps}
+\caption{(Color online)
+The same as in Fig.~\ref{Fig_1} but above the ionization threshold.
+}
+\label{Fig_1b}
+\end{figure*}
+
 
 \begin{table}[htb]
 \caption{\label{Tab_ENGS}
 Energies and classifications for $S$-wave helium electron configurations.
-Energies $e_i$  and $E_i$ are from Eqs.~(\ref{psi_H_psi}) and (\ref{Psi_from_Fano}), respectively.
-$\lambda_{\rm L}=4$, $N_c=N_t$
+$\lambda_c=4$, $\lambda_t=1$, a.u.$=27.2116$eV
 }
 \begin{ruledtabular}
 %\begin{tabular}{lcr}
-\begin{tabular}{llll}
-Classification & threshold & $e_i$  &    \\
+\begin{tabular}{rlll}
+Classification & threshold [eV] & Eigenvalues [a.u] & ($N_c$,$N_t$)   \\
 \hline
-                      &    & -2.879 028 767 315 &  Ref. \cite{G94}    \\
-                      &    & -2.879 028 732   &  Ref. \cite{JB97p2614}    \\
-$\mbox{He}(1s^2,^1S)$ &  0 & -2.879 028 569 1 &  $N_t=50$   \\ %-2.879028569120921, -2.1441972587315763, -2.060794037546864,
-                      &    & -2.879 027 69    &  Ref. \cite{DHIF94}    \\
-                      &    & -2.879 03        &  Ref. \cite{HMR05R}    \\
-                      &    & -2.878 962 303   &  $N_c=7$, $N_t=30$    \\
-                      &    & -2.878 95        &  Ref. \cite{BS10p022715}    \\
-                      &    & -2.872 506 673   &  $N_c=1$, $N_t=30$    \\
+$\mbox{He}(1s^2,^1S)$ & 0  & -2.879 028 569 1 &  (50,50)   \\ %
+            error =          & 0.001 80 & -2.878 962 303   &  (7,30)    \\
+            error =          & 0.177 47 & -2.872 506 673   &  (1,30)    \\
 \hline
-$\mbox{He}(1s2s,^3S)$    & 0.704 763 712  & -2.174 264 856 2 & $N_t=50$ \\  %-2.174264856287701, -2.0684901366080752,
-                         &                & -2.174 264 618   &  $N_c=7$, $N_t=30$    \\
-                         &                & -2.174 26        &  Ref. \cite{BS10p022715}    \\
-                         &                & -2.174 245 504   &  $N_c=1$, $N_t=30$    \\
+$\mbox{He}(1s2s,^3S)$      & 19.178 & -2.174 264 856 3 & (50,50) \\  %-2.174 264 856 288154 -2.174264856287701, -2.0684901366080752,
+                           &    & -2.174 264 618   &  (7,30)   \\
+                           &    & -2.174 245 504   &  (1,30)    \\
 \hline
-$\mbox{He}(1s2s,^1S)$    & 0.734 831 310 & -2.144 197 258 7 &  $N_t=50$ \\
-                         &               & -2.144 191 393   &  $N_c=7$, $N_t=30$    \\
-                         &               & -2.144 19        &  Ref. \cite{BS10p022715}    \\
-                         &               & -2.143 449 321   &  $N_c=1$, $N_t=30$    \\
+$\mbox{He}(1s2s,^1S)$     &  19.996 & -2.144 197 258 7 &  (50,50) \\ %-2.144 197 258 7 31818,
+                          &  & -2.144 191 393   &  (7,30)   \\
+                          &   & -2.143 449 321   &  (1,30)    \\
 \hline
-$\mbox{He}(1s3s,^3S)$    & 0.810 538 432 & -2.068 490 136 6 & $N_t=50$  \\
-                         &               & -2.068 490 070   &  $N_c=7$, $N_t=30$    \\
-                         &               & -2.068 48        &  Ref. \cite{BS10p022715}    \\
-                         &               & -2.068 484 660   &  $N_c=1$, $N_t=30$    \\
+$\mbox{He}(1s3s,^3S)$     & 22.056  & -2.068 490 070   &  (7,30)   \\
+                          &        & -2.068 484 660   &  (1,30)    \\
 \hline
-$\mbox{He}(1s3s,^1S)$    & 0.818 234 531 & -2.060 794 037 5 & $N_t=50$ \\
-                         &               & -2.060 792 356   &  $N_c=7$, $N_t=30$    \\
-                         &               & -2.060 79     &  Ref. \cite{BS10p022715}    \\
-                         &               & -2.060 573 161   &  $N_c=1$, $N_t=30$    \\
+$\mbox{He}(1s3s,^1S)$     & 22.266   & -2.060 792 356   & (7,30)    \\
+                          &          & -2.060 573 161   &  (1,30)    \\
 \hline
-$\mbox{He}(1s4s,^3S)$    & 0.842 589 989 & -2.036 438 58    & Ref. \cite{DHIF94} \\
-                         &               & -2.036 438 560   &  $N_c=7$, $N_t=30$    \\
-                         &               & -2.036 43     &  Ref. \cite{BS10p022715}    \\
-                         &               & -2.036 436 372   &  $N_c=1$, $N_t=30$    \\
+$\mbox{He}(1s4s,^3S)$    & 22.928  & -2.036 438 560   &  (7,30)    \\
+                         &         & -2.036 436 372   &  (1,30)   \\
 \hline
-$\mbox{He}(1s4s,^1S)$    &               &  & $N_t=50$ \\
-                         &               & -2.033 392 203 &  $N_c=7$, $N_t=30$    \\
-                         &               & -2.033 39      &  Ref. \cite{BS10p022715}    \\
-                         &               & -2.033 300 706 &  $N_c=1$, $N_t=30$    \\
+$\mbox{He}(1s4s,^1S)$   &  23.011 & -2.033 392 203 &  (7,30)   \\
+                        &         & -2.033 300 706 &  (1,30)   \\
 \hline
-$\mbox{He}(1s5s,^3S)$    &         &     & Ref. \cite{DHIF94} \\
-                         &               & -2.022 583 695   &  $N_c=7$, $N_t=30$    \\
-                         &               & -2.022 582 608   &  $N_c=1$, $N_t=30$    \\
-                         &               & -2.022 58        &  Ref. \cite{BS10p022715}    \\
+$\mbox{He}(1s5s,^3S)$   &   23.305  & -2.022 583 695   &  (7,30)    \\
+                        &           & -2.022 582 608   &  (1,30)    \\
 \hline
-$\mbox{He}(1s5s,^1S)$    &               &  & $N_t=50$ \\
-                         &               & -2.021 079 423 &  $N_c=7$, $N_t=30$    \\
-                         &               & -2.021 07        &  Ref. \cite{BS10p022715}    \\
-                         &               & -2.021 033 007   &  $N_c=1$, $N_t=30$    \\
+$\mbox{He}(1s5s,^1S)$   &  23.346   & -2.021 079 423   &  (7,30)    \\
+                        &              & -2.021 033 007   &  (1,30)    \\
 \hline
-$\mbox{He}^+(1s)$        & 0.879 028 569 & -2 	 &    \\
+$\mbox{He}^+(1s)$       &  23.920 & -2 	 &    Ionization \\
+
+%nc50 -2.8790285691204813, -2.144197258731818, -2.060794037546691, -2.0333785522995016, -2.019784513192403,
+%-2.174264856288154, -2.0684901366081845, -2.0364341783161515, -2.021798838036517,
 
 %nc10   -2.878976298682523, -2.1441926558786752, -2.0607927208274255, -2.0333923539473497,
 % -2.1742647128049755, -2.0684900966824507, -2.036438571423033,
@@ -181,78 +215,63 @@ $\mbox{He}^+(1s)$        & 0.879 028 569 & -2 	 &    \\
 \end{table}
 
 
-\begin{figure*}[htb]
-\includegraphics[scale=1]{fig1.ps}
-\caption{(Color online) Elastic ($1^1S$),
-$n=2$ ($2^3S$ and $2^1S$) and $n=3$ ($3^3S$ and $3^1S$) single-excitation cross sections for the $e$-He $S$-wave scattering model.
-Sub-figure (b) zooms in on the $2^3S$ excitation threshold (Table~\ref{Tab_ENGS}) shown by the vertical dashed line.
-Frozen-core (FC), JM and CCC results  were shifted by 0.17747eV, 0.0018eV and 0.0018eV (Table~\ref{Tab_ENGS}), respectively.
-}
-\label{Fig_1}
-\end{figure*}
-
-
-\begin{figure}[htb]
-\includegraphics[scale=1]{fig2.ps}
-\caption{(Color online)
-The same as in Fig.~\ref{Fig_1} but zooming in on the corresponding excitation threshold energies (Table~\ref{Tab_ENGS}).
-}
-\label{Fig_2}
-\end{figure}
-
-\begin{figure}[htb]
-\includegraphics[scale=1]{fig3.ps}
-\caption{(Color online)
-The same as in Fig.~\ref{Fig_1} but starting from the $3^3S$ threshold
-and aligned by incident energies. The $3^1S$, $4^{1,3}S$, ..., $7^{1,3}S$, excitation thresholds (Table~\ref{Tab_ENGS})
-are shown by vertical dashed lines (from left to right).
-}
-\label{Fig_3}
-\end{figure}
-
-\begin{figure}[htb]
-\includegraphics[scale=1]{fig4.ps}
-\caption{(Color online)
-The same as in Fig.~\ref{Fig_1} but starting from the $3^3S$ threshold
-and aligned by incident energies. The $3^1S$, $4^{1,3}S$, ..., $7^{1,3}S$, excitation thresholds (Table~\ref{Tab_ENGS})
-are shown by vertical dashed lines (from left to right).
-}
-\label{Fig_4}
-\end{figure}
-
-
-
-
 
 \section{THEORY}
 
-Arguably, the main attraction of the JM method is its computational efficiency, where cross sections could be calculated many thousands of in one calculation.
+The JM method \cite{HY74p1201,BR76p1491} is a very general method for solving wide range of scattering problems. 
+In this study, we continue to develop the version of the JM method that
+was previously applied to the $S$-$e$-H \cite{KB10p022708}  and $S$-$e$-He \cite{KFB11} scattering problems.
+Hereafter this version will be referred to as the KFB method to assist when discussing its features which are not part of the generic JM method.
 
-Both JM and CCC methods rely on a
-
-Let the nonorthogonal Laguerre functions used in the original JM method \cite{HY74p1201,BR76p1491}
-be referred to as the JM functions and denoted by $\{\xi_p(r)\}_{p=0}^\infty$,
-\[
+When the KFB method was applied to the FC model of helium \cite{KFB11} (one electron was always in the $1s$ state of He$^+$), 
+the following two set of functions were used.
+First is the nonorthogonal Laguerre functions $\{\xi_p(r)\}_{p=0}^\infty$ from the original JM method \cite{HY74p1201,BR76p1491}, which
+will be referred to as the {\em JM functions},
+\beq
 \xi_p(r) = x^{l+1} \mbox{e}^{-x /2}
 L_p^{2l+1}(x), \ \ \ p = 0, 1, ..., \infty,
-\]
-where $x=\lambda_{\rm L} r$,  $\lambda_{\rm L}$ is the Laguerre exponential falloff,
-$l \equiv 0$ (for the $S$-model), and $L_p^{\alpha}(x)$ are the associated Laguerre polynomials \cite{abramowitz}.
+\eeq
+where $x=\lambda r$, $l \equiv 0$ (for the $S$-model), and $L_p^{\alpha}(x)$ are the associated Laguerre polynomials \cite{abramowitz}.
+Second set is the orthogonal Laguerre functions $\{R_p(r)\}_{p=0}^\infty$, which
+will be referred to as the {\em Laguerre basis or functions},
+\beq
+R_p(r) = C_p x^{l+1} \mbox{e}^{-x /2}
+L_p^{2l+2}(x), \ \ \ p = 0, 1, ..., \infty,
+\eeq
+\beq
+\int_0^\infty dr \ R_p(r) R_{p'}(r) = \delta_{pp'}, \ C_p= \sqrt{\frac{\lambda p!}{ (p+2l+2)!}}.
+\eeq
+
+
 The JM method splits the one-electron radial functional space into {\em inner} $\{\xi_p\}_{p=0}^{N-1}$
 and {\em outer} $\{\xi_p\}_{p=N}^\infty$
-subsets controlled by the number ($N$) of JM functions in the inner subset \cite{HY74p1201,BR76p1491}.
+subsets controlled by the number $N$ of JM functions in the inner subset \cite{HY74p1201,BR76p1491}.
+The number $N$ is the key JM parameter responsible for the convergence of any implementation of the JM method. 
+That is, the larger the $N$, the more accurate the corresponding JM results.
+Within the current KFB method, maximum value of $N$ is limited to around 100 so that the method remains to be easily accessible
+to wider research community. All presented in this study KFB results were still calculated on a consumer-grade laptop.
+
+
+
+and the subscript $t$ is from {\em target}
+ 
+where $x=\lambda_t r$,  $\lambda_t$ is the Laguerre exponential falloff and the subscript $t$ is from {\em target},
+.
+
+
 
 
 
 
 \section{RESULTS}
 
-\subsection{Resonances in $e$-He $S$-wave scattering}
+The following KFB computational parameters were used, see \cite{KB10p022708} for explanation of the parameters:
+$N_t=30$, $N=10$, $\ln(c)=-5 - 2\ln(Z_{\mbox{\tiny{He}}} )$, $Z_{\mbox{\tiny{He}}}=2$, $r_{\max}=500$,
+$M_{LCR}=2001$, where the radial grid was between zero and $r_{\max}$ and
+$M_{LCR}$ is the number of equally spaced points in the radial LCR grid \cite{KB10p022708}.
+When converting to eV scale, 27.2116 eV was used as the atomic unit of energy (or Hartree). 
 
-
-[TODO]
-Atomic unit of energy (or Hartree) was set to 27.2116 eV. A tabular
-form of the JM and CCC cross sections is available from jmatrix.googlecode.com .
+A tabular form of the JM and CCC cross sections is available from jmatrix.googlecode.com .
 
 
 

@@ -83,7 +83,7 @@ and partial-wave expansions.
 The $S$-wave models have proven to be a very productive testing ground for {\it ab initio} scattering theories,
 see \cite{T62,HY74p1209,P78,P80,P81,CO84,BS92p53,BST93,KM94pL407,IDHF95,PS96,JS02,JS00l,BRIM99,S99l,MHR02,BS04,Frapiccini10} for the $S$-wave $e$-H scattering ($S$-$e$-H)
 and \cite{DHIF94,PMR99,PBFS02,PNBFS04,HMR05R,HMR05,BS10p022715,BS10p022716,KFB11} for  the $S$-$e$-He problem.
-The main attraction of the $S$-wave models is that they retain most (arguably all) of the physics complexities of the full
+The main attraction of the $S$-wave models is that they retain most of the physics complexities of the full
 scattering problems while reduce the problems computationally.
 In particular, it is somewhat expected and implied that if a theoretical method solves a $S$-wave model, then
 the remaining partial waves could be solved with additional computational resources,
@@ -93,7 +93,7 @@ $R$-matrix (RM) \cite{FLRS94b, SMC2006} and $J$-matrix (JM) \cite{KM94pL741,KM95
 
 The main goal of this study is to provide high accuracy total elastic and excitation $S$-$e$-He cross sections for 5-100eV impact energies highlighting resonant features of the cross sections.
 The need for such benchmark theoretical data is evident from the existing {\em ab initio} attempts to solve the $S$-$e$-He problem.
-Reviewing in reverse chronological order, in 2010 \citet{BS10p022715} developed a four-body propagating exterior scaling (PECS) method and reported results claiming to achieve "benchmark" level of accuracy.
+Reviewing in reverse chronological order, in 2010, \citet{BS10p022715} developed a four-body propagating exterior scaling (PECS) method and reported results claiming to achieve "benchmark" level of accuracy.
 However none of their cross sections, including elastic and $2^{1,3}S$ excitation cross sections, displayed any resonances at the accuracy level achieved for the $S$-$e$-H problem \cite{P78}.
 In 2005, \citet{HMR05} reported results using
 time-dependent exterior complex scaling (TD-ECS), which also failed to described resonance behavior of the cross sections.
@@ -218,33 +218,66 @@ $\mbox{He}^+(1s)$       &  23.920 & -2 	 &    Ionization \\
 
 \section{THEORY}
 
-Arguably, the main attraction of the JM method is its computational efficiency, where cross sections could be calculated many thousands of in one calculation.
+The JM method \cite{HY74p1201,BR76p1491} is a very general method for solving wide range of scattering problems. 
+In this study, we continue to develop the version of the JM method that
+was previously applied to the $S$-$e$-H \cite{KB10p022708}  and $S$-$e$-He \cite{KFB11} scattering problems.
+Hereafter this version will be referred to as the KFB method to assist when discussing its features which are not part of the generic JM method.
 
-Both JM and CCC methods rely on a
-
-Let the nonorthogonal Laguerre functions used in the original JM method \cite{HY74p1201,BR76p1491}
-be referred to as the JM functions and denoted by $\{\xi_p(r)\}_{p=0}^\infty$,
-\[
+When the KFB method was applied to the FC model of helium \cite{KFB11} (one electron was always in the $1s$ state of He$^+$), 
+the following two set of functions were used.
+First is the nonorthogonal Laguerre functions $\{\xi_p(r)\}_{p=0}^\infty$ from the original JM method \cite{HY74p1201,BR76p1491}, which
+will be referred to as the {\em JM functions},
+\beq
 \xi_p(r) = x^{l+1} \mbox{e}^{-x /2}
 L_p^{2l+1}(x), \ \ \ p = 0, 1, ..., \infty,
-\]
-where $x=\lambda_{\rm L} r$,  $\lambda_{\rm L}$ is the Laguerre exponential falloff,
-$l \equiv 0$ (for the $S$-model), and $L_p^{\alpha}(x)$ are the associated Laguerre polynomials \cite{abramowitz}.
+\eeq
+where $x=\lambda r$, $l \equiv 0$ (for the $S$-model), and $L_p^{\alpha}(x)$ are the associated Laguerre polynomials \cite{abramowitz}.
+Second set is the orthogonal Laguerre functions $\{R_p(r)\}_{p=0}^\infty$, which
+will be referred to as the {\em Laguerre basis or functions},
+\beq
+R_p(r) = C_p x^{l+1} \mbox{e}^{-x /2}
+L_p^{2l+2}(x), \ \ \ p = 0, 1, ..., \infty,
+\eeq
+\beq
+\int_0^\infty dr \ R_p(r) R_{p'}(r) = \delta_{pp'}, \ C_p= \sqrt{\frac{\lambda p!}{ (p+2l+2)!}}.
+\eeq
+
+
 The JM method splits the one-electron radial functional space into {\em inner} $\{\xi_p\}_{p=0}^{N-1}$
 and {\em outer} $\{\xi_p\}_{p=N}^\infty$
-subsets controlled by the number ($N$) of JM functions in the inner subset \cite{HY74p1201,BR76p1491}.
+subsets controlled by the number $N$ of JM functions in the inner subset \cite{HY74p1201,BR76p1491}.
+The number $N$ is the key JM parameter responsible for the convergence of any implementation of the JM method. 
+That is, the larger the $N$, the more accurate the corresponding JM results.
+Within the current KFB method, maximum value of $N$ is limited to around 100 so that the method remains to be easily accessible
+to wider research community. All presented in this study KFB results were still calculated on a consumer-grade laptop.
+
+
+
+and the subscript $t$ is from {\em target}
+ 
+where $x=\lambda_t r$,  $\lambda_t$ is the Laguerre exponential falloff and the subscript $t$ is from {\em target},
+.
+
+
 
 
 
 
 \section{RESULTS}
 
-\subsection{Resonances in $e$-He $S$-wave scattering}
+
+It was found that $N=81$ was sufficient to reproduce the CCC results for the complete energy range from 0.1 to 1000~eV.
+The presented JM results in Figs.~\ref{Fig_TICS} and \ref{Fig_RES} were calculated on a laptop
+with 2.2 GHz CPU and 3.5 GB RAM taking about five hours to complete at more than 4000 considered energy points.
+The following JM computational values were used, see \cite{KB10p022708} for explanation of the parameters:
+$N_t=50$, $N=81$, $\ln(c)=-7$, $r_{\max}=450$,
+$M_{LCR}=1601$, where the radial grid was between zero and $r_{\max}$ and
+$M_{LCR}$ is the number of equally spaced points in the radial LCR
+grid \cite{KB10p022708}.
 
 
-[TODO]
-Atomic unit of energy (or Hartree) was set to 27.2116 eV. A tabular
-form of the JM and CCC cross sections is available from jmatrix.googlecode.com .
+Atomic unit of energy (or Hartree) was set to 27.2116 eV. 
+A tabular form of the JM and CCC cross sections is available from jmatrix.googlecode.com .
 
 
 
