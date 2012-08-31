@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=latex 2011.10.25)  30 AUG 2012 14:56
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=latex 2011.10.25)  31 AUG 2012 11:33
 entering extended mode
 **C:/dev/physics/papers/pra_2012_HeSWaveRes/HeSWaveRes_backupHeEngs.tex
 (C:/dev/physics/papers/pra_2012_HeSWaveRes/HeSWaveRes_backupHeEngs.tex
@@ -220,52 +220,59 @@ Overfull \hbox (1.91249pt too wide) in paragraph at lines 151--152
  []
 
 
-LaTeX Warning: Reference `psi_H_psi' on page 2 undefined on input line 252.
+LaTeX Warning: Reference `psi_H_psi' on page 2 undefined on input line 278.
 
 
-LaTeX Warning: Reference `Fig_He_n2' on page 2 undefined on input line 253.
+LaTeX Warning: Reference `Fig_He_n2' on page 2 undefined on input line 279.
 
 
-LaTeX Warning: Reference `Fig_He_n3' on page 2 undefined on input line 253.
+LaTeX Warning: Reference `Fig_He_n3' on page 2 undefined on input line 279.
 
 (C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes_backupHeEngs.bbl
+Overfull \vbox (7.57968pt too high) has occurred while \output is active []
+
+
+Overfull \vbox (7.57968pt too high) has occurred while \output is active []
+
+
+[2]
 Underfull \hbox (badness 2894) in paragraph at lines 55--60
  [][]\OT1/cmr/m/n/9 A. K. Bha-tia, B. I. Schnei-der, and A. Temkin,
  []
 
-[2]
+
 Underfull \hbox (badness 3333) in paragraph at lines 145--150
  [][]\OT1/cmr/m/n/9 M. S. Pindzola, D. Mit-nik, and F. Ro-bicheaux,
  []
+
+[3]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 159.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 159.
+
+
+Class revtex4 Warning: Deferred float stuck during \clearpage processing.
 
 
 Underfull \hbox (badness 2680) in paragraph at lines 228--239
  [][]\OT1/cmr/m/n/9 M. Stepanovic, M. Minic, D. Cve-janovic, J. Ju-
  []
 
-[3]
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 265.
-
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 265.
-
-
-Class revtex4 Warning: Deferred float stuck during \clearpage processing.
-
-) [4] [5]
-(C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes_backupHeEngs.aux)
+[4]) [5] (C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes_backupHeEngs.aux
+)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3018 strings out of 494046
- 36923 string characters out of 3148400
- 130806 words of memory out of 3000000
- 6294 multiletter control sequences out of 15000+200000
+ 3023 strings out of 494046
+ 37000 string characters out of 3148400
+ 143794 words of memory out of 3000000
+ 6299 multiletter control sequences out of 15000+200000
  15779 words of font info for 55 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 25i,8n,24p,695b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 25i,8n,24p,695b,320s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on HeSWaveRes_backupHeEngs.dvi (5 pages, 24664 bytes).
+Output written on HeSWaveRes_backupHeEngs.dvi (5 pages, 27152 bytes).
