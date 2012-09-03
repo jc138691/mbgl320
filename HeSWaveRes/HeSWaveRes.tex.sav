@@ -61,8 +61,8 @@ for the total elastic, $2^{1,3}S$, $3^{1,3}S$ excitation cross sections below th
 The JM results are confirmed by the corresponding convergent-close-coupling (CCC) calculations creating a challenging benchmark
 for any current or future {\it ab initio} electron-atom scattering methods.
 
-Above the ionization threshold, only the elastic and triplet excitation cross sections are obtained at the benchmark accuracy level.
-The total ionization and singlet excitation cross sections still exhibit noticeable pseudo-resonances (up to 10\% fluctuations),
+Above the ionization threshold, only the elastic and triplet $2^3S$ excitation cross sections are obtained at the benchmark accuracy level.
+The total ionization and the rest of excitation cross sections still exhibit noticeable pseudo-resonances (up to 10\% fluctuations),
 which could not be eliminated with the considered number of target states (up to 95 eigenstates of He were considered).
 
 
@@ -119,9 +119,9 @@ Mac OS, and many versions of Linux or Unix. See \cite{JMatrixWebsite} for inform
 \begin{figure*}[htb]
 \includegraphics[scale=1]{fig1.ps}
 \caption{(Color online) Elastic ($1^1S$),
-$n=2$ ($2^3S$ and $2^1S$) and $n=3$ ($3^3S$ and $3^1S$) single-excitation cross sections  below the ionization threshold (23.92eV from Table~\ref{Tab_ENGS}) for the $e$-He $S$-wave scattering model.
-Sub-figure (b) zooms in on the $2^3S$ excitation threshold (Table~\ref{Tab_ENGS}) shown by the vertical dashed line.
-Frozen-core (FC), JM and CCC results  were shifted by 0.17747eV, 0.0018eV and 0.0018eV (Table~\ref{Tab_ENGS}), respectively.
+$n=2$ ($2^3S$ and $2^1S$) and $n=3$ ($3^3S$ and $3^1S$) single-excitation cross sections  below the ionization threshold (23.92eV, Table~\ref{Tab_ENGS}) for the $e$-He $S$-wave scattering model.
+Sub-figure (b) zooms in on the $2^3S$ excitation threshold (19.178eV, Table~\ref{Tab_ENGS}) shown by the vertical dashed line.
+FC (Frozen-core, $N_c=1$, $N_t=30$), JM ($N_c=7$, $N_t=30$) and CCC ($N_c=3$, $N_t=30$) results  were shifted by 0.17747eV, 0.0018eV and 0.0018eV (Table~\ref{Tab_ENGS}), respectively.
 }
 \label{Fig_1}
 \end{figure*}
@@ -158,7 +158,8 @@ The same as in Fig.~\ref{Fig_1} but above the ionization threshold.
 
 \begin{table}[htb]
 \caption{\label{Tab_ENGS}
-Energies and classifications for $S$-wave helium electron configurations.
+Energy levels [a.u.] and excitation thresholds [eV] of the first nine bound states of helium in the 
+$S$-wave model.
 $\lambda_c=4$, $\lambda_t=1$, a.u.$=27.2116$eV
 }
 \begin{ruledtabular}
@@ -218,22 +219,28 @@ $\mbox{He}^+(1s)$       &  23.920 & -2 	 &    Ionization \\
 
 \section{THEORY}
 
-The JM method \cite{HY74p1201,BR76p1491} is a very general method for solving wide range of scattering problems. 
+The JM method \cite{HY74p1201,BR76p1491} is a very general method for solving wide range of scattering problems.
 In this study, we continue to develop the version of the JM method that
 was previously applied to the $S$-$e$-H \cite{KB10p022708}  and $S$-$e$-He \cite{KFB11} scattering problems.
 Hereafter this version will be referred to as the KFB method to assist when discussing its features which are not part of the generic JM method.
 
-When the KFB method was applied to the FC model of helium \cite{KFB11} (one electron was always in the $1s$ state of He$^+$), 
-the following two set of functions were used.
-First is the nonorthogonal Laguerre functions $\{\xi_p(r)\}_{p=0}^\infty$ from the original JM method \cite{HY74p1201,BR76p1491}, which
-will be referred to as the {\em JM functions},
+When the KFB method was applied to the FC model of helium \cite{KFB11} (one electron was always in the $1s$ state of He$^+$),
+the following three sets of functions were used: target basis, JM functions, and Laguerre basis.
+
+{\em Target basis} is a set of $N_t$ orthonormal radial functions $\{P_n(r)\}_{n=1}^{N_t}$,
+where $P_n(r)$ is used as the radial component of the $n$'th subshell wave function
+when building one- or many-electron wave functions as per the Fano's procedure \cite{Fano65, KFB11}.
+
+{\em JM functions} are the nonorthogonal Laguerre functions $\{\xi_p(r)\}_{p=0}^\infty$ from the original JM method \cite{HY74p1201,BR76p1491},
 \beq
 \xi_p(r) = x^{l+1} \mbox{e}^{-x /2}
 L_p^{2l+1}(x), \ \ \ p = 0, 1, ..., \infty,
 \eeq
-where $x=\lambda r$, $l \equiv 0$ (for the $S$-model), and $L_p^{\alpha}(x)$ are the associated Laguerre polynomials \cite{abramowitz}.
-Second set is the orthogonal Laguerre functions $\{R_p(r)\}_{p=0}^\infty$, which
-will be referred to as the {\em Laguerre basis or functions},
+where $x=\lambda r$, $\lambda$ is Laguerre exponential falloff,
+$l \equiv 0$ (for the $S$-model), and $L_p^{\alpha}(x)$ are the associated Laguerre polynomials \cite{abramowitz}.
+
+
+{\em Laguerre basis} is the set of orthonormal Laguerre functions $\{R_p(r)\}_{p=0}^\infty$,
 \beq
 R_p(r) = C_p x^{l+1} \mbox{e}^{-x /2}
 L_p^{2l+2}(x), \ \ \ p = 0, 1, ..., \infty,
@@ -241,45 +248,76 @@ L_p^{2l+2}(x), \ \ \ p = 0, 1, ..., \infty,
 \beq
 \int_0^\infty dr \ R_p(r) R_{p'}(r) = \delta_{pp'}, \ C_p= \sqrt{\frac{\lambda p!}{ (p+2l+2)!}}.
 \eeq
+Note that for any fixed $N_t$, both $\{\xi_p(r)\}_{p=0}^{N_t}$ and $\{R_p(r)\}_{p=0}^{N_t}$
+span identical functional space \cite{KB10p022708}.
+
+
+The target basis $\{P_n(r)\}_{n=1}^{N_t}$ is selected or built by diagonalizing a suitable one-electron Hamiltonian \cite{KB10p022708, KFB11}. Then,
+the two-electron target-helium wave functions are constructed by allowing first and second helium electrons to occupy the first $N_c$ and $N_t$ radial functions, respectively,
+where $N_c$ controls the number of allowed {\em core} excitations with $N_c=1$ being the frozen-core model.
+
+
+After many numerical experiments, it became apparent that the core excitation functions $\{P_n(r)\}_{n=1}^{N_c}$ should be constructed differently from the rest of the target basis
+$\{P_n(r)\}_{n=N_c+1}^{N_t}$. Otherwise, the convergence by $N_c$ is just too slow to be computationally practical.
+This is due to the two very different radial scales present in this study.
+The short-range core excitations are essentially adjustments to the $1s$-orbital of He$^+$.
+While the helium excitations below the ionization threshold resemble $ns$-orbitals of hydrogen and therefore are long-range.
+This problem is solved here by using a mix of the short range $\{R^c_p(r)\}_{p=0}^{N_c-1}$ with $\lambda_c=4$
+and long-range $\{R^t_p(r)\}_{p=N_c}^{N_t-1}$ with $\lambda_t=1$  basis sets
+when constructing the target basis as follows.
 
 
 The JM method splits the one-electron radial functional space into {\em inner} $\{\xi_p\}_{p=0}^{N-1}$
 and {\em outer} $\{\xi_p\}_{p=N}^\infty$
 subsets controlled by the number $N$ of JM functions in the inner subset \cite{HY74p1201,BR76p1491}.
-The number $N$ is the key JM parameter responsible for the convergence of any implementation of the JM method. 
-That is, the larger the $N$, the more accurate the corresponding JM results.
-Within the current KFB method, maximum value of $N$ is limited to around 100 so that the method remains to be easily accessible
-to wider research community. All presented in this study KFB results were still calculated on a consumer-grade laptop.
+In the KFB method, the target basis $\{P_n(r)\}_{n=1}^{N_t}$ must be orthogonal to the outer JM functions $\{\xi_p\}_{p=N}^\infty$, where $N_t<N$.
+Let $\lambda \equiv \lambda_t$ and $\hat{I}_t$ be a projection operator into the functional space of $\{R^t_p(r)\}_{p=0}^{N_t-1}$
+\beq
+\hat{I}_t = \sum_{p=0}^{N_t-1} | R_p^t \rangle \langle R_p^t |,
+\eeq
+then by construction every function from $\{R^t_p(r)\}_{p=0}^{N_t-1}$ and  $\{R^{ct}_p(r)\}_{p=0}^{N_c-1}$
+\beq
+R^{ct}_p = \hat{I}_t R^{c}_p, 
+\eeq
+is orthogonal the outer JM functions. 
+Then the final target basis $\{P_n(r)\}_{n=1}^{N_t}$ is constructed by making a single orthonormal basis from 
+$\{R^{ct}_p(r)\}_{p=0}^{N_c-1}$ and $\{R^t_p(r)\}_{p=N_c}^{N_t-1}$
+via the Gram-Schmidt process.
 
 
-
-and the subscript $t$ is from {\em target}
+Note that in the CCC method the final target basis 
+$\{P^{\mbox{{\tiny 3C}}}_n(r)\}_{n=1}^{N_t}$ is also built via the Gram-Schmidt process but from
+$\{R^{c}_p(r)\}_{p=0}^{N_c-1}$ and $\{R^t_p(r)\}_{p=N_c}^{N_t-1}$ sets, that is, the $R^{ct}_p$ functions were not required.
  
-where $x=\lambda_t r$,  $\lambda_t$ is the Laguerre exponential falloff and the subscript $t$ is from {\em target},
-.
-
-
-
 
 
 
 \section{RESULTS}
 
+See Supplemental Material at [URL will be inserted by publisher] for the results in tabular form.
+
+The number $N$ is the key JM parameter responsible for the convergence of any implementation of the JM method.
+That is, the larger the $N$, the more accurate the corresponding JM results are expected to be.
+Within the current KFB method, maximum value of $N$ is limited to around 100 so that the method remains to be easily accessible
+to wider research community. All presented in this study KFB results were still calculated on a consumer-grade laptop.
+
+
 The following KFB computational parameters were used, see \cite{KB10p022708} for explanation of the parameters:
-$N_t=30$, $N=10$, $\ln(c)=-5 - 2\ln(Z_{\mbox{\tiny{He}}} )$, $Z_{\mbox{\tiny{He}}}=2$, $r_{\max}=500$,
+$\lambda_c=4$, $\lambda_t=1$, $N_t=30$, $N=100$, $\ln(c)=-5 - 2\ln(Z_{\mbox{\tiny{He}}} )$, $Z_{\mbox{\tiny{He}}}=2$, $r_{\max}=500$,
 $M_{LCR}=2001$, where the radial grid was between zero and $r_{\max}$ and
 $M_{LCR}$ is the number of equally spaced points in the radial LCR grid \cite{KB10p022708}.
-When converting to eV scale, 27.2116 eV was used as the atomic unit of energy (or Hartree). 
+Hereafter FC, JM and CCC denote results obtained with $N_c=1$, $N_c=7$ and $N_c=3$, respectively. 
+When converting to eV scale, 27.2116 eV was used as the atomic unit of energy (or Hartree).
 
-A tabular form of the JM and CCC cross sections is available from jmatrix.googlecode.com .
+Table~\ref{Tab_ENGS} shows first nine eigenvalues from diagonalizations of $S$-wave helium Hamiltonian. 
+Selecting $\lambda_c=4$ creates the first target radial function $P_1(r)$ numerically identical to the exact $1s$ state of He$^+$, 
+when $N_t$ is sufficiently large as is the case for the used $N_t=30$.
+The main improvement of the $N_c=7$ basis over the froze-core case ($N_c=1$) is in the ground state of helium, where 
+the first seven significant figures \cite{G94} were obtained by using  $\{R^{c}_p(r)\}_{p=0}^{N_c-1}$ as the basis for both electrons with $N_c=50$ and $\lambda_c=4$.
 
-
-
-Again, both CCC and JM methods described the target helium atom
-, where the target eigenstates were constructed from the first $N_t$ JM functions (\ref{psi_H_psi}). Convergence in the CCC cross sections
-(Figs.~\ref{Fig_He_n2} and \ref{Fig_He_n3}) was achieved at $N_t=?$, where the corresponding JM cross sections
-converged at $N_t=?$ and $N=?$.
-
+Fig.~\ref{Fig_1} shows that if the FC results are shifted by the FC ground energy error (0.17747eV, see Table~\ref{Tab_ENGS}), 
+the FC and JM results become very close. This means that most of the scattering dynamics  is essentially due to 
+the movement of one electron in the field of $1s$ state of He$^+$. Fig.~\ref{Fig_1}(b)
 
 
 
