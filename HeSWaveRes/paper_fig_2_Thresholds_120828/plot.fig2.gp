@@ -77,7 +77,7 @@ CCC_SHIFT = CCC_SHIFT * xJM;
 set xlabel ''; 
 set ylabel ' ';
 
-set xrange [E_2S3-0.01:E_2S3+0.15];  set xtics 0.05;  set mxtics 5; set format x "%4.2f"; 
+set xrange [E_2S3-0.01:E_2S3+0.1];  set xtics 0.02;  set mxtics 4; set format x "%4.2f"; 
 set yrange [0.0:35];            set ytics 5;  set mytics 5;   
 set key right top Right title "(a) 2^3S [x0.01]"
 p \
@@ -90,20 +90,20 @@ p \
 set xlabel ''; 
 set ylabel 'cross section (a.u.)' offset 0,-8; 
 
-set xrange [E_2S1-0.01:E_2S1+0.15];  set xtics 0.05;  set mxtics 5; set format x "%4.2f"; 
-set yrange [0.0:5];           set ytics 1;  set mytics 5;   
+set xrange [E_2S1-0.01:E_2S1+0.1];  set xtics 0.02;  set mxtics 4; set format x "%4.2f"; 
+set yrange [0.0:4];           set ytics 1;  set mytics 5;   
 set key right center Right title "(b) 2^1S [x0.001]"
 p \
-  CCC_s2S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*1000)    t 'CCC'   w p ls 1, \
-  JM_2 u ($1*xJM + SHIFT_2):($4*yJM*1000) t LABEL_2 w l ls 12,\
-  JM_1 u ($1*xJM + SHIFT_1):($4*yJM*1000) t LABEL_1 w l ls 11
+  CCC_s2S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*1000)    t ''   w p ls 1, \
+  JM_2 u ($1*xJM + SHIFT_2):($4*yJM*1000) t '' w l ls 12,\
+  JM_1 u ($1*xJM + SHIFT_1):($4*yJM*1000) t '' w l ls 11
 
 
 
 set xlabel  '';  
 set ylabel  ' ';
 
-set xrange [E_3S3-0.01:E_3S3+0.15];  set xtics 0.05;  set mxtics 5; set format x "%4.2f"; 
+set xrange [E_3S3-0.01:E_3S3+0.1];  set xtics 0.02;  set mxtics 4; set format x "%4.2f"; 
 set yrange [0.0:16];           set ytics 5;  set mytics 5;   
 set key right top Right title "(c) 3^3S [x0.001]"
 p \
@@ -116,8 +116,8 @@ p \
 set xlabel 'incident energy (eV)'; 
 set ylabel ' ';  
 
-set xrange [E_3S1-0.01:E_3S1+0.15];  set xtics 0.05;  set mxtics 5; set format x "%4.2f"; 
-set yrange [0.0:8];            set ytics 2;    set mytics 4;   
+set xrange [E_3S1-0.01:E_3S1+0.1];  set xtics 0.02;  set mxtics 4; set format x "%4.2f"; 
+set yrange [0.0:6];            set ytics 2;    set mytics 4;   
 set key right center Right title "(d) 3^1S [x0.0001]"
 p \
   CCC_s3S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*10000)    t ''   w p ls 1, \
