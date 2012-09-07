@@ -79,11 +79,15 @@ public void runJob() {
 
   LAMBDA = 1.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   LAMBDA_NC = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
-  Nc = 7;
+  Nc = 3;
   int currNt = 30;
 
+  setupEng20_120eV();  // Todo: remove when done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   SPIN = Spin.ELECTRON;
-  calc(currN, currNt);
+  for (currNt = 25; currNt <= 35; currNt++) {
+    calc(currN, currNt);
+  }
 }
 
 protected void saveTrgtInfo(ScttTrgtE3 jmTrgt) {
@@ -193,6 +197,20 @@ public void setupEng01_1000eV_OLD() {
   SCTT_ENG_N = n + n2 + n3 + n4;
   SCTT_ENG_MIN = first;
   SCTT_ENG_MAX = last4;
+}
+public void setupEng20_120eV() {
+  EngModelArr arr = new EngModelArr();
+
+  int n = 1000;
+  float first = (float)AtomUnits.fromEV(20);
+  float last = (float)AtomUnits.fromEV(120);
+  arr.add(new EngOpt(first, last, n));
+
+  scttEngs = EngGridFactory.makeEngs(arr);
+
+  SCTT_ENG_N = n;
+  SCTT_ENG_MIN = first;
+  SCTT_ENG_MAX = last;
 }
 protected void jmHeTestOk() {
   FlowTest.setLog(log);

@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 /**
-* User: jc138691, Date: 9/07/2008, Time: 14:19:58
-*/
+ * User: jc138691, Date: 9/07/2008, Time: 14:19:58
+ */
 public class Vec {
 public static Log log = Log.getLog(Vec.class);
 protected double[] arr;
@@ -56,15 +56,15 @@ public final void setArr(double[] arr) {
 }
 
 public Vec copy()     {
-double[] res = new double[size()];
-System.arraycopy(arr, 0, res, 0, size());
-return new Vec(res);
+  double[] res = new double[size()];
+  System.arraycopy(arr, 0, res, 0, size());
+  return new Vec(res);
 }
 public Vec append(Vec v2)     {
-double[] res = new double[size() + v2.size()];
-System.arraycopy(arr, 0, res, 0, size());
-System.arraycopy(v2.arr, 0, res, size(), v2.size());
-return new Vec(res);
+  double[] res = new double[size() + v2.size()];
+  System.arraycopy(arr, 0, res, 0, size());
+  System.arraycopy(v2.arr, 0, res, size(), v2.size());
+  return new Vec(res);
 }
 public void calc(Vec x, Func f) {
   FastLoop.calc(arr, x.getArr(), f);
@@ -216,10 +216,10 @@ public static double[] copy(double[] from)
   System.arraycopy(from, 0, res, 0, from.length);
   return res;
 }
-public static double[] convert(ArrayList<Integer> arr) {
+public static double[] convert(ArrayList<Double> arr) {
   double[] res = new double[arr.size()];
   for (int i = 0; i < res.length; i++) {
-    res[i] = arr.get(i);
+    res[i] = arr.get(i).doubleValue();
   }
   return res;
 }
