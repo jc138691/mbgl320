@@ -123,7 +123,7 @@ public static void keepN(IFuncArr dest, Quadr quadr, IFuncArr basis) {
     return res;
   }
 //http://en.wikipedia.org/wiki/Gram-Schmidt_process
-public static void makeOrth_DEV(FuncArr from, Quadr w) {
+public static void makeOrthGram(FuncArr from, Quadr w) {
   FuncArr res = from.copyDeepY();
   norm(res, w);
   for (int k = 1; k < res.size(); k++) { // NOTE: k=1

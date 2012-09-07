@@ -1,4 +1,4 @@
-package papers.s_wave;
+package papers.swave;
 import atom.data.AtomHy;
 import atom.energy.pw.PotHMtrx;
 import atom.energy.pw.lcr.PotHMtrxLcr;

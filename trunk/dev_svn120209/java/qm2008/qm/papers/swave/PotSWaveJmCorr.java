@@ -1,4 +1,4 @@
-package papers.s_wave;
+package papers.swave;
 import atom.data.AtomHy;
 import qm_station.QMSProject;
 import scatt.jm_2008.e1.JmCalcOptE1;
