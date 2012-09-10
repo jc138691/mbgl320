@@ -18,8 +18,8 @@ R_min = 0.70476-0.0003; R_max = 0.70476+0.0002;
 E_min = E_ion; E_max=40;
 
 
-JM_1    = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TCS_Nc3_L0_LMBD1.0_N101_Nt25_avr_29.dat'
-TICS_1  = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TICS_Nc3_L0_LMBD1.0_N101_Nt25_avr_29.dat'
+JM_1    = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TCS_Nc3_L0_LMBD1.0_N101_Nt25_avr_35.dat'
+TICS_1  = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TICS_Nc3_L0_LMBD1.0_N101_Nt25_avr_35.dat'
 LABEL_1 = 'AVR';
 SHIFT_1 = 0;
 
