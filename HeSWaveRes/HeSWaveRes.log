@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=latex 2011.10.25)  10 SEP 2012 16:47
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=latex 2011.10.25)  11 SEP 2012 13:45
 entering extended mode
 **C:/dev/physics/papers/pra_2012_HeSWaveRes/HeSWaveRes.tex
 (C:/dev/physics/papers/pra_2012_HeSWaveRes/HeSWaveRes.tex
@@ -208,18 +208,18 @@ Overfull \hbox (1.91249pt too wide) in paragraph at lines 124--125
  [][][] 
  []
 
-File: fig1b.ps Graphic file (type eps)
-<fig1b.ps>
 File: fig2.ps Graphic file (type eps)
- <fig2.ps>
+<fig2.ps>
+File: fig3.ps Graphic file (type eps)
+ <fig3.ps>
 Overfull \hbox (1.91249pt too wide) in paragraph at lines 145--146
  [][][] 
  []
 
-File: fig3.ps Graphic file (type eps)
-<fig3.ps>
 File: fig4.ps Graphic file (type eps)
- <fig4.ps>
+<fig4.ps>
+File: fig5.ps Graphic file (type eps)
+ <fig5.ps>
 Overfull \hbox (1.91249pt too wide) in paragraph at lines 167--168
  [][][] 
  []
@@ -233,33 +233,33 @@ Underfull \hbox (badness 1616) in paragraph at lines 267--270
 
 [2] [3]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 338.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 340.
 
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 338.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 340.
 
 
 Class revtex4 Warning: Deferred float stuck during \clearpage processing.
 
-(C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes.bbl
+(C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes.bbl [4]
 Underfull \hbox (badness 2894) in paragraph at lines 55--60
  [][]\OT1/cmr/m/n/9 A. K. Bha-tia, B. I. Schnei-der, and A. Temkin,
  []
 
-[4]
-Underfull \hbox (badness 3333) in paragraph at lines 145--150
- [][]\OT1/cmr/m/n/9 M. S. Pindzola, D. Mit-nik, and F. Ro-bicheaux,
- []
-
 [5]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 169.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 105.
 
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 169.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 105.
 
 
 Class revtex4 Warning: Deferred float stuck during \clearpage processing.
+
+
+Underfull \hbox (badness 3333) in paragraph at lines 145--150
+ [][]\OT1/cmr/m/n/9 M. S. Pindzola, D. Mit-nik, and F. Ro-bicheaux,
+ []
 
 
 Underfull \hbox (badness 2680) in paragraph at lines 238--249
@@ -268,12 +268,12 @@ Underfull \hbox (badness 2680) in paragraph at lines 238--249
 
 ) [6] [7] (C:\dev\physics\papers\pra_2012_HeSWaveRes\HeSWaveRes.aux) ) 
 Here is how much of TeX's memory you used:
- 3032 strings out of 494046
- 36990 string characters out of 3148400
- 119555 words of memory out of 3000000
- 6307 multiletter control sequences out of 15000+200000
+ 3038 strings out of 494046
+ 37047 string characters out of 3148400
+ 127832 words of memory out of 3000000
+ 6313 multiletter control sequences out of 15000+200000
  15779 words of font info for 55 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 25i,8n,24p,653b,306s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 25i,8n,24p,653b,290s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on HeSWaveRes.dvi (7 pages, 39032 bytes).
+Output written on HeSWaveRes.dvi (7 pages, 40724 bytes).
