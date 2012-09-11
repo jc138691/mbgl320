@@ -28,7 +28,7 @@ E_min = E_3S1-0.002; E_max = E_ion;
 JM_1    = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TCS_Nc7_L0_LMBD1.0_N100_Nt30.dat'
 #-2.8789623026211353, -2.1441913928180427, -2.0607923564616435, -2.0333922030334937, -2.0210794228323463,
 #-2.1742646178307643, -2.068490069685457, -2.036438559573639, -2.022583694613397, 
-LABEL_1 = ' JM';
+LABEL_1 = 'KFB';
 SHIFT_1 = E_grnd -2.8789623026211353;   ;
 
 
@@ -57,7 +57,7 @@ set style line 11 lt 1 lc 1   lw 2  pt 1 ps 1.2 pi 2   # lc 3 blue line; lc 1 re
 set style line 12 lt 2 lc -1  lw 2  pt 7 ps 0.5 
 set style line 13 lt 2 lc 3   lw 1  pt 7 ps 0.5 
 
-set term postscript eps enhanced lw 1 size 8.6cm,18cm solid color 18 "fixed"; set out 'fig3.ps'
+set term postscript eps enhanced lw 1 size 8.6cm,18cm solid color 18 "fixed"; set out 'fig4.ps'
 set termoption dashed;
 set multiplot layout 4,1  scale 1.01, 1.01;
 #set parametric;   

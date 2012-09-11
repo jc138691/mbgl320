@@ -1,4 +1,4 @@
-\begin{thebibliography}{43}
+\begin{thebibliography}{45}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -307,15 +307,31 @@
   \bibinfo{journal}{Phys.~Rev.~Lett.} \textbf{\bibinfo{volume}{73}},
   \bibinfo{pages}{2547} (\bibinfo{year}{1994}).
 
+\bibitem[{\citenamefont{Hudson et~al.}(1996)\citenamefont{Hudson, Bartschat,
+  Scott, Burke, and Burke}}]{HBSBB96}
+\bibinfo{author}{\bibfnamefont{E.~T.} \bibnamefont{Hudson}},
+  \bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Bartschat}},
+  \bibinfo{author}{\bibfnamefont{M.~P.} \bibnamefont{Scott}},
+  \bibinfo{author}{\bibfnamefont{P.~G.} \bibnamefont{Burke}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{V.~M.} \bibnamefont{Burke}},
+  \bibinfo{journal}{J.~Phys.~B} \textbf{\bibinfo{volume}{29}},
+  \bibinfo{pages}{5513} (\bibinfo{year}{1996}).
+
+\bibitem[{\citenamefont{Schulz}(1973)}]{Schulz73}
+\bibinfo{author}{\bibfnamefont{G.~J.} \bibnamefont{Schulz}},
+  \bibinfo{journal}{Rev.~Mod.~Phys.} \textbf{\bibinfo{volume}{45}},
+  \bibinfo{pages}{378} (\bibinfo{year}{1973}).
+
 \bibitem[{\citenamefont{Buckman and Clark}(1994)}]{BC94}
 \bibinfo{author}{\bibfnamefont{S.~J.} \bibnamefont{Buckman}} \bibnamefont{and}
   \bibinfo{author}{\bibfnamefont{C.~W.} \bibnamefont{Clark}},
   \bibinfo{journal}{Rev.~Mod.~Phys.} \textbf{\bibinfo{volume}{66}},
   \bibinfo{pages}{539} (\bibinfo{year}{1994}).
 
-\bibitem[{\citenamefont{Nesbet}(1975)}]{PhysRevA.12.444}
-\bibinfo{author}{\bibfnamefont{R.~K.} \bibnamefont{Nesbet}},
-  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{12}},
-  \bibinfo{pages}{444} (\bibinfo{year}{1975}).
+\bibitem[{\citenamefont{Ho and Yan}(1999)}]{HY99}
+\bibinfo{author}{\bibfnamefont{Y.~K.} \bibnamefont{Ho}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Z.-C.} \bibnamefont{Yan}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{59}},
+  \bibinfo{pages}{R2559} (\bibinfo{year}{1999}).
 
 \end{thebibliography}
