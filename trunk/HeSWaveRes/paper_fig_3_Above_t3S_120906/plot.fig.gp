@@ -32,6 +32,21 @@ LABEL_2 = ' FC';
 SHIFT_2 = E_grnd -2.872506672905663;   ;
 
 
+JM_3    = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TCS_Nc1_L0_LMBD1.0_N50_Nt30.dat'; #
+#-2.872506672905663, -2.143449321021511, -2.06057316103011, -2.033300705504141, -2.0210330065059448, 
+SHIFT_3 = E_grnd -2.872506672905663;   ;
+
+JM_3    = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TCS_Nc7_L0_LMBD1.0_N50_Nt20.dat'
+#-2.8788063148044176, -2.1441772673457016, -2.060787022449526, -2.033389019982234, -2.0210763830568723, 
+SHIFT_3 = E_grnd -2.8788063148044176;   ;
+
+JM_3    = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TCS_Nc1_L0_LMBD1.0_N21_Nt20.dat'; # N21, N40, 
+#-2.872466799855794, -2.1434457065900214, -2.0605709879879845, -2.0332988319277057, -2.0210305875377483,
+SHIFT_3 = E_grnd -2.872466799855794;   ;
+
+
+
+
 
 CCC_1S   = '../results/ccc30_3_120817/s1S.s1S';  CCC_TICS = '../results/ccc30_3_120817/TICS.s1S'
 CCC_s2S  = '../results/ccc30_3_120817/s2S.s1S';  CCC_s3S  = '../results/ccc30_3_120817/s3S.s1S'
@@ -48,7 +63,7 @@ set style line 1 lt 1 lc -1  lw 1  pt 7  ps 0.6
 set style line 2 lt 7 lc 1   lw 1  pt 7  ps 0.6 
 set style line 11 lt 1 lc 1   lw 2  pt 1 ps 1.2 pi 2   # lc 3 blue line; lc 1 red
 set style line 12 lt 2 lc -1  lw 2  pt 7 ps 0.5 
-set style line 13 lt 2 lc 3   lw 1  pt 7 ps 0.5 
+set style line 13 lt 3 lc 3   lw 2  pt 7 ps 0.5 
 
 set term postscript eps enhanced lw 1 size 18cm,18cm solid color 18 "fixed"; set out 'fig3.ps'
 set termoption dashed;
@@ -68,6 +83,7 @@ E_3S1 = E_3S1 * xJM;
 E_4S3 = E_4S3 * xJM;
 SHIFT_1 = SHIFT_1 * xJM;
 SHIFT_2 = SHIFT_2 * xJM;
+SHIFT_3 = SHIFT_3 * xJM;
 CCC_SHIFT = CCC_SHIFT * xJM;
 
 set arrow 1 nohead from E_3S3,graph 0 to E_3S3, graph 1 lt 0
@@ -135,6 +151,7 @@ set yrange [0.0:1.4];            set ytics 0.5;  set mytics 5;   set format y "%
 set key right top Right title "(e) 2^1S [x0.01]"
 p \
   CCC_s2S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*100)    t ''   w p ls 1, \
+  JM_3 u ($1*xJM + SHIFT_3):($4*yJM*100) t 'TEST' w l ls 13, \
   JM_2 u ($1*xJM + SHIFT_2):($4*yJM*100) t '' w l ls 12, \
   JM_1 u ($1*xJM + SHIFT_1):($4*yJM*100) t '' w l ls 11
 
