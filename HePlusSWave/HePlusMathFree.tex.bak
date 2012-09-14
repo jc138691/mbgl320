@@ -1,0 +1,413 @@
+%%\documentclass[aip,jcp]{revtex4-1}
+\documentclass[aip
+, pra
+, showpacs
+, aps
+, twocolumn
+%, onecolumn
+, groupedaddress
+, floatfix
+%, preprint
+]{revtex4}
+%]{revtex4-1}
+\usepackage{graphicx, amsbsy, bm, dcolumn, amsmath}
+
+\newcommand{\etal}{{\em et~al.\/}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\vecr}{{\bf r}}
+\newcommand{\dd}{\mbox{d}}
+\newcommand{\dr}{\mbox{d} r}
+\newcommand{\vare}{\varepsilon}
+\newcommand{\calN}{{\cal N}}
+\newcommand{\di}{_{\mbox{\tiny{di}}}}
+\newcommand{\ex}{_{\mbox{\tiny{ex}}}}
+
+
+
+\newcommand{\isum}%
+{\mathop{\hbox{$\displaystyle\sum\kern-13.2pt\int\kern1.5pt$}}}
+
+\begin{document}
+
+\title {$J$-matrix calculation of electron-helium-ion $S$-wave scattering}
+
+\author{Dmitry A. Konovalov}
+\affiliation{Discipline of Information Technology, School of Business}
+\affiliation{ARC Centre for Antimatter-Matter Studies, James Cook University, Townsville, Queensland 4811, Australia}
+
+\author{Dmitry V. Fursa}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
+
+\author{Igor Bray}
+\affiliation{ARC Centre for Antimatter-Matter Studies,
+Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
+
+
+
+\date{\today}
+
+\begin{abstract}
+todo
+
+\end{abstract}
+
+\pacs{34.80.Dp} %34.80.Dp	Atomic excitation and ionization
+\maketitle
+
+
+
+\section{INTRODUCTION}
+
+
+The $J$-matrix (JM) method \cite{HY74p1201,BR76p1491} is a  general method for solving wide range of scattering problems.
+In this study, we continue to develop a version of the JM method that
+was successfully applied to the $S$-wave $e$-H  ($S$-$e$-H) \cite{KB10p022708}  and $S$-wave $e$-He  ($S$-$e$-He) \cite{KFB11,KFB12} scattering problems,
+where hereafter this version will be referred to as the KFB method.
+
+
+This study focuses on the $S$-wave $e$-He$^+$ ($S$-$e$-He$^+$) scattering model \cite{MGB95,BB97,BC97},
+where only the partial wave with zero angular momentum ($l=0$) is retained in all calculations
+and partial-wave expansions. Our motivation and goal here are twofold. First, the
+$S$-$e$-He$^+$ model contains the long-range Coulomb interaction of the scattering electron and the target helium-ion in all scattering channels.
+While the general mathematical JM expressions for the Coulomb scattering have been known since 1975 \cite{YF75}, surprisingly,
+most (if not all) JM calculations have only been applied to the short-range non-Coulomb scattering problems.
+Hence, it is interesting to apply the JM method to the Coulomb electron-ion scattering as it has not been done before.
+
+
+The second goal of this study is to provide high accuracy $S$-$e$-He$^+$ cross sections by combining advantages of the convergent-close-coupling (CCC) and JM methods.
+The JM and CCC methods are implemented independently and use completely different approaches to solve the scattering equations.
+Therefore, the CCC and JM methods can be and were used to cross-verify that their results are convergent within their own numerical parameters at key energy points,
+where the JM method is then used \cite{HY74p1201,BR76p1491} to calculate a vast number of energy points required for the benchmark results.
+
+
+See \cite{JMatrixWebsite} for information on availability of the results and source code.
+
+
+
+The need for such benchmark calculations is evident from the existing {\em ab initio} attempts to solve the $S$-$e$-He problem.
+Reviewing in reverse chronological order, in 2010, \citet{BS10p022715} developed a four-body propagating exterior scaling (PECS) method and reported results claiming to achieve "benchmark" level of accuracy.
+However none of their cross sections, including elastic and $2^{1,3}S$ excitation cross sections, displayed resonances at the accuracy level achieved for the $S$-$e$-H problem \cite{P78}.
+In 2005, \citet{HMR05} reported results using
+time-dependent exterior complex scaling (TD-ECS), which also failed to described resonance behavior of the cross sections.
+In 2002 and 2004, the CCC method \cite{PBFS02,PNBFS04} did not examine the resonance regions with sufficiently fine energy grid.
+This is now corrected to some extent when in 2011 \citet{KFB11} reported the CCC and JM {\em frozen-core}
+(FC) results clearly showing the resonances in the elastic and $n=2$ ($2^1S$ and $2^3S$) excitation cross sections.
+The RM method \cite{FLRS94b, SMC2006} has never reported its results for the $S$-$e$-He problem.
+In summary, while the three most recent methods (PECS, TD-ECS, CCC) are in good qualitative or overall agreement with each other,
+in many specific cases their results differ by as much as 10-20\% \cite{BS10p022715,HMR05}.
+These discrepancies together with the failure to describe the resonance features of the model,
+is a major theoretical gap as far as the scattering theory is concerned.
+
+
+
+The $S$-wave models have proven to be a very productive testing ground for {\it ab initio} scattering theories,
+see \cite{T62,HY74p1209,P78,P80,P81,CO84,BS92p53,BST93,KM94pL407,IDHF95,PS96,JS02,JS00l,BRIM99,S99l,MHR02,BS04,Frapiccini10} for the $S$-wave $e$-H scattering ($S$-$e$-H)
+and \cite{DHIF94,PMR99,PBFS02,PNBFS04,HMR05R,HMR05,BS10p022715,BS10p022716,KFB11} for  the $S$-$e$-He problem.
+
+
+The main attraction of the $S$-wave models is that they retain most of the physics complexities of the full
+scattering problems while reduce the problems computationally.
+
+
+
+
+
+\section{THEORY}
+
+\subsection{Radial grid}
+Computational efficiency remains an important aspect of most {\em ab initio} scattering methods. 
+In particular, very efficient numerical methods are available if grid-points ${\bf x} = (x_1, x_2, ..., x_M)$
+are equally spaced with respect to the independent variable $x(r)$, where $r$ is the radial coordinate.
+A number of such transformations are available. The logarithm of $r$ (LR) 
+\beq
+x(r) = \ln(r)
+\eeq
+is efficient when working with bound state wave functions \cite{F73,FFischer77,FFBJ97}, where the near-zero region of $r$ is not transformed.
+The logarithm of constant $c$ plus $r$ (LCR) \cite{KB10p022708}
+\beq
+x(r) = \ln(c+r)
+\eeq
+creates a single ${\bf x}$-grid including the near-zero region of $r$. The mixed linear and logarithmic transformation (LLR)
+\beq
+x(r) = ar + b\ln(r),
+\eeq
+is preferred over the LR grid when working with highly excited and/or continuum states \cite{CCR76}, 
+where $a$ and $b$ are constants, and (as in LR) the near-zero region of $r$ is not transformed. 
+While the LCR grid was very efficient when working with the Laguerre basis functions \cite{KB10p022708, KFB11, KFB12}, 
+the LCR grid is not suitable for working explicitly with continuum states. 
+Using the same arguments as for the LCR grid \cite{KB10p022708}, the LLR grid is modified arriving at the MCR grid 
+\beq
+x(r) = ar + b\ln(c+r), \ \ \ w(r) \equiv \frac{dx}{dr} = a + \frac{b}{c+r},
+\eeq
+where (as for LCR) the near-zero region of $r$ is explicitly included in the grid, and where MCR mnemonic stands for modified or mixed LCR.
+
+
+Given such a variety of possible transformations, it seems convenient to give 
+a summary of required set of equations for any arbitrary transformation $x(r)$, 
+which could be obtained similar to the LCR derivations \cite{KB10p022708}.
+Let $P(r)$ be a wave function in $r$, then 
+after the transformation $x(r)$, the corresponding equivalent $F(x)$ is given by
+\beq
+P(r) = F(x)/\sqrt{w(r)}, \ \  \ w(r) \equiv dx(r)/dr.
+\eeq
+If the equally spaced grid points are created in the $x$-variable, ${\bf x} = (x_1, x_2, ..., x_M)$,
+the corresponding $r$-grid points become ${\bf r} = (r_1, r_2, ..., r_M)$ and 
+the following equations could be used to convert required numerical calculations from the ${\bf r}$ to ${\bf x}$ grids.  
+One-dimensional integration of function $f(r)$ becomes
+\beq
+\int_{r_1}^{r_M} dr f(r) = \int_{x_1}^{x_M} dx \frac{f(r)}{w(r)},
+\eeq
+where $r(x)$ is now a function of $x$ on the right-hand side of this and following equations. 
+Matrix elements involving wave functions $P_i(r)$ and $P_j(r)$ and some radial function $f(r)$ become
+\beq 
+\int_{r_1}^{r_M} dr P_i P_j f(r) = \int_{x_1}^{x_M} dx \ F_i F_j \frac{f(r)}{[w(r)]^2},
+\eeq
+where, for example, $f(r)=1$ and $f(r)=V(r)$ yield the normalization and potential energy integrals, respectively.
+Kinetic energy matrix elements require the second derivative of wave function $P(r)$, denoted by $P_{rr}\equiv d^2P(r)/dr^2$,
+\beq
+P_{rr}(r) = [w(r)]^{3/2} [F_{xx}(x)  + W(r) F(x)],
+\eeq
+where $F_{xx}\equiv d^2F(x)/dx^2$ and term with $F_x\equiv d F(x)/dx$ is absent. After defining 
+$w_r\equiv d w(r)/dr$ and $w_{rr}\equiv d w_r/dr$, W(r) is given by
+\beq
+W(r) = -\frac{1}{2} \left[w_{rr} -\frac{3(w_r)^2}{2w}\right] w^{-3},
+\eeq
+and the kinetic energy matrix element becomes
+\beq 
+-\frac{1}{2}\int_{r_1}^{r_M} dr P_i P_{rr} =  -\frac{1}{2} \int_{x_1}^{x_M} dx F_i [F_{xx} +W F] ,
+\eeq
+
+
+
+
+Let the linear-logarithm-$r$ (LLR) transformation of radial coordinate $r$ into $x(r)$ be defined as
+\beq
+x = ar + b \ln y,\ \ \ x_r \equiv d x / d r = u,
+\eeq
+where $a$, $b$ and $c$ are constant parameters of the transformation, and where $y = c+r$ and $u = a + b / y$ are useful functions of $r$.
+
+
+
+
+
+The corresponding LCR wave functions and radial integration rules are found by starting from the kinetic energy radial integral
+\beq
+K_{ij}=-\frac{1}{2} \int_0^{\infty} \dd r \
+P_i(r) \left( \frac{\mbox{d}^2}{\mbox{d}r^2} - \frac{l(l+1)}{r^2} \right) P_j(r), \label{K_ij}
+\eeq
+and defining the LCR transformation function $f(x)$
+which converts the radial wave functions $P_i(r)$ to the corresponding LCR functions $F_i(x)$ via
+\beq
+P_i \left( r(x) \right) = f(x) F_i(x), \label{P_i}
+\eeq
+where $r$ is now a function of $x$.
+
+
+After substituting (\ref{P_i}) into (\ref{K_ij}), for the radial equations in the new variable $x$ to resemble one-dimensional motion (as for the $r$ or LR's $y$ coordinates), the term containing $\mbox{d}F(x)/\mbox{d}x$ must be eliminated arriving at
+\beq
+f(x) = z^{-1/2}, \ \ z=a+b/y, \ \ y=c+r(x), \label{f_x}
+\eeq
+\beq
+\begin{array}{ll}
+K_{ij}=-\frac{1}{2} \int_0^{\infty} & \mbox{d}x \ F_i(x)  \left( \frac{\mbox{d}^2}{\mbox{d}x^2} \right. \\
+  & - \left. \left[ \frac{1}{4} + l(l+1) \frac{(c+r)^2}{r^2} \right] \right) F_j(x).
+\end{array}
+\label{K_ij_LCR}
+\eeq
+Other one-electron matrix elements of any operator $Q(r)$, e.g. $Q(r)=V(r)$ or $Q(r)=1$,
+\beq
+Q_{ij}= \int_0^{\infty} \dd r \ P_i(r) P_j(r) Q(r), \label{Q_ij}
+\eeq
+become
+\beq
+Q_{ij}= \int_0^{\infty} dx \  z^{-2} F_i(x) F_j(x) Q(r). \label{Q_ij_LCR}
+\eeq
+
+
+The LCR transformation is also consistent with the Hartree algorithm \cite{H57} of evaluating the so-called two-electron Slater integrals,
+\beq
+\begin{array}{ll}
+R^k(a b, a' b')= & \int_0^{\infty} \dr_1 \int_0^{\infty} \dr_2 P_a(r_1) P_b(r_2) \\
+ & \times \frac{r^k_{<}}{r^{k+1}_{>}} P_{a'}(r_1) P_{b'}(r_2),
+\end{array}
+\label{R_k}
+\eeq
+using differential equations, where $r_{<}=\min(r_1, r_2)$ and $r_{>}=\max(r_1, r_2)$. In the $r$-space, the Hartree algorithm re-defines $R^k(a b, a' b')$ as
+\beq
+R^k(a b, a' b')= \int_0^{\infty} P_a(r) P_{a'}(r)
+ \frac{1}{r} Y^k_{b b'}(r) \ \dr,
+\label{R_k_from_Y}
+\eeq
+\beq
+Y^k_{ab}(r) = Z^k_{ab}(r)
++ \int_r^{\infty} \left( \frac{r}{s} \right)^{k+1} P_a(s) P_{b}(s) \ \dd s,
+\label{Y_k}
+\eeq
+\beq
+Z^k_{ab}(r) = \int_0^r \left( \frac{s}{r} \right)^k P_a(s) P_{b}(s) \ \dd s
+\label{Z_k}
+\eeq
+and numerically solves a pair of differential equations for $Y^k$ and $Z^k$,
+\beq
+\frac{\dd}{\dd r} Z^k_{ab}(r) = P_a(r) P_{b}(r) - \frac{k}{r} Z^k_{ab}(r), \label{Z_k_eq} \eeq
+\beq
+\frac{\dd}{\dd r} Y^k_{ab}(r) = \frac{1}{r} \left[ (k+1) Y^k_{ab}(r) - (2k+1) Z^k_{ab}(r) \right],
+\label{Y_k_eq}
+\eeq
+with the boundary conditions $Z^k_{ab}(0)=0$ and $Y^k_{ab}(r) \rightarrow Z^k_{ab}(r)$ as $r \rightarrow \infty$.
+
+
+After the LR transformation the Hartree algorithm takes the form \cite{FFBJ97} of
+\beq
+\frac{\dd}{\dd y} \left( r^k Z^k_{ab}(y) \right) = r^{k+2} \bar{P}_a(y) \bar{P}_{b}(y), \label{Z_k_eq_LR} \eeq
+\beq
+\frac{\dd}{\dd y} \left( r^{-(k+1)} Y^k_{ab}(y) \right) = -(2k+1)r^{-(k+1)} Z^k_{ab}(y),
+\label{Y_k_eq_LR}
+\eeq
+where $\bar{P}_a(y)=P_a(r)/\sqrt{r}$.
+
+
+In the case of the LCR transformation, the same equations become
+\beq
+\frac{\dd}{\dd x} \left( r^k Z^k_{ab}(x) \right) = (c+r)^2r^k F_a(x) F_{b}(x), \label{Z_k_eq_LCR} \eeq
+\beq
+\frac{\dd}{\dd x} \left( r^{-(k+1)} Y^k_{ab}(x) \right) = -(2k+1)(c+r)r^{-(k+2)} Z^k_{ab}(x),
+\label{Y_k_eq_LCR}
+\eeq
+where the existing computer code for $Y^k$ \cite{FF87} needs to be only slightly modified without affecting the accuracy nor stability of the numerical procedure.
+
+And finally, the Numerov algorithm, e.g. \cite{JS02}, could still be used  via
+\beq
+\left[ \frac{\dd^2}{\dd x^2} - \frac{1}{4} + 2(E-V(r)) (c+r)^2 \right] F(x) = 0
+\eeq
+and was used to calculate the Coulomb continuum wave functions in this work.
+
+
+
+
+
+\section{RESULTS}
+
+\subsection{Resonances in $e$-He $S$-wave scattering}
+
+see the resulting energy levels for two $\lambda_{\rm L}$ optimized with $n_\gamma=5$ and $n_\gamma=7$.
+Note that $e^{\mbox{\tiny{DHIF}}}(1s2s,^1S)=-2.14418810$ from \cite{DHIF94} is inconsistent
+and it is likely an error $-2.14419810$?
+
+
+TODO Error in exact energy triplet?
+
+[TODO]
+Atomic unit of energy (or Hartree) was set to 27.21138386 eV \cite{MTN08}. A tabular
+form of the JM and CCC cross sections is available from jmatrix.googlecode.com.
+
+
+Cross sections are used to verify the negative-ion eigenstates responsible for resonances.
+Verification is done by excluding a particular negative-ion state from the JM calculation and observing disappearance of the resonance behavior.
+Once identified, their radial electron distributions are used to classify the resonances relative to the target eigenstates.
+
+
+
+
+
+
+Again, both CCC and JM methods described the target helium atom
+, where the target eigenstates were constructed from the first $N_t$ JM functions (\ref{psi_H_psi}). Convergence in the CCC cross sections
+(Figs.~\ref{Fig_He_n2} and \ref{Fig_He_n3}) was achieved at $N_t=?$, where the corresponding JM cross sections
+converged at $N_t=?$ and $N=?$.
+
+
+
+
+\begin{table}[htb]
+\caption{\label{Tab_ENGS}
+Energy levels (a.u.) and excitation thresholds (eV) of the first nine bound states of helium in the
+$S$-wave model.
+}
+\begin{ruledtabular}
+%\begin{tabular}{lcr}
+\begin{tabular}{rlll}
+Classification & threshold (eV) & Eigenvalues (a.u) & ($N_c$,$N_t$)   \\
+\hline
+$\mbox{He}(1s^2,^1S)$ & 0  & -2.879 028 569 1 &  (50,50)   \\ %
+            error =   & 0.001 80 & -2.878 962 303   &  (7,30)    \\
+            error =   & 0.015 94 & -2.878 442 699   &  (3,30)    \\
+            error =   & 0.177 47 & -2.872 506 673   &  (1,30)    \\
+\hline
+$\mbox{He}(1s2s,^3S)$   & 19.178  & -2.174 264 856 3 & (50,50) \\  %-2.174 264 856 288154 -2.174264856287701, -2.0684901366080752,
+                 &  & -2.174 264 618   &  (7,30)   \\
+                &  & -2.174 245 504   &  (1,30)    \\
+\hline
+$\mbox{He}(1s2s,^1S)$     &  19.996 & -2.144 197 258 7 &  (50,50) \\ %-2.144 197 258 7 31818,
+                          &  & -2.144 191 393   &  (7,30)   \\
+                          &   & -2.143 449 321   &  (1,30)    \\
+\hline
+$\mbox{He}(1s3s,^3S)$     & 22.056  & -2.068 490 070   &  (7,30)   \\
+                          &        & -2.068 484 660   &  (1,30)    \\
+\hline
+$\mbox{He}(1s3s,^1S)$     & 22.266   & -2.060 792 356   & (7,30)    \\
+                          &          & -2.060 573 161   &  (1,30)    \\
+\hline
+$\mbox{He}(1s4s,^3S)$    & 22.928  & -2.036 438 560   &  (7,30)    \\
+                         &         & -2.036 436 372   &  (1,30)   \\
+\hline
+$\mbox{He}(1s4s,^1S)$   &  23.011 & -2.033 392 203 &  (7,30)   \\
+                        &         & -2.033 300 706 &  (1,30)   \\
+\hline
+$\mbox{He}(1s5s,^3S)$   &   23.305  & -2.022 583 695   &  (7,30)    \\
+                        &           & -2.022 582 608   &  (1,30)    \\
+\hline
+$\mbox{He}(1s5s,^1S)$   &  23.346   & -2.021 079 423   &  (7,30)    \\
+                        &              & -2.021 033 007   &  (1,30)    \\
+\hline
+$\mbox{He}^+(1s)$       &  23.920 & -2 	 &    Ionization \\
+
+%nc50 -2.8790285691204813, -2.144197258731818, -2.060794037546691, -2.0333785522995016, -2.019784513192403,
+%-2.174264856288154, -2.0684901366081845, -2.0364341783161515, -2.021798838036517,
+
+%nc10   -2.878976298682523, -2.1441926558786752, -2.0607927208274255, -2.0333923539473497,
+% -2.1742647128049755, -2.0684900966824507, -2.036438571423033,
+
+%nc7 -2.8789623026211353, -2.1441913928180427, -2.0607923564616435, -2.0333922030334937, -2.0210794228323463,
+% -2.1742646178307643, -2.068490069685457, -2.036438559573639, -2.022583694613397,
+
+%nc1 -2.872506672905663, -2.143449321021511, -2.06057316103011, -2.033300705504141, -2.0210330065059448,
+% -2.1742455043163393, -2.0684846598208337, -2.0364363721136964, -2.022582608219962,
+
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+
+\section{CONCLUSIONS}
+
+
+In order to achieve the stated goal we apply the $J$-matrix (JM) approach to electron-atom scattering,
+which has been recently revised by merging it with the Fano's multi-configuration interaction matrix elements \cite{Fano65}.
+In that preceding JM paper \cite{BF11},
+the $S$-wave $e$-He scattering problem was solved within the frozen-core (FC) model of helium for
+the elastic, $2^{1,3}S$-excitation, and single ionization cross sections for impact energies in the range 0.1-1000eV.
+The reported in \cite{BF11} "proof-of-principle" JM calculations were in complete agreement with the convergent-close-coupling (CCC) method,
+within the FC model.
+In this sequel, the scattering target helium atom is described at much higher level of accuracy overcoming the FC model.
+It is found that the theory in \cite{BF11} is sufficient to fully solve the $S$-model below the single ionization threshold.
+The presented JM results (1-30 eV) are confirmed by the corresponding CCC calculations providing
+total elastic, $2^{1,3}S$ and $3^{1,3}S$ excitation cross sections with a "benchmark"-level of accuracy for the first time for the considered $S$-wave model.
+
+
+\begin{acknowledgments}
+This work was supported by the Australian Research Council. IB
+acknowledges the Australian National Computational Infrastructure
+Facility and its Western Australian node iVEC.
+\end{acknowledgments}
+
+
+
+\bibliographystyle{apsrev}
+\bibliography{../bibtex/qm_references}
+
+\end{document}
