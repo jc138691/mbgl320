@@ -1,0 +1,346 @@
+\begin{thebibliography}{47}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname bibnamefont\endcsname\relax
+  \def\bibnamefont#1{#1}\fi
+\expandafter\ifx\csname bibfnamefont\endcsname\relax
+  \def\bibfnamefont#1{#1}\fi
+\expandafter\ifx\csname citenamefont\endcsname\relax
+  \def\citenamefont#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{\citenamefont{Heller and Yamani}(1974{\natexlab{a}})}]{HY74p1201}
+\bibinfo{author}{\bibfnamefont{E.~J.} \bibnamefont{Heller}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{H.~A.} \bibnamefont{Yamani}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{9}},
+  \bibinfo{pages}{1201} (\bibinfo{year}{1974}{\natexlab{a}}).
+
+\bibitem[{\citenamefont{Broad and Reinhardt}(1976)}]{BR76p1491}
+\bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Broad}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{W.}~\bibnamefont{Reinhardt}},
+  \bibinfo{journal}{J.~Phys.~B} \textbf{\bibinfo{volume}{9}},
+  \bibinfo{pages}{1491} (\bibinfo{year}{1976}).
+
+\bibitem[{\citenamefont{Konovalov and Bray}(2010)}]{KB10p022708}
+\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Konovalov}}
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{82}},
+  \bibinfo{pages}{{022708}} (\bibinfo{year}{2010}).
+
+\bibitem[{\citenamefont{Konovalov et~al.}(2011)\citenamefont{Konovalov, Fursa,
+  and Bray}}]{KFB11}
+\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Konovalov}},
+  \bibinfo{author}{\bibfnamefont{D.~V.} \bibnamefont{Fursa}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{84}},
+  \bibinfo{pages}{{032707}} (\bibinfo{year}{2011}).
+
+\bibitem[{\citenamefont{Konovalov et~al.}(2012)\citenamefont{Konovalov, Fursa,
+  and Bray}}]{KFB12}
+\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Konovalov}},
+  \bibinfo{author}{\bibfnamefont{D.~V.} \bibnamefont{Fursa}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{??}},
+  \bibinfo{pages}{{??}} (\bibinfo{year}{2012}).
+
+\bibitem[{\citenamefont{Meyer et~al.}(1995)\citenamefont{Meyer, Greene, and
+  Bray}}]{MGB95}
+\bibinfo{author}{\bibfnamefont{K.~W.} \bibnamefont{Meyer}},
+  \bibinfo{author}{\bibfnamefont{C.~H.} \bibnamefont{Greene}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{52}},
+  \bibinfo{pages}{1334} (\bibinfo{year}{1995}).
+
+\bibitem[{\citenamefont{Bartschat and Bray}(1997)}]{BB97}
+\bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Bartschat}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{55}},
+  \bibinfo{pages}{3236} (\bibinfo{year}{1997}).
+
+\bibitem[{\citenamefont{Bray and Clare}(1997)}]{BC97}
+\bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{B.}~\bibnamefont{Clare}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{56}},
+  \bibinfo{pages}{R1694} (\bibinfo{year}{1997}).
+
+\bibitem[{\citenamefont{Yamani and Fishman}(1975)}]{YF75}
+\bibinfo{author}{\bibfnamefont{H.~A.} \bibnamefont{Yamani}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Fishman}},
+  \bibinfo{journal}{J.~Math.~Phys.} \textbf{\bibinfo{volume}{16}},
+  \bibinfo{pages}{410} (\bibinfo{year}{1975}).
+
+\bibitem[{JMa()}]{JMatrixWebsite}
+\emph{\bibinfo{title}{{The complete Java source code used in this study is
+  freely available for academic use from jmatrix.googlecode.com or a relevant
+  link at www.dmitrykonovalov.org . }}}.
+
+\bibitem[{\citenamefont{Bartlett and
+  Stelbovics}(2010{\natexlab{a}})}]{BS10p022715}
+\bibinfo{author}{\bibfnamefont{P.~L.} \bibnamefont{Bartlett}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.~T.} \bibnamefont{Stelbovics}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{81}},
+  \bibinfo{pages}{{022715}} (\bibinfo{year}{2010}{\natexlab{a}}).
+
+\bibitem[{\citenamefont{Poet}(1978)}]{P78}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Poet}},
+  \bibinfo{journal}{J.~Phys.~B} \textbf{\bibinfo{volume}{11}},
+  \bibinfo{pages}{3081} (\bibinfo{year}{1978}).
+
+\bibitem[{\citenamefont{Horner et~al.}(2005{\natexlab{a}})\citenamefont{Horner,
+  McCurdy, and Rescigno}}]{HMR05}
+\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Horner}},
+  \bibinfo{author}{\bibfnamefont{C.~W.} \bibnamefont{McCurdy}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{T.~N.}
+  \bibnamefont{Rescigno}}, \bibinfo{journal}{Phys.~Rev.~A}
+  \textbf{\bibinfo{volume}{71}}, \bibinfo{pages}{012701}
+  (\bibinfo{year}{2005}{\natexlab{a}}).
+
+\bibitem[{\citenamefont{Plottke et~al.}(2002)\citenamefont{Plottke, Bray,
+  Fursa, and Stelbovics}}]{PBFS02}
+\bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Plottke}},
+  \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}},
+  \bibinfo{author}{\bibfnamefont{D.~V.} \bibnamefont{Fursa}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.~T.} \bibnamefont{Stelbovics}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{65}},
+  \bibinfo{pages}{032701} (\bibinfo{year}{2002}).
+
+\bibitem[{\citenamefont{Plottke et~al.}(2004)\citenamefont{Plottke, Nicol,
+  Bray, Fursa, and Stelbovics}}]{PNBFS04}
+\bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Plottke}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Nicol}},
+  \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}},
+  \bibinfo{author}{\bibfnamefont{D.~V.} \bibnamefont{Fursa}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.~T.} \bibnamefont{Stelbovics}},
+  \bibinfo{journal}{J.~Phys.~B} \textbf{\bibinfo{volume}{37}},
+  \bibinfo{pages}{3711} (\bibinfo{year}{2004}).
+
+\bibitem[{\citenamefont{Fon et~al.}(1994)\citenamefont{Fon, Lim, Ratnavelu, and
+  Sawey}}]{FLRS94b}
+\bibinfo{author}{\bibfnamefont{W.~C.} \bibnamefont{Fon}},
+  \bibinfo{author}{\bibfnamefont{K.~P.} \bibnamefont{Lim}},
+  \bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Ratnavelu}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{P.~M.~J.}
+  \bibnamefont{Sawey}}, \bibinfo{journal}{Phys.~Rev.~A}
+  \textbf{\bibinfo{volume}{50}}, \bibinfo{pages}{4802} (\bibinfo{year}{1994}).
+
+\bibitem[{\citenamefont{Stepanovic et~al.}(2006)\citenamefont{Stepanovic,
+  Minic, Cvejanovic, Jureta, Kurepa, Cvejanovic, Zatsarinny, and
+  Bartschat}}]{SMC2006}
+\bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Stepanovic}},
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Minic}},
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Cvejanovic}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Jureta}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Kurepa}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Cvejanovic}},
+  \bibinfo{author}{\bibfnamefont{O.}~\bibnamefont{Zatsarinny}},
+  \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Bartschat}},
+  \bibinfo{journal}{J.~Phys.~B} \textbf{\bibinfo{volume}{39}},
+  \bibinfo{pages}{1547} (\bibinfo{year}{2006}).
+
+\bibitem[{\citenamefont{Temkin}(1962)}]{T62}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Temkin}},
+  \bibinfo{journal}{Phys. Rev.} \textbf{\bibinfo{volume}{126}},
+  \bibinfo{pages}{130} (\bibinfo{year}{1962}).
+
+\bibitem[{\citenamefont{Heller and Yamani}(1974{\natexlab{b}})}]{HY74p1209}
+\bibinfo{author}{\bibfnamefont{E.~J.} \bibnamefont{Heller}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{H.~A.} \bibnamefont{Yamani}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{9}},
+  \bibinfo{pages}{1209} (\bibinfo{year}{1974}{\natexlab{b}}).
+
+\bibitem[{\citenamefont{Poet}(1980)}]{P80}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Poet}},
+  \bibinfo{journal}{J.~Phys.~B} \textbf{\bibinfo{volume}{13}},
+  \bibinfo{pages}{2995} (\bibinfo{year}{1980}).
+
+\bibitem[{\citenamefont{Poet}(1981)}]{P81}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Poet}},
+  \bibinfo{journal}{J.~Phys.~B} \textbf{\bibinfo{volume}{14}},
+  \bibinfo{pages}{91} (\bibinfo{year}{1981}).
+
+\bibitem[{\citenamefont{Callaway and Oza}(1984)}]{CO84}
+\bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Callaway}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.~H.} \bibnamefont{Oza}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{29}},
+  \bibinfo{pages}{2416} (\bibinfo{year}{1984}).
+
+\bibitem[{\citenamefont{Bray and Stelbovics}(1992)}]{BS92p53}
+\bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.~T.} \bibnamefont{Stelbovics}},
+  \bibinfo{journal}{Phys.~Rev.~Lett.} \textbf{\bibinfo{volume}{69}},
+  \bibinfo{pages}{53} (\bibinfo{year}{1992}).
+
+\bibitem[{\citenamefont{Bhatia et~al.}(1993)\citenamefont{Bhatia, Schneider,
+  and Temkin}}]{BST93}
+\bibinfo{author}{\bibfnamefont{A.~K.} \bibnamefont{Bhatia}},
+  \bibinfo{author}{\bibfnamefont{B.~I.} \bibnamefont{Schneider}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Temkin}},
+  \bibinfo{journal}{Phys.~Rev.~Lett.} \textbf{\bibinfo{volume}{70}},
+  \bibinfo{pages}{1936} (\bibinfo{year}{1993}).
+
+\bibitem[{\citenamefont{Konovalov and McCarthy}(1994)}]{KM94pL407}
+\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Konovalov}}
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{I.~E.}
+  \bibnamefont{McCarthy}}, \bibinfo{journal}{J.~Phys.~B}
+  \textbf{\bibinfo{volume}{27}}, \bibinfo{pages}{L407} (\bibinfo{year}{1994}).
+
+\bibitem[{\citenamefont{Ihra et~al.}(1995)\citenamefont{Ihra, Draeger, Handke,
+  and Friedrich}}]{IDHF95}
+\bibinfo{author}{\bibfnamefont{W.}~\bibnamefont{Ihra}},
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Draeger}},
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Handke}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{H.}~\bibnamefont{Friedrich}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{52}},
+  \bibinfo{pages}{3752} (\bibinfo{year}{1995}).
+
+\bibitem[{\citenamefont{Pindzola and Schultz}(1996)}]{PS96}
+\bibinfo{author}{\bibfnamefont{M.~S.} \bibnamefont{Pindzola}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.~R.} \bibnamefont{Schultz}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{53}},
+  \bibinfo{pages}{1525} (\bibinfo{year}{1996}).
+
+\bibitem[{\citenamefont{Jones and Stelbovics}(2002)}]{JS02}
+\bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Jones}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.~T.} \bibnamefont{Stelbovics}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{66}},
+  \bibinfo{pages}{032717} (\bibinfo{year}{2002}).
+
+\bibitem[{\citenamefont{Jones and Stelbovics}(2000)}]{JS00l}
+\bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Jones}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.~T.} \bibnamefont{Stelbovics}},
+  \bibinfo{journal}{Phys.~Rev.~Lett.} \textbf{\bibinfo{volume}{84}},
+  \bibinfo{pages}{1878} (\bibinfo{year}{2000}).
+
+\bibitem[{\citenamefont{Baertschy et~al.}(1999)\citenamefont{Baertschy,
+  Rescigno, Isaacs, and McCurdy}}]{BRIM99}
+\bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Baertschy}},
+  \bibinfo{author}{\bibfnamefont{T.~N.} \bibnamefont{Rescigno}},
+  \bibinfo{author}{\bibfnamefont{W.~A.} \bibnamefont{Isaacs}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{C.~W.}
+  \bibnamefont{McCurdy}}, \bibinfo{journal}{Phys.~Rev.~A}
+  \textbf{\bibinfo{volume}{60}}, \bibinfo{pages}{R13} (\bibinfo{year}{1999}).
+
+\bibitem[{\citenamefont{Stelbovics}(1999)}]{S99l}
+\bibinfo{author}{\bibfnamefont{A.~T.} \bibnamefont{Stelbovics}},
+  \bibinfo{journal}{Phys.~Rev.~Lett.} \textbf{\bibinfo{volume}{83}},
+  \bibinfo{pages}{1570} (\bibinfo{year}{1999}).
+
+\bibitem[{\citenamefont{McCurdy et~al.}(2002)\citenamefont{McCurdy, Horner, and
+  Rescigno}}]{MHR02}
+\bibinfo{author}{\bibfnamefont{C.~W.} \bibnamefont{McCurdy}},
+  \bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Horner}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{T.~N.}
+  \bibnamefont{Rescigno}}, \bibinfo{journal}{Phys.~Rev.~A}
+  \textbf{\bibinfo{volume}{65}}, \bibinfo{pages}{042714}
+  (\bibinfo{year}{2002}).
+
+\bibitem[{\citenamefont{Bartlett and Stelbovics}(2004)}]{BS04}
+\bibinfo{author}{\bibfnamefont{P.~L.} \bibnamefont{Bartlett}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.~T.} \bibnamefont{Stelbovics}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{69}},
+  \bibinfo{pages}{022703} (\bibinfo{year}{2004}).
+
+\bibitem[{\citenamefont{Frapiccini et~al.}({2010})\citenamefont{Frapiccini,
+  Randazzo, Gasaneo, and Colavecchia}}]{Frapiccini10}
+\bibinfo{author}{\bibfnamefont{A.~L.} \bibnamefont{Frapiccini}},
+  \bibinfo{author}{\bibfnamefont{J.~M.} \bibnamefont{Randazzo}},
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Gasaneo}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{F.~D.} \bibnamefont{Colavecchia}},
+  \bibinfo{journal}{J.~Phys.~B} \textbf{\bibinfo{volume}{{43}}},
+  \bibinfo{pages}{{101001}} (\bibinfo{year}{{2010}}).
+
+\bibitem[{\citenamefont{Draeger et~al.}(1994)\citenamefont{Draeger, Handke,
+  Ihra, and Friedrich}}]{DHIF94}
+\bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Draeger}},
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Handke}},
+  \bibinfo{author}{\bibfnamefont{W.}~\bibnamefont{Ihra}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{H.}~\bibnamefont{Friedrich}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{50}},
+  \bibinfo{pages}{3793} (\bibinfo{year}{1994}).
+
+\bibitem[{\citenamefont{Pindzola et~al.}(1999)\citenamefont{Pindzola, Mitnik,
+  and Robicheaux}}]{PMR99}
+\bibinfo{author}{\bibfnamefont{M.~S.} \bibnamefont{Pindzola}},
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Mitnik}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Robicheaux}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{59}},
+  \bibinfo{pages}{4390} (\bibinfo{year}{1999}).
+
+\bibitem[{\citenamefont{Horner et~al.}(2005{\natexlab{b}})\citenamefont{Horner,
+  McCurdy, and Rescigno}}]{HMR05R}
+\bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Horner}},
+  \bibinfo{author}{\bibfnamefont{C.~W.} \bibnamefont{McCurdy}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{T.~N.}
+  \bibnamefont{Rescigno}}, \bibinfo{journal}{Phys.~Rev.~A}
+  \textbf{\bibinfo{volume}{71}}, \bibinfo{pages}{010701(R)}
+  (\bibinfo{year}{2005}{\natexlab{b}}).
+
+\bibitem[{\citenamefont{Bartlett and
+  Stelbovics}(2010{\natexlab{b}})}]{BS10p022716}
+\bibinfo{author}{\bibfnamefont{P.~L.} \bibnamefont{Bartlett}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.~T.} \bibnamefont{Stelbovics}},
+  \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{81}},
+  \bibinfo{pages}{{022716}} (\bibinfo{year}{2010}{\natexlab{b}}).
+
+\bibitem[{\citenamefont{Froese-Fischer}(1973)}]{F73}
+\bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Froese-Fischer}},
+  \bibinfo{journal}{J. Comput. Phys.} \textbf{\bibinfo{volume}{13}},
+  \bibinfo{pages}{502} (\bibinfo{year}{1973}).
+
+\bibitem[{\citenamefont{Froese~Fischer}(1977)}]{FFischer77}
+\bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Froese~Fischer}},
+  \emph{\bibinfo{title}{The Hartree-Fock Method for Atoms}}
+  (\bibinfo{publisher}{John Wiley \& Sons}, \bibinfo{year}{1977}).
+
+\bibitem[{\citenamefont{Froese~Fischer
+  et~al.}(1997)\citenamefont{Froese~Fischer, Brage, and Jonsson}}]{FFBJ97}
+\bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Froese~Fischer}},
+  \bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Brage}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Jonsson}},
+  \emph{\bibinfo{title}{Computational atomic structure}}
+  (\bibinfo{publisher}{Institute of Physics Publishing}, \bibinfo{year}{1997}).
+
+\bibitem[{\citenamefont{Chernysheva et~al.}(1976)\citenamefont{Chernysheva,
+  Cherepkov, and Radojevic}}]{CCR76}
+\bibinfo{author}{\bibfnamefont{L.~V.} \bibnamefont{Chernysheva}},
+  \bibinfo{author}{\bibfnamefont{N.~A.} \bibnamefont{Cherepkov}},
+  \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{V.}~\bibnamefont{Radojevic}},
+  \bibinfo{journal}{Comp.~Phys.~Comm.} \textbf{\bibinfo{volume}{11}},
+  \bibinfo{pages}{57 } (\bibinfo{year}{1976}).
+
+\bibitem[{\citenamefont{Hartree}(1957)}]{H57}
+\bibinfo{author}{\bibfnamefont{D.~R.} \bibnamefont{Hartree}},
+  \emph{\bibinfo{title}{The calculation of Atomic Structures}}
+  (\bibinfo{publisher}{Wiley}, \bibinfo{address}{New York},
+  \bibinfo{year}{1957}).
+
+\bibitem[{\citenamefont{Froese~Fischer}(1987)}]{FF87}
+\bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Froese~Fischer}},
+  \bibinfo{journal}{Comp.~Phys.~Comm.} \textbf{\bibinfo{volume}{43}},
+  \bibinfo{pages}{355} (\bibinfo{year}{1987}).
+
+\bibitem[{\citenamefont{Mohr et~al.}(2008)\citenamefont{Mohr, Taylor, and
+  Newell}}]{MTN08}
+\bibinfo{author}{\bibfnamefont{P.~J.} \bibnamefont{Mohr}},
+  \bibinfo{author}{\bibfnamefont{B.~N.} \bibnamefont{Taylor}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{D.~B.}
+  \bibnamefont{Newell}}, \bibinfo{journal}{Rev.~Mod.~Phys.}
+  \textbf{\bibinfo{volume}{80}}, \bibinfo{pages}{633} (\bibinfo{year}{2008}).
+
+\bibitem[{\citenamefont{Fano}(1965)}]{Fano65}
+\bibinfo{author}{\bibfnamefont{U.}~\bibnamefont{Fano}},
+  \bibinfo{journal}{Phys.~Rev.} \textbf{\bibinfo{volume}{140}},
+  \bibinfo{pages}{A67} (\bibinfo{year}{1965}).
+
+\bibitem[{\citenamefont{Bray and Fursa}(2011)}]{BF11}
+\bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Bray}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{D.~V.} \bibnamefont{Fursa}},
+  \bibinfo{journal}{J.~Phys.~B} \textbf{\bibinfo{volume}{44}},
+  \bibinfo{pages}{061001} (\bibinfo{year}{2011}).
+
+\end{thebibliography}
