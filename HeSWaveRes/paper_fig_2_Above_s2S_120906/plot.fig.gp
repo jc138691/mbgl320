@@ -21,14 +21,14 @@ E_min = E_ion; E_max=40;
 JM_1    = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TCS_Nc7_L0_LMBD1.0_N100_Nt30.dat'
 #-2.8789623026211353, -2.1441913928180427, -2.0607923564616435, -2.0333922030334937, -2.0210794228323463,
 #-2.1742646178307643, -2.068490069685457, -2.036438559573639, -2.022583694613397, 
-LABEL_1 = 'KFB';
+LABEL_1 = 'JM(MC)';
 SHIFT_1 = E_grnd -2.8789623026211353;   ;
 
 
 JM_2    = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TCS_Nc1_L0_LMBD1.0_N100_Nt30.dat'
 #-2.872506672905663, -2.143449321021511, -2.06057316103011, -2.033300705504141, -2.0210330065059448, 
 #-2.1742455043163393, -2.0684846598208337, -2.0364363721136964, -2.022582608219962,
-LABEL_2 = ' FC';
+LABEL_2 = 'JM(FC)';
 SHIFT_2 = E_grnd -2.872506672905663;   ;
 
 
@@ -80,7 +80,7 @@ set xlabel '';
 set ylabel ' '; 
 
 set xrange [E_2S1-0.1:E_3S3+0.1];  set xtics 0.5;    set mxtics 5;   set format x "%4.1f"; 
-set yrange [7.3:8.5];               set ytics 0.5;  set mytics 5;   set format y "%3.1f"; 
+set yrange [7.4:8.4];              set ytics 0.2;  set mytics 4;   set format y "%3.1f"; 
 set key right top Right title "(a) 1^1S"
 p \
   CCC_1S  u ($1*xCCC + CCC_SHIFT):($2*yCCC)    t 'CCC'   w p ls 1, \

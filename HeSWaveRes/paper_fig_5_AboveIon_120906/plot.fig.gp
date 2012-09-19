@@ -25,7 +25,7 @@ SHIFT_1 = 0;
 
 JM_2    = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TCS_Nc3_L0_LMBD1.0_N101_Nt30.dat'
 TICS_2  = '../../output/HeSWaveBasisHeIon/HeSWaveBasisHeIon_TICS_Nc3_L0_LMBD1.0_N101_Nt30.dat'
-LABEL_2 = 'KFB';
+LABEL_2 = 'JM(MC)';
 SHIFT_2 = 0;
 
 

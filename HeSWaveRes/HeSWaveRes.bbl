@@ -1,4 +1,4 @@
-\begin{thebibliography}{45}
+\begin{thebibliography}{47}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -285,9 +285,19 @@
   \bibinfo{pages}{1491} (\bibinfo{year}{1976}).
 
 \bibitem[{JMa()}]{JMatrixWebsite}
-\emph{\bibinfo{title}{{The complete Java source code used in this study is
-  freely available for academic use from jmatrix.googlecode.com or a relevant
-  link at www.dmitrykonovalov.org . }}}.
+\emph{\bibinfo{title}{{Results in tabular form and the complete Java source
+  code used in this study is freely available for academic use from
+  jmatrix.googlecode.com or a relevant link at www.dmitrykonovalov.org. }}}.
+
+\bibitem[{\citenamefont{Alhaidari et~al.}(2008)\citenamefont{Alhaidari, Yamani,
+  Heller, and Abdelmonem}}]{JMatrix2008}
+\bibinfo{author}{\bibfnamefont{A.~D.} \bibnamefont{Alhaidari}},
+  \bibinfo{author}{\bibfnamefont{H.~A.} \bibnamefont{Yamani}},
+  \bibinfo{author}{\bibfnamefont{E.~J.} \bibnamefont{Heller}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{M.~S.}
+  \bibnamefont{Abdelmonem}}, \emph{\bibinfo{title}{{The J-Matrix Method
+  Developments and Applications}}} (\bibinfo{publisher}{Springer},
+  \bibinfo{address}{New York}, \bibinfo{year}{2008}).
 
 \bibitem[{\citenamefont{Konovalov and Bray}(2010)}]{KB10p022708}
 \bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Konovalov}}
@@ -333,5 +343,13 @@
   \bibinfo{author}{\bibfnamefont{Z.-C.} \bibnamefont{Yan}},
   \bibinfo{journal}{Phys.~Rev.~A} \textbf{\bibinfo{volume}{59}},
   \bibinfo{pages}{R2559} (\bibinfo{year}{1999}).
+
+\bibitem[{\citenamefont{Vanroose et~al.}(2001)\citenamefont{Vanroose,
+  Broeckhove, and Arickx}}]{VBA02p010404}
+\bibinfo{author}{\bibfnamefont{W.}~\bibnamefont{Vanroose}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Broeckhove}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Arickx}},
+  \bibinfo{journal}{Phys.~Rev.~Lett.} \textbf{\bibinfo{volume}{88}},
+  \bibinfo{pages}{010404} (\bibinfo{year}{2001}).
 
 \end{thebibliography}

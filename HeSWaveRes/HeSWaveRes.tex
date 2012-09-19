@@ -53,18 +53,16 @@ Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
 \begin{abstract}
 
 In the preceding $J$-matrix (JM) paper [D. A. Konovalov {\em et. al.} Phys. Rev. A {\bf 84}, 032707 (2011)],
-the $S$-wave $e$-He scattering ($S$-$e$-He) problem was solved within the frozen-core (FC) model of helium for impact energies in the range 0.1-1000eV.
+the $S$-wave $e$-He scattering ($e$-He($S$)) problem was solved within the frozen-core (FC) model of helium for impact energies in the range 0.1-1000eV.
 In this sequel, both target electrons are described within the configuration-interaction model of helium obtaining  more accurate (compared to the FC model)
 first seven bound states of the $S$-wave helium.
-The presented JM calculations are essentially exact numerical solution of the
-$S$-$e$-He problem
-for the total elastic, $2^{1,3}S$, $3^{1,3}S$ excitation cross sections below the ionization threshold.
+The presented JM calculations are highly accurate numerical solutions of the
+$e$-He($S$) problem
+for the elastic, $2^{1,3}S$, $3^{1,3}S$ excitation and total ionization cross sections.
+At energies above the ionization threshold some minor pseudoresonance behavior is still evident despite the large bases used.
 The JM results are confirmed by the corresponding convergent-close-coupling (CCC) calculations creating a challenging benchmark
 for any current or future {\it ab initio} electron-atom scattering methods.
 
-Above the ionization threshold, only the elastic, triplet $2^3S$ excitation and ionization cross sections are obtained at the benchmark accuracy level.
-The rest of excitation cross sections still exhibit noticeable pseudo-resonances (up to 10\% fluctuations),
-which could not be eliminated with the considered number of target states (up to 95 eigenstates of He were considered).
 
 
 \end{abstract}
@@ -77,13 +75,13 @@ which could not be eliminated with the considered number of target states (up to
 \section{INTRODUCTION}
 
 
-This study focuses on the $S$-wave $e$-He ($S$-$e$-He) scattering model,
+This study focuses on the $S$-wave $e$-He ($e$-He($S$)) scattering model,
 where the target helium atom is in its ground state before the electron impact,
 and where only the partial wave with zero angular momentum ($l=0$) is retained in all calculations
 and partial-wave expansions.
 The $S$-wave models have proven to be a very productive testing ground for {\it ab initio} scattering theories,
-see \cite{T62,HY74p1209,P78,P80,P81,CO84,BS92p53,BST93,KM94pL407,IDHF95,PS96,JS02,JS00l,BRIM99,S99l,MHR02,BS04,Frapiccini10} for the $S$-wave $e$-H scattering ($S$-$e$-H)
-and \cite{DHIF94,PMR99,PBFS02,PNBFS04,HMR05R,HMR05,BS10p022715,BS10p022716,KFB11} for  the $S$-$e$-He problem.
+see \cite{T62,HY74p1209,P78,P80,P81,CO84,BS92p53,BST93,KM94pL407,IDHF95,PS96,JS02,JS00l,BRIM99,S99l,MHR02,BS04,Frapiccini10} for the $S$-wave $e$-H scattering ($e$-H($S$))
+and \cite{DHIF94,PMR99,PBFS02,PNBFS04,HMR05R,HMR05,BS10p022715,BS10p022716,KFB11} for  the $e$-He($S$) problem.
 The main attraction of the $S$-wave models is that they retain most of the physics complexities of the full
 scattering problems while reduce the problems computationally.
 Furthermore it is somewhat expected that if a theoretical method solves a $S$-wave model, then
@@ -93,20 +91,22 @@ $R$-matrix (RM) \cite{FLRS94b, PhysRevA.54.R998, SMC2006}
 and $J$-matrix (JM) \cite{KM94pL741,KM95pL139} methods.
 
 
-The main goal of this study is to provide high accuracy $S$-$e$-He cross sections highlighting resonant features of the cross sections where applicable.
-The need for such benchmark calculations is evident from the existing {\em ab initio} attempts to solve the $S$-$e$-He problem.
+The main goal of this study is to provide high accuracy $e$-He($S$) cross sections highlighting resonant features of the cross sections where applicable.
+The need for such benchmark calculations is evident from the existing {\em ab initio} attempts to solve the $e$-He($S$) problem.
 Reviewing in reverse chronological order, in 2010, \citet{BS10p022715} developed a four-body propagating exterior scaling (PECS) method and reported results claiming to achieve "benchmark" level of accuracy.
-However none of their cross sections, including elastic and $2^{1,3}S$ excitation cross sections, displayed resonances at the accuracy level achieved for the $S$-$e$-H problem \cite{P78}.
+However none of their cross sections, including elastic and $2^{1,3}S$ excitation cross sections,
+displayed resonances at the accuracy level achieved for the $e$-H($S$) problem \cite{P78}.
 In 2005, \citet{HMR05} reported results using
 time-dependent exterior complex scaling (TD-ECS), which also failed to described resonance behavior of the cross sections.
-In 2002 and 2004, the CCC method \cite{PBFS02,PNBFS04} did not examine the resonance regions with sufficiently fine energy grid.
+In 2002 and 2004, the CCC method \cite{PBFS02,PNBFS04} did not examine the resonance regions with a sufficiently fine energy grid.
 This is now corrected to some extent when in 2011 \citet{KFB11} reported the CCC and JM {\em frozen-core}
 (FC) results clearly showing the resonances in the elastic and $n=2$ ($2^1S$ and $2^3S$) excitation cross sections.
-The RM method \cite{FLRS94b, SMC2006} has never reported its results for the $S$-$e$-He problem.
+As far as we are aware, the RM method \cite{FLRS94b, SMC2006}, which is most suited to the study of resonances,
+has never reported its results for the $e$-He($S$) problem.
 In summary, while the three most recent methods (PECS, TD-ECS, CCC) are in good qualitative or overall agreement with each other,
 in many specific cases their results differ by as much as 10-20\% \cite{BS10p022715,HMR05}.
 These discrepancies together with the failure to describe the resonance features of the model,
-is a major theoretical gap as far as the scattering theory is concerned.
+provides the motivation for the present study.
 
 
 The stated goal is attempted and achieved in many aspects by combining advantages of the CCC and JM methods,
@@ -114,7 +114,7 @@ where the later has been recently revised \cite{KFB11} by merging it with the Fa
 The CCC method is able to solve the scattering problem very accurately via the Lippmann-Schwinger equation \cite{BS92p6995}.
 However, it is not practical to run the CCC method for each of the many thousands of impact energy points required for the final benchmark results.
 On the other hand, the JM method is very efficient \cite{HY74p1201,BR76p1491} in calculating a vast number of energy points
-but numerical-convergence properties of the JM method remains largely unknown.
+but numerical-convergence properties of the JM method remain largely unknown.
 The JM and CCC methods are implemented independently and use completely different approaches to solve the scattering equations.
 Therefore, the CCC and JM methods can be and were used to cross-verify that their results are convergent within their own numerical parameters at key energy points.
 See \cite{JMatrixWebsite} for information on availability of the results and source code.
@@ -125,7 +125,7 @@ See \cite{JMatrixWebsite} for information on availability of the results and sou
 \caption{(Color online) Elastic ($1^1S$) and
 $2^3S$ single-excitation $e$-He $S$-wave cross sections between and around $2^3S$ and $2^1S$ thresholds shown by vertical dashed lines.
 Sub-figures (a) and (c) zoom in on the $2^3S$ excitation threshold (Table~\ref{Tab_ENGS}).
-FC (Frozen-core, $N_c=1$, $N_t=30$), KFB ($N_c=7$, $N_t=30$) and CCC ($N_c=3$, $N_t=30$) results  were shifted to the right by 0.17747eV, 0.0018eV
+JM(FC) ($N_c=1$, $N_t=30$), JM(MC) ($N_c=7$, $N_t=30$) and CCC ($N_c=3$, $N_t=30$) results  were shifted to the right by 0.17747eV, 0.0018eV
 and 0.01594eV (Table~\ref{Tab_ENGS}), respectively.
 }
 \label{Fig_1}
@@ -147,7 +147,7 @@ for incident energies between and around $2^1S$ and $3^3S$ thresholds shown by v
 The same as in Fig.~\ref{Fig_2} but with added $3^3S$ excitation cross section, and
 between and around the $3^3S$ and $3^1S$ thresholds shown by vertical dashed lines.
 Sub-figures (a), (c), (e) and (g) zoom in on the $3^3S$ excitation threshold (Table~\ref{Tab_ENGS}).
-TEST denotes the KFB calculation with $N_c=1$, $N_t=20$ and $N=21$.
+TEST denotes the JM(FC) calculation with $N_c=1$, $N_t=20$ and $N=21$.
 }
 \label{Fig_3}
 \end{figure*}
@@ -168,8 +168,8 @@ are shown by vertical dashed lines (from left to right).
 \includegraphics[scale=1]{fig5.ps}
 \caption{(Color online)
 The same as in Fig.~\ref{Fig_4} but with added total ionization cross section (TICS)
-for incident energies above the ionization threshold. 
-AVR denotes averaged KFB calculations with $N_c=3$, $25\leq N_t \le 35$ and $N=100$.
+for incident energies above the ionization threshold.
+AVR denotes averaged JM(MC) calculations with $N_c=3$, $25\leq N_t \le 35$ and $N=100$.
 Note that in this figure all results are not corrected for the ground energy errors (curves are not shifted).
 }
 \label{Fig_5}
@@ -239,12 +239,12 @@ $\mbox{He}^+(1s)$       &  23.920 & -2 	 &    Ionization \\
 
 \section{THEORY}
 
-The JM method \cite{HY74p1201,BR76p1491} is a very general method for solving wide range of scattering problems.
+The JM method \cite{JMatrix2008,HY74p1201,BR76p1491} is a very general method for solving a wide range of scattering problems.
 In this study, we continue to develop the version of the JM method that
-was previously applied to the $S$-$e$-H \cite{KB10p022708}  and $S$-$e$-He \cite{KFB11} scattering problems.
-Hereafter this version will be referred to as the KFB method to assist when discussing its features which are not necessarily part of the generic JM method.
+was previously applied to the $e$-H($S$) \cite{KB10p022708}  and $e$-He($S$) \cite{KFB11} scattering problems.
 
-When the KFB method was applied to the FC model of helium \cite{KFB11} (one electron was always in the $1s$ state of He$^+$),
+
+When the JM method was applied to $e$-He($S$) \cite{KFB11} (one electron was always in the $1s$ state of He$^+$),
 the following three sets of functions were used: target basis, JM functions, and Laguerre basis.
 
 {\em Target basis} is a set of $N_t$ orthonormal radial functions $\{P_n(r)\}_{n=1}^{N_t}$,
@@ -257,7 +257,7 @@ when building one- or many-electron wave functions as per the Fano's procedure \
 L_p^{2l+1}(x), \ \ \ p = 0, 1, ..., \infty,
 \eeq
 where $x=\lambda r$, $\lambda$ is Laguerre exponential falloff,
-$l \equiv 0$ (for the $S$-model), and $L_p^{\alpha}(x)$ are the associated Laguerre polynomials \cite{abramowitz}.
+$l = 0$ (for the $S$-model), and $L_p^{\alpha}(x)$ are the associated Laguerre polynomials \cite{abramowitz}.
 
 
 {\em Laguerre basis} is the set of orthonormal Laguerre functions $\{R_p(r)\}_{p=0}^\infty$,
@@ -275,6 +275,7 @@ span identical functional space \cite{KB10p022708}.
 The target basis $\{P_n(r)\}_{n=1}^{N_t}$ is selected or built by diagonalizing a suitable one-electron Hamiltonian \cite{KB10p022708, KFB11}. Then,
 the two-electron target-helium wave functions are constructed by allowing first and second helium electrons to occupy the first $N_c$ and $N_t$ radial functions, respectively,
 where $N_c$ controls the number of allowed {\em core} excitations with $N_c=1$ being the frozen-core model.
+We refer to the multi-core implementation of the JM method as JM(MC).
 
 
 After many numerical experiments, it became apparent that the core excitation functions $\{P_n(r)\}_{n=1}^{N_c}$ should be constructed differently from the rest of the target basis
@@ -290,7 +291,7 @@ when constructing the target basis as follows.
 The JM method splits the one-electron radial functional space into {\em inner} $\{\xi_p\}_{p=0}^{N-1}$
 and {\em outer} $\{\xi_p\}_{p=N}^\infty$
 subsets controlled by the number $N$ of JM functions in the inner subset \cite{HY74p1201,BR76p1491}.
-In the KFB method, the target basis $\{P_n(r)\}_{n=1}^{N_t}$ must be orthogonal to the outer JM functions $\{\xi_p\}_{p=N}^\infty$, where $N_t<N$.
+In the JM method, the target basis $\{P_n(r)\}_{n=1}^{N_t}$ must be orthogonal to the outer JM functions $\{\xi_p\}_{p=N}^\infty$, where $N_t<N$.
 Let $\lambda \equiv \lambda_t$ and $\hat{I}_t$ be a projection operator into the functional space of $\{R^t_p(r)\}_{p=0}^{N_t-1}$
 \beq
 \hat{I}_t = \sum_{p=0}^{N_t-1} | R_p^t \rangle \langle R_p^t |,
@@ -312,78 +313,83 @@ $\{R^{c}_p(r)\}_{p=0}^{N_c-1}$ and $\{R^t_p(r)\}_{p=N_c}^{N_t-1}$ sets, that is,
 \section{RESULTS AND DISCUSSION}
 
 See Supplemental Material at [URL will be inserted by publisher] for the results in tabular form.
+{\em Igor and DimaF, we will try to place the results files onto PhysRev. This is the sentence how to reference it (from PhysRev instructions). DimaK}
+
 
 The number $N$ is the key JM parameter responsible for the convergence of any implementation of the JM method.
 That is, the larger the $N$, the more accurate the corresponding JM results are expected to be.
-Within the current KFB method, maximum value of $N$ is limited to around 100 so that the method remains to be easily accessible
-to wider research community. All presented in this study KFB results were still calculated on a consumer-grade laptop.
+Within the current JM method, maximum value of $N$ is limited to around 100 so that the method remains to be easily accessible
+to a wider research community. All JM results presented in this study were calculated on a consumer-grade laptop.
 
 
-The following KFB computational parameters were used, see \cite{KB10p022708} for explanation of the parameters:
+The following JM computational parameters were used, see \cite{KB10p022708} for explanation of the parameters:
 $\lambda_c=4$, $\lambda_t=1$, $N_t=30$, $N=100$, $\ln(c)=-5 - 2\ln(Z_{\mbox{\tiny{He}}} )$, $Z_{\mbox{\tiny{He}}}=2$, $r_{\max}=500$,
 $M_{LCR}=2001$, where the radial grid was between zero and $r_{\max}$, and
 $M_{LCR}$ is the number of equally spaced points in the radial LCR grid \cite{KB10p022708}.
 
-The two-electron configurations (in both KFB and CCC methods) are constructed by occupying  radial subshells $\{P_n(r)\}_{n=1}^{N_t}$
+
+The two-electron configurations (in both JM and CCC methods) are constructed by occupying  radial subshells $\{P_n(r)\}_{n=1}^{N_t}$
 with all spin-permitted $(n_1s,n_2s)$ and $(1s,n_2's)$ configurations,
 where $1 \leq n_1 \leq n_2 \leq N_c$ and $N_c<n_2' \leq N_t$.
-The three-electron configurations in the KFB method are built by adding an extra $n_3s$-electron with
+The three-electron configurations in the JM method are built by adding an extra $n_3s$-electron with
 $ n_2 \leq n_3 \leq N$ or $ n_2' \leq n_3 \leq N$ to each of the available two-electron configurations and keeping only the ones that are permitted by the Pauli exclusion principle and spin-coupling rules.
 
 
-Hereafter FC, KFB and CCC denote results obtained with $N_c=1$, $N_c=7$ and $N_c=3$, respectively.
+Hereafter JM(FC), JM(MC) and CCC denote results obtained with $N_c=1$, $N_c=7$ and $N_c=3$, respectively.
 The ($N_c=7$, $N_t=30$, $N=100$)-combination yields 51 singlet ($^1S$) and 44 triplet ($^3S$) eigenstates of helium, and 8418 eigenstates of He$^-(^2S)$.
 When converting to eV scale, 27.2116 eV was used as the atomic unit of energy (or Hartree).
 
 
-Table~\ref{Tab_ENGS} shows first nine eigenvalues from diagonalizations of $S$-wave helium Hamiltonian.
+Table~\ref{Tab_ENGS} shows the first nine eigenvalues from diagonalizations of the $S$-wave helium Hamiltonian.
 Selecting $\lambda_c=4$ creates the first target radial function $P_1(r)$ numerically identical to the exact $1s$ state of He$^+$,
 when $N_t$ is sufficiently large as is the case for the used $N_t=30$.
 The main improvement of the $N_c=7$ basis over the froze-core case ($N_c=1$) is in the ground state of helium, where
-the first seven significant digits \cite{G94} were obtained by using  $\{R^{c}_p(r)\}_{p=0}^{N_c-1}$ as the basis for both electrons with $N_c=50$ and $\lambda_c=4$, denoted by $(50,50)$ in Table~\ref{Tab_ENGS}.
+the first seven significant digits \cite{G94} were obtained by using
+$\{R^{c}_p(r)\}_{p=0}^{N_c-1}$ as the basis for both electrons with $N_c=50$ and $\lambda_c=4$, denoted by $(50,50)$ in Table~\ref{Tab_ENGS}.
 
 
-Figs.~\ref{Fig_1}-\ref{Fig_5} show nearly exact agreement between the KFB and CCC methods yielding two important conclusions.
-First, it confirms that the KFB results are convergent by $N$ when solving the scattering equations via the JM method.
-Second, both CCC and KFB are convergent by the number of core excitations $N_c$, where KFB used $N_c=7$ and CCC used $N_c=3$ in Figs.~\ref{Fig_1}-\ref{Fig_4}.
+Figs.~\ref{Fig_1}-\ref{Fig_5} show nearly exact agreement between the JM(MC) and CCC methods yielding two important conclusions.
+First, it confirms that the JM(MC) results are convergent by $N$ when solving the scattering equations via the JM method.
+Second, both CCC and JM(MC) are convergent by the number of core excitations $N_c$, where JM(MC) used $N_c=7$ and CCC used $N_c=3$ in Figs.~\ref{Fig_1}-\ref{Fig_4}.
 
 
-Figs.~\ref{Fig_1}-\ref{Fig_4} show that if the FC results are shifted (as they are on the figures) to the right by the FC ground energy error (0.17747eV, see Table~\ref{Tab_ENGS}),
-the FC and KFB results become very close. This means that most of the $S$-wave scattering dynamics  is essentially due to
-the movement of one electron in the field of $1s$ state of He$^+$. In most cases, the full KFB results differ from the FC results by no more than 10\% (after the shift).
+Figs.~\ref{Fig_1}-\ref{Fig_4} show that if the JM(FC) results are shifted (as they are on the figures) to the right by the FC ground energy error (0.17747eV, see Table~\ref{Tab_ENGS}),
+the JM(FC) and JM(MC) results become very close. This means that most of the $S$-wave scattering dynamics  is essentially due to
+the movement of one electron in the field of $1s$ state of He$^+$. In most cases, the JM(MC) results differ from the JM(FC) results by no more than 10\% (after the shift).
 
 
 Figs.~\ref{Fig_1}(a) and \ref{Fig_1}(c) zoom in onto the negative-ion resonance He$^-(1s(2s)^2,^2S)$ that exists just below and within 5meV of the $2^3S$-excitation threshold.
-Again, the FC model fully explains the results, while the KFB model provides the final adjustments to arrive at the benchmark solution in Figs.~\ref{Fig_1}(a), \ref{Fig_1}(b), and \ref{Fig_1}(d).
+Again, the JM(FC) model fully explains the results, while the JM(MC) model provides the final adjustments to arrive at the benchmark solution in Figs.~\ref{Fig_1}(a), \ref{Fig_1}(b), and \ref{Fig_1}(d).
 Fig.~\ref{Fig_1}(c) exposes the challenging energy region (about 5meV) just above the $2^3S$ excitation threshold,
-where the CCC and KFB results are comparable but slightly different and therefore only the CCC results should be considered as the benchmark solution in this particular case.
-Note that the very sharp peak (Fig.~\ref{Fig_1}c) disappears in the real $e$-He scattering \cite{KM95pL139, HBSBB96} as the He$^-(19.3eV)$ resonance \cite{Schulz73, BC94, HY99}
+where the CCC and JM(MC) results are comparable but slightly different.
+Note that the very sharp peak (Fig.~\ref{Fig_1}c) disappears in the real $e$-He scattering
+\cite{KM95pL139, HBSBB96} as the He$^-(19.3eV)$ resonance \cite{Schulz73, BC94, HY99}
 lies too far away from the $2^3S$(19.7eV) excitation threshold \cite{HBSBB96}.
 
 
 Figs.~\ref{Fig_2}(c) and \ref{Fig_4}(d) show that the $2^1S$ and $3^1S$ singlet excitations do not have the resonant behavior at thresholds.
 Hence He$^-(^2S)$-states are absent near the singlet thresholds in the $S$-wave model.
-Again this is different from the full model, where such He$^-(^2S)$-states do exist yielding sharp 
+Again this is different from the full model, where such He$^-(^2S)$-states do exist yielding sharp
 peaks in the $2^1S$ \cite{KM95pL139, HBSBB96} and $3^1S$ \cite{SMC2006} near-threshold cross sections.
 
 
 Fig.~\ref{Fig_3} reveals very feature-rich  behavior around the triplet $3^3S$  excitation threshold.
 A He$^-$ metastable state exists immediately near (within 1meV) the  $3^3S$  excitation threshold
 causing the very sharp peak of the $3^3S$ and very sharp dips in the $n=2$ cross sections at the threshold.
-Note particularly interesting Fig.~\ref{Fig_3}(e), which could only be obtained within KFB when both $N_t$ and $N$ are sufficiently large.
-The TEST ($N_c=1$, $N_t=20$, $N=21$) line in Fig.~\ref{Fig_3}(e) clearly shows how the resonance behavior is very sensitive to the quality of the relevant He$^-$ metastable wave function.    
+Note particularly interesting Fig.~\ref{Fig_3}(e), which could only be obtained within JM when both $N_t$ and $N$ are sufficiently large.
+The TEST ($N_c=1$, $N_t=20$, $N=21$) line in Fig.~\ref{Fig_3}(e) clearly shows how the resonance behavior is very sensitive to the quality of the relevant He$^-$ metastable wave function.
 
 
-Fig.~\ref{Fig_4} shows  rich interplay of cross sections between the $3^1S$ and ionization thresholds, 
-where the He$^-(^2S)$ resonances exist near the corresponding triplet $4^3S$-$7^3S$ helium states. 
-The resonance peak/dip amplitudes are diminishing with $n$ and become indistinguishable above $7^3S$, 
+Fig.~\ref{Fig_4} shows  rich interplay of cross sections between the $3^1S$ and ionization thresholds,
+where the He$^-(^2S)$ resonances exist near the corresponding triplet $4^3S$-$7^3S$ helium states.
+The resonance peak/dip amplitudes are diminishing with $n$ and become indistinguishable above $7^3S$,
 where the helium eigenstates become progressively less accurate in describing the helium bound states with higher $n$.
 
 
-Above the ionization threshold (Fig.~\ref{Fig_5}) both KFB and CCC exhibit pseudo-resonances.
-Pseudo-resonances depend strongly on particular basis parameters, where in this case the parameters are $N_c$, $\lambda_c=4$, $N_t$ and $\lambda_t=1$. 
-An attempt is made to exploit this property by running KFB method multiple times with $N_c=3$ and $25 \leq N_t\leq 35$ and then average the results, see line AVR in Fig.~\ref{Fig_5}.
-This technique is arguable justified by considering that the true resonances will remain unaffected by this averaging if the calculation parameters are varied with the convergent range.
+Above the ionization threshold (Fig.~\ref{Fig_5}) both JM(MC) and CCC exhibit pseudo-resonances.
+Pseudo-resonances depend strongly on particular basis parameters, where in this case the parameters are $N_c$, $\lambda_c=4$, $N_t$ and $\lambda_t=1$.
+An attempt is made to exploit this property by running JM method multiple times with $N_c=3$ and $25 \leq N_t\leq 35$ and then average the results, see line AVR in Fig.~\ref{Fig_5}.
+This technique is arguably justified by considering that the true resonances will remain unaffected by this averaging if the calculation parameters are varied with the convergent range.
 The AVR method worked spectacularly well for the total ionization cross section (TICS in Fig.~\ref{Fig_5}b), where the AVR results are proposed to be the correct benchmark solution.
 Surprisingly, the $2^1S$ (Fig.~\ref{Fig_5}d) and $n=3$ (Figs.~\ref{Fig_5}e and \ref{Fig_5}f) AVR results revealed a set of highly persistent pseudo-resonances around 30eV.
 Therefore, it is proposed that the AVR results (above the ionization threshold) approximate the correct benchmark solution within the error bar given by the remaining non-physical oscillations.
@@ -391,8 +397,37 @@ Therefore, it is proposed that the AVR results (above the ionization threshold) 
 \section{CONCLUSIONS}
 
 
-TODO
+The $S$-wave scattering model, where only the partial wave with zero angular momentum is retained,
+is an important tool in the development of {\em ab initio} scattering methods.
+Very few physics scattering problems can be solved exactly and approximations are invariably made to arrive at a solution.
+The $S$-wave model assists in separating {\em physics}-approximations from {\em computational}-approximations by
+greatly simplifying physics interactions and possible processes within the model.
+Using the model, a scattering method can then test its computational accuracy
+and/or limitations without the "distraction" of full range physical processes and interactions.
 
+
+In the case of the $J$-matrix method, the $e$-He($S$) model revealed that the main JM computational parameter
+$N$ must be about 100 or preferably even larger to obtain high accuracy cross sections within a wide energy range,
+where $N$ is the number of JM functions retained in the inner (or target) functional space.
+This slow JM convergence by $N$ is known \cite{HY74p1209},
+and it is very encouraging to see that it can be obtained with computationally reasonable $N$
+opening the way for the JM method to be applied to full scattering problems.
+The large value of the convergent $N$ suggests that more theoretical work could be done to
+improve (reduce $N$) the JM convergence rate \cite{VBA02p010404}.
+
+
+The second interesting and somewhat unexpected result is that the pseudo-resonances could not be entirely eliminated
+above the ionization threshold even with the quite large number $(N_t=30)$ of target basis functions.
+More theoretical work is clearly required here as all three (CCC, RM, JM) scattering methods,
+which are capable of solving full scattering problems, still exhibit pseudo-resonances.
+In particular, it would be interesting to see if the RM method or any other {\em ab initio} scattering method could improve upon the
+presented JM results above the ionization threshold.
+Note that a simple convolution of the results with a Gaussian function could easily mask real resonances in the full problems
+and therefore was not considered in this study.
+
+
+And finally, the frozen-core model of helium, where one electron moves within the field of unperturbed $1s$ state of He$^+$,
+has proven yet again to be an extremely accurate model for the $e$-He scattering.
 
 
 \begin{acknowledgments}
