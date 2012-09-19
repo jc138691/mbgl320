@@ -351,7 +351,7 @@ c
 c     Tests
 c$$$                  tg(igm1, igm, i_E0) = (1d0, 0d0)
 c$$$                  if(LL .ne. 0)  tg(igm1, igm, i_E0) = (0d0, 0d0)
-c     Grand total cr.section is calculated via Optical Theorem
+c     Grand total dcr.section is calculated via Optical Theorem
                   if (igm .eq. 1 .and. igm1 .eq. 1)  tmp2 = -pi2**2
      >               * Imag(Tg(1, L, i_E0)) / q(1) * dble((2*LL+1)*LS)
 c

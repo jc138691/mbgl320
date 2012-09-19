@@ -1,4 +1,4 @@
-package atom.wf.lcr;
+package atom.wf.lcr.func;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 10:20:29
  */

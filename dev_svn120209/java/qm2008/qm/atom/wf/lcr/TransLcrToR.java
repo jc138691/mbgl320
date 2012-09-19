@@ -1,4 +1,5 @@
 package atom.wf.lcr;
+import atom.wf.lcr.func.*;
 import math.func.FuncVec;
 import math.vec.Vec;
 

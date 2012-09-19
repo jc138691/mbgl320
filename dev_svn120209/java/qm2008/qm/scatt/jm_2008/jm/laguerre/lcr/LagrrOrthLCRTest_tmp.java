@@ -1,5 +1,5 @@
 package scatt.jm_2008.jm.laguerre.lcr;
-import atom.wf.lcr.FuncRToLcr;
+import atom.wf.lcr.func.FuncRToLcr;
 import atom.wf.lcr.WFQuadrLcr;
 import junit.framework.TestCase;
 import junit.framework.Test;

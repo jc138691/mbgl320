@@ -1,4 +1,4 @@
-package atom.wf.lcr;
+package atom.wf.lcr.func;
 import math.func.Func;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 11/07/2008, Time: 15:42:05

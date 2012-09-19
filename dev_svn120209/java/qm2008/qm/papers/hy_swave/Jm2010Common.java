@@ -1,8 +1,6 @@
 package papers.hy_swave;
 import atom.energy.pw.PotHMtrx;
-import atom.wf.lcr.TransLcrToR;
-import atom.wf.lcr.WFQuadrLcr;
-import atom.wf.log_r.TransLrToR;
+import atom.wf.lr.TransLrToR;
 import math.func.FuncVec;
 import math.vec.IntVec;
 import math.vec.Vec;

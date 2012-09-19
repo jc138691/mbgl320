@@ -240,7 +240,7 @@ public class jm_main {
 //        if (i_test .gt. 1) then
 //           print*, 'i_test>1: j_matrix'
 //           print*, '        : Phase shifts --> 1100+, 1201+igm1'
-//           print*, '        : Partial cr.sections --> 3000'
+//           print*, '        : Partial dcr.sections --> 3000'
 //           print*, '        : ',
 //       >      'fort.10 <--Target (k=1) and Scattering (k=2) Quantum numbers'
 //        else if (i_test .gt. 3) then
@@ -497,7 +497,7 @@ c
       if (i_test .gt. 1) then
          print*, 'i_test>1: j_matrix'
          print*, '        : Phase shifts --> 1100+, 1201+igm1'
-         print*, '        : Partial cr.sections --> 3000'
+         print*, '        : Partial dcr.sections --> 3000'
          print*, '        : ',
      >      'fort.10 <--Target (k=1) and Scattering (k=2) Quantum numbers'
       else if (i_test .gt. 3) then

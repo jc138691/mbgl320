@@ -1,7 +1,7 @@
 package atom.energy.slater;
 import atom.shell.Shell;
-import atom.wf.log_r.TransLrToR;
-import atom.wf.log_r.WFQuadrLr;
+import atom.wf.lr.TransLrToR;
+import atom.wf.lr.WFQuadrLr;
 import math.vec.Vec;
 import math.func.FuncVec;
 
