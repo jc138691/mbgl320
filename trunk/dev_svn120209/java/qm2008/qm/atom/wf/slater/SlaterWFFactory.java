@@ -1,14 +1,18 @@
 package atom.wf.slater;
 
 import atom.wf.coulomb.WfFactory;
+import atom.wf.dcr.DcrFactory;
+import atom.wf.dcr.TransDcrToR;
+import atom.wf.lcr.LcrFactory;
 import atom.wf.lcr.TransLcrToR;
 import atom.wf.lcr.WFQuadrLcr;
-import atom.wf.log_r.TransLrToR;
+import atom.wf.lr.TransLrToR;
 import math.func.Func;
 import math.func.FuncVec;
 import math.integral.QuadrPts5;
 import math.vec.Vec;
 import math.vec.grid.StepGrid;
+import math.vec.grid.StepGridOpt;
 import project.workflow.task.test.FlowTest;
 
 import javax.utilx.log.Log;
@@ -75,24 +79,43 @@ public class SlaterWFFactory extends FlowTest {
     assertEqualsRel("SlaterWFFactory.makeRawP2s(zeta=3) norm=", 1, res, true);
   }
 
-  public void testMakeP2s() throws Exception {
-    int NUM_STEPS = 220;
-    double FIRST = -4;
+  public void testMakeP2s() throws Exception {    //log.setDbg();
+    int nX = 220;
+    double firstX = -4.;
     double STEP = 1. / 16.;
-    StepGrid x = new StepGrid(FIRST, NUM_STEPS, STEP);
-    TransLcrToR logCR = new TransLcrToR(x);
-    TransLrToR logR = new TransLrToR(x);
+    StepGrid x = new StepGrid(firstX, nX, STEP);  log.dbg("x=", x);
+    TransLcrToR logCR = new TransLcrToR(x);    log.dbg("logCR=", logCR);
+    TransLrToR logR = new TransLrToR(x);       log.dbg("logR=", logR);
     Vec r = logR;
     QuadrPts5 w = new QuadrPts5(x);
+
+    double maxR = 50.;
+    double firstX2 = -1;
+    int nX2 = 421;
+    StepGridOpt gridR = new StepGridOpt(0, maxR, -1);
+    StepGridOpt optX = DcrFactory.makeDcrFromR(firstX2, nX2, gridR);
+    StepGrid x2 = new StepGrid(optX);                 log.dbg("x2 =", x2);
+    QuadrPts5 w2 = new QuadrPts5(x2);
+    TransDcrToR dcr = new TransDcrToR(x2);      log.dbg("dcr=", dcr);
+    Vec r2 = dcr;                              log.dbg("r2=", r2);
+
     FuncVec f = SlaterWFFactory.makeP2s(r, 1.);
     double res = w.calc(f, f, r);
     assertEquals(0, Math.abs(res - 1), 6e-10);
+
     f = SlaterWFFactory.makeP2s(logCR, 1.); // by log(c+r)
     res = w.calc(f, f, logCR.getCR());
     assertEquals(0, Math.abs(res - 1), 3e-14);
+
+    // TODO: Do not use; Not as good as LCR!!!!!!!!!!!!!!!!!!!
+    FuncVec f2 = SlaterWFFactory.makeP2s(r2, 1.);
+    res = w2.calc(f2, f2, dcr.getCR2());
+    assertEquals(0, Math.abs(res - 1), 5e-16);
+
     f = SlaterWFFactory.makeP2s(logCR, 2.);
     res = w.calc(f, f, logCR.getCR());
     assertEquals(0, Math.abs(res - 1), 7e-14);
+
     f = SlaterWFFactory.makeP2s(logR, 2.);
     res = w.calc(f, f, r);
     assertEquals(0, Math.abs(res - 1), 2e-8);

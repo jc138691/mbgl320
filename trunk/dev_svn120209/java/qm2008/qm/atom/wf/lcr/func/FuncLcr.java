@@ -1,4 +1,4 @@
-package atom.wf.lcr;
+package atom.wf.lcr.func;
 
 import math.func.Func;
 

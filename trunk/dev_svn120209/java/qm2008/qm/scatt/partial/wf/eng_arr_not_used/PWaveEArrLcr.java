@@ -1,6 +1,6 @@
 package scatt.partial.wf.eng_arr_not_used;
 import atom.wf.lcr.WFQuadrLcr;
-import atom.wf.lcr.FuncRToDivSqrtCR;
+import atom.wf.lcr.func.FuncRToDivSqrtCR;
 import scatt.eng.EngOpt;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 28/10/2008, Time: 14:07:09

@@ -1,5 +1,8 @@
 package atom.wf.lcr;
 
+import atom.wf.lcr.func.FuncLcrToCr;
+import atom.wf.lcr.func.FuncLcrToSqrtCr;
+import atom.wf.lcr.func.FuncRToLcr;
 import math.func.Func;
 import math.func.arr.FuncArr;
 import math.vec.grid.StepGridOpt;
@@ -20,11 +23,11 @@ public class LcrFactory {
     res.setX(w.getR());
     return res;
   }
-  public static StepGridOpt makeLcrFromR(double firstLcr, int nLcr, StepGridOpt fromR) {
-    Func rToLcr = new FuncRToLcr(firstLcr, fromR.getFirst());
+  public static StepGridOpt makeLcrFromR(double firstX, int nLcr, StepGridOpt fromR) {
+    Func rToX = new FuncRToLcr(firstX, fromR.getFirst());
     StepGridOpt res = new StepGridOpt();
-    res.setFirst(rToLcr.calc(fromR.getFirst()));
-    res.setLast(rToLcr.calc(fromR.getLast()));
+    res.setFirst(rToX.calc(fromR.getFirst()));
+    res.setLast(rToX.calc(fromR.getLast()));
     res.setNumPoints(nLcr);
     return res;
   }

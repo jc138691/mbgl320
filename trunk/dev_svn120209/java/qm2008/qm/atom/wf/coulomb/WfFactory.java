@@ -1,6 +1,6 @@
 package atom.wf.coulomb;
 import atom.wf.lcr.TransLcrToR;
-import atom.wf.log_r.TransLrToR;
+import atom.wf.lr.TransLrToR;
 import math.func.FuncVec;
 import math.func.Func;
 import math.integral.QuadrPts5;

@@ -2,7 +2,7 @@ package scatt.jm_2008.jm.laguerre.lcr;
 import javax.utilx.log.Log;
 
 import atom.wf.lcr.WFQuadrLcr;
-import atom.wf.lcr.FuncRToDivSqrtCR;
+import atom.wf.lcr.func.FuncRToDivSqrtCR;
 import scatt.jm_2008.jm.laguerre.LgrrOpt;
 import scatt.jm_2008.jm.laguerre.LgrrR;
 /**

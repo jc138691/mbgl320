@@ -703,7 +703,7 @@ c
 c
                      write(3000, *) ' E0=', real(E0 * u_e(units_e)),
      >                  ' in ', ch_e(units_e),
-     >                  ', cr.sec. in ', ch_cs(units_cs)
+     >                  ', dcr.sec. in ', ch_cs(units_cs)
 c
 c     Calculate \sigma_{\gamma',\gamma} cross sections
 c
@@ -799,7 +799,7 @@ c
 c
          write(2000, *) ' E0=', real(E0 * u_e(units_e)),
      >      ' in ', ch_e(units_e),
-     >      ', cr.sec. in ', ch_cs(units_cs)
+     >      ', dcr.sec. in ', ch_cs(units_cs)
 c
          ig = 1
          Lgr = LL_ig(ig)

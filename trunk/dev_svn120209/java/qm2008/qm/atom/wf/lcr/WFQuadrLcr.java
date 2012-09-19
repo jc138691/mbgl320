@@ -1,5 +1,6 @@
 package atom.wf.lcr;
-import atom.wf.log_r.WFQuadrLr;
+import atom.wf.lcr.func.FuncLcr;
+import atom.wf.lr.WFQuadrLr;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
 import math.func.FuncVec;

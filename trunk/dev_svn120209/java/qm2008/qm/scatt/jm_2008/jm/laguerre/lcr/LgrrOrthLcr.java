@@ -6,7 +6,7 @@ import scatt.jm_2008.jm.laguerre.LgrrOrthR;
 
 import javax.utilx.log.Log;
 
-import atom.wf.lcr.FuncRToDivSqrtCR;
+import atom.wf.lcr.func.FuncRToDivSqrtCR;
 import math.func.polynom.laguerre.LgrrOrth;
 import math.vec.Vec;
 /**

@@ -49,5 +49,5 @@ package atom.energy.pw.msr;
 // f_rr / z^2 =a(a-1) r^{5a-2}; a=2/5
 //
 
-public class PotHMsr { // Msr - mixed scale r
+public class PotHLlr { // Msr - mixed scale r
 }

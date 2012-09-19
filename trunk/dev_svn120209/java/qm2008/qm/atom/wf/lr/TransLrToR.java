@@ -1,4 +1,4 @@
-package atom.wf.log_r;
+package atom.wf.lr;
 import math.func.FuncVec;
 import math.func.simple.FuncExp;
 import math.func.Func;

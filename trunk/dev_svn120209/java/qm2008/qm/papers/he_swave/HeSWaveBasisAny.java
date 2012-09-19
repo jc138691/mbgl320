@@ -63,20 +63,23 @@ public void testCalcAvr() {
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
   MODEL_DIR = MODEL_NAME;
 
-//  calcAvr("HeSWaveBasisHeIon_TICS_Nc1_L0_LMBD1.0_N101_Nt");
-//  calcAvr("HeSWaveBasisHeIon_TCS_Nc1_L0_LMBD1.0_N101_Nt");
-  calcAvr("HeSWaveBasisHeIon_TICS_Nc3_L0_LMBD1.0_N101_Nt");
-  calcAvr("HeSWaveBasisHeIon_TCS_Nc3_L0_LMBD1.0_N101_Nt");
+  int MIN_NT = 25;
+  int MAX_NT = 50;
+  calcAvr("HeSWaveBasisHeIon_TICS_Nc1_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
+  calcAvr("HeSWaveBasisHeIon_TCS_Nc1_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
+
+//  int MIN_NT = 25;
+//  int MAX_NT = 35;
+//  calcAvr("HeSWaveBasisHeIon_TICS_Nc3_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
+//  calcAvr("HeSWaveBasisHeIon_TCS_Nc3_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
 }
 
-public void calcAvr(String name) {
+public void calcAvr(String name, int minNt, int maxNt) {
   double[][] res = null;
   Mtrx mRes = null;
   int count = 0;
-  int MIN_NT = 25;
-  int MAX_NT = 29;
   int NUM_COLS = 10;
-  for (int currNt = MIN_NT; currNt <= MAX_NT; currNt++) {
+  for (int currNt = minNt; currNt <= maxNt; currNt++) {
     count++;       log.dbg("currNt=", currNt);
     String fileName = HOME_DIR + File.separator + MODEL_DIR + File.separator + name + currNt + ".dat";
     double[][] arr = new MtrxReader("\t").readMtrx(-1, NUM_COLS, -1, fileName);
@@ -89,7 +92,7 @@ public void calcAvr(String name) {
     mRes.addEquals(mArr);      //log.dbg("mRes=\n", new MtrxDbgView(mRes));
   }
   mRes.multEquals(1./count);   log.dbg("mRes=\n", new MtrxDbgView(mRes));
-  FileX.writeToFile(mRes.toTab(), HOME_DIR, MODEL_DIR, name + MIN_NT + "_avr_" + MAX_NT + ".dat");
+  FileX.writeToFile(mRes.toTab(), HOME_DIR, MODEL_DIR, name + minNt + "_avr_" + maxNt + ".dat");
 }
 
 

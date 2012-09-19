@@ -1,4 +1,4 @@
-package atom.wf.log_r;
+package atom.wf.lr;
 import atom.wf.WFQuadrR;
 import math.vec.grid.StepGrid;
 import math.vec.Vec;
