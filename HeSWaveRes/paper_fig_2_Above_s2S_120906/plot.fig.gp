@@ -70,7 +70,7 @@ SHIFT_1 = SHIFT_1 * xJM;
 SHIFT_2 = SHIFT_2 * xJM;
 CCC_SHIFT = CCC_SHIFT * xJM;
 
-set arrow 1 nohead from E_2S3,graph 0 to E_2S3, graph 1 lt 0
+#set arrow 1 nohead from E_2S3,graph 0 to E_2S3, graph 1 lt 0
 set arrow 2 nohead from E_2S1,graph 0 to E_2S1, graph 1 lt 0
 set arrow 3 nohead from E_3S3,graph 0 to E_3S3, graph 1 lt 0
 
