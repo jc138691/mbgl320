@@ -51,7 +51,7 @@ Curtin University, GPO Box U1987, Perth, Western Australia 6845, Australia}
 \date{\today}
 
 \begin{abstract}
-In the preceding paper  [D. A. Konovalov {\em et. al.} Phys. Rev. A {\bf 84}, 032707 (2011)] we used
+In the preceding paper  [Konovalov {\em et. al.} Phys. Rev. A {\bf 84}, 032707 (2011)] we used
 the $J$-matrix method to solve  the $S$-wave $e$-He scattering problem within the frozen-core model of helium.
 In the present work we go beyond the frozen-core model and adopt a general configuration-interaction description of helium (within $S$-wave model).
 As a result a more accurate description of helium target states is achieved that allowed us to obtain highly
@@ -108,13 +108,13 @@ provides the motivation for the present study.
 
 
 The stated goal is achieved by combining advantages of the CCC and JM methods,
-where the later has been recently revised \cite{KFB11} by merging it with the Fano's multi-configuration interaction matrix elements \cite{Fano65}.
+where the latter has been recently revised \cite{KFB11} by merging it with the Fano's multi-configuration interaction matrix elements \cite{Fano65}.
 The CCC method is able to solve the scattering problem very accurately via the Lippmann-Schwinger equation \cite{BS92p6995}.
 However, it is not practical to run the CCC method for each of the many thousands of impact energy points required for the final benchmark results.
 On the other hand, the JM method is very efficient \cite{HY74p1201,BR76p1491} in calculating a vast number of energy points
 but numerical-convergence properties of the JM method remain largely unknown.
 The JM and CCC methods are implemented independently and use completely different approaches to solve the scattering equations.
-Therefore, the CCC and JM methods can be and were used to cross-verify that their results are convergent within their own numerical parameters at key energy points.
+Therefore, the CCC and JM methods were used to cross-verify that their results are convergent within their own numerical parameters at key energy points.
 See \cite{JMatrixWebsite} for information on availability of the results and source code.
 
 
@@ -123,8 +123,8 @@ See \cite{JMatrixWebsite} for information on availability of the results and sou
 \caption{(Color online) Elastic ($1^1S$) and
 $2^3S$ single-excitation $e$-He $S$-wave cross sections between and around $2^3S$ and $2^1S$ thresholds shown by vertical dashed lines.
 Sub-figures (a) and (c) zoom in on the $2^3S$ excitation threshold (Table~\ref{Tab_ENGS}).
-JM(FC) ($N_c=1$, $N_t=30$), JM(MC) ($N_c=7$, $N_t=30$) and CCC ($N_c=3$, $N_t=30$) results  were shifted to the right by 0.17747eV, 0.0018eV
-and 0.01594eV (Table~\ref{Tab_ENGS}), respectively.
+JM(FC) ($N_c=1$, $N_t=30$), JM(MC) ($N_c=7$, $N_t=30$) and CCC ($N_c=3$, $N_t=30$) results  were shifted to the right by 0.17747~eV, 0.0018~eV
+and 0.01594~eV (Table~\ref{Tab_ENGS}), respectively.
 }
 \label{Fig_1}
 \end{figure*}
@@ -154,7 +154,7 @@ TEST denotes the JM(FC) calculation with $N_c=1$, $N_t=20$ and $N=21$.
 \includegraphics[scale=1]{fig4.ps}
 \caption{(Color online)
 The same as in Fig.~\ref{Fig_3} but with added $3^1S$ excitation cross section
-between the $3^3S$ and ionization thresholds (23.92eV, Table~\ref{Tab_ENGS}).
+between the $3^3S$ and ionization thresholds (23.92~eV, Table~\ref{Tab_ENGS}).
 The $3^1S$, $4^{3,1}S$, ..., $7^{3,1}S$ excitation thresholds (Table~\ref{Tab_ENGS})
 are shown by vertical dashed lines (from left to right).
 }
@@ -270,8 +270,9 @@ span identical functional space \cite{KB10p022708}.
 After many numerical experiments, it became apparent that the core excitation functions $\{P_n(r)\}_{n=1}^{N_c}$ should be constructed differently from the rest of the target basis
 $\{P_n(r)\}_{n=N_c+1}^{N_t}$. Otherwise, the convergence by $N_c$ is just too slow to be computationally practical.
 This is due to the two very different radial scales present in this study.
-The short-range core excitations are essentially adjustments to the $1s$-orbital of He$^+$.
-While the helium excitations below the ionization threshold resemble $ns$-orbitals of hydrogen and therefore are long-range.
+Accurate account of electron-electron correlations for the ground state required short-range functions. 
+On other hand,  excited states of helium 
+resemble $ns$-orbitals of hydrogen and therefore are long-range.
 This problem is solved here by using a mix of the short range $\{R^c_p(r)\}_{p=0}^{N_c-1}$ with $\lambda_c=4$
 and long-range $\{R^t_p(r)\}_{p=N_c}^{N_t-1}$ with $\lambda_t=1$  basis sets
 when constructing the target basis as follows.
@@ -335,7 +336,7 @@ and keeping only the ones that are permitted by the Pauli exclusion principle an
 
 Hereafter JM(FC), JM(MC) and CCC denote results obtained with $N_c=1$, $N_c=7$ and $N_c=3$, respectively.
 The ($N_c=7$, $N_t=30$, $N=100$)-combination yields 51 singlet ($^1S$) and 44 triplet ($^3S$) eigenstates of helium, and 8418 eigenstates of He$^-(^2S)$.
-When converting to eV scale, 27.2116 eV was used as the atomic unit of energy (or Hartree).
+When converting to eV scale, 27.2116~eV was used as the atomic unit of energy (or Hartree).
 
 
 Table~\ref{Tab_ENGS} shows the first nine eigenvalues from diagonalizations of the $S$-wave helium Hamiltonian.
@@ -347,7 +348,7 @@ as a reference from which the $n=1$ and $n=2$ energy errors in $N_c=7$ and $N_c=
 Starting from $n=3$, the $(7,30)$-target basis correctly reproduces seven significant digits \cite{DHIF94} of the energy levels.
 Selecting $\lambda_c=4$ creates the first target radial function $P_1(r)$ numerically identical to the exact $1s$ state of He$^+$,
 when $N_t$ is sufficiently large in Eq.~(\ref{I_t}) as is the case for the used $N_t=30$.
-The main improvement of the $(7,30)$-basis over the froze-core case $(1,30)$ is in the ground state of helium, 
+The main improvement of the $(7,30)$-basis over the froze-core case $(1,30)$ is in the ground state of helium,
 where the energy errors are about 2~meV and 177~meV, respectively.
 
 
@@ -360,7 +361,7 @@ Therefore, $N_c=3$ is actually sufficient for the considered cross sections and 
 
 
 Figs.~\ref{Fig_1}-\ref{Fig_4} show that if the JM(FC) results are shifted (as they are on the figures)
-to the right by the FC ground energy error (0.17747eV, see Table~\ref{Tab_ENGS}),
+to the right by the FC ground energy error (0.17747~eV, see Table~\ref{Tab_ENGS}),
 the JM(FC) and JM(MC) results become very close.
 This means that most of the $S$-wave scattering dynamics  is essentially due to
 the movement of one electron in the field of unperturbed $1s$ state of He$^+$.
@@ -369,38 +370,47 @@ The only exception is Figs.~\ref{Fig_1}(a) and \ref{Fig_1}(c), where the JM(FC) 
 the JM(FC) $2{^3S}$ energy error (0.53~meV).
 
 
-Figs.~\ref{Fig_1}(a) and \ref{Fig_1}(c) zoom in onto the negative-ion resonance He$^-(1s(2s)^2,^2S)$ that exists just 
+In the JM method, many thousand He$^-$ eigenstates are obtained from the diagonalization of He$^-$ Hamiltonian
+approximating often degenerate discrete and continuum spectrum of He$^-$.
+The standard interpretation of the negative-ion resonances \cite{BC94} attributes the resonance behaviour of cross sections to
+the negative-ion states from the ion's discrete spectrum.
+The question of how to identify the relevant He$^-$ discrete-spectrum states from the He$^-$ eigenstates
+was considered outside the scope of this study. Therefore only qualitative discussion of He$^-$ resonances follows.
+
+
+Figs.~\ref{Fig_1}(a) and \ref{Fig_1}(c) zoom in onto the negative-ion resonance He$^-(1s(2s)^2,^2S)$ that exists just
 below and within 5~meV of the $2^3S$-excitation threshold.
-Again, the JM(FC) model fully explains the results, while the JM(MC) model provides the final adjustments to 
+Again, the JM(FC) model fully explains the results, while the JM(MC) model provides the final adjustments to
 arrive at the benchmark solution in Figs.~\ref{Fig_1}(a), \ref{Fig_1}(b), and \ref{Fig_1}(d).
 Fig.~\ref{Fig_1}(c) exposes the challenging energy region (about 5~meV) just above the $2^3S$ excitation threshold,
 where the CCC and JM(MC) results are comparable but slightly different.
 Note that the very sharp peak (Fig.~\ref{Fig_1}c) disappears in the real $e$-He scattering
-\cite{KM95pL139, HBSBB96} as the He$^-(19.3eV)$ resonance \cite{Schulz73, BC94, HY99}
-moves away from the $2^3S$(19.7eV) excitation threshold \cite{HBSBB96}.
+\cite{KM95pL139, HBSBB96} as the He$^-(19.3~eV)$ resonance \cite{Schulz73, BC94, HY99}
+moves away from the $2^3S$(19.7~eV) excitation threshold \cite{HBSBB96}.
 
 
-Figs.~\ref{Fig_2}(c) and \ref{Fig_4}(d) show that the $2^1S$ and $3^1S$ singlet excitations 
+Figs.~\ref{Fig_2}(c) and \ref{Fig_4}(d) show that the $2^1S$ and $3^1S$ singlet excitations
 do not have the resonant behavior at thresholds.
-Hence He$^-(^2S)$-states are absent near the singlet thresholds in the $S$-wave model.
+This is interpreted as the absence of
+the He$^-(^2S)$ discrete-spectrum states near the singlet thresholds in the $S$-wave model.
 Again this is different from the full model, where such He$^-(^2S)$-states do exist yielding sharp
 peaks in the $2^1S$ \cite{KM95pL139, HBSBB96} and $3^1S$ \cite{SMC2006} near-threshold cross sections.
 
 
 Fig.~\ref{Fig_3} reveals very feature-rich  behavior around the triplet $3^3S$  excitation threshold.
-A He$^-$ metastable state exists immediately near (within 1~meV) the  $3^3S$  excitation threshold
-causing the very sharp peak of the $3^3S$ and very sharp dips in the $n=2$ cross sections at the threshold.
+The very sharp peak of the $3^3S$ and very sharp dips in the $n=2$ cross sections at the threshold indicate
+the existence of a He$^-$ discrete-spectrum state within 1~meV of the  $3^3S$  excitation threshold.
 Note particularly interesting Fig.~\ref{Fig_3}(e), which could only be obtained within the JM method
 when both $N_t$ and $N$ are sufficiently large.
 The TEST ($N_c=1$, $N_t=20$, $N=21$) line in Fig.~\ref{Fig_3}(e) clearly shows how the resonance behavior
-is very sensitive to the quality of the relevant He$^-$ metastable wave function.
+is very sensitive to the quality of the relevant He$^-$ discrete-spectrum wave function.
 
 
 Fig.~\ref{Fig_4} shows  rich interplay of cross sections between the $3^1S$ and ionization thresholds,
 where the He$^-(^2S)$ resonances exist near the corresponding triplet $4^3S$-$7^3S$ helium states.
-The magnitude of the resonance peaks/dips is
-diminishing with $n$ and become indistinguishable above $7^3S$,
-where the helium target states become progressively less accurate in describing the true helium bound states with higher $n$.
+The magnitude of the resonance peaks/dips is diminishing with $n$ and becomes indistinguishable above $7^3S$.
+This is likely due to the He$^-$ states (from He$^-$ diagonalization)
+becoming progressively less accurate in describing the true He$^-$ discrete-spectrum states around higher $n$'s.
 
 
 Below the ionization threshold (Figs.~\ref{Fig_1}-\ref{Fig_4}), pseudo-resonances have naturally disappeared with large $N$
@@ -414,8 +424,8 @@ by running JM method multiple times with $N_c=3$ and $25 \leq N_t\leq 35$ and th
 This technique is justified by considering that the true resonances remain unaffected by this averaging if the calculation parameters are varied within the convergent range.
 The AVR method works spectacularly well for the total ionization cross section (TICS in Fig.~\ref{Fig_5}b),
 where the AVR results are proposed to be the correct benchmark solution.
-Surprisingly, the $2^1S$ (Fig.~\ref{Fig_5}d) and $n=3$ (Figs.~\ref{Fig_5}e and \ref{Fig_5}f) AVR results revealed a set of highly persistent pseudo-resonances around 30eV,
-where their 30eV position is well above the known true He$^-$ resonances \cite{BC94} and well below the first doubly-excited (autoionizing) He $S$-wave states at about 58eV \cite{BS10p022715,EUO77}.
+Surprisingly, the $2^1S$ (Fig.~\ref{Fig_5}d) and $n=3$ (Figs.~\ref{Fig_5}e and \ref{Fig_5}f) AVR results revealed a set of highly persistent pseudo-resonances around 30~eV,
+where their 30~eV position is well above the known true He$^-$ resonances \cite{BC94} and well below the first doubly-excited (autoionizing) He $S$-wave states at about 58~eV \cite{BS10p022715,EUO77}.
 Therefore, it is proposed that the AVR results (above the ionization threshold) approximate the correct benchmark solution within the error bar given by the remaining non-physical oscillations.
 
 
@@ -427,7 +437,7 @@ The $S$-wave scattering model, where only the partial wave with zero angular mom
 is an important tool in the development of {\em ab initio} scattering methods.
 Very few physics scattering problems can be solved exactly and approximations are invariably made to arrive at a solution.
 The $S$-wave model assists in separating {\em physics}-approximations from {\em computational}-approximations by
-greatly simplifying physics interactions and possible processes within the model.
+greatly simplifying physics interactions and possible physical processes within the model.
 Using the model, a scattering method can then test its computational accuracy
 and/or limitations without the "distraction" of full range physical processes and interactions.
 
@@ -445,7 +455,7 @@ improve (reduce $N$) the JM convergence rate \cite{VBA02p010404}.
 The second interesting and somewhat unexpected result is that the pseudo-resonances could not be entirely eliminated
 above the ionization threshold even with the quite large number $(N_t=30)$ of target basis functions
 and even with the averaging technique.
-Note that in the full problem the pseudo-resonances are partially smoothed out
+Note that in the full problem the pseudo-resonances are somewhat smoothed out
 even in  a single calculation due to
 the summation over partial waves, where each partial wave cross section would have its own pseudo-resonance behavior.
 Therefore, while the $S$-wave model is indeed computationally more tractable, at the same time it provides a very strict test
