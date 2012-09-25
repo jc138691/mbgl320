@@ -31,7 +31,7 @@ public class NmrvPotR extends EngFuncArr {
     Vec r = pot.getX();
     for (int i = 0; i < getEng().size(); i++) {
       double E = getEng().get(i);                         log.dbg("E = ", E);
-      FuncVec V = new FuncVec(r, new FuncConst(2. * E)); log.dbg("2*E = ", V);
+      FuncVec V = new FuncVec(r, new FuncConst(2. * E));  log.dbg("2*E = ", V);
       V.addMultSafe(-2, pot);                                log.dbg("2*E - 2*V= ", V);
       FuncVec f = new NmrvAlgR(V).calc();
       set(i, f);

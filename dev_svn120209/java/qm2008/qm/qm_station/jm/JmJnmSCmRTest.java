@@ -40,7 +40,7 @@ public class JmJnmSCmRTest extends FlowTest {
       }
 
       double E = engGrid.get(i);  log.dbg("E = " + E);
-      JmJMtrxR jnm = new JmJMtrxR(basis, E);      log.dbg("J-matrix, Jnm=", jnm);
+      JmJmR jnm = new JmJmR(basis, E);      log.dbg("J-matrix, Jnm=", jnm);
       JmSm sn = new JmSm(basis, E);      log.dbg("S_n =", sn);
       Vec js = jnm.mult(sn);               log.info("Jnm * Sm =", js);
 

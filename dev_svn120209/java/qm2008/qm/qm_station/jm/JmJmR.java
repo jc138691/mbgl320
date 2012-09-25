@@ -10,12 +10,12 @@ import scatt.jm_2008.jm.laguerre.LgrrR;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 17/12/2008, Time: 13:51:25
  */
-public class JmJMtrxR extends Mtrx {
+public class JmJmR extends Mtrx {
   public static String HELP = "J_{n,m}; calculated by numerical integration";
-  public static Log log = Log.getLog(JmJMtrxR.class);
+  public static Log log = Log.getLog(JmJmR.class);
   private double E;
 
-  public JmJMtrxR(LgrrR arr, double E) {
+  public JmJmR(LgrrR arr, double E) {
     super(arr.size(), arr.size());
     this.E = E;                      log.dbg("E=", E);
     calc(arr);

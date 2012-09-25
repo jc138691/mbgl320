@@ -73,22 +73,23 @@ public void runJob() {
   int currN;
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 
-  currN = 21;// N=100
+  currN = 100;// N=100
   LCR_N = 2001;//    N=100, LAMBDA=2
   R_LAST = 500;//    R_LAST = 500; N=100, LAMBDA=1
 
   LAMBDA = 1.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
   LAMBDA_NC = 4.0; // exact LAMBDA[He^+(1s)] = 4, LAMBDA[He^+(2s)] = 2;
-  Nc = 1;
-  int currNt = 20;
+  Nc = 3;
+  int currNt = 30;
 
-//  setupEng20_120eV();  // Todo: remove when done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  scttEngs = null;
+  setupEng20_120eV();  // Todo: remove when done!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//  scttEngs = null;
 
   SPIN = Spin.ELECTRON;
 //  for (currNt = 25; currNt <= 35; currNt++) {
+  for (LAMBDA = 0.95; LAMBDA <= 1.0501; LAMBDA+=0.01) {
     calc(currN, currNt);
-//  }
+  }
 }
 
 protected void saveTrgtInfo(ScttTrgtE3 jmTrgt) {
