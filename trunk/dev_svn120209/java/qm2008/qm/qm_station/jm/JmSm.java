@@ -12,7 +12,7 @@ import scatt.jm_2008.jm.theory.JmTheory;
  */
 public class JmSm extends Vec {
 //  public static String HELP = "S_n; calculated by numerical integration";
-  public static Log log = Log.getLog(JmJMtrxR.class);
+  public static Log log = Log.getLog(JmJmR.class);
   protected double E;
 
   public JmSm(LgrrR bi, double E) {

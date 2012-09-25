@@ -24,9 +24,9 @@ import scatt.jm_2008.jm.laguerre.lcr.*;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 22/10/2008, Time: 13:04:14
  */
-public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
+public class UCTestJmPotLcr_OLD extends UCRunDefaultTask<QMS> {
   public static Log log = Log.getLog(UCRunJmPotR.class);
-  public UCTestJmPotLCR(DefaultTaskUI<QMS> ui) {
+  public UCTestJmPotLcr_OLD(DefaultTaskUI<QMS> ui) {
     super(ui);
   }
   protected void setupLogs() {
@@ -58,26 +58,17 @@ public class UCTestJmPotLCR extends UCRunDefaultTask<QMS> {
     ProjTestOpt testOpt = potOpt.getTestOpt();
     FlowTest.setMaxErr(testOpt.getMaxIntgrlErr());
     FlowTest.setLog(log);
-//    if (!new PartHMtrxLCRTest(w).ok())
-//      return false;
 
     if (!new LagrrLcrTest(basis).ok())
         return false;
 
-    LagrrBiLcr bi = new LagrrBiLcr(w, potOpt.getBasisOpt() );  log.dbg("LagrrBiLcr = ", new FuncArrDbgView(bi));
-    if (!new LagrrBiLcrTest(basis, bi).ok())
-      return false;
-
-    LgrrOrthLcr orth = new LgrrOrthLcr(w, potOpt.getBasisOpt() );  log.dbg("LgrrOrthLcr = ", new FuncArrDbgView(bi));
+    LgrrOrthLcr orth = new LgrrOrthLcr(w, potOpt.getBasisOpt() );  log.dbg("LgrrOrthLcr = ", new FuncArrDbgView(orth));
     if (!new AnyOrthTest(orth).ok())
       return false;
 
-    double Z = 1; // for hydrogen 
-    if (!new PotEigVecLcrTest(Z, orth).ok())
-      return false;
 
     EngOpt eng = potOpt.getGridEng();
-    if (!new JmJnnLCRTest(basis, eng).ok())
+    if (!new JmJnnLcrTest(basis, eng).ok())
       return false;
 
     log.info("finished UCTestJmPotLCR");

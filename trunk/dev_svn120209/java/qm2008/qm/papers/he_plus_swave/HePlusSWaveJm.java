@@ -29,25 +29,18 @@ public class HePlusSWaveJm extends HyLikeSWaveJm {
     log.setDbg();
   }
   public void testRun() { // starts with 'test' so it could be run via JUnit without the main()
-    project = QMSProject.makeInstance("HePlusSWaveJm", "110606");
+    MODEL_NAME = "HePlusSWaveJm";    MODEL_DIR = MODEL_NAME;
+    project = QMSProject.makeInstance(MODEL_NAME, "110606");
     TARGET_Z = AtomHe.Z;
     HOME_DIR = "C:\\dev\\physics\\papers\\output";
-    MODEL_NAME = "HePlusSWaveJm";    MODEL_DIR = MODEL_NAME;
     CALC_TRUE_CONTINUUM = false; // if TRUE, increase LCR_N by about timesSelf 2.5
     LAMBDA = 2; // exact LAMBDA[H(1s)] = 2, LAMBDA[H(2s)] = 1;
 
     // Note: run one at a time as only one set of result files is produced
-//    setupResonances_n2_S1();
-//    setupResonances_n2_n3_S1();
-//    setupResonances_n2_n3_S3();
     setupEngTCS();
     USE_CLOSED_CHANNELS = true;
     CALC_DENSITY = false;
-//    EXCL_SYS_RESON_IDX = 18;
     runJob();
-
-//    USE_CLOSED_CHANNELS = false;
-//    runJob();
   }
 
 

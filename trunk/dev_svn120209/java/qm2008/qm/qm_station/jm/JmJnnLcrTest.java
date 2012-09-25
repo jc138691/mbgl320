@@ -10,27 +10,27 @@ import junit.framework.TestCase;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 20/11/2008, Time: 13:43:34
  */
-public class JmJnnLCRTest extends FlowTest {
+public class JmJnnLcrTest extends FlowTest {
   private static LagrrLcr funcArr;
   private static EngOpt eng;
-  public JmJnnLCRTest(LagrrLcr arr, EngOpt eng) {
-    super(JmJnnLCRTest.class);
+  public JmJnnLcrTest(LagrrLcr arr, EngOpt eng) {
+    super(JmJnnLcrTest.class);
     this.funcArr = arr;
     this.eng = eng;
   }
-  public JmJnnLCRTest() {
+  public JmJnnLcrTest() {
   }
   public void testNorm() {
     TaskProgressMonitor monitor = ProjectProgressMonitor.getInstance();
 
-    log.dbg("testing " + JmJnnLCR.HELP);
+    log.dbg("testing " + JmJnnLcr2.HELP);
 //    log.dbg("running JmSCnRTest: numerical values are compared against analytical expressions from JmTheory");
 //    log.dbg("NOTE: All requested energies are tested");
 //    log.dbg("NOTE: Max relative intergation error =" + getMaxErr());
 
     double lambda = funcArr.getModel().getLambda();
     int N = funcArr.size() - 1;  log.dbg("N = " + N);
-    JmJnnLCR jnn = new JmJnnLCR(funcArr, eng);
+    JmJnnLcr2 jnn = new JmJnnLcr2(funcArr, eng);
     Vec engGrid = jnn.getX();
     for (int i = 0; i < engGrid.size(); i++) {
       if (monitor != null && monitor.isCanceled(i, 0, engGrid.size())) {

@@ -7,7 +7,6 @@ import javax.swingx.progress.UCMonitorTaskProgress;
 
 import qm_station.QMS;
 import qm_station.ucm.save.lcr.*;
-import qm_station.ucm.save.UCSaveFuncArrPotR;
 import qm_station.ucm.plot.lcr.*;
 import qm_station.ui.MenuScattUI;
 import qm_station.ui.scatt.JmPotOptLCRView;
@@ -27,9 +26,9 @@ public class UCShowJmPotLCR_UI extends UCShowJmPotUI {
   protected UCRunTask<QMS> makeApply(DefaultTaskUI<QMS> unitUI) {
     return new UCMonitorTaskProgress<QMS>(new UCRunJmPotLCR(unitUI));
   }
-  protected UCRunTask<QMS> makeTest(DefaultTaskUI<QMS> unitUI) {
-    return new UCMonitorTaskProgress<QMS>(new UCTestJmPotLCR(unitUI));
-  }
+//  protected UCRunTask<QMS> makeTest(DefaultTaskUI<QMS> unitUI) {
+//    return new UCMonitorTaskProgress<QMS>(new UCTestJmPotLcr_OLD(unitUI));
+//  }
 
   // Laguerre
   protected UCRunTask<QMS> makeLgrrPlot(DefaultTaskUI<QMS> unitUI) {

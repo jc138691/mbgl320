@@ -63,18 +63,23 @@ public void testCalcAvr() {
   HOME_DIR = "C:\\dev\\physics\\papers\\output";
   MODEL_DIR = MODEL_NAME;
 
-  int MIN_NT = 25;
-  int MAX_NT = 50;
-  calcAvr("HeSWaveBasisHeIon_TICS_Nc1_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
-  calcAvr("HeSWaveBasisHeIon_TCS_Nc1_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
+//  int MIN_NT = 25;
+//  int MAX_NT = 50;
+//  calcAvrNt("HeSWaveBasisHeIon_TICS_Nc1_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
+//  calcAvrNt("HeSWaveBasisHeIon_TCS_Nc1_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
 
 //  int MIN_NT = 25;
 //  int MAX_NT = 35;
-//  calcAvr("HeSWaveBasisHeIon_TICS_Nc3_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
-//  calcAvr("HeSWaveBasisHeIon_TCS_Nc3_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
+//  calcAvrNt("HeSWaveBasisHeIon_TICS_Nc3_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
+//  calcAvrNt("HeSWaveBasisHeIon_TCS_Nc3_L0_LMBD1.0_N101_Nt", MIN_NT, MAX_NT);
+
+  double MIN_LAMBDA = 0.95;
+  double MAX_LAMBDA = 1.05;
+  calcAvrLambda("HeSWaveBasisHeIon_TICS_Nc3_L0_LMBD", "_N100_Nt30.dat", MIN_LAMBDA, MAX_LAMBDA);
+  calcAvrLambda("HeSWaveBasisHeIon_TCS_Nc3_L0_LMBD", "_N100_Nt30.dat", MIN_LAMBDA, MAX_LAMBDA);
 }
 
-public void calcAvr(String name, int minNt, int maxNt) {
+public void calcAvrNt(String name, int minNt, int maxNt) {
   double[][] res = null;
   Mtrx mRes = null;
   int count = 0;
@@ -95,6 +100,28 @@ public void calcAvr(String name, int minNt, int maxNt) {
   FileX.writeToFile(mRes.toTab(), HOME_DIR, MODEL_DIR, name + minNt + "_avr_" + maxNt + ".dat");
 }
 
+public void calcAvrLambda(String name, String afterLambda, double minLmbd, double maxLmbd) {
+  double[][] res = null;
+  Mtrx mRes = null;
+  int count = 0;
+  int NUM_COLS = 10;
+  for (double currLmbd = minLmbd; currLmbd <= maxLmbd +0.0001; currLmbd+=0.01) {
+    count++;       log.dbg("currLmbd=", currLmbd);
+    String fileName = HOME_DIR + File.separator + MODEL_DIR + File.separator
+      + name + (float)currLmbd + afterLambda;
+    double[][] arr = new MtrxReader("\t").readMtrx(-1, NUM_COLS, -1, fileName);
+    Mtrx mArr = new Mtrx(arr);         //log.dbg("mArr=\n", new MtrxDbgView(mArr));
+    if (res == null) {
+      res = arr;
+      mRes = mArr;
+      continue;
+    }
+    mRes.addEquals(mArr);      //log.dbg("mRes=\n", new MtrxDbgView(mRes));
+  }
+  mRes.multEquals(1./count);   log.dbg("mRes=\n", new MtrxDbgView(mRes));
+  FileX.writeToFile(mRes.toTab(), HOME_DIR, MODEL_DIR
+    , name + (float)minLmbd + "_avr_" + (float)maxLmbd + afterLambda);
+}
 
 public void calc(int newN, int newNt) {
   System.gc();

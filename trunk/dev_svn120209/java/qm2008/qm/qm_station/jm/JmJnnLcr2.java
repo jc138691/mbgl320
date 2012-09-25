@@ -11,11 +11,11 @@ import scatt.jm_2008.jm.laguerre.lcr.LagrrLcr;
 /**
  * Copyright dmitry.konovalov@jcu.edu.au Date: 20/11/2008, Time: 13:45:18
  */
-public class JmJnnLCR extends FuncVec {
+public class JmJnnLcr2 extends FuncVec {
   public static String HELP = "The JM's J_{N,N-1}; calculated by numerical integration in LCR";
-  public static Log log = Log.getLog(JmJnnLCR.class);
+  public static Log log = Log.getLog(JmJnnLcr2.class);
 
-  public JmJnnLCR(LagrrLcr arr, EngOpt eng) {
+  public JmJnnLcr2(LagrrLcr arr, EngOpt eng) {
     super(new EngGrid(eng));   // energy grid storred in x
     calc(arr);
   }
