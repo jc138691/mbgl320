@@ -57,7 +57,7 @@ set style line 11 lt 1 lc 1   lw 2  pt 1 ps 1.2 pi 2   # lc 3 blue line; lc 1 re
 set style line 12 lt 2 lc -1  lw 2  pt 7 ps 0.5 
 set style line 13 lt 2 lc 3   lw 1  pt 7 ps 0.5 
 
-set term postscript eps enhanced lw 1 size 8.6cm,18cm solid color 18 "fixed"; set out 'fig4.ps'
+set term postscript eps enhanced lw 1 size 8.6cm,16cm solid color 18 "fixed"; set out 'fig4.ps'
 set termoption dashed;
 set multiplot layout 4,1  scale 1.01, 1.01;
 #set parametric;   
@@ -105,9 +105,9 @@ set xrange [E_3S3:E_max];  set xtics 0.5;  set mxtics 5; set format x "%4.1f";
 set yrange [4.5:5.5];          set ytics 0.5;  set mytics 5; set format y "%3.1f";   
 set key left top Right title "(a) 2^3S [x0.01]"
 p \
-  CCC_t2S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*100)    t 'CCC'   w p ls 1, \
-  JM_2 u ($1*xJM + SHIFT_2):($3*yJM*100) t LABEL_2 w l ls 12, \
-  JM_1 u ($1*xJM + SHIFT_1):($3*yJM*100) t LABEL_1 w l ls 11
+  CCC_t2S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*100)    t ''   w p ls 1, \
+  JM_2 u ($1*xJM + SHIFT_2):($3*yJM*100) t '' w l ls 12, \
+  JM_1 u ($1*xJM + SHIFT_1):($3*yJM*100) t '' w l ls 11
 
 
 
@@ -141,11 +141,11 @@ set xlabel "incident energy (eV)";
 set ylabel  ' ';  
 
 set yrange [0:2];             set ytics 0.5;    set mytics 5;   set format y "%3.1f"; 
-set key left top Right title "(d) 3^1S [x0.001]"
+set key right center Right title "(d) 3^1S [x0.001]"
 p \
-  CCC_s3S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*1000)    t ''   w p ls 1, \
-  JM_2 u ($1*xJM + SHIFT_2):($6*yJM*1000) t '' w l ls 12, \
-  JM_1 u ($1*xJM + SHIFT_1):($6*yJM*1000) t '' w l ls 11
+  CCC_s3S  u ($1*xCCC + CCC_SHIFT):($2*yCCC*1000)    t 'CCC'   w p ls 1, \
+  JM_2 u ($1*xJM + SHIFT_2):($6*yJM*1000) t 'JM(FC)' w l ls 12, \
+  JM_1 u ($1*xJM + SHIFT_1):($6*yJM*1000) t 'JM(MC)' w l ls 11
  
  
 
