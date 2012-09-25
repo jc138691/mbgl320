@@ -50,7 +50,7 @@ set style line 11 lt 1 lc 1   lw 2  pt 1 ps 1.2 pi 2   # lc 3 blue line; lc 1 re
 set style line 12 lt 2 lc -1  lw 2  pt 7 ps 0.5 
 set style line 13 lt 2 lc 3   lw 1  pt 7 ps 0.5 
 
-set term postscript eps enhanced lw 1 size 8.6cm,15cm solid color 18 "fixed"; set out 'fig2.ps'
+set term postscript eps enhanced lw 1 size 8.6cm,12cm solid color 18 "fixed"; set out 'fig2.ps'
 set termoption dashed;
 set multiplot layout 3,1  scale 1.01, 1.01;
 set parametric;   
