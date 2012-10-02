@@ -73,7 +73,7 @@ public void runJob() {
   int currN;
   LCR_FIRST = -5. - 2. * Math.log(TARGET_Z);   log.dbg("LCR_FIRST=", LCR_FIRST);
 
-  currN = 100;// N=100
+  currN = 99;// N=100
   LCR_N = 2001;//    N=100, LAMBDA=2
   R_LAST = 500;//    R_LAST = 500; N=100, LAMBDA=1
 
@@ -87,7 +87,7 @@ public void runJob() {
 
   SPIN = Spin.ELECTRON;
 //  for (currNt = 25; currNt <= 35; currNt++) {
-  for (LAMBDA = 0.95; LAMBDA <= 1.0501; LAMBDA+=0.01) {
+  for (LAMBDA = 0.950; LAMBDA <= 1.0501; LAMBDA+=0.005) {
     calc(currN, currNt);
   }
 }
@@ -203,7 +203,7 @@ public void setupEng01_1000eV_OLD() {
 public void setupEng20_120eV() {
   EngModelArr arr = new EngModelArr();
 
-  int n = 1000;
+  int n = 2000;
   float first = (float)AtomUnits.fromEV(20);
   float last = (float)AtomUnits.fromEV(120);
   arr.add(new EngOpt(first, last, n));
